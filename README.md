@@ -1,6 +1,6 @@
 # 🐶 Dogokit with 💿 Remix
 
-The official Remix web app kit by [🐶 Dogokit](https://dogokit.com) team.
+The main Remix web app kit by [🐶 Dogokit](https://dogokit.com) team.
 
 ## Steps
 
