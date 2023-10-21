@@ -1,0 +1,105 @@
+// https://pris.ly/d/prisma-schema
+// https://github.com/remix-run/indie-stack/blob/main/prisma/schema.prisma
+// https://github.com/epicweb-dev/epic-stack/blob/main/prisma/schema.prisma
+// https://github.com/planetscale/beam/blob/main/prisma/schema.prisma
+// Visualize with https://prismaliser.app
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex", "metrics", "views"]
+}
+
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+}
+
+// -----------------------------------------------------------------------------
+// User
+// -----------------------------------------------------------------------------
+
+model User {
+  id String @id @default(cuid())
+
+  email    String  @unique(map: "User.email_unique")
+  username String? @unique(map: "User.username_unique")
+  phone    String? @unique // numeric string
+  fullname String
+
+  images UserImage[]
+  notes  Note[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserImage {
+  id String @id @default(cuid())
+
+  url     String
+  altText String?
+
+  user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+// -----------------------------------------------------------------------------
+// Note
+// -----------------------------------------------------------------------------
+
+model Note {
+  id String @id @default(cuid())
+
+  title   String
+  content String
+
+  user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  images NoteImage[]
+
+  @@index([userId])
+  @@index([userId, updatedAt])
+}
+
+model NoteImage {
+  id String @id @default(cuid())
+
+  url     String
+  altText String?
+
+  note   Note   @relation(fields: [noteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  noteId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([noteId])
+}
+
+// -----------------------------------------------------------------------------
+// Example
+// -----------------------------------------------------------------------------
+
+model Image {
+  id String @id @default(cuid())
+
+  url     String
+  altText String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

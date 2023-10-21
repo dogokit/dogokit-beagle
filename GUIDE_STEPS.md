@@ -217,7 +217,12 @@ For production copy if needed:
 ## Prisma ORM
 
 ```
-pnpm db:push
+db:studio
+db:generate
+db:push
+db:seed
+db:reset
+db:docs
 ```
 
 ---

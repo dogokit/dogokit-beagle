@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "moalamri.inline-fold",
+    "csstools.postcss",
+    "esbenp.prettier-vscode",
+    "yoavbls.pretty-ts-errors",
+    "prisma.prisma",
+    "artdiniz.quitcontrol-vscode",
+    "codeforge.remix-forge",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "faisalfajri.tailwind-dark-theme"
+  ]
+}

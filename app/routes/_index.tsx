@@ -3,12 +3,10 @@ import { Icon } from '@iconify/react'
 
 import { Anchor } from '~/components/ui/anchor'
 
-export const meta: MetaFunction = () => {
-	return [
-		{ title: 'Dogokit Remix' },
-		{ name: 'description', content: '🐶 Dogokit with 💿 Remix web app kit.' },
-	]
-}
+export const meta: MetaFunction = () => [
+	{ title: 'Dogokit Remix' },
+	{ name: 'description', content: '🐶 Dogokit with 💿 Remix web app kit.' },
+]
 
 export default function Index() {
 	return (

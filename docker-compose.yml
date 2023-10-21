@@ -6,7 +6,7 @@ services:
     image: mysql:8
     container_name: dogokit-remix-database
     hostname: database
-    restart: always
+    restart: no
     volumes:
       - mysql_data:/var/lib/mysql
     ports:

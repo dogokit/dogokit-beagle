@@ -1,7 +1,7 @@
-node_modules
-
+.env
+.env.production
 /.cache
 /build
 /public/build
-.env
-.env.production
+/node_modules
+/prisma/docs
