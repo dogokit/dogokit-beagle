@@ -1,38 +1,84 @@
-# Welcome to Remix!
+# 🐶 Dogokit with 💿 Remix
 
-- [Remix Docs](https://remix.run/docs)
+The official Remix web app kit by [🐶 Dogokit](https://dogokit.com) team.
+
+## Steps
+
+[Read the guide steps](./GUIDE_STEPS.md) about this repo setup.
+
+## Tech Stack
+
+Things being used and need to understand.
+
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- Node.js vs Bun
+- pnpm vs npm vs bun
+- [React](https://react.dev)
+- [Remix Docs](https://remix.run)
+- Tailwind CSS
+- Radix UI
+- shadcn UI
+- Remix Auth
+- MySQL
+- PlanetScale
+- Vercel
+- Cloudflare DNS and Domains
+
+Later:
+
+- Vitest vs Jest
+- Playwright vs Cypress
 
 ## Development
 
-From your terminal:
+From the terminal:
 
 ```sh
-npm run dev
+pnpm dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+This starts the app in development mode, rebuilding assets on file changes.
 
 ## Deployment
 
-First, build your app for production:
+First, build the app for production:
 
 ```sh
-npm run build
+pnpm build
 ```
 
 Then run the app in production mode:
 
 ```sh
-npm start
+pnpm start
 ```
 
-Now you'll need to pick a host to deploy it to.
+Now need to pick a host to deploy it to, such as:
+
+- Vercel
+- Netlify
+- Fly.io
+- Google Cloud
+- Amazon Web Services
 
 ### DIY
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+If familiar with deploying node applications, the built-in Remix app server is
+production-ready.
 
 Make sure to deploy the output of `remix build`
 
 - `build/`
 - `public/build/`
+
+## References
+
+### Used by
+
+- [🐾 Allnimal](https://allnimal.com)
+- [🐻 Bearmentor](https://bearmentor.com)
+- [🐱 Catamyst](https://catamyst.com)
+- [🐶 Dogokit](https://dogokit.com)
