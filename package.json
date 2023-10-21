@@ -7,24 +7,46 @@
     "build": "remix build",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
-    "typecheck": "tsc"
+    "check": "run-p check:*",
+    "check:tsc": "tsc --noEmit",
+    "check:prettier": "prettier --check \"**/*.{ts,tsx,json,md,mdx}\" --cache",
+    "check:eslint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "check:stylelint": "stylelint ./app/styles/*.css",
+    "check:prisma": "prisma validate",
+    "fix": "run-p fix:*",
+    "fix:prettier": "prettier --write \"**/*.{ts,tsx,json,md,mdx}\" --cache",
+    "fix:eslint": "eslint . --fix --cache --cache-location ./node_modules/.cache/eslint .",
+    "fix:stylelint": "stylelint --fix ./app/styles/*.css",
+    "fix:prisma": "prisma format && prisma validate",
+    "debug:eslint": "DEBUG=eslint:cli-engine nr check:lint",
+    "taze": "taze",
+    "clean": "rm -rf build public/build",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@remix-run/css-bundle": "^2.1.0",
     "@remix-run/node": "^2.1.0",
     "@remix-run/react": "^2.1.0",
     "@remix-run/serve": "^2.1.0",
-    "isbot": "^3.6.8",
+    "isbot": "^3.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.1.0",
     "@remix-run/eslint-config": "^2.1.0",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
-    "eslint": "^8.38.0",
-    "typescript": "^5.1.6"
+    "@types/react": "^18.2.31",
+    "@types/react-dom": "^18.2.14",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "5.0.1",
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "0.5.6",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "taze": "0.11.4",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.0.0"

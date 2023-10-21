@@ -1,0 +1,7 @@
+/build
+/public
+bun.lockb
+node_modules
+package-lock.json
+pnpm-lock.yaml
+slides.md
