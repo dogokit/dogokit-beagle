@@ -2,6 +2,13 @@
 
 Steps to redo this repo setup.
 
+## Prerequisites
+
+- Code editor such as VS Code
+- Terminal app
+- Git
+- Node.js
+
 ## Git
 
 Clone the repo. Preferably with SSH.
@@ -46,6 +53,10 @@ Check the scripts:
 - Other things
 
 ## Node.js Dependencies with pnpm
+
+```sh
+npm install -g pnpm
+```
 
 ```sh
 pnpm install
@@ -103,6 +114,12 @@ remix.config.js
 
 To enable `tailwind` and `postcss`.
 
+## TypeScript
+
+```
+tsconfig.json
+```
+
 ## Tailwind CSS & PostCSS
 
 ```
@@ -122,15 +139,60 @@ Automatically setup Tailwind CSS, PostCSS, and Radix UI.
 pnpx shadcn-ui@latest init
 ```
 
-Follow the next installation steps. Then can install the UI component:
+Follow the next installation steps. The components are configured in:
+
+```
+components.json
+```
+
+Then can install the UI component as needed:
 
 ```sh
 pnpx shadcn-ui@latest add component-name
 ```
 
-## TypeScript
+## Icons
 
-## .env
+shadcn UI install Lucide React icons by default, which can be removed and
+replaced.
+
+Use Iconify (`@iconify/react`) to get any popular icons via
+[Icônes](https://icones.js.org).
+
+## Fonts
+
+Use [Fontsource](https://fontsource.org) to install the font locally without
+using online-required [Google Fonts](https://fonts.google.com).
+
+```
+
+```
+
+## Theme Mode
+
+TBA
+
+## Docker
+
+- On Mac, use OrbStack.
+- On Linux, install Docker.
+- On Windows, use WSL then install Docker.
+
+## MySQL
+
+TBA
+
+## PlanetScale
+
+TBA
+
+## Environment Variable
+
+```
+.env.example
+.env
+.env.production
+```
 
 ---
 
