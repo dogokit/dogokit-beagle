@@ -51,13 +51,21 @@ Check the scripts:
 pnpm install
 ```
 
-Can also check the version updates with `taze`
+Can also check the version updates with `taze`:
 
 ```sh
 pnpm taze
 ```
 
+Config to enable some features for pnpm:
+
+```
+.npmrc
+```
+
 ## Prettier
+
+Formatter with various plugins.
 
 ```
 .prettierrc.js
@@ -65,9 +73,15 @@ pnpm taze
 
 ## ESLint
 
+Linter with various plugins.
+
 ```
 .eslintrc.cjs
 ```
+
+Note that ESLint does not support ESM
+[configuration](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file-formats)
+at this time.
 
 ## Stylelint
 
@@ -83,7 +97,36 @@ pnpm taze
 
 ## Remix Config
 
-## Tailwind CSS
+```
+remix.config.js
+```
+
+To enable `tailwind` and `postcss`.
+
+## Tailwind CSS & PostCSS
+
+```
+tailwind.config.ts
+postcss.config.js
+```
+
+## Radix UI
+
+No config necessary.
+
+## shadcn UI
+
+Automatically setup Tailwind CSS, PostCSS, and Radix UI.
+
+```sh
+pnpx shadcn-ui@latest init
+```
+
+Follow the next installation steps. Then can install the UI component:
+
+```sh
+pnpx shadcn-ui@latest add component-name
+```
 
 ## TypeScript
 
