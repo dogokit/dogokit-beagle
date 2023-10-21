@@ -24,6 +24,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@fontsource-variable/grandstander": "5.0.17",
     "@radix-ui/react-slot": "1.0.2",
     "@remix-run/css-bundle": "^2.1.0",
     "@remix-run/node": "^2.1.0",

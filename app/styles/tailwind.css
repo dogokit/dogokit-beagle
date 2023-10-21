@@ -68,19 +68,19 @@
 	h4,
 	h5,
 	h6 {
-		@apply font-bold leading-tight tracking-tighter text-foreground;
+		@apply leading-tight tracking-tighter text-foreground;
 	}
 	h1 {
-		@apply text-4xl leading-[1.1] md:text-5xl lg:text-6xl xl:text-7xl;
+		@apply text-5xl font-semibold leading-[1.1] md:text-6xl lg:text-7xl xl:text-8xl;
 	}
 	h2 {
-		@apply text-3xl md:text-4xl;
+		@apply text-3xl font-bold md:text-4xl;
 	}
 	h3 {
-		@apply text-2xl md:text-3xl;
+		@apply text-2xl font-bold md:text-3xl;
 	}
 	h4 {
-		@apply text-lg md:text-xl;
+		@apply text-lg font-bold md:text-xl;
 	}
 	b {
 		@apply font-semibold;
@@ -89,14 +89,20 @@
 
 @layer components {
 	.navlink {
-		@apply hover-opacity font-bold;
+		@apply hover-opacity font-semibold;
 	}
 	.navlink-active {
-		@apply navlink text-blue-700;
+		@apply navlink text-primary;
 	}
 }
 
 @layer utilities {
+	.font-display {
+		font-family: 'Grandstander Variable', sans-serif;
+	}
+	.hover-opacity {
+		@apply transition hover:opacity-75;
+	}
 	.section-auto {
 		@apply mx-auto max-w-3xl px-2 py-10 sm:px-4;
 	}
@@ -107,10 +113,7 @@
 		@apply text-base sm:text-lg;
 	}
 	.text-icon {
-		@apply inline-flex items-center gap-2;
-	}
-	.hover-opacity {
-		@apply transition hover:opacity-75;
+		@apply inline-flex flex-wrap items-center gap-2;
 	}
 	.prose-config {
 		@apply prose lg:prose-lg;

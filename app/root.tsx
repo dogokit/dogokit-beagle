@@ -8,6 +8,7 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
+import '@fontsource-variable/grandstander/wght.css'
 
 import styles from '~/styles/tailwind.css'
 

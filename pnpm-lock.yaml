@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource-variable/grandstander':
+    specifier: 5.0.17
+    version: 5.0.17
   '@radix-ui/react-slot':
     specifier: 1.0.2
     version: 1.0.2(@types/react@18.2.31)(react@18.2.0)
@@ -1005,6 +1008,10 @@ packages:
     resolution: {integrity: sha512-mjZVbpaeMZludF2fsWLD0Z9gCref1Tk4i9+wddjRvpUNqqcndPkBD09N/Mapey0b3jaXbLm2kICwFv2E64QinA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource-variable/grandstander@5.0.17:
+    resolution: {integrity: sha512-l4hXluAixZUkA6oiHIjmJvcb01XYmz4BQASe9Li+fWTqAPexvz8ZsTe/VcR9Gz5gSvuAQYVWl0oPdIqW1+JhaQ==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.13:
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}

@@ -14,29 +14,52 @@ export default function Index() {
 	return (
 		<div className="container space-y-20 py-20">
 			<section className="space-y-10">
-				<h1>🐶 Dogokit Remix</h1>
-				<h2>
-					The main Remix web app kit by{' '}
+				<div className="text-icon">
+					<Icon icon="fluent-emoji:dog-face" className="text-7xl" />
+					<h1 className="font-display">
+						<span>Dogokit Remix</span>
+					</h1>
+				</div>
+
+				<p className="text-2xl sm:text-4xl">
+					Remix web app kit by{' '}
 					<Anchor withColor href="https://dogokit.com">
-						🐶 Dogokit
-					</Anchor>{' '}
-					team
-				</h2>
+						Dogokit
+					</Anchor>
+				</p>
 			</section>
 
 			<section className="prose-config">
-				<h2 className="inline-flex items-center gap-2">
-					<Icon icon="mdi:home" />
+				<h1 className="text-icon">
+					<Icon icon="fluent-emoji:cat-face" />
+					<span>Heading One</span>
+				</h1>
+				<p>
+					This is the paragraph after heading one. Discussing about{' '}
+					<Anchor href="https://dogokit.com">Dogokit</Anchor> and{' '}
+					<Anchor href="https://remix.run">Remix</Anchor>.
+				</p>
+
+				<h2 className="text-icon">
+					<Icon icon="fluent-emoji:bear" />
 					<span>Heading Two</span>
 				</h2>
 				<p>
-					This is the paragraph after heading two. Which you can here.
-					Discussing about this{' '}
-					<Anchor href="https://dogokit.com">Dogokit</Anchor> and{' '}
-					<Anchor href="https://remix.run">Remix</Anchor>. Lorem ipsum dolor sit
-					amet consectetur adipisicing elit. Culpa commodi amet aliquid eos
-					placeat maiores quas dolor iusto accusamus laudantium sit molestiae
-					facilis labore ipsam odit sapiente ex, dolore quis?
+					Just another paragraph after heading two. Lorem ipsum dolor sit amet
+					consectetur adipisicing elit. Culpa commodi amet aliquid eos placeat
+					maiores quas dolor iusto accusamus laudantium sit molestiae facilis
+					labore ipsam odit sapiente ex, dolore quis?
+				</p>
+
+				<h3 className="text-icon">
+					<Icon icon="fluent-emoji:paw-prints" />
+					<span>Heading Three</span>
+				</h3>
+				<p>
+					The last paragraph after heading three. Lorem ipsum dolor sit amet
+					consectetur adipisicing elit. Culpa commodi amet aliquid eos placeat
+					maiores quas dolor iusto accusamus laudantium sit molestiae facilis
+					labore ipsam odit sapiente ex, dolore quis?
 				</p>
 			</section>
 		</div>
