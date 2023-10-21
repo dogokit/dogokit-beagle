@@ -1,5 +1,4 @@
 /build
-/public
 bun.lockb
 node_modules
 package-lock.json

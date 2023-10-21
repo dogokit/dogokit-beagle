@@ -8,6 +8,9 @@ dependencies:
   '@fontsource-variable/grandstander':
     specifier: 5.0.17
     version: 5.0.17
+  '@fontsource/inter':
+    specifier: 5.0.14
+    version: 5.0.14
   '@planetscale/database':
     specifier: 1.11.0
     version: 1.11.0
@@ -1063,6 +1066,10 @@ packages:
 
   /@fontsource-variable/grandstander@5.0.17:
     resolution: {integrity: sha512-l4hXluAixZUkA6oiHIjmJvcb01XYmz4BQASe9Li+fWTqAPexvz8ZsTe/VcR9Gz5gSvuAQYVWl0oPdIqW1+JhaQ==}
+    dev: false
+
+  /@fontsource/inter@5.0.14:
+    resolution: {integrity: sha512-5H+rWUemTnUrtF5Dov2zDq+RWDIoXCmSrupNIfI5x7udZnoUTNhr+k9sYxtNS22mIngUQHZUPexTMj0/7P0Ucg==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:

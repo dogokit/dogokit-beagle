@@ -1,4 +1,3 @@
-import { cssBundleHref } from '@remix-run/css-bundle'
 import { type LinksFunction } from '@remix-run/node'
 import {
 	Links,
@@ -8,14 +7,10 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
-import '@fontsource-variable/grandstander/wght.css'
 
-import styles from '~/styles/tailwind.css'
+import { configDocumentLinks } from '~/configs/document'
 
-export const links: LinksFunction = () => [
-	{ rel: 'stylesheet', href: styles },
-	...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
-]
+export const links: LinksFunction = () => configDocumentLinks
 
 export default function App() {
 	return (

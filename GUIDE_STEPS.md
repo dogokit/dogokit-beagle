@@ -29,7 +29,7 @@ Ignore some files.
 README.md
 ```
 
-## LICENCE
+## LICENSE
 
 ```
 LICENSE
@@ -106,19 +106,29 @@ at this time.
 .commitlintrc
 ```
 
+## TypeScript
+
+```
+tsconfig.json
+```
+
 ## Remix Config
 
 ```
 remix.config.js
 ```
 
-To enable `tailwind` and `postcss`.
+Also to enable `tailwind` and `postcss`.
 
-## TypeScript
+## Favicons
 
-```
-tsconfig.json
-```
+Use [Real Favicon Generator](https://realfavicongenerator.net).
+
+Use TinyPNG to compress the images.
+
+Configure in Remix `root.tsx`
+
+TODO
 
 ## Tailwind CSS & PostCSS
 
@@ -150,6 +160,10 @@ Then can install the UI component as needed:
 ```sh
 pnpx shadcn-ui@latest add component-name
 ```
+
+## Progress Bar
+
+TODO
 
 ## Icons
 
