@@ -164,8 +164,8 @@ Use Iconify (`@iconify/react`) to get any popular icons via
 Use [Fontsource](https://fontsource.org) to install the font locally without
 using online-required [Google Fonts](https://fonts.google.com).
 
-```
-
+```sh
+pnpm install @fontsource-variable/font-name
 ```
 
 ## Theme Mode
@@ -174,15 +174,25 @@ TBA
 
 ## Docker
 
-- On Mac, use OrbStack.
-- On Linux, install Docker.
-- On Windows, use WSL then install Docker.
+- On Mac, use OrbStack
+- On Linux, install Docker
+- On Windows, use WSL then install Docker
 
-## MySQL
+## Docker Compose
+
+```
+docker-compose.yml
+```
+
+```sh
+docker compose up -d
+```
+
+## MySQL on a Docker container
 
 TBA
 
-## PlanetScale
+## MySQL on PlanetScale
 
 TBA
 
@@ -190,13 +200,27 @@ TBA
 
 ```
 .env.example
+```
+
+For local development:
+
+```
 .env
+```
+
+For production copy if needed:
+
+```
 .env.production
 ```
 
----
+## Prisma ORM
 
-## Extra
+```
+pnpm db:push
+```
+
+---
 
 Some extra stuffs are below.
 
