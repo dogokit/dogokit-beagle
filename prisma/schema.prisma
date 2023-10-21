@@ -12,7 +12,7 @@ datasource db {
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "fullTextIndex", "metrics", "views"]
+  previewFeatures = ["driverAdapters", "fullTextSearch", "fullTextIndex", "metrics", "views"]
 }
 
 generator docs {

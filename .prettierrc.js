@@ -1,4 +1,4 @@
-/** @type {import("prettier").Options} */
+/** @type {import('prettier').Options} */
 export default {
 	// changeable
 	semi: false,

@@ -217,15 +217,21 @@ For production copy if needed:
 ## Prisma ORM
 
 ```
-db:studio
-db:generate
 db:push
-db:seed
 db:reset
+db:generate
+db:seed
+db:studio
 db:docs
 ```
 
+References:
+
+- [https://planetscale.com/docs/prisma/automatic-prisma-migrations](https://planetscale.com/docs/prisma/automatic-prisma-migrations)
+
 ---
+
+# Extra
 
 Some extra stuffs are below.
 
