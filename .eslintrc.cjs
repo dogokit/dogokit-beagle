@@ -1,21 +1,32 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
+	parser: '@typescript-eslint/parser',
+	parserOptions: { project: true },
+	plugins: ['prettier', '@typescript-eslint'],
 	extends: [
 		'@remix-run/eslint-config',
 		'@remix-run/eslint-config/node',
 		'prettier',
 		'plugin:tailwindcss/recommended',
+		'plugin:@typescript-eslint/recommended-type-checked',
+		'plugin:@typescript-eslint/stylistic-type-checked',
 	],
-	plugins: ['prettier'],
 	rules: {
 		'no-empty-pattern': 'off',
+		'@typescript-eslint/array-type': 'off',
+		'@typescript-eslint/consistent-type-definitions': 'off',
 		'@typescript-eslint/consistent-type-imports': [
 			'warn',
 			{
 				prefer: 'type-imports',
-				disallowTypeAnnotations: true,
 				fixStyle: 'inline-type-imports',
+				disallowTypeAnnotations: true,
 			},
+		],
+		'@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+		'@typescript-eslint/no-misused-promises': [
+			2,
+			{ checksVoidReturn: { attributes: false } },
 		],
 		'import/no-duplicates': ['warn', { 'prefer-inline': true }],
 		'import/consistent-type-specifier-style': ['warn', 'prefer-inline'],
