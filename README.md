@@ -1,6 +1,25 @@
-# 🐶 Dogokit with 💿 Remix
+# [🐶 Dogokit with 💿 Remix](https://dogokit.com/remix)
 
-The main Remix web app kit by [🐶 Dogokit](https://dogokit.com) team.
+The main Remix web app template kit by [🐶 Dogokit](https://dogokit.com) team.
+
+> 🚧 This template kit is still in early and active development
+
+Check out:
+
+- Web: <https://dogokit.com/remix>
+- Repo: <https://github.com/dogokit/dogokit-remix>
+
+## Concept
+
+This template kit website allow to:
+
+- [x] Create a new [Remix](https://remix.run) app with multiple features quickly
+- [x] Help existing Remix app development
+- [x] Setup commonly used development and production parts
+  - [x] Code quality with Prettier, ESLint, Stylelint, Commitlint
+  - [x] Database with Prisma ORM and MySQL on PlanetScale
+  - [ ] Testing
+- [ ] Provide various code and utilities
 
 ## Steps
 

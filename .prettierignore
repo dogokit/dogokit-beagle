@@ -1,6 +1,7 @@
 /build
+/docs/SOCIAL.md
+/node_modules
 bun.lockb
-node_modules
 package-lock.json
 pnpm-lock.yaml
 slides.md
