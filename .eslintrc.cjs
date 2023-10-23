@@ -1,15 +1,14 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
 	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint', 'prettier'],
 	parserOptions: { project: true },
-	plugins: ['prettier', '@typescript-eslint'],
+	root: true,
 	extends: [
 		'@remix-run/eslint-config',
 		'@remix-run/eslint-config/node',
 		'prettier',
 		'plugin:tailwindcss/recommended',
-		'plugin:@typescript-eslint/recommended-type-checked',
-		'plugin:@typescript-eslint/stylistic-type-checked',
 	],
 	rules: {
 		'no-empty-pattern': 'off',

@@ -11,6 +11,11 @@
     "codeforge.remix-forge",
     "stylelint.vscode-stylelint",
     "bradlc.vscode-tailwindcss",
-    "faisalfajri.tailwind-dark-theme"
+    "faisalfajri.tailwind-dark-theme",
+    "yzhang.markdown-all-in-one",
+    "johnpapa.vscode-peacock",
+    "bierner.markdown-preview-github-styles",
+    "bierner.markdown-mermaid",
+    "davidanson.vscode-markdownlint"
   ]
 }

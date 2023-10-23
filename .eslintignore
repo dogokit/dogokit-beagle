@@ -1,3 +1,6 @@
 /build
 /public
+/scripts
 node_modules
+postcss.config.js
+remix.config.js

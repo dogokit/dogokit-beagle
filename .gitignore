@@ -1,8 +1,11 @@
 .env
 .env.production
+.eslintcache
+.stylelintcache
 /.cache
 /build
 /docs/TODOS.md
 /node_modules
 /prisma/docs
 /public/build
+tsconfig.tsbuildinfo

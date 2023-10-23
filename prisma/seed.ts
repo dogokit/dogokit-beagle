@@ -37,6 +37,7 @@ async function seedUsers() {
 	console.info('🟡 👤 Deleted existing users')
 
 	const dataCredentialUsersConfigured = dataCredentialUsers.map(item => {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const { password, ...user } = item
 		return user
 	})

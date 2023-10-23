@@ -1,56 +1,65 @@
 # Guide: Steps
 
-Steps to redo this repo setup.
+Steps to know, check, or redo.
 
 ## Prerequisites
 
-- Code editor such as VS Code
-- Terminal app
-- Git
-- Node.js
+### OS-level
+
+1. Code editor: Vim, VS Code
+2. Terminal app: Warp, iTerm
+3. Version control: Git
+4. JavaScript runtime: Node.js
+
+### Account-level
+
+1. Email: Gmail, Skiff Mail
+2. Credential manager: Bitwarden, 1Password
+3. Repository: GitHub, GitLab, Bitbucket
+4. Deployment: Vercel, Netlify, Render.com, Railway.app, Fly.io
 
 ## Git
 
-Clone the repo. Preferably with SSH.
+Initialize or clone the repo. Preferably with SSH URL.
 
 ```sh
-git clone
+git clone git@github.com:dogokit/dogokit-remix.git
 ```
 
 Ignore some files.
 
-```
+```txt
 .gitignore
 ```
 
 ## README
 
-```
+```txt
 README.md
 ```
 
 ## LICENSE
 
-```
+```txt
 LICENSE
 ```
 
 ## Code of Conduct
 
-```
+```txt
 CODE_OF_CONDUCT.md
 ```
 
-## package.json
+## `package.json`
 
 Check for the dependencies.
 
-Check the scripts:
+Check the scripts for:
 
 - App-related tasks
-- Code check
-- Code fix
-- Other things
+- `check:*`: Code check commands
+- `fix:*`: Code fix commands
+- `db:*`: Database-related commands
 
 ## Node.js Dependencies with pnpm
 
@@ -70,7 +79,7 @@ pnpm taze
 
 Config to enable some features for pnpm:
 
-```
+```txt
 .npmrc
 ```
 
@@ -78,7 +87,7 @@ Config to enable some features for pnpm:
 
 Formatter with various plugins.
 
-```
+```txt
 .prettierrc.js
 ```
 
@@ -86,7 +95,7 @@ Formatter with various plugins.
 
 Linter with various plugins.
 
-```
+```txt
 .eslintrc.cjs
 ```
 
@@ -96,25 +105,25 @@ at this time.
 
 ## Stylelint
 
-```
+```txt
 .stylelintrc
 ```
 
 ## commitlint
 
-```
+```txt
 .commitlintrc
 ```
 
 ## TypeScript
 
-```
+```txt
 tsconfig.json
 ```
 
 ## Remix Config
 
-```
+```txt
 remix.config.js
 ```
 
@@ -132,7 +141,7 @@ TODO
 
 ## Tailwind CSS & PostCSS
 
-```
+```txt
 tailwind.config.ts
 postcss.config.js
 ```
@@ -151,7 +160,7 @@ pnpx shadcn-ui@latest init
 
 Follow the next installation steps. The components are configured in:
 
-```
+```txt
 components.json
 ```
 
@@ -194,7 +203,7 @@ TBA
 
 ## Docker Compose
 
-```
+```txt
 docker-compose.yml
 ```
 
@@ -212,31 +221,31 @@ TBA
 
 ## Environment Variable
 
-```
+```txt
 .env.example
 ```
 
 For local development:
 
-```
+```txt
 .env
 ```
 
 For production copy if needed:
 
-```
+```txt
 .env.production
 ```
 
 ## Prisma ORM
 
-```
-db:push
-db:reset
-db:generate
-db:seed
-db:studio
-db:docs
+```sh
+pnpm db:push
+pnpm db:reset
+pnpm db:generate
+pnpm db:seed
+pnpm db:studio
+pnpm db:docs
 ```
 
 References:
@@ -255,18 +264,18 @@ Then configure it:
 
 ```json
 [
-	{
-		"fullname": "Example",
-		"username": "example",
-		"email": "example@example.com",
-		"password": "exampleexample"
-	}
+  {
+    "fullname": "Example",
+    "username": "example",
+    "email": "example@example.com",
+    "password": "exampleexample"
+  }
 ]
 ```
 
 ---
 
-# Extra
+## Extra
 
 Some extra stuffs are below.
 

@@ -1,10 +1,11 @@
 import { json, type LoaderFunctionArgs } from '@remix-run/node'
-import { type MetaFunction, useLoaderData } from '@remix-run/react'
+import { useLoaderData, type MetaFunction } from '@remix-run/react'
 
 import { prisma } from '~/libs/db.server'
 
 export const meta: MetaFunction = () => [{ title: 'Dogokit Users' }]
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const loader = async ({ request }: LoaderFunctionArgs) => {
 	const [countUsers, users] = await prisma.$transaction([
 		prisma.user.count(),

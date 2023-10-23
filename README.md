@@ -16,14 +16,17 @@ This template kit website allow to:
 - [x] Create a new [Remix](https://remix.run) app with multiple features quickly
 - [x] Help existing Remix app development
 - [x] Setup commonly used development and production parts
-  - [x] Code quality with Prettier, ESLint, Stylelint, Commitlint
-  - [x] Database with Prisma ORM and MySQL on PlanetScale
-  - [ ] Testing
+- [x] Code quality with Prettier, ESLint, Stylelint, Commitlint
+- [x] UI components and styles with Tailwind CSS and Radix UI
+- [x] Database with Prisma ORM and MySQL on PlanetScale
+- [ ] Testing with Vitest and Playwright
 - [ ] Provide various code and utilities
+- [ ] Scripts with `dogokit` CLI or `@dogokit/cli`
 
 ## Steps
 
-[Read the guide steps](./GUIDE_STEPS.md) about this repo setup.
+Read the [guide kit](./docs/GUIDE_KIT.md) and
+[guide steps](./docs/GUIDE_STEPS.md) about this repo setup.
 
 ## Tech Stack
 
