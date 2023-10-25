@@ -20,6 +20,7 @@ Check out:
 - [ ] UI for dashboard components with [Tremor](https://tremor.so)
 - [x] Icons with [Iconify](https://iconify.design)
 - [x] Database with [Prisma ORM](https://prisma.io) and [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com)
+  - Run database instance as container with [Docker Compose](https://docs.docker.com/compose)
   - Anyone can change them into [Drizzle ORM](https://orm.drizzle.team) and [PostgreSQL](https://postgresql.org) on [Neon](https://neon.tech) with some adjustment
 - [x] Auth (authentication/authorization) with [Remix Auth](https://github.com/sergiodxa/remix-auth) and various strategies
   - Anyone can change them into [Lucia](https://lucia-auth.com)
@@ -51,14 +52,21 @@ The opiniated things being used and need to understand.
 - [Prisma ORM](https://prisma.io)
 - [MySQL](https://mysql.com)
   - [PlanetScale](https://planetscale.com)
+- [Docker](https://docker.com) and [Docker Compose](https://docs.docker.com/compose)
 - [Vercel](https://vercel.com)
 - [Cloudflare DNS](https://cloudflare.com/application-services/products/dns) and [Domain Registrar](https://cloudflare.com/products/registrar)
 
-Later:
+Use only later:
 
 - [Vitest](https://vitest.dev) vs [Jest](https://jestjs.io)
 - [React Testing Library](https://testing-library.com)
 - [Playwright](https://playwright.dev) vs [Cypress](https://cypress.io)
+
+Don't use:
+
+- styled-components, @emotion, Stitches, Chakra UI, MUI, etc
+- TanStack/React Query, SWR, Axios, etc
+- Redux, Zustand, Jotai, XState, etc
 
 ## Development
 
