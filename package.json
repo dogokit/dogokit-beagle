@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "remix build",
-    "dev": "remix dev --manual",
+    "dev": "NODE_ENV=development pnpm check:env && remix dev --manual",
     "start": "remix-serve ./build/index.js",
     "check": "pnpm /^check:.*/",
+    "check:env": "NODE_ENV=development tsx scripts/check-env.ts",
     "check:tsc": "tsc --noEmit",
     "check:prettier": "prettier --cache --check '**/*.{ts,tsx,json,md,mdx}'",
     "check:eslint": "eslint --cache .",

@@ -1,4 +1,4 @@
-import { type ConfigRedirect } from '~/utils/redirect-route'
+import { type ConfigRedirect } from '~/utils/redirect-route.server'
 
 export const configRedirects: ConfigRedirect[] = [
 	{ path: '/dev', url: 'https://github.com/dogokit/dogokit-remix' },

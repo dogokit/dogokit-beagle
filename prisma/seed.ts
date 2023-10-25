@@ -2,8 +2,10 @@ import { prisma } from '~/libs/db.server'
 
 import dataCredentialUsers from './credential/users.json'
 
-// Enable and disable by commenting in/out the enabled items
-const enabledItems = [
+/**
+ * Enable and disable seed items by commenting in/out the enabled items
+ */
+const enabledSeedItems = [
 	// "userRoles",
 	// "userTags",
 	'users',
@@ -16,7 +18,7 @@ async function main() {
 		users: seedUsers,
 	}
 
-	for (const seedName of enabledItems) {
+	for (const seedName of enabledSeedItems) {
 		const seed = seeds[seedName]
 		if (seed) {
 			await seed()
