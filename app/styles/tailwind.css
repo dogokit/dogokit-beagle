@@ -117,7 +117,7 @@
 	}
 	.prose-config {
 		@apply prose lg:prose-lg;
-		@apply prose-a:text-primary prose-a:hover-opacity prose-a:font-semibold;
+		@apply prose-a:hover-opacity prose-a:font-semibold prose-a:text-primary;
 		@apply prose-code:before:content-none prose-code:after:content-none;
 	}
 }

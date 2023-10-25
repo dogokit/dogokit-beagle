@@ -6,13 +6,18 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useLocation,
 } from '@remix-run/react'
 
+import { SiteLayout } from '~/components/layout/site-layout'
 import { configDocumentLinks } from '~/configs/document'
 
 export const links: LinksFunction = () => configDocumentLinks
 
 export default function App() {
+	const location = useLocation()
+	const isDashboard = location.pathname.startsWith('/dashboard')
+
 	return (
 		<html lang="en">
 			<head>
@@ -22,7 +27,13 @@ export default function App() {
 				<Links />
 			</head>
 			<body>
-				<Outlet />
+				{isDashboard ? (
+					<Outlet />
+				) : (
+					<SiteLayout>
+						<Outlet />
+					</SiteLayout>
+				)}
 				<ScrollRestoration />
 				<Scripts />
 				<LiveReload />

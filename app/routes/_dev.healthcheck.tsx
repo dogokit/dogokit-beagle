@@ -1,7 +1,7 @@
 import { type LoaderFunctionArgs } from '@remix-run/node'
 
-import { HTTPStatus } from '~/types/http-status'
 import { prisma } from '~/libs/db.server'
+import { HTTPStatus } from '~/types/http-status'
 import { parsedEnv } from '~/utils/env.server'
 
 export async function loader({ request }: LoaderFunctionArgs) {

@@ -5,9 +5,9 @@ import {
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
 
+import { Anchor } from '~/components/ui/anchor'
 import { configRedirects } from '~/configs/redirects'
 import { formatStringPlural } from '~/utils/format-string'
-import { Anchor } from '~/components/ui/anchor'
 
 export const meta: MetaFunction = () => [{ title: 'Redirects' }]
 
