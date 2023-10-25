@@ -11,22 +11,21 @@ Check out:
 
 ## Concept
 
-This template kit website allow to:
-
 - [x] Create a new [Remix](https://remix.run) app with multiple features quickly
 - [x] Help existing Remix app development
 - [x] Setup commonly used development and production parts
-- [x] Code quality with Prettier, ESLint, Stylelint, Commitlint
-- [x] UI components and styles with Tailwind CSS and Radix UI
-- [x] Database with Prisma ORM and MySQL on PlanetScale
-- [ ] Testing with Vitest and Playwright
-- [ ] Provide various code and utilities
-- [ ] Scripts with `dogokit` CLI or `@dogokit/cli`
+- [x] Provide various code and utilities
+- [x] Code quality with [Prettier](https://prettier.io), [ESLint](https://eslint.org), [Stylelint](https://stylelint.io), [Commitlint](https://commitlint.js.org)
+- [x] UI components and styles with [Tailwind CSS](https://tailwindcss.com), [Radix UI](https://radix-ui.com), bundled with [shadcn UI](https://ui.shadcn.com)
+- [ ] UI for dashboard components with [Tremor](https://tremor.so)
+- [x] Database with [Prisma ORM](https://prisma.io) and [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com)
+  - Anyone can change them into [Drizzle ORM](https://orm.drizzle.team) and [PostgreSQL](https://postgresql.org) on [Neon](https://neon.tech) with some adjustment
+- [ ] Testing with [Vitest](https://vitest.dev) and [Playwright](https://playwright.dev)
+- [ ] Commands with `dogokit` CLI or `@dogokit/cli`
 
-## Steps
+## Brief
 
-Read the [guide kit](./docs/GUIDE_KIT.md) and
-[guide steps](./docs/GUIDE_STEPS.md) about this repo setup.
+Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and [guide steps](./docs/GUIDE_STEPS.md).
 
 ## Tech Stack
 
@@ -43,9 +42,10 @@ Things being used and need to understand.
 - Tailwind CSS
 - Radix UI
 - shadcn UI
-- Remix Auth
+- Prisma ORM
 - MySQL
 - PlanetScale
+- Remix Auth
 - Vercel
 - Cloudflare DNS and Domains
 
@@ -88,8 +88,7 @@ Now need to pick a host to deploy it to, such as:
 
 ### DIY
 
-If familiar with deploying node applications, the built-in Remix app server is
-production-ready.
+If familiar with deploying node applications, the built-in Remix app server is production-ready.
 
 Make sure to deploy the output of `remix build`
 

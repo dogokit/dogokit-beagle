@@ -20,10 +20,18 @@ export default {
 	quoteProps: 'as-needed',
 	requirePragma: false,
 	singleAttributePerLine: false,
-	overrides: [{ files: ['**/*.md', '**/*.json'], options: { useTabs: false } }],
 	plugins: [
 		'prettier-plugin-tailwindcss',
 		'@ianvs/prettier-plugin-sort-imports',
+	],
+	overrides: [
+		{
+			files: ['**/*.md', '**/*.json'],
+			options: {
+				proseWrap: 'preserve',
+				useTabs: false,
+			},
+		},
 	],
 	importOrder: [
 		'^(react/(.*)$)|^(react$)',
