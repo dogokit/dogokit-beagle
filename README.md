@@ -1,4 +1,4 @@
-# [🐶 Dogokit with 💿 Remix](https://dogokit.com/remix)
+# [🐶 Dogokit Remix](https://dogokit.com/remix)
 
 The main Remix web app template kit by [🐶 Dogokit](https://dogokit.com) team.
 
@@ -118,3 +118,7 @@ If familiar with deploying node applications, the built-in Remix app server is p
 - [🐻 Bearmentor](https://bearmentor.com)
 - [🐱 Catamyst](https://catamyst.com)
 - [🐶 Dogokit](https://dogokit.com)
+
+---
+
+2023 ©️ 🐶 Dogokit with 💿 Remix.
