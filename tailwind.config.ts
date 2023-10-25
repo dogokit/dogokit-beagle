@@ -1,4 +1,5 @@
 import { type Config } from "tailwindcss"
+import defaultTheme from "tailwindcss/defaultTheme"
 
 export default {
 	darkMode: ["class"],
@@ -12,6 +13,17 @@ export default {
 			},
 		},
 		extend: {
+			/**
+			 * To add the fonts, setup in app/configs/fonts.ts
+			 */
+			fontFamily: {
+				display: ["Grandstander Variable", ...defaultTheme.fontFamily.sans],
+				sans: ["Inter", ...defaultTheme.fontFamily.sans],
+				mono: ["Inconsolata Variable", ...defaultTheme.fontFamily.mono],
+			},
+			/**
+			 * Can also use https://uicolors.app to generate additional colors
+			 */
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",

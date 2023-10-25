@@ -8,6 +8,9 @@ dependencies:
   '@fontsource-variable/grandstander':
     specifier: 5.0.18
     version: 5.0.18
+  '@fontsource-variable/inconsolata':
+    specifier: 5.0.15
+    version: 5.0.15
   '@fontsource/inter':
     specifier: 5.0.15
     version: 5.0.15
@@ -1090,6 +1093,10 @@ packages:
 
   /@fontsource-variable/grandstander@5.0.18:
     resolution: {integrity: sha512-V3AJWnyVnHAe9oxZPXOSfQx0JFtyDxsT0IT/REiXvb76bDBrtrf/kL0ZFohiip2kN81hU3xlT06/58o7mrJNbA==}
+    dev: false
+
+  /@fontsource-variable/inconsolata@5.0.15:
+    resolution: {integrity: sha512-uhkrVQDsG4HVW/nXfOFPhQVZ8zQ8h+84nz9c0MO+xxgJv3Xay+gmo2ytq3sSwXAFXLYXM5Hnd/t9ZS+NOHiccA==}
     dev: false
 
   /@fontsource/inter@5.0.15:

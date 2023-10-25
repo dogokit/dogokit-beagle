@@ -10,6 +10,7 @@
     "start": "remix-serve ./build/index.js",
     "check": "pnpm /^check:.*/",
     "check:env": "tsx scripts/check-env.ts",
+    "check:env:prod": "dotenv -e .env.production tsx scripts/check-env.ts",
     "check:tsc": "tsc --noEmit",
     "check:prettier": "prettier --cache --check '**/*.{ts,tsx,json,md,mdx}'",
     "check:eslint": "eslint --cache .",
@@ -39,6 +40,7 @@
   },
   "dependencies": {
     "@fontsource-variable/grandstander": "5.0.18",
+    "@fontsource-variable/inconsolata": "5.0.15",
     "@fontsource/inter": "5.0.15",
     "@planetscale/database": "1.11.0",
     "@prisma/adapter-planetscale": "5.5.0",

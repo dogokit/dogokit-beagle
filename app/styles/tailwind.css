@@ -97,9 +97,6 @@
 }
 
 @layer utilities {
-	.font-display {
-		font-family: 'Grandstander Variable', sans-serif;
-	}
 	.hover-opacity {
 		@apply transition hover:opacity-75;
 	}
