@@ -28,6 +28,8 @@ async function main() {
 
 async function seedUsers() {
 	console.info('🔵 👤 Seed users...')
+	const usersCount = await prisma.user.count()
+	console.info('🔵 👤 Users count:', usersCount)
 
 	if (!Array.isArray(dataCredentialUsers)) {
 		console.error(`🔴 Please create prisma/credential/users.json file`)

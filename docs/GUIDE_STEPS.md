@@ -6,6 +6,8 @@ Steps to know, check, or redo.
 
 ### OS-level
 
+Choose one for each category.
+
 1. Code editor: Vim, VS Code
 2. Terminal app: Warp, iTerm
 3. Version control: Git
@@ -13,10 +15,13 @@ Steps to know, check, or redo.
 
 ### Account-level
 
+Choose one for each category.
+
 1. Email: Gmail, Skiff Mail
 2. Credential manager: Bitwarden, 1Password
 3. Repository: GitHub, GitLab, Bitbucket
 4. Deployment: Vercel, Netlify, Render.com, Railway.app, Fly.io
+5. Secrets: Doppler, etc
 
 ## Git
 

@@ -1,4 +1,10 @@
 import { prisma } from '~/libs/db.server'
-import { logServer } from '~/utils/log.server'
 
-logServer('🟣 Check environment variables')
+async function checkEnv() {
+	console.info('🟣 Check environment variables')
+
+	const queryResult = await prisma.$queryRaw`SELECT 1`
+	console.info('🔵 Query result:', queryResult)
+}
+
+checkEnv()
