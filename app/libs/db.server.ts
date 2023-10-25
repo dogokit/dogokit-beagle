@@ -2,8 +2,9 @@ import { connect } from '@planetscale/database'
 import { PrismaPlanetScale } from '@prisma/adapter-planetscale'
 import { PrismaClient } from '@prisma/client'
 import dotenv from 'dotenv'
-import { parsedEnv } from 'env'
 import { fetch as undiciFetch } from 'undici'
+
+import { parsedEnv } from '~/utils/env.server'
 
 dotenv.config()
 const connectionString = parsedEnv.DATABASE_URL

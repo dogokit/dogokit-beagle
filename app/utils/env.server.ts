@@ -13,3 +13,6 @@ export const parsedEnv = parseEnv(process.env, {
 	RESEND_API_KEY: z.string().optional(),
 	UPLOADCARE_PUBLIC_KEY: z.string().optional(),
 })
+
+export const isDevelopment = parsedEnv.NODE_ENV === 'development'
+export const isProduction = parsedEnv.NODE_ENV === 'production'

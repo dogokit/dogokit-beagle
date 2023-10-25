@@ -1,8 +1,8 @@
 import { type LoaderFunctionArgs } from '@remix-run/node'
-import { parsedEnv } from 'env'
 
 import { HTTPStatus } from '~/types/http-status'
 import { prisma } from '~/libs/db.server'
+import { parsedEnv } from '~/utils/env.server'
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const host =
@@ -24,9 +24,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
 			}),
 		])
 
-		return new Response('OK')
+		return new Response('Health Check: OK')
 	} catch (error: unknown) {
-		console.info('Health Check ❌', { error })
+		console.info('Health Check: ERROR', { error })
 
 		return new Response('ERROR', { status: HTTPStatus.INTERNAL_SERVER_ERROR })
 	}
