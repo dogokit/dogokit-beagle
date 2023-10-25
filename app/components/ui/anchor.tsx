@@ -1,6 +1,6 @@
-import * as React from 'react'
+import * as React from "react"
 
-import { cn } from '~/utils/cn'
+import { cn } from "~/utils/cn"
 
 export interface AnchorProps
 	extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -15,7 +15,7 @@ const Anchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
 				href={href}
 				target="_blank"
 				rel="noreferrer"
-				className={cn('hover-opacity', withColor && 'text-primary', className)}
+				className={cn("hover-opacity", withColor && "text-primary", className)}
 				ref={ref}
 				{...props}
 			>
@@ -24,6 +24,6 @@ const Anchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
 		)
 	},
 )
-Anchor.displayName = 'Anchor'
+Anchor.displayName = "Anchor"
 
 export { Anchor }

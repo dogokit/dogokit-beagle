@@ -16,6 +16,7 @@
     "johnpapa.vscode-peacock",
     "bierner.markdown-preview-github-styles",
     "bierner.markdown-mermaid",
-    "davidanson.vscode-markdownlint"
+    "davidanson.vscode-markdownlint",
+    "streetsidesoftware.code-spell-checker"
   ]
 }

@@ -2,14 +2,14 @@ import {
 	json,
 	type LoaderFunctionArgs,
 	type MetaFunction,
-} from '@remix-run/node'
-import { Link, useLoaderData } from '@remix-run/react'
+} from "@remix-run/node"
+import { Link, useLoaderData } from "@remix-run/react"
 
-import { Anchor } from '~/components/ui/anchor'
-import { configRedirects } from '~/configs/redirects'
-import { formatStringPlural } from '~/utils/format-string'
+import { Anchor } from "~/components/ui/anchor"
+import { configRedirects } from "~/configs/redirects"
+import { formatStringPlural } from "~/utils/format-string"
 
-export const meta: MetaFunction = () => [{ title: 'Redirects' }]
+export const meta: MetaFunction = () => [{ title: "Redirects" }]
 
 export const loader = ({}: LoaderFunctionArgs) => {
 	const redirects = configRedirects
@@ -25,7 +25,7 @@ export default function Route() {
 				<header>
 					<h1>Redirects</h1>
 					<p>
-						{formatStringPlural('path', redirects.length)} redirect paths to
+						{formatStringPlural("path", redirects.length)} redirect paths to
 						URLs and other pages.
 					</p>
 				</header>

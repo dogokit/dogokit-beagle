@@ -2,7 +2,7 @@
 export default {
 	// changeable
 	semi: false,
-	singleQuote: true,
+	singleQuote: false,
 	tabWidth: 2,
 	trailingComma: 'all',
 	useTabs: true,
@@ -27,10 +27,7 @@ export default {
 	overrides: [
 		{
 			files: ['**/*.md', '**/*.json'],
-			options: {
-				proseWrap: 'preserve',
-				useTabs: false,
-			},
+			options: { useTabs: false },
 		},
 	],
 	importOrder: [

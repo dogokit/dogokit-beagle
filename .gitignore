@@ -2,6 +2,7 @@
 .env.production
 .eslintcache
 .stylelintcache
+.vercel
 /.cache
 /build
 /docs/TODOS.md

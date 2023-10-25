@@ -1,13 +1,13 @@
-import { Link } from '@remix-run/react'
-import { Icon } from '@iconify/react'
+import { Link } from "@remix-run/react"
+import { Icon } from "@iconify/react"
 
-import { cn } from '~/utils/cn'
+import { cn } from "~/utils/cn"
 
 export function SiteNavigation() {
 	return (
 		<nav
 			className={cn(
-				'sticky top-0 z-10 flex bg-background px-4 py-2 shadow-md shadow-primary-foreground/5',
+				"sticky top-0 z-10 flex bg-background px-4 py-2 shadow-md shadow-primary-foreground/5",
 			)}
 		>
 			<div>

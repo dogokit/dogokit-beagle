@@ -1,4 +1,4 @@
-import pluralize from 'pluralize'
+import pluralize from "pluralize"
 
 export function formatStringPlural(word: string, count: number) {
 	return pluralize(word, count, true)

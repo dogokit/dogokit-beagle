@@ -1,11 +1,11 @@
-import { type MetaFunction } from '@remix-run/node'
-import { Icon } from '@iconify/react'
+import { type MetaFunction } from "@remix-run/node"
+import { Icon } from "@iconify/react"
 
-import { Anchor } from '~/components/ui/anchor'
+import { Anchor } from "~/components/ui/anchor"
 
 export const meta: MetaFunction = () => [
-	{ title: 'Dogokit Remix' },
-	{ name: 'description', content: '🐶 Dogokit with 💿 Remix web app kit.' },
+	{ title: "Dogokit Remix" },
+	{ name: "description", content: "🐶 Dogokit with 💿 Remix web app kit." },
 ]
 
 export default function Index() {
@@ -20,7 +20,7 @@ export default function Index() {
 				</div>
 
 				<p className="text-2xl sm:text-4xl">
-					Remix web app kit by{' '}
+					Remix web app kit by{" "}
 					<Anchor withColor href="https://dogokit.com">
 						Dogokit
 					</Anchor>
@@ -33,8 +33,8 @@ export default function Index() {
 					<span>Heading One</span>
 				</h1>
 				<p>
-					This is the paragraph after heading one. Discussing about{' '}
-					<Anchor href="https://dogokit.com">Dogokit</Anchor> and{' '}
+					This is the paragraph after heading one. Discussing about{" "}
+					<Anchor href="https://dogokit.com">Dogokit</Anchor> and{" "}
 					<Anchor href="https://remix.run">Remix</Anchor>.
 				</p>
 

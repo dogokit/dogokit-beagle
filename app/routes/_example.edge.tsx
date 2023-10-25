@@ -1,8 +1,8 @@
-import { type MetaFunction } from '@remix-run/node'
+import { type MetaFunction } from "@remix-run/node"
 
-export const config = { runtime: 'edge' }
+export const config = { runtime: "edge" }
 
-export const meta: MetaFunction = () => [{ title: 'Remix@Edge' }]
+export const meta: MetaFunction = () => [{ title: "Remix@Edge" }]
 
 export default function Edge() {
 	return (

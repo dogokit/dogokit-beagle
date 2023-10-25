@@ -1,9 +1,9 @@
-import { json, type LoaderFunctionArgs } from '@remix-run/node'
-import { useLoaderData, type MetaFunction } from '@remix-run/react'
+import { json, type LoaderFunctionArgs } from "@remix-run/node"
+import { useLoaderData, type MetaFunction } from "@remix-run/react"
 
-import { prisma } from '~/libs/db.server'
+import { prisma } from "~/libs/db.server"
 
-export const meta: MetaFunction = () => [{ title: 'Dogokit Users' }]
+export const meta: MetaFunction = () => [{ title: "Dogokit Users" }]
 
 export const loader = async ({}: LoaderFunctionArgs) => {
 	const [usersCount, users] = await prisma.$transaction([

@@ -1,4 +1,4 @@
-import { redirect } from '@remix-run/node'
+import { redirect } from "@remix-run/node"
 
 export type ConfigRedirect = {
 	path: string

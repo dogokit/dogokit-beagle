@@ -1,6 +1,6 @@
-import { prisma } from '~/libs/db.server'
+import { prisma } from "~/libs/db.server"
 
-import dataCredentialUsers from './credential/users.json'
+import dataCredentialUsers from "./credential/users.json"
 
 /**
  * Enable and disable seed items by commenting in/out the enabled items
@@ -8,7 +8,7 @@ import dataCredentialUsers from './credential/users.json'
 const enabledSeedItems = [
 	// "userRoles",
 	// "userTags",
-	'users',
+	"users",
 ]
 
 async function main() {
@@ -27,9 +27,9 @@ async function main() {
 }
 
 async function seedUsers() {
-	console.info('🔵 👤 Seed users...')
+	console.info("🔵 👤 Seed users...")
 	const usersCount = await prisma.user.count()
-	console.info('🔵 👤 Users count:', usersCount)
+	console.info("🔵 👤 Users count:", usersCount)
 
 	if (!Array.isArray(dataCredentialUsers)) {
 		console.error(`🔴 Please create prisma/credential/users.json file`)
@@ -38,7 +38,7 @@ async function seedUsers() {
 	}
 
 	await prisma.user.deleteMany()
-	console.info('🟡 👤 Deleted existing users')
+	console.info("🟡 👤 Deleted existing users")
 
 	const dataCredentialUsersConfigured = dataCredentialUsers.map(item => {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -60,12 +60,12 @@ async function seedUsers() {
 
 main()
 	.then(async () => {
-		console.info('🏁 Seeding complete')
+		console.info("🏁 Seeding complete")
 		await prisma.$disconnect()
 	})
 	.catch(e => {
 		console.error(e)
-		console.error('⛔ Seeding failed')
+		console.error("⛔ Seeding failed")
 		prisma.$disconnect()
 		process.exit(1)
 	})

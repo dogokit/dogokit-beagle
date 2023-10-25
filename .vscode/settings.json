@@ -18,5 +18,19 @@
     "titleBar.inactiveBackground": "#5b4b6499",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#5B4B64"
+  "peacock.color": "#5B4B64",
+  "cSpell.words": [
+    "Allnimal",
+    "Bearmentor",
+    "Catamyst",
+    "Dogokit",
+    "Elephanity",
+    "Foxdash",
+    "Goosejob",
+    "shadcn",
+    "Chakra",
+    "Zustand",
+    "fontsource",
+    "planetscale"
+  ]
 }

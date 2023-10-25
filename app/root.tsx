@@ -1,4 +1,4 @@
-import { type LinksFunction } from '@remix-run/node'
+import { type LinksFunction } from "@remix-run/node"
 import {
 	Links,
 	LiveReload,
@@ -7,16 +7,16 @@ import {
 	Scripts,
 	ScrollRestoration,
 	useLocation,
-} from '@remix-run/react'
+} from "@remix-run/react"
 
-import { SiteLayout } from '~/components/layout/site-layout'
-import { configDocumentLinks } from '~/configs/document'
+import { SiteLayout } from "~/components/layout/site-layout"
+import { configDocumentLinks } from "~/configs/document"
 
 export const links: LinksFunction = () => configDocumentLinks
 
 export default function App() {
 	const location = useLocation()
-	const isDashboard = location.pathname.startsWith('/dashboard')
+	const isDashboard = location.pathname.startsWith("/dashboard")
 
 	return (
 		<html lang="en">
