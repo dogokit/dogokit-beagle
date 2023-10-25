@@ -1,4 +1,5 @@
 import { type LoaderFunctionArgs } from '@remix-run/node'
+import { parsedEnv } from 'env'
 
 import { HTTPStatus } from '~/types/http-status'
 import { prisma } from '~/libs/db.server'
@@ -10,7 +11,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 	try {
 		const url = new URL(
 			'/',
-			process.env.NODE_ENV === 'development'
+			parsedEnv.NODE_ENV === 'development'
 				? `http://${host}`
 				: `https://${host}`,
 		)
@@ -18,8 +19,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		// Connect to the database, make a simple query, HEAD request to self
 		await Promise.all([
 			prisma.user.count(),
-			fetch(url.toString(), { method: 'HEAD' }).then(r => {
-				if (!r.ok) return Promise.reject(r)
+			fetch(url.toString(), { method: 'HEAD' }).then(response => {
+				if (!response.ok) return Promise.reject(response)
 			}),
 		])
 

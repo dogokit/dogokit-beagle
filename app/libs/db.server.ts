@@ -2,10 +2,11 @@ import { connect } from '@planetscale/database'
 import { PrismaPlanetScale } from '@prisma/adapter-planetscale'
 import { PrismaClient } from '@prisma/client'
 import dotenv from 'dotenv'
+import { parsedEnv } from 'env'
 import { fetch as undiciFetch } from 'undici'
 
 dotenv.config()
-const connectionString = `${process.env.DATABASE_URL}`
+const connectionString = parsedEnv.DATABASE_URL
 
 const connection = connect({ url: connectionString, fetch: undiciFetch })
 const adapter = new PrismaPlanetScale(connection)
@@ -16,7 +17,7 @@ declare global {
 	var __db__: PrismaClient | undefined
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (parsedEnv.NODE_ENV === 'production') {
 	prisma = new PrismaClient({ adapter })
 } else {
 	if (!global.__db__) {

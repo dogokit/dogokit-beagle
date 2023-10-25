@@ -12,6 +12,7 @@ module.exports = {
 	],
 	rules: {
 		'no-empty-pattern': 'off',
+		'node/no-process-env': 'warn',
 		'@typescript-eslint/array-type': 'off',
 		'@typescript-eslint/consistent-type-definitions': 'off',
 		'@typescript-eslint/consistent-type-imports': [
@@ -29,19 +30,19 @@ module.exports = {
 		],
 		'import/no-duplicates': ['warn', { 'prefer-inline': true }],
 		'import/consistent-type-specifier-style': ['warn', 'prefer-inline'],
-		'import/order': [
-			'warn',
-			{
-				// alphabetize: { order: 'asc', caseInsensitive: true },
-				groups: [
-					'builtin',
-					'external',
-					'internal',
-					'parent',
-					'sibling',
-					'index',
-				],
-			},
-		],
+		// 'import/order': [
+		// 	'warn',
+		// 	{
+		// 		alphabetize: { order: 'asc', caseInsensitive: true },
+		// 		groups: [
+		// 			'builtin',
+		// 			'external',
+		// 			'internal',
+		// 			'parent',
+		// 			'sibling',
+		// 			'index',
+		// 		],
+		// 	},
+		// ],
 	},
 }

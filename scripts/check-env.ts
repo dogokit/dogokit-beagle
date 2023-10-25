@@ -1,10 +1,15 @@
 import { prisma } from '~/libs/db.server'
 
-async function checkEnv() {
-	console.info('🟣 Check environment variables')
+import { parsedEnv } from './../env'
 
-	const queryResult = await prisma.$queryRaw`SELECT 1`
-	console.info('🔵 Query result:', queryResult)
+async function checkEnv() {
+	const { NODE_ENV, APP_URL, DATABASE_URL } = parsedEnv
+
+	console.info('🔵 NODE_ENV:', NODE_ENV)
+	console.info('🔵 APP_URL:', APP_URL)
+	console.info('🔵 DATABASE_URL:', DATABASE_URL)
+
+	await prisma.$queryRaw`SELECT 1`
 }
 
 checkEnv()
