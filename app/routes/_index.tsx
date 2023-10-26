@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react"
 import { type MetaFunction } from "@remix-run/node"
+import { Logo } from "~/components/shared/logo"
 
 import { Anchor } from "~/components/ui/anchor"
 
@@ -8,20 +9,17 @@ export const meta: MetaFunction = () => [
 	{ name: "description", content: "🐶 Dogokit with 💿 Remix web app kit." },
 ]
 
-export default function Index() {
+export default function IndexRoute() {
 	return (
-		<div className="container space-y-20 py-20">
+		<div className="site-container space-y-20 py-20">
 			<section className="space-y-10">
 				<div className="text-icon">
-					<Icon icon="fluent-emoji:dog-face" className="text-7xl" />
-					<h1 className="font-display">
-						<span>Dogokit Remix</span>
-					</h1>
+					<Logo text="Dogokit Remix" size="xl" />
 				</div>
 
 				<p className="text-2xl sm:text-4xl">
 					Remix web app kit by{" "}
-					<Anchor withColor href="https://dogokit.com">
+					<Anchor withColor href="https://dogokit.com" className="font-bold">
 						Dogokit
 					</Anchor>
 				</p>
@@ -37,6 +35,7 @@ export default function Index() {
 					<Anchor href="https://dogokit.com">Dogokit</Anchor> and{" "}
 					<Anchor href="https://remix.run">Remix</Anchor>.
 				</p>
+				<pre>console.log("Hello Inside 0123");</pre>
 
 				<h2 className="text-icon">
 					<Icon icon="fluent-emoji:bear" />

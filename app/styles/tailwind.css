@@ -97,6 +97,9 @@
 }
 
 @layer utilities {
+	.site-container {
+		@apply mx-auto w-full max-w-7xl px-2 sm:px-4;
+	}
 	.hover-opacity {
 		@apply transition hover:opacity-75;
 	}

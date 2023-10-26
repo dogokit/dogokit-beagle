@@ -1,0 +1,60 @@
+import { Icon } from "@iconify/react"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "~/utils/cn"
+
+const logoVariants = cva("flex items-center gap-1 text-2xl font-bold", {
+	variants: {
+		variant: {
+			default: "",
+			link: "",
+		},
+		size: {
+			default: "",
+			lg: "gap-2 text-4xl",
+			xl: "gap-4 text-6xl",
+		},
+	},
+	defaultVariants: {
+		variant: "default",
+		size: "default",
+	},
+})
+
+const logoIconVariants = cva("", {
+	variants: {
+		size: {
+			default: "-mt-1",
+			lg: "-mt-2",
+			xl: "-mt-3",
+		},
+	},
+	defaultVariants: {
+		size: "default",
+	},
+})
+
+export interface LogoProps
+	extends React.HTMLAttributes<HTMLElement>,
+		VariantProps<typeof logoVariants> {
+	text?: string
+	classNameIcon?: string
+}
+
+export function Logo({
+	variant,
+	size,
+	className,
+	classNameIcon,
+	text = "Dogokit",
+}: LogoProps) {
+	return (
+		<span className={cn(logoVariants({ variant, size, className }))}>
+			<Icon
+				icon="fluent-emoji:dog-face"
+				className={cn(logoIconVariants({ size, className: classNameIcon }))}
+			/>
+			<span className="font-display">{text}</span>
+		</span>
+	)
+}

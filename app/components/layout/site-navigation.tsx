@@ -1,7 +1,7 @@
-import { Icon } from "@iconify/react"
 import { Link } from "@remix-run/react"
 
 import { cn } from "~/utils/cn"
+import { Logo } from "../shared/logo"
 
 export function SiteNavigation() {
 	return (
@@ -12,10 +12,7 @@ export function SiteNavigation() {
 		>
 			<div>
 				<Link to="/">
-					<span className="flex items-center gap-2 text-3xl">
-						<Icon icon="fluent-emoji:dog-face" />
-						<span>Dogokit</span>
-					</span>
+					<Logo />
 				</Link>
 			</div>
 		</nav>
