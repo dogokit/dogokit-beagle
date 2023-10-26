@@ -1,3 +1,3 @@
-const crypto = require('crypto')
+const crypto = require("crypto")
 
-console.info(crypto.randomBytes(20).toString('hex'))
+console.info(crypto.randomBytes(20).toString("hex"))
