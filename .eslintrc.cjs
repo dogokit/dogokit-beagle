@@ -30,19 +30,5 @@ module.exports = {
 		],
 		'import/no-duplicates': ['warn', { 'prefer-inline': true }],
 		'import/consistent-type-specifier-style': ['warn', 'prefer-inline'],
-		// 'import/order': [
-		// 	'warn',
-		// 	{
-		// 		alphabetize: { order: 'asc', caseInsensitive: true },
-		// 		groups: [
-		// 			'builtin',
-		// 			'external',
-		// 			'internal',
-		// 			'parent',
-		// 			'sibling',
-		// 			'index',
-		// 		],
-		// 	},
-		// ],
 	},
 }

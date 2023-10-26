@@ -1,5 +1,5 @@
-import { type MetaFunction } from "@remix-run/node"
 import { Icon } from "@iconify/react"
+import { type MetaFunction } from "@remix-run/node"
 
 import { Anchor } from "~/components/ui/anchor"
 

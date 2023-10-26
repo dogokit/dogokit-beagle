@@ -1,5 +1,5 @@
-import { Link } from "@remix-run/react"
 import { Icon } from "@iconify/react"
+import { Link } from "@remix-run/react"
 
 import { cn } from "~/utils/cn"
 

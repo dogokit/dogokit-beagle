@@ -17,6 +17,7 @@
     "bierner.markdown-preview-github-styles",
     "bierner.markdown-mermaid",
     "davidanson.vscode-markdownlint",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens"
   ]
 }
