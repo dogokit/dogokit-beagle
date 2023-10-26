@@ -11,9 +11,9 @@ async function checkEnv() {
 
 	try {
 		await prisma.$queryRaw`SELECT 1`
-		console.error("🟢 Database is running")
+		console.error(`🟢 ${NODE_ENV} database is running`)
 	} catch (error) {
-		console.error("🔴 Database is not running")
+		console.error(`🔴 ${NODE_ENV} database is not running`)
 	}
 }
 
