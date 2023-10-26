@@ -58,6 +58,7 @@
     "pluralize": "8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "remix-themes": "1.2.2",
     "tailwind-merge": "1.14.0",
     "tailwindcss-animate": "1.0.7",
     "undici": "5.26.5",

@@ -116,8 +116,8 @@
 		@apply inline-flex flex-wrap items-center gap-2;
 	}
 	.prose-config {
-		@apply prose lg:prose-lg;
-		@apply prose-a:hover-opacity prose-a:font-semibold prose-a:text-primary;
+		@apply prose prose-slate dark:prose-invert lg:prose-lg;
+		@apply prose-a:text-primary;
 		@apply prose-code:before:content-none prose-code:after:content-none;
 	}
 }

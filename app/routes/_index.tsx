@@ -42,10 +42,10 @@ export default function IndexRoute() {
 					<span>Heading Two</span>
 				</h2>
 				<p>
-					Just another paragraph after heading two. Lorem ipsum dolor sit amet
-					consectetur adipisicing elit. Culpa commodi amet aliquid eos placeat
-					maiores quas dolor iusto accusamus laudantium sit molestiae facilis
-					labore ipsam odit sapiente ex, dolore quis?
+					Just another paragraph after <b>heading two</b>. Lorem ipsum dolor sit
+					amet consectetur adipisicing elit. Culpa commodi amet aliquid eos
+					placeat maiores quas dolor iusto accusamus laudantium sit molestiae
+					facilis labore ipsam odit sapiente ex, dolore quis?
 				</p>
 
 				<h3 className="text-icon">
@@ -53,10 +53,10 @@ export default function IndexRoute() {
 					<span>Heading Three</span>
 				</h3>
 				<p>
-					The last paragraph after heading three. Lorem ipsum dolor sit amet
-					consectetur adipisicing elit. Culpa commodi amet aliquid eos placeat
-					maiores quas dolor iusto accusamus laudantium sit molestiae facilis
-					labore ipsam odit sapiente ex, dolore quis?
+					The last paragraph after <i>heading three</i>. Lorem ipsum dolor sit
+					amet consectetur adipisicing elit. Culpa commodi amet aliquid eos
+					placeat maiores quas dolor iusto accusamus laudantium sit molestiae
+					facilis labore ipsam odit sapiente ex, dolore quis?
 				</p>
 			</section>
 		</div>
