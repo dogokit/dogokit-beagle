@@ -74,13 +74,13 @@
 		@apply text-5xl font-semibold leading-[1.1] md:text-6xl lg:text-7xl xl:text-8xl;
 	}
 	h2 {
-		@apply text-3xl font-bold md:text-4xl;
+		@apply text-3xl font-semibold md:text-4xl;
 	}
 	h3 {
-		@apply text-2xl font-bold md:text-3xl;
+		@apply text-2xl font-semibold md:text-3xl;
 	}
 	h4 {
-		@apply text-lg font-bold md:text-xl;
+		@apply text-lg font-semibold md:text-xl;
 	}
 	b {
 		@apply font-semibold;

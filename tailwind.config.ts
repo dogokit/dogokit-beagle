@@ -18,7 +18,7 @@ export default {
 			 */
 			fontFamily: {
 				display: ["Grandstander Variable", ...defaultTheme.fontFamily.sans],
-				sans: ["Inter", ...defaultTheme.fontFamily.sans],
+				sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
 				mono: ["Inconsolata Variable", ...defaultTheme.fontFamily.mono],
 			},
 			/**

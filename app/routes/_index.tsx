@@ -19,7 +19,11 @@ export default function IndexRoute() {
 
 				<p className="text-2xl sm:text-4xl">
 					Remix web app kit by{" "}
-					<Anchor withColor href="https://dogokit.com" className="font-bold">
+					<Anchor
+						withColor
+						href="https://dogokit.com"
+						className="font-semibold"
+					>
 						Dogokit
 					</Anchor>
 				</p>

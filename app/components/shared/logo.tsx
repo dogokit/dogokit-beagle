@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "~/utils/cn"
 
-const logoVariants = cva("flex items-center gap-1 text-2xl font-bold", {
+const logoVariants = cva("flex items-center gap-1 text-2xl font-semibold", {
 	variants: {
 		variant: {
 			default: "",
@@ -12,7 +12,7 @@ const logoVariants = cva("flex items-center gap-1 text-2xl font-bold", {
 		size: {
 			default: "",
 			lg: "gap-2 text-4xl",
-			xl: "gap-4 text-6xl",
+			xl: "gap-2 text-4xl sm:gap-4 sm:text-6xl",
 		},
 	},
 	defaultVariants: {
@@ -26,7 +26,7 @@ const logoIconVariants = cva("", {
 		size: {
 			default: "-mt-1",
 			lg: "-mt-2",
-			xl: "-mt-3",
+			xl: "-mt-2 sm:-mt-3",
 		},
 	},
 	defaultVariants: {
@@ -54,7 +54,7 @@ export function Logo({
 				icon="fluent-emoji:dog-face"
 				className={cn(logoIconVariants({ size, className: classNameIcon }))}
 			/>
-			<span className="font-display">{text}</span>
+			<span className="inline-flex flex-nowrap font-display">{text}</span>
 		</span>
 	)
 }

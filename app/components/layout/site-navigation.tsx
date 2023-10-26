@@ -1,29 +1,30 @@
 import { Link } from "@remix-run/react"
-import { useTheme } from "remix-themes"
 
 import { Logo } from "~/components/shared/logo"
+import { ThemeButton } from "~/components/shared/theme-button"
+import { Button } from "~/components/ui/button"
 import { cn } from "~/utils/cn"
-import { formatStringCode } from "~/utils/format-string"
 
 export function SiteNavigation() {
-	const [theme] = useTheme()
-
 	return (
 		<nav
 			className={cn(
 				"sticky top-0 z-10",
 				"flex items-center justify-between gap-2",
-				"px-4 py-2",
-				"bg-secondary",
+				"p-2 sm:p-4",
+				"bg-background",
 			)}
 		>
-			<div>
-				<Link to="/">
+			<div className="flex items-center justify-between gap-2">
+				<Link to="/" className="block">
 					<Logo />
 				</Link>
+				<ThemeButton />
 			</div>
 
-			<span>{formatStringCode(theme)}</span>
+			<div className="flex items-center justify-between gap-2">
+				<Button>Sign Up</Button>
+			</div>
 		</nav>
 	)
 }
