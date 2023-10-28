@@ -26,13 +26,27 @@ generator docs {
 model User {
   id String @id @default(cuid())
 
+  fullname String
   email    String  @unique(map: "User.email_unique")
   username String? @unique(map: "User.username_unique")
-  phone    String? @unique // numeric string
-  fullname String
+  phone    String? @unique(map: "User.phone_unique") // numeric string
 
-  images UserImage[]
+  password UserPassword?
+
+  images UserImage[] // multiple user images / avatars / profile pictures
   notes  Note[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserPassword {
+  id String @id @default(cuid())
+
+  user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId String @unique
+
+  hash String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
