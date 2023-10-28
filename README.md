@@ -2,7 +2,7 @@
 
 The main Remix web app template kit by [🐶 Dogokit](https://dogokit.com) team.
 
-> 🚧 This template kit is still in early and active development
+> 🚧 This template kit is still a work in progress
 
 Check out:
 
