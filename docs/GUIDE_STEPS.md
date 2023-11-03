@@ -146,24 +146,44 @@ TODO
 
 ## Tailwind CSS & PostCSS
 
+```sh
+pnpm install -D tailwindcss postcss autoprefixer
+pnpm install -D @tailwindcss/typography @tailwindcss/forms tailwindcss-animate
+```
+
 ```txt
 tailwind.config.ts
 postcss.config.js
 ```
 
+
 ## Radix UI
 
 No config necessary.
 
+But if install the packages manually:
+
+```sh
+pnpm install @radix-ui/react-slot
+```
+
 ## shadcn UI
 
-Automatically setup Tailwind CSS, PostCSS, and Radix UI.
+> Skip this if not prefer to use it.
+
+Automatically setup Tailwind CSS, PostCSS, Radix UI, Class Variance Authority, clsx, Tailwind Merge, and more.
 
 ```sh
 pnpx shadcn-ui@latest init
 ```
 
-Follow the next installation steps. The components are configured in:
+But if install the packages manually:
+
+```sh
+pnpm install class-variance-authority clsx tw-merge
+```
+
+Then follow the next installation steps. The components are configured in:
 
 ```txt
 components.json

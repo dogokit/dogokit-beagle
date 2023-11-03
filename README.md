@@ -59,12 +59,13 @@ The opinionated things being used and need to understand.
 - [Remix](https://remix.run): Full stack web framework based on React and
   [React Router](https://reactrouter.com)
   - [Remix Auth](https://github.com/sergiodxa/remix-auth)
+- [Iconify](https://iconify.design): Icon set
 - [Tailwind CSS](https://tailwindcss.com): Styling
   - [shadcn UI](https://ui.shadcn.com): Styled interactive components and
     theming
   - [Tremor](https://tremor.so): Styled dashboard components
 - [Radix UI](https://radix-ui.com): Interactive components
-- [Iconify](https://iconify.design): Icon set
+- [React Email](https://react.email): Email rendering component
 - [Prisma ORM](https://prisma.io): Database object relational mapping (ORM)
 - [MySQL](https://mysql.com): Database management system (DBMS)
   - [PlanetScale](https://planetscale.com): MySQL-compatible serverless database
@@ -72,12 +73,14 @@ The opinionated things being used and need to understand.
 - [Docker](https://docker.com): Containerization
   - [Docker Compose](https://docs.docker.com/compose): Multi-container Docker
 - [Vercel](https://vercel.com): Web app deployment
+- [Resend](https://resend.com): Transactional email service
 - [Cloudflare](https://cloudflare)
   - [Cloudflare DNS](https://cloudflare.com/application-services/products/dns)
   - [Domain Registrar](https://cloudflare.com/products/registrar)
 
 Use later:
 
+- [Stripe](https://stripe.com)
 - [Vitest](https://vitest.dev) vs [Jest](https://jestjs.io)
 - [React Testing Library](https://testing-library.com)
 - [Playwright](https://playwright.dev) vs [Cypress](https://cypress.io)
@@ -261,12 +264,18 @@ production-ready. Make sure to deploy the output of `remix build`
 
 ## References
 
+### Inspirations
+
+- [Remix Indie Stack](https://github.com/remix-run/indie-stack)
+- [The Epic Stack](https://github.com/epicweb-dev/epic-stack)
+- [Next SaaS Stripe Starter](https://github.com/mickasmt/next-saas-stripe-starter)
+
 ### Used by
 
 - [🐾 Allnimal](https://allnimal.com)
 - [🐻 Bearmentor](https://bearmentor.com)
 - [🐱 Catamyst](https://catamyst.com)
-- [🐶 Dogokit](https://dogokit.com)
+- [🐶 Dogokit](https://dogokit.com) (WIP)
 
 ---
 
