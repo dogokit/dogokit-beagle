@@ -1,13 +1,13 @@
 import { type LinksFunction, type LoaderFunctionArgs } from "@remix-run/node"
 import {
-	Links,
-	LiveReload,
-	Meta,
-	Outlet,
-	Scripts,
-	ScrollRestoration,
-	useLoaderData,
-	useLocation,
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useLocation,
 } from "@remix-run/react"
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes"
 
@@ -23,54 +23,54 @@ import "~/styles/tailwind.css"
 export const links: LinksFunction = () => configDocumentLinks
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-	const { getTheme } = await themeSessionResolver(request)
+  const { getTheme } = await themeSessionResolver(request)
 
-	return {
-		theme: getTheme(),
-	}
+  return {
+    theme: getTheme(),
+  }
 }
 
 export default function Route() {
-	const data = useLoaderData<typeof loader>()
+  const data = useLoaderData<typeof loader>()
 
-	return (
-		<ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-			<App />
-		</ThemeProvider>
-	)
+  return (
+    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
+      <App />
+    </ThemeProvider>
+  )
 }
 
 export function App() {
-	const data = useLoaderData<typeof loader>()
-	const [theme] = useTheme()
-	const defaultTheme = theme ? theme : "dark"
+  const data = useLoaderData<typeof loader>()
+  const [theme] = useTheme()
+  const defaultTheme = theme ? theme : "dark"
 
-	const location = useLocation()
-	const isDashboard = location.pathname.startsWith("/dashboard")
+  const location = useLocation()
+  const isDashboard = location.pathname.startsWith("/dashboard")
 
-	return (
-		<html lang="en" data-theme={defaultTheme}>
-			<head>
-				<meta charSet="utf-8" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<Meta />
-				<PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
-				<Links />
-			</head>
+  return (
+    <html lang="en" data-theme={defaultTheme}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
+        <Links />
+      </head>
 
-			<body id="__remix" className={cn(defaultTheme)}>
-				{isDashboard ? (
-					<Outlet />
-				) : (
-					<SiteLayout>
-						<Outlet />
-					</SiteLayout>
-				)}
+      <body id="__remix" className={cn(defaultTheme)}>
+        {isDashboard ? (
+          <Outlet />
+        ) : (
+          <SiteLayout>
+            <Outlet />
+          </SiteLayout>
+        )}
 
-				<ScrollRestoration />
-				<LiveReload />
-				<Scripts />
-			</body>
-		</html>
-	)
+        <ScrollRestoration />
+        <LiveReload />
+        <Scripts />
+      </body>
+    </html>
+  )
 }

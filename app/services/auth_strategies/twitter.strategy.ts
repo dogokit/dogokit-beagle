@@ -9,20 +9,20 @@ const clientID = parsedEnv.TWITTER_CLIENT_ID
 const clientSecret = parsedEnv.TWITTER_CLIENT_SECRET
 
 if (!clientID || !clientSecret) {
-	throw new Error("Missing TWITTER_CLIENT_ID or TWITTER_CLIENT_SECRET")
+  throw new Error("Missing TWITTER_CLIENT_ID or TWITTER_CLIENT_SECRET")
 }
 
 export const twitterStrategy = new Twitter2Strategy<User>(
-	{
-		clientID,
-		clientSecret,
-		callbackURL: `${parsedEnv.APP_URL}/auth/${AuthStrategies.TWITTER}/callback`,
-		scopes: ["users.read", "tweet.read", "tweet.write"],
-	},
-	async ({ accessToken }) => {
-		// Do something with the tokens and profile
-		return {
-			id: "",
-		}
-	},
+  {
+    clientID,
+    clientSecret,
+    callbackURL: `${parsedEnv.APP_URL}/auth/${AuthStrategies.TWITTER}/callback`,
+    scopes: ["users.read", "tweet.read", "tweet.write"],
+  },
+  async ({ accessToken }) => {
+    // Do something with the tokens and profile
+    return {
+      id: "",
+    }
+  },
 )

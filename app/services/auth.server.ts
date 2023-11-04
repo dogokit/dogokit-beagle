@@ -9,8 +9,8 @@ import { googleStrategy } from "~/services/auth_strategies/google.strategy"
 import { twitterStrategy } from "~/services/auth_strategies/twitter.strategy"
 
 export interface User {
-	id: string
-	// Add user properties here or extend with a type from the database
+  id: string
+  // Add user properties here or extend with a type from the database
 }
 
 export type AuthStrategy = (typeof AuthStrategies)[keyof typeof AuthStrategies]

@@ -10,30 +10,30 @@ import { cn } from "~/utils/cn"
  */
 
 export interface ButtonIconAnchorProps
-	extends React.DetailedHTMLProps<
-			React.AnchorHTMLAttributes<HTMLAnchorElement>,
-			HTMLAnchorElement
-		>,
-		VariantProps<typeof buttonVariants> {}
+  extends React.DetailedHTMLProps<
+      React.AnchorHTMLAttributes<HTMLAnchorElement>,
+      HTMLAnchorElement
+    >,
+    VariantProps<typeof buttonVariants> {}
 
 export const ButtonIconAnchor = ({
-	href = "/",
-	variant,
-	size,
-	className,
-	children,
-	...props
+  href = "/",
+  variant,
+  size,
+  className,
+  children,
+  ...props
 }: ButtonIconAnchorProps) => {
-	return (
-		<a
-			href={href}
-			target="_blank"
-			rel="noreferrer noopener"
-			className={cn(buttonVariants({ variant, size, className }))}
-			{...props}
-		>
-			{children}
-		</a>
-	)
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    >
+      {children}
+    </a>
+  )
 }
 ButtonIconAnchor.displayName = "ButtonIconAnchor"

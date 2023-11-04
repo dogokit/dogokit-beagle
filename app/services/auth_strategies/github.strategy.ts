@@ -9,19 +9,19 @@ const clientID = parsedEnv.GITHUB_CLIENT_ID
 const clientSecret = parsedEnv.GITHUB_CLIENT_SECRET
 
 if (!clientID || !clientSecret) {
-	throw new Error("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET")
+  throw new Error("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET")
 }
 
 export const githubStrategy = new GitHubStrategy<User>(
-	{
-		clientID,
-		clientSecret,
-		callbackURL: `${parsedEnv.APP_URL}/auth/${AuthStrategies.GITHUB}/callback`,
-	},
-	async ({ accessToken, extraParams, profile }) => {
-		// Do something with the tokens and profile
-		return {
-			id: "",
-		}
-	},
+  {
+    clientID,
+    clientSecret,
+    callbackURL: `${parsedEnv.APP_URL}/auth/${AuthStrategies.GITHUB}/callback`,
+  },
+  async ({ accessToken, extraParams, profile }) => {
+    // Do something with the tokens and profile
+    return {
+      id: "",
+    }
+  },
 )

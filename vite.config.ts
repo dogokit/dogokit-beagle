@@ -3,17 +3,17 @@ import { defineConfig, loadEnv } from "vite"
 import tsconfigPaths from "vite-tsconfig-paths"
 
 export default ({ mode }: { mode: string }) => {
-	const env = loadEnv(mode, process.cwd(), "")
+  const env = loadEnv(mode, process.cwd(), "")
 
-	// eslint-disable-next-line node/no-process-env
-	process.env = { ...process.env, ...env }
+  // eslint-disable-next-line node/no-process-env
+  process.env = { ...process.env, ...env }
 
-	return defineConfig({
-		plugins: [
-			remix({
-				ignoredRouteFiles: ["**/.*"],
-			}),
-			tsconfigPaths(),
-		],
-	})
+  return defineConfig({
+    plugins: [
+      remix({
+        ignoredRouteFiles: ["**/.*"],
+      }),
+      tsconfigPaths(),
+    ],
+  })
 }

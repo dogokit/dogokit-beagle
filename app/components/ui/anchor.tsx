@@ -3,26 +3,26 @@ import * as React from "react"
 import { cn } from "~/utils/cn"
 
 export interface AnchorProps
-	extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-	href: string
-	withColor?: boolean
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string
+  withColor?: boolean
 }
 
 const Anchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
-	({ href, withColor = false, className, children, ...props }, ref) => {
-		return (
-			<a
-				href={href}
-				target="_blank"
-				rel="noreferrer"
-				className={cn("hover-opacity", withColor && "text-primary", className)}
-				ref={ref}
-				{...props}
-			>
-				{children}
-			</a>
-		)
-	},
+  ({ href, withColor = false, className, children, ...props }, ref) => {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={cn("hover-opacity", withColor && "text-primary", className)}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </a>
+    )
+  },
 )
 Anchor.displayName = "Anchor"
 

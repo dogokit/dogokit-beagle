@@ -13,17 +13,17 @@ const adapter = new PrismaPlanetScale(connection)
 let prisma = new PrismaClient()
 
 declare global {
-	var __db__: PrismaClient | undefined
+  var __db__: PrismaClient | undefined
 }
 
 if (parsedEnv.NODE_ENV === "production") {
-	prisma = new PrismaClient({ adapter })
+  prisma = new PrismaClient({ adapter })
 } else {
-	if (!global.__db__) {
-		global.__db__ = new PrismaClient()
-	}
-	prisma = global.__db__
-	prisma.$connect()
+  if (!global.__db__) {
+    global.__db__ = new PrismaClient()
+  }
+  prisma = global.__db__
+  prisma.$connect()
 }
 
 export { prisma }

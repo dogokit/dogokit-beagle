@@ -1,3 +1,3 @@
 export default function BlankRoute() {
-	return <p>Just a blank route.</p>
+  return <p>Just a blank route.</p>
 }
