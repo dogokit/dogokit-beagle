@@ -14,7 +14,7 @@ Open source and free
 
 This template is what I personally use to build several of my real paid projects and products
 
-Get it here: <http://dogokit.com>
+Get it here: <http://remix.dogokit.com>
 
 ---
 

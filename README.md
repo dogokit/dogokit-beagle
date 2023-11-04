@@ -1,4 +1,4 @@
-# [🐶 Dogokit Remix](https://dogokit.com/remix)
+# [🐶 Dogokit Remix](https://remix.dogokit.com)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
@@ -20,7 +20,7 @@ functionality hooks and utilities.
 
 Check out:
 
-- Web: <https://dogokit.com>
+- Web: <https://remix.dogokit.com>
 - Repo: <https://github.com/dogokit/dogokit-remix>
 
 Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
