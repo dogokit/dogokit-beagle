@@ -92,9 +92,9 @@ Alternatives:
 ## Tools: Analytics
 
 - [Vercel Analytics](https://vercel.com/docs/concepts/analytics) 🧩🎉
-  - Enable it on your Vercel projects dashboard
-- [Posthog](https://posthog.com): product platform and data tools 🧩🎉💠
-- [Jitsu](https://jitsu.com): data pipeline and ingestion 🚧🧩🎉💠
+  - Enable it on Vercel projects dashboard
+- [Posthog](https://posthog.com): Product platform and data tools 🧩🎉💠
+- [Jitsu](https://jitsu.com): Data pipeline and ingestion 🚧🧩🎉💠
 
 ## Tools: Image
 
@@ -167,14 +167,13 @@ Alternatives:
 
 ## Tools: Credentials
 
-If you work as a team, it's recommended to use either of these as secrets
-management platform to share the environment variables.
-
-So you can optionally use `.env` file. If you need to share quickly
-[EnvShare](https://envshare.dev) is good.
+If work as a team, it's recommended to use either of these as secrets management
+platform to share the environment variables. So can optionally use `.env` file.
 
 - [Doppler](https://doppler.com)
 - [Dotenv](https://dotenv.org)
+
+If need to share quickly, [EnvShare](https://envshare.dev) is good enough.
 
 ## Tools: Code Review
 
@@ -194,8 +193,8 @@ So you can optionally use `.env` file. If you need to share quickly
 
 ## Extra Tech Stack
 
-Although these are not included, if you need a separate backend/server/service,
-here are the recommendations:
+Although these are not included, if need a separate backend/server/service, here
+are the recommendations:
 
 ### REST API
 

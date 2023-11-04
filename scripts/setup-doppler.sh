@@ -1,12 +1,12 @@
 doppler login
 
-# Would you like to scope your new login to the current directory, or overwrite the existing global login?
+# Scope your new login to the current directory, or overwrite the existing global login?
 # ? Select an option: Overwrite global login (/)
 # ? Open the authorization page in your browser? Yes
 # Complete authorization at https://dashboard.doppler.com/workplace/auth/cli
-# Your auth code is:
+# Auth code is:
 # Waiting...
-# Welcome, You
+# Welcome
 
 doppler setup
 

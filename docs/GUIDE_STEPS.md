@@ -156,7 +156,6 @@ tailwind.config.ts
 postcss.config.js
 ```
 
-
 ## Radix UI
 
 No config necessary.
@@ -171,7 +170,8 @@ pnpm install @radix-ui/react-slot
 
 > Skip this if not prefer to use it.
 
-Automatically setup Tailwind CSS, PostCSS, Radix UI, Class Variance Authority, clsx, Tailwind Merge, and more.
+Automatically setup Tailwind CSS, PostCSS, Radix UI, Class Variance Authority,
+clsx, Tailwind Merge, and more.
 
 ```sh
 pnpx shadcn-ui@latest init
@@ -311,7 +311,7 @@ Some extra stuffs are below.
 
 ## Remix Forge
 
-VS Code extension that allows you to generate configurable Remix code.
+VS Code extension to generate configurable Remix code.
 
 [Code-Forge-Net/Remix-Forge](https://github.com/Code-Forge-Net/Remix-Forge)
 

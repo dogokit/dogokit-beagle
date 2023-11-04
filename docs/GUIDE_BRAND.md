@@ -1,4 +1,6 @@
-# Names
+# Guide: Brand
+
+## Naming
 
 Key ideas to decide your next project/product name:
 
@@ -9,5 +11,4 @@ Key ideas to decide your next project/product name:
 - International: Toyota, Nissan, Audi
 - Random: Be Creative 🎨
 
-You can also use [oneword.domains](https://oneword.domains) to decide the domain
-TLD.
+Use [oneword.domains](https://oneword.domains) to decide the domain TLD.

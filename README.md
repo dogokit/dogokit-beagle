@@ -322,6 +322,11 @@ pnpm dev
 # remix dev --manual
 ```
 
+## Author
+
+Created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023, from the 🐾
+Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
+
 ## References
 
 Inspirations:
