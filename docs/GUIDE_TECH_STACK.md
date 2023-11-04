@@ -44,7 +44,10 @@ Legends:
 
 - [Conform](https://conform.guide): Form handling 🧰💠
 - [Zod](https://zod.dev): Data validation 🧰💠
-  - [Zodix](https://github.com/rileytomasek/zodix) 🧩💠
+  - [znv](https://github.com/lostfictions/znv): Type-safe env parsing and
+    validation 🧰💠
+  - [Zodix](https://github.com/rileytomasek/zodix): Zod utilities for Remix
+    loaders and actions 🧩💠
   - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩💠
 
 ## Database and ORM

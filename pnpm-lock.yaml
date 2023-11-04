@@ -110,6 +110,9 @@ dependencies:
   zod-form-data:
     specifier: 2.0.2
     version: 2.0.2(zod@3.22.4)
+  zodix:
+    specifier: 0.4.4
+    version: 0.4.4(@remix-run/server-runtime@2.2.0)(zod@3.22.4)
 
 devDependencies:
   '@iconify/react':
@@ -10051,6 +10054,16 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
+
+  /zodix@0.4.4(@remix-run/server-runtime@2.2.0)(zod@3.22.4):
+    resolution: {integrity: sha512-msoW2RM8t0ktSKmQYT7/AjsGTqzWHeEwY+U/6w7Jzd29yoeh/QceseQG8PBb5lpY4KUUowMsYRWm926vGrwrdQ==}
+    peerDependencies:
+      '@remix-run/server-runtime': 1.x || 2.x
+      zod: 3.x
+    dependencies:
+      '@remix-run/server-runtime': 2.2.0(typescript@5.2.2)
+      zod: 3.22.4
     dev: false
 
   /zwitch@2.0.4:
