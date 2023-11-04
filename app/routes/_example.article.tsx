@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react"
 import { type MetaFunction } from "@remix-run/node"
 
-import { Logo } from "~/components/shared/logo"
 import { Anchor } from "~/components/ui/anchor"
 
 export const meta: MetaFunction = () => [
@@ -11,23 +10,14 @@ export const meta: MetaFunction = () => [
 
 export default function RemixRoute() {
 	return (
-		<div className="site-container space-y-20 py-20">
-			<section className="space-y-10">
-				<Logo text="Dogokit Remix" size="xl" />
+		<div className="site-container space-y-28 py-20">
+			<section className="site-section space-y-10">
+				<h1>The Article</h1>
 
-				<p className="text-2xl sm:text-4xl">
-					Remix web app kit by{" "}
-					<Anchor
-						withColor
-						href="https://dogokit.com"
-						className="font-semibold"
-					>
-						Dogokit
-					</Anchor>
-				</p>
+				<p className="text-2xl sm:text-4xl">Remix web app kit by Dogokit</p>
 			</section>
 
-			<section className="prose-config">
+			<section className="prose-config site-section">
 				<h1 className="text-icon">
 					<Icon icon="fluent-emoji:cat-face" />
 					<span>Heading One</span>

@@ -14,9 +14,9 @@
 The main Remix web app template kit by [🐶 Dogokit](https://dogokit.com).
 
 The goal is to be as productive as possible to ship a web app quickly with
-[Remix](https://remix.run). So it is a highly opinionated collection of software
-engineering and web development workflow, interactive UI components,
-functionality hooks and utilities.
+[Remix](https://remix.run). So it is a highly opinionated collection of
+application structure, software engineering and web development workflow,
+interactive UI components, functionality hooks and utilities.
 
 Check out:
 
