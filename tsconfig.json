@@ -21,7 +21,7 @@
     "noEmit": true // Remix building everything in `remix build`
   },
   "include": [
-    "remix.env.d.ts",
+    "env.d.ts",
     ".eslintrc.cjs",
     "**/*.ts",
     "**/*.tsx",

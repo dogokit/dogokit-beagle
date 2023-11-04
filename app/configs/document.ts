@@ -3,18 +3,7 @@
  *
  * Favicons
  * Manifest
- * Style Sheets
  */
-
-import { cssBundleHref } from "@remix-run/css-bundle"
-
-import { fontLinks } from "~/configs/fonts"
-import tailwindStyles from "~/styles/tailwind.css"
-
-export const stylesheetLinks = [
-	{ rel: "stylesheet", href: tailwindStyles },
-	...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-]
 
 /**
  * Docs:
@@ -65,9 +54,4 @@ const manifestLinks = [
 	},
 ]
 
-export const configDocumentLinks = [
-	...fontLinks,
-	...stylesheetLinks,
-	...faviconLinks,
-	...manifestLinks,
-]
+export const configDocumentLinks = [...faviconLinks, ...manifestLinks]
