@@ -6,11 +6,11 @@ import { sessionStorage } from "~/services/session.server"
 import { formStrategy } from "~/services/auth_strategies/form.strategy"
 import { githubStrategy } from "~/services/auth_strategies/github.strategy"
 import { googleStrategy } from "~/services/auth_strategies/google.strategy"
-import { oauth2Strategy } from "~/services/auth_strategies/oauth2.strategy"
 import { twitterStrategy } from "~/services/auth_strategies/twitter.strategy"
 
 export interface User {
-	// Add your own user properties here or extend with a type from your database
+	id: string
+	// Add user properties here or extend with a type from the database
 }
 
 export type AuthStrategy = (typeof AuthStrategies)[keyof typeof AuthStrategies]
@@ -19,9 +19,8 @@ export type AuthStrategy = (typeof AuthStrategies)[keyof typeof AuthStrategies]
 // strategies will return and will store in the session
 export const authenticator = new Authenticator<User>(sessionStorage)
 
-// Register your strategies below
+// Register the strategies
 authenticator.use(formStrategy, AuthStrategies.FORM)
-authenticator.use(oauth2Strategy, AuthStrategies.OAUTH2)
 authenticator.use(githubStrategy, AuthStrategies.GITHUB)
 authenticator.use(googleStrategy, AuthStrategies.GOOGLE)
 authenticator.use(twitterStrategy, AuthStrategies.TWITTER)

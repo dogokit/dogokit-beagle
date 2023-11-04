@@ -254,20 +254,22 @@ still okay when
 [prototyping the schema](https://prisma.io/docs/concepts/components/prisma-migrate/db-push).
 After a success push, then it will automatically run `prisma generate`.
 
-Create `users.json` in `prisma/seed-data` folder with the format below. Can
+Create `users.json` in `prisma/credentials` folder with the format below. Can
 focus on certain users who want to be able to sign in in development, so it
 doesn't have to be everyone.
 
 ```json
 [
   {
+    "fullname": "User One",
+    "username": "username1",
     "email": "user1@example.com",
-    "username": "username",
-    "password": "set_the_password_1"
+    "password": "user_password_1"
   },
   {
-    "email": "user2@example.com",
-    "username": "username2"
+    "fullname": "User Two",
+    "username": "username2",
+    "email": "user2@example.com"
   }
   // ...
 ]

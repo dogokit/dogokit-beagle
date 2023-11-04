@@ -2,7 +2,7 @@
 
 ## Naming
 
-Key ideas to decide your next project/product name:
+Key ideas to decide the project/product name:
 
 - Brandable: Google, IKEA
 - Word combination: YouTube, Facebook

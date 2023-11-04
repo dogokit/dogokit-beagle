@@ -1,9 +1,9 @@
 import { prisma } from "~/libs/db.server"
 
-import dataCredentialUsers from "./credential/users.json"
+import dataCredentialUsers from "./credentials/users.json"
 
 /**
- * Enable and disable seed items by commenting in/out the enabled items
+ * Enable and disable seed items by commenting them
  */
 const enabledSeedItems = [
 	// "userRoles",
@@ -29,10 +29,10 @@ async function main() {
 async function seedUsers() {
 	console.info("🔵 👤 Seed users...")
 	const usersCount = await prisma.user.count()
-	console.info("🔵 👤 Users count:", usersCount)
+	console.info("🔵 👤 Existing users count:", usersCount)
 
 	if (!Array.isArray(dataCredentialUsers)) {
-		console.error(`🔴 Please create prisma/credential/users.json file`)
+		console.error(`🔴 Please create prisma/credentials/users.json file`)
 		console.error(`🔴 Check README for the guide`)
 		return null
 	}

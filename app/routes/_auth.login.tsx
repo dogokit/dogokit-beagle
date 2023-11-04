@@ -17,10 +17,6 @@ const SocialButton = ({ provider, label }: SocialButtonProps) => (
 export default function LoginRoute() {
 	return (
 		<>
-			<SocialButton
-				provider={AuthStrategies.OAUTH2}
-				label="Login with oauth2"
-			/>
 			<SocialButton provider={AuthStrategies.FORM} label="Login with form" />
 			<SocialButton
 				provider={AuthStrategies.GITHUB}
