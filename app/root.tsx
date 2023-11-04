@@ -14,7 +14,7 @@ import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes"
 import { SiteLayout } from "~/components/layout/site-layout"
 import { configDocumentLinks } from "~/configs/document"
 import { themeSessionResolver } from "~/services/theme.server"
-import { cn } from "./utils/cn"
+import { cn } from "~/utils/cn"
 
 export const links: LinksFunction = () => configDocumentLinks
 

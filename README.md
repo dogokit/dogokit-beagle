@@ -68,6 +68,7 @@ The goal is to use this for building web apps:
 - Product or Project Management
 - Content Management System (CMS)
 - Learning Management System (LMS)
+- Software as a Service (SaaS)
 
 ## Concept
 
