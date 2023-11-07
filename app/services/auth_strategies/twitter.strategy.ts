@@ -1,7 +1,7 @@
 // Refer to https://github.com/na2hiro/remix-auth-twitter for more information
 import { Twitter2Strategy } from "remix-auth-twitter"
 
-import { type User } from "~/services/auth.server"
+import { type UserSession } from "~/services/auth.server"
 import { AuthStrategies } from "~/services/auth_strategies"
 import { parsedEnv } from "~/utils/env.server"
 
@@ -12,7 +12,7 @@ if (!clientID || !clientSecret) {
   throw new Error("Missing TWITTER_CLIENT_ID or TWITTER_CLIENT_SECRET")
 }
 
-export const twitterStrategy = new Twitter2Strategy<User>(
+export const twitterStrategy = new Twitter2Strategy<UserSession>(
   {
     clientID,
     clientSecret,

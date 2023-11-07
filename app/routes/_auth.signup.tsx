@@ -1,20 +1,35 @@
 import { conform, useForm } from "@conform-to/react"
 import { getFieldsetConstraint, parse } from "@conform-to/zod"
-import { type ActionFunctionArgs } from "@remix-run/node"
-import { Form, useNavigation } from "@remix-run/react"
-import { useId } from "react"
-import { type z } from "zod"
+import {
+  json,
+  type ActionFunctionArgs,
+  type MetaFunction,
+} from "@remix-run/node"
+import {
+  Form,
+  useActionData,
+  useNavigation,
+  useSearchParams,
+} from "@remix-run/react"
+import { z } from "zod"
 
 import { Alert } from "~/components/ui/alert"
-import { Button } from "~/components/ui/button"
 import { ButtonLoading } from "~/components/ui/button-loading"
+import { ButtonSocial } from "~/components/ui/button-social"
 import { FormDescription, FormField, FormLabel } from "~/components/ui/form"
-import { Iconify } from "~/components/ui/iconify"
 import { Input, InputPassword } from "~/components/ui/input"
 import { LinkText } from "~/components/ui/link-text"
+import { useAppMode } from "~/hooks/use-app-mode"
+import { prisma } from "~/libs/db.server"
+import { modelUser } from "~/models/user.server"
 import { schemaUserSignUp } from "~/schemas/user"
-import { authenticator, type AuthStrategy } from "~/services/auth.server"
+import { authenticator } from "~/services/auth.server"
 import { AuthStrategies } from "~/services/auth_strategies"
+import { createTimer } from "~/utils/timer"
+
+export const meta: MetaFunction = () => {
+  return [{ title: "Sign Up" }]
+}
 
 export const loader = async ({ request }: ActionFunctionArgs) => {
   await authenticator.isAuthenticated(request, {
@@ -24,19 +39,35 @@ export const loader = async ({ request }: ActionFunctionArgs) => {
 }
 
 export default function SignUpRoute() {
+  const actionData = useActionData<typeof action>()
+
+  const { isModeDevelopment } = useAppMode()
+
   const navigation = useNavigation()
   const isSubmitting = navigation.state === "submitting"
 
-  const id = useId()
-  const [form, { email, name, username, password }] = useForm<
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get("redirectTo")
+
+  const [form, { email, fullname, username, password }] = useForm<
     z.infer<typeof schemaUserSignUp>
   >({
-    id,
+    id: "signup-form",
+    lastSubmission: actionData?.submission,
     shouldValidate: "onSubmit",
+    shouldRevalidate: "onBlur",
     constraint: getFieldsetConstraint(schemaUserSignUp),
     onValidate({ formData }) {
       return parse(formData, { schema: schemaUserSignUp })
     },
+    defaultValue: isModeDevelopment
+      ? {
+          email: "example@example.com",
+          fullname: "Example Name",
+          username: "example",
+          password: "exampleexample",
+        }
+      : {},
   })
 
   return (
@@ -50,18 +81,37 @@ export default function SignUpRoute() {
         </header>
 
         <Form
-          action={`/auth/${AuthStrategies.FORM}`}
-          method="post"
+          action="/signup"
+          method="POST"
           className="flex flex-col gap-2"
           {...form.props}
         >
           <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
             <FormField>
+              <FormLabel htmlFor={fullname.id}>Full Name</FormLabel>
+              <Input
+                {...conform.input(fullname)}
+                id={fullname.id}
+                placeholder="Full Name"
+                autoFocus={fullname.error ? true : undefined}
+                required
+              />
+              {fullname.errors && fullname.errors?.length > 0 && (
+                <ul>
+                  {fullname.errors?.map((error, index) => (
+                    <li key={index}>
+                      <Alert variant="destructive">{error}</Alert>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </FormField>
+
+            <FormField>
               <FormLabel htmlFor={email.id}>Email</FormLabel>
               <Input
                 {...conform.input(email, { type: "email", description: true })}
                 id={email.id}
-                name="email"
                 placeholder="yourname@example.com"
                 autoCapitalize="none"
                 autoCorrect="off"
@@ -80,32 +130,10 @@ export default function SignUpRoute() {
             </FormField>
 
             <FormField>
-              <FormLabel htmlFor={name.id}>Full Name</FormLabel>
-              <Input
-                {...conform.input(name)}
-                id={name.id}
-                name="name"
-                placeholder="Full Name"
-                autoFocus={name.error ? true : undefined}
-                required
-              />
-              {name.errors && name.errors?.length > 0 && (
-                <ul>
-                  {name.errors?.map((error, index) => (
-                    <li key={index}>
-                      <Alert variant="destructive">{error}</Alert>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </FormField>
-
-            <FormField>
               <FormLabel htmlFor={username.id}>Username</FormLabel>
               <Input
                 {...conform.input(username)}
                 id={username.id}
-                name="username"
                 placeholder="username"
                 autoFocus={username.error ? true : undefined}
                 required
@@ -131,7 +159,6 @@ export default function SignUpRoute() {
                   description: true,
                 })}
                 id={password.id}
-                name="password"
                 placeholder="Enter password"
                 autoComplete="current-password"
                 autoFocus={password.error ? true : undefined}
@@ -151,7 +178,9 @@ export default function SignUpRoute() {
               )}
             </FormField>
 
-            {/* <input hidden name="redirectTo" defaultValue={redirectTo} /> */}
+            {redirectTo ? (
+              <input type="hidden" name="redirectTo" value={redirectTo} />
+            ) : null}
 
             <ButtonLoading
               type="submit"
@@ -173,43 +202,63 @@ export default function SignUpRoute() {
         </section>
 
         <section className="space-y-2">
-          <SocialButton provider={AuthStrategies.GITHUB} label="GitHub" />
-          <SocialButton provider={AuthStrategies.GOOGLE} label="Google" />
-          <SocialButton provider={AuthStrategies.TWITTER} label="Twitter" />
+          <ButtonSocial provider={AuthStrategies.GITHUB} label="GitHub" />
+          <ButtonSocial provider={AuthStrategies.GOOGLE} label="Google" />
+          <ButtonSocial provider={AuthStrategies.TWITTER} label="Twitter" />
         </section>
       </div>
     </div>
   )
 }
 
-interface SocialButtonProps {
-  provider: AuthStrategy
-  label: string
-}
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const timer = createTimer()
 
-const SocialButton = ({ provider, label }: SocialButtonProps) => {
-  let iconName = ""
-  switch (provider) {
-    case "github":
-      iconName = "fe:github"
-      break
-    case "google":
-      iconName = "fe:google"
-      break
-    case "twitter":
-      iconName = "fe:twitter"
-      break
-    default:
-      iconName = "fe:donut"
-      break
+  // Differentiate formData request and authenticator request
+  const clonedRequest = request.clone()
+  const formData = await clonedRequest.formData()
+
+  const submission = await parse(formData, {
+    schema: schemaUserSignUp.superRefine(async (data, ctx) => {
+      const existingEmail = await prisma.user.findUnique({
+        where: { email: data.email },
+        select: { id: true },
+      })
+      if (existingEmail) {
+        ctx.addIssue({
+          path: ["email"],
+          code: z.ZodIssueCode.custom,
+          message: "User already exists with this email",
+        })
+        return
+      }
+
+      const existingUsername = await prisma.user.findUnique({
+        where: { username: data.username },
+        select: { id: true },
+      })
+      if (existingUsername) {
+        ctx.addIssue({
+          path: ["username"],
+          code: z.ZodIssueCode.custom,
+          message: "A user already exists with this username",
+        })
+        return
+      }
+    }),
+    async: true,
+  })
+  if (!submission.value || submission.intent !== "submit") {
+    return json({ status: "error", submission }, { status: 400 })
   }
 
-  return (
-    <Form action={`/auth/${provider}`} method="post" className="flex">
-      <Button size="sm" isIconText className="flex-[auto]">
-        <Iconify icon={iconName} />
-        <span>{label}</span>
-      </Button>
-    </Form>
-  )
+  const newUser = await modelUser.signup(submission.value)
+  if (!newUser) {
+    return json({ status: "error", submission }, { status: 500 })
+  }
+
+  await timer.delay()
+  return authenticator.authenticate("form", request, {
+    successRedirect: "/dashboard",
+  })
 }

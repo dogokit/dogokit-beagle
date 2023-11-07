@@ -8,7 +8,7 @@ import { cn } from "~/utils/cn"
 
 const FormField = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLParagraphElement>
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   return <div ref={ref} className={cn("space-y-1", className)} {...props} />
 })

@@ -2,6 +2,11 @@ import { redirect, type ActionFunctionArgs } from "@remix-run/node"
 
 import { authenticator, type AuthStrategy } from "~/services/auth.server"
 
+/**
+ * No need to modify this
+ * Only modify app/services/auth_strategies/<provider>.strategy.ts
+ */
+
 export const loader = () => redirect("/login")
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {

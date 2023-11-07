@@ -4,23 +4,23 @@ const id = z.string().min(1, "Existing id is required")
 
 const redirectTo = z.string().optional()
 
+const email = z
+  .string({ required_error: "Email is required" })
+  .min(1)
+  .email("This is not an email")
+
 const username = z
   .string({ required_error: "Username is required" })
   .regex(/^[a-zA-Z0-9._]+$/, "Only alphabet, number, dot, underscore allowed")
   .min(4, "Username require at least 4 characters")
   .max(20, "Username limited to 20 characters")
 
-const name = z
+const fullname = z
   .string({ required_error: "Full name is required" })
   .min(1)
   .max(50, "Full name limited to 50 characters")
 
-const nick = z.string().max(50, "Nick name limited to 50 characters")
-
-const email = z
-  .string({ required_error: "Email is required" })
-  .min(1)
-  .email("This is not an email")
+const nickname = z.string().max(50, "Nick name limited to 50 characters")
 
 /**
  * Can improve password check
@@ -37,9 +37,6 @@ const currentPassword = z
   .min(1)
 
 const remember = z.boolean().optional()
-
-const inviteBy = z.string().optional()
-const inviteCode = z.string().optional()
 
 const roleSymbol = z.string().min(1, "Role is required")
 
@@ -62,16 +59,14 @@ export const schemaLink = link
 export const schemaLinks = links
 
 export const schemaUserSignUp = z.object({
-  name,
+  fullname,
   username,
   email,
   password,
   remember,
-  inviteBy,
-  inviteCode,
 })
 
-export const schemaUserSignIn = z.object({
+export const schemaUserLogIn = z.object({
   email,
   password,
   remember,
@@ -79,8 +74,8 @@ export const schemaUserSignIn = z.object({
 })
 
 export const schemaUserUpdateUsername = z.object({ id, username })
-export const schemaUserUpdateName = z.object({ id, name })
-export const schemaUserUpdateNick = z.object({ id, nick })
+export const schemaUserUpdateFullName = z.object({ id, fullname })
+export const schemaUserUpdateNickName = z.object({ id, nickname })
 export const schemaUserUpdateEmail = z.object({ id, email })
 
 export const schemaUserProfileModeName = z.object({ id, modeName })
@@ -112,10 +107,10 @@ export const schemaUserUpdateTags = z.object({
 
 export const schemaRootUserUpdate = z.object({
   id,
-  username,
-  name,
-  nick,
   email,
+  username,
+  fullname,
+  nickname,
   links,
   roleSymbol,
 })

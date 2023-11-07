@@ -27,12 +27,15 @@ model User {
   id String @id @default(cuid())
 
   fullname String
-  email    String  @unique(map: "User.email_unique")
-  username String? @unique(map: "User.username_unique")
+  email    String @unique(map: "User.email_unique")
+  username String @unique(map: "User.username_unique")
+
+  nickname String?
   phone    String? @unique(map: "User.phone_unique") // numeric string
 
-  password UserPassword?
+  password Password?
 
+  roles  Role[]
   images UserImage[] // multiple user images / avatars / profile pictures
   notes  Note[]
 
@@ -40,7 +43,38 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model UserPassword {
+model Role {
+  id String @id @default(cuid())
+
+  sequence    Int?    @unique // 1, 2, 3, ...
+  symbol      String  @unique // ROOT, ADMIN, MEMBER"
+  name        String  @unique // Root, Admin, Member
+  description String? @db.Text // Summary of abilities
+
+  users       User[]
+  permissions Permission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Permission {
+  id String @id @default(cuid())
+
+  action      String // create, read, update, delete
+  entity      String // note, user, etc.
+  access      String // own or any
+  description String? @db.Text // details of the permission ability
+
+  roles Role[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([action, entity, access])
+}
+
+model Password {
   id String @id @default(cuid())
 
   user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
@@ -50,6 +84,8 @@ model UserPassword {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("UserPassword")
 }
 
 model UserImage {
