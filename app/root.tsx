@@ -16,10 +16,6 @@ import { configDocumentLinks } from "~/configs/document"
 import { themeSessionResolver } from "~/services/theme.server"
 import { cn } from "~/utils/cn"
 
-import "@fontsource-variable/grandstander/wght.css"
-import "@fontsource/inter/index.css"
-import "~/styles/tailwind.css"
-
 export const links: LinksFunction = () => configDocumentLinks
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -66,10 +62,9 @@ export function App() {
             <Outlet />
           </SiteLayout>
         )}
-
         <ScrollRestoration />
-        <LiveReload />
         <Scripts />
+        <LiveReload />
       </body>
     </html>
   )
