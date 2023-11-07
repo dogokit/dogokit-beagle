@@ -55,13 +55,13 @@ export function App() {
       </head>
 
       <body id="__remix" className={cn(defaultTheme)}>
-        {isDashboard ? (
-          <Outlet />
-        ) : (
+        {isDashboard && <Outlet />}
+        {!isDashboard && (
           <SiteLayout>
             <Outlet />
           </SiteLayout>
         )}
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
