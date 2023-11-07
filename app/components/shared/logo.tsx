@@ -46,7 +46,7 @@ export function Logo({
   size,
   className,
   classNameIcon,
-  text = "DOGOKIT",
+  text,
 }: LogoProps) {
   return (
     <span className={cn(logoVariants({ variant, size, className }))}>

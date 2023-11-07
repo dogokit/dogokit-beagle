@@ -1,6 +1,7 @@
 import { type LoaderFunctionArgs } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
+import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { authenticator } from "~/services/auth.server"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -11,11 +12,17 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 }
 
 export default function DashboardRoute() {
+  const { userData } = useRootLoaderData()
   const { message } = useLoaderData<typeof loader>()
+
+  if (!userData) return null
 
   return (
     <div>
-      <h1>{message}</h1>
+      <header>
+        <h2>Welcome, {userData.fullname}</h2>
+        <p>{message}</p>
+      </header>
     </div>
   )
 }

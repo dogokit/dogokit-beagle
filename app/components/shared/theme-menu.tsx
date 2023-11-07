@@ -1,6 +1,8 @@
 import { Icon } from "@iconify/react"
+import { type VariantProps } from "class-variance-authority"
 import { Theme, useTheme } from "remix-themes"
 
+import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
 import {
   DropdownMenu,
@@ -12,13 +14,14 @@ import { useMediaQuery } from "~/hooks/use-media-query"
 
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)"
 
-interface Props {
+export interface ThemeMenuProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   align?: "center" | "start" | "end" | undefined
-  size?: "sm" | "lg" | undefined
 }
 
 // not in components because it depens on the theme config
-export function ThemeMenu({ align = "end", size }: Props) {
+export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
   const [, setTheme] = useTheme()
   const isPreferDark = useMediaQuery(COLOR_SCHEME_QUERY)
 

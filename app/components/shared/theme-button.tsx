@@ -1,14 +1,18 @@
 import { Icon } from "@iconify/react"
+import { type VariantProps } from "class-variance-authority"
 import { Theme, useTheme } from "remix-themes"
 
+import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
 
-interface ThemeButtonProps {
-  size?: "sm" | "lg" | undefined
+export interface ThemeButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
 }
 
 // not in components because it depens on the theme config
-export function ThemeButton({ size }: ThemeButtonProps) {
+export function ThemeButton({ ...props }: ThemeButtonProps) {
   const [theme, setTheme] = useTheme()
   const nameTo = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
 
@@ -18,10 +22,10 @@ export function ThemeButton({ size }: ThemeButtonProps) {
 
   return (
     <ButtonIcon
-      size={size}
       variant="ghost"
       onClick={handleChangeTheme}
       aria-label="Toggle theme"
+      {...props}
     >
       <Icon
         icon="ph:sun-duotone"
