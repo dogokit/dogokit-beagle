@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "remix build",
-    "dev": "pnpm check:env && remix dev --manual",
+    "dev": "remix dev --manual",
+    "dev:check": "pnpm check:env && remix dev --manual",
     "dev:prod": "dotenv -e .env.production pnpm check:env",
     "start": "remix-serve ./build/index.js",
     "check": "pnpm /^check:.*/",

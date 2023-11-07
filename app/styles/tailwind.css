@@ -5,122 +5,122 @@
 
 /* From shadcn UI Themes */
 @layer base {
-	:root {
-		--background: 0 0% 100%;
-		--foreground: 222.2 84% 4.9%;
-		--card: 0 0% 100%;
-		--card-foreground: 222.2 84% 4.9%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 222.2 84% 4.9%;
-		--primary: 221.2 83.2% 53.3%;
-		--primary-foreground: 210 40% 98%;
-		--secondary: 210 40% 96.1%;
-		--secondary-foreground: 222.2 47.4% 11.2%;
-		--muted: 210 40% 96.1%;
-		--muted-foreground: 215.4 16.3% 46.9%;
-		--accent: 210 40% 96.1%;
-		--accent-foreground: 222.2 47.4% 11.2%;
-		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 210 40% 98%;
-		--border: 214.3 31.8% 91.4%;
-		--input: 214.3 31.8% 91.4%;
-		--ring: 221.2 83.2% 53.3%;
-		--radius: 0.5rem;
-	}
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 1rem;
+  }
 
-	.dark {
-		--background: 222.2 84% 4.9%;
-		--foreground: 210 40% 98%;
-		--card: 222.2 84% 4.9%;
-		--card-foreground: 210 40% 98%;
-		--popover: 222.2 84% 4.9%;
-		--popover-foreground: 210 40% 98%;
-		--primary: 217.2 91.2% 59.8%;
-		--primary-foreground: 222.2 47.4% 11.2%;
-		--secondary: 217.2 32.6% 17.5%;
-		--secondary-foreground: 210 40% 98%;
-		--muted: 217.2 32.6% 17.5%;
-		--muted-foreground: 215 20.2% 65.1%;
-		--accent: 217.2 32.6% 17.5%;
-		--accent-foreground: 210 40% 98%;
-		--destructive: 0 62.8% 30.6%;
-		--destructive-foreground: 210 40% 98%;
-		--border: 217.2 32.6% 17.5%;
-		--input: 217.2 32.6% 17.5%;
-		--ring: 224.3 76.3% 48%;
-	}
-	* {
-		@apply border-border;
-	}
-	body {
-		@apply bg-background text-foreground;
-	}
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 /* Custom layers */
 @layer base {
-	body {
-		@apply selection:bg-primary selection:text-primary-foreground;
-	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply leading-tight tracking-tighter text-foreground;
-	}
-	h1 {
-		@apply text-5xl font-semibold leading-[1.1] md:text-6xl lg:text-7xl xl:text-8xl;
-	}
-	h2 {
-		@apply text-3xl font-semibold md:text-4xl;
-	}
-	h3 {
-		@apply text-2xl font-semibold md:text-3xl;
-	}
-	h4 {
-		@apply text-lg font-semibold md:text-xl;
-	}
-	b {
-		@apply font-semibold;
-	}
+  body {
+    @apply selection:bg-primary selection:text-primary-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-tight tracking-tighter text-foreground;
+  }
+  h1 {
+    @apply text-5xl font-semibold leading-[1.1] md:text-6xl lg:text-7xl xl:text-8xl;
+  }
+  h2 {
+    @apply text-3xl font-semibold md:text-4xl;
+  }
+  h3 {
+    @apply text-2xl font-semibold md:text-3xl;
+  }
+  h4 {
+    @apply text-lg font-semibold md:text-xl;
+  }
+  b {
+    @apply font-semibold;
+  }
 }
 
 @layer components {
-	.navlink {
-		@apply hover-opacity font-semibold;
-	}
-	.navlink-active {
-		@apply navlink text-primary;
-	}
+  .navlink {
+    @apply hover-opacity font-semibold;
+  }
+  .navlink-active {
+    @apply navlink text-primary;
+  }
 }
 
 @layer utilities {
-	.site-container {
-		@apply mx-auto w-full max-w-7xl px-2 sm:px-4;
-	}
-	.site-section {
-		@apply mx-auto w-full max-w-prose;
-	}
-	.hover-opacity {
-		@apply transition hover:opacity-75;
-	}
-	.section-auto {
-		@apply mx-auto max-w-3xl px-2 py-10 sm:px-4;
-	}
-	.flex-center {
-		@apply flex items-center justify-center;
-	}
-	.text-p {
-		@apply text-base sm:text-lg;
-	}
-	.text-icon {
-		@apply inline-flex flex-wrap items-center gap-2;
-	}
-	.prose-config {
-		@apply prose prose-slate dark:prose-invert;
-		@apply prose-a:text-primary;
-		@apply prose-code:before:content-none prose-code:after:content-none;
-	}
+  .site-container {
+    @apply mx-auto w-full max-w-7xl px-2 sm:px-4;
+  }
+  .site-section {
+    @apply mx-auto w-full max-w-prose;
+  }
+  .hover-opacity {
+    @apply transition hover:opacity-75;
+  }
+  .section-auto {
+    @apply mx-auto max-w-3xl px-2 py-10 sm:px-4;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .text-p {
+    @apply text-base sm:text-lg;
+  }
+  .text-icon {
+    @apply inline-flex flex-wrap items-center gap-2;
+  }
+  .prose-config {
+    @apply prose prose-slate dark:prose-invert;
+    @apply prose-a:text-primary;
+    @apply prose-code:before:content-none prose-code:after:content-none;
+  }
 }
