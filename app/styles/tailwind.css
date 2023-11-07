@@ -69,7 +69,7 @@
     @apply leading-tight tracking-tighter text-foreground;
   }
   h1 {
-    @apply text-5xl font-semibold leading-[1.1] md:text-6xl lg:text-7xl xl:text-8xl;
+    @apply text-4xl font-semibold leading-[1.1] md:text-5xl lg:text-6xl xl:text-7xl;
   }
   h2 {
     @apply text-3xl font-semibold md:text-4xl;

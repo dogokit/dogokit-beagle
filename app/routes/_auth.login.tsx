@@ -12,24 +12,24 @@ export const loader = async ({ request }: ActionFunctionArgs) => {
   return null
 }
 
-export default function LoginRoute() {
+export default function ContinueRoute() {
   return (
     <>
       <SocialButton
         provider={AuthStrategies.FORM}
-        label="Login with Password"
+        label="Continue with Email/Password"
       />
       <SocialButton
         provider={AuthStrategies.GITHUB}
-        label="Login with GitHub"
+        label="Continue with GitHub"
       />
       <SocialButton
         provider={AuthStrategies.GOOGLE}
-        label="Login with Google"
+        label="Continue with Google"
       />
       <SocialButton
         provider={AuthStrategies.TWITTER}
-        label="Login with Twitter"
+        label="Continue with Twitter"
       />
     </>
   )

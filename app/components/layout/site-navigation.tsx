@@ -23,7 +23,10 @@ export function SiteNavigation() {
       </div>
 
       <div className="flex items-center justify-between gap-2">
-        <ButtonLink to="/login">Log In</ButtonLink>
+        <ButtonLink to="/login" variant="secondary">
+          Log In
+        </ButtonLink>
+        <ButtonLink to="/signup">Sign Up</ButtonLink>
       </div>
     </nav>
   )
