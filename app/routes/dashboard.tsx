@@ -1,7 +1,6 @@
 import { type LoaderFunctionArgs } from "@remix-run/node"
-import { Form, useLoaderData } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 
-import { Button } from "~/components/ui/button"
 import { authenticator } from "~/services/auth.server"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -17,9 +16,6 @@ export default function DashboardRoute() {
   return (
     <div>
       <h1>{message}</h1>
-      <Form method="post" action="/logout">
-        <Button type="submit">Logout</Button>
-      </Form>
     </div>
   )
 }

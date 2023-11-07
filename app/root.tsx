@@ -11,6 +11,7 @@ import {
 } from "@remix-run/react"
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes"
 
+import { DashboardLayout } from "~/components/layout/dashboard-layout"
 import { SiteLayout } from "~/components/layout/site-layout"
 import { configDocumentLinks } from "~/configs/document"
 import { themeSessionResolver } from "~/services/theme.server"
@@ -55,11 +56,15 @@ export function App() {
       </head>
 
       <body id="__remix" className={cn(defaultTheme)}>
-        {isDashboard && <Outlet />}
         {!isDashboard && (
           <SiteLayout>
             <Outlet />
           </SiteLayout>
+        )}
+        {isDashboard && (
+          <DashboardLayout>
+            <Outlet />
+          </DashboardLayout>
         )}
 
         <ScrollRestoration />

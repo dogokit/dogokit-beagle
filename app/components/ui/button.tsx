@@ -20,10 +20,9 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
+        sm: "h-8 rounded-md px-3",
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        lg: "h-12 rounded-md px-8",
       },
       isIcon: { true: "p-0", false: "" },
     },
@@ -32,9 +31,9 @@ const buttonVariants = cva(
       size: "default",
     },
     compoundVariants: [
-      { isIcon: true, size: "sm", class: "h-10 w-10 text-lg" },
+      { isIcon: true, size: "sm", class: "h-8 w-8 text-lg" },
       { isIcon: true, size: "default", class: "h-10 w-10 text-2xl" },
-      { isIcon: true, size: "lg", class: "h-10 w-10 text-4xl" },
+      { isIcon: true, size: "lg", class: "h-12 w-12 text-4xl" },
     ],
   },
 )
