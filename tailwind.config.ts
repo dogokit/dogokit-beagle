@@ -84,5 +84,6 @@ export default {
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
     require("tailwindcss-animate"),
+    require("tailwindcss-radix-ui-primitives")({ themeKey: "radix" }),
   ],
 } satisfies Config

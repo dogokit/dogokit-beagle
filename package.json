@@ -71,6 +71,7 @@
     "remix-themes": "1.2.2",
     "tailwind-merge": "1.14.0",
     "tailwindcss-animate": "1.0.7",
+    "tailwindcss-radix-ui-primitives": "1.0.0",
     "undici": "5.26.5",
     "usehooks-ts": "2.9.1",
     "znv": "0.4.0",
