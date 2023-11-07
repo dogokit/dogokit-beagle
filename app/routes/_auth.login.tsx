@@ -34,7 +34,7 @@ export const meta: MetaFunction = () => {
 
 export const loader = async ({ request }: ActionFunctionArgs) => {
   await authenticator.isAuthenticated(request, {
-    successRedirect: "/dashboard",
+    successRedirect: "/user/dashboard",
   })
   return null
 }
@@ -221,6 +221,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   await timer.delay()
   return authenticator.authenticate("form", request, {
-    successRedirect: "/dashboard",
+    successRedirect: "/user/dashboard",
   })
 }

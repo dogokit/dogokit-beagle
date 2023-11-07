@@ -21,7 +21,7 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
     callbackURL: `${parsedEnv.APP_URL}/auth/${AuthStrategies.GITHUB}/callback`,
   },
   async ({ profile }) => {
-    const email = profile.emails[0]?.value
+    const email = profile.emails[0]?.value.trim().toLowerCase()
     if (!email) throw new AuthorizationError("Email is not found")
 
     const existingUser = await prisma.user.findUnique({
@@ -35,8 +35,9 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
     const newUser = await prisma.user.create({
       data: {
         email,
-        fullname: profile.displayName,
+        fullname: profile._json.name,
         username: profile._json.login,
+        images: { create: { url: profile.photos[0].value } },
       },
       select: { id: true },
     })

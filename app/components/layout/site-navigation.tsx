@@ -1,13 +1,11 @@
 import { Link } from "@remix-run/react"
 
-import {
-  IndicatorNoUser,
-  IndicatorUser,
-} from "~/components/shared/indicator-user"
+import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
+import { ButtonLink } from "../ui/button-link"
 
 export function SiteNavigation() {
   const { userSession } = useRootLoaderData()
@@ -25,8 +23,17 @@ export function SiteNavigation() {
         <ThemeButton />
       </div>
 
-      {!userSession && <IndicatorNoUser />}
-      {userSession && <IndicatorUser />}
+      <div className="flex items-center gap-2">
+        {userSession && <IndicatorUser />}
+        {!userSession && (
+          <>
+            <ButtonLink to="/login" variant="secondary">
+              Log In
+            </ButtonLink>
+            <ButtonLink to="/signup">Sign Up</ButtonLink>
+          </>
+        )}
+      </div>
     </nav>
   )
 }

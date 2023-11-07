@@ -63,7 +63,7 @@ export function App() {
   const defaultTheme = theme ? theme : "dark"
 
   const location = useLocation()
-  const isDashboard = location.pathname.startsWith("/dashboard")
+  const isDashboard = location.pathname.startsWith("/user/dashboard")
 
   return (
     <html lang="en" data-theme={defaultTheme}>

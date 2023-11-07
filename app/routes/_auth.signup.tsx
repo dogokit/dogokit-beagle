@@ -33,7 +33,7 @@ export const meta: MetaFunction = () => {
 
 export const loader = async ({ request }: ActionFunctionArgs) => {
   await authenticator.isAuthenticated(request, {
-    successRedirect: "/dashboard",
+    successRedirect: "/user/dashboard",
   })
   return null
 }
@@ -139,7 +139,7 @@ export default function SignUpRoute() {
                 required
               />
               <FormDescription id={password.descriptionId}>
-                At least 4 characters
+                4 to 20 characters (letters, numbers, dot, underscore)
               </FormDescription>
               {username.errors && username.errors?.length > 0 && (
                 <ul>
@@ -159,13 +159,13 @@ export default function SignUpRoute() {
                   description: true,
                 })}
                 id={password.id}
-                placeholder="Enter password"
+                placeholder="Enter password (at least 8 characters)"
                 autoComplete="current-password"
                 autoFocus={password.error ? true : undefined}
                 required
               />
               <FormDescription id={password.descriptionId}>
-                At least 8 characters
+                8 characters or more
               </FormDescription>
               {password.errors && password.errors?.length > 0 && (
                 <ul>
@@ -259,6 +259,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   await timer.delay()
   return authenticator.authenticate("form", request, {
-    successRedirect: "/dashboard",
+    successRedirect: "/user/dashboard",
   })
 }

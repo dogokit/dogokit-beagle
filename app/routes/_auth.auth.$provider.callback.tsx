@@ -13,7 +13,7 @@ export const loader = ({ request, params }: LoaderFunctionArgs) => {
   const provider = params.provider as AuthStrategy
 
   return authenticator.authenticate(provider, request, {
-    successRedirect: "/dashboard",
+    successRedirect: "/user/dashboard",
     failureRedirect: "/login",
   })
 }

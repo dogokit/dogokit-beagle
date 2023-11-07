@@ -3,6 +3,6 @@ import { authenticator } from "~/services/auth.server"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return await authenticator.isAuthenticated(request, {
-    successRedirect: "/dashboard",
+    successRedirect: "/user/dashboard",
   })
 }

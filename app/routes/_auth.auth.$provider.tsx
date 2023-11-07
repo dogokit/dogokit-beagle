@@ -16,6 +16,6 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
   const provider = params.provider as AuthStrategy
 
   return await authenticator.authenticate(provider, request, {
-    successRedirect: "/dashboard",
+    successRedirect: "/user/dashboard",
   })
 }

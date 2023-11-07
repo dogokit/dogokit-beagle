@@ -24,14 +24,14 @@ async function main() {
 }
 
 async function seedPermissions() {
-  console.info("\n🔑 Seed permissions...")
+  console.info("\n🔑 Seed permissions")
   console.info("🔑 Existing permissions count", await prisma.permission.count())
   console.info(
     "🔑 Deleted existing permissions",
     await prisma.permission.deleteMany(),
   )
 
-  console.time("🔑 Created permissions...")
+  console.time("🔑 Created permissions")
 
   const entities = ["USER", "NOTE"]
   const actions = ["CREATE", "READ", "UPDATE", "DELETE"]
@@ -45,15 +45,15 @@ async function seedPermissions() {
     }
   }
 
-  console.timeEnd("🔑 Created permissions...")
+  console.timeEnd("🔑 Created permissions")
 }
 
 async function seedRoles() {
-  console.info("\n👑 Seed roles...")
+  console.info("\n👑 Seed roles")
   console.info("👑 Existing roles count", await prisma.role.count())
   console.info("👑 Deleted existing roles", await prisma.role.deleteMany())
 
-  console.time("👑 Created roles...")
+  console.time("👑 Created roles")
 
   await prisma.role.create({
     data: {
@@ -79,11 +79,11 @@ async function seedRoles() {
       },
     },
   })
-  console.timeEnd("👑 Created roles...")
+  console.timeEnd("👑 Created roles")
 }
 
 async function seedUsers() {
-  console.info("\n👤 Seed users...")
+  console.info("\n👤 Seed users")
   console.info("👤 Existing users coun", await prisma.user.count())
   console.info("👤 Deleted existing users", await prisma.user.deleteMany())
 

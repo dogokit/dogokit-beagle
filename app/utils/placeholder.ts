@@ -1,3 +1,11 @@
-export function getPlaceholderAvatarImageURL(username = "username") {
-  return `https://api.dicebear.com/6.x/thumbs/svg?seed=${username}`
+export function getPlaceholderAvatarImageURL(
+  username = "username",
+  styleName = "thumbs",
+) {
+  const url = new URL(`https://api.dicebear.com/6.x/${styleName}/svg`)
+
+  url.searchParams.append("seed", username)
+  url.searchParams.append("flip", String(true))
+
+  return url.toString()
 }
