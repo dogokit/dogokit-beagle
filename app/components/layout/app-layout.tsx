@@ -1,18 +1,18 @@
-import { DashboardFooter } from "~/components/layout/dashboard-footer"
-import { DashboardNavigation } from "~/components/layout/dashboard-navigation"
+import { AppFooter } from "~/components/layout/app-footer"
+import { AppNavigation } from "~/components/layout/app-navigation"
 import { cn } from "~/utils/cn"
 
-export function DashboardLayout({
+export function AppLayout({
   className,
   children,
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <div className="flex min-h-screen flex-col">
-      <DashboardNavigation />
+      <AppNavigation />
 
       <main className={cn("flex-[1]", className)}>{children}</main>
 
-      <DashboardFooter />
+      <AppFooter />
     </div>
   )
 }

@@ -16,7 +16,7 @@ import {
 } from "@remix-run/react"
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes"
 
-import { DashboardLayout } from "~/components/layout/dashboard-layout"
+import { AppLayout } from "~/components/layout/app-layout"
 import { SiteLayout } from "~/components/layout/site-layout"
 import { configDocumentLinks } from "~/configs/document"
 import { modelUser } from "~/models/user.server"
@@ -63,7 +63,10 @@ export function App() {
   const defaultTheme = theme ? theme : "dark"
 
   const location = useLocation()
-  const isDashboard = location.pathname.startsWith("/user/dashboard")
+  const isInsideApp =
+    location.pathname.startsWith("/user") ||
+    location.pathname.startsWith("/admin") ||
+    location.pathname.startsWith("/root")
 
   return (
     <html lang="en" data-theme={defaultTheme}>
@@ -76,15 +79,15 @@ export function App() {
       </head>
 
       <body id="__remix" className={cn(defaultTheme)}>
-        {!isDashboard && (
+        {!isInsideApp && (
           <SiteLayout>
             <Outlet />
           </SiteLayout>
         )}
-        {isDashboard && (
-          <DashboardLayout>
+        {isInsideApp && (
+          <AppLayout>
             <Outlet />
-          </DashboardLayout>
+          </AppLayout>
         )}
 
         <ScrollRestoration />

@@ -7,7 +7,7 @@ import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 import { IndicatorUser } from "../shared/indicator-user"
 
-export function DashboardNavigation() {
+export function AppNavigation() {
   const { userSession } = useRootLoaderData()
 
   return (
