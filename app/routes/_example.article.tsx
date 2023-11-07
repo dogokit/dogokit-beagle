@@ -19,7 +19,7 @@ export default function RemixRoute() {
 
       <section className="prose-config site-section">
         <h1 className="text-icon">
-          <Icon icon="fluent-emoji:cat-face" />
+          <Icon icon="fluent-emoji-flat:cat-face" />
           <span>Heading One</span>
         </h1>
         <p>
@@ -30,7 +30,7 @@ export default function RemixRoute() {
         <pre>console.log("Hello Inside 0123");</pre>
 
         <h2 className="text-icon">
-          <Icon icon="fluent-emoji:bear" />
+          <Icon icon="fluent-emoji-flat:bear" />
           <span>Heading Two</span>
         </h2>
         <p>
@@ -41,7 +41,7 @@ export default function RemixRoute() {
         </p>
 
         <h3 className="text-icon">
-          <Icon icon="fluent-emoji:paw-prints" />
+          <Icon icon="fluent-emoji-flat:paw-prints" />
           <span>Heading Three</span>
         </h3>
         <p>

@@ -46,12 +46,12 @@ export function Logo({
   size,
   className,
   classNameIcon,
-  text = "Dogokit",
+  text = "DOGOKIT",
 }: LogoProps) {
   return (
     <span className={cn(logoVariants({ variant, size, className }))}>
       <Icon
-        icon="fluent-emoji:dog-face"
+        icon="fluent-emoji-flat:dog-face"
         className={cn(logoIconVariants({ size, className: classNameIcon }))}
       />
       <span className="inline-flex flex-nowrap font-display">{text}</span>

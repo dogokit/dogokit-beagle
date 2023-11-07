@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react"
 
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
-import { Button } from "~/components/ui/button"
+import { ButtonLink } from "~/components/ui/button-link"
 import { cn } from "~/utils/cn"
 
 export function SiteNavigation() {
@@ -23,7 +23,7 @@ export function SiteNavigation() {
       </div>
 
       <div className="flex items-center justify-between gap-2">
-        <Button>Sign Up</Button>
+        <ButtonLink to="/login">Log In</ButtonLink>
       </div>
     </nav>
   )
