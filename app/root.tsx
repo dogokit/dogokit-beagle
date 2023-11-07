@@ -47,17 +47,17 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   })
 }
 
-export default function Route() {
+export default function RootRoute() {
   const data = useLoaderData<typeof loader>()
 
   return (
     <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-      <App />
+      <RootApp />
     </ThemeProvider>
   )
 }
 
-export function App() {
+export function RootApp() {
   const data = useLoaderData<typeof loader>()
   const [theme] = useTheme()
   const defaultTheme = theme ? theme : "dark"
