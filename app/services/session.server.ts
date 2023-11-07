@@ -2,9 +2,9 @@ import { createCookieSessionStorage } from "@remix-run/node"
 
 import { isProduction, parsedEnv } from "~/utils/env.server"
 
-export const sessionStorage = createCookieSessionStorage({
+export const authSessionStorage = createCookieSessionStorage({
   cookie: {
-    name: "__auth_session",
+    name: "__dogokit_auth_session",
     httpOnly: true,
     path: "/",
     sameSite: "lax",
@@ -14,4 +14,4 @@ export const sessionStorage = createCookieSessionStorage({
   },
 })
 
-export const { getSession, commitSession, destroySession } = sessionStorage
+export const { getSession, commitSession, destroySession } = authSessionStorage

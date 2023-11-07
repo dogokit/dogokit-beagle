@@ -5,7 +5,7 @@ import { isProduction, parsedEnv } from "~/utils/env.server"
 
 export const themeSessionStorage = createCookieSessionStorage({
   cookie: {
-    name: "__theme",
+    name: "__dogokit_theme_session",
     httpOnly: true,
     path: "/",
     sameSite: "lax",
