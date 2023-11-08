@@ -35,12 +35,34 @@ model User {
 
   password Password?
 
-  roles  Role[]
-  images UserImage[] // multiple user images / avatars / profile pictures
-  notes  Note[]
+  roles    Role[]
+  images   UserImage[] // multiple user images / avatars / profile pictures
+  profiles UserProfile[]
+  notes    Note[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model UserProfile {
+  id String @id @default(cuid())
+
+  user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId String
+
+  headline String?
+  bio      String? @db.Text
+  links    Json?
+
+  isPrimary Boolean? @default(true)
+  isPublic  Boolean? @default(true)
+  modeName  String?  @default("DEFAULT")
+  sequence  Int?     @default(1)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
 }
 
 model Role {

@@ -83,6 +83,9 @@
   b {
     @apply font-semibold;
   }
+  a {
+    @apply cursor-pointer;
+  }
 }
 
 @layer components {
@@ -100,6 +103,12 @@
   }
   .site-section {
     @apply mx-auto w-full max-w-prose;
+  }
+  .app-container {
+    @apply mx-auto w-full p-2;
+  }
+  .app-section {
+    @apply mx-auto w-full max-w-7xl;
   }
   .hover-opacity {
     @apply transition hover:opacity-75;

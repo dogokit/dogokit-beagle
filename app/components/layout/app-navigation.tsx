@@ -13,7 +13,7 @@ export function AppNavigation() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-b-border bg-background p-1",
+        "sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-b-border bg-background p-2",
       )}
     >
       <div className="flex items-center justify-between gap-2">
@@ -24,7 +24,7 @@ export function AppNavigation() {
       </div>
 
       <div className="flex items-center gap-2">
-        {userSession && <IndicatorUser />}
+        {userSession && <IndicatorUser size="sm" />}
         {!userSession && (
           <>
             <ButtonLink to="/logout" size="xs" variant="destructive">

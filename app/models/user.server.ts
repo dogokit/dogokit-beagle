@@ -57,6 +57,7 @@ export const modelUser = {
     return prisma.user.findUnique({
       where: { username },
       include: {
+        profiles: true,
         roles: { select: { symbol: true, name: true } },
         images: { select: { id: true, url: true } },
       },

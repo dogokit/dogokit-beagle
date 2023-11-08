@@ -1,10 +1,7 @@
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import * as React from "react"
 
-import { type UserData } from "~/services/auth.server"
 import { cn } from "~/utils/cn"
-import { formatNameInitials } from "~/utils/format-string"
-import { getPlaceholderAvatarImageURL } from "~/utils/placeholder"
 
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
@@ -48,31 +45,4 @@ const AvatarFallback = React.forwardRef<
 ))
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 
-/**
- * Avatar Auto
- *
- * Can refactor later with variant to handle size
- */
-function AvatarAuto({
-  user,
-  imageURL,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement> & {
-  user: Pick<UserData, "username" | "fullname">
-  imageURL?: string
-}) {
-  return (
-    <Avatar {...props}>
-      <AvatarImage
-        src={imageURL || getPlaceholderAvatarImageURL(user.username)}
-        alt={user.fullname}
-      />
-
-      {!imageURL && (
-        <AvatarFallback>{formatNameInitials(user.fullname)}</AvatarFallback>
-      )}
-    </Avatar>
-  )
-}
-
-export { Avatar, AvatarAuto, AvatarFallback, AvatarImage }
+export { Avatar, AvatarFallback, AvatarImage }

@@ -1,4 +1,8 @@
 import { Link, NavLink } from "@remix-run/react"
+import { type VariantProps } from "class-variance-authority"
+
+import { AvatarAuto, avatarAutoVariants } from "~/components/ui/avatar-auto"
+import { Button } from "~/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,17 +13,18 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
+import { Iconify } from "~/components/ui/iconify"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
-import { AvatarAuto } from "../ui/avatar"
-import { Button } from "../ui/button"
-import { Iconify } from "../ui/iconify"
+import { cn } from "~/utils/cn"
 
-export function IndicatorUser({
-  align = "end",
-}: {
+export interface IndicatorUserProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof avatarAutoVariants> {
   align?: "center" | "start" | "end" | undefined
-}) {
+}
+
+export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
   const { userData } = useRootLoaderData()
   const { isModeDevelopment } = useAppMode()
 
@@ -27,8 +32,15 @@ export function IndicatorUser({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <AvatarAuto user={userData} imageURL={userData.images[0]?.url} />
+        <Button
+          variant="ghost"
+          className={cn("relative rounded-full", avatarAutoVariants({ size }))}
+        >
+          <AvatarAuto
+            user={userData}
+            imageURL={userData.images[0]?.url}
+            size={size}
+          />
         </Button>
       </DropdownMenuTrigger>
 
@@ -41,75 +53,109 @@ export function IndicatorUser({
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator />
+        <DropdownMenuGroupItems
+          items={createDropdownItemsPrimary(userData.username)}
+        />
 
-        <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <NavLink to={`/${userData.username}`}>
-              <Iconify icon="ph:user-duotone" />
-              <span>Profile</span>
-            </NavLink>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem asChild>
-            <NavLink to={`/user/dashboard`}>
-              <Iconify icon="ph:binoculars-duotone" />
-              <span>Dashboard</span>
-            </NavLink>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem asChild>
-            <NavLink to={`/user/settings`}>
-              <Iconify icon="ph:gear-duotone" />
-              <span>Settings</span>
-            </NavLink>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem>
-            <Iconify icon="ph:credit-card-duotone" />
-            <span>Billing</span>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem>
-            <Iconify icon="ph:notification-duotone" />
-            <span>Notifications</span>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem>
-            <Iconify icon="ph:keyboard-duotone" />
-            <span>Command Palette</span>
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-
+        <DropdownMenuSeparator />
         {isModeDevelopment && (
-          <>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <NavLink to={`/admin`}>
-                  <Iconify icon="ph:crown-duotone" />
-                  <span>Admin</span>
-                </NavLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <NavLink to={`/components`}>
-                  <Iconify icon="ph:bounding-box-duotone" />
-                  <span>Components</span>
-                </NavLink>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </>
+          <DropdownMenuGroupItems items={createDropdownItemsDev()} />
         )}
 
         <DropdownMenuSeparator />
-
-        <DropdownMenuItem asChild>
-          <NavLink to="/logout">
-            <Iconify icon="ph:sign-out-duotone" />
-            <span>Log out</span>
-          </NavLink>
-        </DropdownMenuItem>
+        <DropdownMenuGroupItems items={createDropdownItemsAuth()} />
       </DropdownMenuContent>
     </DropdownMenu>
   )
+}
+
+function DropdownMenuGroupItems({ items }: { items: DropdownMenuItem[] }) {
+  return (
+    <DropdownMenuGroup>
+      {items.map(item => (
+        <DropdownMenuItem key={item.to} asChild>
+          <NavLink to={item.to} className="cursor-pointer">
+            <Iconify icon={item.icon} className="me-2" />
+            <span>{item.text}</span>
+            {item.shortcut && (
+              <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>
+            )}
+          </NavLink>
+        </DropdownMenuItem>
+      ))}
+    </DropdownMenuGroup>
+  )
+}
+
+type DropdownMenuItem = {
+  to: string
+  icon: string
+  text: string
+  shortcut?: string
+}
+
+function createDropdownItemsPrimary(username: string) {
+  return [
+    {
+      to: `/${username}`,
+      icon: "ph:user-duotone",
+      text: "Profile",
+      shortcut: "⌘K+P",
+    },
+    {
+      to: "/user/dashboard",
+      icon: "ph:binoculars-duotone",
+      text: "Dashboard",
+      shortcut: "⌘K+D",
+    },
+    {
+      to: "/user/settings",
+      icon: "ph:gear-duotone",
+      text: "Settings",
+      shortcut: "⌘K+S",
+    },
+    {
+      to: "/user/billing",
+      icon: "ph:credit-card-duotone",
+      text: "Billing",
+      shortcut: "⌘K+B",
+    },
+    {
+      to: "/user/notifications",
+      icon: "ph:notification-duotone",
+      text: "Notifications",
+      shortcut: "⌘K+N",
+    },
+    {
+      to: "/help/shortcuts",
+      icon: "ph:keyboard-duotone",
+      text: "Command Palette",
+      shortcut: "⌘K",
+    },
+  ]
+}
+
+function createDropdownItemsDev() {
+  return [
+    {
+      to: "/admin",
+      icon: "ph:crown-duotone",
+      text: "Admin",
+    },
+    {
+      to: "/components",
+      icon: "ph:bounding-box-duotone",
+      text: "Components",
+    },
+  ]
+}
+
+function createDropdownItemsAuth() {
+  return [
+    {
+      to: "/logout",
+      icon: "ph:sign-out-duotone",
+      text: "Log Out",
+    },
+  ]
 }

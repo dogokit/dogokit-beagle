@@ -28,16 +28,16 @@ const buttonVariants = cva(
       isIcon: { true: "p-0", false: "" },
       isIconText: { true: "flex items-center gap-2", false: "" },
     },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
     compoundVariants: [
       { isIcon: true, size: "xs", class: "h-6 w-6 text-base" },
       { isIcon: true, size: "sm", class: "h-8 w-8 text-lg" },
       { isIcon: true, size: "default", class: "h-10 w-10 text-2xl" },
       { isIcon: true, size: "lg", class: "h-12 w-12 text-4xl" },
     ],
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
   },
 )
 

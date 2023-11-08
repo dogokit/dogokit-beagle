@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@balavishnuvj/remix-seo':
+    specifier: 1.0.2
+    version: 1.0.2(@remix-run/react@2.2.0)(@remix-run/server-runtime@2.2.0)
   '@conform-to/react':
     specifier: 0.9.0
     version: 0.9.0(react@18.2.0)
@@ -71,6 +74,9 @@ dependencies:
   clsx:
     specifier: 2.0.0
     version: 2.0.0
+  dayjs:
+    specifier: 1.11.10
+    version: 1.11.10
   dotenv:
     specifier: 16.3.1
     version: 16.3.1
@@ -662,6 +668,17 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
     dev: true
+
+  /@balavishnuvj/remix-seo@1.0.2(@remix-run/react@2.2.0)(@remix-run/server-runtime@2.2.0):
+    resolution: {integrity: sha512-uSG0bc8ex0wj+RSO/hhtI/9BK7WlopYtIyrCR9A5GtwPyodNelR2ZRKg1PmyfSEndVgPIUFvpmCKT8GLZQbrYw==}
+    peerDependencies:
+      '@remix-run/react': ^1.0.0
+      '@remix-run/server-runtime': ^1.0.0
+    dependencies:
+      '@remix-run/react': 2.2.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+      '@remix-run/server-runtime': 2.2.0(typescript@5.2.2)
+      lodash: 4.17.21
+    dev: false
 
   /@conform-to/dom@0.9.0:
     resolution: {integrity: sha512-kaYP7jKeWWnBY+M0+Rttj5atWm9Tt9Uyts49lU4hoz9p/X8v5GuGas6YOilovyE5/vJUsnuYzN97upxIvlYg4g==}
@@ -3778,6 +3795,10 @@ packages:
     resolution: {integrity: sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==}
     engines: {node: '>= 6'}
 
+  /dayjs@1.11.10:
+    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
+    dev: false
+
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -6261,7 +6282,6 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}

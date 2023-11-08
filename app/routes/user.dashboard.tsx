@@ -10,9 +10,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   })
-
   const user = await modelUser.getById({ id: userSession.id })
-
   return json({ user })
 }
 
@@ -21,7 +19,6 @@ export default function UserDashboardRoute() {
   const { user } = useLoaderData<typeof loader>()
 
   if (!userData) return null
-
   return (
     <div>
       <header>
