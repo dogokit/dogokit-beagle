@@ -45,12 +45,12 @@ export const configSiteMeta = {
   defaultTitleSeparator: "—",
   defaultDescription: configSiteGeneral?.description,
 
+  color: "#c7d2fe", // EDITME
   locale: "en_US",
   url: isDevelopment
     ? "http://localhost:3000"
     : `https://${configSiteGeneral?.domain}`,
   canonicalPath: "/",
-  color: "#3399cc", // EDITME
   ogType: "website",
   ogImageAlt: configSiteGeneral?.title,
   ogImageType: "image/png",
