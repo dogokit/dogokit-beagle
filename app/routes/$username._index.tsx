@@ -4,7 +4,6 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
-import { GeneralErrorBoundary } from "~/components/shared/error-boundary"
 
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -86,30 +85,5 @@ export default function UsernameRoute() {
         </section>
       )}
     </div>
-  )
-}
-
-export function ErrorBoundary() {
-  return (
-    <GeneralErrorBoundary
-      statusHandlers={{
-        404: ({ params }) => <ErrorUsername username={params.username} />,
-      }}
-    />
-  )
-}
-
-function ErrorUsername({ username }: { username?: string }) {
-  return (
-    <section className="prose-config site-section">
-      <h1>Sorry, that page could not be found.</h1>
-      <p>
-        The requested page either doesn’t exist or you don’t have access to it.
-      </p>
-      <ul>
-        <li>Cannot find page "{username}"</li>
-        <li>Cannot find user with the username "{username}"</li>
-      </ul>
-    </section>
   )
 }

@@ -16,7 +16,7 @@ export const loader = ({}: LoaderFunctionArgs) => {
   return json({ redirects })
 }
 
-export default function Route() {
+export default function RedirectsRoute() {
   const { redirects } = useLoaderData<typeof loader>()
 
   return (

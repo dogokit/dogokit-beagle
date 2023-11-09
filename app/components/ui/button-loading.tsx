@@ -1,9 +1,9 @@
 import { type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
+import { buttonVariants } from "~/components/ui/button"
+import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
-import { buttonVariants } from "./button"
-import { Iconify } from "./iconify"
 
 // https://reactrouter.com/en/6.14.2/hooks/use-navigation
 export interface ButtonLoadingProps

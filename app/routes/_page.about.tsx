@@ -1,7 +1,7 @@
 export default function AboutRoute() {
   return (
-    <div>
-      <header>
+    <div className="site-container">
+      <header className="site-section">
         <h1>About</h1>
       </header>
     </div>

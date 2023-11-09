@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react"
 import { type VariantProps } from "class-variance-authority"
 import { Theme, useTheme } from "remix-themes"
+import { match } from "ts-pattern"
 
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
@@ -26,12 +27,12 @@ export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
   const isPreferDark = useMediaQuery(COLOR_SCHEME_QUERY)
 
   function handleChangeTheme(themeName: "dark" | "light" | "system") {
-    if (themeName === "dark") setTheme(Theme.DARK)
-    if (themeName === "light") setTheme(Theme.LIGHT)
-    if (themeName === "system") {
-      if (isPreferDark) setTheme(Theme.DARK)
-      else setTheme(Theme.LIGHT)
-    }
+    const selectedTheme = match(themeName)
+      .with("dark", () => Theme.DARK)
+      .with("light", () => Theme.LIGHT)
+      .otherwise(() => (isPreferDark ? Theme.DARK : Theme.LIGHT))
+
+    setTheme(selectedTheme)
   }
 
   return (
