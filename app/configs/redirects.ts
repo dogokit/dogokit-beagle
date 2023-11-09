@@ -8,4 +8,5 @@ export const configRedirects: ConfigRedirect[] = [
   { path: "/twitter", url: "https://twitter.com/mhaidarhanif" },
   { path: "/x", to: "/twitter" },
   { path: "/youtube", url: "https://youtube.com/mhaidarhanif" },
+  { path: "/yt", to: "/youtube" },
 ]

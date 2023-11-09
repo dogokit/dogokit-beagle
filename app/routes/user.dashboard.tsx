@@ -4,8 +4,8 @@ import { useLoaderData } from "@remix-run/react"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelUser } from "~/models/user.server"
 import { authenticator } from "~/services/auth.server"
-import { formatStringCode } from "~/utils/format-string"
 import { createSitemap } from "~/utils/sitemap"
+import { stringifyCode } from "~/utils/string"
 
 export const handle = createSitemap()
 
@@ -29,7 +29,7 @@ export default function UserDashboardRoute() {
       </header>
 
       <section>
-        <pre>{formatStringCode(user)}</pre>
+        <pre>{stringifyCode(user)}</pre>
       </section>
     </div>
   )

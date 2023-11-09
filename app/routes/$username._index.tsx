@@ -52,8 +52,10 @@ export default function UsernameRoute() {
   const { user } = useLoaderData<typeof loader>()
 
   if (!user) return null
+
   const profile = user.profiles[0]
   const isOwner = user.id === userSession?.id
+  const userImageURL = user.images[0]?.url
 
   return (
     <div className="space-y-8">
@@ -61,7 +63,7 @@ export default function UsernameRoute() {
         <div className={cn("flex flex-wrap items-end justify-between")}>
           <AvatarAuto
             user={user}
-            imageURL={user.images[0]?.url}
+            imageURL={userImageURL}
             className="outline outline-2 outline-background"
             size="xl"
           />

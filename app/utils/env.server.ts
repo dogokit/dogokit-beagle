@@ -21,8 +21,6 @@ export const parsedEnv = parseEnv(process.env, {
   GITHUB_CLIENT_SECRET: z.string().optional(),
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
-  TWITTER_CLIENT_ID: z.string().optional(),
-  TWITTER_CLIENT_SECRET: z.string().optional(),
 })
 
 export const isDevelopment = parsedEnv.NODE_ENV === "development"

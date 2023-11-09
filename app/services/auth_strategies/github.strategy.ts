@@ -1,7 +1,7 @@
 // Refer to https://github.com/sergiodxa/remix-auth-github for more information
 import { AuthorizationError } from "remix-auth"
 import { GitHubStrategy } from "remix-auth-github"
-import { prisma } from "~/libs/db.server"
+import { modelUser } from "~/models/user.server"
 
 import { type UserSession } from "~/services/auth.server"
 import { AuthStrategies } from "~/services/auth_strategies"
@@ -24,22 +24,16 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
     const email = profile.emails[0]?.value.trim().toLowerCase()
     if (!email) throw new AuthorizationError("Email is not found")
 
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-      select: { id: true },
-    })
+    const existingUser = await modelUser.getByEmail({ email })
     if (existingUser) {
       return { id: existingUser.id }
     }
 
-    const newUser = await prisma.user.create({
-      data: {
-        email,
-        fullname: profile._json.name,
-        username: profile._json.login,
-        images: { create: { url: profile.photos[0].value } },
-      },
-      select: { id: true },
+    const newUser = await modelUser.continueWithService({
+      email,
+      fullname: profile._json.name,
+      username: profile._json.login,
+      imageURL: profile.photos[0].value,
     })
     if (!newUser) throw new AuthorizationError("Failed to create account")
 

@@ -1,14 +1,14 @@
 import pluralize from "pluralize"
 
-export function formatStringPlural(word: string, count: number) {
+export function pluralizeWord(word: string, count: number) {
   return pluralize(word, count, true)
 }
 
-export function formatStringCode(code: any) {
+export function stringifyCode(code: any) {
   return JSON.stringify(code, null, 2)
 }
 
-export function formatNameInitials(name = "First Last") {
+export function getNameInitials(name = "First Last") {
   return name
     .split(" ")
     .map((word, index) => {
@@ -18,14 +18,30 @@ export function formatNameInitials(name = "First Last") {
     .join("")
 }
 
-export function formatTruncateText(text: string, maxLength = 140) {
+export function getUsernameFromEmail(email: string) {
+  // Step 1: Remove the domain part
+  const atIndex = email.indexOf("@")
+
+  if (atIndex !== -1) {
+    const username = email.substring(0, atIndex)
+
+    // Step 2: Replace '.' with '_'
+    const usernameWithUnderscores = username.replace(/\./g, "_")
+    return usernameWithUnderscores
+  } else {
+    // Handle the case where the string doesn't contain '@'
+    return email
+  }
+}
+
+export function getTruncatedText(text: string, maxLength = 140) {
   if (!text || typeof text !== "string") return text
   return text.length > maxLength
     ? text.substring(0, maxLength - 3) + "..."
     : text
 }
 
-export function formatCapitalizeText(text: string) {
+export function getCapitalizedText(text: string) {
   if (!text || typeof text !== "string") return text
   return text.charAt(0).toUpperCase() + text.slice(1)
 }

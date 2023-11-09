@@ -6,7 +6,7 @@ import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = ({ request }: LoaderFunctionArgs) => {
   return authenticator.isAuthenticated(request, { failureRedirect: "/login" })
 }
 

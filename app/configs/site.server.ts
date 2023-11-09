@@ -6,7 +6,7 @@
 
 import { isDevelopment } from "~/utils/env.server"
 
-// For general
+// For general purpose
 export const configSiteGeneral = {
   domain: isDevelopment ? "localhost:3000" : "dogokit.allnimal.com",
 
@@ -16,15 +16,15 @@ export const configSiteGeneral = {
   description: "Dogokit Remix template kit",
 
   links: {
-    website: "https://mhaidarhanif.com",
-    github: "https://github.com/mhaidarhanif/rewinds",
-    twitter: "https://twitter.com/mhaidarhanif",
-    youtube: "https://youtube.com/mhaidarhanif",
-    facebook: "https://facebook.com/mhaidarhanif",
-    instagram: "https://instagram.com/mhaidarhanif_",
     devTo: "https://dev.to/mhaidarhanif",
+    facebook: "https://facebook.com/mhaidarhanif",
+    github: "https://github.com/mhaidarhanif",
     hashnode: "https://hashnode.com/mhaidarhanif",
+    instagram: "https://instagram.com/mhaidarhanif_",
     showwcase: "https://showwcase.com/mhaidarhanif",
+    twitter: "https://twitter.com/mhaidarhanif",
+    website: "https://dogokit.allnimal.com",
+    youtube: "https://youtube.com/mhaidarhanif",
   },
 
   twitter: {
@@ -54,8 +54,8 @@ export const configSiteMeta = {
   ogType: "website",
   ogImageAlt: configSiteGeneral?.title,
   ogImageType: "image/png",
-  ogImagePath: "/assets/opengraph/dogokit-remix-og.png",
-  twitterImagePath: "/assets/opengraph/dogokit-remix-og.png",
+  ogImagePath: "/assets/opengraph/dogokit-og.png",
+  twitterImagePath: "/assets/opengraph/dogokit-og.png",
   fbAppId: "",
 
   author: {

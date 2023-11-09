@@ -14,7 +14,6 @@ const getIconName = (providerName: string) =>
   match(providerName)
     .with("github", () => "fe:github")
     .with("google", () => "fe:google")
-    .with("twitter", () => "fe:twitter")
     .otherwise(() => "fe:donut")
 
 export function ButtonSocial({ provider, label }: SocialButtonProps) {

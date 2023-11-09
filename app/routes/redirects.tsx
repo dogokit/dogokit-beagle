@@ -7,7 +7,7 @@ import { Link, useLoaderData } from "@remix-run/react"
 
 import { Anchor } from "~/components/ui/anchor"
 import { configRedirects } from "~/configs/redirects"
-import { formatStringPlural } from "~/utils/format-string"
+import { pluralizeWord } from "~/utils/string"
 
 export const meta: MetaFunction = () => [{ title: "Redirects" }]
 
@@ -25,8 +25,8 @@ export default function Route() {
         <header>
           <h1>Redirects</h1>
           <p>
-            {formatStringPlural("path", redirects.length)} redirect paths to
-            URLs and other pages.
+            {pluralizeWord("path", redirects.length)} redirect paths to URLs and
+            other pages.
           </p>
         </header>
 

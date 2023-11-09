@@ -66,7 +66,7 @@ export const modelUser = {
 
   getByEmail({ email }: Pick<User, "email">) {
     return prisma.user.findUnique({
-      where: { email: String(email) },
+      where: { email },
       select: { id: true },
     })
   },
@@ -96,6 +96,7 @@ export const modelUser = {
     inviteBy?: string
     inviteCode?: string
   }) {
+    // The logic is in Conform Zod validation
     return prisma.user.create({
       data: {
         fullname: fullname.trim(),
@@ -115,8 +116,26 @@ export const modelUser = {
     })
   },
 
-  async login({ email }: { email: User["email"] }) {
-    return await prisma.user.findUnique({ where: { email } })
+  login({ email }: Pick<User, "email">) {
+    // The logic is in Conform Zod validation
+    return prisma.user.findUnique({ where: { email } })
+  },
+
+  continueWithService({
+    email,
+    fullname,
+    username,
+    imageURL,
+  }: Pick<User, "email" | "fullname" | "username"> & { imageURL: string }) {
+    return prisma.user.create({
+      data: {
+        email,
+        fullname,
+        username,
+        images: { create: { url: imageURL } },
+      },
+      select: { id: true },
+    })
   },
 
   deleteById({ id }: Pick<User, "id">) {

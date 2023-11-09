@@ -32,7 +32,7 @@ export const meta: MetaFunction = () => {
   return [{ title: "Log In" }]
 }
 
-export const loader = async ({ request }: ActionFunctionArgs) => {
+export const loader = ({ request }: ActionFunctionArgs) => {
   return authenticator.isAuthenticated(request, {
     successRedirect: "/user/dashboard",
   })
