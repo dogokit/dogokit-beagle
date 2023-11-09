@@ -1,11 +1,9 @@
-import { type SEOHandle } from "@balavishnuvj/remix-seo"
+import { type SEOHandle } from "@nasa-gcn/remix-seo"
 
 export function createSitemap(route?: string | null, priority?: number) {
-  const entries = route ? [{ route, priority }] : null
-  const handle = {
+  return {
     getSitemapEntries: () => {
-      return entries
+      return route ? [{ route, priority }] : null
     },
-  }
-  return handle as SEOHandle
+  } as SEOHandle
 }

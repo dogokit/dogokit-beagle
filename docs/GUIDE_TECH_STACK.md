@@ -10,6 +10,8 @@ Legends:
 - 💠 = available as open source
 - 🚧 = still in development or not available
 
+Table of Contents:
+
 - [Guide: Tech Stack](#guide-tech-stack)
   - [Core](#core)
   - [Library and Framework](#library-and-framework)
@@ -24,18 +26,19 @@ Legends:
   - [Video](#video)
   - [Environment Variable/Secret](#environment-variablesecret)
   - [Analytics](#analytics)
-  - [Transactional Email 🚧](#transactional-email-)
-  - [Marketing Email 🚧](#marketing-email-)
+  - [Transactional Email](#transactional-email)
+  - [Marketing Email](#marketing-email)
   - [Uptime Monitoring](#uptime-monitoring)
+  - [Error Monitoring and Tracking](#error-monitoring-and-tracking)
   - [Background Jobs](#background-jobs)
   - [Cache and Rate Limiter](#cache-and-rate-limiter)
-  - [Payment 🚧](#payment-)
-  - [Testing 🚧](#testing-)
+  - [Payment Gateway](#payment-gateway)
+  - [Testing](#testing)
   - [Container](#container)
   - [Credentials](#credentials)
   - [Code Review](#code-review)
-  - [Don't Use These](#dont-use-these)
-  - [Extra Tech Stack](#extra-tech-stack)
+  - [Don't Use These Stack](#dont-use-these-stack)
+  - [Extra Stack](#extra-stack)
     - [REST API](#rest-api)
     - [GraphQL](#graphql)
     - [tRPC](#trpc)
@@ -178,6 +181,10 @@ Alternatives:
 
 - [OpenStatus](https://openstatus.dev)
 
+## Error Monitoring and Tracking
+
+- [Sentry](https://sentry.io)
+
 ## Background Jobs
 
 - [Trigger.dev](https://trigger.dev) 🚧🧩🎉
@@ -228,7 +235,7 @@ If need to share quickly, [EnvShare](https://envshare.dev) is good enough.
 
 ---
 
-## Don't Use These
+## Don't Use These Stack
 
 - styled-components, @emotion, Stitches, Chakra UI, MUI, etc
 - TanStack/React Query, SWR, Axios, etc
@@ -236,7 +243,7 @@ If need to share quickly, [EnvShare](https://envshare.dev) is good enough.
 
 ---
 
-## Extra Tech Stack
+## Extra Stack
 
 Although these are not included, if need a separate backend/server/service, here
 are the recommendations:

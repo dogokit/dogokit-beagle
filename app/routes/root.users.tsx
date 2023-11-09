@@ -14,7 +14,7 @@ export const loader = async ({}: LoaderFunctionArgs) => {
   return json({ usersCount, users })
 }
 
-export default function RouteComponent() {
+export default function RootUsersRoute() {
   const { usersCount, users } = useLoaderData<typeof loader>()
 
   return (

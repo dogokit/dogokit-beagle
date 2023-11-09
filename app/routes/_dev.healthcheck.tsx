@@ -3,6 +3,9 @@ import { type LoaderFunctionArgs } from "@remix-run/node"
 import { prisma } from "~/libs/db.server"
 import { HTTPStatus } from "~/types/http-status"
 import { parsedEnv } from "~/utils/env.server"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap()
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const host =
@@ -24,9 +27,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
       }),
     ])
 
-    return new Response("Health Check: OK")
+    return new Response("HEALTH CHECK: OK")
   } catch (error: unknown) {
-    console.info("Health Check: ERROR", { error })
+    console.info("HEALTH CHECK: ERROR", { error })
 
     return new Response("ERROR", { status: HTTPStatus.INTERNAL_SERVER_ERROR })
   }

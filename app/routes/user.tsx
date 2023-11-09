@@ -2,10 +2,12 @@ import { type LoaderFunctionArgs } from "@remix-run/node"
 import { Outlet } from "@remix-run/react"
 
 import { authenticator } from "~/services/auth.server"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  await authenticator.isAuthenticated(request, { failureRedirect: "/login" })
-  return null
+  return authenticator.isAuthenticated(request, { failureRedirect: "/login" })
 }
 
 export default function UserLayoutRoute() {

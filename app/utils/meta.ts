@@ -39,6 +39,7 @@ export function createMetaData({
       name: "description",
       content: description,
     },
+    // FIXME
     // {
     //   name: "application-name",
     //   content: name,

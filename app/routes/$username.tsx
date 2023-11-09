@@ -1,4 +1,4 @@
-import { type SEOHandle } from "@balavishnuvj/remix-seo"
+import { type SEOHandle } from "@nasa-gcn/remix-seo"
 import { Outlet } from "@remix-run/react"
 
 import { modelUser } from "~/models/user.server"

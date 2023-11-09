@@ -1,16 +1,17 @@
 import {
   json,
-  redirect,
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
+import { GeneralErrorBoundary } from "~/components/shared/error-boundary"
 
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelUser } from "~/models/user.server"
 import { cn } from "~/utils/cn"
+import { invariant } from "~/utils/invariant"
 import { createMetaData } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -39,7 +40,7 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
  */
 export async function loader({ params }: LoaderFunctionArgs) {
   const username = params.username
-  if (!username) return redirect("/")
+  invariant(username, "params.username unavailable")
 
   const user = await modelUser.getByUsername({ username })
 
@@ -61,7 +62,7 @@ export default function UsernameRoute() {
           <AvatarAuto
             user={user}
             imageURL={user.images[0]?.url}
-            className={cn("outline outline-2 outline-background")}
+            className="outline outline-2 outline-background"
             size="xl"
           />
           {isOwner && (
@@ -84,5 +85,17 @@ export default function UsernameRoute() {
         </section>
       )}
     </div>
+  )
+}
+
+export function ErrorBoundary() {
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: ({ params }) => (
+          <p>Cannot find user with the username "{params.username}"</p>
+        ),
+      }}
+    />
   )
 }

@@ -5,6 +5,9 @@ import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelUser } from "~/models/user.server"
 import { authenticator } from "~/services/auth.server"
 import { formatStringCode } from "~/utils/format-string"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const userSession = await authenticator.isAuthenticated(request, {

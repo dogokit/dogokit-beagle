@@ -32,10 +32,9 @@ export const meta: MetaFunction = () => {
 }
 
 export const loader = async ({ request }: ActionFunctionArgs) => {
-  await authenticator.isAuthenticated(request, {
+  return authenticator.isAuthenticated(request, {
     successRedirect: "/user/dashboard",
   })
-  return null
 }
 
 export default function SignUpRoute() {
