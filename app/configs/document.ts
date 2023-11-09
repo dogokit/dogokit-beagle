@@ -61,7 +61,7 @@ const manifestLinks = [
    */
   {
     rel: "manifest",
-    href: "/favicons/site.webmanifest",
+    href: "/site.webmanifest",
   },
 ]
 
