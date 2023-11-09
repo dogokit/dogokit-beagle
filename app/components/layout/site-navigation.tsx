@@ -3,9 +3,9 @@ import { Link } from "@remix-run/react"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
+import { ButtonLink } from "~/components/ui/button-link"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
-import { ButtonLink } from "../ui/button-link"
 
 export function SiteNavigation() {
   const { userSession } = useRootLoaderData()

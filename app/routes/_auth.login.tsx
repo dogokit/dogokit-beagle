@@ -12,10 +12,10 @@ import {
   useSearchParams,
 } from "@remix-run/react"
 import { z } from "zod"
+import { AuthButtons } from "~/components/shared/auth-buttons"
 
 import { Alert } from "~/components/ui/alert"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import { ButtonSocial } from "~/components/ui/button-social"
 import { FormDescription, FormField, FormLabel } from "~/components/ui/form"
 import { Input, InputPassword } from "~/components/ui/input"
 import { LinkText } from "~/components/ui/link-text"
@@ -23,7 +23,6 @@ import { useAppMode } from "~/hooks/use-app-mode"
 import { prisma } from "~/libs/db.server"
 import { schemaUserLogIn } from "~/schemas/user"
 import { authenticator } from "~/services/auth.server"
-import { AuthStrategies } from "~/services/auth_strategies"
 import { checkPassword } from "~/utils/encryption.server"
 import { createTimer } from "~/utils/timer"
 
@@ -154,8 +153,7 @@ export default function SignUpRoute() {
         </section>
 
         <section className="space-y-2">
-          <ButtonSocial provider={AuthStrategies.GITHUB} label="GitHub" />
-          <ButtonSocial provider={AuthStrategies.GOOGLE} label="Google" />
+          <AuthButtons />
         </section>
       </div>
     </div>

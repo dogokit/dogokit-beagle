@@ -15,6 +15,12 @@
     "url": "https://github.com"
   },
   {
+    "name": "Uploadcare",
+    "icon": "tabler:square-rounded-letter-u",
+    "url": "https://uploadcare.com",
+    "isSoon": true
+  },
+  {
     "name": "Resend",
     "icon": "tabler:square-rounded-letter-r",
     "url": "https://resend.com",
