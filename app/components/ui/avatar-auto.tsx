@@ -4,8 +4,8 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { type UserData } from "~/services/auth.server"
 import { cn } from "~/utils/cn"
-import { formatNameInitials } from "~/utils/format-string"
 import { getPlaceholderAvatarImageURL } from "~/utils/placeholder"
+import { getNameInitials } from "~/utils/string"
 
 export const avatarAutoVariants = cva("", {
   variants: {
@@ -50,7 +50,7 @@ export function AvatarAuto({
       />
 
       {!imageURL && (
-        <AvatarFallback>{formatNameInitials(user.fullname)}</AvatarFallback>
+        <AvatarFallback>{getNameInitials(user.fullname)}</AvatarFallback>
       )}
     </Avatar>
   )
