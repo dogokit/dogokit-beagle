@@ -72,7 +72,7 @@ export default function SignUpRoute() {
     <div className="site-container">
       <div className="mx-auto max-w-sm space-y-10 sm:mt-10">
         <header className="space-y-4">
-          <h2>Create a Dogokit account</h2>
+          <h2>Create a new account</h2>
           <p>
             Already have an account? <LinkText to="/login">Log in</LinkText>
           </p>

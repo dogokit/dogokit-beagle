@@ -6,7 +6,7 @@ import {
   type LoaderFunctionArgs,
 } from "@remix-run/node"
 import { Outlet, useLoaderData } from "@remix-run/react"
-import { ThemeProvider, useTheme, type Theme } from "remix-themes"
+import { ThemeProvider, type Theme } from "remix-themes"
 
 import { GeneralErrorBoundary } from "~/components/shared/error-boundary"
 import { configDocumentLinks } from "~/configs/document"
@@ -49,34 +49,20 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function RootRoute() {
   const data = useLoaderData<typeof loader>()
-  const speficiedTheme = data.theme
 
   return (
-    <ThemeProvider
-      specifiedTheme={speficiedTheme}
-      themeAction="/action/set-theme"
-    >
-      <App />
+    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
+      <Document dataTheme={data.theme}>
+        <Outlet />
+      </Document>
     </ThemeProvider>
   )
 }
 
-export function App() {
-  const [theme] = useTheme()
-
-  return (
-    <Document theme={theme}>
-      <Outlet />
-    </Document>
-  )
-}
-
 export function ErrorBoundary() {
-  const speficiedTheme = "light" as Theme
-
   return (
     <ThemeProvider
-      specifiedTheme={speficiedTheme}
+      specifiedTheme={"dark" as Theme}
       themeAction="/action/set-theme"
     >
       <Document>
