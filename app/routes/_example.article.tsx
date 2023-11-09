@@ -24,7 +24,7 @@ export default function RemixRoute() {
         </h1>
         <p>
           This is the paragraph after heading one. Discussing about{" "}
-          <Anchor href="https://dogokit.com">Dogokit</Anchor> and{" "}
+          <Anchor href="https://dogokit.allnimal.com">Dogokit</Anchor> and{" "}
           <Anchor href="https://remix.run">Remix</Anchor>.
         </p>
         <pre>console.log("Hello Inside 0123");</pre>

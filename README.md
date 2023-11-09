@@ -1,4 +1,4 @@
-# [🐶 Dogokit Remix](https://remix.dogokit.com)
+# [🐶 Dogokit Remix](https://dogokit.allnimal.com)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
@@ -11,7 +11,8 @@
 
 > 🚧 This is a work in progress
 
-The main Remix web app template kit by [🐶 Dogokit](https://dogokit.com).
+The main Remix web app template kit by
+[🐶 Dogokit](https://dogokit.allnimal.com).
 
 The goal is to be as productive as possible to ship a web app quickly with
 [Remix](https://remix.run). So it is a highly opinionated collection of
@@ -329,7 +330,7 @@ pnpm dev
 ## Authors
 
 Created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023, from the 🐾
-Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
+Allnimal company group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 
 ## References
 
@@ -349,7 +350,7 @@ Used by:
 - [🐾 Allnimal](https://allnimal.com)
 - [🐻 Bearmentor](https://bearmentor.com)
 - [🐱 Catamyst](https://catamyst.com)
-- [🐶 Dogokit](https://dogokit.com)
+- [🐶 Dogokit](https://dogokit.allnimal.com)
 
 ---
 
