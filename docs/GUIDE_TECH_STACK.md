@@ -10,6 +10,36 @@ Legends:
 - 💠 = available as open source
 - 🚧 = still in development or not available
 
+- [Guide: Tech Stack](#guide-tech-stack)
+  - [Core](#core)
+  - [Library and Framework](#library-and-framework)
+  - [Styling and Components](#styling-and-components)
+  - [Form Handling and Data Validation](#form-handling-and-data-validation)
+  - [Database and ORM](#database-and-orm)
+  - [Auth Provider](#auth-provider)
+  - [Code Quality](#code-quality)
+  - [Deployment](#deployment)
+  - [Domain and DNS and SSL/TLS](#domain-and-dns-and-ssltls)
+  - [Image](#image)
+  - [Video](#video)
+  - [Environment Variable/Secret](#environment-variablesecret)
+  - [Analytics](#analytics)
+  - [Transactional Email 🚧](#transactional-email-)
+  - [Marketing Email 🚧](#marketing-email-)
+  - [Uptime Monitoring](#uptime-monitoring)
+  - [Background Jobs](#background-jobs)
+  - [Cache and Rate Limiter](#cache-and-rate-limiter)
+  - [Payment 🚧](#payment-)
+  - [Testing 🚧](#testing-)
+  - [Container](#container)
+  - [Credentials](#credentials)
+  - [Code Review](#code-review)
+  - [Don't Use These](#dont-use-these)
+  - [Extra Tech Stack](#extra-tech-stack)
+    - [REST API](#rest-api)
+    - [GraphQL](#graphql)
+    - [tRPC](#trpc)
+
 ## Core
 
 - [HTML](https://developer.mozilla.org/HTML): Markup language 🧰
@@ -61,7 +91,7 @@ Legends:
 
 - [Remix Auth](https://github.com/sergiodxa/remix-auth) 🧰💠
 
-## Tools: Code Quality
+## Code Quality
 
 - [Prettier](https://prettier.io): Code formatter 🧰💠
 - [ESLint](https://eslint.org): Code linter 🧰💠
@@ -69,7 +99,11 @@ Legends:
 - [Markdownlint](https://github.com/DavidAnson/markdownlint): Markdown linter
   🧰💠
 
-## Tools: Deployment
+---
+
+Starting here are mostly dominated by 3rd Party Tools, open source or not.
+
+## Deployment
 
 - [Vercel](https://vercel.com) 🧰🧩🎉
 
@@ -81,25 +115,13 @@ Alternatives:
 - [Google Cloud](https://cloud.google.com) 🧩🎉
 - [Amazon Web Services (AWS)](https://aws.amazon.com) 🧩🎉
 
-## Tools: Domain and DNS and SSL/TLS
+## Domain and DNS and SSL/TLS
 
 - [Cloudflare](https://cloudflare) 🧩🎉
   - [Cloudflare DNS](https://cloudflare.com/application-services/products/dns)
   - [Domain Registrar](https://cloudflare.com/products/registrar)
 
-## Tools: Environment Variable/Secret
-
-- [Doppler](https://doppler.com) 🧩🎉
-- [Dotenv](https://dotenv.org) 🧩🎉
-
-## Tools: Analytics
-
-- [Vercel Analytics](https://vercel.com/docs/concepts/analytics) 🧩🎉
-  - Enable it on Vercel projects dashboard
-- [Posthog](https://posthog.com): Product platform and data tools 🧩🎉💠
-- [Jitsu](https://jitsu.com): Data pipeline and ingestion 🚧🧩🎉💠
-
-## Tools: Image
+## Image
 
 Placeholders:
 
@@ -122,11 +144,23 @@ Maps:
 - [`mapbox-gl`](https://example.com)
 - [`react-map-gl`](https://example.com)
 
-## Tools: Video
+## Video
 
 - [Mux](https://mux.com): video streaming and management 🚧🧩🎉
 
-## Tools: Transactional Email 🚧
+## Environment Variable/Secret
+
+- [Doppler](https://doppler.com) 🧩🎉
+- [Dotenv](https://dotenv.org) 🧩🎉
+
+## Analytics
+
+- [Vercel Analytics](https://vercel.com/docs/concepts/analytics) 🧩🎉
+  - Enable it on Vercel projects dashboard
+- [Posthog](https://posthog.com): Product platform and data tools 🧩🎉💠
+- [Jitsu](https://jitsu.com): Data pipeline and ingestion 🚧🧩🎉💠
+
+## Transactional Email
 
 - [Resend](https://resend.com) 🚧🧩🎉
 
@@ -135,23 +169,31 @@ Alternatives:
 - [Mailjet](https://mailjet.com) 🚧🧩🎉
 - Postmark
 
-## Tools: Marketing Email 🚧
+## Marketing Email
 
 - [ConvertKit](https://convertkit.com) 🚧🧩🎉
 - [Bento](https://bentonow.com) 🚧🧩🎉
 
-## Tools: Cache and Rate Limiter
+## Uptime Monitoring
+
+- [OpenStatus](https://openstatus.dev)
+
+## Background Jobs
+
+- [Trigger.dev](https://trigger.dev) 🚧🧩🎉
+
+## Cache and Rate Limiter
 
 - [Upstash](https://upstash.com) 🚧🧩🎉
 
-## Tools: Payment 🚧
+## Payment Gateway
 
 - [Lemon Squeezy](https://lemonsqueezy.com) 🚧🧩🎉
 - [Paddle](https://paddle.com) 🚧🧩🎉
 - [Stripe](https://stripe.com) 🚧🧩🎉
   - [Tier](https://tier.run): Pricing as Code 🚧🧩🎉
 
-## Tools: Testing 🚧
+## Testing
 
 - [Vitest](https://vitest.dev) 🚧🧩💠
   - [Jest](https://jestjs.io)
@@ -162,13 +204,13 @@ Alternatives:
   - [Cypress](https://cypress.io)
 - [Ladle](https://ladle.dev) 🚧🧩
 
-## Tools: Container
+## Container
 
 - [Docker](http://www.docker.com) 🧩💠
 - [Docker Compose](https://docs.docker.com/compose) 🧩💠
 - [Docker Hub](https://hub.docker.com) 🚧🧩💠
 
-## Tools: Credentials
+## Credentials
 
 If work as a team, it's recommended to use either of these as secrets management
 platform to share the environment variables. So can optionally use `.env` file.
@@ -178,7 +220,7 @@ platform to share the environment variables. So can optionally use `.env` file.
 
 If need to share quickly, [EnvShare](https://envshare.dev) is good enough.
 
-## Tools: Code Review
+## Code Review
 
 - [Graphite](https://graphite.dev): Stacking tool to ship code faster
 - [Vercel Pro](https://vercel.com/docs/concepts/payments-and-billing/pro): to
@@ -204,6 +246,7 @@ are the recommendations:
 - [NestJS](https://nestjs.com)
   - [Express](https://expressjs.com)
   - [Fastify](https://fastify.io)
+- [SocketIO](https://socket.io)
 
 ### GraphQL
 

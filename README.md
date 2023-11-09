@@ -134,9 +134,9 @@ to use later and won't use at all.
 
 (Architecture diagram can help later on here)
 
-- [TypeScript](https://typescriptlang.org)
 - [Node.js](https://nodejs.org)
 - [pnpm](https://pnpm.io)
+- [TypeScript](https://typescriptlang.org)
 - [React](https://react.dev)
 - [Remix](https://remix.run)
 - [Iconify](https://iconify.design)

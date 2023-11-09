@@ -5,7 +5,6 @@
 .vercel
 /.cache
 /build
-/docs/TODOS.md
 /node_modules
 /prisma/docs
 /public/build
