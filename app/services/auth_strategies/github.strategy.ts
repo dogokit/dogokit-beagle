@@ -24,9 +24,17 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
     const email = profile.emails[0]?.value.trim().toLowerCase()
     if (!email) throw new AuthorizationError("Email is not found")
 
-    const existingUser = await modelUser.getByEmail({ email })
-    if (existingUser) {
-      return { id: existingUser.id }
+    const user = await modelUser.getByEmail({ email })
+
+    if (user) {
+      if (user.images.length < 1) {
+        await modelUser.continueAttachImage({
+          id: user.id,
+          imageURL: profile.photos[0].value,
+        })
+        return { id: user.id }
+      }
+      return { id: user.id }
     }
 
     const newUser = await modelUser.continueWithService({
@@ -35,6 +43,7 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
       username: profile._json.login,
       imageURL: profile.photos[0].value,
     })
+
     if (!newUser) throw new AuthorizationError("Failed to create account")
 
     return { id: newUser.id }

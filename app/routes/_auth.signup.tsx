@@ -70,7 +70,7 @@ export default function SignUpRoute() {
 
   return (
     <div className="site-container">
-      <div className="mx-auto max-w-sm space-y-10 sm:mt-10">
+      <div className="mx-auto max-w-sm space-y-10">
         <header className="space-y-4">
           <h2>Create a new account</h2>
           <p>

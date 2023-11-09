@@ -67,7 +67,7 @@ export const modelUser = {
   getByEmail({ email }: Pick<User, "email">) {
     return prisma.user.findUnique({
       where: { email },
-      select: { id: true },
+      select: { id: true, images: { select: { url: true } } },
     })
   },
 
@@ -135,6 +135,16 @@ export const modelUser = {
         images: { create: { url: imageURL } },
       },
       select: { id: true },
+    })
+  },
+
+  continueAttachImage({
+    id,
+    imageURL,
+  }: Pick<User, "id"> & { imageURL: string }) {
+    return prisma.user.update({
+      where: { id },
+      data: { images: { create: { url: imageURL } } },
     })
   },
 
