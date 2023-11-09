@@ -9,8 +9,9 @@ export const parsedEnv = parseEnv(process.env, {
     .optional()
     .default("development"),
   APP_URL: z.string().url().default("http://localhost:3000"),
-  DATABASE_URL: z.string().min(1),
   SESSION_SECRET: z.string().min(1),
+  DATABASE_URL: z.string().min(1),
+  DATABASE_BRANCH: z.enum(["local", "main", "dev"]).optional(),
 
   // For services
   RESEND_API_KEY: z.string().optional(),

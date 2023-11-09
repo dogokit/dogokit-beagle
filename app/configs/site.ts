@@ -10,9 +10,9 @@ import { isDevelopment } from "~/utils/env.server"
 export const configSiteGeneral = {
   domain: isDevelopment ? "localhost:3000" : "dogokit.allnimal.com",
 
-  slug: "dogokit-remix",
-  name: "Dogokit Remix",
-  title: "Dogoki Remix",
+  slug: "dogokit",
+  name: "Dogokitx",
+  title: "Dogokit",
   description: "Dogokit Remix template kit",
 
   links: {

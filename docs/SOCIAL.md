@@ -4,7 +4,7 @@ This is 🐶 Dogokit Remix
 
 A full featured web app template kit with Remix
 
-It is based on Remix, Tailwind CSS, Radix UI, and shadcn UI, Prisma, and more
+It is based on Remix, Tailwind CSS, Radix UI, and shadcn UI, Prisma ORM, and more
 
 Open source and free
 

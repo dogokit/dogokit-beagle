@@ -91,12 +91,9 @@ The reason of using this template kit. (Only the items checked ✅ are done)
   - [ ] Dashboard components with [Tremor](https://tremor.so)
 - [x] Icons with [Iconify](https://iconify.design)
 - [x] Database with [Prisma ORM](https://prisma.io) and
-      [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com)
-  - Run database instance as container with
-    [Docker Compose](https://docs.docker.com/compose)
-  - Anyone can change them into [Drizzle ORM](https://orm.drizzle.team) and
-    [PostgreSQL](https://postgresql.org) on [Neon](https://neon.tech) with some
-    adjustment
+      [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com) [x]
+      Run local development database instance as container with
+      [Docker Compose](https://docs.docker.com/compose)
 - [x] Auth (authentication and authorization) with
       [Remix Auth](https://github.com/sergiodxa/remix-auth) using various
       strategies

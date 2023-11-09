@@ -16,6 +16,7 @@
     "check:eslint": "eslint --cache .",
     "check:stylelint": "stylelint --cache ./app/styles/*.css",
     "check:prisma": "prisma validate",
+    "check:data": "tsx scripts/check-data.ts",
     "fix": "pnpm /^fix:.*/",
     "fix:prettier": "prettier --cache --write '**/*.{js,mjs,cjs,ts,tsx,json,md,mdx}'",
     "fix:eslint": "eslint --cache --fix .",

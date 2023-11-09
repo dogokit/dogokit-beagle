@@ -4,7 +4,7 @@ import { type MetaFunction } from "@remix-run/node"
 import { Anchor } from "~/components/ui/anchor"
 
 export const meta: MetaFunction = () => [
-  { title: "Dogokit Remix" },
+  { title: "Dogokit Article" },
   { name: "description", content: "🐶 Dogokit with 💿 Remix web app kit." },
 ]
 

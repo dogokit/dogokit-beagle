@@ -2,15 +2,15 @@ import { type MetaFunction } from "@remix-run/node"
 import { TechStackSection } from "~/components/contents/tech-stack"
 
 export const meta: MetaFunction = () => [
-  { title: "Dogokit Remix" },
-  { name: "description", content: "🐶 Dogokit Remix demo app." },
+  { title: "Dogokit" },
+  { name: "description", content: "Dogokit Remix demo app." },
 ]
 
 export default function IndexRoute() {
   return (
     <div className="site-container space-y-10">
       <header className="site-section space-y-10">
-        <h1>Dogokit Remix is a web app template kit</h1>
+        <h1>Dogokit is a web app template kit</h1>
         <h2>Using Remix, React, Tailwind CSS, and more</h2>
       </header>
 

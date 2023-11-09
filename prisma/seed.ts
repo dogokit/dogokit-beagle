@@ -1,6 +1,9 @@
 import { prisma } from "~/libs/db.server"
 
+import { logEnv } from "~/utils/log.server"
 import dataCredentialUsers from "./credentials/users.json"
+
+// TODO: Replace deleteMany() with upsert logic
 
 /**
  * Enable and disable seed items by commenting them
@@ -8,6 +11,8 @@ import dataCredentialUsers from "./credentials/users.json"
 const enabledSeedItems = ["permissions", "roles", "users"]
 
 async function main() {
+  logEnv()
+
   const seeds: { [key: string]: () => Promise<any> } = {
     permissions: seedPermissions,
     roles: seedRoles,
@@ -84,8 +89,7 @@ async function seedRoles() {
 
 async function seedUsers() {
   console.info("\n👤 Seed users")
-  console.info("👤 Existing users coun", await prisma.user.count())
-  console.info("👤 Deleted existing users", await prisma.user.deleteMany())
+  console.info("👤 Existing users count", await prisma.user.count())
 
   if (!Array.isArray(dataCredentialUsers)) {
     console.error(`🔴 Please create prisma/credentials/users.json file`)
