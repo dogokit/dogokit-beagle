@@ -30,6 +30,7 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "db:docs": "prisma-docs-generator serve",
+    "prod:check:data": "dotenv -e .env.production tsx scripts/check-data.ts",
     "prod:dev": "dotenv -e .env.production pnpm check:env",
     "prod:db:push": "dotenv -e .env.production prisma db push",
     "prod:db:reset": "dotenv -e .env.production prisma db push --force-reset",
