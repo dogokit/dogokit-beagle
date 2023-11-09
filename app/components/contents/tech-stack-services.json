@@ -1,0 +1,29 @@
+[
+  {
+    "name": "PlanetScale",
+    "icon": "simple-icons:planetscale",
+    "url": "https://planetscale.com"
+  },
+  {
+    "name": "Vercel",
+    "icon": "simple-icons:vercel",
+    "url": "https://vercel.com"
+  },
+  {
+    "name": "GitHub",
+    "icon": "simple-icons:github",
+    "url": "https://github.com"
+  },
+  {
+    "name": "Resend",
+    "icon": "tabler:square-rounded-letter-r",
+    "url": "https://resend.com",
+    "isSoon": true
+  },
+  {
+    "name": "Sentry",
+    "icon": "logos:sentry-icon",
+    "url": "https://sentry.io",
+    "isSoon": true
+  }
+]

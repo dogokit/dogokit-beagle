@@ -4,7 +4,7 @@ Aim to prioritize open source option, free-tier, or freemium.
 
 Legends:
 
-- 🧰 = required or should not be changed
+- 🧰 = primary, required, or should not be changed
 - 🎉 = 3rd party service or platform
 - 🧩 = optional or interchangeable
 - 💠 = available as open source
@@ -64,12 +64,12 @@ Table of Contents:
 - [Tailwind CSS](https://tailwindcss.com): Styling 🧰💠
 - [Fontsource](https://fontsource.org): Web fonts 🧰
 - [Radix UI](https://radix-ui.com): Unstyled UI components 🧰🧩💠
-- [Iconify](https://iconify.design): Icon set 🧰
-- [Icones](https://icones.js.org): Icon search 💠
+- [Iconify](https://iconify.design): Icon set component 🧰
+  - [Icones](https://icones.js.org): Icon search 🧰💠
 - [shadcn UI](https://ui.shadcn.com): Styled interactive components and theming
-  🧩💠
+  🧰🧩💠
 - [Tremor](https://tremor.so): Styled dashboard components 🧩💠
-- [React Email](https://react.email): Email rendering components 🧩💠
+- [React Email](https://react.email): Email rendering components 🧰🧩💠
 - [TanStack Table](https://tanstack.com/table): Unstyled table grid component
   🚧🧩💠
 
@@ -165,7 +165,7 @@ Maps:
 
 ## Transactional Email
 
-- [Resend](https://resend.com) 🚧🧩🎉
+- [Resend](https://resend.com) 🧰🚧🧩🎉
 
 Alternatives:
 

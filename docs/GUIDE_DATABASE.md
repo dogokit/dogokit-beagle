@@ -44,3 +44,17 @@ pnpm db:seed
 
 > Note: Only need to push the schema in development. No need for migration
 > files.
+
+## Database backup from PlanetScale
+
+To backup using PlanetScale's `pscale` CLI:
+
+```sh
+pscale db dump database_name branch --output database_name.dump
+```
+
+For example:
+
+```sh
+pscale db dump rewinds main --output rewinds.dump
+```

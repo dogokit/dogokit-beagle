@@ -13,7 +13,8 @@ export function SiteNavigation() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-10 flex items-center justify-between gap-2 bg-background p-2 sm:p-4",
+        "sticky top-0 z-10 flex items-center justify-between gap-2 p-2 sm:p-4",
+        "bg-background/30 backdrop-blur-xl backdrop-saturate-200",
       )}
     >
       <div className="flex items-center justify-between gap-2">

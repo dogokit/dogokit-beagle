@@ -2,9 +2,12 @@
 
 ## Icons
 
-- Iconify
-- Tabler
-- Lucide
+Get through Iconify + Icones
+
+- Phosphor Icons
+- Tabler Icons
+- Lucide Icons
+- Radix Icons
 
 ## Colors
 

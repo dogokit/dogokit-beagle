@@ -1,4 +1,5 @@
 import { type MetaFunction } from "@remix-run/node"
+import { TechStackSection } from "~/components/contents/tech-stack"
 
 export const meta: MetaFunction = () => [
   { title: "Dogokit Remix" },
@@ -18,10 +19,12 @@ export default function IndexRoute() {
           The goal is to be as productive as possible to ship a web app quickly
           with Remix full stack web framework. So it is a highly opinionated
           collection of application structure, software engineering and web
-          development workflow, interactive UI components, functionality hooks
-          and utilities.
+          development workflow, interactive UI components, 3rd party services,
+          functionality hooks and utilities.
         </p>
       </section>
+
+      <TechStackSection />
     </div>
   )
 }
