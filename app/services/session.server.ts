@@ -10,7 +10,6 @@ export const authSessionStorage = createCookieSessionStorage({
     sameSite: "lax",
     secrets: [parsedEnv.SESSION_SECRET],
     secure: isProduction,
-    domain: isProduction ? parsedEnv.APP_URL : undefined,
   },
 })
 
