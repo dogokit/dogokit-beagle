@@ -203,7 +203,6 @@ export default function SignUpRoute() {
         <section className="space-y-2">
           <ButtonSocial provider={AuthStrategies.GITHUB} label="GitHub" />
           <ButtonSocial provider={AuthStrategies.GOOGLE} label="Google" />
-          <ButtonSocial provider={AuthStrategies.TWITTER} label="Twitter" />
         </section>
       </div>
     </div>

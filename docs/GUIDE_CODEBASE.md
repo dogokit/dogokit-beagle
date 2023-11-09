@@ -1,6 +1,8 @@
 # Guide: Codebase
 
-Codebase to understand.
+> 🚧 WIP
+
+Codebase structure to understand.
 
 ---
 
@@ -8,32 +10,33 @@ Codebase to understand.
 
 ### Routes
 
-Remix (React Router) routes.
+Remix (React Router) routes inside `/app/routes`
 
-- `/app/routes`: Commonly used routes
-  - `/app/routes/_owner.*`: Owner or super admin routes
-  - `/app/routes/_admin.*`: Admin routes
-  - `/app/routes/_user.*`: User routes
-  - `/app/routes/_public.*`: Public routes
+- `/*`: Commonly used routes
+- `/_root_.*`: Root routes for owner or super admin
+- `/_admin.*`: Admin routes
+- `/_user.*`: User routes
+- `/_page.*`: Public page routes
 
 ### Components
 
-React JSX components.
+React JSX components inside `/app/components`
 
-- `/app/components/ui`: Common UI components with Tailwind CSS and Radix UI
-- `/app/components/shared`: Shared UI components for complex and custom logic
+- `/ui`: Common UI components with Tailwind CSS and Radix UI
+- `/shared`: Shared UI components for complex and custom logic
+- `/layout`: Layout UI components to be used in layout routes
 
 ### Hooks
 
-React Hooks
+React Hooks inside `/app/hooks`
 
-- `/app/hooks`: Various React hooks.
+- `/use-*`: Various React hooks
 
 ### Utils
 
-Utilities.
+Utilities inside `/app/utils`
 
-- `/app/utils`: Various utils functions
+- `/*`: Various utils functions
 
 ---
 
@@ -41,7 +44,7 @@ Utilities.
 
 ### package.json Script
 
-WIP
+...
 
 ### Scripts
 

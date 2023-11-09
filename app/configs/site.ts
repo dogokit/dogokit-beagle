@@ -12,7 +12,7 @@ export const configSiteGeneral = {
 
   slug: "dogokit-remix",
   name: "Dogokit Remix",
-  title: "Dogokit: Remix tempalte kit",
+  title: "Dogoki Remix",
   description: "Dogokit Remix template kit",
 
   links: {

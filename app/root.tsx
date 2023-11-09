@@ -8,8 +8,8 @@ import { useLoaderData } from "@remix-run/react"
 import { ThemeProvider } from "remix-themes"
 
 import { configDocumentLinks } from "~/configs/document"
+import { Document } from "~/document"
 import { modelUser } from "~/models/user.server"
-import { RootApp } from "~/root-app"
 import { authenticator } from "~/services/auth.server"
 import { themeSessionResolver } from "~/services/theme.server"
 import { parsedEnv } from "~/utils/env.server"
@@ -41,7 +41,7 @@ export default function RootRoute() {
 
   return (
     <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-      <RootApp />
+      <Document />
     </ThemeProvider>
   )
 }

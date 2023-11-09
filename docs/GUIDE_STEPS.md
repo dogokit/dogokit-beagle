@@ -1,5 +1,7 @@
 # Guide: Steps
 
+> 🚧 WIP
+
 Steps to know, check, or redo.
 
 ## Prerequisites
@@ -142,8 +144,6 @@ Use TinyPNG to compress the images.
 
 Configure in Remix `root.tsx`
 
-TODO
-
 ## Tailwind CSS & PostCSS
 
 ```sh
@@ -197,7 +197,7 @@ pnpx shadcn-ui@latest add component-name
 
 ## Progress Bar
 
-TODO
+...
 
 ## Icons
 

@@ -1,20 +1,6 @@
-import { configSiteGeneral, configSiteMeta } from "~/configs/site.server"
+import { configSiteGeneral, configSiteMeta } from "~/configs/site"
 
-export function createMetaData({
-  title = configSiteMeta?.defaultTitle,
-  description = configSiteMeta?.defaultDescription,
-  locale = configSiteMeta?.locale,
-  name = configSiteMeta?.defaultName,
-  ogImageAlt = configSiteMeta?.ogImageAlt,
-  ogImagePath = configSiteMeta?.ogImagePath,
-  ogImageType = configSiteMeta?.ogImageType,
-  ogType = configSiteMeta?.ogType,
-  canonicalPath = "/",
-  themeColor = configSiteMeta?.color,
-  twitterAuthorHandle = configSiteMeta?.author.handle,
-  twitterImagePath = configSiteMeta?.twitterImagePath,
-  url = configSiteMeta?.url,
-}: {
+export interface ConfigSiteMeta {
   title?: string
   description?: string
   locale?: string
@@ -28,7 +14,23 @@ export function createMetaData({
   twitterAuthorHandle?: string
   twitterImagePath?: string
   url?: string
-} = configSiteMeta) {
+}
+
+export function createMeta({
+  title = configSiteMeta?.defaultTitle,
+  description = configSiteMeta?.defaultDescription,
+  locale = configSiteMeta?.locale,
+  name = configSiteMeta?.defaultName,
+  ogImageAlt = configSiteMeta?.ogImageAlt,
+  ogImagePath = configSiteMeta?.ogImagePath,
+  ogImageType = configSiteMeta?.ogImageType,
+  ogType = configSiteMeta?.ogType,
+  canonicalPath = "/",
+  themeColor = configSiteMeta?.color,
+  twitterAuthorHandle = configSiteMeta?.author.handle,
+  twitterImagePath = configSiteMeta?.twitterImagePath,
+  url = configSiteMeta?.url,
+}: ConfigSiteMeta = configSiteMeta) {
   return [
     {
       title:
@@ -146,7 +148,7 @@ export function createMetaData({
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: configSiteGeneral.name,
+        name: configSiteGeneral?.title,
       },
     },
   ]

@@ -16,10 +16,11 @@ import { type loader as rootLoader } from "~/root"
 import { cn } from "~/utils/cn"
 import { NProgress } from "./components/shared/nprogress"
 
-export function RootApp() {
+export function Document() {
   const data = useLoaderData<typeof rootLoader>()
   const [theme] = useTheme()
-  const defaultTheme = theme ? theme : "dark"
+
+  const defaultTheme = theme ? theme : "light"
 
   const location = useLocation()
   const isInsideApp =
@@ -47,6 +48,7 @@ export function RootApp() {
         )}
         {isInsideApp && (
           <AppLayout>
+            {" "}
             <Outlet />
           </AppLayout>
         )}

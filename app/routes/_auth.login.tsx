@@ -21,7 +21,6 @@ import { Input, InputPassword } from "~/components/ui/input"
 import { LinkText } from "~/components/ui/link-text"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { prisma } from "~/libs/db.server"
-import { modelUser } from "~/models/user.server"
 import { schemaUserLogIn } from "~/schemas/user"
 import { authenticator } from "~/services/auth.server"
 import { AuthStrategies } from "~/services/auth_strategies"
@@ -157,7 +156,6 @@ export default function SignUpRoute() {
         <section className="space-y-2">
           <ButtonSocial provider={AuthStrategies.GITHUB} label="GitHub" />
           <ButtonSocial provider={AuthStrategies.GOOGLE} label="Google" />
-          <ButtonSocial provider={AuthStrategies.TWITTER} label="Twitter" />
         </section>
       </div>
     </div>
@@ -213,12 +211,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ status: "error", submission }, { status: 400 })
   }
 
-  const existingUser = await modelUser.login(submission.value)
-  if (!existingUser) {
-    return json({ status: "error", submission }, { status: 500 })
-  }
-
-  await timer.delay()
+  await timer.delay(5000)
   return authenticator.authenticate("form", request, {
     successRedirect: "/user/dashboard",
   })

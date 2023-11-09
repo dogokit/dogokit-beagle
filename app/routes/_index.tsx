@@ -7,11 +7,11 @@ export const meta: MetaFunction = () => [
 
 export default function IndexRoute() {
   return (
-    <div className="site-container space-y-20 py-20">
-      <section className="site-section space-y-10">
+    <div className="site-container space-y-10">
+      <header className="site-section space-y-10">
         <h1>Dogokit Remix is a web app template kit</h1>
         <h2>Using Remix, React, Tailwind CSS, and more</h2>
-      </section>
+      </header>
 
       <section className="prose-config site-section">
         <p>

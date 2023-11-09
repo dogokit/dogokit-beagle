@@ -99,7 +99,7 @@
 
 @layer utilities {
   .site-container {
-    @apply mx-auto w-full max-w-7xl px-2 sm:px-4;
+    @apply mx-auto mt-10 w-full max-w-7xl px-2 sm:px-4;
   }
   .site-section {
     @apply mx-auto w-full max-w-prose;
@@ -127,6 +127,10 @@
   }
   .prose-config {
     @apply prose prose-slate dark:prose-invert;
+    @apply prose-h1:font-semibold;
+    @apply prose-h2:font-semibold;
+    @apply prose-h3:font-semibold;
+    @apply prose-h4:font-semibold;
     @apply prose-a:text-primary;
     @apply prose-code:before:content-none prose-code:after:content-none;
   }
