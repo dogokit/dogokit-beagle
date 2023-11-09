@@ -1,5 +1,5 @@
 /**
- * EDITME: Config Document Links and JSON-LD
+ * Config Document Links and JSON-LD
  *
  * Favicons
  * Manifest

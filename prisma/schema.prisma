@@ -132,16 +132,16 @@ model UserImage {
 model Note {
   id String @id @default(cuid())
 
-  title   String
-  content String
-
   user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   userId String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  title   String
+  content String
 
   images NoteImage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([userId])
   @@index([userId, updatedAt])

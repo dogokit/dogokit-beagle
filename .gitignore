@@ -3,6 +3,7 @@
 .eslintcache
 .stylelintcache
 .vercel
+*.local
 /.cache
 /build
 /node_modules

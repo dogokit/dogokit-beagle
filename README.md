@@ -20,7 +20,7 @@ interactive UI components, functionality hooks and utilities.
 
 Check out:
 
-- Web: <https://remix.dogokit.com>
+- Web: <https://dogokit.allnimal.com>
 - Repo: <https://github.com/dogokit/dogokit-remix>
 
 Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
@@ -42,6 +42,7 @@ and [Twitter/X @mhaidarhanif](https://twitter.com/mhaidarhanif).
     - [Database Operations](#database-operations)
     - [Build](#build)
     - [Development](#development)
+  - [Authors](#authors)
   - [References](#references)
 
 ## Goals
@@ -232,7 +233,7 @@ Generate a random string for the `SESSION_SECRET` using
 `openssl rand -base64 32` on the terminal or put any long random text.
 
 ```sh
-DATABASE_URL="mysql://username:password@aws.connect.psdb.cloud/dogokit-remix?sslaccept=strict"
+DATABASE_URL="mysql://username:password@aws.connect.psdb.cloud/database-name?sslaccept=strict"
 SESSION_SECRET="random_secret_text"
 ```
 
@@ -325,7 +326,7 @@ pnpm dev
 # remix dev --manual
 ```
 
-## Author
+## Authors
 
 Created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023, from the 🐾
 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
