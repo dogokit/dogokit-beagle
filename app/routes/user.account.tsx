@@ -47,7 +47,14 @@ export default function UserAccountRoute() {
   })
 
   return (
-    <div className="site-container">
+    <div className="site-container space-y-8">
+      <section className="site-section space-y-2">
+        <header className="space-y-2">
+          <h3>User Account</h3>
+          <p>Description</p>
+        </header>
+      </section>
+
       <section className="site-section space-y-2">
         <header className="space-y-2">
           <h4>Delete Account</h4>

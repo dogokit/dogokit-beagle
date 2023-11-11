@@ -12,20 +12,20 @@ import { createMeta } from "~/utils/meta"
 
 export const meta: MetaFunction = () =>
   createMeta({
-    title: `User Settings`,
-    description: `Manage user settings`,
+    title: `User Notifications`,
+    description: `Manage notifications and alerts`,
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return json({ user: await requireUser(request) })
 }
 
-export default function UserSettingsRoute() {
+export default function UserNotificationsRoute() {
   return (
     <div className="site-container">
       <section className="site-section space-y-2">
         <header className="space-y-2">
-          <h3>User Settings</h3>
+          <h3>User Notifications</h3>
           <p>Description</p>
         </header>
       </section>

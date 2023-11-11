@@ -51,7 +51,7 @@
   }
 }
 
-/* Custom layers */
+/* Custom layers for default stylings */
 @layer base {
   * {
     @apply border-border;
@@ -81,21 +81,6 @@
   h4 {
     @apply text-lg font-semibold sm:text-xl;
   }
-  b {
-    @apply font-semibold;
-  }
-  a {
-    @apply cursor-pointer;
-  }
-}
-
-@layer components {
-  .navlink {
-    @apply hover-opacity font-semibold;
-  }
-  .navlink-active {
-    @apply navlink text-primary;
-  }
 }
 
 @layer utilities {
@@ -110,21 +95,6 @@
   }
   .app-section {
     @apply mx-auto w-full max-w-7xl;
-  }
-  .hover-opacity {
-    @apply transition hover:opacity-75;
-  }
-  .section-auto {
-    @apply mx-auto max-w-3xl px-2 py-10 sm:px-4;
-  }
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-  .text-p {
-    @apply text-base sm:text-lg;
-  }
-  .text-icon {
-    @apply inline-flex flex-wrap items-center gap-2;
   }
   .prose-config {
     @apply prose prose-slate dark:prose-invert;
