@@ -6,51 +6,50 @@
 /* From shadcn UI Themes: https://ui.shadcn.com/themes */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --background: 0 0% 100% /* white */;
+    --foreground: 229 84% 5% /* slate-950 */;
+    --card: 0 0% 100% /* white */;
+    --card-foreground: 229 84% 5% /* slate-950 */;
+    --popover: 0 0% 100% /* white */;
+    --popover-foreground: 229 84% 5% /* slate-950 */;
+    --primary: 244 76% 59% /* indigo-600 */;
+    --primary-foreground: 226 100% 97% /* indigo-50 */;
+    --secondary: 227 100% 94% /* indigo-100 */;
+    --secondary-foreground: 243 48% 35% /* indigo-900 */;
+    --muted: 210 41% 97% /* slate-100 */;
+    --muted-foreground: 216 17% 47% /* slate-500 */;
+    --accent: 227 100% 94% /* indigo-100 */;
+    --accent-foreground: 243 48% 35% /* indigo-900 */;
+    --destructive: 0 85% 61% /* red-500 */;
+    --destructive-foreground: 211 41% 99% /* slate-50 */;
+    --border: 215 32% 92% /* slate-200 */;
+    --input: 215 32% 92% /* slate-200 */;
+    --ring: 244 76% 59% /* indigo-600 */;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --background: 229 84% 5% /* slate-950 */;
+    --foreground: 211 41% 99% /* slate-50 */;
+    --card: 229 84% 5% /* slate-950 */;
+    --card-foreground: 211 41% 99% /* slate-50 */;
+    --popover: 229 84% 5% /* slate-950 */;
+    --popover-foreground: 211 41% 99% /* slate-50 */;
+    --primary: 244 76% 59% /* indigo-600 */;
+    --primary-foreground: 226 100% 97% /* indigo-50 */;
+    --secondary: 244 55% 42% /* indigo-800 */;
+    --secondary-foreground: 226 100% 97% /* indigo-50 */;
+    --muted: 218 33% 18% /* slate-800 */;
+    --muted-foreground: 216 21% 66% /* slate-400 */;
+    --accent: 244 55% 42% /* indigo-800 */;
+    --accent-foreground: 226 100% 97% /* indigo-50 */;
+    --destructive: 0 63% 31% /* red-900 */;
+    --destructive-foreground: 211 41% 99% /* slate-50 */;
+    --border: 218 33% 18% /* slate-800 */;
+    --input: 218 33% 18% /* slate-800 */;
+    --ring: 244 76% 59% /* indigo-600 */;
   }
 }
-
 /* Custom layers */
 @layer base {
   * {

@@ -24,7 +24,5 @@ export const parsedEnv = parseEnv(process.env, {
   UPLOADCARE_PUBLIC_KEY: z.string().optional(),
 })
 
-// eslint-disable-next-line node/no-process-env
-export const isDevelopment = process.env.NODE_ENV === "development"
-// eslint-disable-next-line node/no-process-env
-export const isProduction = process.env.NODE_ENV === "production"
+export const isDevelopment = parsedEnv.NODE_ENV === "development"
+export const isProduction = parsedEnv.NODE_ENV === "production"

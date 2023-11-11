@@ -77,7 +77,12 @@ export default function SignUpRoute() {
           </p>
         </header>
 
-        <Form method="POST" className="flex flex-col gap-2" {...form.props}>
+        <Form
+          action="/login"
+          method="POST"
+          className="flex flex-col gap-2"
+          {...form.props}
+        >
           <fieldset className="flex flex-col gap-2" disabled={isLoading}>
             <FormField>
               <FormLabel htmlFor={email.id}>Email</FormLabel>

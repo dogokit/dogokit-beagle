@@ -319,6 +319,11 @@ pnpm dev
 # remix dev --manual
 ```
 
+### Change Theme Colors
+
+Use
+[`kiliman/shadcn-custom-theme`](https://github.com/kiliman/shadcn-custom-theme).
+
 ## Authors
 
 Created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023, from the 🐾

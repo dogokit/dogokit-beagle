@@ -81,7 +81,12 @@ export default function SignUpRoute() {
           </p>
         </header>
 
-        <Form method="POST" className="flex flex-col gap-2" {...form.props}>
+        <Form
+          action="/signup"
+          method="POST"
+          className="flex flex-col gap-2"
+          {...form.props}
+        >
           <fieldset className="flex flex-col gap-2" disabled={isLoading}>
             <FormField>
               <FormLabel htmlFor={fullname.id}>Full Name</FormLabel>
@@ -216,6 +221,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         where: { email: data.email },
         select: { id: true },
       })
+      console.log({ existingEmail })
+
       if (existingEmail) {
         ctx.addIssue({
           path: ["email"],
