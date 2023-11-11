@@ -102,13 +102,20 @@ async function seedUsers() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...userData } = credentialUser
 
+    const existingUser = await prisma.user.findUnique({
+      where: { email: userData.email },
+      include: { password: { select: { hash: true } } },
+    })
+
+    const userHasPassword = Boolean(existingUser?.password?.hash)
+
     const user = await prisma.user.upsert({
       where: { email: userData.email },
       update: {
         ...userData,
-        password: {
-          update: { hash: await hashPassword(credentialUser.password) },
-        },
+        password: userHasPassword
+          ? { update: { hash: await hashPassword(credentialUser.password) } }
+          : undefined,
       },
       create: {
         ...userData,
