@@ -2,12 +2,14 @@
   {
     "name": "Remix",
     "icon": "simple-icons:remix",
-    "url": "https://remix.run"
+    "url": "https://remix.run",
+    "isCore": true
   },
   {
     "name": "React",
     "icon": "logos:react",
-    "url": "https://react.dev"
+    "url": "https://react.dev",
+    "isCore": true
   },
   {
     "name": "Vite",
@@ -23,7 +25,8 @@
   {
     "name": "TypeScript",
     "icon": "logos:typescript-icon",
-    "url": "https://typescriptlang.org"
+    "url": "https://typescriptlang.org",
+    "isCore": true
   },
   {
     "name": "JavaScript",
@@ -53,32 +56,56 @@
   {
     "name": "Tailwind CSS",
     "icon": "logos:tailwindcss-icon",
-    "url": "https://tailwindcss.com"
+    "url": "https://tailwindcss.com",
+    "isCore": true
   },
   {
     "name": "Radix UI",
     "icon": "tabler:brand-radix-ui",
-    "url": "https://radix-ui.com"
+    "url": "https://radix-ui.com",
+    "isCore": true
   },
   {
     "name": "shadcn UI",
     "icon": "tabler:square-rounded-letter-s",
-    "url": "https://ui.shadcn.com"
+    "url": "https://ui.shadcn.com",
+    "isCore": true
   },
   {
     "name": "Prisma ORM",
     "icon": "simple-icons:prisma",
-    "url": "https://prisma.io"
+    "url": "https://prisma.io",
+    "isCore": true
   },
   {
     "name": "MySQL",
     "icon": "logos:mysql-icon",
-    "url": "https://mysql.org"
+    "url": "https://mysql.org",
+    "isCore": true
   },
   {
     "name": "Docker",
     "icon": "logos:docker-icon",
-    "url": "https://docker.com"
+    "url": "https://docker.com",
+    "isCore": true
+  },
+  {
+    "name": "Conform",
+    "icon": "tabler:square-rounded-letter-c",
+    "url": "https://conform.guide",
+    "isCore": true
+  },
+  {
+    "name": "Zod",
+    "icon": "logos:zod",
+    "url": "https://zod.dev",
+    "isCore": true
+  },
+  {
+    "name": "React Email",
+    "icon": "tabler:square-rounded-letter-r",
+    "url": "https://react.email",
+    "isCore": true
   },
   {
     "name": "VS Code",
@@ -94,21 +121,6 @@
     "name": "ESLint",
     "icon": "logos:eslint",
     "url": "https://eslint.org"
-  },
-  {
-    "name": "Conform",
-    "icon": "tabler:square-rounded-letter-c",
-    "url": "https://zod.dev"
-  },
-  {
-    "name": "Zod",
-    "icon": "logos:zod",
-    "url": "https://zod.dev"
-  },
-  {
-    "name": "React Email",
-    "icon": "tabler:square-rounded-letter-r",
-    "url": "https://react.email"
   },
   {
     "name": "MSW",

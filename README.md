@@ -58,11 +58,9 @@ Clone?
 git clone git@github.com:dogokit/dogokit-remix.git
 ```
 
-Use `npx` or `pnpx`?
+Use `pnpx` or `pnpm dlx`?
 
 ```sh
-npx create-remix@latest --template dogokit/dogokit-remix
-# or
 pnpx create-remix@latest --template dogokit/dogokit-remix
 ```
 

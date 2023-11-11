@@ -1,8 +1,8 @@
 import { type MetaFunction } from "@remix-run/node"
 
 import { ContentIntro } from "~/components/contents/intro"
-import { ContentQuickStart } from "~/components/contents/quick-start"
-import { ContentTechStack } from "~/components/contents/tech-stack"
+import { ContentStack } from "~/components/contents/stack"
+import { ContentStart } from "~/components/contents/start"
 
 export const meta: MetaFunction = () => [
   { title: "Dogokit" },
@@ -20,11 +20,11 @@ export default function IndexRoute() {
       </section>
 
       <section className="site-section">
-        <ContentTechStack />
+        <ContentStack />
       </section>
 
       <section className="site-section">
-        <ContentQuickStart />
+        <ContentStart />
       </section>
     </div>
   )
