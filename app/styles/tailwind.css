@@ -112,7 +112,7 @@
     @apply prose-h3:font-semibold;
     @apply prose-h4:font-semibold;
     @apply prose-a:text-primary prose-a:no-underline;
-    @apply prose-pre:border prose-pre:border-input prose-pre:bg-muted;
+    @apply prose-pre:border prose-pre:border-input prose-pre:bg-muted prose-pre:text-foreground;
     @apply prose-code:before:content-none prose-code:after:content-none;
   }
 }

@@ -20,7 +20,7 @@ export default function ArticleRoute() {
       </section>
 
       <section className="prose-config site-section">
-        <h1 className="space-x-2">
+        <h1 className="inline-flex items-center gap-2">
           <Icon icon="fluent-emoji-flat:cat-face" />
           <span>Heading One</span>
         </h1>
@@ -31,7 +31,7 @@ export default function ArticleRoute() {
         </p>
         <pre>console.log("Hello Inside 0123");</pre>
 
-        <h2 className="space-x-2">
+        <h2 className="inline-flex items-center gap-2">
           <Icon icon="fluent-emoji-flat:bear" />
           <span>Heading Two</span>
         </h2>
@@ -42,7 +42,7 @@ export default function ArticleRoute() {
           facilis labore ipsam odit sapiente ex, dolore quis?
         </p>
 
-        <h3 className="space-x-2">
+        <h3 className="inline-flex items-center gap-2">
           <Icon icon="fluent-emoji-flat:paw-prints" />
           <span>Heading Three</span>
         </h3>
