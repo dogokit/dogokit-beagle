@@ -44,8 +44,11 @@
   "dependencies": {
     "@conform-to/react": "0.9.0",
     "@conform-to/zod": "0.9.0",
+    "@fontsource-variable/archivo": "5.0.16",
+    "@fontsource-variable/chivo-mono": "5.0.18",
     "@fontsource-variable/grandstander": "5.0.18",
     "@fontsource-variable/inconsolata": "5.0.15",
+    "@fontsource-variable/inter": "5.0.15",
     "@fontsource/inter": "5.0.15",
     "@nasa-gcn/remix-seo": "2.0.0",
     "@planetscale/database": "1.11.0",

@@ -11,10 +11,19 @@ dependencies:
   '@conform-to/zod':
     specifier: 0.9.0
     version: 0.9.0(@conform-to/dom@0.9.0)(zod@3.22.4)
+  '@fontsource-variable/archivo':
+    specifier: 5.0.16
+    version: 5.0.16
+  '@fontsource-variable/chivo-mono':
+    specifier: 5.0.18
+    version: 5.0.18
   '@fontsource-variable/grandstander':
     specifier: 5.0.18
     version: 5.0.18
   '@fontsource-variable/inconsolata':
+    specifier: 5.0.15
+    version: 5.0.15
+  '@fontsource-variable/inter':
     specifier: 5.0.15
     version: 5.0.15
   '@fontsource/inter':
@@ -1207,12 +1216,24 @@ packages:
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
     dev: false
 
+  /@fontsource-variable/archivo@5.0.16:
+    resolution: {integrity: sha512-VHo9pAKfpUHM0VcrbgAh77U6CaDT+4yqGXg3NHjK/psMABZsev3zAe/krrcssJmXPs/XvEFj4AGp0TdJ6RbjMA==}
+    dev: false
+
+  /@fontsource-variable/chivo-mono@5.0.18:
+    resolution: {integrity: sha512-EDfUA4EcDocEAh2+iqEGuQjVXk9PkxKzRSAihKn2UpPoNu8o6sbiVjeRN00cOZmAexD9B+J1RGRs/JzqiGE5PQ==}
+    dev: false
+
   /@fontsource-variable/grandstander@5.0.18:
     resolution: {integrity: sha512-V3AJWnyVnHAe9oxZPXOSfQx0JFtyDxsT0IT/REiXvb76bDBrtrf/kL0ZFohiip2kN81hU3xlT06/58o7mrJNbA==}
     dev: false
 
   /@fontsource-variable/inconsolata@5.0.15:
     resolution: {integrity: sha512-uhkrVQDsG4HVW/nXfOFPhQVZ8zQ8h+84nz9c0MO+xxgJv3Xay+gmo2ytq3sSwXAFXLYXM5Hnd/t9ZS+NOHiccA==}
+    dev: false
+
+  /@fontsource-variable/inter@5.0.15:
+    resolution: {integrity: sha512-CdQPQQgOVxg6ifmbrqYZeUqtQf7p2wPn6EvJ4M+vdNnsmYZgYwPPPQDNlIOU7LCUlSGaN26v6H0uA030WKn61g==}
     dev: false
 
   /@fontsource/inter@5.0.15:

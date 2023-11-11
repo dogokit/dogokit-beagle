@@ -19,7 +19,7 @@ export default {
       fontFamily: {
         display: ["Grandstander Variable", ...defaultTheme.fontFamily.sans],
         sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
-        mono: ["Inconsolata Variable", ...defaultTheme.fontFamily.mono],
+        mono: ["Chivo Mono Variable", ...defaultTheme.fontFamily.mono],
       },
       /**
        * Can also use https://uicolors.app to generate additional colors

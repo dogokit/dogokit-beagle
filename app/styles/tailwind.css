@@ -67,9 +67,10 @@
   h5,
   h6 {
     @apply leading-tight tracking-tighter text-foreground;
+    font-family: "Archivo Variable", system-ui, sans-serif;
   }
   h1 {
-    @apply text-5xl font-semibold leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl;
+    @apply text-5xl font-semibold sm:text-6xl md:text-7xl lg:text-8xl;
   }
   h2 {
     @apply text-3xl font-semibold sm:text-4xl;
