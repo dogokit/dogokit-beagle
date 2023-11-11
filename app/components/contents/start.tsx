@@ -1,4 +1,4 @@
-import { Anchor } from "../ui/anchor"
+import { Anchor } from "~/components/ui/anchor"
 
 export function ContentStart() {
   return (

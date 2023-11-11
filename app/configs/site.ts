@@ -14,7 +14,8 @@ export const configSiteGeneral = {
   slug: "dogokit",
   name: "Dogokit",
   title: "Dogokit",
-  description: "Dogokit Remix template kit",
+  description:
+    "Web app template kit using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more",
 
   links: {
     devTo: "https://dev.to/mhaidarhanif",
