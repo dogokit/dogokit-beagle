@@ -1,9 +1,9 @@
 import { useInputEvent, type FieldConfig } from "@conform-to/react"
-import { CalendarIcon } from "@radix-ui/react-icons"
 import { useRef, useState } from "react"
 
 import { Button } from "~/components/ui/button"
 import { Calendar } from "~/components/ui/calendar"
+import { Iconify } from "~/components/ui/iconify"
 import {
   Popover,
   PopoverContent,
@@ -49,7 +49,7 @@ export function DatePicker(config: FieldConfig<string>) {
               !date && "text-muted-foreground",
             )}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
+            <Iconify icon="ph:calendar-blank" className="mr-2 h-4 w-4" />
             {date ? formatDate(date) : <span>Pick a date</span>}
           </Button>
         </PopoverTrigger>
