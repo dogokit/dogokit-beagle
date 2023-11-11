@@ -1,19 +1,17 @@
 import { type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
-import { buttonVariants } from "~/components/ui/button"
+import { Button, type buttonVariants } from "~/components/ui/button"
 import { Iconify } from "~/components/ui/iconify"
-import { cn } from "~/utils/cn"
 
 // https://reactrouter.com/en/6.14.2/hooks/use-navigation
 export interface ButtonLoadingProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  isSubmitting?: boolean
-  submittingText?: React.ReactNode
   isLoading?: boolean
   loadingText?: React.ReactNode
   isDisabledWhenLoading?: boolean
+  iconComponent?: React.ReactNode
 }
 
 const ButtonLoading = React.forwardRef<HTMLButtonElement, ButtonLoadingProps>(
@@ -21,37 +19,23 @@ const ButtonLoading = React.forwardRef<HTMLButtonElement, ButtonLoadingProps>(
     {
       isDisabledWhenLoading = true,
       isLoading = false,
-      isSubmitting = false,
       loadingText = "",
-      name,
-      size = "default",
-      submittingText = "",
-      type = "submit",
-      value,
-      variant = "default",
-      className,
+      iconComponent,
       children,
       ...props
     },
     ref,
   ) => {
-    const isActive = isDisabledWhenLoading
-      ? isSubmitting || isLoading
-      : isDisabledWhenLoading
+    const isActive = isDisabledWhenLoading ? isLoading : isDisabledWhenLoading
 
     return (
-      <button
-        className={cn(buttonVariants({ variant, size, className }), "flex")}
-        type={type}
-        ref={ref}
-        name={name}
-        value={value}
-        disabled={isActive}
-        {...props}
-      >
-        {isActive && <Iconify icon="fe:loading" className="animate-spin" />}
-        {isSubmitting ? submittingText : isLoading ? loadingText : children}
-      </button>
+      <Button ref={ref} disabled={isActive} {...props}>
+        {iconComponent && iconComponent}
+        {!iconComponent && isActive && (
+          <Iconify icon="ph:spinner-gap" className="animate-spin" />
+        )}
+        {isLoading ? loadingText : children}
+      </Button>
     )
   },
 )

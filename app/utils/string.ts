@@ -23,11 +23,8 @@ export function getUsernameFromEmail(email: string) {
   const atIndex = email.indexOf("@")
 
   if (atIndex !== -1) {
-    const username = email.substring(0, atIndex)
-
     // Step 2: Replace '.' with '_'
-    const usernameWithUnderscores = username.replace(/\./g, "_")
-    return usernameWithUnderscores
+    return email.substring(0, atIndex).replace(/\./g, "_")
   } else {
     // Handle the case where the string doesn't contain '@'
     return email

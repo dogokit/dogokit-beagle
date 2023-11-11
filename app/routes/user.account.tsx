@@ -52,8 +52,13 @@ export default function UserAccountRoute() {
 
   return (
     <div className="site-container">
-      <section className="site-section space-y-4">
-        <h2>Delete Account</h2>
+      <section className="site-section">
+        <header className="space-y-2">
+          <h2>Delete Account</h2>
+          <p>
+            By deleting your account, all of your personal data will be deleted.
+          </p>
+        </header>
 
         <Form method="POST" {...form.props}>
           <fieldset disabled={isProcessing}>

@@ -9,7 +9,7 @@ export const formStrategy = new FormStrategy<UserSession>(async ({ form }) => {
   const email = String(form.get("email"))
 
   /**
-   * The user was created in the signup action
+   * The user creation logic was created in the signup action
    * So this Form Stragegy could be used on signup and login
    */
   const existingUser = await prisma.user.findUnique({

@@ -4,6 +4,7 @@
  * Site-wide info and meta data, mostly for information and SEO purpose
  */
 
+// FIXME: cannot use from env
 import { isDevelopment } from "~/utils/env.server"
 
 // For general purpose
@@ -33,8 +34,9 @@ export const configSiteGeneral = {
   },
 
   navItems: [
-    { to: "/", name: "Home", icon: "ph:home" },
-    { to: "/about", name: "About", icon: "ph:about" },
+    { to: "/", name: "Home", icon: "ph:home-duotone" },
+    { to: "/about", name: "About", icon: "ph:about-duotone" },
+    { to: "/posts", name: "Posts", icon: "ph:post-duotnoe" },
   ],
 }
 

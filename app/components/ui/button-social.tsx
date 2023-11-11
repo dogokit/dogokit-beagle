@@ -1,7 +1,7 @@
-import { Form } from "@remix-run/react"
+import { useFetcher } from "@remix-run/react"
 import { match } from "ts-pattern"
 
-import { Button } from "~/components/ui/button"
+import { ButtonLoading } from "~/components/ui/button-loading"
 import { Iconify } from "~/components/ui/iconify"
 import { type AuthStrategy } from "~/services/auth.server"
 
@@ -17,12 +17,23 @@ const getIconName = (providerName: string) =>
     .otherwise(() => "fe:donut")
 
 export function ButtonSocial({ provider, label }: SocialButtonProps) {
+  const fetcher = useFetcher()
+  const isLoading = fetcher.state !== "idle"
+  const isMatch = provider === fetcher.formData?.get("formId")
+
   return (
-    <Form action={`/auth/${provider}`} method="POST" className="flex">
-      <Button size="sm" isIconText className="flex-[auto]">
-        <Iconify icon={getIconName(provider)} />
-        <span>{label}</span>
-      </Button>
-    </Form>
+    <fetcher.Form method="POST" action={`/auth/${provider}`} className="flex">
+      <input type="hidden" name="formId" defaultValue={provider} />
+      <ButtonLoading
+        size="sm"
+        isIconText
+        className="flex-[auto]"
+        iconComponent={<Iconify icon={getIconName(provider)} />}
+        loadingText={`Continuing with ${label}...`}
+        isLoading={isMatch && isLoading}
+      >
+        Continue with {label}
+      </ButtonLoading>
+    </fetcher.Form>
   )
 }

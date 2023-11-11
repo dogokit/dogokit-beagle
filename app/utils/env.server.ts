@@ -13,16 +13,18 @@ export const parsedEnv = parseEnv(process.env, {
   DATABASE_URL: z.string().min(1),
   DATABASE_BRANCH: z.enum(["local", "main", "dev"]).optional(),
 
-  // For services
-  RESEND_API_KEY: z.string().optional(),
-  UPLOADCARE_PUBLIC_KEY: z.string().optional(),
-
   // For auth
   GITHUB_CLIENT_ID: z.string().optional(),
   GITHUB_CLIENT_SECRET: z.string().optional(),
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
+
+  // For services
+  RESEND_API_KEY: z.string().optional(),
+  UPLOADCARE_PUBLIC_KEY: z.string().optional(),
 })
 
-export const isDevelopment = parsedEnv.NODE_ENV === "development"
-export const isProduction = parsedEnv.NODE_ENV === "production"
+// eslint-disable-next-line node/no-process-env
+export const isDevelopment = process.env.NODE_ENV === "development"
+// eslint-disable-next-line node/no-process-env
+export const isProduction = process.env.NODE_ENV === "production"
