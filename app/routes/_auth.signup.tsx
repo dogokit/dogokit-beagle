@@ -42,13 +42,13 @@ export const loader = ({ request }: ActionFunctionArgs) => {
 export default function SignUpRoute() {
   const actionData = useActionData<typeof action>()
 
-  const { isModeDevelopment } = useAppMode()
-
   const navigation = useNavigation()
-  const isSubmitting = navigation.state === "submitting"
+  const isLoading = navigation.state !== "idle"
 
   const [searchParams] = useSearchParams()
   const redirectTo = searchParams.get("redirectTo")
+
+  const { isModeDevelopment } = useAppMode()
 
   const [form, { email, fullname, username, password }] = useForm<
     z.infer<typeof schemaUserSignUp>
@@ -81,13 +81,8 @@ export default function SignUpRoute() {
           </p>
         </header>
 
-        <Form
-          action="/signup"
-          method="POST"
-          className="flex flex-col gap-2"
-          {...form.props}
-        >
-          <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
+        <Form method="POST" className="flex flex-col gap-2" {...form.props}>
+          <fieldset className="flex flex-col gap-2" disabled={isLoading}>
             <FormField>
               <FormLabel htmlFor={fullname.id}>Full Name</FormLabel>
               <Input
@@ -186,7 +181,7 @@ export default function SignUpRoute() {
             <ButtonLoading
               type="submit"
               loadingText="Signing Up..."
-              isLoading={isSubmitting}
+              isLoading={isLoading}
             >
               Sign Up
             </ButtonLoading>

@@ -24,6 +24,11 @@ const userNavigationItems = [
     icon: "ph:credit-card-duotone",
   },
   {
+    text: "Account",
+    to: "/user/account",
+    icon: "ph:user-duotone",
+  },
+  {
     text: "Notifications",
     to: "/user/notifications",
     icon: "ph:notification-duotone",
@@ -44,7 +49,7 @@ export default function UserLayoutRoute() {
             <li key={item.to}>
               <NavLink
                 to={item.to}
-                className="flex items-center gap-2 p-2 hover:bg-secondary"
+                className="flex items-center gap-2 rounded p-2 hover:bg-secondary"
               >
                 <Iconify icon={item.icon} />
                 <span>{item.text}</span>

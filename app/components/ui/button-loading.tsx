@@ -19,17 +19,17 @@ export interface ButtonLoadingProps
 const ButtonLoading = React.forwardRef<HTMLButtonElement, ButtonLoadingProps>(
   (
     {
-      type = "submit",
-      variant = "default",
-      size = "default",
-      className,
-      name,
-      value,
-      isSubmitting = false,
-      submittingText = "",
-      isLoading = false,
-      loadingText = "",
       isDisabledWhenLoading = true,
+      isLoading = false,
+      isSubmitting = false,
+      loadingText = "",
+      name,
+      size = "default",
+      submittingText = "",
+      type = "submit",
+      value,
+      variant = "default",
+      className,
       children,
       ...props
     },

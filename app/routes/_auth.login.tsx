@@ -45,7 +45,7 @@ export default function SignUpRoute() {
   const { isModeDevelopment } = useAppMode()
 
   const navigation = useNavigation()
-  const isSubmitting = navigation.state === "submitting"
+  const isLoading = navigation.state !== "idle"
 
   const [searchParams] = useSearchParams()
   const redirectTo = searchParams.get("redirectTo")
@@ -77,13 +77,8 @@ export default function SignUpRoute() {
           </p>
         </header>
 
-        <Form
-          action="/login"
-          method="POST"
-          className="flex flex-col gap-2"
-          {...form.props}
-        >
-          <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
+        <Form method="POST" className="flex flex-col gap-2" {...form.props}>
+          <fieldset className="flex flex-col gap-2" disabled={isLoading}>
             <FormField>
               <FormLabel htmlFor={email.id}>Email</FormLabel>
               <Input
@@ -139,7 +134,7 @@ export default function SignUpRoute() {
             <ButtonLoading
               type="submit"
               loadingText="Logging In..."
-              isLoading={isSubmitting}
+              isLoading={isLoading}
             >
               Log In
             </ButtonLoading>
@@ -212,7 +207,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ status: "error", submission }, { status: 400 })
   }
 
-  await timer.delay(5000)
+  await timer.delay()
   return authenticator.authenticate("form", request, {
     successRedirect: "/user/dashboard",
   })
