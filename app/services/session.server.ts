@@ -4,7 +4,7 @@ import { isProduction, parsedEnv } from "~/utils/env.server"
 
 export const authSessionStorage = createCookieSessionStorage({
   cookie: {
-    name: "__dogokit_auth_session",
+    name: "__auth_session",
     httpOnly: true,
     path: "/",
     sameSite: "lax",

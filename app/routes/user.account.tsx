@@ -17,9 +17,9 @@ import { type z } from "zod"
 
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { Input } from "~/components/ui/input"
+import { requireUser } from "~/helpers/auth"
 import { modelUser } from "~/models/user.server"
 import { schemaGeneralId } from "~/schemas/general"
-import { authenticator } from "~/services/auth.server"
 import { createMeta } from "~/utils/meta"
 import { createTimer } from "~/utils/timer"
 
@@ -30,11 +30,7 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const user = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  })
-
-  return json({ user })
+  return json({ user: await requireUser(request) })
 }
 
 export default function UserAccountRoute() {
@@ -90,6 +86,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const deletedUser = await modelUser.deleteById(submission.value)
   if (!deletedUser) return json(submission, { status: 500 })
 
-  await timer.delay(5000)
+  await timer.delay()
   return redirect("/")
 }
