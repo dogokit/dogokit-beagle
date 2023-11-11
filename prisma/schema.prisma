@@ -38,7 +38,7 @@ model User {
   roles    Role[]
   images   UserImage[] // multiple user images / avatars / profile pictures
   profiles UserProfile[]
-  notes    Note[]
+  posts    Post[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -84,7 +84,7 @@ model Permission {
   id String @id @default(cuid())
 
   action      String // create, read, update, delete
-  entity      String // note, user, etc.
+  entity      String // user, post, etc.
   access      String // own or any
   description String? @db.Text // details of the permission ability
 
@@ -126,10 +126,10 @@ model UserImage {
 }
 
 // -----------------------------------------------------------------------------
-// Note
+// Post
 // -----------------------------------------------------------------------------
 
-model Note {
+model Post {
   id String @id @default(cuid())
 
   user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
@@ -138,7 +138,7 @@ model Note {
   title   String
   content String
 
-  images NoteImage[]
+  images PostImage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -147,19 +147,19 @@ model Note {
   @@index([userId, updatedAt])
 }
 
-model NoteImage {
+model PostImage {
   id String @id @default(cuid())
 
   url     String
   altText String?
 
-  note   Note   @relation(fields: [noteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  noteId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  postId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([noteId])
+  @@index([postId])
 }
 
 // -----------------------------------------------------------------------------
