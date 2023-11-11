@@ -5,6 +5,9 @@ import { buttonVariants } from "~/components/ui/button"
 import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 
+const CALENDAR_YEAR_PAST = 50
+const CALENDAR_YEAR_FUTURE = 50
+
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
 function Calendar({
@@ -14,8 +17,8 @@ function Calendar({
   ...props
 }: CalendarProps) {
   const today = new Date()
-  const fromYear = today.getFullYear() - 100
-  const toYear = today.getFullYear() + 20
+  const fromYear = today.getFullYear() - CALENDAR_YEAR_PAST
+  const toYear = today.getFullYear() + CALENDAR_YEAR_FUTURE
 
   return (
     <DayPicker
@@ -41,21 +44,24 @@ function Calendar({
         head_cell:
           "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
         row: "flex w-full mt-2",
-        cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative rounded-md focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
           "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
         ),
         day_selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        day_today: "bg-accent text-accent-foreground",
+          "bg-primary rounded-md text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+        day_today: "bg-muted text-accent-foreground",
         day_outside: "text-muted-foreground opacity-50",
         day_disabled: "text-muted-foreground opacity-50",
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
         caption_dropdowns: "flex gap-2",
-        dropdown: "bg-white",
+        dropdown: cn(
+          "cursor-pointer flex w-full rounded-md border border-input bg-background px-3 py-1 text-sm transition-colors",
+          "focus:border-brand focus:outline-none focus:ring focus:ring-ring/20",
+        ),
         vhidden: "hidden",
         ...classNames,
       }}

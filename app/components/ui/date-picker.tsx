@@ -12,10 +12,10 @@ import {
 import { cn } from "~/utils/cn"
 import { formatDate } from "~/utils/datetime"
 
-export function DatePicker(config: FieldConfig<string>) {
+export function DatePicker(fieldConfig: FieldConfig<string>) {
   const defaultDate =
-    config.defaultValue && config.defaultValue !== "Invalid Date"
-      ? new Date(config.defaultValue)
+    fieldConfig.defaultValue && fieldConfig.defaultValue !== "Invalid Date"
+      ? new Date(fieldConfig.defaultValue)
       : new Date()
 
   const [date, setDate] = useState<Date>(defaultDate)
@@ -32,8 +32,8 @@ export function DatePicker(config: FieldConfig<string>) {
       <Popover>
         <input
           type="hidden"
-          required={config.required}
-          name={config.name}
+          required={fieldConfig.required}
+          name={fieldConfig.name}
           value={String(date)}
           onChange={event => {
             control.change(event.target.value)
