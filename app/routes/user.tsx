@@ -1,6 +1,7 @@
 import { type LoaderFunctionArgs } from "@remix-run/node"
 import { NavLink, Outlet } from "@remix-run/react"
 import { Iconify } from "~/components/ui/iconify"
+import { Separator } from "~/components/ui/separator"
 import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { useAppMode } from "~/hooks/use-app-mode"
 
@@ -30,12 +31,15 @@ export default function UserLayoutRoute() {
 
   return (
     <div className="flex gap-2">
-      <nav className="w-full max-w-[140px] select-none divide-y border-r border-r-border p-2 sm:max-w-[200px]">
+      <nav className="w-full max-w-[140px] select-none border-r border-r-border p-2 sm:max-w-[200px]">
         <DashboardNavItems
           items={configNavigationItems.filter(item =>
             userNavItems.includes(item.to),
           )}
         />
+
+        <Separator className="my-4" />
+
         {isModeDevelopment && (
           <DashboardNavItems
             items={configNavigationItems.filter(item =>

@@ -32,5 +32,6 @@
     "Zustand",
     "fontsource",
     "planetscale"
-  ]
+  ],
+  "remix-forge.componentFolder": "/app/components/ui"
 }
