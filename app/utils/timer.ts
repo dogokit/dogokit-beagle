@@ -1,4 +1,4 @@
-export const DEFAULT_THRESHOLD = 500
+export const DEFAULT_THRESHOLD = 300
 
 export function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))

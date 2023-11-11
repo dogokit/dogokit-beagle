@@ -52,9 +52,9 @@ export default function UserAccountRoute() {
 
   return (
     <div className="site-container">
-      <section className="site-section">
+      <section className="site-section space-y-2">
         <header className="space-y-2">
-          <h2>Delete Account</h2>
+          <h4>Delete Account</h4>
           <p>
             By deleting your account, all of your personal data will be deleted.
           </p>
