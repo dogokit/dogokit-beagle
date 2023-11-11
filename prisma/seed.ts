@@ -66,7 +66,7 @@ async function seedPermissions() {
 async function seedRoles() {
   console.info("\n👑 Seed roles")
   console.info("👑 Existing roles count", await prisma.role.count())
-  console.info("👑 Deleted roles", await prisma.role.deleteMany())
+  // console.info("👑 Deleted roles", await prisma.role.deleteMany())
   console.time("👑 Upserted roles")
 
   for (const roleRaw of dataRoles) {
@@ -104,9 +104,9 @@ async function seedUsers() {
     return null
   }
 
-  for (const credentialUser of dataCredentialUsers) {
+  for (const userRaw of dataCredentialUsers) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...userData } = credentialUser
+    const { password, ...userData } = userRaw
 
     const existingUser = await prisma.user.findUnique({
       where: { email: userData.email },
@@ -120,20 +120,22 @@ async function seedUsers() {
       update: {
         ...userData,
         password: userHasPassword
-          ? { update: { hash: await hashPassword(credentialUser.password) } }
+          ? { update: { hash: await hashPassword(userRaw.password) } }
           : undefined,
       },
       create: {
         ...userData,
         password: {
-          create: { hash: await hashPassword(credentialUser.password) },
+          create: { hash: await hashPassword(userRaw.password) },
         },
       },
     })
 
     if (!user) return null
 
-    console.info(`👤 Upserted user ${user.email} / @${user.username}`)
+    console.info(
+      `👤 Upserted user ${user.email} / @${user.username} / ${userRaw.password}`,
+    )
   }
 }
 

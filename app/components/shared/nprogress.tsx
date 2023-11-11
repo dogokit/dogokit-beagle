@@ -50,7 +50,7 @@ export function Bar({
 }) {
   return (
     <div
-      className="fixed left-0 top-0 z-50 h-1 w-full animate-pulse bg-indigo-600"
+      className="bg-primary-600 fixed left-0 top-0 z-50 h-1 w-full animate-pulse"
       style={{
         marginLeft: `${(-1 + progress) * 100}%`,
         transition: `margin-left ${animationDuration}ms linear`,
@@ -64,7 +64,7 @@ export function Spinner() {
     <div className="fixed bottom-4 right-4 z-50 block">
       <Iconify
         icon="ph:spinner-gap-bold"
-        className="animate-spin text-4xl text-indigo-500 duration-1000"
+        className="text-primary-500 animate-spin text-4xl duration-1000"
       />
     </div>
   )

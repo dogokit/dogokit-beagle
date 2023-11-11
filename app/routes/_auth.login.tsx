@@ -184,7 +184,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         ctx.addIssue({
           path: ["password"],
           code: z.ZodIssueCode.custom,
-          message: "User cannot log in with a password",
+          message:
+            "User cannot log in with a password. Try using 3rd party services below",
         })
         return
       }
