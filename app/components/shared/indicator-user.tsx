@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
 import { Iconify } from "~/components/ui/iconify"
+import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
@@ -29,6 +30,28 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
   const { isModeDevelopment } = useAppMode()
 
   if (!userData) return null
+
+  const createNavProfile = (username: string) => [
+    {
+      text: "Profile",
+      to: `/${username}`,
+      icon: "ph:user-duotone",
+      shortcut: "⌘K+P",
+    },
+  ]
+
+  const userNavItems = [
+    "/user/dashboard",
+    "/user/settings",
+    "/user/billing",
+    "/user/notifications",
+    "/help/shortcuts",
+  ]
+
+  const devNavItems = ["/admin", "/components"]
+
+  const authNavItems = ["/logout"]
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -54,22 +77,35 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
 
         <DropdownMenuSeparator />
         <DropdownMenuGroupItems
-          items={createDropdownItemsPrimary(userData.username)}
+          items={[
+            ...createNavProfile(userData.username),
+            ...configNavigationItems.filter(item =>
+              userNavItems.includes(item.to),
+            ),
+          ]}
         />
 
-        <DropdownMenuSeparator />
-        {isModeDevelopment && (
-          <DropdownMenuGroupItems items={createDropdownItemsDev()} />
-        )}
+        {isModeDevelopment ? <DropdownMenuSeparator /> : null}
+        {isModeDevelopment ? (
+          <DropdownMenuGroupItems
+            items={configNavigationItems.filter(item =>
+              devNavItems.includes(item.to),
+            )}
+          />
+        ) : null}
 
         <DropdownMenuSeparator />
-        <DropdownMenuGroupItems items={createDropdownItemsAuth()} />
+        <DropdownMenuGroupItems
+          items={configNavigationItems.filter(item =>
+            authNavItems.includes(item.to),
+          )}
+        />
       </DropdownMenuContent>
     </DropdownMenu>
   )
 }
 
-function DropdownMenuGroupItems({ items }: { items: DropdownMenuItem[] }) {
+function DropdownMenuGroupItems({ items }: { items: NavItem[] }) {
   return (
     <DropdownMenuGroup>
       {items.map(item => (
@@ -85,63 +121,4 @@ function DropdownMenuGroupItems({ items }: { items: DropdownMenuItem[] }) {
       ))}
     </DropdownMenuGroup>
   )
-}
-
-type DropdownMenuItem = {
-  to: string
-  icon: string
-  text: string
-  shortcut?: string
-}
-
-function createDropdownItemsPrimary(username: string) {
-  return [
-    {
-      text: "Profile",
-      to: `/${username}`,
-      icon: "ph:user-duotone",
-      shortcut: "⌘K+P",
-    },
-    {
-      text: "Dashboard",
-      to: "/user/dashboard",
-      icon: "ph:binoculars-duotone",
-      shortcut: "⌘K+D",
-    },
-    {
-      text: "Settings",
-      to: "/user/settings",
-      icon: "ph:gear-duotone",
-      shortcut: "⌘K+S",
-    },
-    {
-      text: "Billing",
-      to: "/user/billing",
-      icon: "ph:credit-card-duotone",
-      shortcut: "⌘K+B",
-    },
-    {
-      text: "Notifications",
-      to: "/user/notifications",
-      icon: "ph:notification-duotone",
-      shortcut: "⌘K+N",
-    },
-    {
-      text: "Command Palette",
-      to: "/help/shortcuts",
-      icon: "ph:keyboard-duotone",
-      shortcut: "⌘K",
-    },
-  ]
-}
-
-function createDropdownItemsDev() {
-  return [
-    { to: "/admin", icon: "ph:crown-duotone", text: "Admin" },
-    { to: "/components", icon: "ph:bounding-box-duotone", text: "Components" },
-  ]
-}
-
-function createDropdownItemsAuth() {
-  return [{ to: "/logout", icon: "ph:sign-out-duotone", text: "Log Out" }]
 }

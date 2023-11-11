@@ -1,18 +1,40 @@
-export const configNavigationItems = [
+export type NavItem = {
+  to: string
+  icon: string
+  text: string
+  shortcut?: string
+}
+
+export const configNavigationItems: NavItem[] = [
   {
-    to: "/user/dashboard",
     text: "Dashboard",
+    to: "/user/dashboard",
     icon: "ph:binoculars-duotone",
+    shortcut: "⌘K+D",
   },
   {
-    to: "/user/settings",
     text: "Settings",
+    to: "/user/settings",
     icon: "ph:gear-duotone",
+    shortcut: "⌘K+S",
   },
   {
-    to: "/user/billing",
     text: "Billing",
+    to: "/user/billing",
     icon: "ph:credit-card-duotone",
+    shortcut: "⌘K+B",
+  },
+  {
+    text: "Notifications",
+    to: "/user/notifications",
+    icon: "ph:notification-duotone",
+    shortcut: "⌘K+N",
+  },
+  {
+    text: "Command Palette",
+    to: "/help/shortcuts",
+    icon: "ph:keyboard-duotone",
+    shortcut: "⌘K",
   },
   {
     to: "/user/account",
@@ -20,9 +42,14 @@ export const configNavigationItems = [
     icon: "ph:user-duotone",
   },
   {
-    to: "/user/notifications",
-    text: "Notifications",
-    icon: "ph:notification-duotone",
+    to: "/admin",
+    icon: "ph:crown-duotone",
+    text: "Admin",
+  },
+  {
+    to: "/components",
+    icon: "ph:bounding-box-duotone",
+    text: "Components",
   },
   {
     to: "/logout",

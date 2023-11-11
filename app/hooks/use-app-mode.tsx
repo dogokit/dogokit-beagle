@@ -8,7 +8,7 @@ export function useAppMode(mode?: string) {
   const { NODE_ENV } = useRootLoaderData()
   const [searchParams] = useSearchParams()
   const paramsMode = searchParams.get("mode")
-  const isModeDevelopment = paramsMode === "dev" || NODE_ENV === "development"
+  const isModeDevelopment = NODE_ENV === "development" || paramsMode === "dev"
 
   return {
     mode: paramsMode || mode,
