@@ -33,6 +33,11 @@ const userNavigationItems = [
     to: "/user/notifications",
     icon: "ph:notification-duotone",
   },
+  {
+    to: "/logout",
+    icon: "ph:sign-out-duotone",
+    text: "Log Out",
+  },
 ]
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {

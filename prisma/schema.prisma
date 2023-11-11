@@ -26,12 +26,11 @@ generator docs {
 model User {
   id String @id @default(cuid())
 
+  email    String  @unique
   fullname String
-  email    String @unique(map: "User.email_unique")
-  username String @unique(map: "User.username_unique")
-
+  username String  @unique
   nickname String?
-  phone    String? @unique(map: "User.phone_unique") // numeric string
+  phone    String? @unique // numeric string
 
   password Password?
 

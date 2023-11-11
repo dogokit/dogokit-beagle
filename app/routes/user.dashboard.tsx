@@ -5,12 +5,12 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
+import { Debug } from "~/components/shared/debug"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelUser } from "~/models/user.server"
 import { authenticator } from "~/services/auth.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
-import { stringifyCode } from "~/utils/string"
 
 export const handle = createSitemap()
 
@@ -40,7 +40,7 @@ export default function UserDashboardRoute() {
       </header>
 
       <section>
-        <pre>{stringifyCode(user)}</pre>
+        <Debug>{user}</Debug>
       </section>
     </div>
   )

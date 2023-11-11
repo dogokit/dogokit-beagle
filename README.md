@@ -259,15 +259,11 @@ doesn't have to be everyone.
 ```json
 [
   {
-    "fullname": "User One",
-    "username": "username1",
-    "email": "user1@example.com",
-    "password": "user_password_1"
-  },
-  {
-    "fullname": "User Two",
-    "username": "username2",
-    "email": "user2@example.com"
+    "fullname": "User Name",
+    "username": "username",
+    "nickname": "User",
+    "email": "user@user.com",
+    "password": "useruser"
   }
   // ...
 ]
