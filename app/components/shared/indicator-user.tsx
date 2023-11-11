@@ -61,7 +61,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
         >
           <AvatarAuto
             user={userData}
-            imageURL={userData.images[0]?.url}
+            imageUrl={userData.images[0]?.url}
             size={size}
           />
         </Button>

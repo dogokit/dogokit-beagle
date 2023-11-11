@@ -61,7 +61,7 @@ export default function UsernameRoute() {
         <div className={cn("flex flex-wrap items-end justify-between")}>
           <AvatarAuto
             user={user}
-            imageURL={userImageURL}
+            imageUrl={userImageURL}
             className="outline outline-2 outline-background"
             size="xl"
           />

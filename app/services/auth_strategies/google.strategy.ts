@@ -34,7 +34,7 @@ export const googleStrategy = new GoogleStrategy<UserSession>(
       email,
       fullname: profile._json.name,
       username: getUsernameFromEmail(profile._json.email),
-      imageURL: profile.photos[0].value,
+      imageUrl: profile.photos[0].value,
     })
     if (!newUser) throw new AuthorizationError("Failed to create account")
 

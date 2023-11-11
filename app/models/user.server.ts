@@ -125,14 +125,14 @@ export const modelUser = {
     email,
     fullname,
     username,
-    imageURL,
-  }: Pick<User, "email" | "fullname" | "username"> & { imageURL: string }) {
+    imageUrl,
+  }: Pick<User, "email" | "fullname" | "username"> & { imageUrl: string }) {
     return prisma.user.create({
       data: {
         email,
         fullname,
         username,
-        images: { create: { url: imageURL } },
+        images: { create: { url: imageUrl } },
       },
       select: { id: true },
     })
@@ -140,11 +140,11 @@ export const modelUser = {
 
   continueAttachImage({
     id,
-    imageURL,
-  }: Pick<User, "id"> & { imageURL: string }) {
+    imageUrl,
+  }: Pick<User, "id"> & { imageUrl: string }) {
     return prisma.user.update({
       where: { id },
-      data: { images: { create: { url: imageURL } } },
+      data: { images: { create: { url: imageUrl } } },
     })
   },
 

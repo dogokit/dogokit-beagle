@@ -30,7 +30,7 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
       if (user.images.length < 1) {
         await modelUser.continueAttachImage({
           id: user.id,
-          imageURL: profile.photos[0].value,
+          imageUrl: profile.photos[0].value,
         })
         return { id: user.id }
       }
@@ -42,7 +42,7 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
         email,
         fullname: profile._json.name,
         username: profile._json.login,
-        imageURL: profile.photos[0].value,
+        imageUrl: profile.photos[0].value,
       })
       if (!newUser) throw new AuthorizationError("Failed to create account")
       return { id: newUser.id }

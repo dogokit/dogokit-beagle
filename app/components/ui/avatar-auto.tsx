@@ -33,23 +33,23 @@ export interface AvatarAutoProps
   extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof avatarAutoVariants> {
   user: Pick<UserData, "username" | "fullname">
-  imageURL?: string
+  imageUrl?: string
 }
 
 export function AvatarAuto({
   user,
-  imageURL,
+  imageUrl,
   size,
   ...props
 }: AvatarAutoProps) {
   return (
     <Avatar {...props} className={cn(avatarAutoVariants({ size }))}>
       <AvatarImage
-        src={imageURL || getPlaceholderAvatarImageURL(user.username)}
+        src={imageUrl || getPlaceholderAvatarImageURL(user.username)}
         alt={user.fullname}
       />
 
-      {!imageURL && (
+      {!imageUrl && (
         <AvatarFallback>{getNameInitials(user.fullname)}</AvatarFallback>
       )}
     </Avatar>

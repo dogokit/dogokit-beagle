@@ -50,6 +50,7 @@
     --ring: 244 76% 59% /* indigo-600 */;
   }
 }
+
 /* Custom layers */
 @layer base {
   * {
