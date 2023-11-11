@@ -37,9 +37,8 @@
     "prod:db:migrate": "dotenv -e .env.production prisma migrate dev",
     "prod:db:seed": "dotenv -e .env.production prisma db seed",
     "prod:db:studio": "dotenv -e .env.production prisma studio",
-    "clean": "rm -rf build public/build",
+    "clean": "rm -rf .cache build public/build",
     "taze": "taze",
-    "prebuild": "prisma db push",
     "postinstall": "prisma generate"
   },
   "dependencies": {
