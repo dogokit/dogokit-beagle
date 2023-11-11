@@ -1,4 +1,9 @@
 import pluralize from "pluralize"
+import slugify from "slugify"
+
+export function createSlug(text: string) {
+  return slugify(text, { lower: true, strict: true })
+}
 
 export function pluralizeWord(word: string, count: number) {
   return pluralize(word, count, true)

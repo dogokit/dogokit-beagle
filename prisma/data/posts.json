@@ -1,0 +1,17 @@
+[
+  {
+    "title": "First post #1",
+    "content": "The content of the first post.",
+    "username": "dogokit"
+  },
+  {
+    "title": "Second post #2",
+    "content": "The third post with other content",
+    "username": "allnimalcom"
+  },
+  {
+    "title": "Third post #3",
+    "content": "The content in the third post.",
+    "username": "dogokit"
+  }
+]

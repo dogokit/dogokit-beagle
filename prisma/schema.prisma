@@ -15,6 +15,7 @@ generator client {
   previewFeatures = ["driverAdapters", "fullTextSearch", "fullTextIndex", "metrics", "views"]
 }
 
+// Uncomment this to enable Prisma Docs Generator
 // generator docs {
 //   provider = "node node_modules/prisma-docs-generator"
 // }
@@ -26,9 +27,9 @@ generator client {
 model User {
   id String @id @default(cuid())
 
-  email    String  @unique(map: "User.email_unique")
-  username String  @unique(map: "User.username_unique")
-  phone    String? @unique(map: "User.phone_unique") // numeric string
+  email    String  @unique
+  username String  @unique
+  phone    String? @unique // numeric string
 
   fullname String
   nickname String?
@@ -132,13 +133,14 @@ model UserImage {
 model Post {
   id String @id @default(cuid())
 
-  user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  userId String
-
+  slug    String  @unique
   title   String
-  content String
+  content String?
 
   images PostImage[]
+
+  user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -3,15 +3,21 @@ import { prisma } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
 
+import { createSlug } from "~/utils/string"
 import dataCredentialUsers from "./credentials/users.json"
+import dataPosts from "./data/posts.json"
 import dataRoles from "./data/roles.json"
-
-// TODO: Replace most deleteMany() with upsert logic
 
 /**
  * Enable and disable seed items by commenting them
  */
-const enabledSeedItems = ["permissions", "roles", "users"]
+const enabledSeedItems = [
+  "permissions",
+  "roles",
+  // "userTags",
+  "users",
+  "posts",
+]
 
 async function main() {
   logEnv()
@@ -21,6 +27,7 @@ async function main() {
     roles: seedRoles,
     // userTags: seedUserTags,
     users: seedUsers,
+    posts: seedPosts,
   }
 
   for (const seedName of enabledSeedItems) {
@@ -127,6 +134,39 @@ async function seedUsers() {
     if (!user) return null
 
     console.info(`👤 Upserted user ${user.email} / @${user.username}`)
+  }
+}
+
+async function seedPosts() {
+  console.info("\n📜 Seed posts")
+  console.info("📜 Existing posts count", await prisma.post.count())
+
+  const users = await prisma.user.findMany({
+    select: { id: true, username: true },
+  })
+
+  for (const postRaw of dataPosts) {
+    const user = users.find(user => user.username === postRaw.username)
+    if (!user) return null
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { username, ...postWithoutUsername } = postRaw
+
+    const slug = createSlug(postRaw.title + "-" + user.username)
+    const postData = {
+      slug,
+      ...postWithoutUsername,
+      userId: user.id,
+    }
+
+    const post = await prisma.post.upsert({
+      where: { slug },
+      update: postData,
+      create: postData,
+    })
+    if (!post) return null
+
+    console.info(`📜 Upserted post ${post.title} / ${post.slug}`)
   }
 }
 
