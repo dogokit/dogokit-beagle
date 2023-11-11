@@ -85,14 +85,14 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
           ]}
         />
 
-        {isModeDevelopment ? <DropdownMenuSeparator /> : null}
-        {isModeDevelopment ? (
+        {isModeDevelopment && <DropdownMenuSeparator />}
+        {isModeDevelopment && (
           <DropdownMenuGroupItems
             items={configNavigationItems.filter(item =>
               devNavItems.includes(item.to),
             )}
           />
-        ) : null}
+        )}
 
         <DropdownMenuSeparator />
         <DropdownMenuGroupItems
