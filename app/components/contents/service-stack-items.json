@@ -26,9 +26,27 @@
     "isSoon": true
   },
   {
+    "name": "ConvertKit",
+    "icon": "tabler:square-rounded-letter-c",
+    "url": "https://convertkit.com",
+    "isSoon": true
+  },
+  {
     "name": "Sentry",
     "icon": "logos:sentry-icon",
     "url": "https://sentry.io",
+    "isSoon": true
+  },
+  {
+    "name": "Novu",
+    "icon": "tabler:square-rounded-letter-n",
+    "url": "https://novu.co",
+    "isSoon": true
+  },
+  {
+    "name": "OpenStatus",
+    "icon": "tabler:square-rounded-letter-o",
+    "url": "https://openstatus.dev",
     "isSoon": true
   }
 ]

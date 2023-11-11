@@ -109,7 +109,7 @@
     @apply prose-h2:font-semibold;
     @apply prose-h3:font-semibold;
     @apply prose-h4:font-semibold;
-    @apply prose-a:text-primary;
+    @apply prose-a:text-primary prose-a:no-underline;
     @apply prose-code:before:content-none prose-code:after:content-none;
   }
 }

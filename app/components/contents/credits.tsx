@@ -19,4 +19,25 @@ export function ContentCredits() {
   )
 }
 
-const creditItems = [{ href: "https://example.com", text: "Example" }]
+const creditItems = [
+  {
+    text: "💿 Remix Indie Stack",
+    href: "https://github.com/remix-run/indie-stack",
+  },
+  {
+    text: "🚀 The Epic Stack by Kent C. Dodds",
+    href: "https://github.com/epicweb-dev/epic-stack",
+  },
+  {
+    text: "Synthwave Stack by I4O Open Source",
+    href: "https://github.com/i4o-oss/synthwave-stack",
+  },
+  {
+    text: "MakerKit - SaaS Starter Kits based on React",
+    href: "https://makerkit.dev",
+  },
+  {
+    text: "SaasRock - The One-Man SaaS Framework",
+    href: "https://saasrock.com",
+  },
+]
