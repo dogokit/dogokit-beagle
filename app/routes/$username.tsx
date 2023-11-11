@@ -11,10 +11,6 @@ import { modelUser } from "~/models/user.server"
 import { formatDateLastMod } from "~/utils/datetime"
 import { redirectRouteToURL } from "~/utils/redirect-route.server"
 
-export const loader = ({ request }: LoaderFunctionArgs) => {
-  return redirectRouteToURL(request, configRedirects)
-}
-
 export const handle: SEOHandle = {
   getSitemapEntries: async () => {
     const users = await modelUser.getAllUsernames()
@@ -26,6 +22,10 @@ export const handle: SEOHandle = {
       }
     })
   },
+}
+
+export const loader = ({ request }: LoaderFunctionArgs) => {
+  return redirectRouteToURL(request, configRedirects)
 }
 
 export default function UsernameLayoutRoute() {

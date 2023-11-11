@@ -7,9 +7,14 @@ import { Link, useLoaderData } from "@remix-run/react"
 
 import { Anchor } from "~/components/ui/anchor"
 import { configRedirects } from "~/configs/redirects"
+import { createMeta } from "~/utils/meta"
 import { pluralizeWord } from "~/utils/string"
 
-export const meta: MetaFunction = () => [{ title: "Redirects" }]
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Redirects`,
+    description: `List of redirect pages`,
+  })
 
 export const loader = ({}: LoaderFunctionArgs) => {
   const redirects = configRedirects
@@ -20,16 +25,13 @@ export default function RedirectsRoute() {
   const { redirects } = useLoaderData<typeof loader>()
 
   return (
-    <div className="px-2 sm:px-4">
-      <div className="prose-config">
-        <header>
-          <h1>Redirects</h1>
-          <p>
-            {pluralizeWord("path", redirects.length)} redirect paths to URLs and
-            other pages.
-          </p>
-        </header>
-
+    <div className="site-container">
+      <section className="site-section prose-config">
+        <h4>Redirects</h4>
+        <p>
+          {pluralizeWord("path", redirects.length)} redirect paths to URLs and
+          other pages.
+        </p>
         <ul>
           {redirects.map(redirectItem => (
             <li key={redirectItem.path}>
@@ -52,7 +54,7 @@ export default function RedirectsRoute() {
             </li>
           ))}
         </ul>
-      </div>
+      </section>
     </div>
   )
 }

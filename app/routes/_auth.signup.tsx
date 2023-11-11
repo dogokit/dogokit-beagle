@@ -12,8 +12,8 @@ import {
   useSearchParams,
 } from "@remix-run/react"
 import { z } from "zod"
-import { AuthButtons } from "~/components/shared/auth-buttons"
 
+import { AuthButtons } from "~/components/shared/auth-buttons"
 import { Alert } from "~/components/ui/alert"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { FormDescription, FormField, FormLabel } from "~/components/ui/form"
@@ -24,11 +24,14 @@ import { prisma } from "~/libs/db.server"
 import { modelUser } from "~/models/user.server"
 import { schemaUserSignUp } from "~/schemas/user"
 import { authenticator } from "~/services/auth.server"
+import { createMeta } from "~/utils/meta"
 import { createTimer } from "~/utils/timer"
 
-export const meta: MetaFunction = () => {
-  return [{ title: "Sign Up" }]
-}
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Sign Up`,
+    description: `Create a new account`,
+  })
 
 export const loader = ({ request }: ActionFunctionArgs) => {
   return authenticator.isAuthenticated(request, {

@@ -97,39 +97,39 @@ type DropdownMenuItem = {
 function createDropdownItemsPrimary(username: string) {
   return [
     {
+      text: "Profile",
       to: `/${username}`,
       icon: "ph:user-duotone",
-      text: "Profile",
       shortcut: "⌘K+P",
     },
     {
+      text: "Dashboard",
       to: "/user/dashboard",
       icon: "ph:binoculars-duotone",
-      text: "Dashboard",
       shortcut: "⌘K+D",
     },
     {
+      text: "Settings",
       to: "/user/settings",
       icon: "ph:gear-duotone",
-      text: "Settings",
       shortcut: "⌘K+S",
     },
     {
+      text: "Billing",
       to: "/user/billing",
       icon: "ph:credit-card-duotone",
-      text: "Billing",
       shortcut: "⌘K+B",
     },
     {
+      text: "Notifications",
       to: "/user/notifications",
       icon: "ph:notification-duotone",
-      text: "Notifications",
       shortcut: "⌘K+N",
     },
     {
+      text: "Command Palette",
       to: "/help/shortcuts",
       icon: "ph:keyboard-duotone",
-      text: "Command Palette",
       shortcut: "⌘K",
     },
   ]
@@ -137,25 +137,11 @@ function createDropdownItemsPrimary(username: string) {
 
 function createDropdownItemsDev() {
   return [
-    {
-      to: "/admin",
-      icon: "ph:crown-duotone",
-      text: "Admin",
-    },
-    {
-      to: "/components",
-      icon: "ph:bounding-box-duotone",
-      text: "Components",
-    },
+    { to: "/admin", icon: "ph:crown-duotone", text: "Admin" },
+    { to: "/components", icon: "ph:bounding-box-duotone", text: "Components" },
   ]
 }
 
 function createDropdownItemsAuth() {
-  return [
-    {
-      to: "/logout",
-      icon: "ph:sign-out-duotone",
-      text: "Log Out",
-    },
-  ]
+  return [{ to: "/logout", icon: "ph:sign-out-duotone", text: "Log Out" }]
 }

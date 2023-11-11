@@ -1,13 +1,24 @@
-import { json, type LoaderFunctionArgs } from "@remix-run/node"
+import {
+  json,
+  type LoaderFunctionArgs,
+  type MetaFunction,
+} from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelUser } from "~/models/user.server"
 import { authenticator } from "~/services/auth.server"
+import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 import { stringifyCode } from "~/utils/string"
 
 export const handle = createSitemap()
+
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `User Dashboard`,
+    description: `Dashboard for personal user`,
+  })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const userSession = await authenticator.isAuthenticated(request, {

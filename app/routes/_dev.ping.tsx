@@ -5,5 +5,5 @@ import { createSitemap } from "~/utils/sitemap"
 export const handle = createSitemap()
 
 export function loader() {
-  return json("PING")
+  return json("Ping")
 }

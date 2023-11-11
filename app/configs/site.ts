@@ -11,7 +11,7 @@ export const configSiteGeneral = {
   domain: isDevelopment ? "localhost:3000" : "dogokit.allnimal.com",
 
   slug: "dogokit",
-  name: "Dogokitx",
+  name: "Dogokit",
   title: "Dogokit",
   description: "Dogokit Remix template kit",
 

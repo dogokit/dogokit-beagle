@@ -1,4 +1,5 @@
 import { redirect, type LoaderFunctionArgs } from "@remix-run/node"
+
 import { authenticator, type AuthStrategy } from "~/services/auth.server"
 
 /**

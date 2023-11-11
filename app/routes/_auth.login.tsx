@@ -24,11 +24,14 @@ import { prisma } from "~/libs/db.server"
 import { schemaUserLogIn } from "~/schemas/user"
 import { authenticator } from "~/services/auth.server"
 import { checkPassword } from "~/utils/encryption.server"
+import { createMeta } from "~/utils/meta"
 import { createTimer } from "~/utils/timer"
 
-export const meta: MetaFunction = () => {
-  return [{ title: "Log In" }]
-}
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Log In`,
+    description: `Continue to dashboard`,
+  })
 
 export const loader = ({ request }: ActionFunctionArgs) => {
   return authenticator.isAuthenticated(request, {

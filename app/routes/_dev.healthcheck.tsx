@@ -1,11 +1,15 @@
 import { type LoaderFunctionArgs } from "@remix-run/node"
+import { type MetaFunction } from "@remix-run/react"
 
 import { prisma } from "~/libs/db.server"
 import { HTTPStatus } from "~/types/http-status"
 import { parsedEnv } from "~/utils/env.server"
+import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
+
+export const meta: MetaFunction = () => createMeta({ title: `Health Check` })
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const host =

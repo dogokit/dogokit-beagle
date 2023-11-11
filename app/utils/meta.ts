@@ -33,9 +33,9 @@ export function createMeta({
 }: ConfigSiteMeta = configSiteMeta) {
   return [
     {
-      title:
-        title &&
-        `${title} ${configSiteMeta?.defaultTitleSeparator} ${configSiteMeta?.defaultName}`,
+      title: title
+        ? `${title} ${configSiteMeta?.defaultTitleSeparator} ${configSiteMeta?.defaultName}`
+        : `${configSiteMeta.defaultTitle}`,
     },
     {
       name: "description",

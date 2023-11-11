@@ -1,3 +1,13 @@
+import { type MetaFunction } from "@remix-run/node"
+
+import { createMeta } from "~/utils/meta"
+
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Terms of Service`,
+    description: `Terms of Service`,
+  })
+
 export default function TermsRoute() {
   return (
     <div className="site-container">

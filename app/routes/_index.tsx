@@ -4,13 +4,13 @@ import { ContentIntro } from "~/components/contents/intro"
 import { ContentStack } from "~/components/contents/stack"
 import { ContentStart } from "~/components/contents/start"
 
-export const meta: MetaFunction = () => [
-  { title: "Dogokit" },
-  {
-    name: "description",
-    content: "Web app template kit Using Remix, React, Tailwind CSS, and more",
-  },
-]
+import { createMeta } from "~/utils/meta"
+
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Dogokit`,
+    description: `Web app template kit Using Remix, React, Tailwind CSS, and more`,
+  })
 
 export default function IndexRoute() {
   return (

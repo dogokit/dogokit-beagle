@@ -3,17 +3,19 @@ import { type MetaFunction } from "@remix-run/node"
 
 import { Anchor } from "~/components/ui/anchor"
 
-export const meta: MetaFunction = () => [
-  { title: "Dogokit Article" },
-  { name: "description", content: "🐶 Dogokit with 💿 Remix web app kit." },
-]
+import { createMeta } from "~/utils/meta"
 
-export default function RemixRoute() {
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Dogokit Article`,
+    description: `🐶 Dogokit with 💿 Remix web app kit`,
+  })
+
+export default function ArticleRoute() {
   return (
     <div className="site-container space-y-28 py-20">
       <section className="site-section space-y-10">
-        <h1>The Article</h1>
-
+        <h1 className="text-5xl sm:text-6xl">The Article</h1>
         <p className="text-2xl sm:text-4xl">Remix web app kit by Dogokit</p>
       </section>
 
