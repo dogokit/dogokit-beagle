@@ -15,9 +15,9 @@ generator client {
   previewFeatures = ["driverAdapters", "fullTextSearch", "fullTextIndex", "metrics", "views"]
 }
 
-generator docs {
-  provider = "node node_modules/prisma-docs-generator"
-}
+// generator docs {
+//   provider = "node node_modules/prisma-docs-generator"
+// }
 
 // -----------------------------------------------------------------------------
 // User

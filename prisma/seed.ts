@@ -1,7 +1,10 @@
 import { prisma } from "~/libs/db.server"
 
+import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
+
 import dataCredentialUsers from "./credentials/users.json"
+import dataRoles from "./data/roles.json"
 
 // TODO: Replace most deleteMany() with upsert logic
 
@@ -60,30 +63,21 @@ async function seedRoles() {
 
   console.time("👑 Created roles")
 
-  await prisma.role.create({
-    data: {
-      symbol: "ADMIN",
-      name: "Administrator",
-      permissions: {
-        connect: await prisma.permission.findMany({
-          select: { id: true },
-          where: { access: "ANY" },
-        }),
+  for (const role of dataRoles) {
+    await prisma.role.create({
+      data: {
+        symbol: role.symbol,
+        name: role.name,
+        permissions: {
+          connect: await prisma.permission.findMany({
+            select: { id: true },
+            where: { access: role.permissionsAccess },
+          }),
+        },
       },
-    },
-  })
-  await prisma.role.create({
-    data: {
-      symbol: "NORMAL",
-      name: "Normal",
-      permissions: {
-        connect: await prisma.permission.findMany({
-          select: { id: true },
-          where: { access: "OWN" },
-        }),
-      },
-    },
-  })
+    })
+  }
+
   console.timeEnd("👑 Created roles")
 }
 
@@ -98,23 +92,31 @@ async function seedUsers() {
     return null
   }
 
-  const dataCredentialUsersConfigured = dataCredentialUsers.map(item => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...user } = item
-    return user
-  })
-
   /**
    * Upsert (update or insert/create if new) the users with complete fields
    */
-  for (const user of dataCredentialUsersConfigured) {
-    const upsertedUser = await prisma.user.upsert({
-      where: { email: user.email },
-      update: user,
-      create: user,
+  for (const credentialUser of dataCredentialUsers) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...userData } = credentialUser
+
+    const user = await prisma.user.upsert({
+      where: { email: userData.email },
+      update: {
+        ...userData,
+        password: {
+          update: { hash: await hashPassword(credentialUser.password) },
+        },
+      },
+      create: {
+        ...userData,
+        password: {
+          create: { hash: await hashPassword(credentialUser.password) },
+        },
+      },
     })
-    if (!upsertedUser) return null
-    console.info(`👤 User "${upsertedUser.email}" upserted`)
+    if (!user) return null
+
+    console.info(`👤 Upserted user ${user.email} / @${user.username}`)
   }
 }
 

@@ -1,0 +1,12 @@
+[
+  {
+    "symbol": "ADMIN",
+    "name": "Administrator",
+    "permissionsAccess": "ANY"
+  },
+  {
+    "symbol": "NORMAL",
+    "name": "Normal",
+    "permissionsAccess": "OWN"
+  }
+]

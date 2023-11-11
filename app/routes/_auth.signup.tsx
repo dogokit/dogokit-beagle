@@ -219,8 +219,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         where: { email: data.email },
         select: { id: true },
       })
-      console.log({ existingEmail })
-
       if (existingEmail) {
         ctx.addIssue({
           path: ["email"],
