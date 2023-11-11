@@ -48,7 +48,9 @@ async function seedPermissions() {
   for (const entity of entities) {
     for (const action of actions) {
       for (const access of accesses) {
-        await prisma.permission.create({ data: { entity, action, access } })
+        await prisma.permission.create({
+          data: { entity, action, access },
+        })
       }
     }
   }
@@ -59,32 +61,33 @@ async function seedPermissions() {
 async function seedRoles() {
   console.info("\n👑 Seed roles")
   console.info("👑 Existing roles count", await prisma.role.count())
-  console.info("👑 Deleted existing roles", await prisma.role.deleteMany())
+  console.time("👑 Upserted roles")
 
-  console.time("👑 Created roles")
-
-  for (const role of dataRoles) {
-    await prisma.role.create({
-      data: {
-        symbol: role.symbol,
-        name: role.name,
-        permissions: {
-          connect: await prisma.permission.findMany({
-            select: { id: true },
-            where: { access: role.permissionsAccess },
-          }),
-        },
+  for (const roleRaw of dataRoles) {
+    const roleData = {
+      symbol: roleRaw.symbol,
+      name: roleRaw.name,
+      permissions: {
+        connect: await prisma.permission.findMany({
+          select: { id: true },
+          where: { access: roleRaw.permissionsAccess },
+        }),
       },
+    }
+
+    await prisma.role.upsert({
+      where: { symbol: roleRaw.symbol },
+      create: roleData,
+      update: roleData,
     })
   }
 
-  console.timeEnd("👑 Created roles")
+  console.timeEnd("👑 Upserted roles")
 }
 
 async function seedUsers() {
   console.info("\n👤 Seed users")
   console.info("👤 Existing users count", await prisma.user.count())
-  console.info("👤 Deleted existing users", await prisma.user.deleteMany())
 
   if (!Array.isArray(dataCredentialUsers)) {
     console.error(`🔴 Please create prisma/credentials/users.json file`)
