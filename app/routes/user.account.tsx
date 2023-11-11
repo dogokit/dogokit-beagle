@@ -87,8 +87,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json(submission, { status: 400 })
   }
 
-  const result = await modelUser.deleteById(submission.value)
-  if (!result) return json(submission, { status: 500 })
+  const deletedUser = await modelUser.deleteById(submission.value)
+  if (!deletedUser) return json(submission, { status: 500 })
 
   await timer.delay(5000)
   return redirect("/")

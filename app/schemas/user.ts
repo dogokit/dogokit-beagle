@@ -1,8 +1,6 @@
 import { z } from "zod"
 
-const id = z.string().min(1, "Existing id is required")
-
-const redirectTo = z.string().optional()
+import { id, redirectTo } from "~/schemas/general"
 
 const email = z
   .string({ required_error: "Email is required" })
@@ -23,9 +21,9 @@ const fullname = z
 const nickname = z.string().max(50, "Nick name limited to 50 characters")
 
 /**
- * Can improve password check
- * - Not only numbers
+ * Potential improvement:
  * - Shouldn't match the email
+ * - Not only numbers
  */
 const password = z
   .string({ required_error: "Password is required" })
@@ -41,6 +39,7 @@ const remember = z.boolean().optional()
 const roleSymbol = z.string().min(1, "Role is required")
 
 const tag = z.object({ id, symbol: z.string().optional() })
+
 const tags = z.array(tag).optional()
 
 const modeName = z.string().min(1, "Profile mode name is required")
