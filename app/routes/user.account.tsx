@@ -42,7 +42,7 @@ export default function UserAccountRoute() {
   const lastSubmission = useActionData<typeof action>()
 
   const navigation = useNavigation()
-  const isProcessing = navigation.state !== "idle"
+  const isProcessing = navigation.state === "loading"
 
   const [form, { id }] = useForm<z.infer<typeof schemaGeneralId>>({
     id: "delete-account",

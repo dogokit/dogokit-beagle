@@ -5,7 +5,7 @@ import { Iconify } from "~/components/ui/iconify"
 
 export function NProgress() {
   const navigation = useNavigation()
-  const isAnimating = navigation.state !== "idle"
+  const isAnimating = navigation.state === "loading"
 
   const { animationDuration, isFinished, progress } = useNProgress({
     isAnimating,

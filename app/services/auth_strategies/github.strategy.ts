@@ -37,15 +37,17 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
       return { id: user.id }
     }
 
-    const newUser = await modelUser.continueWithService({
-      email,
-      fullname: profile._json.name,
-      username: profile._json.login,
-      imageURL: profile.photos[0].value,
-    })
-
-    if (!newUser) throw new AuthorizationError("Failed to create account")
-
-    return { id: newUser.id }
+    try {
+      const newUser = await modelUser.continueWithService({
+        email,
+        fullname: profile._json.name,
+        username: profile._json.login,
+        imageURL: profile.photos[0].value,
+      })
+      if (!newUser) throw new AuthorizationError("Failed to create account")
+      return { id: newUser.id }
+    } catch (error) {
+      throw new AuthorizationError("Failed to create account")
+    }
   },
 )

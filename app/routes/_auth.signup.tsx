@@ -43,7 +43,7 @@ export default function SignUpRoute() {
   const actionData = useActionData<typeof action>()
 
   const navigation = useNavigation()
-  const isLoading = navigation.state !== "idle"
+  const isSubmitting = navigation.state === "submitting"
 
   const [searchParams] = useSearchParams()
   const redirectTo = searchParams.get("redirectTo")
@@ -87,7 +87,7 @@ export default function SignUpRoute() {
           className="flex flex-col gap-2"
           {...form.props}
         >
-          <fieldset className="flex flex-col gap-2" disabled={isLoading}>
+          <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
             <FormField>
               <FormLabel htmlFor={fullname.id}>Full Name</FormLabel>
               <Input
@@ -186,7 +186,7 @@ export default function SignUpRoute() {
             <ButtonLoading
               type="submit"
               loadingText="Signing Up..."
-              isLoading={isLoading}
+              isLoading={isSubmitting}
             >
               Sign Up
             </ButtonLoading>
@@ -210,8 +210,6 @@ export default function SignUpRoute() {
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const timer = createTimer()
-
-  // Differentiate formData request and authenticator request
   const clonedRequest = request.clone()
   const formData = await clonedRequest.formData()
 
@@ -247,12 +245,16 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }),
     async: true,
   })
+
   if (!submission.value || submission.intent !== "submit") {
+    await timer.delay()
     return json({ status: "error", submission }, { status: 400 })
   }
 
   const newUser = await modelUser.signup(submission.value)
+
   if (!newUser) {
+    await timer.delay()
     return json({ status: "error", submission }, { status: 500 })
   }
 

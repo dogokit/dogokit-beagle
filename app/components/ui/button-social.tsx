@@ -18,7 +18,7 @@ const getIconName = (providerName: string) =>
 
 export function ButtonSocial({ provider, label }: SocialButtonProps) {
   const fetcher = useFetcher()
-  const isLoading = fetcher.state !== "idle"
+  const isSubmitting = fetcher.state === "submitting"
   const isMatch = provider === fetcher.formData?.get("formId")
 
   return (
@@ -30,7 +30,7 @@ export function ButtonSocial({ provider, label }: SocialButtonProps) {
         className="flex-[auto]"
         iconComponent={<Iconify icon={getIconName(provider)} />}
         loadingText={`Continuing with ${label}...`}
-        isLoading={isMatch && isLoading}
+        isLoading={isMatch && isSubmitting}
       >
         Continue with {label}
       </ButtonLoading>

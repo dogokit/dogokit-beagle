@@ -45,7 +45,7 @@ export default function SignUpRoute() {
   const { isModeDevelopment } = useAppMode()
 
   const navigation = useNavigation()
-  const isLoading = navigation.state !== "idle"
+  const isSubmitting = navigation.state === "submitting"
 
   const [searchParams] = useSearchParams()
   const redirectTo = searchParams.get("redirectTo")
@@ -54,7 +54,7 @@ export default function SignUpRoute() {
     id: "login-form",
     lastSubmission: actionData?.submission,
     shouldValidate: "onSubmit",
-    shouldRevalidate: "onBlur",
+    shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaUserLogIn),
     onValidate({ formData }) {
       return parse(formData, { schema: schemaUserLogIn })
@@ -83,7 +83,11 @@ export default function SignUpRoute() {
           className="flex flex-col gap-2"
           {...form.props}
         >
-          <fieldset className="flex flex-col gap-2" disabled={isLoading}>
+          <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
+            {redirectTo ? (
+              <input type="hidden" name="redirectTo" value={redirectTo} />
+            ) : null}
+
             <FormField>
               <FormLabel htmlFor={email.id}>Email</FormLabel>
               <Input
@@ -132,14 +136,10 @@ export default function SignUpRoute() {
               )}
             </FormField>
 
-            {redirectTo ? (
-              <input type="hidden" name="redirectTo" value={redirectTo} />
-            ) : null}
-
             <ButtonLoading
               type="submit"
               loadingText="Logging In..."
-              isLoading={isLoading}
+              isLoading={isSubmitting}
             >
               Log In
             </ButtonLoading>
@@ -163,8 +163,6 @@ export default function SignUpRoute() {
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const timer = createTimer()
-
-  // Differentiate formData request and authenticator request
   const clonedRequest = request.clone()
   const formData = await clonedRequest.formData()
 
@@ -206,11 +204,13 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }),
     async: true,
   })
+
+  await timer.delay()
+
   if (!submission.value || submission.intent !== "submit") {
     return json({ status: "error", submission }, { status: 400 })
   }
 
-  await timer.delay()
   return authenticator.authenticate("form", request, {
     successRedirect: "/user/dashboard",
   })
