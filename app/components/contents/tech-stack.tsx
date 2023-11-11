@@ -5,15 +5,17 @@ import { cn } from "~/utils/cn"
 import techStackItems from "./tech-stack-items.json"
 import techStackServices from "./tech-stack-services.json"
 
-export function TechStackSection() {
+export function ContentTechStack() {
   return (
-    <section className="site-section">
+    <>
       <div className="prose-config">
         <h3>Tech Stack</h3>
-        <p>The primary technologies and tools in this kit.</p>
+        <p>
+          The primary technologies and tools in this kit. The blurred items
+          aren't yet.
+        </p>
       </div>
-
-      <TechStack items={techStackItems} />
+      <TechStackItems items={techStackItems} />
 
       <div className="prose-config">
         <h3>Service Stack</h3>
@@ -22,13 +24,12 @@ export function TechStackSection() {
           free to change them as needed.
         </p>
       </div>
-
-      <TechStack items={techStackServices} />
-    </section>
+      <TechStackItems items={techStackServices} />
+    </>
   )
 }
 
-export function TechStack({
+export function TechStackItems({
   items,
 }: {
   items: {

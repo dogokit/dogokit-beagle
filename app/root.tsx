@@ -62,7 +62,7 @@ export default function RootRoute() {
 export function ErrorBoundary() {
   return (
     <ThemeProvider
-      specifiedTheme={"dark" as Theme}
+      specifiedTheme={"light" as Theme}
       themeAction="/action/set-theme"
     >
       <Document>

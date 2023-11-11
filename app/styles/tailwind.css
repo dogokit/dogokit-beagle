@@ -25,7 +25,7 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-    --radius: 1rem;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -69,16 +69,16 @@
     @apply leading-tight tracking-tighter text-foreground;
   }
   h1 {
-    @apply text-4xl font-semibold leading-[1.1] md:text-5xl lg:text-6xl xl:text-7xl;
+    @apply text-5xl font-semibold leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl;
   }
   h2 {
-    @apply text-3xl font-semibold md:text-4xl;
+    @apply text-3xl font-semibold sm:text-4xl;
   }
   h3 {
-    @apply text-2xl font-semibold md:text-3xl;
+    @apply text-2xl font-semibold sm:text-3xl;
   }
   h4 {
-    @apply text-lg font-semibold md:text-xl;
+    @apply text-lg font-semibold sm:text-xl;
   }
   b {
     @apply font-semibold;

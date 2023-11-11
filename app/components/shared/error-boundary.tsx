@@ -97,8 +97,8 @@ export function ErrorHelpInformation() {
       <section className="site-section prose-config">
         <h2>Did you follow a link from here?</h2>
         <p>
-          If you reached this page from another part of basecamp.com, please let
-          us know so we can correct our mistake.
+          If you reached this page from another part of Dogokit, please let us
+          know so we can correct our mistake.
         </p>
 
         <h2>Did you follow a link from another site?</h2>

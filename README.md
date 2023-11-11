@@ -32,9 +32,9 @@ Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif)
 and [Twitter/X @mhaidarhanif](https://twitter.com/mhaidarhanif).
 
 - [🐶 Dogokit Remix](#-dogokit-remix)
+  - [Quick start](#quick-start)
   - [Goals](#goals)
   - [Concept](#concept)
-  - [Quick start](#quick-start)
   - [Tech Stack](#tech-stack)
   - [Setup](#setup)
     - [Dependencies](#dependencies)
@@ -46,6 +46,28 @@ and [Twitter/X @mhaidarhanif](https://twitter.com/mhaidarhanif).
     - [Development](#development)
   - [Authors](#authors)
   - [References](#references)
+
+## Quick start
+
+Starting new?
+[Use this template to generate the repository](https://github.com/dogokit/dogokit-remix/generate).
+
+Clone?
+
+```sh
+git clone git@github.com:dogokit/dogokit-remix.git
+```
+
+Use `npx` or `pnpx`?
+
+```sh
+npx create-remix@latest --template dogokit/dogokit-remix
+# or
+pnpx create-remix@latest --template dogokit/dogokit-remix
+```
+
+Then make sure to explore the repo to rename and replace the contents along the
+way. As this is a template, not a blank repo generator.
 
 ## Goals
 
@@ -102,28 +124,6 @@ The reason of using this template kit. (Only the items checked ✅ are done)
 - [ ] Testing with [Vitest](https://vitest.dev) and
       [Playwright](https://playwright.dev)
 - [ ] Commands with `dogokit` CLI or `@dogokit/cli`
-
-## Quick start
-
-Starting new?
-[Use this template to generate the repository](https://github.com/dogokit/dogokit-remix/generate).
-
-Clone?
-
-```sh
-git clone git@github.com:dogokit/dogokit-remix.git
-```
-
-Use `npx` or `pnpx`?
-
-```sh
-npx create-remix@latest --template dogokit/dogokit-remix
-# or
-pnpx create-remix@latest --template dogokit/dogokit-remix
-```
-
-Then make sure to explore the repo to rename and replace the contents along the
-way. As this is a template, not a blank repo generator.
 
 ## Tech Stack
 

@@ -1,12 +1,12 @@
 # https://docs.docker.com/engine/reference/commandline/compose_up
-version: '3.9'
+version: "3.9"
 
 services:
   mysql:
     image: mysql:8
     container_name: dogokit-remix-database
     hostname: database
-    restart: no
+    restart: always
     volumes:
       - mysql_data:/var/lib/mysql
     ports:

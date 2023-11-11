@@ -21,7 +21,7 @@ export function Document({
   children: React.ReactNode
 }) {
   const [theme] = useTheme()
-  const defaultTheme = theme ?? "dark"
+  const defaultTheme = theme ?? "light"
 
   const location = useLocation()
   const isInsideApp =
