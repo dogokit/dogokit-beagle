@@ -3,6 +3,7 @@ import { prisma } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
 
+import { createPostSlug, extractPostSlug } from "~/helpers/post"
 import { createSlug } from "~/utils/string"
 import dataCredentialUsers from "./credentials/users.json"
 import dataPosts from "./data/posts.json"
@@ -41,10 +42,7 @@ async function main() {
 async function seedPermissions() {
   console.info("\n🔑 Seed permissions")
   console.info("🔑 Existing permissions count", await prisma.permission.count())
-  console.info(
-    "🔑 Deleted existing permissions",
-    await prisma.permission.deleteMany(),
-  )
+  console.info("🔑 Deleted permissions", await prisma.permission.deleteMany())
 
   console.time("🔑 Created permissions")
 
@@ -68,6 +66,7 @@ async function seedPermissions() {
 async function seedRoles() {
   console.info("\n👑 Seed roles")
   console.info("👑 Existing roles count", await prisma.role.count())
+  console.info("👑 Deleted roles", await prisma.role.deleteMany())
   console.time("👑 Upserted roles")
 
   for (const roleRaw of dataRoles) {
@@ -82,11 +81,13 @@ async function seedRoles() {
       },
     }
 
-    await prisma.role.upsert({
+    const role = await prisma.role.upsert({
       where: { symbol: roleRaw.symbol },
       create: roleData,
       update: roleData,
     })
+
+    console.info(`👑 Upserted role ${role.symbol} / ${role.name}`)
   }
 
   console.timeEnd("👑 Upserted roles")
@@ -95,6 +96,7 @@ async function seedRoles() {
 async function seedUsers() {
   console.info("\n👤 Seed users")
   console.info("👤 Existing users count", await prisma.user.count())
+  // console.info("👤 Deleted users", await prisma.user.deleteMany())
 
   if (!Array.isArray(dataCredentialUsers)) {
     console.error(`🔴 Please create prisma/credentials/users.json file`)
@@ -102,9 +104,6 @@ async function seedUsers() {
     return null
   }
 
-  /**
-   * Upsert (update or insert/create if new) the users with complete fields
-   */
   for (const credentialUser of dataCredentialUsers) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...userData } = credentialUser
@@ -131,6 +130,7 @@ async function seedUsers() {
         },
       },
     })
+
     if (!user) return null
 
     console.info(`👤 Upserted user ${user.email} / @${user.username}`)
@@ -140,9 +140,14 @@ async function seedUsers() {
 async function seedPosts() {
   console.info("\n📜 Seed posts")
   console.info("📜 Existing posts count", await prisma.post.count())
+  // console.info("📜 Deleted posts", await prisma.post.deleteMany())
 
   const users = await prisma.user.findMany({
     select: { id: true, username: true },
+  })
+
+  const posts = await prisma.post.findMany({
+    select: { id: true, slug: true },
   })
 
   for (const postRaw of dataPosts) {
@@ -150,20 +155,27 @@ async function seedPosts() {
     if (!user) return null
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { username, ...postWithoutUsername } = postRaw
+    const { username, ...postSanitized } = postRaw
 
-    const slug = createSlug(postRaw.title + "-" + user.username)
+    const slug = createSlug(postRaw.title) // original-slug
+    const postSlug = createPostSlug(postRaw.title) // modified-slug-nanoid123
+    const existingPost = posts.find(post => {
+      return slug === extractPostSlug(post.slug)
+    })
+
     const postData = {
-      slug,
-      ...postWithoutUsername,
+      // Reuse the same post slug if it already exists
+      slug: existingPost?.slug || postSlug,
+      ...postSanitized,
       userId: user.id,
     }
 
     const post = await prisma.post.upsert({
-      where: { slug },
+      where: { slug: postData.slug },
       update: postData,
       create: postData,
     })
+
     if (!post) return null
 
     console.info(`📜 Upserted post ${post.title} / ${post.slug}`)

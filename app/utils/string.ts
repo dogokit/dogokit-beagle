@@ -1,5 +1,12 @@
+import { customAlphabet } from "nanoid"
 import pluralize from "pluralize"
 import slugify from "slugify"
+
+const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz1234567890", 10)
+
+export function createNanoId() {
+  return nanoid()
+}
 
 export function createSlug(text: string) {
   return slugify(text, { lower: true, strict: true })
