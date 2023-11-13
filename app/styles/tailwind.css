@@ -104,7 +104,7 @@ By default Dogokit is using Tailwind CSS color: Indigo
     @apply mx-auto w-full max-w-prose;
   }
   .app-container {
-    @apply mx-auto w-full p-2;
+    @apply mx-auto w-full space-y-6 p-2;
   }
   .app-header {
     @apply mx-auto w-full max-w-7xl space-y-2;

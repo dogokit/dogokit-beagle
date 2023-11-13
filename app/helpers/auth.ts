@@ -10,5 +10,14 @@ export async function requireUser(request: Request) {
   const user = await modelUser.getById({ id: userSession.id })
   invariant(user, "User not found")
 
+  // TODO: Make this as object to contain userId as well
   return user
+}
+
+export async function requireUserId(request: Request) {
+  const userSession = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  })
+  invariant(userSession, "User session not found")
+  return userSession.id
 }

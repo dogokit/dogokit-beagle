@@ -20,6 +20,7 @@ export default function UserLayoutRoute() {
 
   const navItems = [
     "/user/dashboard",
+    "/user/posts",
     "/user/settings",
     "/user/billing",
     "/user/account",

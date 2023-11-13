@@ -53,7 +53,7 @@ export function SiteNavigation() {
         <div>
           {userSession && (
             <div className="flex items-center gap-4">
-              <ButtonLink to="/posts/new" size="sm">
+              <ButtonLink to="/user/posts/new" size="sm">
                 <Iconify icon="ph:plus-square-duotone" />
                 <span>New Post</span>
               </ButtonLink>
