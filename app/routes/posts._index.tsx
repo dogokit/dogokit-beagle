@@ -1,4 +1,8 @@
-import { json, type LoaderFunctionArgs } from "@remix-run/node"
+import {
+  json,
+  type LoaderFunctionArgs,
+  type MetaFunction,
+} from "@remix-run/node"
 import { Link, useLoaderData } from "@remix-run/react"
 
 import {
@@ -8,6 +12,13 @@ import {
   PaginationSearch,
 } from "~/components/shared/pagination"
 import { prisma } from "~/libs/db.server"
+import { createMeta } from "~/utils/meta"
+
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Posts`,
+    description: `Various posts`,
+  })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const config = getPaginationConfigs({ request })
