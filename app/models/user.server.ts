@@ -18,12 +18,22 @@ export const modelUser = {
     return prisma.user.count()
   },
 
+  getAll() {
+    return prisma.user.findMany({
+      include: {
+        images: { select: { url: true } },
+      },
+    })
+  },
+
   getAllUsernames() {
     return prisma.user.findMany({
       select: {
-        id: true,
         username: true,
         updatedAt: true,
+      },
+      orderBy: {
+        username: "asc",
       },
     })
   },
