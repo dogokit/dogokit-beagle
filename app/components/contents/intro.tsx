@@ -14,11 +14,19 @@ export function ContentIntro() {
         <p>
           The goal is to start and be as productive as possible to ship a full
           stack web app quickly with{" "}
-          <Anchor href="https://remix.run">Remix</Anchor> web framework. So it
-          is a highly opinionated collection of application structure,
+          <Anchor href="https://remix.run">Remix</Anchor> web framework.
+        </p>
+
+        <p>
+          Dogokit is a highly opinionated collection of application structure,
           interactive UI components, software engineering and web development
           workflow, functionality hooks and utilities, also integration with 3rd
           party services.
+        </p>
+
+        <p>
+          This Dogokit variant is the Remix one. There's a possibility to have
+          more kits than just the Remix one.
         </p>
 
         <ul>

@@ -1,6 +1,7 @@
-import { configSiteGeneral, configSiteMeta } from "~/configs/site"
+import { configMeta } from "~/configs/meta"
+import { configSite } from "~/configs/site"
 
-export interface ConfigSiteMeta {
+export interface CreateMeta {
   title?: string
   description?: string
   locale?: string
@@ -17,25 +18,26 @@ export interface ConfigSiteMeta {
 }
 
 export function createMeta({
-  title = configSiteMeta?.defaultTitle,
-  description = configSiteMeta?.defaultDescription,
-  locale = configSiteMeta?.locale,
-  name = configSiteMeta?.defaultName,
-  ogImageAlt = configSiteMeta?.ogImageAlt,
-  ogImagePath = configSiteMeta?.ogImagePath,
-  ogImageType = configSiteMeta?.ogImageType,
-  ogType = configSiteMeta?.ogType,
+  title = configMeta.defaultTitle,
+  description = configMeta.defaultDescription,
+  locale = configMeta.locale,
+  name = configMeta.defaultName,
+  ogImageAlt = configMeta.ogImageAlt,
+  ogImagePath = configMeta.ogImagePath,
+  ogImageType = configMeta.ogImageType,
+  ogType = configMeta.ogType,
   canonicalPath = "/",
-  themeColor = configSiteMeta?.color,
-  twitterAuthorHandle = configSiteMeta?.author.handle,
-  twitterImagePath = configSiteMeta?.twitterImagePath,
-  url = configSiteMeta?.url,
-}: ConfigSiteMeta = configSiteMeta) {
+  themeColor = configMeta.color,
+  twitterAuthorHandle = configMeta.author.handle,
+  twitterImagePath = configMeta.twitterImagePath,
+  url = configMeta.url,
+}: CreateMeta = configMeta) {
   return [
     {
-      title: title
-        ? `${title} ${configSiteMeta?.defaultTitleSeparator} ${configSiteMeta?.defaultName}`
-        : `${configSiteMeta.defaultTitle}`,
+      title:
+        title === configMeta.defaultTitle
+          ? configMeta.defaultTitle
+          : `${title} ${configMeta.defaultSeparator} ${configMeta.defaultName}`,
     },
     {
       name: "description",
@@ -59,7 +61,7 @@ export function createMeta({
     },
     {
       name: "msapplication-config",
-      content: `${configSiteMeta?.url}/browserconfig.xml`,
+      content: `${configMeta.url}/browserconfig.xml`,
     },
     {
       property: "og:site_name",
@@ -75,7 +77,7 @@ export function createMeta({
     },
     {
       property: "og:url",
-      content: canonicalPath ? `${configSiteMeta?.url}${canonicalPath}` : url,
+      content: canonicalPath ? `${configMeta.url}${canonicalPath}` : url,
     },
     {
       property: "og:type",
@@ -96,8 +98,8 @@ export function createMeta({
     {
       property: "og:image",
       content: ogImagePath
-        ? `${configSiteMeta?.url}${ogImagePath}`
-        : `${configSiteMeta?.url}${configSiteMeta?.ogImagePath}`,
+        ? `${configMeta.url}${ogImagePath}`
+        : `${configMeta.url}${configMeta.ogImagePath}`,
     },
     {
       name: "twitter:card",
@@ -121,34 +123,34 @@ export function createMeta({
     },
     {
       name: "twitter:domain",
-      content: configSiteGeneral?.domain,
+      content: configSite.domain,
     },
     {
       name: "twitter:url",
       content: canonicalPath
-        ? `${configSiteMeta?.url}${canonicalPath}`
-        : url || configSiteMeta?.url,
+        ? `${configMeta.url}${canonicalPath}`
+        : url || configMeta.url,
     },
     {
       name: "twitter:image",
       content: twitterImagePath
-        ? `${configSiteMeta?.url}${twitterImagePath}`
-        : `${configSiteMeta?.url}${configSiteMeta?.twitterImagePath}`,
+        ? `${configMeta.url}${twitterImagePath}`
+        : `${configMeta.url}${configMeta.twitterImagePath}`,
     },
     {
       name: "fb:app_id",
-      content: configSiteMeta?.fbAppId,
+      content: configMeta.fbAppId,
     },
     {
       tagName: "link",
       rel: "canonical",
-      href: canonicalPath ? `${configSiteMeta?.url}${canonicalPath}` : url,
+      href: canonicalPath ? `${configMeta.url}${canonicalPath}` : url,
     },
     {
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: configSiteGeneral?.title,
+        name: configSite.title,
       },
     },
   ]

@@ -2,10 +2,11 @@ import { useMatches } from "@remix-run/react"
 import { useMemo } from "react"
 
 import { type UserData, type UserSession } from "~/services/auth.server"
+import { type parsedEnvClient } from "~/utils/env.server"
 
 export type RootLoaderData = {
-  ENV: any
-  NODE_ENV: string
+  ENV: typeof parsedEnvClient
+  NODE_ENV: typeof parsedEnvClient.NODE_ENV
   userSession: UserSession | undefined
   userData: UserData | undefined
 }

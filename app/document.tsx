@@ -11,6 +11,7 @@ import { PreventFlashOnWrongTheme, useTheme, type Theme } from "remix-themes"
 import { AppLayout } from "~/components/layout/app-layout"
 import { SiteLayout } from "~/components/layout/site-layout"
 import { NProgress } from "~/components/shared/nprogress"
+import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 
 export function Document({
@@ -20,8 +21,9 @@ export function Document({
   dataTheme?: Theme | null
   children: React.ReactNode
 }) {
+  const data = useRootLoaderData()
   const [theme] = useTheme()
-  const defaultTheme = theme ?? "light"
+  const defaultTheme = theme ? theme : "light"
 
   const location = useLocation()
   const isInsideApp =
@@ -44,6 +46,12 @@ export function Document({
 
         {!isInsideApp && <SiteLayout>{children}</SiteLayout>}
         {isInsideApp && <AppLayout>{children}</AppLayout>}
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+          }}
+        />
 
         <ScrollRestoration />
         <Scripts />

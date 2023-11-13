@@ -4,6 +4,7 @@ import {
   type HeadersFunction,
   type LinksFunction,
   type LoaderFunctionArgs,
+  type MetaFunction,
 } from "@remix-run/node"
 import { Outlet, useLoaderData } from "@remix-run/react"
 import { ThemeProvider, type Theme } from "remix-themes"
@@ -14,10 +15,13 @@ import { Document } from "~/document"
 import { modelUser } from "~/models/user.server"
 import { authenticator } from "~/services/auth.server"
 import { themeSessionResolver } from "~/services/theme.server"
-import { parsedEnv } from "~/utils/env.server"
+import { parsedEnvClient } from "~/utils/env.server"
+import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
+
+export const meta: MetaFunction = () => createMeta()
 
 export const links: LinksFunction = () => configDocumentLinks
 
@@ -37,13 +41,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   if (userSession && !userData) return redirect(`/logout`)
 
   return json({
+    ENV: parsedEnvClient,
     theme: getTheme(),
     userSession,
     userData,
-    NODE_ENV: parsedEnv.NODE_ENV,
-    ENV: {
-      UPLOADCARE_PUBLIC_KEY: parsedEnv.UPLOADCARE_PUBLIC_KEY,
-    },
   })
 }
 

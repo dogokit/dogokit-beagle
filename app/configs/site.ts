@@ -1,19 +1,19 @@
 /**
- * EDITME: Site Config and Meta Config
+ * EDITME: Site Config
  *
- * Site-wide info and meta data, mostly for information and SEO purpose
+ * Site-wide information
  */
 
-// FIXME: cannot use from env
-import { isDevelopment } from "~/utils/env.server"
+// eslint-disable-next-line node/no-process-env
+const isDevelopment = process.env.NODE_ENV === "development"
 
 // For general purpose
-export const configSiteGeneral = {
+export const configSite = {
   domain: isDevelopment ? "localhost:3000" : "dogokit.allnimal.com",
 
   slug: "dogokit",
-  name: "Dogokit",
-  title: "Dogokit",
+  name: "Dogokit", // Can be different with title
+  title: "Dogokit", // Can be different with name
   description:
     "Web app template kit using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more",
 
@@ -39,38 +39,4 @@ export const configSiteGeneral = {
     { to: "/about", name: "About", icon: "ph:about-duotone" },
     { to: "/posts", name: "Posts", icon: "ph:post-duotnoe" },
   ],
-}
-
-// For Remix meta function
-export const configSiteMeta = {
-  defaultName: configSiteGeneral?.name,
-  defaultTitle: configSiteGeneral?.title,
-  defaultTitleSeparator: "—",
-  defaultDescription: configSiteGeneral?.description,
-
-  color: "#c7d2fe", // EDITME
-  locale: "en_US",
-  url: isDevelopment
-    ? "http://localhost:3000"
-    : `https://${configSiteGeneral?.domain}`,
-  canonicalPath: "/",
-  ogType: "website",
-  ogImageAlt: configSiteGeneral?.title,
-  ogImageType: "image/png",
-  ogImagePath: "/assets/opengraph/dogokit-og.png",
-  twitterImagePath: "/assets/opengraph/dogokit-og.png",
-  fbAppId: "",
-
-  author: {
-    name: "M Haidar Hanif",
-    handle: "@mhaidarhanif",
-    url: "https://mhaidarhanif.com",
-    company: {
-      name: "Allnimal",
-      handle: "@allnimal",
-      url: "https://allnimal.com",
-    },
-  },
-
-  mailingListName: "All-in-One Kit",
 }

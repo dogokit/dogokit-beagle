@@ -5,7 +5,7 @@ Docker Compose.
 
 ## Docker Compose
 
-Setup `.env` to contain these:
+Setup `.env` to contain these and change them as needed:
 
 ```sh
 MYSQL_ROOT_PASSWORD=the_root_password
