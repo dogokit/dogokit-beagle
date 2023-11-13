@@ -32,7 +32,7 @@ export default function UserLayoutRoute() {
 
   return (
     <div className="flex gap-2">
-      <nav className="w-full max-w-[140px] select-none border-r border-r-border p-2 sm:max-w-[200px]">
+      <nav className="app-sidebar">
         <SidebarNavItems
           items={configNavigationItems.filter(item =>
             navItems.includes(item.to),
@@ -50,9 +50,7 @@ export default function UserLayoutRoute() {
         )}
       </nav>
 
-      <div className="app-container overflow-hidden">
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   )
 }

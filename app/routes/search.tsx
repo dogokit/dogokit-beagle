@@ -50,7 +50,8 @@ export default function SearchRoute() {
   return (
     <div className="site-container space-y-10">
       <header className="site-header">
-        <h2>Search</h2>
+        <h1>Search</h1>
+        <h2>Demo of search and pagination</h2>
       </header>
 
       <section className="site-section space-y-2">
