@@ -6,7 +6,7 @@ import { cn } from "~/utils/cn"
 
 export function SidebarNavItems({ items }: { items: NavItem[] }) {
   return (
-    <ul>
+    <ul className="space-y-1">
       {items.map(item => (
         <li key={item.to}>
           <NavLink
@@ -14,7 +14,7 @@ export function SidebarNavItems({ items }: { items: NavItem[] }) {
             className={({ isActive }) =>
               cn(
                 "flex w-full items-center gap-2 rounded-md px-2 py-1 text-sm font-semibold transition hover:bg-secondary",
-                isActive && "text-primary",
+                isActive && "bg-secondary text-primary",
               )
             }
           >
