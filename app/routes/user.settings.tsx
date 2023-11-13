@@ -5,10 +5,13 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { requireUser } from "~/helpers/auth"
 
+import { requireUser } from "~/helpers/auth"
 import { schemaGeneralId } from "~/schemas/general"
 import { createMeta } from "~/utils/meta"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
   createMeta({
@@ -22,9 +25,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function UserSettingsRoute() {
   return (
-    <div className="site-container">
-      <section className="site-section space-y-2">
-        <header className="space-y-2">
+    <div className="app-container">
+      <section className="app-section space-y-2">
+        <header className="app-header">
           <h3>User Settings</h3>
           <p>Description</p>
         </header>

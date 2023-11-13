@@ -43,9 +43,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
   const userNavItems = [
     "/user/dashboard",
     "/user/settings",
-    "/user/billing",
     "/user/notifications",
-    "/help/shortcuts",
   ]
 
   const devNavItems = ["/admin", "/components"]

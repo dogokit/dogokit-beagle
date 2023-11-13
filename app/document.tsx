@@ -27,7 +27,7 @@ export function Document({
   const isInsideApp =
     location.pathname.startsWith("/user/") ||
     location.pathname.startsWith("/admin/") ||
-    location.pathname.startsWith("/root/")
+    location.pathname.startsWith("/owner/")
 
   return (
     <html lang="en" data-theme={defaultTheme}>

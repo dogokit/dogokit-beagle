@@ -11,7 +11,7 @@ export const meta: MetaFunction = () =>
 export default function AboutRoute() {
   return (
     <div className="site-container">
-      <header className="site-section">
+      <header className="site-header">
         <h1>About</h1>
       </header>
     </div>

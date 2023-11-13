@@ -45,7 +45,7 @@ export function ErrorBoundary() {
 function UsernameErrorMessage({ params }: { params: Params }) {
   return (
     <>
-      <section className="prose-config site-section">
+      <section className="site-section prose-config">
         <h1>Sorry, this page or user could not be found</h1>
         <p>Cannot find page or user with the username "{params.username}"</p>
         <p>

@@ -14,15 +14,15 @@ export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
   createMeta({
-    title: `User Dashboard`,
-    description: `Dashboard for personal user`,
+    title: `Admin Dashboard`,
+    description: `Dashboard for administrator`,
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return json({ user: await requireUser(request) })
 }
 
-export default function UserDashboardRoute() {
+export default function AdminDashboardRoute() {
   const { user } = useLoaderData<typeof loader>()
 
   return (

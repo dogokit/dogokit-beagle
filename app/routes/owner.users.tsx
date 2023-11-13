@@ -3,11 +3,14 @@ import { useLoaderData, type MetaFunction } from "@remix-run/react"
 
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
   createMeta({
     title: `Users`,
-    description: `List of public users`,
+    description: `List of users`,
   })
 
 export const loader = async ({}: LoaderFunctionArgs) => {
@@ -23,11 +26,11 @@ export default function RootUsersRoute() {
   const { usersCount, users } = useLoaderData<typeof loader>()
 
   return (
-    <div className="container">
-      <section className="prose-config">
+    <div className="app-container">
+      <header className="app-header">
         <h1>Users</h1>
         <pre>{JSON.stringify({ usersCount, users }, null, 2)}</pre>
-      </section>
+      </header>
     </div>
   )
 }

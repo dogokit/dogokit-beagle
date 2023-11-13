@@ -9,6 +9,9 @@ import { requireUser } from "~/helpers/auth"
 
 import { schemaGeneralId } from "~/schemas/general"
 import { createMeta } from "~/utils/meta"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
   createMeta({
@@ -22,9 +25,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function UserBillingRoute() {
   return (
-    <div className="site-container">
-      <section className="site-section space-y-2">
-        <header className="space-y-2">
+    <div className="app-container">
+      <section className="app-section space-y-2">
+        <header className="app-header">
           <h3>User Billing</h3>
           <p>Description</p>
         </header>

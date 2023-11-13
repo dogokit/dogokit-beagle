@@ -21,7 +21,10 @@ import { requireUser } from "~/helpers/auth"
 import { modelUser } from "~/models/user.server"
 import { schemaGeneralId } from "~/schemas/general"
 import { createMeta } from "~/utils/meta"
+import { createSitemap } from "~/utils/sitemap"
 import { createTimer } from "~/utils/timer"
+
+export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
   createMeta({
@@ -47,16 +50,16 @@ export default function UserAccountRoute() {
   })
 
   return (
-    <div className="site-container space-y-8">
-      <section className="site-section space-y-2">
-        <header className="space-y-2">
+    <div className="app-container space-y-8">
+      <section className="app-section space-y-2">
+        <header className="app-header">
           <h3>User Account</h3>
           <p>Description</p>
         </header>
       </section>
 
-      <section className="site-section space-y-2">
-        <header className="space-y-2">
+      <section className="app-section space-y-2">
+        <header className="app-header">
           <h4>Delete Account</h4>
           <p>
             By deleting your account, all of your personal data will be deleted.

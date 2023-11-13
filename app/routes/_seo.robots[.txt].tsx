@@ -7,6 +7,6 @@ export function loader({ request }: DataFunctionArgs) {
     { type: "sitemap", value: `${getDomainUrl(request)}/sitemap.xml` },
     { type: "disallow", value: "/user" },
     { type: "disallow", value: "/admin" },
-    { type: "disallow", value: "/root" },
+    { type: "disallow", value: "/owner" },
   ])
 }

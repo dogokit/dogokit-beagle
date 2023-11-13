@@ -70,7 +70,7 @@ export default function SignUpRoute() {
   return (
     <div className="site-container">
       <div className="mx-auto max-w-sm space-y-10">
-        <header className="space-y-4">
+        <header className="site-header">
           <h2>Log in to continue</h2>
           <p>
             Don't have an account? <LinkText to="/signup">Sign up</LinkText>
