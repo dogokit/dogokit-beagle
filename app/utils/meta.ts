@@ -1,37 +1,28 @@
 import { configMeta } from "~/configs/meta"
-import { configSite } from "~/configs/site"
 
-export interface CreateMeta {
-  title?: string
-  description?: string
-  locale?: string
-  name?: string
-  ogImageAlt?: string
-  ogImagePath?: string
-  ogImageType?: string
-  ogType?: string
-  canonicalPath?: string
-  themeColor?: string
-  twitterAuthorHandle?: string
-  twitterImagePath?: string
-  url?: string
-}
+/**
+ * Metadata Creator Function
+ *
+ * Validate using:
+ * - https://opengraph.dev
+ * - https://opengraph.xyz
+ */
 
 export function createMeta({
   title = configMeta.defaultTitle,
   description = configMeta.defaultDescription,
+  canonicalPath = "/",
   locale = configMeta.locale,
   name = configMeta.defaultName,
   ogImageAlt = configMeta.ogImageAlt,
   ogImagePath = configMeta.ogImagePath,
   ogImageType = configMeta.ogImageType,
   ogType = configMeta.ogType,
-  canonicalPath = "/",
-  themeColor = configMeta.color,
+  themeColor = configMeta.themeColor,
   twitterAuthorHandle = configMeta.author.handle,
   twitterImagePath = configMeta.twitterImagePath,
   url = configMeta.url,
-}: CreateMeta = configMeta) {
+}: CreateMeta) {
   return [
     {
       title:
@@ -123,7 +114,7 @@ export function createMeta({
     },
     {
       name: "twitter:domain",
-      content: configSite.domain,
+      content: configMeta.domain,
     },
     {
       name: "twitter:url",
@@ -150,8 +141,24 @@ export function createMeta({
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: configSite.title,
+        name: configMeta.defaultTitle,
       },
     },
   ]
+}
+
+export interface CreateMeta {
+  title?: string
+  description?: string
+  canonicalPath?: string
+  locale?: string
+  name?: string
+  ogImageAlt?: string
+  ogImagePath?: string
+  ogImageType?: string
+  ogType?: string
+  themeColor?: string
+  twitterAuthorHandle?: string
+  twitterImagePath?: string
+  url?: string
 }

@@ -23,13 +23,15 @@ export const stylesheetLinks = [
  */
 
 export const faviconLinks = [
-  // Use this if want to change the favicon quickly using emoji
+  /**
+   * Use this if want to change the favicon quickly using emoji
+   * Or design and use custom favicon, or get some initial image from:
+   * https://emojipedia.org
+   */
   // {
   // 	rel: 'shortcut icon',
   // 	href: 'https://fav.farm/🐶',
   // },
-  // Design and use custom favicon, or get some initial image from:
-  // https://emojipedia.org
   {
     rel: "shortcut icon",
     href: "/favicons/favicon.ico",
@@ -55,9 +57,7 @@ export const faviconLinks = [
 
 const manifestLinks = [
   /**
-   * Remember to edit the manifest
-   * Alternatively this can also be generated from a Remix route
-   * Like in `app/other-root-routes.server.ts`
+   * Edit the manifest in app/routes/_app.site[.]webmanifest.tsx
    */
   {
     rel: "manifest",

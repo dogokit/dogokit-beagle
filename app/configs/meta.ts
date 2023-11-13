@@ -15,26 +15,29 @@ export const configMeta = {
   defaultDescription: configSite.description,
   defaultSeparator: "—",
 
+  domain: configSite.domain,
   url: isDevelopment ? "http://localhost:3000" : `https://${configSite.domain}`,
-  color: "#c7d2fe", // EDITME
+  themeColor: "#c7d2fe",
+  backgroundColor: "#1e1b4b",
   locale: "en_US",
   canonicalPath: "/",
   ogType: "website",
   ogImageAlt: configSite.title,
   ogImageType: "image/png",
-  ogImagePath: "/opengraph/dogokit-og.png",
-  twitterImagePath: "/opengraph/dogokit-og.png",
+  ogImagePath: "/opengraph/dogokit-og.png", // Recommended: 1200 x 630
+  twitterImagePath: "/opengraph/dogokit-og.png", // Recommended: 1024 x 512
   fbAppId: "",
 
   author: {
     name: "M Haidar Hanif",
     handle: "@mhaidarhanif",
     url: "https://mhaidarhanif.com",
-    company: {
-      name: "Allnimal",
-      handle: "@allnimal",
-      url: "https://allnimal.com",
-    },
+  },
+
+  company: {
+    name: "Allnimal",
+    handle: "@allnimal",
+    url: "https://allnimal.com",
   },
 
   mailingListName: "All-in-One Kit",

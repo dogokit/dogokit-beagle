@@ -3,9 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Get from shadcn UI Themes: https://ui.shadcn.com/themes */
+/* 
+Get from shadcn UI Themes: https://ui.shadcn.com/themes
+Or run `pnpx shadcn-custom-theme`
+By default Dogokit is using Tailwind CSS color: Indigo
+*/
 
-/* Or pnpx shadcn-custom-theme */
 @layer base {
   :root {
     --background: 0 0% 100% /* white */;
@@ -37,9 +40,9 @@
     --card-foreground: 211 41% 99% /* slate-50 */;
     --popover: 229 84% 5% /* slate-950 */;
     --popover-foreground: 211 41% 99% /* slate-50 */;
-    --primary: 244 76% 59% /* indigo-600 */;
+    --primary: 238 73% 67% /* indigo-500 */;
     --primary-foreground: 226 100% 97% /* indigo-50 */;
-    --secondary: 244 55% 42% /* indigo-800 */;
+    --secondary: 243 48% 35% /* indigo-900 */;
     --secondary-foreground: 226 100% 97% /* indigo-50 */;
     --muted: 218 33% 18% /* slate-800 */;
     --muted-foreground: 216 21% 66% /* slate-400 */;

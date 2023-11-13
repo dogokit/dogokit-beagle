@@ -4,7 +4,9 @@ export function ContentIntro() {
   return (
     <div className="space-y-10">
       <header className="space-y-10 [text-wrap:balance]">
-        <h1 id="intro">Dogokit is a web app template kit</h1>
+        <h1 id="intro" className="text-primary">
+          Dogokit is a web app template kit
+        </h1>
         <h2>
           Using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more
         </h2>

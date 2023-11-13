@@ -21,7 +21,7 @@ import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
-export const meta: MetaFunction = () => createMeta()
+export const meta: MetaFunction = () => createMeta({})
 
 export const links: LinksFunction = () => configDocumentLinks
 

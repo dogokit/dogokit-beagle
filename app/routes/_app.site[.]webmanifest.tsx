@@ -1,19 +1,20 @@
 import { type DataFunctionArgs } from "@remix-run/node"
+import { configMeta } from "~/configs/meta"
 
 import { getDomainURL } from "~/utils/url.server"
 
-// EDIME: Based on actual image assets in /app/public/pwa
+// EDIME: Based on actual size of image assets in /app/public/pwa
 const maskableIconSizes = [512, 192, 128]
 const iconSizes = [512, 192, 180, 128, 120]
 
 export function loader({ request }: DataFunctionArgs) {
   return {
     id: "/",
-    name: "Dogokit",
-    short_name: "Dogokit",
-    description: "Dogokit Remix demo app",
-    theme_color: "#1e1b4b",
-    background_color: "#c7d2fe",
+    name: configMeta.defaultName,
+    short_name: configMeta.defaultName,
+    description: configMeta.defaultDescription,
+    theme_color: configMeta.themeColor,
+    background_color: configMeta.author,
     display: "standalone",
     display_override: ["fullscreen", "minimal-ui"],
     orientation: "portrait-primary",
@@ -24,15 +25,15 @@ export function loader({ request }: DataFunctionArgs) {
         return {
           purpose: "maskable",
           src: `/pwa/dogokit-maskable-${size}.png`,
-          sizes: `${size}x${size}`,
           type: "image/png",
+          sizes: `${size}x${size}`,
         }
       }),
       ...iconSizes.map(size => {
         return {
           src: `/pwa/dogokit-icon-${size}.png`,
-          sizes: `${size}x${size}`,
           type: "image/png",
+          sizes: `${size}x${size}`,
         }
       }),
     ],
