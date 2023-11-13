@@ -27,7 +27,7 @@ export function SiteNavigation() {
       </div>
 
       <div className="flex items-center gap-4">
-        <ul className="flex items-center gap-4">
+        <ul className="hidden sm:flex sm:items-center sm:gap-4">
           {configSite.navItems
             .filter(navItem => navItem.isEnabled)
             .map(navItem => {
@@ -55,7 +55,8 @@ export function SiteNavigation() {
             <div className="flex items-center gap-4">
               <ButtonLink to="/user/posts/new" size="sm">
                 <Iconify icon="ph:plus-square-duotone" />
-                <span>New Post</span>
+                <span className="hidden sm:inline">New Post</span>
+                <span className="inline sm:hidden">Post</span>
               </ButtonLink>
               <IndicatorUser />
             </div>
