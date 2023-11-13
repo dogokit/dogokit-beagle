@@ -10,7 +10,7 @@ import {
 import { prisma } from "~/libs/db.server"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const config = getPaginationConfigs({ request, defaultLimit: 10 })
+  const config = getPaginationConfigs({ request })
 
   /**
    * Custom query config, can be different for any cases

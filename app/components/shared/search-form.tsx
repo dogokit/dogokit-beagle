@@ -26,13 +26,13 @@ export function SearchForm({ action, placeholder }: Props) {
           placeholder={placeholder}
           defaultValue={query}
           autoComplete="off"
-          className="block h-12 w-full px-3 py-2 ps-12 text-xl"
+          className="py-2 pe-3 ps-10"
         />
         <span className="pointer-events-none absolute flex ps-3">
           <Iconify
             icon="ph:magnifying-glass"
             // eslint-disable-next-line tailwindcss/no-custom-classname
-            className="group-focus-within:text-brand h-6 w-6 text-muted-foreground"
+            className="group-focus-within:text-brand text-muted-foreground"
           />
         </span>
       </fieldset>

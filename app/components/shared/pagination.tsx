@@ -11,6 +11,9 @@ import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { pluralizeWord } from "~/utils/string"
 
+export const DEFAULT_LIMIT = 5
+export const DEFAULT_PAGE = 1
+
 interface PaginationItem {
   pageNumber: number
   to: string
@@ -25,7 +28,7 @@ interface PaginationConfigs {
 interface PaginationOptionsConfig {
   request: Request
   totalItems: number
-  defaultMaxPageLinks?: number
+  defaultMaxPageItems?: number
 }
 
 interface CommonPaginationProps {
@@ -49,8 +52,8 @@ interface PaginationSearchProps extends CommonPaginationProps {
 
 export function getPaginationConfigs({
   request,
-  defaultLimit = 10,
-  defaultPage = 1,
+  defaultLimit = DEFAULT_LIMIT,
+  defaultPage = DEFAULT_PAGE,
 }: PaginationConfigs) {
   const url = new URL(request.url)
 
@@ -65,7 +68,7 @@ export function getPaginationConfigs({
 export function getPaginationOptions({
   request,
   totalItems,
-  defaultMaxPageLinks = 10,
+  defaultMaxPageItems = DEFAULT_LIMIT,
 }: PaginationOptionsConfig) {
   const url = new URL(request.url)
   const { queryParam, limitParam, pageParam } = getPaginationConfigs({
@@ -73,7 +76,7 @@ export function getPaginationOptions({
   })
 
   const totalPages = Math.ceil(totalItems / limitParam)
-  const visiblePageCount = Math.min(defaultMaxPageLinks, totalPages)
+  const visiblePageCount = Math.min(defaultMaxPageItems, totalPages)
 
   let startPage = Math.max(1, pageParam - Math.floor(visiblePageCount / 2))
   let endPage = Math.min(totalPages, startPage + visiblePageCount - 1)
@@ -134,7 +137,7 @@ export function PaginationNavigation({
 
     if (!isPossible) {
       return (
-        <span className="flex w-8 select-none justify-center px-1 opacity-10">
+        <span className="flex w-8 select-none justify-center rounded-md p-2 opacity-10">
           {icon}
         </span>
       )
@@ -149,7 +152,7 @@ export function PaginationNavigation({
     return (
       <Link
         to={`${location.pathname}?${searchParams}`}
-        className="flex w-8 justify-center px-1 text-muted-foreground hover:text-white"
+        className="flex w-8 justify-center rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:opacity-75"
       >
         {icon}
       </Link>
@@ -178,9 +181,10 @@ export function PaginationNavigation({
                 <Link
                   to={to}
                   className={cn(
-                    "flex w-8 justify-center rounded p-1 transition hover:opacity-75",
-                    isActive && "bg-primary text-white",
-                    !isActive && "text-muted-foreground hover:text-white",
+                    // Use width to have consistent width although different numbers
+                    "flex w-8 justify-center rounded-md p-1 transition hover:opacity-75",
+                    isActive && "bg-primary text-primary-foreground",
+                    !isActive && "text-muted-foreground hover:bg-secondary",
                   )}
                 >
                   {pageNumber}
@@ -218,48 +222,50 @@ export function PaginationSearch({
     <section className="w-full space-y-2">
       <SearchForm action={location.pathname} placeholder={searchPlaceholder} />
 
-      {/* Not found anything from search */}
-      {!queryParam && count <= 0 && (
-        <p className="text-muted-foreground">No {itemName} found</p>
-      )}
+      <div className="w-full space-y-2 text-sm">
+        {/* Not found anything from search */}
+        {!queryParam && count <= 0 && (
+          <p className="text-muted-foreground">No {itemName} found</p>
+        )}
 
-      {/* Not found anything from search */}
-      {queryParam && count <= 0 && (
-        <p className="text-muted-foreground">
-          No {itemName} found with keyword "{queryParam}"
-        </p>
-      )}
+        {/* Not found anything from search */}
+        {queryParam && count <= 0 && (
+          <p className="text-muted-foreground">
+            No {itemName} found with keyword "{queryParam}"
+          </p>
+        )}
 
-      {/* Without search query keyword */}
-      {!queryParam && count > 0 && (
-        <p className="space-x-2 text-muted-foreground">
-          <span>
-            {pluralItemsText} in page {pageParam}
-          </span>
-
-          {isVerbose && (
-            <span className="text-muted-foreground/50">
-              (from total of {pluralizeWord(itemName, totalItems)} in{" "}
-              {pluralizeWord("page", totalPages)})
-            </span>
-          )}
-        </p>
-      )}
-
-      {/* With search query keyword */}
-      {queryParam && count > 0 && (
-        <p className="space-x-2 text-muted-foreground">
-          <span>
-            "{queryParam}" found {pluralItemsText} in page {pageParam}
-          </span>
-          {isVerbose && (
+        {/* Without search query keyword */}
+        {!queryParam && count > 0 && (
+          <p className="space-x-2 text-muted-foreground">
             <span>
-              (from total of {pluralizeWord(itemName, totalItems)} in{" "}
-              {pluralizeWord("page", totalPages)})
+              {pluralItemsText} in page {pageParam}
             </span>
-          )}
-        </p>
-      )}
+
+            {isVerbose && (
+              <span className="text-muted-foreground/50">
+                (from total of {pluralizeWord(itemName, totalItems)} in{" "}
+                {pluralizeWord("page", totalPages)})
+              </span>
+            )}
+          </p>
+        )}
+
+        {/* With search query keyword */}
+        {queryParam && count > 0 && (
+          <p className="space-x-2 text-muted-foreground">
+            <span>
+              "{queryParam}" found {pluralItemsText} in page {pageParam}
+            </span>
+            {isVerbose && (
+              <span>
+                (from total of {pluralizeWord(itemName, totalItems)} in{" "}
+                {pluralizeWord("page", totalPages)})
+              </span>
+            )}
+          </p>
+        )}
+      </div>
     </section>
   )
 }
