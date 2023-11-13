@@ -12,7 +12,7 @@ export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticator.isAuthenticated(request, { failureRedirect: "/login" })
-  // TODO: Check for role here
+  // LATER: Check for role here
   return null
 }
 
@@ -30,7 +30,7 @@ export default function AdminLayoutRoute() {
   const extraNavItems = ["/user"]
 
   return (
-    <div className="flex gap-2">
+    <div className="flex">
       <nav className="app-sidebar">
         <SidebarNavItems
           items={configNavigationItems.filter(item =>

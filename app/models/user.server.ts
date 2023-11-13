@@ -45,7 +45,7 @@ export const modelUser = {
         id: true,
         fullname: true,
         username: true,
-        // nickname: true,
+        nickname: true,
         email: true,
         roles: { select: { symbol: true, name: true } },
         images: { select: { url: true } },

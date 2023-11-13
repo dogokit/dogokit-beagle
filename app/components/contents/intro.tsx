@@ -6,7 +6,7 @@ export function ContentIntro() {
       <header className="space-y-10 [text-wrap:balance]">
         <h1
           id="intro"
-          className="text-5xl text-primary sm:text-6xl md:text-7xl lg:text-8xl"
+          className="text-5xl leading-tight tracking-tighter text-primary sm:text-6xl md:text-7xl lg:text-8xl"
         >
           Dogokit is a web app template kit
         </h1>

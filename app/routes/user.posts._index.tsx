@@ -30,8 +30,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function UserPostsRoute() {
   const { posts } = useLoaderData<typeof loader>()
 
-  // TODO: Use data table
-  // TODO: OR check Notion's UI for links in a page
+  // LATER: Use data table or check Notion's UI for links in a page
 
   return (
     <div className="app-container">
@@ -52,7 +51,7 @@ export default function UserPostsRoute() {
                     <ButtonLink
                       size="xs"
                       variant="secondary"
-                      to={`/user/posts/${post.slug}`}
+                      to={`/user/posts/${post.id}`}
                     >
                       Edit
                     </ButtonLink>

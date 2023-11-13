@@ -31,8 +31,8 @@ export default function UserLayoutRoute() {
   const extraNavItems = ["/admin"]
 
   return (
-    <div className="flex gap-2">
-      {/* TODO: Become a collapsible component: shard/sidebar + sidebar-nav-items */}
+    <div className="flex">
+      {/* LATER: Become a collapsible component: shard/sidebar + sidebar-nav-items */}
       <nav className="app-sidebar">
         <SidebarNavItems
           items={configNavigationItems.filter(item =>

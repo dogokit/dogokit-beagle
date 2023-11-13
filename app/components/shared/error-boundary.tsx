@@ -28,7 +28,7 @@ export function GeneralErrorBoundary({
   const params = useParams()
   const error = useRouteError()
 
-  // TODO: captureRemixErrorBoundaryError(error)
+  // LATER: captureRemixErrorBoundaryError(error)
 
   if (typeof document !== "undefined") {
     console.error(error)
@@ -88,7 +88,7 @@ export function ErrorHelpInformation() {
   return (
     <>
       <section className="site-section">
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <ButtonLink to="/">Go to Home</ButtonLink>
           <ButtonLink to="/help">Go to Help</ButtonLink>
         </div>

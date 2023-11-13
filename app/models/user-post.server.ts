@@ -1,4 +1,5 @@
 import { type Post } from "@prisma/client"
+import { createPostSlug } from "~/helpers/post"
 
 import { prisma } from "~/libs/db.server"
 
@@ -25,6 +26,21 @@ export const modelUserPost = {
       where: { id, userId },
       include: {
         images: { select: { url: true } },
+      },
+    })
+  },
+
+  create({
+    userId,
+    title,
+    content,
+  }: Pick<Post, "userId" | "title" | "content">) {
+    return prisma.post.create({
+      data: {
+        userId,
+        title,
+        slug: createPostSlug(title),
+        content,
       },
     })
   },

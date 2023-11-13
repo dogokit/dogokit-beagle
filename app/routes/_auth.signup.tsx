@@ -96,6 +96,7 @@ export default function SignUpRoute() {
           {...form.props}
         >
           <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
+            {/* LATER: FormFieldBuilder component */}
             <FormField>
               <FormLabel htmlFor={fullname.id}>Full Name</FormLabel>
               <Input

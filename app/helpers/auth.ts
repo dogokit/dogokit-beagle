@@ -10,7 +10,7 @@ export async function requireUser(request: Request) {
   const user = await modelUser.getById({ id: userSession.id })
   invariant(user, "User not found")
 
-  // TODO: Make this as object to contain userId as well
+  // LATER: Make this as object to contain userId as well
   return user
 }
 
