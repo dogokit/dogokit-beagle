@@ -11,6 +11,7 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
+import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 
@@ -60,8 +61,10 @@ export default function SearchRoute() {
   return (
     <div className="site-container space-y-10">
       <header className="site-header">
-        <h1>Posts</h1>
-        <h2>Various posts</h2>
+        <h1 className="inline-flex items-center gap-2 text-primary">
+          <Iconify icon="ph:scroll-duotone" />
+          <span>Posts</span>
+        </h1>
       </header>
 
       <section className="site-section">

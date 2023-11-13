@@ -14,7 +14,10 @@ export default function AboutRoute() {
   return (
     <div className="site-container space-y-16">
       <header className="site-header">
-        <h1>About</h1>
+        <h1 className="inline-flex items-center gap-2 text-primary">
+          <Iconify icon="ph:info-duotone" />
+          <span>About</span>
+        </h1>
       </header>
 
       <section className="site-section prose-config">

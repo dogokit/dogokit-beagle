@@ -8,6 +8,7 @@ import {
   PaginationSearch,
 } from "~/components/shared/pagination"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
+import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -50,11 +51,14 @@ export default function SearchRoute() {
   return (
     <div className="site-container space-y-10">
       <header className="site-header">
-        <h1>Search</h1>
-        <h2>Demo of search and pagination</h2>
+        <h1 className="inline-flex items-center gap-2 text-primary">
+          <Iconify icon="ph:magnifying-glass" />
+          <span>Search</span>
+        </h1>
+        <p>Demo of search and pagination</p>
       </header>
 
-      <section className="site-section space-y-2">
+      <section className="site-section space-y-4">
         <PaginationSearch
           itemName="user"
           searchPlaceholder="Search users with keyword..."
