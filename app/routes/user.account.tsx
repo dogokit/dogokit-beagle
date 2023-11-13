@@ -70,8 +70,9 @@ export default function UserAccountRoute() {
           <fieldset disabled={isSubmitting}>
             <Input {...conform.input(id, { type: "hidden" })} required />
             <ButtonLoading
-              variant="destructive"
               type="submit"
+              size="sm"
+              variant="destructive"
               loadingText="Deleting account..."
               isLoading={isSubmitting}
             >

@@ -4,6 +4,7 @@ import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
 import { ButtonLink } from "~/components/ui/button-link"
+import { Iconify } from "~/components/ui/iconify"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 
@@ -23,17 +24,26 @@ export function AppNavigation() {
         <ThemeButton size="xs" />
       </div>
 
-      <div className="flex items-center gap-2">
-        {userSession && <IndicatorUser size="sm" />}
+      <div>
+        {userSession && (
+          <div className="flex items-center gap-2">
+            <ButtonLink to="/posts/new" size="xs">
+              <Iconify icon="ph:plus-square-duotone" />
+              <span>New Post</span>
+            </ButtonLink>
+            <IndicatorUser size="sm" />
+          </div>
+        )}
+
         {!userSession && (
-          <>
+          <div className="flex items-center gap-2">
             <ButtonLink to="/logout" size="xs" variant="destructive">
               Log out
             </ButtonLink>
             <ButtonLink to="/" size="xs" prefetch="intent">
               Home
             </ButtonLink>
-          </>
+          </div>
         )}
       </div>
     </nav>
