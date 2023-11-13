@@ -26,9 +26,8 @@ export function useRootLoaderData() {
   const data = useMatchesData("root") as RootLoaderData
 
   return {
-    ENV: data?.ENV,
-    NODE_ENV: data?.NODE_ENV,
-    userSession: data?.userSession,
-    userData: data?.userData,
+    ENV: data.ENV,
+    userSession: data.userSession,
+    userData: data.userData,
   }
 }

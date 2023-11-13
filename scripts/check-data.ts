@@ -4,9 +4,10 @@ import { logEnv } from "~/utils/log.server"
 async function checkData() {
   logEnv()
 
-  const users = await prisma.user.findMany({
+  const users = await prisma.user.findFirst({
     select: { id: true, email: true, username: true },
   })
+
   console.info({ users })
 }
 

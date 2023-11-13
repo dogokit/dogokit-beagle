@@ -82,6 +82,7 @@ export default function SignUpRoute() {
         </header>
 
         <Form
+          replace
           action="/signup"
           method="POST"
           className="flex flex-col gap-2"
