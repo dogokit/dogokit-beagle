@@ -9,7 +9,7 @@ import {
   type schemaUserUpdateUsername,
 } from "~/schemas/user"
 import { hashPassword } from "~/utils/encryption.server"
-import { getPlaceholderAvatarImageURL } from "~/utils/placeholder"
+import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
 
 export { type User } from "@prisma/client"
 
@@ -104,7 +104,7 @@ export const modelUser = {
         email: email.trim(),
         password: { create: { hash: await hashPassword(password) } },
         roles: { connect: { symbol: "NORMAL" } },
-        images: { create: { url: getPlaceholderAvatarImageURL(username) } },
+        images: { create: { url: getPlaceholderAvatarUrl(username) } },
         // profiles: {
         //   create: {
         //     modeName: `Default ${name}`,

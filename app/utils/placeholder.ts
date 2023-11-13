@@ -1,4 +1,4 @@
-export function getPlaceholderAvatarImageURL(
+export function getPlaceholderAvatarUrl(
   username = "username",
   styleName = "thumbs",
 ) {

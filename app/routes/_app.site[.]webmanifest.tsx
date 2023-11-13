@@ -1,7 +1,7 @@
 import { type DataFunctionArgs } from "@remix-run/node"
 import { configMeta } from "~/configs/meta"
 
-import { getDomainURL } from "~/utils/url.server"
+import { getDomainUrl } from "~/utils/url.server"
 
 // EDIME: Based on actual size of image assets in /app/public/pwa
 const maskableIconSizes = [512, 192, 128]
@@ -18,8 +18,8 @@ export function loader({ request }: DataFunctionArgs) {
     display: "standalone",
     display_override: ["fullscreen", "minimal-ui"],
     orientation: "portrait-primary",
-    start_url: getDomainURL(request),
-    scope: getDomainURL(request),
+    start_url: getDomainUrl(request),
+    scope: getDomainUrl(request),
     icons: [
       ...maskableIconSizes.map(size => {
         return {

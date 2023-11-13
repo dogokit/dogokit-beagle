@@ -6,7 +6,7 @@ export type ConfigRedirect = {
   to?: string
 }
 
-export function redirectRouteToURL(
+export function redirectRouteToUrl(
   request: Request,
   configRedirects: ConfigRedirect[],
 ) {

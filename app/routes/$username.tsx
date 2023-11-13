@@ -9,7 +9,7 @@ import {
 import { configRedirects } from "~/configs/redirects"
 import { modelUser } from "~/models/user.server"
 import { formatDateLastMod } from "~/utils/datetime"
-import { redirectRouteToURL } from "~/utils/redirect-route.server"
+import { redirectRouteToUrl } from "~/utils/redirect-route.server"
 
 export const handle: SEOHandle = {
   getSitemapEntries: async () => {
@@ -25,7 +25,7 @@ export const handle: SEOHandle = {
 }
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
-  return redirectRouteToURL(request, configRedirects)
+  return redirectRouteToUrl(request, configRedirects)
 }
 
 export default function UsernameLayoutRoute() {
