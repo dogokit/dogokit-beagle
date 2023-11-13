@@ -3,13 +3,18 @@ import relativeTime from "dayjs/plugin/relativeTime.js"
 
 dayjs.extend(relativeTime)
 
+export type ParamDate = string | Date | undefined
+
 export function getCurrentYear() {
   return new Date().getFullYear()
 }
 
-/**
- * Date time format
- */
+export function formatTimestamp(date: ParamDate) {
+  return (
+    dayjs(date).locale("en").format("MMMM D, YYYY [at] H:mm") +
+    ` · ${formatRelativeTime(date)}`
+  )
+}
 
 export function formatDateTime(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("H:mm [on] D MMM YYYY")

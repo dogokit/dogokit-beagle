@@ -9,7 +9,6 @@ import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelUser } from "~/models/user.server"
-import { cn } from "~/utils/cn"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -57,7 +56,7 @@ export default function UsernameRoute() {
   return (
     <div className="site-container space-y-8">
       <section className="site-section my-4 space-y-2">
-        <div className={cn("flex flex-wrap items-end justify-between")}>
+        <div className="flex flex-wrap items-end justify-between">
           <AvatarAuto
             user={user}
             imageUrl={user.images[0]?.url}

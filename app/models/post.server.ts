@@ -17,6 +17,15 @@ export const modelPost = {
     })
   },
 
+  getAllSlugs() {
+    return prisma.post.findMany({
+      select: {
+        slug: true,
+        updatedAt: true,
+      },
+    })
+  },
+
   getById({ id }: Pick<Post, "id">) {
     return prisma.post.findUnique({
       where: { id },
@@ -31,6 +40,11 @@ export const modelPost = {
       where: { slug },
       include: {
         images: { select: { url: true } },
+        user: {
+          include: {
+            images: { select: { url: true } },
+          },
+        },
       },
     })
   },

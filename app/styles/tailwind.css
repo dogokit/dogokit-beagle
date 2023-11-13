@@ -71,12 +71,10 @@ By default Dogokit is using Tailwind CSS color: Indigo
   h4,
   h5,
   h6 {
-    @apply font-semibold leading-tight tracking-tighter text-foreground;
-
-    font-family: "Archivo Variable", system-ui, sans-serif;
+    @apply font-heading font-semibold leading-tight tracking-tighter text-foreground;
   }
   h1 {
-    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl;
+    @apply text-4xl sm:text-5xl;
   }
   h2 {
     @apply text-3xl sm:text-4xl;

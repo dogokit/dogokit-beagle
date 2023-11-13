@@ -17,6 +17,7 @@ export default {
        * To add the fonts, setup in app/configs/fonts.ts
        */
       fontFamily: {
+        heading: ["Archivo Variable", ...defaultTheme.fontFamily.sans],
         display: ["Grandstander Variable", ...defaultTheme.fontFamily.sans],
         sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
         mono: ["Chivo Mono Variable", ...defaultTheme.fontFamily.mono],
