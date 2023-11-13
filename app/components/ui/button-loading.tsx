@@ -8,8 +8,8 @@ import { Iconify } from "~/components/ui/iconify"
 export interface ButtonLoadingProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  isLoading?: boolean
-  loadingText?: React.ReactNode
+  isLoading: boolean
+  loadingText: React.ReactNode
   isDisabledWhenLoading?: boolean
   iconComponent?: React.ReactNode
 }

@@ -53,7 +53,6 @@ export default function UsernameRoute() {
 
   const profile = user.profiles[0]
   const isOwner = user.id === userSession?.id
-  const userImageURL = user.images[0]?.url
 
   return (
     <div className="site-container space-y-8">
@@ -61,7 +60,7 @@ export default function UsernameRoute() {
         <div className={cn("flex flex-wrap items-end justify-between")}>
           <AvatarAuto
             user={user}
-            imageUrl={userImageURL}
+            imageUrl={user.images[0]?.url}
             className="outline outline-2 outline-background"
             size="xl"
           />

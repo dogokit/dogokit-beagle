@@ -41,7 +41,7 @@ export default function UserAccountRoute() {
   const lastSubmission = useActionData<typeof action>()
 
   const navigation = useNavigation()
-  const isProcessing = navigation.state === "loading"
+  const isSubmitting = navigation.state === "submitting"
 
   const [form, { id }] = useForm<z.infer<typeof schemaGeneralId>>({
     id: "delete-account",
@@ -67,13 +67,13 @@ export default function UserAccountRoute() {
         </header>
 
         <Form method="POST" {...form.props}>
-          <fieldset disabled={isProcessing}>
+          <fieldset disabled={isSubmitting}>
             <Input {...conform.input(id, { type: "hidden" })} required />
             <ButtonLoading
               variant="destructive"
               type="submit"
               loadingText="Deleting account..."
-              isLoading={isProcessing}
+              isLoading={isSubmitting}
             >
               Delete account
             </ButtonLoading>

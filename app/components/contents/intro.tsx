@@ -27,8 +27,8 @@ export function ContentIntro() {
         </p>
 
         <p>
-          This Dogokit variant is the Remix one. There's a possibility to have
-          more kits than just the Remix one.
+          This Dogokit variant is using Remix. There's a possibility to have
+          more variants in the future.
         </p>
 
         <ul>
