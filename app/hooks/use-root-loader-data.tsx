@@ -25,9 +25,10 @@ export function useMatchesData(routeId: string) {
 export function useRootLoaderData() {
   const data = useMatchesData("root") as RootLoaderData
 
+  // Keep them optionals, because need to handle in error boundary
   return {
-    ENV: data.ENV,
-    userSession: data.userSession,
-    userData: data.userData,
+    ENV: data?.ENV,
+    userSession: data?.userSession,
+    userData: data?.userData,
   }
 }

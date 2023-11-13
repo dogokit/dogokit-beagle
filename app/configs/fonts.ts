@@ -1,5 +1,5 @@
 /**
- * EDITME: Config Fonts
+ * EDITME: Fonts Config
  */
 
 import headingFontStyles from "@fontsource-variable/archivo/wght.css"

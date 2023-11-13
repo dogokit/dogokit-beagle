@@ -19,6 +19,11 @@ export const configNavigationItems: NavItem[] = [
     shortcut: "⌘K+S",
   },
   {
+    to: "/user/account",
+    text: "Account",
+    icon: "ph:user-duotone",
+  },
+  {
     text: "Billing",
     to: "/user/billing",
     icon: "ph:credit-card-duotone",
@@ -37,14 +42,29 @@ export const configNavigationItems: NavItem[] = [
     shortcut: "⌘K",
   },
   {
-    to: "/user/account",
-    text: "Account",
+    to: "/user",
     icon: "ph:user-duotone",
+    text: "User",
   },
   {
     to: "/admin",
     icon: "ph:crown-duotone",
     text: "Admin",
+  },
+  {
+    to: "/admin/dashboard",
+    icon: "ph:crown-duotone",
+    text: "Admin Dashboard",
+  },
+  {
+    to: "/admin/settings",
+    icon: "ph:crown-duotone",
+    text: "Admin Settings",
+  },
+  {
+    to: "/admin/notifications",
+    icon: "ph:crown-duotone",
+    text: "Admin Notifications",
   },
   {
     to: "/components",

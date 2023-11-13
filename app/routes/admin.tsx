@@ -12,33 +12,32 @@ export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticator.isAuthenticated(request, { failureRedirect: "/login" })
+  // TODO: Check for role here
   return null
 }
 
-export default function UserLayoutRoute() {
+export default function AdminLayoutRoute() {
   const { isModeDevelopment } = useAppMode()
 
   const navItems = [
-    "/user/dashboard",
-    "/user/settings",
-    "/user/billing",
-    "/user/account",
-    "/user/notifications",
+    "/admin/dashboard",
+    "/admin/settings",
+    "/admin/notifications",
     "/logout",
   ]
 
-  const extraNavItems = ["/admin"]
+  const extraNavItems = ["/user"]
 
   return (
     <div className="flex gap-2">
-      <nav className="w-full max-w-[140px] select-none border-r border-r-border p-2 sm:max-w-[200px]">
+      <nav className="w-full max-w-[200px] select-none border-r border-r-border p-2 sm:max-w-[240px]">
         <DashboardNavItems
           items={configNavigationItems.filter(item =>
             navItems.includes(item.to),
           )}
         />
 
-        <Separator className="my-4" />
+        {isModeDevelopment && <Separator className="my-4" />}
 
         {isModeDevelopment && (
           <DashboardNavItems
