@@ -64,15 +64,13 @@ export default function SearchRoute() {
         <h2>Various posts</h2>
       </header>
 
-      <section className="site-section space-y-2">
+      <section className="site-section">
         <PaginationSearch
           itemName="post"
           searchPlaceholder="Search posts with keyword..."
           count={posts.length}
           {...loaderData}
         />
-
-        <PaginationNavigation {...loaderData} />
       </section>
 
       <section className="site-section">

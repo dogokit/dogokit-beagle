@@ -52,8 +52,8 @@ export const configSite = {
   mailingListName: "All-in-One Kit",
 
   navItems: [
-    { to: "/", text: "Home", icon: "ph:home-duotone", isEnabled: false },
-    { to: "/about", text: "About", icon: "ph:about-duotone", isEnabled: true },
-    { to: "/posts", text: "Posts", icon: "ph:post-duotnoe", isEnabled: true },
+    { to: "/", text: "Home", icon: "ph:house-duotone", isEnabled: false },
+    { to: "/about", text: "About", icon: "ph:info-duotone", isEnabled: true },
+    { to: "/posts", text: "Posts", icon: "ph:scroll-duotone", isEnabled: true },
   ],
 }

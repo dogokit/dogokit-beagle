@@ -28,7 +28,7 @@ By default Dogokit is using Tailwind CSS color: Indigo
     --destructive: 0 85% 61% /* red-500 */;
     --destructive-foreground: 211 41% 99% /* slate-50 */;
     --border: 215 32% 92% /* slate-200 */;
-    --input: 215 32% 92% /* slate-200 */;
+    --input: 213 73% 84% /* slate-300 */;
     --ring: 244 76% 59% /* indigo-600 */;
     --radius: 0.5rem;
   }

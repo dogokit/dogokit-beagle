@@ -17,6 +17,7 @@ import { AuthButtons } from "~/components/shared/auth-buttons"
 import { Alert } from "~/components/ui/alert"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { FormDescription, FormField, FormLabel } from "~/components/ui/form"
+import { Iconify } from "~/components/ui/iconify"
 import { Input, InputPassword } from "~/components/ui/input"
 import { LinkText } from "~/components/ui/link-text"
 import { useAppMode } from "~/hooks/use-app-mode"
@@ -71,9 +72,15 @@ export default function SignUpRoute() {
     <div className="site-container">
       <div className="mx-auto max-w-sm space-y-10">
         <header className="site-header">
-          <h2>Log in to continue</h2>
+          <h2 className="inline-flex items-center gap-2">
+            <Iconify icon="ph:sign-in-duotone" />
+            <span>Log in to continue</span>
+          </h2>
           <p>
-            Don't have an account? <LinkText to="/signup">Sign up</LinkText>
+            Don't have an account?{" "}
+            <LinkText to="/signup" className="transition hover:text-primary">
+              Sign up
+            </LinkText>
           </p>
         </header>
 
