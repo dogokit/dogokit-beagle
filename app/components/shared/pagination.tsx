@@ -1,15 +1,15 @@
+/**
+ * Paginated Search Components
+ *
+ * See example at app/routes/search.tsx
+ */
+
 import { Link, useLocation } from "@remix-run/react"
 
 import { SearchForm } from "~/components/shared/search-form"
 import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { pluralizeWord } from "~/utils/string"
-
-/**
- * Pagination Helpers
- *
- * See app/routes/_example.pagination.tsx
- */
 
 interface PaginationItem {
   pageNumber: number
@@ -114,11 +114,11 @@ export function PaginationNavigation({
 }: PaginationNavigationProps) {
   const location = useLocation()
 
-  const renderArrowLink = (
+  function renderArrowLink(
     direction: string,
     icon: React.ReactNode,
     targetPage: number,
-  ) => {
+  ) {
     const isPrev = direction === "prev"
     const isNext = direction === "next"
     const isFirst = direction === "first"
@@ -156,10 +156,10 @@ export function PaginationNavigation({
     )
   }
 
-  const renderArrowMostLink = (
+  function renderArrowMostLink(
     direction: "first" | "last",
     icon: React.ReactNode,
-  ) => {
+  ) {
     const targetPage = direction === "first" ? 1 : totalPages
     return renderArrowLink(direction, icon, targetPage)
   }
@@ -215,7 +215,7 @@ export function PaginationSearch({
   const pluralItemsText = pluralizeWord(itemName, count)
 
   return (
-    <section className="w-full space-y-4">
+    <section className="w-full space-y-2">
       <SearchForm action={location.pathname} placeholder={searchPlaceholder} />
 
       {/* Not found anything from search */}

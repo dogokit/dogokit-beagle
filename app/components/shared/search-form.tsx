@@ -5,14 +5,11 @@ import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
 
 interface Props {
-  action?: string
-  placeholder?: string
+  action: string
+  placeholder: string
 }
 
-export function SearchForm({
-  action = "/search",
-  placeholder = "Search",
-}: Props) {
+export function SearchForm({ action, placeholder }: Props) {
   const [searchParams] = useSearchParams()
   const query = searchParams.get("q") ?? ""
 

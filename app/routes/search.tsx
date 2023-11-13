@@ -71,11 +71,12 @@ export default function SearchRoute() {
             {users.map(user => {
               return (
                 <li key={user.id}>
-                  <Link to={`/${user.username}`} className="space-y-1">
+                  <Link
+                    to={`/${user.username}`}
+                    className="space-y-1 transition hover:opacity-75"
+                  >
                     <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
-                    <h4 className="transition hover:opacity-75">
-                      {user.fullname}
-                    </h4>
+                    <h4>{user.fullname}</h4>
                     <p className="text-muted-foreground">@{user.username}</p>
                   </Link>
                 </li>
