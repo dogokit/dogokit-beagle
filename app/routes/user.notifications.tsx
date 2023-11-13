@@ -28,7 +28,7 @@ export default function UserNotificationsRoute() {
     <div className="app-container">
       <section className="app-section space-y-2">
         <header className="app-header">
-          <h3>User Notifications</h3>
+          <h2>User Notifications</h2>
           <p>Description</p>
         </header>
       </section>

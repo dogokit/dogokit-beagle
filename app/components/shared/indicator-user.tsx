@@ -103,20 +103,26 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
   )
 }
 
+/**
+ * More than just navigation items, can be actions as well
+ */
 function DropdownMenuGroupItems({ items }: { items: NavItem[] }) {
   return (
     <DropdownMenuGroup>
-      {items.map(item => (
-        <DropdownMenuItem key={item.to} asChild>
-          <NavLink to={item.to} className="cursor-pointer">
-            <Iconify icon={item.icon} className="me-2" />
-            <span>{item.text}</span>
-            {item.shortcut && (
-              <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>
-            )}
-          </NavLink>
-        </DropdownMenuItem>
-      ))}
+      {items.map(item => {
+        const isLogout = item.to === "/logout"
+        return (
+          <DropdownMenuItem key={item.to} isDestructive={isLogout} asChild>
+            <NavLink to={item.to}>
+              <Iconify icon={item.icon} className="me-2" />
+              <span>{item.text}</span>
+              {item.shortcut && (
+                <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>
+              )}
+            </NavLink>
+          </DropdownMenuItem>
+        )
+      })}
     </DropdownMenuGroup>
   )
 }

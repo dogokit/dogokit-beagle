@@ -32,7 +32,7 @@ export function SearchForm({ action, placeholder }: Props) {
           <Iconify
             icon="ph:magnifying-glass"
             // eslint-disable-next-line tailwindcss/no-custom-classname
-            className="group-focus-within:text-brand text-muted-foreground"
+            className="text-muted-foreground group-focus-within:text-primary"
           />
         </span>
       </fieldset>

@@ -60,7 +60,7 @@ function Calendar({
         caption_dropdowns: "flex gap-2",
         dropdown: cn(
           "cursor-pointer flex w-full rounded-md border border-input bg-background px-3 py-1 text-sm transition-colors",
-          "focus:border-brand focus:outline-none focus:ring focus:ring-ring/20",
+          "focus:border-primary focus:outline-none focus:ring focus:ring-ring/20",
         ),
         vhidden: "hidden",
         ...classNames,

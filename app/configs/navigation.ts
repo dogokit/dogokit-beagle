@@ -59,8 +59,8 @@ export const configNavigationItems: NavItem[] = [
   },
   {
     to: "/admin/dashboard",
-    icon: "ph:crown-duotone",
-    text: "Admin Dashboard",
+    icon: "ph:binoculars-duotone",
+    text: "Dashboard",
   },
   {
     to: "/admin/posts",
@@ -69,13 +69,13 @@ export const configNavigationItems: NavItem[] = [
   },
   {
     to: "/admin/settings",
-    icon: "ph:crown-duotone",
-    text: "Admin Settings",
+    icon: "ph:gear-duotone",
+    text: "Settings",
   },
   {
     to: "/admin/notifications",
-    icon: "ph:crown-duotone",
-    text: "Admin Notifications",
+    icon: "ph:notification-duotone",
+    text: "Notifications",
   },
   {
     to: "/components",
@@ -84,7 +84,7 @@ export const configNavigationItems: NavItem[] = [
   },
   {
     to: "/logout",
-    text: "Log Out",
     icon: "ph:sign-out-duotone",
+    text: "Log Out",
   },
 ]

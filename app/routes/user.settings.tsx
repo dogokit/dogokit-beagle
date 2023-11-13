@@ -28,7 +28,7 @@ export default function UserSettingsRoute() {
     <div className="app-container">
       <section className="app-section space-y-2">
         <header className="app-header">
-          <h3>User Settings</h3>
+          <h2>User Settings</h2>
           <p>Description</p>
         </header>
       </section>

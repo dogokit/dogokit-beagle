@@ -53,7 +53,7 @@ export default function UserAccountRoute() {
     <div className="app-container space-y-8">
       <section className="app-section space-y-2">
         <header className="app-header">
-          <h3>User Account</h3>
+          <h2>User Account</h2>
           <p>Description</p>
         </header>
       </section>

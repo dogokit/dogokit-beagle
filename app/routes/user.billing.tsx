@@ -28,7 +28,7 @@ export default function UserBillingRoute() {
     <div className="app-container">
       <section className="app-section space-y-2">
         <header className="app-header">
-          <h3>User Billing</h3>
+          <h2>User Billing</h2>
           <p>Description</p>
         </header>
       </section>
