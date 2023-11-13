@@ -51,9 +51,6 @@ export const configSite = {
 
   mailingListName: "All-in-One Kit",
 
-  navItems: [
-    { to: "/", text: "Home", icon: "ph:house-duotone", isEnabled: false },
-    { to: "/about", text: "About", icon: "ph:info-duotone", isEnabled: true },
-    { to: "/posts", text: "Posts", icon: "ph:scroll-duotone", isEnabled: true },
-  ],
+  // Customize in app/configs/navigation.ts
+  navItems: ["/", "/about", "/posts"],
 }

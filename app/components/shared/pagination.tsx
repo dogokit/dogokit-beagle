@@ -167,6 +167,9 @@ export function PaginationNavigation({
     return renderArrowLink(direction, icon, targetPage)
   }
 
+  // Don't render if there's no items to paginate
+  if (paginationItems.length <= 0) return null
+
   return (
     <nav className="flex items-center justify-center gap-4">
       {renderArrowMostLink("first", <Iconify icon="ph:caret-double-left" />)}

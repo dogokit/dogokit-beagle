@@ -71,14 +71,16 @@ export default function UsernameRoute() {
         </div>
 
         <div>
-          <h2>{user.fullname}</h2>
-          <h3 className="text-muted-foreground">@{user.username}</h3>
+          <h2 className="text-3xl">{user.fullname}</h2>
+          <h3 className="font-sans text-2xl text-muted-foreground">
+            @{user.username}
+          </h3>
         </div>
       </section>
 
       {profile && (
         <section className="site-section space-y-2">
-          <h3>{profile.headline}</h3>
+          <h4>{profile.headline}</h4>
           <p className="prose-config">{profile.bio}</p>
         </section>
       )}

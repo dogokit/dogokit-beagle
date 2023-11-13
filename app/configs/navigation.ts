@@ -3,9 +3,13 @@ export type NavItem = {
   icon: string
   text: string
   shortcut?: string
+  isEnabled?: boolean
 }
 
 export const configNavigationItems: NavItem[] = [
+  { to: "/", text: "Home", icon: "ph:house-duotone", isEnabled: false },
+  { to: "/about", text: "About", icon: "ph:info-duotone", isEnabled: true },
+  { to: "/posts", text: "Posts", icon: "ph:scroll-duotone", isEnabled: true },
   {
     to: "/user/dashboard",
     icon: "ph:binoculars-duotone",

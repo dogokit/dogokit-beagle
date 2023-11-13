@@ -5,6 +5,7 @@ import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
+import { configNavigationItems } from "~/configs/navigation"
 import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
@@ -28,7 +29,8 @@ export function SiteNavigation() {
 
       <div className="flex items-center gap-4">
         <ul className="hidden sm:flex sm:items-center sm:gap-4">
-          {configSite.navItems
+          {configNavigationItems
+            .filter(item => configSite.navItems.includes(item.to))
             .filter(navItem => navItem.isEnabled)
             .map(navItem => {
               return (
