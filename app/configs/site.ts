@@ -11,9 +11,12 @@ const isDevelopment = process.env.NODE_ENV === "development"
 export const configSite = {
   domain: isDevelopment ? "localhost:3000" : "dogokit.allnimal.com",
 
-  slug: "dogokit",
+  // Recommended: 60 characters
   name: "Dogokit", // Can be different with title
   title: "Dogokit", // Can be different with name
+  slug: "dogokit",
+
+  // Recommended: 155-160 characters
   description:
     "Web app template kit using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more",
 
@@ -33,6 +36,20 @@ export const configSite = {
     site: "@mhaidarhanif",
     creator: "@mhaidarhanif",
   },
+
+  author: {
+    name: "M Haidar Hanif",
+    handle: "@mhaidarhanif",
+    url: "https://mhaidarhanif.com",
+  },
+
+  company: {
+    name: "Allnimal",
+    handle: "@allnimal",
+    url: "https://allnimal.com",
+  },
+
+  mailingListName: "All-in-One Kit",
 
   navItems: [
     { to: "/", name: "Home", icon: "ph:home-duotone" },
