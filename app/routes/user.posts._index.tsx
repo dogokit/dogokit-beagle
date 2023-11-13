@@ -6,6 +6,7 @@ import {
 import { Link, useLoaderData } from "@remix-run/react"
 import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
+import { Iconify } from "~/components/ui/iconify"
 
 import { requireUserId } from "~/helpers/auth"
 import { modelUserPost } from "~/models/user-post.server"
@@ -43,18 +44,20 @@ export default function UserPostsRoute() {
           <ul className="space-y-4">
             {posts.map(post => {
               return (
-                <li key={post.id} className="flex items-center gap-2">
+                <li key={post.id} className="flex flex-wrap items-center gap-2">
                   <div className="flex items-center gap-2">
-                    <Button size="xs" variant="destructive">
-                      Delete
-                    </Button>
                     <ButtonLink
+                      variant="outline"
                       size="xs"
-                      variant="secondary"
                       to={`/user/posts/${post.id}`}
                     >
-                      Edit
+                      <Iconify icon="ph:note-pencil" />
+                      <span className="hidden sm:inline">Edit</span>
                     </ButtonLink>
+                    <Button variant="destructive" size="xs">
+                      <Iconify icon="ph:trash-duotone" />
+                      <span className="hidden sm:inline">Delete</span>
+                    </Button>
                   </div>
 
                   <Link

@@ -53,12 +53,12 @@ export default function UserPostsPostIdRoute() {
       <section className="app-section">
         <div className="flex flex-wrap items-center gap-2">
           <Button variant="outline" size="xs">
-            <Iconify icon="ph:note-pencil" />
+            <Iconify icon="ph:floppy-disk-duotone" />
             <span>Save</span>
           </Button>
 
           <Button variant="destructive" size="xs">
-            <Iconify icon="ph:note-pencil" />
+            <Iconify icon="ph:trash-duotone" />
             <span>Delete</span>
           </Button>
 
