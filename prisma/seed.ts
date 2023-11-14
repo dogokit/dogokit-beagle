@@ -142,7 +142,7 @@ async function seedUsers() {
 async function seedPosts() {
   console.info("\n📜 Seed posts")
   console.info("📜 Existing posts count", await prisma.post.count())
-  // console.info("📜 Deleted posts", await prisma.post.deleteMany())
+  console.info("📜 Deleted posts", await prisma.post.deleteMany())
 
   const users = await prisma.user.findMany({
     select: { id: true, username: true },

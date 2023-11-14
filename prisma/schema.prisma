@@ -133,10 +133,10 @@ model UserImage {
 model Post {
   id String @id @default(cuid())
 
-  slug        String   @unique
-  title       String
-  content     String?
-  isPublished Boolean? @default(false)
+  slug    String  @unique
+  title   String
+  content String?
+  // isPublished Boolean? @default(false)
 
   images PostImage[]
 
