@@ -14,6 +14,7 @@ import {
 } from "@remix-run/react"
 import { type z } from "zod"
 import { Button } from "~/components/ui/button"
+import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 
 import { Iconify } from "~/components/ui/iconify"
@@ -78,7 +79,7 @@ export default function UserPostsPostIdRoute() {
   })
 
   return (
-    <div className="app-container space-y-8">
+    <div className="app-container">
       <Form replace method="POST" {...form.props}>
         <fieldset className="space-y-8" disabled={isSubmitting}>
           <section className="app-section">
@@ -96,6 +97,14 @@ export default function UserPostsPostIdRoute() {
                 <Iconify icon="ph:trash-duotone" />
                 <span>Delete</span>
               </Button>
+              <ButtonLink
+                variant="outline"
+                size="xs"
+                to={`/posts/${post.slug}`}
+              >
+                <Iconify icon="ph:arrow-square-out-duotone" />
+                <span className="hidden sm:inline">View</span>
+              </ButtonLink>
 
               <div className="text-xs text-muted-foreground">
                 {!isUpdated && (
@@ -112,17 +121,32 @@ export default function UserPostsPostIdRoute() {
             </div>
           </section>
 
-          <section className="mx-auto w-full max-w-prose">
-            <div>
-              <input type="hidden" {...conform.input(userId)} />
-              <input type="hidden" {...conform.input(id)} />
+          <section className="mx-auto w-full max-w-prose space-y-4">
+            <input type="hidden" {...conform.input(userId)} />
+            <input type="hidden" {...conform.input(id)} />
 
-              <input {...conform.input(slug)} placeholder="post-slug-123" />
+            <input
+              {...conform.input(slug)}
+              placeholder="untitled"
+              spellCheck="false"
+              className="input-natural font-mono text-sm text-muted-foreground"
+            />
 
-              <input {...conform.input(title)} placeholder="Post title..." />
+            <input
+              {...conform.input(title)}
+              placeholder="Untitled"
+              spellCheck="false"
+              className="input-natural font-heading text-4xl font-semibold"
+            />
 
-              <textarea {...conform.input(content)} cols={30} rows={10} />
-            </div>
+            <textarea
+              {...conform.input(content)}
+              placeholder="Add some content..."
+              spellCheck="false"
+              cols={30}
+              rows={20}
+              className="input-natural resize-none"
+            />
           </section>
         </fieldset>
       </Form>
@@ -142,8 +166,17 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ status: "error", submission }, { status: 400 })
   }
 
-  await modelUserPost.update(submission.value)
-  await timer.delay()
+  const post = await modelUserPost.update(submission.value)
 
-  return null
+  await timer.delay()
+  return json(
+    {
+      status: "success",
+      submission: {
+        ...submission,
+        value: post,
+      },
+    },
+    { status: 200 },
+  )
 }

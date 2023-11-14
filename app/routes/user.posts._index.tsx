@@ -101,6 +101,10 @@ export default function UserPostsRoute() {
                   </div>
 
                   <h4>{post.title}</h4>
+
+                  <code className="text-xs text-muted-foreground">
+                    {post.slug}
+                  </code>
                 </li>
               )
             })}

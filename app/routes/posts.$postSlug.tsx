@@ -75,9 +75,11 @@ export default function PostSlugRoute() {
           </Link>
 
           <div className="text-xs text-muted-foreground">
-            <p>
-              Created <Time>{post.createdAt}</Time>
-            </p>
+            {!isUpdated && (
+              <p>
+                Created <Time>{post.createdAt}</Time>
+              </p>
+            )}
             {isUpdated && (
               <p>
                 Updated <Time>{post.updatedAt}</Time>

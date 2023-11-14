@@ -4,12 +4,7 @@ import { userId } from "~/schemas/general"
 
 const id = z.string({ required_error: "Post ID is required" })
 
-const slug = z
-  .string({ required_error: "Slug is required" })
-  .regex(
-    /^[a-zA-Z0-9-_]+$/,
-    "Only alphabet, number, dot, dash, underscore allowed",
-  )
+const slug = z.string({ required_error: "Slug is required" })
 // .min(1, "Slug require at least 1 character")
 // .max(100, "Slug limited to 100 characters")
 // LATER: Prepare trim slug function

@@ -59,7 +59,7 @@ export const modelUserPost = {
       where: { id },
       data: {
         userId,
-        slug: createPostSlug(slug),
+        slug,
         title,
         content,
       },
