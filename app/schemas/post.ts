@@ -20,3 +20,8 @@ export const schemaPostUpdate = z.object({
   title,
   content,
 })
+
+export const schemaPostDelete = z.object({
+  userId,
+  id,
+})

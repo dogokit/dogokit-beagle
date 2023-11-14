@@ -1,5 +1,8 @@
+import { parse } from "@conform-to/zod"
 import {
   json,
+  redirect,
+  type ActionFunctionArgs,
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
@@ -16,6 +19,8 @@ import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { requireUserId } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
+import { modelUserPost } from "~/models/user-post.server"
+import { schemaPostDelete } from "~/schemas/post"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -87,8 +92,15 @@ export default function UserPostsRoute() {
                       <span>Edit</span>
                     </ButtonLink>
                     <FormDelete
-                      itemText={`${post.title} (${post.slug})`}
+                      itemText={`a post: ${post.title} (${post.slug})`}
                       defaultValue={post.id}
+                      extraComponent={
+                        <input
+                          type="hidden"
+                          name="userId"
+                          defaultValue={post.userId}
+                        />
+                      }
                     />
                     <ButtonLink
                       variant="outline"
@@ -117,4 +129,17 @@ export default function UserPostsRoute() {
       </section>
     </div>
   )
+}
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData()
+  const submission = parse(formData, { schema: schemaPostDelete })
+  if (!submission.value || submission.intent !== "submit") {
+    return json(submission)
+  }
+  if (submission.payload.intent === "delete-by-id") {
+    await modelUserPost.deleteById(submission.value)
+    return redirect(`/user/posts`)
+  }
+  return json(submission)
 }

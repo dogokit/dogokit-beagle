@@ -2,6 +2,7 @@ import { conform, useForm } from "@conform-to/react"
 import { getFieldsetConstraint, parse } from "@conform-to/zod"
 import {
   json,
+  redirect,
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
   type MetaFunction,
@@ -169,14 +170,5 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const post = await modelUserPost.update(submission.value)
 
   await timer.delay()
-  return json(
-    {
-      status: "success",
-      submission: {
-        ...submission,
-        value: post,
-      },
-    },
-    { status: 200 },
-  )
+  return redirect(`/user/posts/${post.id}`)
 }

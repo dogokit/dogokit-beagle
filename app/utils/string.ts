@@ -1,10 +1,16 @@
 import { customAlphabet } from "nanoid"
 import pluralize from "pluralize"
 import slugify from "slugify"
+import util from "util"
 
-const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz1234567890", 10)
+export function debugCode(code: unknown, isShown = true) {
+  // eslint-disable-next-line node/no-process-env
+  if (process.env.NODE_ENV !== "development" || isShown !== true) return null
+  console.info(util.inspect(code, false, null, true))
+}
 
 export function createNanoId() {
+  const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz1234567890", 10)
   return nanoid()
 }
 

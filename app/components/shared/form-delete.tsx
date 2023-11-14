@@ -16,17 +16,17 @@ import { ButtonLoading } from "~/components/ui/button-loading"
 import { Iconify } from "~/components/ui/iconify"
 
 export function FormDelete({
-  itemText = "item",
   name = "id",
+  itemText = "item",
   defaultValue,
   intentValue = "delete-by-id",
-  extraFieldComponents,
+  extraComponent,
 }: {
-  itemText?: string
   name?: string
+  itemText?: string
   defaultValue: string
   intentValue?: string
-  extraFieldComponents?: React.ReactNode
+  extraComponent?: React.ReactNode
 }) {
   const [open, setOpen] = useState<boolean>()
   const fetcher = useFetcher()
@@ -58,7 +58,7 @@ export function FormDelete({
               setOpen(false)
             }}
           >
-            {extraFieldComponents}
+            {extraComponent}
             <input type="hidden" name={name} defaultValue={defaultValue} />
             <ButtonLoading
               type="submit"
