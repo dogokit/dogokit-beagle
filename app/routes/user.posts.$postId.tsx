@@ -14,6 +14,7 @@ import {
   useNavigation,
 } from "@remix-run/react"
 import { type z } from "zod"
+import { Debug } from "~/components/shared/debug"
 import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
@@ -49,10 +50,8 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   invariant(params.postId, "params.postId unavailable")
   const userId = await requireUserId(request)
-
-  const post = await modelUserPost.getById({ id: params.postId, userId })
+  const post = await modelUserPost.getById({ userId, id: params.postId })
   invariantResponse(post, "Post not found", { status: 404 })
-
   return json({ post })
 }
 
@@ -65,6 +64,7 @@ export default function UserPostsPostIdRoute() {
   const isSubmitting = navigation.state === "submitting"
   const isUpdated = post.createdAt !== post.updatedAt
 
+  // FIXME: Conform cannot use the new defaultValue after new post from nav
   const [form, { userId, id, slug, title, content }] = useForm<
     z.infer<typeof schemaPostUpdate>
   >({
@@ -81,6 +81,10 @@ export default function UserPostsPostIdRoute() {
 
   return (
     <div className="app-container">
+      <Debug isCollapsibleOpen hidden>
+        {post}
+      </Debug>
+
       <Form replace method="POST" {...form.props}>
         <fieldset className="space-y-8" disabled={isSubmitting}>
           <section className="app-section">

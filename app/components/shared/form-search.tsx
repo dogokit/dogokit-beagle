@@ -4,12 +4,13 @@ import { Iconify } from "~/components/ui/iconify"
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
 
-interface Props {
-  action: string
-  placeholder: string
-}
-
-export function SearchForm({ action, placeholder }: Props) {
+export function FormSearch({
+  action = "/search",
+  placeholder = "Search...",
+}: {
+  action?: string
+  placeholder?: string
+}) {
   const [searchParams] = useSearchParams()
   const query = searchParams.get("q") ?? ""
 

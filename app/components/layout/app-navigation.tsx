@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react"
 
-import { CreateForm } from "~/components/shared/create-form"
+import { FormCreate } from "~/components/shared/form-create"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
@@ -27,7 +27,7 @@ export function AppNavigation() {
       <div>
         {userSession && (
           <div className="flex items-center gap-2">
-            <CreateForm />
+            <FormCreate />
             <IndicatorUser size="sm" />
           </div>
         )}

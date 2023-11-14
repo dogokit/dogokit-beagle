@@ -6,7 +6,7 @@
 
 import { Link, useLocation } from "@remix-run/react"
 
-import { SearchForm } from "~/components/shared/search-form"
+import { FormSearch } from "~/components/shared/form-search"
 import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { pluralizeWord } from "~/utils/string"
@@ -223,7 +223,7 @@ export function PaginationSearch({
 
   return (
     <section className="w-full space-y-2">
-      <SearchForm action={location.pathname} placeholder={searchPlaceholder} />
+      <FormSearch action={location.pathname} placeholder={searchPlaceholder} />
 
       <div className="w-full space-y-2 text-sm">
         {/* Not found anything from search */}

@@ -66,7 +66,7 @@ export const modelUserPost = {
     })
   },
 
-  deleteById({ id, userId }: Pick<Post, "id" | "userId">) {
+  deleteById({ userId, id }: Pick<Post, "userId" | "id">) {
     return prisma.post.delete({ where: { id, userId } })
   },
 }

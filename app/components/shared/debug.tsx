@@ -19,20 +19,22 @@ import { stringifyCode } from "~/utils/string"
  */
 
 export function Debug({
-  name = "unknown",
+  name,
+  hidden = false,
   isCollapsibleOpen = false,
   isAlwaysShow = false,
   className,
   children,
 }: {
   name?: string
+  hidden?: boolean
   isCollapsibleOpen?: boolean
   isAlwaysShow?: boolean
   className?: string
   children: string | any | unknown | null | undefined | React.ReactNode
 }) {
   const { ENV } = useRootLoaderData()
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(!hidden)
   const [isOpen, setIsOpen] = useState(isCollapsibleOpen)
 
   if (!isAlwaysShow && ENV.NODE_ENV === "production") return null
@@ -45,7 +47,8 @@ export function Debug({
           <CollapsibleTrigger
             className={cn(buttonVariants({ variant: "outline", size: "xs" }))}
           >
-            DEBUG: {name}
+            <span>DEBUG</span>
+            {name && <span>: {name}</span>}
           </CollapsibleTrigger>
           <Button
             variant="outline"
