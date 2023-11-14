@@ -4,6 +4,7 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
+import { FormDelete } from "~/components/shared/form-delete"
 
 import {
   getPaginationConfigs,
@@ -11,7 +12,6 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
-import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { requireUserId } from "~/helpers/auth"
@@ -24,7 +24,7 @@ export const handle = createSitemap()
 export const meta: MetaFunction = () =>
   createMeta({
     title: `User Posts`,
-    description: `Manage created posts`,
+    description: `Manage user posts`,
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -84,19 +84,19 @@ export default function UserPostsRoute() {
                       to={`/user/posts/${post.id}`}
                     >
                       <Iconify icon="ph:note-pencil" />
-                      <span className="hidden sm:inline">Edit</span>
+                      <span>Edit</span>
                     </ButtonLink>
-                    <Button variant="outline" size="xs">
-                      <Iconify icon="ph:trash-duotone" />
-                      <span className="hidden sm:inline">Delete</span>
-                    </Button>
+                    <FormDelete
+                      itemText={`${post.title} (${post.slug})`}
+                      defaultValue={post.id}
+                    />
                     <ButtonLink
                       variant="outline"
                       size="xs"
                       to={`/posts/${post.slug}`}
                     >
                       <Iconify icon="ph:arrow-square-out-duotone" />
-                      <span className="hidden sm:inline">View</span>
+                      <span>View</span>
                     </ButtonLink>
                   </div>
 

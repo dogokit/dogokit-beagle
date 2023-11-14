@@ -31,28 +31,30 @@ export default function UserLayoutRoute() {
   const extraNavItems = ["/admin"]
 
   return (
-    <div className="flex">
-      {/* LATER: Become a collapsible component: shard/sidebar + sidebar-nav-items */}
-      <nav className="app-sidebar">
-        <SidebarNavItems
-          items={configNavigationItems.filter(item =>
-            navItems.includes(item.to),
-          )}
-        />
-
-        <Separator className="my-2" />
-
-        {isModeDevelopment && (
+    <div className="mx-auto w-full">
+      <div className="mx-auto flex max-w-5xl">
+        {/* LATER: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
+        <nav className="app-sidebar">
           <SidebarNavItems
             items={configNavigationItems.filter(item =>
-              extraNavItems.includes(item.to),
+              navItems.includes(item.to),
             )}
           />
-        )}
-      </nav>
 
-      <div className="app-outlet">
-        <Outlet />
+          <Separator className="my-2" />
+
+          {isModeDevelopment && (
+            <SidebarNavItems
+              items={configNavigationItems.filter(item =>
+                extraNavItems.includes(item.to),
+              )}
+            />
+          )}
+        </nav>
+
+        <div className="app-outlet">
+          <Outlet />
+        </div>
       </div>
     </div>
   )
