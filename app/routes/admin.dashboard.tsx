@@ -26,12 +26,12 @@ export default function AdminDashboardRoute() {
   const { user } = useLoaderData<typeof loader>()
 
   return (
-    <div>
-      <header>
+    <div className="app-container">
+      <header className="app-header">
         <h2>Welcome, {user.fullname}</h2>
       </header>
 
-      <section>
+      <section className="app-section">
         <Debug>{user}</Debug>
       </section>
     </div>

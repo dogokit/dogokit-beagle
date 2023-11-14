@@ -123,7 +123,10 @@
     @apply mx-auto w-full max-w-7xl;
   }
   .app-sidebar {
-    @apply w-full max-w-[140px] select-none border-r border-r-border p-2 sm:max-w-[200px];
+    @apply select-none border-r border-r-border p-2;
+  }
+  .app-outlet {
+    @apply w-full;
   }
 }
 

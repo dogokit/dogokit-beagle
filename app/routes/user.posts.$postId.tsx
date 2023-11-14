@@ -56,8 +56,7 @@ export default function UserPostsPostIdRoute() {
             <Iconify icon="ph:floppy-disk-duotone" />
             <span>Save</span>
           </Button>
-
-          <Button variant="destructive" size="xs">
+          <Button variant="outline" size="xs">
             <Iconify icon="ph:trash-duotone" />
             <span>Delete</span>
           </Button>
@@ -80,8 +79,10 @@ export default function UserPostsPostIdRoute() {
       <section className="mx-auto w-full max-w-prose">
         <Form replace method="POST" className="flex flex-col gap-2">
           <input type="hidden" name="userId" defaultValue={userSession?.id} />
+          <input type="hidden" name="postId" defaultValue={post.id} />
 
           {/* TODO: Make these editable with forms that is clean */}
+          <code className="text-muted-foreground">{post.slug}</code>
           <h1>{post.title}</h1>
           <article className="prose-config whitespace-pre-wrap">
             {post.content}

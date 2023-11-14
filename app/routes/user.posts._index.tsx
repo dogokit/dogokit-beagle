@@ -3,11 +3,12 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { Link, useLoaderData } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 
 import {
   getPaginationConfigs,
   getPaginationOptions,
+  PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
 import { Button } from "~/components/ui/button"
@@ -27,8 +28,8 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const userId = await requireUserId(request)
   const config = getPaginationConfigs({ request })
+  const userId = await requireUserId(request)
 
   const where = !config.queryParam
     ? { userId }
@@ -58,7 +59,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function UserPostsRoute() {
   const { posts, ...loaderData } = useLoaderData<typeof loader>()
 
-  // LATER: Use data table or check Notion's UI for links in a page
   return (
     <div className="app-container">
       <header className="app-header">
@@ -86,23 +86,30 @@ export default function UserPostsRoute() {
                       <Iconify icon="ph:note-pencil" />
                       <span className="hidden sm:inline">Edit</span>
                     </ButtonLink>
-                    <Button variant="destructive" size="xs">
+                    <Button variant="outline" size="xs">
                       <Iconify icon="ph:trash-duotone" />
                       <span className="hidden sm:inline">Delete</span>
                     </Button>
+                    <ButtonLink
+                      variant="outline"
+                      size="xs"
+                      to={`/posts/${post.slug}`}
+                    >
+                      <Iconify icon="ph:arrow-square-out-duotone" />
+                      <span className="hidden sm:inline">View</span>
+                    </ButtonLink>
                   </div>
 
-                  <Link
-                    to={`/posts/${post.slug}`}
-                    className="transition hover:bg-secondary"
-                  >
-                    <h4>{post.title}</h4>
-                  </Link>
+                  <h4>{post.title}</h4>
                 </li>
               )
             })}
           </ul>
         )}
+      </section>
+
+      <section className="app-section">
+        <PaginationNavigation {...loaderData} />
       </section>
     </div>
   )

@@ -9,6 +9,7 @@ export function CreateForm() {
   return (
     <div className="flex gap-2">
       <fetcher.Form
+        method="POST"
         action="/user/posts/new"
         className="flex items-center gap-2"
       >

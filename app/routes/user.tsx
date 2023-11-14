@@ -51,7 +51,9 @@ export default function UserLayoutRoute() {
         )}
       </nav>
 
-      <Outlet />
+      <div className="app-outlet">
+        <Outlet />
+      </div>
     </div>
   )
 }
