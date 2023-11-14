@@ -27,9 +27,6 @@ Check out:
 - Web: <https://dogokit.allnimal.com>
 - Repo: <https://github.com/dogokit/dogokit-remix>
 
-Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
-[guide steps](./docs/GUIDE_STEPS.md).
-
 Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif)
 and [Twitter/X @mhaidarhanif](https://twitter.com/mhaidarhanif).
 
@@ -321,15 +318,34 @@ pnpm dev
 # remix dev --manual
 ```
 
-### Change Theme Colors
+### Customize
+
+#### Change the Contents
+
+- Arrange and remove components as needed.
+- Find and replace various texts, especially the word Dogokit.
+
+#### Change Theme Colors
 
 Use
-[`kiliman/shadcn-custom-theme`](https://github.com/kiliman/shadcn-custom-theme).
+[`kiliman/shadcn-custom-theme`](https://github.com/kiliman/shadcn-custom-theme)
+to generate shadcn UI CSS variables with Tailwind CSS colors.
+
+For example:
+
+```sh
+pnpx shadcn-custom-theme primary=indigo secondary=blue accent=violet gray=neutral
+```
+
+## What's Next?
+
+Develop Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
+[guide steps](./docs/GUIDE_STEPS.md) to learn more about the setup.
 
 ## Authors
 
-Created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023, from the 🐾
-Allnimal company group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
+Originally created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023,
+from the 🐾 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 
 ## References
 
@@ -339,22 +355,22 @@ Inspirations:
 - [Remix Stacks](https://remix.run/stacks)
   - [💿 Remix Indie Stack](https://github.com/remix-run/indie-stack)
   - [🚀 The Epic Stack by Kent C. Dodds](https://github.com/epicweb-dev/epic-stack)
-  - [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
+  - [⏪ Rewinds by M Haidar Hanif](https://rewinds.mhaidarhanif.com/)
   - [Stripe Stack by Daniel Kanem](https://github.com/dev-xo/stripe-stack)
-  - [Spacewave Stack by Kent C. Dodds](https://github.com/epicweb-dev/spacewave-stack)
-- [T3 Stack by T3 Community / Theo Browne](https://create.t3.gg)
+  - [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
 - [shadcn UI](https://github.com/shadcn/ui)
   - [Taxonomy](https://tx.shadcn.com)
 - [MakerKit - SaaS Starter Kits based on React](https://makerkit.dev)
 - [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
+- [T3 Stack by T3 Community / Theo Browne](https://create.t3.gg)
 - [Precedent](https://precedent.dev)
 - [Reshaped](https://reshaped.so)
+- [saasui.design](https://saasui.design)
+- [saasinterface.com](https://saasinterface.com)
 - [Next SaaS Stripe Starter](https://github.com/mickasmt/next-saas-stripe-starter)
 - [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
 - [Saas UI - The React component library for Startups](https://saas-ui.dev)
 - [Rewind-UI - React component library using Tailwind CSS](https://github.com/rewindui/rewindui)
-- [saasui.design](https://saasui.design)
-- [saasinterface.com](https://saasinterface.com)
 
 General:
 
