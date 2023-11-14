@@ -7,7 +7,7 @@
  * https://github.com/epicweb-dev/remember
  * https://github.com/jenseng/abuse-the-platform/blob/2993a7e846c95ace693ce61626fa072174c8d9c7/app/utils/singleton.ts
  */
-export function remember<T>(name: string, getValue: () => T) {
+export function remember<T>(name: string, getValue: () => T): T {
   const thusly = globalThis as any
   thusly.__remember_module = new Map()
   if (!thusly.__remember_module.has(name)) {
