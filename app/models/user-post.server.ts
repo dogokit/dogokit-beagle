@@ -5,6 +5,9 @@ import { prisma } from "~/libs/db.server"
 
 export { type Post } from "@prisma/client"
 
+/**
+ * Private query/mutation, separated by the public
+ */
 export const modelUserPost = {
   count({ userId }: Pick<Post, "userId">) {
     return prisma.post.count({
@@ -40,6 +43,24 @@ export const modelUserPost = {
         userId,
         title,
         slug: createPostSlug(title),
+        content,
+      },
+    })
+  },
+
+  update({
+    userId,
+    id,
+    slug,
+    title,
+    content,
+  }: Pick<Post, "userId" | "id" | "slug" | "title" | "content">) {
+    return prisma.post.update({
+      where: { id },
+      data: {
+        userId,
+        slug: createPostSlug(slug),
+        title,
         content,
       },
     })

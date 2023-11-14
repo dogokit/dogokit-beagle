@@ -1,19 +1,31 @@
+import { conform, useForm } from "@conform-to/react"
+import { getFieldsetConstraint, parse } from "@conform-to/zod"
 import {
   json,
+  type ActionFunctionArgs,
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { Form, useLoaderData } from "@remix-run/react"
+import {
+  Form,
+  useActionData,
+  useLoaderData,
+  useNavigation,
+} from "@remix-run/react"
+import { type z } from "zod"
 import { Button } from "~/components/ui/button"
+import { ButtonLoading } from "~/components/ui/button-loading"
 
 import { Iconify } from "~/components/ui/iconify"
 import { Time } from "~/components/ui/time"
 import { requireUserId } from "~/helpers/auth"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelUserPost } from "~/models/user-post.server"
+import { schemaPostUpdate } from "~/schemas/post"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
+import { createTimer } from "~/utils/timer"
 
 export const handle = createSitemap()
 
@@ -45,50 +57,93 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 export default function UserPostsPostIdRoute() {
   const { userSession } = useRootLoaderData()
   const { post } = useLoaderData<typeof loader>()
+  const actionData = useActionData<typeof action>()
+  const navigation = useNavigation()
 
+  const isSubmitting = navigation.state === "submitting"
   const isUpdated = post.createdAt !== post.updatedAt
+
+  const [form, { userId, id, slug, title, content }] = useForm<
+    z.infer<typeof schemaPostUpdate>
+  >({
+    id: "update-post",
+    lastSubmission: actionData?.submission,
+    shouldValidate: "onSubmit",
+    shouldRevalidate: "onBlur",
+    constraint: getFieldsetConstraint(schemaPostUpdate),
+    onValidate({ formData }) {
+      return parse(formData, { schema: schemaPostUpdate })
+    },
+    defaultValue: { ...post, userId: userSession?.id },
+  })
 
   return (
     <div className="app-container space-y-8">
-      <section className="app-section">
-        <div className="flex flex-wrap items-center gap-2">
-          <Button variant="outline" size="xs">
-            <Iconify icon="ph:floppy-disk-duotone" />
-            <span>Save</span>
-          </Button>
-          <Button variant="outline" size="xs">
-            <Iconify icon="ph:trash-duotone" />
-            <span>Delete</span>
-          </Button>
+      <Form replace method="POST" {...form.props}>
+        <fieldset className="space-y-8" disabled={isSubmitting}>
+          <section className="app-section">
+            <div className="flex flex-wrap items-center gap-2">
+              <ButtonLoading
+                variant="outline"
+                size="xs"
+                loadingText="Saving..."
+                isLoading={isSubmitting}
+                iconComponent={<Iconify icon="ph:floppy-disk-duotone" />}
+              >
+                <span>Save</span>
+              </ButtonLoading>
+              <Button variant="outline" size="xs">
+                <Iconify icon="ph:trash-duotone" />
+                <span>Delete</span>
+              </Button>
 
-          <div className="text-xs text-muted-foreground">
-            {!isUpdated && (
-              <p>
-                Created <Time>{post.createdAt}</Time>
-              </p>
-            )}
-            {isUpdated && (
-              <p>
-                Updated <Time>{post.updatedAt}</Time>
-              </p>
-            )}
-          </div>
-        </div>
-      </section>
+              <div className="text-xs text-muted-foreground">
+                {!isUpdated && (
+                  <p>
+                    Created <Time>{post.createdAt}</Time>
+                  </p>
+                )}
+                {isUpdated && (
+                  <p>
+                    Updated <Time>{post.updatedAt}</Time>
+                  </p>
+                )}
+              </div>
+            </div>
+          </section>
 
-      <section className="mx-auto w-full max-w-prose">
-        <Form replace method="POST" className="flex flex-col gap-2">
-          <input type="hidden" name="userId" defaultValue={userSession?.id} />
-          <input type="hidden" name="postId" defaultValue={post.id} />
+          <section className="mx-auto w-full max-w-prose">
+            <div>
+              <input type="hidden" {...conform.input(userId)} />
+              <input type="hidden" {...conform.input(id)} />
 
-          {/* TODO: Make these editable with forms that is clean */}
-          <code className="text-muted-foreground">{post.slug}</code>
-          <h1>{post.title}</h1>
-          <article className="prose-config whitespace-pre-wrap">
-            {post.content}
-          </article>
-        </Form>
-      </section>
+              <input {...conform.input(slug)} placeholder="post-slug-123" />
+
+              <input {...conform.input(title)} placeholder="Post title..." />
+
+              <textarea {...conform.input(content)} cols={30} rows={10} />
+            </div>
+          </section>
+        </fieldset>
+      </Form>
     </div>
   )
+}
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const timer = createTimer()
+  const clonedRequest = request.clone()
+  const formData = await clonedRequest.formData()
+
+  const submission = parse(formData, { schema: schemaPostUpdate })
+
+  if (!submission.value || submission.intent !== "submit") {
+    await timer.delay()
+    return json({ status: "error", submission }, { status: 400 })
+  }
+
+  await modelUserPost.update(submission.value)
+  await timer.delay()
+
+  return null
 }

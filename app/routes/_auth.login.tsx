@@ -52,7 +52,7 @@ export default function SignUpRoute() {
   const redirectTo = searchParams.get("redirectTo")
 
   const [form, { email, password }] = useForm<z.infer<typeof schemaUserLogIn>>({
-    id: "login-form",
+    id: "login",
     lastSubmission: actionData?.submission,
     shouldValidate: "onSubmit",
     shouldRevalidate: "onInput",

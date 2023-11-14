@@ -54,7 +54,7 @@ export default function SignUpRoute() {
   const [form, { email, fullname, username, password }] = useForm<
     z.infer<typeof schemaUserSignUp>
   >({
-    id: "signup-form",
+    id: "signup",
     lastSubmission: actionData?.submission,
     shouldValidate: "onSubmit",
     shouldRevalidate: "onBlur",
