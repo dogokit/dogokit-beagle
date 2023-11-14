@@ -6,7 +6,7 @@ import { cn } from "~/utils/cn"
 
 export function SidebarNavItems({ items }: { items: NavItem[] }) {
   return (
-    <ul className="space-y-1">
+    <ul className="space-y-2">
       {items.map(item => {
         const isLogout = item.to === "/logout"
         return (
@@ -15,7 +15,7 @@ export function SidebarNavItems({ items }: { items: NavItem[] }) {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex w-full items-center gap-2 rounded-md px-2 py-1 font-semibold transition",
+                  "flex w-full items-center gap-2 rounded-md px-2 py-1 transition",
                   !isLogout && "hover:bg-secondary",
                   !isLogout && isActive && "bg-secondary text-primary",
                   isLogout &&
