@@ -114,19 +114,13 @@
     @apply mx-auto max-w-md space-y-10;
   }
   .app-container {
-    @apply mx-auto w-full space-y-6 overflow-hidden p-2;
+    @apply mx-auto w-full space-y-6 overflow-hidden p-4;
   }
   .app-header {
     @apply w-full space-y-2;
   }
   .app-section {
     @apply w-full max-w-7xl;
-  }
-  .app-sidebar {
-    @apply select-none border-r border-r-border p-2;
-  }
-  .app-outlet {
-    @apply w-full;
   }
   .input-natural {
     @apply w-full rounded-md border-transparent bg-transparent p-0 focus:border-transparent focus:ring-0;

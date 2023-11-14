@@ -31,7 +31,7 @@ export default function AdminLayoutRoute() {
 
   return (
     <div className="flex">
-      <nav className="app-sidebar">
+      <nav className="select-none border-r border-r-border p-4">
         <SidebarNavItems
           items={configNavigationItems.filter(item =>
             navItems.includes(item.to),

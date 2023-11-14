@@ -32,9 +32,9 @@ export default function UserLayoutRoute() {
 
   return (
     <div className="mx-auto w-full">
+      {/* LATER: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
       <div className="mx-auto flex max-w-5xl">
-        {/* LATER: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
-        <nav className="app-sidebar">
+        <nav className="select-none border-r border-r-border p-4">
           <SidebarNavItems
             items={configNavigationItems.filter(item =>
               navItems.includes(item.to),
@@ -52,7 +52,7 @@ export default function UserLayoutRoute() {
           )}
         </nav>
 
-        <div className="app-outlet">
+        <div className="w-full">
           <Outlet />
         </div>
       </div>
