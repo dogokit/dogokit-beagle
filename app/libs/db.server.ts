@@ -8,8 +8,6 @@ export const prisma = remember("prisma", () => {
    * If there're some changes, need to restart the dev server
    */
 
-  const LOG_THRESHOLD = 20
-
   const client = new PrismaClient({
     log: [
       { level: "query", emit: "event" },
@@ -17,6 +15,9 @@ export const prisma = remember("prisma", () => {
       { level: "warn", emit: "stdout" },
     ],
   })
+
+  // Only to detect a long processed query
+  const LOG_THRESHOLD = 20 // time in ms
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   client.$on("query", event => {
@@ -34,7 +35,7 @@ export const prisma = remember("prisma", () => {
         : "red"
     const dur = chalk[color](`${event.duration}ms`)
 
-    console.info(`💎 Prisma | ${dur} | ${event.query}`)
+    console.info(`💎 Prisma: ${dur}: ${event.query}`)
   })
 
   client.$connect()
