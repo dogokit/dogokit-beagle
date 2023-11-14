@@ -1,9 +1,7 @@
 import { type Post } from "@prisma/client"
+
 import { createPostSlug } from "~/helpers/post"
-
 import { prisma } from "~/libs/db.server"
-
-export { type Post } from "@prisma/client"
 
 /**
  * Private query/mutation, separated by the public
@@ -41,8 +39,8 @@ export const modelUserPost = {
     return prisma.post.create({
       data: {
         userId,
-        title,
         slug: createPostSlug(title),
+        title,
         content,
       },
     })

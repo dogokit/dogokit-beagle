@@ -35,10 +35,15 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { getTheme } = await themeSessionResolver(request)
 
   const userSession = await authenticator.isAuthenticated(request)
-  const userData = await modelUser.getForSession({
-    id: String(userSession?.id),
-  })
-  if (userSession && !userData) return redirect(`/logout`)
+  if (!userSession) {
+    return json({
+      ENV: parsedEnvClient,
+      theme: getTheme(),
+    })
+  }
+
+  const userData = await modelUser.getForSession({ id: userSession.id })
+  if (!userData) return redirect(`/logout`)
 
   return json({
     ENV: parsedEnvClient,

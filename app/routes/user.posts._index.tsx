@@ -1,9 +1,5 @@
-import { parse } from "@conform-to/react"
-import { parse as parseZod } from "@conform-to/zod"
 import {
   json,
-  redirect,
-  type ActionFunctionArgs,
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
@@ -20,8 +16,6 @@ import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
-import { modelUserPost } from "~/models/user-post.server"
-import { schemaPostDeleteAll, schemaPostDeleteById } from "~/schemas/post"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -75,11 +69,13 @@ export default function UserPostsRoute() {
         <h2>Posts</h2>
         <div>
           <FormDelete
-            intentValue="delete-all-posts"
+            action="/action/post"
+            intentValue="user-delete-all-posts"
             itemText="all posts"
             buttonText="Delete all posts"
             requireUser
             userId={userId}
+            disabled={posts.length <= 0}
           />
         </div>
       </header>
@@ -109,7 +105,8 @@ export default function UserPostsRoute() {
                       <span>Edit</span>
                     </ButtonLink>
                     <FormDelete
-                      intentValue="delete-post-by-id"
+                      action="/action/post"
+                      intentValue="user-delete-post-by-id"
                       itemText={`a post: ${post.title} (${post.slug})`}
                       defaultValue={post.id}
                       requireUser
@@ -142,25 +139,4 @@ export default function UserPostsRoute() {
       </section>
     </div>
   )
-}
-
-export const action = async ({ request }: ActionFunctionArgs) => {
-  const formData = await request.formData()
-  const form = parse(formData)
-
-  if (form.payload.intent === "delete-all-posts") {
-    const submission = parseZod(formData, { schema: schemaPostDeleteAll })
-    if (!submission.value) return json(submission)
-    await modelUserPost.deleteAll(submission.value)
-    return redirect(`/user/posts`)
-  }
-
-  if (form.payload.intent === "delete-post-by-id") {
-    const submission = parseZod(formData, { schema: schemaPostDeleteById })
-    if (!submission.value) return json(submission)
-    await modelUserPost.deleteById(submission.value)
-    return redirect(`/user/posts`)
-  }
-
-  return json(form)
 }

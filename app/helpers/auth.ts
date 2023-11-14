@@ -4,6 +4,9 @@ import { invariant } from "~/utils/invariant"
 
 /**
  * Complete check with getting user from the database
+ *
+ * Quick check without getting user from the database might be unnecessary
+ * because need to always check the user availability
  */
 export async function requireUser(request: Request) {
   const userSession = await authenticator.isAuthenticated(request, {
@@ -16,18 +19,5 @@ export async function requireUser(request: Request) {
   return {
     user,
     userId: user.id,
-  }
-}
-
-/**
- * Quick check without getting user from the database
- */
-export async function requireUserId(request: Request) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  })
-  invariant(userSession, "User session not found")
-  return {
-    userId: userSession.id,
   }
 }

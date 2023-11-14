@@ -15,7 +15,7 @@ import {
 } from "@remix-run/react"
 import { type z } from "zod"
 import { Debug } from "~/components/shared/debug"
-import { Button } from "~/components/ui/button"
+import { FormDelete } from "~/components/shared/form-delete"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 
@@ -96,10 +96,14 @@ export default function UserPostsPostIdRoute() {
               >
                 <span>Save</span>
               </ButtonLoading>
-              <Button variant="outline" size="xs">
-                <Iconify icon="ph:trash-duotone" />
-                <span>Delete</span>
-              </Button>
+              <FormDelete
+                action="/action/post"
+                intentValue="user-delete-post-by-id"
+                itemText={`a post: ${post.title} (${post.slug})`}
+                defaultValue={post.id}
+                requireUser
+                userId={post.userId}
+              />
               <ButtonLink
                 variant="outline"
                 size="xs"

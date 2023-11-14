@@ -2,8 +2,6 @@ import { type Post } from "@prisma/client"
 
 import { prisma } from "~/libs/db.server"
 
-export { type Post } from "@prisma/client"
-
 export const modelPost = {
   count() {
     return prisma.post.count()
