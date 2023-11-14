@@ -237,9 +237,14 @@ If need to share quickly, [EnvShare](https://envshare.dev) is good enough.
 
 ## Don't Use These Stack
 
-- styled-components, @emotion, Stitches, Chakra UI, MUI, etc
-- TanStack/React Query, SWR, Axios, etc
-- Redux, Zustand, Jotai, XState, etc
+- CSS-in-JS solutions such as styled-components, @emotion, Stitches, Chakra UI,
+  MUI, etc because already using Tailwind CSS.
+- Data fetching and caching library such as TanStack/React Query, SWR, Axios,
+  etc because already using Remix loader/action, unless very necessary.
+- Redux, Zustand, Jotai, XState, etc because the app is still mostly having a
+  server-side state.
+- Firebase, Supabase, Auth0, etc because the app is already handling the auth
+  with Remix Auth, unless very necessary
 
 ---
 
@@ -250,9 +255,12 @@ are the recommendations:
 
 ### REST API
 
+- [Express](https://expressjs.com)
+- [Fastify](https://fastify.io)
 - [NestJS](https://nestjs.com)
-  - [Express](https://expressjs.com)
-  - [Fastify](https://fastify.io)
+
+### WebSocket
+
 - [SocketIO](https://socket.io)
 
 ### GraphQL
