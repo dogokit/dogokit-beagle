@@ -46,6 +46,12 @@ export const configNavigationItems: NavItem[] = [
     shortcut: "⌘K+N",
   },
   {
+    to: "/help",
+    icon: "ph:question-duotone",
+    text: "Help",
+    shortcut: "⌘K+H",
+  },
+  {
     to: "/help/shortcuts",
     icon: "ph:keyboard-duotone",
     text: "Command Palette",

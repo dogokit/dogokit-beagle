@@ -7,6 +7,7 @@ import {
 } from "@remix-run/react"
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonLink } from "~/components/ui/button-link"
+import { Iconify } from "../ui/iconify"
 // import { captureRemixErrorBoundaryError } from '@sentry/remix'
 
 type StatusHandler = (info: {
@@ -93,8 +94,14 @@ export function ErrorHelpInformation() {
     <>
       <section className="site-section">
         <div className="flex items-center gap-2">
-          <ButtonLink to="/">Go to Home</ButtonLink>
-          <ButtonLink to="/help">Go to Help</ButtonLink>
+          <ButtonLink size="sm" variant="secondary" to="/">
+            <Iconify icon="ph:house-duotone" />
+            <span>Go to Home</span>
+          </ButtonLink>
+          <ButtonLink size="sm" variant="secondary" to="/help">
+            <Iconify icon="ph:question-duotone" />
+            <span>Go to Help</span>
+          </ButtonLink>
         </div>
       </section>
 

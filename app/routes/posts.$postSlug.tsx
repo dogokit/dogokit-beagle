@@ -3,12 +3,11 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
+import { Link, useLoaderData, type Params } from "@remix-run/react"
 import {
-  isRouteErrorResponse,
-  Link,
-  useLoaderData,
-  useRouteError,
-} from "@remix-run/react"
+  ErrorHelpInformation,
+  GeneralErrorBoundary,
+} from "~/components/shared/error-boundary"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 
 import { ButtonLink } from "~/components/ui/button-link"
@@ -115,9 +114,29 @@ export default function PostSlugRoute() {
 }
 
 export function ErrorBoundary() {
-  const error = useRouteError()
-  if (isRouteErrorResponse(error)) {
-    return <div />
-  }
-  return <div />
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: ({ params }) => <UsernameErrorMessage params={params} />,
+      }}
+    />
+  )
+}
+
+function UsernameErrorMessage({ params }: { params: Params }) {
+  return (
+    <>
+      <section className="site-section prose-config">
+        <h1>Sorry, this post could not be found</h1>
+        <p>
+          Cannot find post with the slug <code>{params.postSlug}</code>
+        </p>
+        <p>
+          The requested post either doesn’t exist or you don’t have access to
+          it.
+        </p>
+      </section>
+      <ErrorHelpInformation />
+    </>
+  )
 }
