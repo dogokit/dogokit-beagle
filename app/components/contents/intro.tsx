@@ -23,7 +23,7 @@ export function ContentIntro() {
         </p>
 
         <p>
-          Dogokit is a highly opinionated collection of application structure,
+          It is a highly opinionated collection of application structure,
           interactive UI components, software engineering and web development
           workflow, functionality hooks and utilities, also integration with 3rd
           party services.

@@ -9,17 +9,18 @@
 ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-> 🚧 This is a work in progress
+> 🚧 Work in Progress
 
-The main Remix web app template kit by
-[🐶 Dogokit](https://dogokit.allnimal.com).
+Dogokit Remix is a web app template kit by
+[🐶 Dogokit](https://dogokit.allnimal.com) using Remix, React, Tailwind CSS,
+Radix UI, Prisma ORM, and more.
 
-The goal is to be as productive as possible to ship a web app quickly with
-[Remix](https://remix.run).
+The goal is to start and be as productive as possible to ship a web app quickly
+with [Remix](https://remix.run) full stack web framework.
 
-So it is a highly opinionated collection of application structure, software
-engineering and web development workflow, interactive UI components, 3rd party
-services, functionality hooks and utilities.
+It is a highly opinionated collection of application structure, interactive UI
+components, software engineering and web development workflow, functionality
+hooks and utilities, also integration with 3rd party services.
 
 Check out:
 
