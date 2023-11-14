@@ -8,7 +8,7 @@ import { Link, useLoaderData } from "@remix-run/react"
 import { Debug } from "~/components/shared/debug"
 import { Card } from "~/components/ui/card"
 import { configUserDashboard } from "~/configs/user-dashboard"
-import { requireUser, requireUserId } from "~/helpers/auth"
+import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
 import { modelUserPost } from "~/models/user-post.server"
 import { createMeta } from "~/utils/meta"
@@ -23,7 +23,7 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const userId = await requireUserId(request)
+  const { user, userId } = await requireUser(request)
   const counts = await prisma.$transaction([modelUserPost.count({ userId })])
 
   const metrics = configUserDashboard.navItems
@@ -32,7 +32,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       return { ...item, count: counts[index] }
     })
 
-  return json({ user: await requireUser(request), metrics })
+  return json({ user, metrics })
 }
 
 export default function UserDashboardRoute() {

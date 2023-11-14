@@ -20,7 +20,7 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json({ user: await requireUser(request) })
+  return json(await requireUser(request))
 }
 
 export default function UserBillingRoute() {

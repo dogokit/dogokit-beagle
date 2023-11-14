@@ -13,7 +13,7 @@ const title = z.string({ required_error: "Title is required" })
 
 const content = z.string({ required_error: "Content is required" })
 
-export const schemaPostUpdate = z.object({
+export const schemaPostUpdateById = z.object({
   userId,
   id,
   slug,
@@ -21,7 +21,11 @@ export const schemaPostUpdate = z.object({
   content,
 })
 
-export const schemaPostDelete = z.object({
+export const schemaPostDeleteAll = z.object({
+  userId,
+})
+
+export const schemaPostDeleteById = z.object({
   userId,
   id,
 })

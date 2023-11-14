@@ -16,16 +16,22 @@ import { ButtonLoading } from "~/components/ui/button-loading"
 import { Iconify } from "~/components/ui/iconify"
 
 export function FormDelete({
+  intentValue,
+  itemText,
   name = "id",
-  itemText = "item",
   defaultValue,
-  intentValue = "delete-by-id",
+  buttonText = "Delete",
+  requireUser,
+  userId,
   extraComponent,
 }: {
-  name?: string
-  itemText?: string
-  defaultValue: string
-  intentValue?: string
+  intentValue: string // Example: delete-by-id
+  itemText: string // Example: post name
+  name?: string // Optional because can be with/without input name=id
+  defaultValue?: string // Optional because can be with/without id value
+  buttonText?: string
+  requireUser?: boolean
+  userId?: string
   extraComponent?: React.ReactNode
 }) {
   const [open, setOpen] = useState<boolean>()
@@ -38,9 +44,10 @@ export function FormDelete({
       <AlertDialogTrigger asChild>
         <Button variant="outline" size="xs">
           <Iconify icon="ph:trash-duotone" />
-          <span>Delete</span>
+          <span>{buttonText}</span>
         </Button>
       </AlertDialogTrigger>
+
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Delete {itemText}?</AlertDialogTitle>
@@ -58,8 +65,16 @@ export function FormDelete({
               setOpen(false)
             }}
           >
+            {name && defaultValue && (
+              <input type="hidden" name={name} defaultValue={defaultValue} />
+            )}
+
+            {requireUser && userId && (
+              <input type="hidden" name="userId" defaultValue={userId} />
+            )}
+
             {extraComponent}
-            <input type="hidden" name={name} defaultValue={defaultValue} />
+
             <ButtonLoading
               type="submit"
               size="sm"

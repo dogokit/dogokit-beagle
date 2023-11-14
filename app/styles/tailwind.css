@@ -117,10 +117,10 @@
     @apply mx-auto w-full space-y-6 overflow-hidden p-2;
   }
   .app-header {
-    @apply mx-auto w-full max-w-7xl space-y-2;
+    @apply w-full space-y-2;
   }
   .app-section {
-    @apply mx-auto w-full max-w-7xl;
+    @apply w-full max-w-7xl;
   }
   .app-sidebar {
     @apply select-none border-r border-r-border p-2;

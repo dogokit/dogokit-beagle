@@ -1,4 +1,5 @@
-import { parse } from "@conform-to/zod"
+import { parse } from "@conform-to/react"
+import { parse as parseZod } from "@conform-to/zod"
 import {
   json,
   redirect,
@@ -17,10 +18,10 @@ import {
 } from "~/components/shared/pagination"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
-import { requireUserId } from "~/helpers/auth"
+import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
 import { modelUserPost } from "~/models/user-post.server"
-import { schemaPostDelete } from "~/schemas/post"
+import { schemaPostDeleteAll, schemaPostDeleteById } from "~/schemas/post"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -34,7 +35,7 @@ export const meta: MetaFunction = () =>
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const config = getPaginationConfigs({ request })
-  const userId = await requireUserId(request)
+  const { userId } = await requireUser(request)
 
   const where = !config.queryParam
     ? { userId }
@@ -58,23 +59,39 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }),
   ])
 
-  return json({ ...getPaginationOptions({ request, totalItems }), posts })
+  return json({
+    userId,
+    posts,
+    ...getPaginationOptions({ request, totalItems }),
+  })
 }
 
 export default function UserPostsRoute() {
-  const { posts, ...loaderData } = useLoaderData<typeof loader>()
+  const { userId, posts, ...loaderData } = useLoaderData<typeof loader>()
 
   return (
     <div className="app-container">
-      <header className="app-header">
+      <header className="app-header flex justify-between gap-4">
         <h2>Posts</h2>
+        <div>
+          <FormDelete
+            intentValue="delete-all-posts"
+            itemText="all posts"
+            buttonText="Delete all posts"
+            requireUser
+            userId={userId}
+          />
+        </div>
+      </header>
+
+      <section className="app-section">
         <PaginationSearch
           itemName="post"
           searchPlaceholder="Search posts with keyword..."
           count={posts.length}
           {...loaderData}
         />
-      </header>
+      </section>
 
       <section className="app-section">
         {posts.length > 0 && (
@@ -92,15 +109,11 @@ export default function UserPostsRoute() {
                       <span>Edit</span>
                     </ButtonLink>
                     <FormDelete
+                      intentValue="delete-post-by-id"
                       itemText={`a post: ${post.title} (${post.slug})`}
                       defaultValue={post.id}
-                      extraComponent={
-                        <input
-                          type="hidden"
-                          name="userId"
-                          defaultValue={post.userId}
-                        />
-                      }
+                      requireUser
+                      userId={post.userId}
                     />
                     <ButtonLink
                       variant="outline"
@@ -133,13 +146,21 @@ export default function UserPostsRoute() {
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData()
-  const submission = parse(formData, { schema: schemaPostDelete })
-  if (!submission.value || submission.intent !== "submit") {
-    return json(submission)
+  const form = parse(formData)
+
+  if (form.payload.intent === "delete-all-posts") {
+    const submission = parseZod(formData, { schema: schemaPostDeleteAll })
+    if (!submission.value) return json(submission)
+    await modelUserPost.deleteAll(submission.value)
+    return redirect(`/user/posts`)
   }
-  if (submission.payload.intent === "delete-by-id") {
+
+  if (form.payload.intent === "delete-post-by-id") {
+    const submission = parseZod(formData, { schema: schemaPostDeleteById })
+    if (!submission.value) return json(submission)
     await modelUserPost.deleteById(submission.value)
     return redirect(`/user/posts`)
   }
-  return json(submission)
+
+  return json(form)
 }

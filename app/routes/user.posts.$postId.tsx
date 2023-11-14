@@ -21,10 +21,9 @@ import { ButtonLoading } from "~/components/ui/button-loading"
 
 import { Iconify } from "~/components/ui/iconify"
 import { Time } from "~/components/ui/time"
-import { requireUserId } from "~/helpers/auth"
-import { useRootLoaderData } from "~/hooks/use-root-loader-data"
+import { requireUser } from "~/helpers/auth"
 import { modelUserPost } from "~/models/user-post.server"
-import { schemaPostUpdate } from "~/schemas/post"
+import { schemaPostUpdateById } from "~/schemas/post"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -49,14 +48,13 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   invariant(params.postId, "params.postId unavailable")
-  const userId = await requireUserId(request)
+  const { userId } = await requireUser(request)
   const post = await modelUserPost.getById({ userId, id: params.postId })
   invariantResponse(post, "Post not found", { status: 404 })
   return json({ post })
 }
 
 export default function UserPostsPostIdRoute() {
-  const { userSession } = useRootLoaderData()
   const { post } = useLoaderData<typeof loader>()
   const actionData = useActionData<typeof action>()
   const navigation = useNavigation()
@@ -66,17 +64,17 @@ export default function UserPostsPostIdRoute() {
 
   // FIXME: Conform cannot use the new defaultValue after new post from nav
   const [form, { userId, id, slug, title, content }] = useForm<
-    z.infer<typeof schemaPostUpdate>
+    z.infer<typeof schemaPostUpdateById>
   >({
     id: "update-post",
     lastSubmission: actionData?.submission,
     shouldValidate: "onSubmit",
     shouldRevalidate: "onBlur",
-    constraint: getFieldsetConstraint(schemaPostUpdate),
+    constraint: getFieldsetConstraint(schemaPostUpdateById),
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaPostUpdate })
+      return parse(formData, { schema: schemaPostUpdateById })
     },
-    defaultValue: { ...post, userId: userSession?.id },
+    defaultValue: { ...post, userId: post.userId },
   })
 
   return (
@@ -164,7 +162,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const clonedRequest = request.clone()
   const formData = await clonedRequest.formData()
 
-  const submission = parse(formData, { schema: schemaPostUpdate })
+  const submission = parse(formData, { schema: schemaPostUpdateById })
 
   if (!submission.value || submission.intent !== "submit") {
     await timer.delay()

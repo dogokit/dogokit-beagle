@@ -17,7 +17,7 @@ export const loader = ({}: LoaderFunctionArgs) => {
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const timer = createTimer()
-  const userId = await requireUserId(request)
+  const { userId } = await requireUserId(request)
   const post = await modelUserPost.create({
     userId,
     title: "Untitled Post",
