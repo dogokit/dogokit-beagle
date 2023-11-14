@@ -10,14 +10,8 @@ import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const userId = await requireUserId(request)
-  const post = await modelUserPost.create({
-    userId,
-    title: "Untitled Post",
-    content: "Insert some content here",
-  })
-  return redirect(`/user/posts/${post.id}`)
+export const loader = ({}: LoaderFunctionArgs) => {
+  return redirect(`/user/posts`)
 }
 
 export const action = async ({ request }: ActionFunctionArgs) => {

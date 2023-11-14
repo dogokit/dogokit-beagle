@@ -4,12 +4,17 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { Link, useLoaderData } from "@remix-run/react"
+
+import {
+  getPaginationConfigs,
+  getPaginationOptions,
+  PaginationSearch,
+} from "~/components/shared/pagination"
 import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
-
 import { requireUserId } from "~/helpers/auth"
-import { modelUserPost } from "~/models/user-post.server"
+import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -23,20 +28,47 @@ export const meta: MetaFunction = () =>
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const userId = await requireUserId(request)
-  const posts = await modelUserPost.getAll({ userId })
+  const config = getPaginationConfigs({ request })
 
-  return json({ posts })
+  const where = !config.queryParam
+    ? { userId }
+    : {
+        AND: [{ userId }],
+        OR: [
+          { title: { contains: config.queryParam } },
+          { slug: { contains: config.queryParam } },
+        ],
+      }
+
+  const [totalItems, posts] = await prisma.$transaction([
+    prisma.post.count({ where }),
+    prisma.post.findMany({
+      where,
+      skip: config.skip,
+      take: config.limitParam,
+      include: {
+        images: { select: { url: true } },
+      },
+    }),
+  ])
+
+  return json({ ...getPaginationOptions({ request, totalItems }), posts })
 }
 
 export default function UserPostsRoute() {
-  const { posts } = useLoaderData<typeof loader>()
+  const { posts, ...loaderData } = useLoaderData<typeof loader>()
 
   // LATER: Use data table or check Notion's UI for links in a page
-
   return (
     <div className="app-container">
       <header className="app-header">
         <h2>Posts</h2>
+        <PaginationSearch
+          itemName="post"
+          searchPlaceholder="Search posts with keyword..."
+          count={posts.length}
+          {...loaderData}
+        />
       </header>
 
       <section className="app-section">

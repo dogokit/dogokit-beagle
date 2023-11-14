@@ -47,7 +47,10 @@ function UsernameErrorMessage({ params }: { params: Params }) {
     <>
       <section className="site-section prose-config">
         <h1>Sorry, this page or user could not be found</h1>
-        <p>Cannot find page or user with the username "{params.username}"</p>
+        <p>
+          Cannot find page or user with the username{" "}
+          <code>{params.username}</code>
+        </p>
         <p>
           The requested page or user either doesn’t exist or you don’t have
           access to it.

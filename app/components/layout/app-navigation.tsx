@@ -1,10 +1,10 @@
 import { Link } from "@remix-run/react"
 
+import { CreateForm } from "~/components/shared/create-form"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
 import { ButtonLink } from "~/components/ui/button-link"
-import { Iconify } from "~/components/ui/iconify"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 
@@ -27,10 +27,7 @@ export function AppNavigation() {
       <div>
         {userSession && (
           <div className="flex items-center gap-2">
-            <ButtonLink to="/user/posts/new" size="xs">
-              <Iconify icon="ph:plus-square-duotone" />
-              <span>New Post</span>
-            </ButtonLink>
+            <CreateForm />
             <IndicatorUser size="sm" />
           </div>
         )}

@@ -72,10 +72,14 @@ export function GeneralErrorMessage({ error }: { error: ErrorResponse }) {
           it.
         </p>
         <ul>
-          <li>Might because cannot find page "{location.pathname}"</li>
           <li>
-            {error.status} {error.data}
+            Something wrong on <code>{location.pathname}</code>
           </li>
+          {error.status && (
+            <li>
+              {error.status} {error.data}
+            </li>
+          )}
         </ul>
       </section>
 
