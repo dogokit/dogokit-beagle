@@ -25,6 +25,7 @@ export function Document({
 
   const location = useLocation()
   const isInsideApp =
+    location.pathname === "/new" ||
     location.pathname.startsWith("/user/") ||
     location.pathname.startsWith("/admin/") ||
     location.pathname.startsWith("/owner/")

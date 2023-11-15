@@ -55,10 +55,9 @@ export function SiteNavigation() {
         <div>
           {userSession && (
             <div className="flex items-center gap-4">
-              <ButtonLink to="/user/posts/new" size="sm">
+              <ButtonLink to="/new" size="sm">
                 <Iconify icon="ph:plus-square-duotone" />
-                <span className="hidden sm:inline">New Post</span>
-                <span className="inline sm:hidden">Post</span>
+                <span>New</span>
               </ButtonLink>
               <IndicatorUser size="sm" />
             </div>
