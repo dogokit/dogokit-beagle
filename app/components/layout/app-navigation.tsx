@@ -14,7 +14,7 @@ export function AppNavigation() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-b-border bg-background p-1.5",
+        "sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-b-border bg-background p-2",
       )}
     >
       <div className="flex items-center justify-between gap-2">
@@ -28,7 +28,7 @@ export function AppNavigation() {
         {userSession && (
           <div className="flex items-center gap-2">
             <FormCreate />
-            <IndicatorUser size="sm" />
+            <IndicatorUser size="xs" />
           </div>
         )}
 

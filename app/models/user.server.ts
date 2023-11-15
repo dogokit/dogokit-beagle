@@ -11,8 +11,6 @@ import {
 import { hashPassword } from "~/utils/encryption.server"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
 
-export { type User } from "@prisma/client"
-
 export const modelUser = {
   count() {
     return prisma.user.count()

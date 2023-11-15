@@ -1,8 +1,8 @@
+import { type User } from "@prisma/client"
 import * as React from "react"
 
 import { cva, type VariantProps } from "class-variance-authority"
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
-import { type UserData } from "~/services/auth.server"
 import { cn } from "~/utils/cn"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
 import { getNameInitials } from "~/utils/string"
@@ -12,7 +12,7 @@ export const avatarAutoVariants = cva("", {
     size: {
       xs: "h-6 w-6",
       sm: "h-8 w-8",
-      default: "h-10 w-10",
+      default: "h-12 w-12",
       lg: "h-20 w-20",
       xl: "h-28 w-28",
     },
@@ -20,7 +20,7 @@ export const avatarAutoVariants = cva("", {
   compoundVariants: [
     { size: "xs", class: "text-base" },
     { size: "sm", class: "text-lg" },
-    { size: "default", class: "text-2xl" },
+    { size: "default", class: "text-3xl" },
     { size: "lg", class: "text-4xl" },
     { size: "xl", class: "text-5xl" },
   ],
@@ -32,7 +32,7 @@ export const avatarAutoVariants = cva("", {
 export interface AvatarAutoProps
   extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof avatarAutoVariants> {
-  user: Pick<UserData, "username" | "fullname">
+  user: Pick<User, "username" | "fullname">
   imageUrl?: string
 }
 

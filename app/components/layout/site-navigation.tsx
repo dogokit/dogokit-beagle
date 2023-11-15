@@ -16,7 +16,7 @@ export function SiteNavigation() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-10 flex items-center justify-between gap-2 p-2",
+        "sticky top-0 z-10 flex items-center justify-between gap-2 px-4 py-2",
         "bg-background/30 backdrop-blur-xl backdrop-saturate-200",
       )}
     >
@@ -60,7 +60,7 @@ export function SiteNavigation() {
                 <span className="hidden sm:inline">New Post</span>
                 <span className="inline sm:hidden">Post</span>
               </ButtonLink>
-              <IndicatorUser />
+              <IndicatorUser size="sm" />
             </div>
           )}
           {!userSession && (

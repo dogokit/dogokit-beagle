@@ -1,8 +1,10 @@
 import { Link, NavLink } from "@remix-run/react"
 import { type VariantProps } from "class-variance-authority"
 
-import { AvatarAuto, avatarAutoVariants } from "~/components/ui/avatar-auto"
-import { Button } from "~/components/ui/button"
+import {
+  AvatarAuto,
+  type avatarAutoVariants,
+} from "~/components/ui/avatar-auto"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +19,6 @@ import { Iconify } from "~/components/ui/iconify"
 import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
-import { cn } from "~/utils/cn"
 
 export interface IndicatorUserProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -52,17 +53,12 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className={cn("relative rounded-full", avatarAutoVariants({ size }))}
-        >
-          <AvatarAuto
-            user={userData}
-            imageUrl={userData.images[0]?.url}
-            size={size}
-          />
-        </Button>
+      <DropdownMenuTrigger>
+        <AvatarAuto
+          user={userData}
+          imageUrl={userData.images[0]?.url}
+          size={size}
+        />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align={align} className="w-56 overflow-scroll">
