@@ -102,9 +102,24 @@ const FormAlert = React.forwardRef<
 })
 FormAlert.displayName = "FormAlert"
 
+function FormErrors({ children }: { children: FieldConfig<string> }) {
+  return (
+    <>
+      {children.errors &&
+        children.errors?.length > 0 &&
+        children.errors?.map((error, index) => (
+          <Alert key={index} variant="destructive">
+            {error}
+          </Alert>
+        ))}
+    </>
+  )
+}
+
 export {
   FormAlert,
   FormDescription,
+  FormErrors,
   FormField,
   FormFieldSet,
   FormLabel,

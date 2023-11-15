@@ -13,15 +13,17 @@ import {
   useLoaderData,
   useNavigation,
 } from "@remix-run/react"
-import { type z } from "zod"
+import { z } from "zod"
 import { Debug } from "~/components/shared/debug"
 import { FormDelete } from "~/components/shared/form-delete"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
+import { FormErrors } from "~/components/ui/form"
 
 import { Iconify } from "~/components/ui/iconify"
 import { Time } from "~/components/ui/time"
 import { requireUser } from "~/helpers/auth"
+import { prisma } from "~/libs/db.server"
 import { modelUserPost } from "~/models/user-post.server"
 import { schemaPostUpdateById } from "~/schemas/post"
 import { invariant, invariantResponse } from "~/utils/invariant"
@@ -62,14 +64,14 @@ export default function UserPostsPostIdRoute() {
   const isSubmitting = navigation.state === "submitting"
   const isUpdated = post.createdAt !== post.updatedAt
 
-  // FIXME: Conform cannot use the new defaultValue after new post from nav
+  // FIXME: Conform cannot reload with the new defaultValue after new post from nav
   const [form, { userId, id, slug, title, content }] = useForm<
     z.infer<typeof schemaPostUpdateById>
   >({
     id: "update-post",
     lastSubmission: actionData?.submission,
     shouldValidate: "onSubmit",
-    shouldRevalidate: "onBlur",
+    shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaPostUpdateById),
     onValidate({ formData }) {
       return parse(formData, { schema: schemaPostUpdateById })
@@ -132,28 +134,37 @@ export default function UserPostsPostIdRoute() {
             <input type="hidden" {...conform.input(userId)} />
             <input type="hidden" {...conform.input(id)} />
 
-            <input
-              {...conform.input(slug)}
-              placeholder="untitled"
-              spellCheck="false"
-              className="input-natural font-mono text-sm text-muted-foreground"
-            />
+            <div>
+              <input
+                {...conform.input(slug)}
+                placeholder="untitled"
+                spellCheck="false"
+                className="input-natural font-mono text-sm text-muted-foreground"
+              />
+              <FormErrors>{slug}</FormErrors>
+            </div>
 
-            <input
-              {...conform.input(title)}
-              placeholder="Untitled"
-              spellCheck="false"
-              className="input-natural font-heading text-4xl font-semibold"
-            />
+            <div>
+              <input
+                {...conform.input(title)}
+                placeholder="Untitled"
+                spellCheck="false"
+                className="input-natural font-heading text-4xl font-semibold"
+              />
+              <FormErrors>{title}</FormErrors>
+            </div>
 
-            <textarea
-              {...conform.input(content)}
-              placeholder="Add some content..."
-              spellCheck="false"
-              cols={30}
-              rows={20}
-              className="input-natural resize-none"
-            />
+            <div>
+              <FormErrors>{content}</FormErrors>
+              <textarea
+                {...conform.input(content)}
+                placeholder="Add some content..."
+                spellCheck="false"
+                cols={30}
+                rows={20}
+                className="input-natural resize-none"
+              />
+            </div>
           </section>
         </fieldset>
       </Form>
@@ -166,7 +177,24 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const clonedRequest = request.clone()
   const formData = await clonedRequest.formData()
 
-  const submission = parse(formData, { schema: schemaPostUpdateById })
+  const submission = await parse(formData, {
+    async: true,
+    schema: schemaPostUpdateById.superRefine(async (data, ctx) => {
+      const { id, slug } = data
+      const existingSlug = await prisma.post.findUnique({
+        where: { slug, NOT: { id } },
+        select: { id: true },
+      })
+      if (existingSlug) {
+        ctx.addIssue({
+          path: ["slug"],
+          code: z.ZodIssueCode.custom,
+          message: "Slug cannot be used, please change",
+        })
+        return
+      }
+    }),
+  })
 
   if (!submission.value || submission.intent !== "submit") {
     await timer.delay()

@@ -14,9 +14,13 @@ import {
 import { z } from "zod"
 import { AuthButtons } from "~/components/shared/auth-buttons"
 
-import { Alert } from "~/components/ui/alert"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import { FormDescription, FormField, FormLabel } from "~/components/ui/form"
+import {
+  FormDescription,
+  FormErrors,
+  FormField,
+  FormLabel,
+} from "~/components/ui/form"
 import { Iconify } from "~/components/ui/iconify"
 import { Input, InputPassword } from "~/components/ui/input"
 import { LinkText } from "~/components/ui/link-text"
@@ -61,10 +65,7 @@ export default function SignUpRoute() {
       return parse(formData, { schema: schemaUserLogIn })
     },
     defaultValue: isModeDevelopment
-      ? {
-          email: "example@example.com",
-          password: "exampleexample",
-        }
+      ? { email: "example@example.com", password: "exampleexample" }
       : {},
   })
 
@@ -107,15 +108,7 @@ export default function SignUpRoute() {
                 autoFocus={email.error ? true : undefined}
                 required
               />
-              {email.errors && email.errors?.length > 0 && (
-                <ul>
-                  {email.errors?.map((error, index) => (
-                    <li key={index}>
-                      <Alert variant="destructive">{error}</Alert>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <FormErrors>{email}</FormErrors>
             </FormField>
 
             <FormField>
@@ -133,15 +126,7 @@ export default function SignUpRoute() {
               <FormDescription id={password.descriptionId}>
                 At least 8 characters
               </FormDescription>
-              {password.errors && password.errors?.length > 0 && (
-                <ul>
-                  {password.errors?.map((error, index) => (
-                    <li key={index}>
-                      <Alert variant="destructive">{error}</Alert>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <FormErrors>{password}</FormErrors>
             </FormField>
 
             <ButtonLoading
@@ -175,6 +160,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await clonedRequest.formData()
 
   const submission = await parse(formData, {
+    async: true,
     schema: schemaUserLogIn.superRefine(async (data, ctx) => {
       const existingUser = await prisma.user.findUnique({
         where: { email: data.email },
@@ -211,7 +197,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         return
       }
     }),
-    async: true,
   })
 
   await timer.delay()

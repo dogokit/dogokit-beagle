@@ -14,9 +14,13 @@ import {
 import { z } from "zod"
 
 import { AuthButtons } from "~/components/shared/auth-buttons"
-import { Alert } from "~/components/ui/alert"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import { FormDescription, FormField, FormLabel } from "~/components/ui/form"
+import {
+  FormDescription,
+  FormErrors,
+  FormField,
+  FormLabel,
+} from "~/components/ui/form"
 import { Iconify } from "~/components/ui/iconify"
 import { Input, InputPassword } from "~/components/ui/input"
 import { LinkText } from "~/components/ui/link-text"
@@ -57,7 +61,7 @@ export default function SignUpRoute() {
     id: "signup",
     lastSubmission: actionData?.submission,
     shouldValidate: "onSubmit",
-    shouldRevalidate: "onBlur",
+    shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaUserSignUp),
     onValidate({ formData }) {
       return parse(formData, { schema: schemaUserSignUp })
@@ -106,15 +110,7 @@ export default function SignUpRoute() {
                 autoFocus={fullname.error ? true : undefined}
                 required
               />
-              {fullname.errors && fullname.errors?.length > 0 && (
-                <ul>
-                  {fullname.errors?.map((error, index) => (
-                    <li key={index}>
-                      <Alert variant="destructive">{error}</Alert>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <FormErrors>{fullname}</FormErrors>
             </FormField>
 
             <FormField>
@@ -128,15 +124,7 @@ export default function SignUpRoute() {
                 autoFocus={email.error ? true : undefined}
                 required
               />
-              {email.errors && email.errors?.length > 0 && (
-                <ul>
-                  {email.errors?.map((error, index) => (
-                    <li key={index}>
-                      <Alert variant="destructive">{error}</Alert>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <FormErrors>{email}</FormErrors>
             </FormField>
 
             <FormField>
@@ -151,15 +139,7 @@ export default function SignUpRoute() {
               <FormDescription id={password.descriptionId}>
                 4 to 20 characters (letters, numbers, dot, underscore)
               </FormDescription>
-              {username.errors && username.errors?.length > 0 && (
-                <ul>
-                  {username.errors?.map((error, index) => (
-                    <li key={index}>
-                      <Alert variant="destructive">{error}</Alert>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <FormErrors>{username}</FormErrors>
             </FormField>
 
             <FormField>
@@ -177,15 +157,7 @@ export default function SignUpRoute() {
               <FormDescription id={password.descriptionId}>
                 8 characters or more
               </FormDescription>
-              {password.errors && password.errors?.length > 0 && (
-                <ul>
-                  {password.errors?.map((error, index) => (
-                    <li key={index}>
-                      <Alert variant="destructive">{error}</Alert>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <FormErrors>{password}</FormErrors>
             </FormField>
 
             {redirectTo ? (
@@ -223,6 +195,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await clonedRequest.formData()
 
   const submission = await parse(formData, {
+    async: true,
     schema: schemaUserSignUp.superRefine(async (data, ctx) => {
       const existingEmail = await prisma.user.findUnique({
         where: { email: data.email },
@@ -232,7 +205,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         ctx.addIssue({
           path: ["email"],
           code: z.ZodIssueCode.custom,
-          message: "User already exists with this email",
+          message: "Email cannot be used",
         })
         return
       }
@@ -245,12 +218,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         ctx.addIssue({
           path: ["username"],
           code: z.ZodIssueCode.custom,
-          message: "A user already exists with this username",
+          message: "Username cannot be used",
         })
         return
       }
     }),
-    async: true,
   })
 
   if (!submission.value || submission.intent !== "submit") {
