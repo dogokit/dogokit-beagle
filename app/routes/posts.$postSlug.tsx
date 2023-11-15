@@ -128,9 +128,7 @@ function UsernameErrorMessage({ params }: { params: Params }) {
     <>
       <section className="site-section prose-config">
         <h1>Sorry, this post could not be found</h1>
-        <p>
-          Cannot find post with the slug <code>{params.postSlug}</code>
-        </p>
+        <p>Cannot find post with the slug "{params.postSlug}"</p>
         <p>
           The requested post either doesn’t exist or you don’t have access to
           it.
