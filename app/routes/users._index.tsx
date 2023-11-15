@@ -52,7 +52,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   return json({ ...getPaginationOptions({ request, totalItems }), users })
 }
 
-export default function SearchRoute() {
+export default function UsersRoute() {
   const { users, ...loaderData } = useLoaderData<typeof loader>()
 
   return (

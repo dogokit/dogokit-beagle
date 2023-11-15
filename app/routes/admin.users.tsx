@@ -5,8 +5,8 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { requireUser } from "~/helpers/auth"
 
+import { requireUser } from "~/helpers/auth"
 import { schemaGeneralId } from "~/schemas/general"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -14,21 +14,18 @@ import { createSitemap } from "~/utils/sitemap"
 export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
-  createMeta({
-    title: `User Notifications`,
-    description: `Manage notifications and alerts`,
-  })
+  createMeta({ title: `Users`, description: `Manage users` })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return json(await requireUser(request))
 }
 
-export default function UserNotificationsRoute() {
+export default function AdminUsersRoute() {
   return (
     <div className="app-container">
       <section className="app-section">
         <header className="app-header">
-          <h2>User Notifications</h2>
+          <h2>Users</h2>
           <p>Description</p>
         </header>
       </section>

@@ -14,10 +14,7 @@ import { createSitemap } from "~/utils/sitemap"
 export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
-  createMeta({
-    title: `User Settings`,
-    description: `Manage user settings`,
-  })
+  createMeta({ title: `User Settings`, description: `Manage user settings` })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return json(await requireUser(request))
@@ -26,7 +23,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function UserSettingsRoute() {
   return (
     <div className="app-container">
-      <section className="app-section space-y-2">
+      <section className="app-section">
         <header className="app-header">
           <h2>User Settings</h2>
           <p>Description</p>

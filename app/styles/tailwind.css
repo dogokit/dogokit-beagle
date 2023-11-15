@@ -120,7 +120,7 @@
     @apply w-full space-y-2;
   }
   .app-section {
-    @apply w-full max-w-7xl;
+    @apply w-full max-w-7xl space-y-2;
   }
   .input-natural {
     @apply w-full rounded-md border-transparent bg-transparent p-0 focus:border-transparent focus:ring-0;

@@ -50,15 +50,15 @@ export default function UserAccountRoute() {
   })
 
   return (
-    <div className="app-container space-y-8">
-      <section className="app-section space-y-2">
+    <div className="app-container">
+      <section className="app-section">
         <header className="app-header">
           <h2>User Account</h2>
           <p>Description</p>
         </header>
       </section>
 
-      <section className="app-section space-y-2">
+      <section className="app-section">
         <header className="app-header">
           <h4>Delete Account</h4>
           <p>

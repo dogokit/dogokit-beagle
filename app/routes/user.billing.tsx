@@ -26,7 +26,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function UserBillingRoute() {
   return (
     <div className="app-container">
-      <section className="app-section space-y-2">
+      <section className="app-section">
         <header className="app-header">
           <h2>User Billing</h2>
           <p>Description</p>

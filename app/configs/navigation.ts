@@ -96,7 +96,7 @@ export const configNavigationItems: NavItem[] = [
   },
   {
     to: "/admin/dashboard",
-    icon: "ph:binoculars-duotone",
+    icon: "ph:crown-duotone",
     text: "Dashboard",
   },
   {
