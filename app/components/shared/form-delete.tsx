@@ -87,7 +87,7 @@ export function FormDelete({
               variant="destructive"
               name="intent"
               value={intentValue}
-              loadingText="Deleting..."
+              loadingText="Deleting"
               isLoading={isSubmitting}
             >
               Delete

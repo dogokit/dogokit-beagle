@@ -90,7 +90,7 @@ export default function UserPostsPostIdRoute() {
               <ButtonLoading
                 variant="outline"
                 size="xs"
-                loadingText="Saving..."
+                loadingText="Saving"
                 isLoading={isSubmitting}
                 iconComponent={<Iconify icon="ph:floppy-disk-duotone" />}
               >
