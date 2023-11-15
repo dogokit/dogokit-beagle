@@ -18,6 +18,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function UserLayoutRoute() {
   const { isModeDevelopment } = useAppMode()
 
+  // Configure in app/configs/navigation.ts
   const navItems = [
     "/user/dashboard",
     "/user/posts",
@@ -27,7 +28,6 @@ export default function UserLayoutRoute() {
     "/user/notifications",
     "/logout",
   ]
-
   const extraNavItems = ["/admin"]
 
   return (

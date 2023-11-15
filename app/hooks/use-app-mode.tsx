@@ -11,6 +11,6 @@ export function useAppMode(mode?: string) {
     mode: paramsMode || mode,
     isModeEdit: mode === "edit",
     isModeDevelopment:
-      ENV.NODE_ENV === "development" || searchParams.get("mode") === "dev",
+      ENV?.NODE_ENV === "development" || searchParams.get("mode") === "dev",
   }
 }

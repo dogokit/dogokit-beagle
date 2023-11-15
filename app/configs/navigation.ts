@@ -100,6 +100,11 @@ export const configNavigationItems: NavItem[] = [
     text: "Dashboard",
   },
   {
+    to: "/admin/users",
+    icon: "ph:users-four-duotone",
+    text: "Users",
+  },
+  {
     to: "/admin/posts",
     icon: "ph:scroll-duotone",
     text: "Posts",

@@ -9,7 +9,7 @@ export function AppFooter() {
       <div className="text-muted-foreground">
         <p className="text-xs">
           <span>Status: </span>
-          <code>{ENV.NODE_ENV}</code>
+          <code>{ENV?.NODE_ENV}</code>
         </p>
       </div>
 

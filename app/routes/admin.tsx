@@ -1,5 +1,5 @@
 import { type LoaderFunctionArgs } from "@remix-run/node"
-import { Outlet } from "@remix-run/react"
+import { Outlet, isRouteErrorResponse, useRouteError } from "@remix-run/react"
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 import { Separator } from "~/components/ui/separator"
 import { configNavigationItems } from "~/configs/navigation"
@@ -19,14 +19,15 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function AdminLayoutRoute() {
   const { isModeDevelopment } = useAppMode()
 
+  // Configure in app/configs/navigation.ts
   const navItems = [
     "/admin/dashboard",
+    "/admin/users",
     "/admin/posts",
     "/admin/settings",
     "/admin/notifications",
     "/logout",
   ]
-
   const extraNavItems = ["/user"]
 
   return (
@@ -52,4 +53,12 @@ export default function AdminLayoutRoute() {
       <Outlet />
     </div>
   )
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError()
+  if (isRouteErrorResponse(error)) {
+    return <div />
+  }
+  return <div />
 }
