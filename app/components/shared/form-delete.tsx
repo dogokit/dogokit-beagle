@@ -42,7 +42,7 @@ export function FormDelete({
   const location = useLocation()
   const fetcher = useFetcher()
   const isSubmitting =
-    fetcher.state !== "idle" && fetcher.formMethod === "DELETE"
+    fetcher.state === "submitting" && fetcher.formMethod === "DELETE"
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
