@@ -3,6 +3,11 @@ import chalk from "chalk"
 
 import { remember } from "~/utils/remember"
 
+// LATER: Use PlanetScale adapter when it's ready
+// const connectionString = parsedEnv.DATABASE_URL
+// const client = new Client({ url: connectionString })
+// const adapter = new PrismaPlanetScale(client)
+
 export const prisma = remember("prisma", () => {
   /**
    * If there're some changes, need to restart the dev server
