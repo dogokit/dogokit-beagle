@@ -1,4 +1,8 @@
-import { json, type LoaderFunctionArgs } from "@remix-run/node"
+import {
+  json,
+  type LoaderFunctionArgs,
+  type MetaFunction,
+} from "@remix-run/node"
 import { Link, useLoaderData } from "@remix-run/react"
 
 import {
@@ -10,75 +14,63 @@ import {
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
+import { createMeta } from "~/utils/meta"
+
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: `Users`,
+    description: `Users of this app`,
+  })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const config = getPaginationConfigs({ request, defaultLimit: 10 })
+  const config = getPaginationConfigs({ request })
   const contains = config.queryParam
 
   /**
    * Custom query config, can be different for any cases
    */
-  const whereUser = !contains
+  const where = !contains
     ? {}
-    : { OR: [{ fullname: { contains } }, { username: { contains } }] }
-
-  const wherePost = !contains
-    ? {}
-    : { OR: [{ slug: { contains } }, { title: { contains } }] }
+    : {
+        OR: [{ username: { contains } }, { fullname: { contains } }],
+      }
 
   /**
    * As searching and filtering might be complex,
    * use Prisma directly, it might be refactored later into the models
    */
-  const [totalUsers, totalPosts, users, posts] = await prisma.$transaction([
-    prisma.user.count({ where: whereUser }),
-    prisma.post.count({ where: wherePost }),
+  const [totalItems, users] = await prisma.$transaction([
+    prisma.user.count({ where }),
     prisma.user.findMany({
-      where: whereUser,
-      skip: config.skip,
-      take: config.limitParam,
-      include: { images: { select: { url: true } } },
-    }),
-    prisma.post.findMany({
-      where: wherePost,
+      where,
       skip: config.skip,
       take: config.limitParam,
       include: { images: { select: { url: true } } },
     }),
   ])
 
-  const totalItems = totalUsers + totalPosts
-
-  return json({
-    ...getPaginationOptions({ request, totalItems }),
-    count: totalItems,
-    users,
-    posts,
-  })
+  return json({ ...getPaginationOptions({ request, totalItems }), users })
 }
 
 export default function SearchRoute() {
-  const { count, users, posts, ...loaderData } = useLoaderData<typeof loader>()
+  const { users, ...loaderData } = useLoaderData<typeof loader>()
 
   return (
     <div className="site-container space-y-10">
       <header className="site-header">
         <h1 className="inline-flex items-center gap-2 text-primary">
-          <Iconify icon="ph:magnifying-glass" />
-          <span>Search</span>
+          <Iconify icon="ph:users-four-duotone" />
+          <span>Users</span>
         </h1>
       </header>
 
-      <section className="site-section space-y-4">
+      <section className="site-section">
         <PaginationSearch
-          itemName="result"
-          searchPlaceholder="Search users and notes..."
-          count={count}
-          isVerbose={true}
+          itemName="user"
+          searchPlaceholder="Search users with keyword..."
+          count={users.length}
           {...loaderData}
         />
-
-        <PaginationNavigation {...loaderData} />
       </section>
 
       <section className="site-section">
@@ -95,24 +87,6 @@ export default function SearchRoute() {
                     <h4>{user.fullname}</h4>
                     <p className="text-muted-foreground">@{user.username}</p>
                   </div>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </section>
-
-      <section className="site-section">
-        <ul className="space-y-8">
-          {posts.map(post => {
-            return (
-              <li key={post.id}>
-                <Link
-                  to={`/posts/${post.slug}`}
-                  className="block space-y-1 transition hover:opacity-75"
-                >
-                  <h4>{post.title}</h4>
-                  <p>{post.content}</p>
                 </Link>
               </li>
             )

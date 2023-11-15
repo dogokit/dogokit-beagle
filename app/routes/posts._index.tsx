@@ -77,23 +77,21 @@ export default function SearchRoute() {
       </section>
 
       <section className="site-section">
-        {posts.length > 0 && (
-          <ul className="space-y-8">
-            {posts.map(post => {
-              return (
-                <li key={post.id}>
-                  <Link
-                    to={`/posts/${post.slug}`}
-                    className="block space-y-1 transition hover:opacity-75"
-                  >
-                    <h4>{post.title}</h4>
-                    <p>{post.content}</p>
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        )}
+        <ul className="space-y-8">
+          {posts.map(post => {
+            return (
+              <li key={post.id}>
+                <Link
+                  to={`/posts/${post.slug}`}
+                  className="block space-y-1 transition hover:opacity-75"
+                >
+                  <h4>{post.title}</h4>
+                  <p>{post.content}</p>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
       </section>
 
       <section className="site-section">
