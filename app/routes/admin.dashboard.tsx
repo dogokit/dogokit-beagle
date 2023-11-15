@@ -6,6 +6,7 @@ import {
 import { useLoaderData } from "@remix-run/react"
 
 import { Debug } from "~/components/shared/debug"
+import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { requireUser } from "~/helpers/auth"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -27,8 +28,22 @@ export default function AdminDashboardRoute() {
 
   return (
     <div className="app-container">
-      <header className="app-header">
-        <h2>Welcome, {user.fullname}</h2>
+      <header className="app-header flex items-center gap-4">
+        <div>
+          <AvatarAuto
+            user={user}
+            imageUrl={user.images[0]?.url}
+            className="outline outline-2 outline-background"
+            size="lg"
+          />
+        </div>
+
+        <div>
+          <h2>Welcome, {user.fullname}</h2>
+          <p className="text-muted-foreground">
+            <span>{user.email}</span>
+          </p>
+        </div>
       </header>
 
       <section className="app-section">

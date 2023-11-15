@@ -6,6 +6,7 @@ import {
 import { Link, useLoaderData } from "@remix-run/react"
 
 import { Debug } from "~/components/shared/debug"
+import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { Card } from "~/components/ui/card"
 import { configUserDashboard } from "~/configs/user-dashboard"
 import { requireUser } from "~/helpers/auth"
@@ -40,15 +41,25 @@ export default function UserDashboardRoute() {
 
   return (
     <div className="app-container">
-      <header className="app-header">
-        <h2>Welcome, {user.fullname}</h2>
-        <p className="text-muted-foreground">
-          <span>{user.email} / </span>
-          <Link to={`/${user.username}`} className="hover:text-primary">
-            @{user.username}
-          </Link>
-        </p>
-        <Debug name="user">{user}</Debug>
+      <header className="app-header flex items-center gap-4">
+        <div>
+          <AvatarAuto
+            user={user}
+            imageUrl={user.images[0]?.url}
+            className="outline outline-2 outline-background"
+            size="lg"
+          />
+        </div>
+
+        <div>
+          <h2>Welcome, {user.fullname}</h2>
+          <p className="text-muted-foreground">
+            <span>{user.email} / </span>
+            <Link to={`/${user.username}`} className="hover:text-primary">
+              @{user.username}
+            </Link>
+          </p>
+        </div>
       </header>
 
       <section className="app-section">
@@ -67,6 +78,8 @@ export default function UserDashboardRoute() {
           })}
         </ul>
       </section>
+
+      <Debug name="user">{user}</Debug>
     </div>
   )
 }
