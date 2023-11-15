@@ -1,17 +1,33 @@
-export const configNewItems = [
+export type ConfigNewItem = {
+  action: string
+  icon: string
+  name: string
+  isEnabled: boolean
+}
+
+export const configNewItems: ConfigNewItem[] = [
   {
     action: "/user/posts/new",
-    buttonText: "Add Post",
+    name: "Post",
     icon: "ph:scroll-duotone",
+    isEnabled: true,
   },
   {
-    action: "/user/images/new",
-    buttonText: "Add Image",
+    action: "/new",
+    name: "Tag",
+    icon: "ph:tag-duotone",
+    isEnabled: false,
+  },
+  {
+    action: "/new",
+    name: "Image",
     icon: "ph:image-duotone",
+    isEnabled: false,
   },
   {
-    action: "/admin/users/new",
-    buttonText: "Add User",
+    action: "/new",
+    name: "User",
     icon: "ph:user-duotone",
+    isEnabled: false,
   },
 ]
