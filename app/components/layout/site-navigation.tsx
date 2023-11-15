@@ -28,7 +28,7 @@ export function SiteNavigation() {
       </div>
 
       <div className="flex items-center gap-4">
-        <ul className="hidden sm:flex sm:items-center sm:gap-4">
+        <ul className="hidden lg:flex lg:items-center lg:gap-4">
           {configNavigationItems
             .filter(item => configSite.navItems.includes(item.to))
             .filter(navItem => navItem.isEnabled)
@@ -39,7 +39,7 @@ export function SiteNavigation() {
                     to={navItem.to}
                     className={({ isActive }) =>
                       cn(
-                        "font-heading inline-flex items-center gap-2 rounded-md px-2 py-1 font-semibold transition hover:bg-secondary",
+                        "inline-flex items-center gap-2 rounded-md px-2 py-1 font-heading font-semibold transition hover:bg-secondary",
                         isActive && "text-primary",
                       )
                     }
