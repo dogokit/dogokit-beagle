@@ -10,21 +10,35 @@ import {
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap("/search", 0.8)
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const config = getPaginationConfigs({ request, defaultLimit: 10 })
   const contains = config.queryParam
 
   /**
+   * Only in a search-first page, proceed if there's a query
+   */
+  if (!contains) {
+    return json({
+      ...getPaginationOptions({ request, totalItems: 0 }),
+      count: 0,
+      users: [],
+      posts: [],
+    })
+  }
+
+  /**
    * Custom query config, can be different for any cases
    */
-  const whereUser = !contains
-    ? {}
-    : { OR: [{ fullname: { contains } }, { username: { contains } }] }
-
-  const wherePost = !contains
-    ? {}
-    : { OR: [{ slug: { contains } }, { title: { contains } }] }
+  const whereUser = {
+    OR: [{ fullname: { contains } }, { username: { contains } }],
+  }
+  const wherePost = {
+    OR: [{ slug: { contains } }, { title: { contains } }],
+  }
 
   /**
    * As searching and filtering might be complex,
@@ -74,7 +88,8 @@ export default function SearchRoute() {
           itemName="result"
           searchPlaceholder="Search users and notes..."
           count={count}
-          isVerbose={true}
+          // Don't tell no result because this is search, blank by default
+          isDefaultShow={false}
           {...loaderData}
         />
 
