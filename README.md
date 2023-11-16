@@ -34,7 +34,6 @@ Check out:
 - [Concept](#concept)
 - [Tech Stack](#tech-stack)
 - [Setup](#setup)
-- [Authors](#authors)
 - [References](#references)
 
 ## Quick start
@@ -85,7 +84,7 @@ The goal is to use this for building web apps:
 
 ## Concept
 
-The reason of using this template kit. (Only the items checked ✅ are done)
+Some reasons of making and using this template kit.
 
 - [x] Create a new [Remix](https://remix.run) app or existing one with multiple
       features quickly
@@ -100,17 +99,21 @@ The reason of using this template kit. (Only the items checked ✅ are done)
   - [x] Light and dark mode theme
 - [x] Icons with [Iconify](https://iconify.design)
 - [x] Database with [Prisma ORM](https://prisma.io) and
-      [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com) [x]
-      Run local development database instance as container with
-      [Docker Compose](https://docs.docker.com/compose)
-- [x] Auth (authentication and authorization) with
-      [Remix Auth](https://github.com/sergiodxa/remix-auth) using various
-      strategies
+      [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com)
+  - [x] Run local development database instance as container with
+        [Docker Compose](https://docs.docker.com/compose)
+- [x] Auth (authentication and authorization) built-in
+  - [x] With [Remix Auth](https://github.com/sergiodxa/remix-auth) using various
+        strategies: Form and OAuth with 3rd party services
 - [x] Provide various code and utilities
-  - [x] Environment variables check with [Zod](https://zod.dev)
+  - [x] Environment variables check with [Zod](https://zod.dev) and znv
+  - [x] Date and time, encryption, metadata, redirect route, placeholder,
+        sitemap, string functions, timer delay, URL, etc
 - [ ] Testing with [Vitest](https://vitest.dev) and
       [Playwright](https://playwright.dev)
 - [ ] Commands with `dogokit` CLI or `@dogokit/cli`
+
+> Only the items checked ✅ are done
 
 ## Tech Stack
 
@@ -331,13 +334,10 @@ pnpx shadcn-custom-theme primary=indigo secondary=blue accent=violet gray=neutra
 
 ## What's Next?
 
-Develop Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
+Develop the app as usual, the Remix way.
+
+Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
 [guide steps](./docs/GUIDE_STEPS.md) to learn more about the setup.
-
-## Authors
-
-Originally created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023,
-from the 🐾 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 
 ## References
 
@@ -411,6 +411,11 @@ from the 🐾 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
   - [🐻 Bearmentor](https://bearmentor.com)
   - [🐱 Catamyst](https://catamyst.com)
   - [🐶 Dogokit](https://dogokit.allnimal.com)
+
+## Authors
+
+Originally created by [@mhaidarhanif](https://github.com/mhaidarhanif) in 2023,
+from the 🐾 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 
 ---
 
