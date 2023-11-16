@@ -348,7 +348,7 @@ from the 🐾 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 
 ## References
 
-Inspirations:
+### Inspirations
 
 - [Remix Directory](https://remix.directory)
 - [Remix Stacks](https://remix.run/stacks)
@@ -371,7 +371,7 @@ Inspirations:
 - [Saas UI - The React component library for Startups](https://saas-ui.dev)
 - [Rewind-UI - React component library using Tailwind CSS](https://github.com/rewindui/rewindui)
 
-General:
+### General
 
 - [web.dev](https://web.dev)
 - [Design System Checklist](https://designsystemchecklist.com)
@@ -379,7 +379,7 @@ General:
 - [Infra I'm Building On In 2023 - T3](https://t3.gg/blog/post/2023-infra)
   - [The Infra That Saved Me From AWS - My 2023 Stack](https://youtube.com/watch?v=v-9AZKp-Ljo)
 
-Remix:
+### Remix
 
 - [Remix Docs](http://remix.run)
 - [Remix Blog Tutorial](http://remix.run/docs/en/main/tutorials/blog)
@@ -387,36 +387,37 @@ Remix:
 - [Build a Fullstack App with Remix and Prisma - Prisma YouTub Playlist](https://youtube.com/watch?v=4tXGRe5CDDg&list=PLn2e1F9Rfr6kPDIAbfkOxgDLf4N3bFiMn)
 - [Build a Fullstack App with Remix and Prisma - Prisma Blog](https://prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r)
 
-React:
+### React
 
 - [React](https://react.dev)
 - [Rethinking React best practices - Frontend Mastery](https://frontendmastery.com/posts/rethinking-react-best-practices)
 - [Bulletproof React - A simple, scalable, and powerful architecture for building production-ready React applications](https://github.com/alan2207/bulletproof-react)
 
-Tailwind CSS:
+### Tailwind CSS
 
 - [Tailwind CSS](https://tailwindcss.com)
 - [Why we use Tailwind CSS as our primary framework | Clean Commit](https://cleancommit.io/blog/why-we-use-tailwind-css-as-our-primary-framework)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-React with Tailwind CSS Components:
+### React with Tailwind CSS Components:
 
 - [Tremor](https://tremor.so) dashboard components
 - [RizzUI](https://rizzui.com) various components
 
-Tech Stack List:
+### Tech Stack List
 
 - [🐶 Dogokit Stack](https://github.com/dogokit/dogokit-stack)
 - [🐶 Dogokit Stack All](https://github.com/dogokit/dogokit-stack-all)
 
-Used by:
+### Used By
 
 - [🐾 Allnimal](https://allnimal.com)
-- [🐻 Bearmentor](https://bearmentor.com)
-- [🐱 Catamyst](https://catamyst.com)
-- [🐶 Dogokit](https://dogokit.allnimal.com)
+  - [🐻 Bearmentor](https://bearmentor.com)
+  - [🐱 Catamyst](https://catamyst.com)
+  - [🐶 Dogokit](https://dogokit.allnimal.com)
 
 ---
 
 2023 ©️ 🐶 Dogokit
+
