@@ -86,34 +86,37 @@ The goal is to use this for building web apps:
 
 Some reasons of making and using this template kit.
 
-- [x] Create a new [Remix](https://remix.run) app or existing one with multiple
-      features quickly
-- [x] Setup commonly used development and production parts
-  - Using [pnpm](https://pnpm.io) by default
-- [x] Code quality with [Prettier](https://prettier.io),
-      [ESLint](https://eslint.org), [Stylelint](https://stylelint.io),
-      [Commitlint](https://commitlint.js.org)
-- [x] UI components and styles with [Tailwind CSS](https://tailwindcss.com),
-      [Radix UI](https://radix-ui.com), bundled with
-      [shadcn UI](https://ui.shadcn.com)
-  - [x] Light and dark mode theme
-- [x] Icons with [Iconify](https://iconify.design)
-- [x] Database with [Prisma ORM](https://prisma.io) and
-      [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com)
-  - [x] Run local development database instance as container with
-        [Docker Compose](https://docs.docker.com/compose)
-- [x] Auth (authentication and authorization) built-in
-  - [x] With [Remix Auth](https://github.com/sergiodxa/remix-auth) using various
-        strategies: Form and OAuth with 3rd party services
-- [x] Provide various code and utilities
-  - [x] Environment variables check with [Zod](https://zod.dev) and znv
-  - [x] Date and time, encryption, metadata, redirect route, placeholder,
-        sitemap, string functions, timer delay, URL, etc
-- [ ] Testing with [Vitest](https://vitest.dev) and
-      [Playwright](https://playwright.dev)
-- [ ] Commands with `dogokit` CLI or `@dogokit/cli`
+- Create a new [Remix](https://remix.run) app or existing one with multiple
+  features quickly
+- Setup commonly used development and production parts
+  - With [pnpm](https://pnpm.io) by default
+- UI components and styles
+  - With [Tailwind CSS](https://tailwindcss.com) and
+    [Radix UI](https://radix-ui.com)
+  - Bundled with [shadcn UI](https://ui.shadcn.com)
+  - Icons with [Iconify](https://iconify.design)
+  - Light and dark mode theme
+- Database with [Prisma ORM](https://prisma.io) and [MySQL](https://mysql.com)
+  on [PlanetScale](https://planetscale.com)
+  - Run local development database instance as container with
+    [Docker](https://docker) and
+    [Docker Compose](https://docs.docker.com/compose)
+- Auth (authentication and authorization) built-in
+  - With [Remix Auth](https://github.com/sergiodxa/remix-auth) using various
+    strategies: Form and OAuth with 3rd party services
+- Various code and utilities
+  - Environment variables check with [Zod](https://zod.dev) and znv
+  - Date and time, encryption, metadata, redirect route, placeholder, sitemap,
+    string functions, timer delay, URL, etc
+- Code quality with [Prettier](https://prettier.io),
+  [ESLint](https://eslint.org), [Stylelint](https://stylelint.io),
+  [Commitlint](https://commitlint.js.org)
 
-> Only the items checked ✅ are done
+Later:
+
+- Testing with [Vitest](https://vitest.dev) and
+  [Playwright](https://playwright.dev)
+- Commands with `dogokit` CLI or `@dogokit/cli`
 
 ## Tech Stack
 
