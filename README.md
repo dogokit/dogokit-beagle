@@ -107,7 +107,6 @@ The reason of using this template kit. (Only the items checked ✅ are done)
       [Radix UI](https://radix-ui.com), bundled with
       [shadcn UI](https://ui.shadcn.com)
   - [x] Light and dark mode theme
-  - [ ] Dashboard components with [Tremor](https://tremor.so)
 - [x] Icons with [Iconify](https://iconify.design)
 - [x] Database with [Prisma ORM](https://prisma.io) and
       [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com) [x]
@@ -400,6 +399,11 @@ Tailwind CSS:
 - [Why we use Tailwind CSS as our primary framework | Clean Commit](https://cleancommit.io/blog/why-we-use-tailwind-css-as-our-primary-framework)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
+
+React with Tailwind CSS Components:
+
+- [Tremor](https://tremor.so) dashboard components
+- [RizzUI](https://rizzui.com) various components
 
 Tech Stack List:
 
