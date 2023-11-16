@@ -27,24 +27,15 @@ Check out:
 - Web: <https://dogokit.allnimal.com>
 - Repo: <https://github.com/dogokit/dogokit-remix>
 
-Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif)
-and [Twitter/X @mhaidarhanif](https://twitter.com/mhaidarhanif).
+## Table of Contents
 
-- [🐶 Dogokit Remix](#-dogokit-remix)
-  - [Quick start](#quick-start)
-  - [Goals](#goals)
-  - [Concept](#concept)
-  - [Tech Stack](#tech-stack)
-  - [Setup](#setup)
-    - [Dependencies](#dependencies)
-    - [Code Quality](#code-quality)
-    - [Database Instance](#database-instance)
-    - [Environment Variables](#environment-variables)
-    - [Database Operations](#database-operations)
-    - [Build](#build)
-    - [Development](#development)
-  - [Authors](#authors)
-  - [References](#references)
+- [Quick start](#quick-start)
+- [Goals](#goals)
+- [Concept](#concept)
+- [Tech Stack](#tech-stack)
+- [Setup](#setup)
+- [Authors](#authors)
+- [References](#references)
 
 ## Quick start
 
@@ -317,6 +308,8 @@ pnpm dev
 # remix dev --manual
 ```
 
+Open <http://localhost:3000> and it's ready!
+
 ### Customize
 
 #### Change the Contents
@@ -400,10 +393,12 @@ from the 🐾 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-### React with Tailwind CSS Components:
+### React with Tailwind CSS Components
 
-- [Tremor](https://tremor.so) dashboard components
+- [Tailwind UI](https://tailwindui.com/components) various components
+- [shadcn UI](https://ui.shadcn.com) various components
 - [RizzUI](https://rizzui.com) various components
+- [Tremor](https://tremor.so) dashboard components
 
 ### Tech Stack List
 
@@ -420,4 +415,3 @@ from the 🐾 Allnimal group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 ---
 
 2023 ©️ 🐶 Dogokit
-
