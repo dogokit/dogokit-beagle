@@ -1,6 +1,9 @@
 import { type MetaFunction } from "@remix-run/node"
 
 import { createMeta } from "~/utils/meta"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap("/terms", 0.1)
 
 export const meta: MetaFunction = () =>
   createMeta({

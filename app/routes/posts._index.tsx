@@ -26,6 +26,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
   /**
    * Custom query config, can be different for any cases
+   * This show the 1st page result even if there's no query
    */
   const where = !config.queryParam
     ? {}

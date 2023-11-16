@@ -8,7 +8,10 @@ import { Link, useLoaderData } from "@remix-run/react"
 import { Anchor } from "~/components/ui/anchor"
 import { configRedirects } from "~/configs/redirects"
 import { createMeta } from "~/utils/meta"
+import { createSitemap } from "~/utils/sitemap"
 import { pluralizeWord } from "~/utils/string"
+
+export const handle = createSitemap("/redirects", 0.1)
 
 export const meta: MetaFunction = () =>
   createMeta({

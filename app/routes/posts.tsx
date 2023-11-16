@@ -9,7 +9,7 @@ export const handle: SEOHandle = {
     return posts.map(post => {
       return {
         route: `/posts/${post.slug}`,
-        priority: 0.9,
+        priority: 0.5,
         lastmod: formatDateLastMod(post.updatedAt),
       }
     })

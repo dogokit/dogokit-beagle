@@ -1,13 +1,18 @@
 import { type ActionFunctionArgs } from "@remix-run/node"
 import { FormNew } from "~/components/shared/form-new"
 import { configNewItems } from "~/configs/new"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap()
 
 /**
  * New Anything:
- * - New Post
- * - New User
- * - New Mentor/Mentee
- * - New Job
+ * - User, Organization, Group, Role, Permission
+ * - Post, Tag, Category
+ * - Program, Mentor, Mentee
+ * - Client, Project
+ * - Event, Venue, Attendee
+ * - Job
  */
 export default function NewRoute() {
   return (

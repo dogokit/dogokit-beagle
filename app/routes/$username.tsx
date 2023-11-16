@@ -17,7 +17,7 @@ export const handle: SEOHandle = {
     return users.map(user => {
       return {
         route: `/${user.username}`,
-        priority: 0.7,
+        priority: 0.6,
         lastmod: formatDateLastMod(user.updatedAt),
       }
     })

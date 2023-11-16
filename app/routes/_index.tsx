@@ -2,6 +2,9 @@ import { ContentCredits } from "~/components/contents/credits"
 import { ContentIntro } from "~/components/contents/intro"
 import { ContentStack } from "~/components/contents/stack"
 import { ContentStart } from "~/components/contents/start"
+import { createSitemap } from "~/utils/sitemap"
+
+export const handle = createSitemap("/", 1)
 
 export default function IndexRoute() {
   return (
