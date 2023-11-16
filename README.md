@@ -29,14 +29,14 @@ Check out:
 
 ## Table of Contents
 
-- [Quick start](#quick-start)
-- [Goals](#goals)
+- [Quick Start](#quick-start)
+- [Goal](#goal)
 - [Concept](#concept)
 - [Tech Stack](#tech-stack)
 - [Setup](#setup)
 - [References](#references)
 
-## Quick start
+## Quick Start
 
 Starting new?
 [Use this template to generate the repository](https://github.com/dogokit/dogokit-remix/generate).
@@ -56,7 +56,7 @@ pnpx create-remix@latest --template dogokit/dogokit-remix
 Then make sure to explore the repo to rename and replace the contents along the
 way. As this is a template, not a blank repo generator.
 
-## Goals
+## Goal
 
 The goal is to use this for building web apps:
 
