@@ -48,6 +48,7 @@ interface PaginationSearchProps extends CommonPaginationProps {
   searchPlaceholder?: string
   count: number
   isVerbose?: boolean
+  isDefaultShow?: boolean
 }
 
 export function getPaginationConfigs({
@@ -217,6 +218,7 @@ export function PaginationSearch({
   totalItems,
   totalPages,
   isVerbose = false,
+  isDefaultShow = true,
 }: PaginationSearchProps) {
   const location = useLocation()
   const pluralItemsText = pluralizeWord(itemName, count)
@@ -227,7 +229,7 @@ export function PaginationSearch({
 
       <div className="w-full space-y-2 text-sm">
         {/* Not found anything from search */}
-        {!queryParam && count <= 0 && (
+        {!queryParam && count <= 0 && isDefaultShow && (
           <p className="text-muted-foreground">No {itemName} found</p>
         )}
 
