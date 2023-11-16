@@ -5,6 +5,9 @@ export type ConfigNewItem = {
   isEnabled: boolean
 }
 
+/**
+ * EDITME: Config New Items
+ */
 export const configNewItems: ConfigNewItem[] = [
   {
     action: "/user/posts/new",
@@ -13,19 +16,25 @@ export const configNewItems: ConfigNewItem[] = [
     isEnabled: true,
   },
   {
-    action: "/new",
+    action: "/user/tags/new",
     name: "Tag",
     icon: "ph:tag-duotone",
     isEnabled: false,
   },
   {
-    action: "/new",
+    action: "/user/categories/new",
+    name: "Tag",
+    icon: "ph:tag-duotone",
+    isEnabled: false,
+  },
+  {
+    action: "/user/images/new",
     name: "Image",
     icon: "ph:image-duotone",
     isEnabled: false,
   },
   {
-    action: "/new",
+    action: "/admin/users/new",
     name: "User",
     icon: "ph:user-duotone",
     isEnabled: false,
