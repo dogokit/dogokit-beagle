@@ -27,12 +27,12 @@ export function SiteNavigationSmall() {
       className={cn(
         "flex p-2 lg:hidden",
         "sticky top-0 z-10 items-center justify-between gap-2",
-        "bg-background/30 backdrop-blur-xl backdrop-saturate-200",
+        "bg-background/50 backdrop-blur-lg backdrop-saturate-150",
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="block">
-          <Logo text="DOGOKIT" />
+        <Link to="/" className="block transition hover:text-primary">
+          <Logo text="Dogokit" />
         </Link>
         <ThemeButton />
       </div>
@@ -69,12 +69,13 @@ export function SiteNavigationLarge() {
       className={cn(
         "hidden p-4 lg:flex",
         "sticky top-0 z-10 items-center justify-between gap-2",
-        "bg-background/30 backdrop-blur-xl backdrop-saturate-200",
+        "transition duration-200 ease-in-out",
+        "bg-background/50 backdrop-blur-lg backdrop-saturate-150",
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="block">
-          <Logo text="DOGOKIT" />
+        <Link to="/" className="block transition hover:text-primary">
+          <Logo text="Dogokit" />
         </Link>
         <ThemeButton />
       </div>

@@ -346,6 +346,8 @@ Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
 
 ### Inspirations
 
+Templates:
+
 - [Remix Directory](https://remix.directory)
 - [Remix Stacks](https://remix.run/stacks)
   - [💿 Remix Indie Stack](https://github.com/remix-run/indie-stack)
@@ -358,14 +360,18 @@ Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
 - [MakerKit - SaaS Starter Kits based on React](https://makerkit.dev)
 - [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
 - [T3 Stack by T3 Community / Theo Browne](https://create.t3.gg)
+- [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
+- [Next SaaS Stripe Starter](https://github.com/mickasmt/next-saas-stripe-starter)
 - [Precedent](https://precedent.dev)
 - [Reshaped](https://reshaped.so)
+
+Designs:
+
 - [saasui.design](https://saasui.design)
 - [saasinterface.com](https://saasinterface.com)
-- [Next SaaS Stripe Starter](https://github.com/mickasmt/next-saas-stripe-starter)
-- [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
 - [Saas UI - The React component library for Startups](https://saas-ui.dev)
 - [Rewind-UI - React component library using Tailwind CSS](https://github.com/rewindui/rewindui)
+- [MoneyKit](https://moneykit.com)
 
 ### General
 
