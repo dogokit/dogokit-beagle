@@ -70,8 +70,8 @@ model Role {
   id String @id @default(cuid())
 
   sequence    Int?    @unique // 1, 2, 3, ...
-  symbol      String  @unique // ROOT, ADMIN, MEMBER"
-  name        String  @unique // Root, Admin, Member
+  symbol      String  @unique // ROOT, ADMIN, MEMBER, ...
+  name        String  @unique // Root, Admin, Member, ...
   description String? @db.Text // Summary of abilities
 
   users       User[]
@@ -136,7 +136,9 @@ model Post {
   slug    String  @unique
   title   String
   content String?
-  // isPublished Boolean? @default(false)
+
+  status   PostStatus? @relation(fields: [statusId], references: [id])
+  statusId String?
 
   images PostImage[]
 
@@ -147,7 +149,19 @@ model Post {
   updatedAt DateTime @updatedAt
 
   @@index([userId])
-  @@index([userId, updatedAt])
+  @@index([userId, updatedAt]) // Extra index for user and updatedAt
+  @@index([statusId])
+}
+
+model PostStatus {
+  id String @id @default(cuid())
+
+  sequence    Int?    @unique // 1, 2, 3, ...
+  symbol      String  @unique // DRAFT, PUBLISHED, ARCHIVED, ...
+  name        String  @unique // Draft, Published, Archived, ...
+  description String? @db.Text // Status definition
+
+  posts Post[]
 }
 
 model PostImage {
