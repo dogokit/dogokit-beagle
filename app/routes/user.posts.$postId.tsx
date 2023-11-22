@@ -63,8 +63,8 @@ export default function UserPostsPostIdRoute() {
 
   const isSubmitting = navigation.state === "submitting"
   const isUpdated = post.createdAt !== post.updatedAt
+  const isDisabled = post.status.symbol === "DRAFT"
 
-  // FIXME: Conform cannot reload with the new defaultValue after new post from nav
   const [form, { userId, id, slug, title, content }] = useForm<
     z.infer<typeof schemaPostUpdateById>
   >({
@@ -110,6 +110,7 @@ export default function UserPostsPostIdRoute() {
                 variant="outline"
                 size="xs"
                 to={`/posts/${post.slug}`}
+                disabled={isDisabled}
               >
                 <Iconify icon="ph:arrow-square-out-duotone" />
                 <span className="hidden sm:inline">View</span>

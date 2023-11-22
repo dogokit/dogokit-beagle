@@ -24,6 +24,7 @@ export const modelUserPost = {
     return prisma.post.findUnique({
       where: { id, userId },
       include: {
+        status: { select: { symbol: true, name: true } },
         images: { select: { url: true } },
       },
     })
