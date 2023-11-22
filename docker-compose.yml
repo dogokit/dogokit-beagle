@@ -2,6 +2,7 @@
 version: "3.9"
 
 services:
+  # MySQL
   mysql:
     image: mysql:8
     container_name: dogokit-remix-database
@@ -13,6 +14,19 @@ services:
       - ${MYSQL_HOST_PORT}:${MYSQL_CONTAINER_PORT}
     env_file:
       - .env
+  # PostgreSQL
+  # postgres:
+  #   image: postgres:alpine
+  #   container_name: dogokit-remix-postgres
+  #   hostname: database
+  #   restart: always
+  #   volumes:
+  #     - postgres_data:/var/lib/postgres
+  #   ports:
+  #     - ${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}
+  #   env_file:
+  #     - .env
 
 volumes:
   mysql_data:
+  # postgres_data:
