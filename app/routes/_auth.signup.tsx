@@ -14,6 +14,7 @@ import {
 import { z } from "zod"
 
 import { AuthButtons } from "~/components/shared/auth-buttons"
+import { SectionOr } from "~/components/shared/section-or"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import {
   FormDescription,
@@ -46,14 +47,13 @@ export const loader = ({ request }: ActionFunctionArgs) => {
 
 export default function SignUpRoute() {
   const actionData = useActionData<typeof action>()
+  const { isModeDevelopment } = useAppMode()
 
   const navigation = useNavigation()
   const isSubmitting = navigation.state === "submitting"
 
   const [searchParams] = useSearchParams()
   const redirectTo = searchParams.get("redirectTo")
-
-  const { isModeDevelopment } = useAppMode()
 
   const [form, { email, fullname, username, password }] = useForm<
     z.infer<typeof schemaUserSignUp>
@@ -92,97 +92,97 @@ export default function SignUpRoute() {
           </p>
         </header>
 
-        <Form
-          replace
-          action="/signup"
-          method="POST"
-          className="flex flex-col gap-2"
-          {...form.props}
-        >
-          <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
-            {/* LATER: FormFieldBuilder component */}
-            <FormField>
-              <FormLabel htmlFor={fullname.id}>Full Name</FormLabel>
-              <Input
-                {...conform.input(fullname)}
-                id={fullname.id}
-                placeholder="Full Name"
-                autoFocus={fullname.error ? true : undefined}
-                required
-              />
-              <FormErrors>{fullname}</FormErrors>
-            </FormField>
-
-            <FormField>
-              <FormLabel htmlFor={email.id}>Email</FormLabel>
-              <Input
-                {...conform.input(email, { type: "email", description: true })}
-                id={email.id}
-                placeholder="yourname@example.com"
-                autoCapitalize="none"
-                autoCorrect="off"
-                autoFocus={email.error ? true : undefined}
-                required
-              />
-              <FormErrors>{email}</FormErrors>
-            </FormField>
-
-            <FormField>
-              <FormLabel htmlFor={username.id}>Username</FormLabel>
-              <Input
-                {...conform.input(username)}
-                id={username.id}
-                placeholder="username"
-                autoFocus={username.error ? true : undefined}
-                required
-              />
-              <FormDescription id={password.descriptionId}>
-                4 to 20 characters (letters, numbers, dot, underscore)
-              </FormDescription>
-              <FormErrors>{username}</FormErrors>
-            </FormField>
-
-            <FormField>
-              <FormLabel htmlFor={password.id}>Password</FormLabel>
-              <InputPassword
-                {...conform.input(password, {
-                  description: true,
-                })}
-                id={password.id}
-                placeholder="Enter password (at least 8 characters)"
-                autoComplete="current-password"
-                autoFocus={password.error ? true : undefined}
-                required
-              />
-              <FormDescription id={password.descriptionId}>
-                8 characters or more
-              </FormDescription>
-              <FormErrors>{password}</FormErrors>
-            </FormField>
-
-            {redirectTo ? (
-              <input type="hidden" name="redirectTo" value={redirectTo} />
-            ) : null}
-
-            <ButtonLoading
-              type="submit"
-              loadingText="Signing Up..."
-              isLoading={isSubmitting}
-            >
-              Sign Up
-            </ButtonLoading>
-          </fieldset>
-        </Form>
-
-        <section className="flex flex-col">
-          <hr className="h-0 border-t" />
-          <div className="-mt-2 text-center text-xs">
-            <span className="bg-background px-2 text-muted-foreground">OR</span>
-          </div>
-        </section>
-
         <section className="space-y-2">
           <AuthButtons />
+        </section>
+
+        <SectionOr />
+
+        <section>
+          <Form
+            replace
+            action="/signup"
+            method="POST"
+            className="flex flex-col gap-2"
+            {...form.props}
+          >
+            <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
+              {/* LATER: FormFieldBuilder component */}
+              <FormField>
+                <FormLabel htmlFor={fullname.id}>Full Name</FormLabel>
+                <Input
+                  {...conform.input(fullname)}
+                  id={fullname.id}
+                  placeholder="Full Name"
+                  autoFocus={fullname.error ? true : undefined}
+                  required
+                />
+                <FormErrors>{fullname}</FormErrors>
+              </FormField>
+
+              <FormField>
+                <FormLabel htmlFor={email.id}>Email</FormLabel>
+                <Input
+                  {...conform.input(email, {
+                    type: "email",
+                    description: true,
+                  })}
+                  id={email.id}
+                  placeholder="yourname@example.com"
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  autoFocus={email.error ? true : undefined}
+                  required
+                />
+                <FormErrors>{email}</FormErrors>
+              </FormField>
+
+              <FormField>
+                <FormLabel htmlFor={username.id}>Username</FormLabel>
+                <Input
+                  {...conform.input(username)}
+                  id={username.id}
+                  placeholder="username"
+                  autoFocus={username.error ? true : undefined}
+                  required
+                />
+                <FormDescription id={password.descriptionId}>
+                  4 to 20 characters (letters, numbers, dot, underscore)
+                </FormDescription>
+                <FormErrors>{username}</FormErrors>
+              </FormField>
+
+              <FormField>
+                <FormLabel htmlFor={password.id}>Password</FormLabel>
+                <InputPassword
+                  {...conform.input(password, {
+                    description: true,
+                  })}
+                  id={password.id}
+                  placeholder="Enter password (at least 8 characters)"
+                  autoComplete="current-password"
+                  autoFocus={password.error ? true : undefined}
+                  required
+                />
+                <FormDescription id={password.descriptionId}>
+                  8 characters or more
+                </FormDescription>
+                <FormErrors>{password}</FormErrors>
+              </FormField>
+
+              {redirectTo ? (
+                <input type="hidden" name="redirectTo" value={redirectTo} />
+              ) : null}
+
+              <ButtonLoading
+                type="submit"
+                loadingText="Signing Up..."
+                isLoading={isSubmitting}
+              >
+                Sign Up
+              </ButtonLoading>
+            </fieldset>
+          </Form>
         </section>
       </div>
     </div>

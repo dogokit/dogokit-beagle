@@ -111,7 +111,7 @@
     @apply mx-auto w-full max-w-prose;
   }
   .site-compact {
-    @apply mx-auto max-w-md space-y-10;
+    @apply mx-auto max-w-md space-y-6;
   }
   .app-container {
     @apply mx-auto w-full space-y-6 overflow-hidden p-4;

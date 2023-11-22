@@ -13,6 +13,7 @@ import {
 } from "@remix-run/react"
 import { z } from "zod"
 import { AuthButtons } from "~/components/shared/auth-buttons"
+import { SectionOr } from "~/components/shared/section-or"
 
 import { ButtonLoading } from "~/components/ui/button-loading"
 import {
@@ -46,7 +47,6 @@ export const loader = ({ request }: ActionFunctionArgs) => {
 
 export default function SignUpRoute() {
   const actionData = useActionData<typeof action>()
-
   const { isModeDevelopment } = useAppMode()
 
   const navigation = useNavigation()
@@ -85,69 +85,69 @@ export default function SignUpRoute() {
           </p>
         </header>
 
-        <Form
-          replace
-          action="/login"
-          method="POST"
-          className="flex flex-col gap-2"
-          {...form.props}
-        >
-          <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
-            {redirectTo ? (
-              <input type="hidden" name="redirectTo" value={redirectTo} />
-            ) : null}
-
-            <FormField>
-              <FormLabel htmlFor={email.id}>Email</FormLabel>
-              <Input
-                {...conform.input(email, { type: "email", description: true })}
-                id={email.id}
-                placeholder="yourname@example.com"
-                autoCapitalize="none"
-                autoCorrect="off"
-                autoFocus={email.error ? true : undefined}
-                required
-              />
-              <FormErrors>{email}</FormErrors>
-            </FormField>
-
-            <FormField>
-              <FormLabel htmlFor={password.id}>Password</FormLabel>
-              <InputPassword
-                {...conform.input(password, {
-                  description: true,
-                })}
-                id={password.id}
-                placeholder="Enter password"
-                autoComplete="current-password"
-                autoFocus={password.error ? true : undefined}
-                required
-              />
-              <FormDescription id={password.descriptionId}>
-                At least 8 characters
-              </FormDescription>
-              <FormErrors>{password}</FormErrors>
-            </FormField>
-
-            <ButtonLoading
-              type="submit"
-              loadingText="Logging In..."
-              isLoading={isSubmitting}
-            >
-              Log In
-            </ButtonLoading>
-          </fieldset>
-        </Form>
-
-        <section className="flex flex-col">
-          <hr className="h-0 border-t" />
-          <div className="-mt-2 text-center text-xs">
-            <span className="bg-background px-2 text-muted-foreground">OR</span>
-          </div>
-        </section>
-
         <section className="space-y-2">
           <AuthButtons />
+        </section>
+
+        <SectionOr />
+
+        <section>
+          <Form
+            replace
+            action="/login"
+            method="POST"
+            className="flex flex-col gap-2"
+            {...form.props}
+          >
+            <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
+              {redirectTo ? (
+                <input type="hidden" name="redirectTo" value={redirectTo} />
+              ) : null}
+
+              <FormField>
+                <FormLabel htmlFor={email.id}>Email</FormLabel>
+                <Input
+                  {...conform.input(email, {
+                    type: "email",
+                    description: true,
+                  })}
+                  id={email.id}
+                  placeholder="yourname@example.com"
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  autoFocus={email.error ? true : undefined}
+                  required
+                />
+                <FormErrors>{email}</FormErrors>
+              </FormField>
+
+              <FormField>
+                <FormLabel htmlFor={password.id}>Password</FormLabel>
+                <InputPassword
+                  {...conform.input(password, {
+                    description: true,
+                  })}
+                  id={password.id}
+                  placeholder="Enter password"
+                  autoComplete="current-password"
+                  autoFocus={password.error ? true : undefined}
+                  required
+                />
+                <FormDescription id={password.descriptionId}>
+                  At least 8 characters
+                </FormDescription>
+                <FormErrors>{password}</FormErrors>
+              </FormField>
+
+              <ButtonLoading
+                type="submit"
+                loadingText="Logging In..."
+                isLoading={isSubmitting}
+              >
+                Log In
+              </ButtonLoading>
+            </fieldset>
+          </Form>
         </section>
       </div>
     </div>
