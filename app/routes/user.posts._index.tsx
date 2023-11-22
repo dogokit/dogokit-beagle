@@ -94,7 +94,10 @@ export default function UserPostsRoute() {
           <ul className="space-y-4">
             {posts.map(post => {
               return (
-                <li key={post.id} className="flex flex-wrap items-center gap-2">
+                <li
+                  key={post.id}
+                  className="flex flex-col flex-wrap gap-1 sm:flex-row sm:items-center sm:gap-2"
+                >
                   <div className="flex items-center gap-2">
                     <ButtonLink
                       variant="outline"
