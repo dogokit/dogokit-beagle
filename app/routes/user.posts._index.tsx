@@ -17,6 +17,7 @@ import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
+import { cn } from "~/utils/cn"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -93,7 +94,7 @@ export default function UserPostsRoute() {
 
       <section className="app-section">
         {posts.length > 0 && (
-          <ul className="space-y-4">
+          <ul className="divide-y">
             {posts.map(post => {
               const isDisabled = post.status.symbol === "DRAFT"
               // Can view owned post if PRIVATE, UNLISTED, PUBLISHED, ARCHIVED
@@ -101,10 +102,14 @@ export default function UserPostsRoute() {
               return (
                 <li
                   key={post.id}
-                  className="flex flex-col flex-wrap gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2"
+                  className={cn(
+                    "py-2",
+                    "flex flex-col flex-wrap gap-1",
+                    "lg:flex-row lg:items-center lg:justify-between lg:gap-2",
+                  )}
                 >
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <ButtonLink
                         variant="outline"
                         size="xs"
