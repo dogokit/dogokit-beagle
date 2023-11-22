@@ -38,6 +38,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   }
   const wherePost = {
     OR: [{ slug: { contains } }, { title: { contains } }],
+    status: {
+      OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
+    },
   }
 
   /**

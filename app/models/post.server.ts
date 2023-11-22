@@ -9,6 +9,9 @@ export const modelPost = {
 
   getAll() {
     return prisma.post.findMany({
+      where: {
+        status: { symbol: "PUBLISHED" },
+      },
       include: {
         images: { select: { url: true } },
       },
@@ -17,6 +20,9 @@ export const modelPost = {
 
   getAllSlugs() {
     return prisma.post.findMany({
+      where: {
+        status: { symbol: "PUBLISHED" },
+      },
       select: {
         slug: true,
         updatedAt: true,
@@ -35,7 +41,16 @@ export const modelPost = {
 
   getBySlug({ slug }: Pick<Post, "slug">) {
     return prisma.post.findUnique({
-      where: { slug },
+      where: {
+        slug,
+        status: {
+          OR: [
+            { symbol: "UNLISTED" },
+            { symbol: "PUBLISHED" },
+            { symbol: "ARCHIVED" },
+          ],
+        },
+      },
       include: {
         images: { select: { url: true } },
         user: {
@@ -51,15 +66,14 @@ export const modelPost = {
     return prisma.post.findMany({
       where: {
         OR: [{ title: { contains: q } }, { slug: { contains: q } }],
+        status: {
+          OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
+        },
       },
       include: {
         images: { select: { url: true } },
       },
       orderBy: [{ updatedAt: "asc" }],
     })
-  },
-
-  deleteById({ id }: Pick<Post, "id">) {
-    return prisma.post.delete({ where: { id } })
   },
 }

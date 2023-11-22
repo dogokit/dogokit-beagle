@@ -23,18 +23,23 @@ export const meta: MetaFunction = () =>
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const config = getPaginationConfigs({ request })
+  const contains = config.queryParam
 
   /**
    * Custom query config, can be different for any cases
    * This show the 1st page result even if there's no query
    */
-  const where = !config.queryParam
-    ? {}
+  const where = !contains
+    ? {
+        status: {
+          OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
+        },
+      }
     : {
-        OR: [
-          { title: { contains: config.queryParam } },
-          { slug: { contains: config.queryParam } },
-        ],
+        OR: [{ title: { contains } }, { slug: { contains } }],
+        status: {
+          OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
+        },
       }
 
   /**
