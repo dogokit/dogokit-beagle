@@ -11,12 +11,22 @@ import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 
 export function SiteNavigation() {
+  return (
+    <>
+      <SiteNavigationSmall />
+      <SiteNavigationLarge />
+    </>
+  )
+}
+
+export function SiteNavigationSmall() {
   const { userSession } = useRootLoaderData()
 
   return (
     <nav
       className={cn(
-        "sticky top-0 z-10 flex items-center justify-between gap-2 px-4 py-2",
+        "flex p-2 lg:hidden",
+        "sticky top-0 z-10 items-center justify-between gap-2",
         "bg-background/30 backdrop-blur-xl backdrop-saturate-200",
       )}
     >
@@ -28,7 +38,49 @@ export function SiteNavigation() {
       </div>
 
       <div className="flex items-center gap-4">
-        <ul className="hidden lg:flex lg:items-center lg:gap-4">
+        <div className="flex items-center gap-4">
+          {userSession && (
+            <>
+              <ButtonLink to="/new" size="sm">
+                <Iconify icon="ph:plus-square-duotone" />
+                <span>New</span>
+              </ButtonLink>
+              <IndicatorUser size="sm" />
+            </>
+          )}
+
+          {!userSession && (
+            <ButtonLink to="/login" variant="secondary" size="sm">
+              <Iconify icon="ph:sign-in-duotone" />
+              <span>Log In</span>
+            </ButtonLink>
+          )}
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+export function SiteNavigationLarge() {
+  const { userSession } = useRootLoaderData()
+
+  return (
+    <nav
+      className={cn(
+        "hidden p-4 lg:flex",
+        "sticky top-0 z-10 items-center justify-between gap-2",
+        "bg-background/30 backdrop-blur-xl backdrop-saturate-200",
+      )}
+    >
+      <div className="flex items-center justify-between gap-2">
+        <Link to="/" className="block">
+          <Logo text="DOGOKIT" />
+        </Link>
+        <ThemeButton />
+      </div>
+
+      <div className="flex items-center gap-4">
+        <ul className="flex items-center gap-4">
           {configNavigationItems
             .filter(item => configSite.navItems.includes(item.to))
             .filter(navItem => navItem.isEnabled)
