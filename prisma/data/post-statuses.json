@@ -1,0 +1,32 @@
+[
+  {
+    "sequence": 1,
+    "symbol": "DRAFT",
+    "name": "Draft",
+    "description": "Draft post, still editing"
+  },
+  {
+    "sequence": 2,
+    "symbol": "PRIVATE",
+    "name": "Private",
+    "description": "Private post, can be seen by only specific people"
+  },
+  {
+    "sequence": 3,
+    "symbol": "UNLISTED",
+    "name": "Unlisted",
+    "description": "Unlisted post, can be seen by anyone with the link"
+  },
+  {
+    "sequence": 4,
+    "symbol": "PUBLISHED",
+    "name": "Published",
+    "description": "Published post, can be seen by anyone"
+  },
+  {
+    "sequence": 5,
+    "symbol": "ARCHIVED",
+    "name": "Archived",
+    "description": "Archived post, can be seen, marked as no longer relevant"
+  }
+]
