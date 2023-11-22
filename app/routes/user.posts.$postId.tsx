@@ -99,7 +99,7 @@ export default function UserPostsPostIdRoute() {
                 <span>Save</span>
               </ButtonLoading>
               <FormDelete
-                action="/action/post"
+                action="/user/posts/delete"
                 intentValue="user-delete-post-by-id"
                 itemText={`a post: ${post.title} (${post.slug})`}
                 defaultValue={post.id}

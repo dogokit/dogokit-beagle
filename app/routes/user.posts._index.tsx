@@ -71,7 +71,7 @@ export default function UserPostsRoute() {
         <h2>Posts</h2>
         <div>
           <FormDelete
-            action="/action/post"
+            action="/user/posts/delete"
             intentValue="user-delete-all-posts"
             itemText="all posts"
             buttonText="Delete all posts"
@@ -111,7 +111,7 @@ export default function UserPostsRoute() {
                         <span>Edit</span>
                       </ButtonLink>
                       <FormDelete
-                        action="/action/post"
+                        action="/user/posts/delete"
                         intentValue="user-delete-post-by-id"
                         itemText={`a post: ${post.title} (${post.slug})`}
                         defaultValue={post.id}
