@@ -2,10 +2,8 @@ import { type Post } from "@prisma/client"
 
 import { createPostSlug } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
+import { type PostStatusSymbol } from "~/types/post-status"
 
-/**
- * Private query/mutation, separated by the public
- */
 export const modelUserPost = {
   count({ userId }: Pick<Post, "userId">) {
     return prisma.post.count({
@@ -31,17 +29,29 @@ export const modelUserPost = {
     })
   },
 
-  create({
+  async create({
     userId,
     title,
     content,
-  }: Pick<Post, "userId" | "title" | "content">) {
+    statusSymbol,
+  }: Pick<Post, "userId" | "title" | "content"> & {
+    statusSymbol: PostStatusSymbol
+  }) {
+    const status = await prisma.postStatus.findUnique({
+      where: { symbol: statusSymbol },
+    })
+    if (!status) return null
+
     return prisma.post.create({
       data: {
         userId,
         slug: createPostSlug(title),
         title,
         content,
+        statusId: status.id,
+      },
+      include: {
+        status: true,
       },
     })
   },
