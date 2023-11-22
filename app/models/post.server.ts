@@ -34,8 +34,15 @@ export const modelPost = {
     return prisma.post.findUnique({
       where: { id },
       include: {
+        status: { select: { symbol: true, name: true } },
         images: { select: { url: true } },
       },
+    })
+  },
+
+  getWithStatus() {
+    return prisma.post.findFirst({
+      include: { status: { select: { symbol: true, name: true } } },
     })
   },
 
@@ -45,6 +52,7 @@ export const modelPost = {
         slug,
         status: {
           OR: [
+            { symbol: "PRIVATE" }, // LATER: Private for allowed users
             { symbol: "UNLISTED" },
             { symbol: "PUBLISHED" },
             { symbol: "ARCHIVED" },
@@ -52,6 +60,7 @@ export const modelPost = {
         },
       },
       include: {
+        status: { select: { symbol: true, name: true } },
         images: { select: { url: true } },
         user: {
           include: {

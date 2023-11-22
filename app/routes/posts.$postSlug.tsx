@@ -4,17 +4,19 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
+
 import {
   ErrorHelpInformation,
   GeneralErrorBoundary,
 } from "~/components/shared/error-boundary"
+import { Alert } from "~/components/ui/alert"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
-
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { Time } from "~/components/ui/time"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelPost } from "~/models/post.server"
+import { formatDate } from "~/utils/datetime"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -52,9 +54,17 @@ export default function PostSlugRoute() {
   const isOwner = post.userId === userSession?.id
   const isUpdated = post.createdAt !== post.updatedAt
 
+  const isArchived = post.status.symbol === "ARCHIVED"
+
   return (
     <div className="site-container space-y-8">
       <header className="site-header">
+        {isArchived && (
+          <Alert>
+            This post has been archived by on {formatDate(post.updatedAt)}
+          </Alert>
+        )}
+
         <h1>
           <Link to={`/posts/${post.slug}`}>{post.title}</Link>
         </h1>

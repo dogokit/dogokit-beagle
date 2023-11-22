@@ -17,6 +17,12 @@ export const modelPostStatus = {
     })
   },
 
+  getBySymbol({ symbol }: Pick<PostStatus, "symbol">) {
+    return prisma.postStatus.findUnique({
+      where: { symbol },
+    })
+  },
+
   create({
     sequence,
     symbol,

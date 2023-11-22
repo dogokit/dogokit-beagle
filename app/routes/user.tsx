@@ -1,18 +1,26 @@
-import { type LoaderFunctionArgs } from "@remix-run/node"
+import { json, type LoaderFunctionArgs } from "@remix-run/node"
 import { Outlet } from "@remix-run/react"
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 import { Separator } from "~/components/ui/separator"
 import { configNavigationItems } from "~/configs/navigation"
 import { useAppMode } from "~/hooks/use-app-mode"
+import { modelPostStatus } from "~/models/post-status.server"
 
 import { authenticator } from "~/services/auth.server"
+import { invariantResponse } from "~/utils/invariant"
 import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticator.isAuthenticated(request, { failureRedirect: "/login" })
-  return null
+
+  const postStatuses = await modelPostStatus.getAll()
+  invariantResponse(postStatuses, "Post statuses are unavailable", {
+    status: 404,
+  })
+
+  return json({ postStatuses })
 }
 
 export default function UserLayoutRoute() {

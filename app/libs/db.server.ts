@@ -32,12 +32,12 @@ export const prisma = remember("prisma", () => {
       event.duration < LOG_THRESHOLD * 1.1
         ? "green"
         : event.duration < LOG_THRESHOLD * 1.2
-        ? "blue"
-        : event.duration < LOG_THRESHOLD * 1.3
-        ? "yellow"
-        : event.duration < LOG_THRESHOLD * 1.4
-        ? "redBright"
-        : "red"
+          ? "blue"
+          : event.duration < LOG_THRESHOLD * 1.3
+            ? "yellow"
+            : event.duration < LOG_THRESHOLD * 1.4
+              ? "redBright"
+              : "red"
     const dur = chalk[color](`${event.duration}ms`)
 
     console.info(`💎 Prisma: ${dur}: ${event.query}`)

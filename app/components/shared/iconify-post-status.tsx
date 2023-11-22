@@ -1,10 +1,9 @@
 import { type PostStatus } from "@prisma/client"
 import { match } from "ts-pattern"
 
-import { Badge } from "~/components/ui/badge"
 import { Iconify } from "~/components/ui/iconify"
 
-const getIconName = (providerName: string) =>
+export const getPostStatusIconName = (providerName: string) =>
   match(providerName)
     .with("DRAFT", () => "ph:notebook-fill")
     .with("PRIVATE", () => "ph:book-fill")
@@ -13,15 +12,12 @@ const getIconName = (providerName: string) =>
     .with("ARCHIVED", () => "ph:books-fill")
     .otherwise(() => "ph:square-fill")
 
-export function BadgeStatus({
+export function IconifyPostStatus({
   status,
 }: {
-  status: Pick<PostStatus, "symbol" | "name">
+  status: Pick<PostStatus, "symbol">
 }) {
   return (
-    <Badge variant="secondary" className="flex items-center gap-1">
-      <Iconify icon={getIconName(status.symbol)} />
-      <span>{status.name}</span>
-    </Badge>
+    <Iconify className="inline" icon={getPostStatusIconName(status.symbol)} />
   )
 }
