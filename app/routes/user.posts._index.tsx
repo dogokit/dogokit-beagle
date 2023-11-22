@@ -4,6 +4,7 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
+import { BadgeStatus } from "~/components/shared/badge-status"
 import { FormDelete } from "~/components/shared/form-delete"
 
 import {
@@ -48,6 +49,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       skip: config.skip,
       take: config.limitParam,
       include: {
+        status: { select: { symbol: true, name: true } },
         images: { select: { url: true } },
       },
     }),
@@ -96,40 +98,45 @@ export default function UserPostsRoute() {
               return (
                 <li
                   key={post.id}
-                  className="flex flex-col flex-wrap gap-1 sm:flex-row sm:items-center sm:gap-2"
+                  className="flex flex-col flex-wrap gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2"
                 >
                   <div className="flex items-center gap-2">
-                    <ButtonLink
-                      variant="outline"
-                      size="xs"
-                      to={`/user/posts/${post.id}`}
-                    >
-                      <Iconify icon="ph:note-pencil" />
-                      <span>Edit</span>
-                    </ButtonLink>
-                    <FormDelete
-                      action="/action/post"
-                      intentValue="user-delete-post-by-id"
-                      itemText={`a post: ${post.title} (${post.slug})`}
-                      defaultValue={post.id}
-                      requireUser
-                      userId={post.userId}
-                    />
-                    <ButtonLink
-                      variant="outline"
-                      size="xs"
-                      to={`/posts/${post.slug}`}
-                    >
-                      <Iconify icon="ph:arrow-square-out-duotone" />
-                      <span>View</span>
-                    </ButtonLink>
+                    <div className="flex items-center gap-2">
+                      <ButtonLink
+                        variant="outline"
+                        size="xs"
+                        to={`/user/posts/${post.id}`}
+                      >
+                        <Iconify icon="ph:note-pencil" />
+                        <span>Edit</span>
+                      </ButtonLink>
+                      <FormDelete
+                        action="/action/post"
+                        intentValue="user-delete-post-by-id"
+                        itemText={`a post: ${post.title} (${post.slug})`}
+                        defaultValue={post.id}
+                        requireUser
+                        userId={post.userId}
+                      />
+                      <ButtonLink
+                        variant="outline"
+                        size="xs"
+                        to={`/posts/${post.slug}`}
+                      >
+                        <Iconify icon="ph:arrow-square-out-duotone" />
+                        <span>View</span>
+                      </ButtonLink>
+                    </div>
+                    <h4>{post.title}</h4>
                   </div>
 
-                  <h4>{post.title}</h4>
+                  <div className="flex items-center gap-2">
+                    <code className="text-xs text-muted-foreground">
+                      {post.slug}
+                    </code>
 
-                  <code className="text-xs text-muted-foreground">
-                    {post.slug}
-                  </code>
+                    <BadgeStatus status={post.status} />
+                  </div>
                 </li>
               )
             })}

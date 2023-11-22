@@ -2,5 +2,5 @@ export type PostStatusSymbol =
   | "DRAFT"
   | "PRIVATE"
   | "UNLISTED"
-  | "UNPUBLISHED"
+  | "PUBLISHED"
   | "ARCHIVED"
