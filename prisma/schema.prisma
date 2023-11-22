@@ -137,8 +137,8 @@ model Post {
   title   String
   content String?
 
-  status   PostStatus? @relation(fields: [statusId], references: [id])
-  statusId String?
+  status   PostStatus @relation(fields: [statusId], references: [id])
+  statusId String
 
   images PostImage[]
 
@@ -148,9 +148,8 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([userId])
-  @@index([userId, updatedAt]) // Extra index for user and updatedAt
   @@index([statusId])
+  @@index([userId, updatedAt]) // Extra index for user and updatedAt
 }
 
 model PostStatus {
