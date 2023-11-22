@@ -6,18 +6,24 @@ import { cn } from "~/utils/cn"
 
 interface ButtonLinkProps
   extends LinkProps,
-    VariantProps<typeof buttonVariants> {}
+    VariantProps<typeof buttonVariants> {
+  disabled?: boolean
+}
 
 const ButtonLink = ({
   variant = "default",
   size = "default",
   className,
   children,
+  disabled,
   ...props
 }: ButtonLinkProps) => {
   return (
     <Link
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        disabled && "pointer-events-none opacity-50",
+      )}
       {...props}
     >
       {children}

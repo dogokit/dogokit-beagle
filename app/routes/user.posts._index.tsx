@@ -95,6 +95,9 @@ export default function UserPostsRoute() {
         {posts.length > 0 && (
           <ul className="space-y-4">
             {posts.map(post => {
+              const isDisabled = post.status.symbol === "DRAFT"
+              // Can view owned post if PRIVATE, UNLISTED, PUBLISHED, ARCHIVED
+
               return (
                 <li
                   key={post.id}
@@ -122,6 +125,7 @@ export default function UserPostsRoute() {
                         variant="outline"
                         size="xs"
                         to={`/posts/${post.slug}`}
+                        disabled={isDisabled}
                       >
                         <Iconify icon="ph:arrow-square-out-duotone" />
                         <span>View</span>
