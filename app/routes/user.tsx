@@ -34,7 +34,7 @@ export default function UserLayoutRoute() {
     <div className="mx-auto w-full">
       {/* LATER: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
       <div className="mx-auto flex max-w-5xl">
-        <nav className="select-none border-r border-r-border p-4">
+        <nav className="select-none border-r border-r-border p-2 lg:p-4">
           <SidebarNavItems
             items={configNavigationItems.filter(item =>
               navItems.includes(item.to),

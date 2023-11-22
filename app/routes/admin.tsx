@@ -32,7 +32,7 @@ export default function AdminLayoutRoute() {
 
   return (
     <div className="flex">
-      <nav className="select-none border-r border-r-border p-4">
+      <nav className="select-none border-r border-r-border p-2 lg:p-4">
         <SidebarNavItems
           items={configNavigationItems.filter(item =>
             navItems.includes(item.to),

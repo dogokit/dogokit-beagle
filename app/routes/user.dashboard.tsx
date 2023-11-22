@@ -41,7 +41,7 @@ export default function UserDashboardRoute() {
 
   return (
     <div className="app-container">
-      <header className="app-header flex items-center gap-4">
+      <header className="app-header flex flex-wrap items-center gap-2 sm:gap-4">
         <div>
           <AvatarAuto
             user={user}
@@ -52,7 +52,10 @@ export default function UserDashboardRoute() {
         </div>
 
         <div>
-          <h2>Welcome, {user.fullname}</h2>
+          <h2>
+            <span className="hidden lg:inline">Hi, </span>
+            {user.fullname}
+          </h2>
           <p className="text-muted-foreground">
             <span>{user.email} / </span>
             <Link to={`/${user.username}`} className="hover:text-primary">
