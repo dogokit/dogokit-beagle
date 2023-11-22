@@ -71,7 +71,7 @@ export default function UsernameRoute() {
         </div>
 
         <div>
-          <h2 className="text-3xl">{user.fullname}</h2>
+          <h2 className="font-sans text-3xl">{user.fullname}</h2>
           <h3 className="font-sans text-2xl text-muted-foreground">
             @{user.username}
           </h3>
