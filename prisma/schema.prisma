@@ -140,9 +140,9 @@ model UserImage {
 model Post {
   id String @id @default(cuid())
 
-  slug    String  @unique
+  slug    String @unique
   title   String
-  content String?
+  content String
 
   status   PostStatus @relation(fields: [statusId], references: [id])
   statusId String

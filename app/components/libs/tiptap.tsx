@@ -28,11 +28,22 @@ export function TiptapEditorContext({
   )
 }
 
-export function TiptapEditorHook({ content }: { content?: string }) {
+export function TiptapEditorHook({
+  content,
+  handleUpdate,
+}: {
+  content?: string
+  handleUpdate?: (htmlString: string) => void
+}) {
   const editor = useEditor({
     extensions: [StarterKit, Highlight, Typography, Underline],
     editorProps: { attributes: { class: "prose-config" } },
     content: content || contentExample,
+    onUpdate({ editor }) {
+      if (handleUpdate) {
+        handleUpdate(editor.getHTML())
+      }
+    },
   })
 
   if (!editor) return null

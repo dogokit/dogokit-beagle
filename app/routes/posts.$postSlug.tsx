@@ -4,6 +4,7 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
+import { ViewHTML } from "~/components/libs/tiptap"
 
 import {
   ErrorHelpInformation,
@@ -106,9 +107,7 @@ export default function PostSlugRoute() {
       </header>
 
       <section className="site-section pb-20 pt-4">
-        <article className="prose-config whitespace-pre-wrap">
-          {post.content}
-        </article>
+        <ViewHTML>{post.content}</ViewHTML>
       </section>
 
       <section className="site-section">

@@ -1,4 +1,4 @@
-import { conform, useForm } from "@conform-to/react"
+import { conform, useForm, useInputEvent } from "@conform-to/react"
 import { getFieldsetConstraint, parse } from "@conform-to/zod"
 import {
   json,
@@ -13,7 +13,9 @@ import {
   useLoaderData,
   useNavigation,
 } from "@remix-run/react"
+import { useRef, useState } from "react"
 import { z } from "zod"
+import { TiptapEditorHook } from "~/components/libs/tiptap"
 import { Debug } from "~/components/shared/debug"
 import { FormDelete } from "~/components/shared/form-delete"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -21,6 +23,7 @@ import { ButtonLoading } from "~/components/ui/button-loading"
 import { FormErrors } from "~/components/ui/form"
 
 import { Iconify } from "~/components/ui/iconify"
+import { Separator } from "~/components/ui/separator"
 import { Time } from "~/components/ui/time"
 import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
@@ -78,6 +81,14 @@ export default function UserPostsPostIdRoute() {
     },
     defaultValue: { ...post, userId: post.userId },
   })
+
+  const [contentValue, setContentValue] = useState(content.defaultValue ?? "")
+  const contentInputRef = useRef<HTMLInputElement>(null)
+  const contentControl = useInputEvent({ ref: contentInputRef })
+
+  function handleUpdate(htmlString: string) {
+    contentControl.change(htmlString)
+  }
 
   return (
     <div className="app-container">
@@ -155,7 +166,23 @@ export default function UserPostsPostIdRoute() {
               <FormErrors>{title}</FormErrors>
             </div>
 
+            <Separator className="my-4" />
+
             <div>
+              <FormErrors>{content}</FormErrors>
+              <input
+                {...conform.input(content, { hidden: true })}
+                ref={contentInputRef}
+                onChange={e => setContentValue(e.target.value)}
+              />
+              <TiptapEditorHook
+                content={contentValue}
+                handleUpdate={handleUpdate}
+              />
+            </div>
+
+            {/* Manual editor */}
+            {/* <div>
               <FormErrors>{content}</FormErrors>
               <textarea
                 {...conform.input(content)}
@@ -165,7 +192,7 @@ export default function UserPostsPostIdRoute() {
                 rows={20}
                 className="input-natural resize-none"
               />
-            </div>
+            </div> */}
           </section>
         </fieldset>
       </Form>
