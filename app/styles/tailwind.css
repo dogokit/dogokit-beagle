@@ -145,4 +145,7 @@
     @apply prose-pre:border prose-pre:border-input prose-pre:bg-muted prose-pre:text-foreground;
     @apply prose-code:before:content-none prose-code:after:content-none;
   }
+  .prose > ul > li > p {
+    @apply my-0;
+  }
 }

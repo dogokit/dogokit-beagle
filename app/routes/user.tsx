@@ -7,6 +7,7 @@ import { useAppMode } from "~/hooks/use-app-mode"
 import { modelPostStatus } from "~/models/post-status.server"
 
 import { authenticator } from "~/services/auth.server"
+import { cn } from "~/utils/cn"
 import { invariantResponse } from "~/utils/invariant"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -42,7 +43,7 @@ export default function UserLayoutRoute() {
     <div className="mx-auto w-full">
       {/* LATER: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
       <div className="mx-auto flex max-w-5xl">
-        <nav className="select-none border-r border-r-border p-2 lg:p-4">
+        <nav className={cn("select-none border-r border-r-border p-2 lg:p-4")}>
           <SidebarNavItems
             items={configNavigationItems.filter(item =>
               navItems.includes(item.to),
@@ -60,7 +61,7 @@ export default function UserLayoutRoute() {
           )}
         </nav>
 
-        <div className="w-full">
+        <div className="w-full pb-10">
           <Outlet />
         </div>
       </div>

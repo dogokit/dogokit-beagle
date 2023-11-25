@@ -5,7 +5,7 @@ export function AppFooter() {
   const { ENV } = useRootLoaderData()
 
   return (
-    <footer className="flex items-center justify-between gap-2 border-t border-t-border px-2 py-1">
+    <footer className="fixed bottom-0 flex w-full items-center justify-between gap-2 border-t border-t-border bg-background px-2 py-0">
       <div className="text-muted-foreground">
         <p className="text-xs">
           <span>Status: </span>
