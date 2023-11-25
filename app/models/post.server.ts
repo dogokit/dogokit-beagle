@@ -42,7 +42,10 @@ export const modelPost = {
 
   getWithStatus() {
     return prisma.post.findFirst({
-      include: { status: { select: { symbol: true, name: true } } },
+      include: {
+        status: { select: { symbol: true, name: true } },
+        images: { select: { url: true } },
+      },
     })
   },
 

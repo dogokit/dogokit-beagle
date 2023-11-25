@@ -17,6 +17,7 @@ import { useRef, useState } from "react"
 import { z } from "zod"
 import { TiptapEditorHook } from "~/components/libs/tiptap"
 import { Debug } from "~/components/shared/debug"
+import { FormChangeStatus } from "~/components/shared/form-change-status"
 import { FormDelete } from "~/components/shared/form-delete"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
@@ -26,6 +27,7 @@ import { Iconify } from "~/components/ui/iconify"
 import { Separator } from "~/components/ui/separator"
 import { Time } from "~/components/ui/time"
 import { requireUser } from "~/helpers/auth"
+import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { prisma } from "~/libs/db.server"
 import { modelUserPost } from "~/models/user-post.server"
 import { schemaPostUpdateById } from "~/schemas/post"
@@ -63,10 +65,7 @@ export default function UserPostsPostIdRoute() {
   const { post } = useLoaderData<typeof loader>()
   const actionData = useActionData<typeof action>()
   const navigation = useNavigation()
-
-  const isSubmitting = navigation.state === "submitting"
-  const isUpdated = post.createdAt !== post.updatedAt
-  const isDisabled = post.status.symbol === "DRAFT"
+  const { postStatuses } = useAppUserLoaderData()
 
   const [form, { userId, id, slug, title, content }] = useForm<
     z.infer<typeof schemaPostUpdateById>
@@ -90,6 +89,12 @@ export default function UserPostsPostIdRoute() {
     contentControl.change(htmlString)
   }
 
+  const isSubmitting = navigation.state === "submitting"
+  const isUpdated = post.createdAt !== post.updatedAt
+  const isDisabled = post.status.symbol === "DRAFT"
+
+  if (!post) return null
+
   return (
     <div className="app-container">
       <Debug isCollapsibleOpen hidden>
@@ -99,33 +104,44 @@ export default function UserPostsPostIdRoute() {
       <Form replace method="POST" {...form.props}>
         <fieldset className="space-y-8" disabled={isSubmitting}>
           <section className="app-section">
-            <div className="flex flex-wrap items-center gap-2">
-              <ButtonLoading
-                variant="outline"
-                size="xs"
-                loadingText="Saving"
-                isLoading={isSubmitting}
-                iconComponent={<Iconify icon="ph:floppy-disk-duotone" />}
-              >
-                <span>Save</span>
-              </ButtonLoading>
-              <FormDelete
-                action="/user/posts/delete"
-                intentValue="user-delete-post-by-id"
-                itemText={`a post: ${post.title} (${post.slug})`}
-                defaultValue={post.id}
-                requireUser
-                userId={post.userId}
-              />
-              <ButtonLink
-                variant="outline"
-                size="xs"
-                to={`/posts/${post.slug}`}
-                disabled={isDisabled}
-              >
-                <Iconify icon="ph:arrow-square-out-duotone" />
-                <span className="hidden sm:inline">View</span>
-              </ButtonLink>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <FormChangeStatus
+                  itemId="postId"
+                  action="/user/posts/patch"
+                  intentValue="change-post-status"
+                  dialogTitle="Change post's status"
+                  dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
+                  itemStatuses={postStatuses}
+                  item={post as any}
+                />
+                <ButtonLoading
+                  variant="outline"
+                  size="xs"
+                  loadingText="Saving"
+                  isLoading={isSubmitting}
+                  iconComponent={<Iconify icon="ph:floppy-disk-duotone" />}
+                >
+                  <span>Save</span>
+                </ButtonLoading>
+                <FormDelete
+                  action="/user/posts/delete"
+                  intentValue="user-delete-post-by-id"
+                  itemText={`a post: ${post.title} (${post.slug})`}
+                  defaultValue={post.id}
+                  requireUser
+                  userId={post.userId}
+                />
+                <ButtonLink
+                  variant="outline"
+                  size="xs"
+                  to={`/posts/${post.slug}`}
+                  disabled={isDisabled}
+                >
+                  <Iconify icon="ph:arrow-square-out-duotone" />
+                  <span className="hidden sm:inline">View</span>
+                </ButtonLink>
+              </div>
 
               <div className="text-xs text-muted-foreground">
                 {!isUpdated && (

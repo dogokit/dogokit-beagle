@@ -14,13 +14,10 @@ export function PostListItem({
   post: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
 }) {
   const { postStatuses } = useAppUserLoaderData()
+  if (!post) return null
 
-  if (!post) {
-    return null
-  }
-
+  // Only can View post if PRIVATE, UNLISTED, PUBLISHED, ARCHIVED
   const isDisabled = post.status.symbol === "DRAFT"
-  // Can view owned post if PRIVATE, UNLISTED, PUBLISHED, ARCHIVED
 
   return (
     <li
@@ -58,7 +55,7 @@ export function PostListItem({
         <h4>{post.title}</h4>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-row-reverse items-center gap-2 sm:flex-row">
         <code className="text-xs text-muted-foreground">{post.slug}</code>
 
         <FormChangeStatus
@@ -67,8 +64,8 @@ export function PostListItem({
           intentValue="change-post-status"
           dialogTitle="Change post's status"
           dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
-          item={post}
           itemStatuses={postStatuses}
+          item={post}
         />
       </div>
     </li>

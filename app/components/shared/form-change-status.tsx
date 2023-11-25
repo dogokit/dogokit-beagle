@@ -45,8 +45,8 @@ export function FormChangeStatus({
   dialogDescription: string
 
   // LATER: Make it more general with a model Item that has a Status
-  item: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
   itemStatuses: Prisma.PromiseReturnType<typeof modelPostStatus.getAll>
+  item: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
 }) {
   const [open, setOpen] = useState<boolean>()
   const fetcher = useFetcher()
