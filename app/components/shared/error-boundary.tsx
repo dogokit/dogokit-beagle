@@ -36,7 +36,7 @@ export function GeneralErrorBoundary({
   }
 
   return (
-    <div className="site-container">
+    <div className="site-container pb-20">
       {isRouteErrorResponse(error)
         ? (statusHandlers?.[error.status] ?? defaultStatusHandler)({
             error,
@@ -127,8 +127,7 @@ export function ErrorHelpInformation({
         <h2>Did you type the URL?</h2>
         <p>
           You may have typed the address (URL) incorrectly. Check to make sure
-          you’ve got the exact right spelling, capitalization, etc. You can view
-          our footer below for links to our most popular content.
+          you’ve got the exact right spelling, capitalization, etc.
         </p>
 
         <small>
