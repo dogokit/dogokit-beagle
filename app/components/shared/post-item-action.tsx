@@ -8,7 +8,7 @@ import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { type modelPost } from "~/models/post.server"
 import { cn } from "~/utils/cn"
 
-export function PostListItem({
+export function PostItemAction({
   post,
 }: {
   post: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>

@@ -12,7 +12,7 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
-import { PostListItem } from "~/components/shared/post-list-item"
+import { PostItemAction } from "~/components/shared/post-item-action"
 import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
@@ -92,9 +92,9 @@ export default function UserPostsRoute() {
       <section className="app-section">
         {posts.length > 0 && (
           <ul className="divide-y">
-            {posts.map(post => {
-              return <PostListItem key={post.id} post={post as any} />
-            })}
+            {posts.map(post => (
+              <PostItemAction key={post.id} post={post as any} />
+            ))}
           </ul>
         )}
       </section>

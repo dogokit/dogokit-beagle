@@ -85,24 +85,22 @@ export function SiteNavigationLarge() {
           {configNavigationItems
             .filter(item => configSite.navItems.includes(item.to))
             .filter(navItem => navItem.isEnabled)
-            .map(navItem => {
-              return (
-                <li key={navItem.to}>
-                  <NavLink
-                    to={navItem.to}
-                    className={({ isActive }) =>
-                      cn(
-                        "inline-flex items-center gap-2 rounded-md px-2 py-1 font-heading font-semibold transition hover:bg-secondary",
-                        isActive && "text-primary",
-                      )
-                    }
-                  >
-                    <Iconify icon={navItem.icon} />
-                    <span>{navItem.text}</span>
-                  </NavLink>
-                </li>
-              )
-            })}
+            .map(navItem => (
+              <li key={navItem.to}>
+                <NavLink
+                  to={navItem.to}
+                  className={({ isActive }) =>
+                    cn(
+                      "inline-flex items-center gap-2 rounded-md px-2 py-1 font-heading font-semibold transition hover:bg-secondary",
+                      isActive && "text-primary",
+                    )
+                  }
+                >
+                  <Iconify icon={navItem.icon} />
+                  <span>{navItem.text}</span>
+                </NavLink>
+              </li>
+            ))}
         </ul>
 
         <div>
