@@ -67,18 +67,16 @@ export default function UserDashboardRoute() {
 
       <section className="app-section">
         <ul className="grid max-w-3xl grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
-          {metrics.map(metric => {
-            return (
-              <li key={metric.text}>
-                <Link to={metric.to}>
-                  <Card className="p-4 text-center transition hover:bg-secondary">
-                    <p className="text-6xl font-extrabold">{metric.count}</p>
-                    <span>{metric.text}</span>
-                  </Card>
-                </Link>
-              </li>
-            )
-          })}
+          {metrics.map(metric => (
+            <li key={metric.text}>
+              <Link to={metric.to}>
+                <Card className="p-4 text-center transition hover:bg-secondary">
+                  <p className="text-6xl font-extrabold">{metric.count}</p>
+                  <span>{metric.text}</span>
+                </Card>
+              </Link>
+            </li>
+          ))}
         </ul>
       </section>
 

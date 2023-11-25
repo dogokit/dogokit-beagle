@@ -3,7 +3,7 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { Link, useLoaderData } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 
 import {
   getPaginationConfigs,
@@ -11,6 +11,7 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
+import { PostItemLink } from "~/components/shared/post-item"
 import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
@@ -84,19 +85,9 @@ export default function SearchRoute() {
 
       <section className="site-section">
         <ul className="space-y-8">
-          {posts.map(post => {
-            return (
-              <li key={post.id}>
-                <Link
-                  to={`/posts/${post.slug}`}
-                  className="block space-y-1 transition hover:opacity-75"
-                >
-                  <h4>{post.title}</h4>
-                  <p>{post.content}</p>
-                </Link>
-              </li>
-            )
-          })}
+          {posts.map(post => (
+            <PostItemLink key={post.id} post={post as any} />
+          ))}
         </ul>
       </section>
 

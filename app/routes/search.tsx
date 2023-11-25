@@ -7,6 +7,7 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
+import { PostItemLink } from "~/components/shared/post-item"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
@@ -101,40 +102,28 @@ export default function SearchRoute() {
 
       <section className="site-section">
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {users.map(user => {
-            return (
-              <li key={user.id}>
-                <Link
-                  to={`/${user.username}`}
-                  className="space-y-1 transition hover:opacity-75"
-                >
-                  <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
-                  <div>
-                    <h4>{user.fullname}</h4>
-                    <p className="text-muted-foreground">@{user.username}</p>
-                  </div>
-                </Link>
-              </li>
-            )
-          })}
+          {users.map(user => (
+            <li key={user.id}>
+              <Link
+                to={`/${user.username}`}
+                className="space-y-1 transition hover:opacity-75"
+              >
+                <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
+                <div>
+                  <h4>{user.fullname}</h4>
+                  <p className="text-muted-foreground">@{user.username}</p>
+                </div>
+              </Link>
+            </li>
+          ))}
         </ul>
       </section>
 
       <section className="site-section">
         <ul className="space-y-8">
-          {posts.map(post => {
-            return (
-              <li key={post.id}>
-                <Link
-                  to={`/posts/${post.slug}`}
-                  className="block space-y-1 transition hover:opacity-75"
-                >
-                  <h4>{post.title}</h4>
-                  <p>{post.content}</p>
-                </Link>
-              </li>
-            )
-          })}
+          {posts.map(post => (
+            <PostItemLink key={post.id} post={post as any} />
+          ))}
         </ul>
       </section>
 

@@ -44,7 +44,7 @@ export const modelPost = {
     return prisma.post.findFirst({
       include: {
         status: { select: { symbol: true, name: true } },
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
       },
     })
   },

@@ -6,13 +6,11 @@ export function ContentCredits() {
       <div className="prose-config">
         <h2 id="credits">Credits</h2>
         <ul>
-          {creditItems.map(item => {
-            return (
-              <li key={item.href}>
-                <Anchor href={item.href}>{item.text}</Anchor>
-              </li>
-            )
-          })}
+          {creditItems.map(item => (
+            <li key={item.href}>
+              <Anchor href={item.href}>{item.text}</Anchor>
+            </li>
+          ))}
         </ul>
       </div>
     </>

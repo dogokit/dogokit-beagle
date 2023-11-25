@@ -24,13 +24,11 @@ export default function NewRoute() {
 
       <section className="mx-auto max-w-prose">
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {configNewItems.map(item => {
-            return (
-              <li key={item.action}>
-                <FormNew item={item} />
-              </li>
-            )
-          })}
+          {configNewItems.map(item => (
+            <li key={item.action}>
+              <FormNew item={item} />
+            </li>
+          ))}
         </ul>
       </section>
     </div>
