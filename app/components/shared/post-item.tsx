@@ -2,6 +2,7 @@ import { type Prisma } from "@prisma/client"
 import { Link } from "@remix-run/react"
 
 import { type modelPost } from "~/models/post.server"
+import { parseHTML } from "~/utils/html"
 
 export function PostItem({
   post,
@@ -12,7 +13,7 @@ export function PostItem({
   return (
     <div className="space-y-1 py-2 transition hover:opacity-75">
       <h4>{post.title}</h4>
-      <p>{post.content}</p>
+      <p className="text-muted-foreground">{parseHTML(post.content)}</p>
     </div>
   )
 }
