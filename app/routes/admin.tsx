@@ -31,7 +31,7 @@ export default function AdminLayoutRoute() {
   const extraNavItems = ["/user"]
 
   return (
-    <div className="flex">
+    <div className="flex pb-20">
       <nav className="select-none border-r border-r-border p-2 lg:p-4">
         <SidebarNavItems
           items={configNavigationItems.filter(item =>

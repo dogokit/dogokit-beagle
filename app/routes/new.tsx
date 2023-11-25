@@ -16,7 +16,7 @@ export const handle = createSitemap()
  */
 export default function NewRoute() {
   return (
-    <div className="app-container">
+    <div className="app-container pb-20">
       <header className="app-header mx-auto max-w-prose text-center">
         <h1 className="text-2xl sm:text-3xl">Add New</h1>
         <p>Add various new data</p>
