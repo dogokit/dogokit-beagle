@@ -1,20 +1,4 @@
-import Highlight from "@tiptap/extension-highlight"
-import Typography from "@tiptap/extension-typography"
-import Underline from "@tiptap/extension-underline"
-import { EditorContent, useEditor } from "@tiptap/react"
-import StarterKit from "@tiptap/starter-kit"
-
-export function TiptapEditor({ content }: { content?: string }) {
-  const editor = useEditor({
-    extensions: [StarterKit, Highlight, Typography, Underline],
-    editorProps: {
-      attributes: {
-        class: "prose-config",
-      },
-    },
-    content:
-      content ||
-      `
+export const contentExample = `
 <h2>
   Hi there,
 </h2>
@@ -55,13 +39,4 @@ export function TiptapEditor({ content }: { content?: string }) {
 <p>
   For example, we added the <code>Typography</code> extension here. Try typing <code>(c)</code> to see how it’s converted to a proper © character. You can also try <code>-></code>, <code>>></code>, <code>1/2</code>, <code>!=</code>, or <code>--</code>.
 </p>
-`,
-  })
-  if (!editor) return null
-
-  return (
-    <div>
-      <EditorContent editor={editor} />
-    </div>
-  )
-}
+`

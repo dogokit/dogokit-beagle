@@ -1,10 +1,17 @@
-import { TiptapEditor } from "~/components/libs/tiptap-editor"
+import {
+  EditorHTMLPreview,
+  TiptapEditorContext,
+} from "~/components/libs/tiptap-editor-context"
 
 export default function ExampleEditor() {
   return (
     <div className="site-container">
       <section className="site-section">
-        <TiptapEditor />
+        {/* <TiptapEditorHook /> */}
+
+        <TiptapEditorContext>
+          <EditorHTMLPreview />
+        </TiptapEditorContext>
       </section>
     </div>
   )
