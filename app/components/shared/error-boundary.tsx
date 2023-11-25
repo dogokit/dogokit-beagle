@@ -92,7 +92,7 @@ export function GeneralErrorMessage({ error }: { error: ErrorResponse }) {
 export function ErrorHelpInformation() {
   return (
     <>
-      <section className="site-section">
+      <section className="site-section mb-20">
         <div className="flex items-center gap-2">
           <ButtonLink size="sm" variant="secondary" to="/">
             <Iconify icon="ph:house-duotone" />

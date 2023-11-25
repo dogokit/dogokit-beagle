@@ -13,6 +13,8 @@ import {
   PaginationSearch,
 } from "~/components/shared/pagination"
 import { PostItemAction } from "~/components/shared/post-item-action"
+import { ButtonLink } from "~/components/ui/button-link"
+import { Iconify } from "~/components/ui/iconify"
 import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
@@ -67,12 +69,16 @@ export default function UserPostsRoute() {
     <div className="app-container">
       <header className="app-header flex justify-between gap-4">
         <h2>Posts</h2>
-        <div>
+        <div className="flex gap-2">
+          <ButtonLink to="/posts" variant="outline" size="xs">
+            <Iconify icon="ph:arrow-square-out-duotone" />
+            <span>View All Posts</span>
+          </ButtonLink>
           <FormDelete
             action="/user/posts/delete"
             intentValue="user-delete-all-posts"
             itemText="all posts"
-            buttonText="Delete all posts"
+            buttonText="Delete All Posts"
             requireUser
             userId={userId}
             disabled={posts.length <= 0}
