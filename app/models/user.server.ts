@@ -24,6 +24,14 @@ export const modelUser = {
     })
   },
 
+  getWithImages() {
+    return prisma.user.findFirst({
+      include: {
+        images: { select: { url: true } },
+      },
+    })
+  },
+
   getAllUsernames() {
     return prisma.user.findMany({
       select: {

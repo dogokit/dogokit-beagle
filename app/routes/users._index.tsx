@@ -3,7 +3,7 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { Link, useLoaderData } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 
 import {
   getPaginationConfigs,
@@ -11,7 +11,7 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
-import { AvatarAuto } from "~/components/ui/avatar-auto"
+import { UserItemLink } from "~/components/shared/user-item"
 import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
@@ -76,18 +76,7 @@ export default function UsersRoute() {
       <section className="site-section">
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {users.map(user => (
-            <li key={user.id}>
-              <Link
-                to={`/${user.username}`}
-                className="space-y-1 transition hover:opacity-75"
-              >
-                <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
-                <div>
-                  <h4>{user.fullname}</h4>
-                  <p className="text-muted-foreground">@{user.username}</p>
-                </div>
-              </Link>
-            </li>
+            <UserItemLink key={user.id} user={user as any} />
           ))}
         </ul>
       </section>
