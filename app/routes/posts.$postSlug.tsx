@@ -126,13 +126,13 @@ export function ErrorBoundary() {
   return (
     <GeneralErrorBoundary
       statusHandlers={{
-        404: ({ params }) => <UsernameErrorMessage params={params} />,
+        404: ({ params }) => <PostSlugErrorMessage params={params} />,
       }}
     />
   )
 }
 
-function UsernameErrorMessage({ params }: { params: Params }) {
+function PostSlugErrorMessage({ params }: { params: Params }) {
   return (
     <>
       <section className="site-section prose-config">
@@ -143,7 +143,15 @@ function UsernameErrorMessage({ params }: { params: Params }) {
           it.
         </p>
       </section>
-      <ErrorHelpInformation />
+
+      <ErrorHelpInformation
+        extraButtonLinks={
+          <ButtonLink size="sm" variant="secondary" to="/posts">
+            <Iconify icon="ph:scroll-duotone" />
+            <span>Go to All Posts</span>
+          </ButtonLink>
+        }
+      />
     </>
   )
 }

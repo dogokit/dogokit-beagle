@@ -89,7 +89,11 @@ export function GeneralErrorMessage({ error }: { error: ErrorResponse }) {
   )
 }
 
-export function ErrorHelpInformation() {
+export function ErrorHelpInformation({
+  extraButtonLinks,
+}: {
+  extraButtonLinks?: React.ReactNode
+}) {
   return (
     <>
       <section className="site-section mb-20">
@@ -102,6 +106,7 @@ export function ErrorHelpInformation() {
             <Iconify icon="ph:question-duotone" />
             <span>Go to Help</span>
           </ButtonLink>
+          {extraButtonLinks}
         </div>
       </section>
 
