@@ -1,4 +1,21 @@
 {
+  "cSpell.words": [
+    "Allnimal",
+    "Bearmentor",
+    "Catamyst",
+    "Dogokit",
+    "Elephanity",
+    "Foxdash",
+    "Goosejob",
+    "shadcn",
+    "Chakra",
+    "Zustand",
+    "fontsource",
+    "planetscale"
+  ],
+  "peacock.color": "#312e81",
+  "remix-forge.componentFolder": "/app/components/ui",
+  "tailwindCSS.experimental.classRegex": ["class:\\s*?[\"'`]([^\"'`]*).*?,"],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#3f3ba7",
     "activityBar.background": "#3f3ba7",
@@ -17,21 +34,5 @@
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#312e8199",
     "titleBar.inactiveForeground": "#e7e7e799"
-  },
-  "peacock.color": "#312e81",
-  "cSpell.words": [
-    "Allnimal",
-    "Bearmentor",
-    "Catamyst",
-    "Dogokit",
-    "Elephanity",
-    "Foxdash",
-    "Goosejob",
-    "shadcn",
-    "Chakra",
-    "Zustand",
-    "fontsource",
-    "planetscale"
-  ],
-  "remix-forge.componentFolder": "/app/components/ui"
+  }
 }
