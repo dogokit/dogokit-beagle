@@ -1,4 +1,4 @@
-import { ContentCredits } from "~/components/contents/credits"
+import { ContentInspirations } from "~/components/contents/inspirations"
 import { ContentIntro } from "~/components/contents/intro"
 import { ContentStack } from "~/components/contents/stack"
 import { ContentStart } from "~/components/contents/start"
@@ -22,7 +22,7 @@ export default function IndexRoute() {
       </section>
 
       <section className="site-section">
-        <ContentCredits />
+        <ContentInspirations />
       </section>
     </div>
   )

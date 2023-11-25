@@ -1,12 +1,12 @@
 import { Anchor } from "~/components/ui/anchor"
 
-export function ContentCredits() {
+export function ContentInspirations() {
   return (
     <>
       <div className="prose-config">
-        <h2 id="credits">Credits</h2>
+        <h2 id="inspirations">Inspirations</h2>
         <ul>
-          {creditItems.map(item => (
+          {inspirationItems.map(item => (
             <li key={item.href}>
               <Anchor href={item.href}>{item.text}</Anchor>
             </li>
@@ -17,7 +17,7 @@ export function ContentCredits() {
   )
 }
 
-const creditItems = [
+const inspirationItems = [
   {
     text: "💿 Remix Indie Stack",
     href: "https://github.com/remix-run/indie-stack",
