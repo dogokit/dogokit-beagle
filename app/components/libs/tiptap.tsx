@@ -8,7 +8,7 @@ import {
   useEditor,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
-import parse from "html-react-parser"
+import parseHTML from "html-react-parser"
 
 export function TiptapEditorContext({
   content,
@@ -68,7 +68,7 @@ export function EditorViewHTML() {
   if (!editor) return null
   return (
     <article className="prose-config whitespace-pre-wrap">
-      {parse(editor.getHTML())}
+      {parseHTML(editor.getHTML())}
     </article>
   )
 }
@@ -76,7 +76,7 @@ export function EditorViewHTML() {
 export function ViewHTML({ children }: { children: string }) {
   return (
     <article className="prose-config whitespace-pre-wrap">
-      {parse(children)}
+      {parseHTML(children)}
     </article>
   )
 }

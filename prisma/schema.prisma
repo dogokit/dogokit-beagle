@@ -142,7 +142,7 @@ model Post {
 
   slug    String @unique
   title   String
-  content String
+  content String @db.Text
 
   status   PostStatus @relation(fields: [statusId], references: [id])
   statusId String
