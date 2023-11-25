@@ -1,4 +1,5 @@
 import { Anchor } from "~/components/ui/anchor"
+import { cn } from "~/utils/cn"
 
 export function ContentIntro() {
   return (
@@ -6,7 +7,10 @@ export function ContentIntro() {
       <header className="space-y-10 [text-wrap:balance]">
         <h1
           id="intro"
-          className="text-5xl leading-tight tracking-tighter text-primary sm:text-6xl md:text-7xl lg:text-8xl"
+          className={cn(
+            "text-5xl leading-tight tracking-tighter text-primary sm:text-6xl md:text-7xl lg:text-8xl",
+            "bg-gradient-to-r from-primary to-violet-600 bg-clip-text text-transparent",
+          )}
         >
           Dogokit is a web app template kit
         </h1>
