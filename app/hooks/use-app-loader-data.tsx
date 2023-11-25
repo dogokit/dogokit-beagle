@@ -1,11 +1,10 @@
-import { type Prisma } from "@prisma/client"
-import { type modelPostStatus } from "~/models/post-status.server"
+import { type PostStatus } from "@prisma/client"
 
 import { useMatchesData } from "~/hooks/use-root-loader-data"
 
 export function useAppUserLoaderData() {
   const appUserData = useMatchesData("routes/user") as {
-    postStatuses: Prisma.PromiseReturnType<typeof modelPostStatus.getAll>
+    postStatuses: PostStatus[]
   }
 
   return {
@@ -15,7 +14,7 @@ export function useAppUserLoaderData() {
 
 export function useAppAdminLoaderData() {
   const appAdminData = useMatchesData("routes/admin") as {
-    postStatuses: Prisma.PromiseReturnType<typeof modelPostStatus.getAll>
+    postStatuses: PostStatus[]
   }
 
   return {

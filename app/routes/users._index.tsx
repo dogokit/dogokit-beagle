@@ -23,7 +23,7 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const config = getPaginationConfigs({ request })
+  const config = getPaginationConfigs({ request, defaultLimit: 8 })
   const contains = config.queryParam
 
   /**

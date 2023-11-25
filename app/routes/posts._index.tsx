@@ -13,9 +13,9 @@ import {
 } from "~/components/shared/pagination"
 import { PostItemLink } from "~/components/shared/post-item"
 import { Iconify } from "~/components/ui/iconify"
+import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
-import { getTruncatedText } from "~/utils/string"
 
 export const meta: MetaFunction = () =>
   createMeta({
@@ -60,14 +60,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }),
   ])
 
-  const postsSanitized = posts.map(post => ({
-    ...post,
-    content: getTruncatedText(post.content),
-  }))
-
   return json({
     ...getPaginationOptions({ request, totalItems }),
-    posts: postsSanitized,
+    posts: sanitizePosts(posts),
   })
 }
 

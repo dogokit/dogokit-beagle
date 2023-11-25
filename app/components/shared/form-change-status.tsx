@@ -1,4 +1,4 @@
-import { type Prisma } from "@prisma/client"
+import { type PostStatus, type Prisma } from "@prisma/client"
 import { useFetcher } from "@remix-run/react"
 import { useState } from "react"
 
@@ -23,7 +23,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select"
-import { type modelPostStatus } from "~/models/post-status.server"
 import { type modelPost } from "~/models/post.server"
 
 export function FormChangeStatus({
@@ -45,7 +44,7 @@ export function FormChangeStatus({
   dialogDescription: string
 
   // LATER: Make it more general with a model Item that has a Status
-  itemStatuses: Prisma.PromiseReturnType<typeof modelPostStatus.getAll>
+  itemStatuses: PostStatus[]
   item: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
 }) {
   const [open, setOpen] = useState<boolean>()

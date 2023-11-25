@@ -10,6 +10,7 @@ import {
 import { PostItemLink } from "~/components/shared/post-item"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { Iconify } from "~/components/ui/iconify"
+import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -71,7 +72,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     ...getPaginationOptions({ request, totalItems }),
     count: totalItems,
     users,
-    posts,
+    posts: sanitizePosts(posts),
   })
 }
 

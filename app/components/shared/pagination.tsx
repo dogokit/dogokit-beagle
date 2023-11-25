@@ -187,7 +187,7 @@ export function PaginationNavigation({
                   className={cn(
                     // Use width to have consistent width although different numbers
                     "flex w-8 justify-center rounded-md p-1 transition hover:opacity-75",
-                    isActive && "bg-primary text-primary-foreground",
+                    isActive && "bg-secondary text-primary",
                     !isActive && "text-muted-foreground hover:bg-secondary",
                   )}
                 >
