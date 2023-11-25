@@ -3,6 +3,7 @@ import Typography from "@tiptap/extension-typography"
 import Underline from "@tiptap/extension-underline"
 import { EditorProvider, useCurrentEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
+import parse from "html-react-parser"
 
 import { contentExample } from "./tiptap-content-example"
 
@@ -37,7 +38,7 @@ export function EditorHTMLPreview() {
   if (!editor) return null
   return (
     <article className="prose-config whitespace-pre-wrap">
-      {editor.getHTML()}
+      {parse(editor.getHTML())}
     </article>
   )
 }

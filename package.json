@@ -102,6 +102,7 @@
     "date-fns": "2.30.0",
     "dayjs": "1.11.10",
     "dotenv": "16.3.1",
+    "html-react-parser": "5.0.6",
     "isbot": "^3.7.1",
     "nanoid": "5.0.3",
     "pluralize": "8.0.0",
