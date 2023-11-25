@@ -52,6 +52,28 @@ export function ContentIntro() {
             </Anchor>
           </li>
         </ul>
+
+        <p>
+          Originally created by{" "}
+          <Anchor href="https://github.com/mhaidarhanif">M Haidar Hanif</Anchor>{" "}
+          from the{" "}
+          <Anchor noBreak href="https://allnimal.com">
+            🐾 Allnimal
+          </Anchor>{" "}
+          group (
+          <Anchor noBreak href="https://bearmentor.com">
+            🐻 Bearmentor
+          </Anchor>
+          ,{" "}
+          <Anchor noBreak href="https://catamyst.com">
+            🐱 Catamyst
+          </Anchor>
+          ,{" "}
+          <Anchor noBreak href="https://dogokit.allnimal.com">
+            🐶 Dogokit
+          </Anchor>
+          )
+        </p>
       </div>
     </div>
   )

@@ -6,10 +6,14 @@ export interface AnchorProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
   withColor?: boolean
+  noBreak?: boolean
 }
 
 const Anchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
-  ({ href, withColor = false, className, children, ...props }, ref) => {
+  (
+    { href, withColor = false, noBreak = false, className, children, ...props },
+    ref,
+  ) => {
     return (
       <a
         href={href}
@@ -18,6 +22,7 @@ const Anchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
         className={cn(
           "transition hover:opacity-75",
           withColor && "text-primary",
+          noBreak && "whitespace-pre",
           className,
         )}
         ref={ref}
