@@ -1,6 +1,6 @@
 import { type ActionFunctionArgs } from "@remix-run/node"
-import { FormNew } from "~/components/shared/form-new"
-import { configNewItems } from "~/configs/new"
+import { FormActionItem } from "~/components/shared/form-action-item"
+import { configActionItems } from "~/configs/action-item"
 import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
@@ -24,9 +24,9 @@ export default function NewRoute() {
 
       <section className="mx-auto max-w-prose">
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {configNewItems.map(item => (
-            <li key={item.action}>
-              <FormNew item={item} />
+          {configActionItems.map(item => (
+            <li key={item.actionNew}>
+              <FormActionItem item={item} />
             </li>
           ))}
         </ul>

@@ -1,19 +1,20 @@
 import { useFetcher } from "@remix-run/react"
 
+import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { Card } from "~/components/ui/card"
 import { Iconify } from "~/components/ui/iconify"
-import { type ConfigNewItem } from "~/configs/new"
+import { type ConfigActionItem } from "~/configs/action-item"
 import { cn } from "~/utils/cn"
 
-export function FormNew({ item }: { item: ConfigNewItem }) {
+export function FormActionItem({ item }: { item: ConfigActionItem }) {
   const fetcher = useFetcher()
   const isSubmitting = fetcher.state === "submitting"
   const disabled = item.isEnabled !== true
 
   return (
     <Card className="p-2">
-      <fetcher.Form method="POST" action={item.action} className="w-full">
+      <fetcher.Form method="POST" action={item.actionNew} className="w-full">
         <fieldset
           disabled={disabled}
           className="flex flex-col items-center gap-2"
@@ -31,17 +32,27 @@ export function FormNew({ item }: { item: ConfigNewItem }) {
             {item.name}
           </h4>
 
-          <ButtonLoading
-            disabled={disabled}
-            size="sm"
-            variant="secondary"
-            loadingText="Adding"
-            isLoading={isSubmitting}
-            className="w-full"
-          >
-            <Iconify icon="ph:plus" />
-            <span>Add</span>
-          </ButtonLoading>
+          <div className="grid w-full grid-rows-2 gap-2">
+            <ButtonLoading
+              disabled={disabled}
+              size="sm"
+              loadingText="Adding"
+              isLoading={isSubmitting}
+            >
+              <Iconify icon="ph:plus" />
+              <span>Add</span>
+            </ButtonLoading>
+
+            <ButtonLink
+              to={item.actionManage}
+              disabled={disabled}
+              size="sm"
+              variant="secondary"
+            >
+              <Iconify icon="ph:folder-simple-duotone" />
+              <span>Manage</span>
+            </ButtonLink>
+          </div>
         </fieldset>
       </fetcher.Form>
     </Card>

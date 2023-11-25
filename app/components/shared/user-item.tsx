@@ -1,8 +1,8 @@
 import { type Prisma } from "@prisma/client"
 import { Link } from "@remix-run/react"
 
+import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { type modelUser } from "~/models/user.server"
-import { AvatarAuto } from "../ui/avatar-auto"
 
 export function UserItem({
   user,

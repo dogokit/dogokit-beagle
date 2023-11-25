@@ -70,7 +70,7 @@ export default function UserDashboardRoute() {
           {metrics.map(metric => (
             <li key={metric.text}>
               <Link to={metric.to}>
-                <Card className="p-4 text-center transition hover:bg-secondary">
+                <Card className="p-4 text-center transition hover:bg-muted">
                   <p className="text-6xl font-extrabold">{metric.count}</p>
                   <span>{metric.text}</span>
                 </Card>
