@@ -8,19 +8,17 @@ import { AuthStrategies } from "~/services/auth_strategies"
 import { parsedEnv } from "~/utils/env.server"
 import { getUsernameFromEmail } from "~/utils/string"
 
-const clientID = parsedEnv.GOOGLE_CLIENT_ID
-const clientSecret = parsedEnv.GOOGLE_CLIENT_SECRET
+const clientID = parsedEnv.GOOGLE_CLIENT_ID || ""
+const clientSecret = parsedEnv.GOOGLE_CLIENT_SECRET || ""
+const callbackURL = `${parsedEnv.APP_URL}/auth/${AuthStrategies.GOOGLE}/callback`
 
-if (!clientID || !clientSecret) {
-  throw new Error("Missing GOOGLE_CLIENT_ID or GOOGLE_CLIENT_SECRET")
-}
+// Enable this to force these to be required
+// if (!clientID || !clientSecret) {
+//   throw new Error("Missing GOOGLE_CLIENT_ID or GOOGLE_CLIENT_SECRET")
+// }
 
 export const googleStrategy = new GoogleStrategy<UserSession>(
-  {
-    clientID,
-    clientSecret,
-    callbackURL: `${parsedEnv.APP_URL}/auth/${AuthStrategies.GOOGLE}/callback`,
-  },
+  { clientID, clientSecret, callbackURL },
   async ({ profile }) => {
     const email = profile.emails[0]?.value.trim().toLowerCase()
     if (!email) throw new AuthorizationError("Email is not found")

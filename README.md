@@ -84,7 +84,7 @@ The goal is to use this for building web apps:
 
 ## Concept
 
-Some reasons of making and using this template kit.
+Some reasons for making and using this template kit.
 
 - Create a new [Remix](https://remix.run) app or existing one with multiple
   features quickly
@@ -98,7 +98,7 @@ Some reasons of making and using this template kit.
   - Light and dark mode theme
 - Database with [Prisma ORM](https://prisma.io) and [MySQL](https://mysql.com)
   on [PlanetScale](https://planetscale.com)
-  - Run local development database instance as container with
+  - Run local development database instance as a container with
     [Docker](https://docker) and
     [Docker Compose](https://docs.docker.com/compose)
 - Auth (authentication and authorization) built-in

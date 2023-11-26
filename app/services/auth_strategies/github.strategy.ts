@@ -7,19 +7,17 @@ import { type UserSession } from "~/services/auth.server"
 import { AuthStrategies } from "~/services/auth_strategies"
 import { parsedEnv } from "~/utils/env.server"
 
-const clientID = parsedEnv.GITHUB_CLIENT_ID
-const clientSecret = parsedEnv.GITHUB_CLIENT_SECRET
+const clientID = parsedEnv.GITHUB_CLIENT_ID || ""
+const clientSecret = parsedEnv.GITHUB_CLIENT_SECRET || ""
+const callbackURL = `${parsedEnv.APP_URL}/auth/${AuthStrategies.GITHUB}/callback`
 
-if (!clientID || !clientSecret) {
-  throw new Error("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET")
-}
+// Enable this to force these to be required
+// if (!clientID || !clientSecret) {
+//   throw new Error("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET")
+// }
 
 export const githubStrategy = new GitHubStrategy<UserSession>(
-  {
-    clientID,
-    clientSecret,
-    callbackURL: `${parsedEnv.APP_URL}/auth/${AuthStrategies.GITHUB}/callback`,
-  },
+  { clientID, clientSecret, callbackURL },
   async ({ profile }) => {
     const email = profile.emails[0]?.value.trim().toLowerCase()
     if (!email) throw new AuthorizationError("Email is not found")
