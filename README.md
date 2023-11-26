@@ -204,22 +204,35 @@ cp -i .env.example .env
 
 > This .env file is only for local development, not production
 
-Let's configure the required environment variables in the `.env` file if local,
-otherwise in the project settings, for:
+Configure the required environment variables in the `.env` file if on local,
+otherwise in the project settings on production.
 
-- `DATABASE_URL`
-- `SESSION_SECRET`
+Required:
 
-For the database, either choose to use PlanetScale or local Docker container. If
-prefer using Docker and Docker Compose for local development,
+- `APP_URL`: For example, `http://localhost:3000`
+- `DATABASE_URL`: For example,
+  `mysql://user:password@localhost:3060/dogokit-remix`
+- `SESSION_SECRET`: For example, `the_secret_text`
+
+#### Database Setup
+
+For the database, either choose to use MySQL or PostgreSQL from local system,
+Docker container, services like [PlanetScale](https://planetscale.com) (MySQL)
+or [Neon](https://neon.tech) (PostgreSQL).
+
+If prefer using Docker and Docker Compose for local development,
 [follow this guide](docs/DATABASE.md).
 
-Create a [PlanetScale](https://planetscale.com) account to have a MySQL instance
-for development. After the database has been created, "Get the connection
-string" and select "Prisma", then copy the full `DATABASE_URL`.
+#### MySQL Database with PlanetScale
+
+To start quickly, create a [PlanetScale](https://planetscale.com) account to
+have a MySQL instance for development and production. After the database has
+been created, "Get the connection string", select "Prisma", then copy the full
+`DATABASE_URL`.
 
 > Keep in mind the free plan only allow for 1 database. So either later keep it,
-> delete it when unused, or upgrade the plan.
+> delete it when unused, or upgrade the plan. There's also a verification with a
+> payment card, even though it's still free to start.
 
 Generate a random string for the `SESSION_SECRET` using
 `openssl rand -base64 32` on the terminal or put any long random text.
