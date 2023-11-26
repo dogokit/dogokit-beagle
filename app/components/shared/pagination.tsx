@@ -11,7 +11,7 @@ import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { pluralizeWord } from "~/utils/string"
 
-export const DEFAULT_LIMIT = 5
+export const DEFAULT_LIMIT = 4
 export const DEFAULT_PAGE = 1
 
 interface PaginationItem {
@@ -59,8 +59,8 @@ export function getPaginationConfigs({
   const url = new URL(request.url)
 
   const queryParam = url.searchParams.get("q") ?? ""
-  const limitParam = Number(url.searchParams.get("limit")) || defaultLimit
-  const pageParam = Number(url.searchParams.get("page")) || defaultPage
+  const limitParam = defaultLimit || Number(url.searchParams.get("limit"))
+  const pageParam = defaultPage || Number(url.searchParams.get("page"))
   const skip = (pageParam - 1) * limitParam
 
   return { request, queryParam, limitParam, pageParam, skip }
@@ -74,6 +74,7 @@ export function getPaginationOptions({
   const url = new URL(request.url)
   const { queryParam, limitParam, pageParam } = getPaginationConfigs({
     request,
+    defaultLimit: defaultMaxPageItems,
   })
 
   const totalPages = Math.ceil(totalItems / limitParam)
@@ -92,8 +93,8 @@ export function getPaginationOptions({
       const pageNumber = startPage + index
       const queryParams = new URLSearchParams({
         q: queryParam,
-        limit: limitParam.toString() ?? "",
-        page: pageNumber.toString() ?? "",
+        limit: limitParam.toString() || "",
+        page: pageNumber.toString() || "",
       }).toString()
       return { pageNumber, to: `${url.pathname}?${queryParams}` }
     },

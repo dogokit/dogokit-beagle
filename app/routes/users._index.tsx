@@ -49,7 +49,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }),
   ])
 
-  return json({ ...getPaginationOptions({ request, totalItems }), users })
+  return json({
+    ...getPaginationOptions({ request, totalItems, defaultMaxPageItems: 8 }),
+    users,
+  })
 }
 
 export default function UsersRoute() {
