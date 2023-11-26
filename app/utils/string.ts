@@ -14,6 +14,11 @@ export function createNanoId() {
   return nanoid()
 }
 
+export function createNanoIdShort() {
+  const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz", 3)
+  return nanoid()
+}
+
 export function createSlug(text: string) {
   return slugify(text, { lower: true, strict: true })
 }

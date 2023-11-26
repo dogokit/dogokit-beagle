@@ -6,6 +6,7 @@ import { modelUser } from "~/models/user.server"
 import { type UserSession } from "~/services/auth.server"
 import { AuthStrategies } from "~/services/auth_strategies"
 import { parsedEnv } from "~/utils/env.server"
+import { createNanoIdShort } from "~/utils/string"
 
 const clientID = parsedEnv.GITHUB_CLIENT_ID || ""
 const clientSecret = parsedEnv.GITHUB_CLIENT_SECRET || ""
@@ -22,30 +23,36 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
     const email = profile.emails[0]?.value.trim().toLowerCase()
     if (!email) throw new AuthorizationError("Email is not found")
 
+    const fullname = profile._json.name
+    const username = profile._json.login
+    const imageUrl = profile.photos[0].value
+
     const user = await modelUser.getByEmail({ email })
 
+    // If user already exist by email
     if (user) {
       if (user.images.length < 1) {
-        await modelUser.continueAttachImage({
-          id: user.id,
-          imageUrl: profile.photos[0].value,
-        })
+        await modelUser.continueAttachImage({ id: user.id, imageUrl })
         return { id: user.id }
       }
       return { id: user.id }
     }
 
-    try {
-      const newUser = await modelUser.continueWithService({
-        email,
-        fullname: profile._json.name,
-        username: profile._json.login,
-        imageUrl: profile.photos[0].value,
-      })
-      if (!newUser) throw new AuthorizationError("Failed to create account")
-      return { id: newUser.id }
-    } catch (error) {
-      throw new AuthorizationError("Failed to create account")
+    // If new user
+    const existingUsername = await modelUser.getByUsername({ username })
+
+    const newUser = await modelUser.continueWithService({
+      email,
+      fullname,
+      imageUrl,
+      username: existingUsername
+        ? `${username}_${createNanoIdShort()}`
+        : username,
+    })
+    if (!newUser) {
+      throw new AuthorizationError("Failed to create account with GitHub")
     }
+
+    return { id: newUser.id }
   },
 )
