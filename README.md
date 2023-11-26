@@ -256,13 +256,13 @@ pnpm db:push
 > files.
 
 Even with local development without PlanetScale, pushing the schema directly is
-still okay when
+still okay when in development or
 [prototyping the schema](https://prisma.io/docs/concepts/components/prisma-migrate/db-push).
 After a success push, then it will automatically run `prisma generate`.
 
-Create `users.json` in `prisma/credentials` folder with the format below. Can
-focus on certain users who want to be able to sign in in development, so it
-doesn't have to be everyone.
+Optionally, create `users.json` in `prisma/credentials` folder with the format
+below. Can focus on certain users who want to be able to sign in in development,
+so it doesn't have to be everyone.
 
 ```json
 [
@@ -271,7 +271,8 @@ doesn't have to be everyone.
     "username": "username",
     "nickname": "User",
     "email": "user@user.com",
-    "password": "useruser"
+    "password": "useruser",
+    "roleSymbol": "ADMIN"
   }
   // ...
 ]

@@ -16,7 +16,6 @@ import dataRoles from "./data/roles.json"
 const enabledSeedItems = [
   "permissions",
   "roles",
-  // "userTags", // UNAVAILABLE YET
   "users",
   "postStatuses",
   "posts",
@@ -28,7 +27,6 @@ async function main() {
   const seeds: { [key: string]: () => Promise<any> } = {
     permissions: seedPermissions,
     roles: seedRoles,
-    // userTags: seedUserTags,
     users: seedUsers,
     postStatuses: seedPostStatuses,
     posts: seedPosts,

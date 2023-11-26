@@ -3,7 +3,7 @@ import { configMeta } from "~/configs/meta"
 
 import { getDomainUrl } from "~/utils/url.server"
 
-// EDIME: Based on actual size of image assets in /app/public/pwa
+// EDITME: Based on actual size of image assets in /app/public/pwa
 const maskableIconSizes = [512, 192, 128]
 const iconSizes = [512, 192, 180, 128, 120]
 
