@@ -11,7 +11,7 @@ export function getCurrentYear() {
 
 export function formatTimestamp(date: ParamDate) {
   return (
-    dayjs(date).locale("en").format("MMMM D, YYYY [at] H:mm") +
+    dayjs(date).locale("en").format("MMM D, YYYY [at] H:mm") +
     ` · ${formatRelativeTime(date)}`
   )
 }
