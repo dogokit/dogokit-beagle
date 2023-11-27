@@ -65,18 +65,15 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    @apply selection:bg-primary/30;
+    @apply cursor-default bg-background text-foreground selection:bg-primary/30;
   }
   h1,
   h2,
   h3,
-  h4 {
-    @apply font-heading font-semibold text-foreground;
-  }
+  h4,
   h5,
   h6 {
-    @apply font-sans font-semibold text-foreground;
+    @apply font-heading font-semibold text-foreground;
   }
   h1 {
     @apply text-4xl sm:text-5xl;

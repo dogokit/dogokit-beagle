@@ -70,10 +70,10 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
 
       <DropdownMenuContent align={align} className="w-56 overflow-scroll">
         <DropdownMenuLabel>
-          <h5>{userData.fullname}</h5>
-          <h6 className="text-sm text-muted-foreground">
+          <p className="text-base font-semibold">{userData.fullname}</p>
+          <p className="text-sm font-semibold text-muted-foreground">
             <Link to={`/${userData.username}`}>@{userData.username}</Link>
-          </h6>
+          </p>
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator />
