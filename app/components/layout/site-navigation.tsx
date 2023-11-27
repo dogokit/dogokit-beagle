@@ -1,4 +1,4 @@
-import { Link, NavLink } from "@remix-run/react"
+import { Link, NavLink, type NavLinkProps } from "@remix-run/react"
 
 import { SiteNavigationMenu } from "~/components/layout/site-navigation-menu"
 import { IndicatorUser } from "~/components/shared/indicator-user"
@@ -93,19 +93,9 @@ export function SiteNavigationLarge() {
             ))}
         </ul>
 
-        <div>
-          {userSession && (
-            <div className="flex items-center gap-4">
-              <ButtonLink to="/new" size="sm">
-                <Iconify icon="ph:plus" />
-                <span>New</span>
-              </ButtonLink>
-              <IndicatorUser size="sm" />
-            </div>
-          )}
-
+        <div className="flex items-center gap-4">
           {!userSession && (
-            <div className="flex items-center gap-2">
+            <>
               <ButtonLink to="/login" variant="secondary" size="sm">
                 <Iconify icon="ph:sign-in-duotone" />
                 <span>Log In</span>
@@ -114,7 +104,17 @@ export function SiteNavigationLarge() {
                 <Iconify icon="ph:user-plus-duotone" />
                 <span>Sign Up</span>
               </ButtonLink>
-            </div>
+            </>
+          )}
+
+          {userSession && (
+            <>
+              <ButtonLink to="/new" size="sm">
+                <Iconify icon="ph:plus" />
+                <span>New</span>
+              </ButtonLink>
+              <IndicatorUser size="sm" />
+            </>
           )}
         </div>
       </div>
@@ -122,11 +122,15 @@ export function SiteNavigationLarge() {
   )
 }
 
-export function NavItemLink({ navItem }: { navItem: NavItem }) {
+export function NavItemLink({
+  navItem,
+  onClick,
+}: { navItem: NavItem } & Pick<NavLinkProps, "onClick">) {
   return (
     <li>
       <NavLink
         to={navItem.to}
+        onClick={onClick}
         className={({ isActive }) =>
           cn(
             "inline-flex items-center gap-2 rounded-md px-2 py-1 font-heading font-semibold transition hover:bg-secondary",

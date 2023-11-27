@@ -1,6 +1,7 @@
 import { NavLink, useNavigate, type NavLinkProps } from "@remix-run/react"
 import { useState } from "react"
 
+import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -13,9 +14,13 @@ import {
 } from "~/components/ui/sheet"
 import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { configSite } from "~/configs/site"
+import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
+import { NavItemLink } from "./site-navigation"
 
 export function SiteNavigationMenu() {
+  const { userSession } = useRootLoaderData()
+
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
 
@@ -28,69 +33,91 @@ export function SiteNavigationMenu() {
         </Button>
       </SheetTrigger>
 
-      <SheetContent>
-        <SheetHeader className="flex items-center gap-2">
-          <NavLinkMenu
-            to="/"
-            onOpenChange={setOpen}
-            className="hover:text-primary"
-          >
-            <Logo text="Dogokit" className="p-2" />
-          </NavLinkMenu>
-        </SheetHeader>
+      <SheetContent className="flex flex-col justify-between">
+        <div>
+          <SheetHeader className="mb-10 flex items-center gap-2">
+            <NavLinkMenu
+              to="/"
+              onOpenChange={setOpen}
+              className="hover:text-primary"
+            >
+              <Logo text="Dogokit" className="p-2" />
+            </NavLinkMenu>
+          </SheetHeader>
 
-        <ul className="mt-8 space-y-4">
-          {configNavigationItems
-            .filter(item => configSite.navItems.includes(item.to))
-            .filter(navItem => navItem.isEnabled)
-            .map(navItem => (
-              <NavItemLinkMenu
-                key={navItem.to}
-                onOpenChange={setOpen}
-                navItem={navItem}
-              />
-            ))}
-        </ul>
+          <ul className="mb-10 flex flex-col items-end gap-4">
+            {configNavigationItems
+              .filter(item => configSite.navItems.includes(item.to))
+              .filter(navItem => navItem.isEnabled)
+              .map(navItem => (
+                <NavItemLinkMenu
+                  key={navItem.to}
+                  onOpenChange={setOpen}
+                  navItem={navItem}
+                />
+              ))}
+          </ul>
+        </div>
 
-        <div className="mt-8 flex items-center gap-2">
-          <ButtonLink
-            to="/login"
-            variant="secondary"
-            size="sm"
-            onClick={() => {
-              navigate("/login")
-              setOpen?.(false)
-            }}
-          >
-            <Iconify icon="ph:sign-in-duotone" />
-            <span>Log In</span>
-          </ButtonLink>
-          <ButtonLink
-            to="/signup"
-            size="sm"
-            onClick={() => {
-              navigate("/signup")
-              setOpen?.(false)
-            }}
-          >
-            <Iconify icon="ph:user-plus-duotone" />
-            <span>Sign Up</span>
-          </ButtonLink>
+        <div className="flex items-center justify-end gap-4">
+          {!userSession && (
+            <>
+              <ButtonLink
+                to="/login"
+                variant="secondary"
+                size="sm"
+                onClick={() => {
+                  navigate("/login")
+                  setOpen?.(false)
+                }}
+              >
+                <Iconify icon="ph:sign-in-duotone" />
+                <span>Log In</span>
+              </ButtonLink>
+              <ButtonLink
+                to="/signup"
+                size="sm"
+                onClick={() => {
+                  navigate("/signup")
+                  setOpen?.(false)
+                }}
+              >
+                <Iconify icon="ph:user-plus-duotone" />
+                <span>Sign Up</span>
+              </ButtonLink>
+            </>
+          )}
+
+          {userSession && (
+            <>
+              <ButtonLink to="/new" size="sm">
+                <Iconify icon="ph:plus" />
+                <span>New</span>
+              </ButtonLink>
+              <IndicatorUser size="sm" />
+            </>
+          )}
         </div>
       </SheetContent>
     </Sheet>
   )
 }
 
+/**
+ * NavLinkMenu and NavItemLinkMenu are part of the Sheet component
+ * so when the NavLink is navigated, the Sheet is closed
+ *
+ * NavItemLinkMenu is related to NavItemLink as it has some styles
+ */
+
 export function NavLinkMenu({
   to,
   onOpenChange,
   className,
   children,
-  ...props
-}: NavLinkProps & {
+}: {
   onOpenChange: (open: boolean) => void
-}) {
+} & NavLinkProps) {
   const navigate = useNavigate()
 
   return (
@@ -101,7 +128,6 @@ export function NavLinkMenu({
         onOpenChange?.(false)
       }}
       className={cn("focus-ring", className)}
-      {...props}
     >
       {children}
     </NavLink>
@@ -118,24 +144,12 @@ export function NavItemLinkMenu({
   const navigate = useNavigate()
 
   return (
-    <li>
-      <NavLink
-        to={navItem.to}
-        onClick={() => {
-          navigate(navItem.to.toString())
-          onOpenChange?.(false)
-        }}
-        className={({ isActive }) =>
-          cn(
-            "focus-ring",
-            "inline-flex items-center gap-2 rounded-md px-2 py-1 font-heading font-semibold transition hover:bg-secondary",
-            isActive && "text-primary",
-          )
-        }
-      >
-        <Iconify icon={navItem.icon} />
-        <span>{navItem.text}</span>
-      </NavLink>
-    </li>
+    <NavItemLink
+      navItem={navItem}
+      onClick={() => {
+        navigate(navItem.to.toString())
+        onOpenChange?.(false)
+      }}
+    />
   )
 }
