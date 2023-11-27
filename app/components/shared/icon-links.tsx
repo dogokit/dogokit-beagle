@@ -7,16 +7,19 @@ import { cn } from "~/utils/cn"
 import { createSlug } from "~/utils/string"
 
 /**
- * This way is more flexible in case using icon system other than Iconiffy
+ * This way is more flexible in case using icon system other than Iconify
+ * Because can return a customizable component, not just a string
  */
 const getIconName = (name: string) =>
   match(name)
+    .with("devto", () => "simple-icons:devdotto")
+    .with("hashnode", () => "simple-icons:hashnode")
     .with("facebook", () => "simple-icons:facebook")
     .with("github", () => "simple-icons:github")
-    .with("linkedin", () => "simple-icons:linkedin")
     .with("instagram", () => "simple-icons:instagram")
-    .with("threads", () => "simple-icons:threads")
+    .with("linkedin", () => "simple-icons:linkedin")
     .with("telegram", () => "simple-icons:telegram")
+    .with("threads", () => "simple-icons:threads")
     .with("twitter", () => "simple-icons:twitter")
     .with("x", () => "simple-icons:x")
     .with("youtube", () => "simple-icons:youtube")

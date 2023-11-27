@@ -14,18 +14,20 @@ export function SiteFooter({ isRounded = true }: { isRounded: boolean }) {
         isRounded && "m-2 mt-10 rounded-md p-4 sm:m-4 sm:mt-20",
       )}
     >
-      <div className="space-y-4 text-muted-foreground">
-        <Link
-          to="/"
-          className="focus-ring inline-block transition hover:opacity-75"
-        >
-          <Logo text="Dogokit" classNameIcon="grayscale" />
-        </Link>
+      <section className="flex justify-between gap-10">
+        <div className="space-y-4 text-muted-foreground">
+          <Link
+            to="/"
+            className="focus-ring inline-block transition hover:opacity-75"
+          >
+            <Logo text="Dogokit" classNameIcon="grayscale" />
+          </Link>
+          <p className="max-w-sm text-sm">{configSite.description}</p>
+          <IconLinks />
+        </div>
 
-        <p className="max-w-sm text-sm">{configSite.description}</p>
-
-        <IconLinks />
-      </div>
+        <SiteFooterSitemap />
+      </section>
 
       <div className="flex items-end justify-between gap-2">
         <p className="text-xs text-muted-foreground">
@@ -40,4 +42,8 @@ export function SiteFooter({ isRounded = true }: { isRounded: boolean }) {
       </div>
     </footer>
   )
+}
+
+export function SiteFooterSitemap() {
+  return <div>Sitemap</div>
 }
