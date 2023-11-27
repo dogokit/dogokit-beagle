@@ -32,6 +32,9 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
 
   if (!userData) return null
 
+  /**
+   * Configured as a function to be near with the other navItems
+   */
   const createNavProfile = (username: string) => [
     {
       text: "Profile",
@@ -41,19 +44,23 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
     },
   ]
 
+  /**
+   * Configure the available paths in app/configs/navigation.ts
+   */
+
   const userNavItems = [
     "/user/dashboard",
     "/user/settings",
     "/user/notifications",
   ]
 
-  const devNavItems = ["/admin", "/components"]
+  const devNavItems = ["/admin", "/components", "/blank"]
 
   const authNavItems = ["/logout"]
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className="focus-ring rounded-full">
         <AvatarAuto
           user={userData}
           imageUrl={userData.images[0]?.url}

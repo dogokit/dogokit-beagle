@@ -27,15 +27,25 @@ export function IconLink({ name }: { name: string }) {
 }
 
 // LATER: Component size variant
-export function IconLinks() {
+export function IconLinks({
+  className,
+  classNameIcon,
+  ...props
+}: React.HTMLAttributes<HTMLUListElement> & {
+  classNameIcon?: string
+}) {
   return (
-    <ul className="flex flex-wrap items-center gap-2">
+    <ul
+      className={cn("flex flex-wrap items-center gap-2", className)}
+      {...props}
+    >
       {configSiteIconLinks.map(iconLink => (
         <li key={iconLink.href}>
           <Anchor
             href={iconLink.href}
             className={cn(
-              "focus-ring block rounded-md p-2 text-xl text-muted-foreground transition hover:text-primary",
+              "focus-ring block rounded-md p-2 text-xl transition hover:text-primary",
+              classNameIcon,
             )}
           >
             <IconLink name={iconLink.name} />

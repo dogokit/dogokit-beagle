@@ -1,6 +1,7 @@
 import { NavLink, useNavigate, type NavLinkProps } from "@remix-run/react"
 import { useState } from "react"
 
+import { IconLinks } from "~/components/shared/icon-links"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { Button } from "~/components/ui/button"
@@ -34,8 +35,8 @@ export function SiteNavigationMenu() {
       </SheetTrigger>
 
       <SheetContent className="flex flex-col justify-between">
-        <div>
-          <SheetHeader className="mb-10 flex items-center gap-2">
+        <div className="mb-10 space-y-10">
+          <SheetHeader className="flex items-center gap-2">
             <NavLinkMenu
               to="/"
               onOpenChange={setOpen}
@@ -45,7 +46,7 @@ export function SiteNavigationMenu() {
             </NavLinkMenu>
           </SheetHeader>
 
-          <ul className="mb-10 flex flex-col items-end gap-4">
+          <ul className="flex flex-col items-end gap-4">
             {configNavigationItems
               .filter(item => configSite.navItems.includes(item.to))
               .filter(navItem => navItem.isEnabled)
@@ -57,6 +58,13 @@ export function SiteNavigationMenu() {
                 />
               ))}
           </ul>
+
+          <div className="text-muted-foreground">
+            <IconLinks
+              className="justify-end gap-2"
+              classNameIcon="text-base p-1"
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-end gap-4">

@@ -36,6 +36,11 @@ export interface AvatarAutoProps
   imageUrl?: string
 }
 
+/**
+ * Image URL is flexible enough to be sourced from any source:
+ * - placeholder function
+ * - user.images[0]?.url
+ */
 export function AvatarAuto({
   user,
   imageUrl,

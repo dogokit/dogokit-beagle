@@ -126,6 +126,11 @@ export const configNavigationItems: NavItem[] = [
     text: "Components",
   },
   {
+    to: "/blank",
+    icon: "ph:square",
+    text: "Blank",
+  },
+  {
     to: "/logout",
     icon: "ph:sign-out-duotone",
     text: "Log Out",
