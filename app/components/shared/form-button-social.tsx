@@ -11,7 +11,7 @@ const getIconName = (providerName: string) =>
     .with("google", () => "simple-icons:google")
     .otherwise(() => "simple-line-icons:question")
 
-export function ButtonSocial({
+export function FormButtonSocial({
   provider,
   label,
 }: {

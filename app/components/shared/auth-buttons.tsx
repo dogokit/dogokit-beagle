@@ -1,11 +1,11 @@
-import { ButtonSocial } from "~/components/ui/button-social"
+import { FormButtonSocial } from "~/components/shared/form-button-social"
 import { configAuth } from "~/configs/auth"
 
 export function AuthButtons() {
   return (
     <>
       {configAuth.services.map(service => (
-        <ButtonSocial
+        <FormButtonSocial
           key={service.provider}
           label={service.label}
           provider={service.provider}
