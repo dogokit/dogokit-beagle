@@ -118,6 +118,7 @@
     "remix-themes": "1.2.2",
     "remix-utils": "7.1.0",
     "slugify": "1.6.6",
+    "string-strip-html": "13.4.3",
     "tailwind-merge": "2.0.0",
     "tailwindcss-animate": "1.0.7",
     "tailwindcss-radix-ui-primitives": "1.0.0",

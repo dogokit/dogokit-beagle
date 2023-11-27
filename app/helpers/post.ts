@@ -1,4 +1,5 @@
 import { type Post } from "@prisma/client"
+import { stripHtml } from "string-strip-html"
 
 import { createNanoId, createSlug, truncateText } from "~/utils/string"
 
@@ -13,6 +14,6 @@ export function extractPostSlug(slug: Post["slug"]) {
 export function sanitizePosts(posts: Post[]) {
   return posts.map(post => ({
     ...post,
-    content: truncateText(post.content, 140),
+    content: truncateText(stripHtml(post.content).result, 140),
   }))
 }

@@ -5,7 +5,6 @@ import parseHTML from "html-react-parser"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { TimePublished } from "~/components/ui/time"
 import { type modelPost } from "~/models/post.server"
-import { truncateText } from "~/utils/string"
 
 export function PostItem({
   post,
@@ -13,6 +12,7 @@ export function PostItem({
   post: Prisma.PromiseReturnType<typeof modelPost.getBySlug>
 }) {
   if (!post) return null
+
   return (
     <div className="space-y-2 py-2 transition hover:opacity-75">
       <div className="flex items-center gap-2">
@@ -26,7 +26,7 @@ export function PostItem({
 
       <div>
         <h4>{post.title}</h4>
-        <p>{parseHTML(truncateText(post.content, 140))}</p>
+        <div>{parseHTML(post.content)}</div>
       </div>
 
       <div className="text-muted-foreground">
