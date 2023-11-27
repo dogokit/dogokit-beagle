@@ -53,8 +53,14 @@ Use `pnpx` or `pnpm dlx`?
 pnpx create-remix@latest --template dogokit/dogokit-remix
 ```
 
-Then make sure to explore the repo to rename and replace the contents along the
-way. As this is a template, not a blank repo generator.
+Once decided to use this, in order to get the latest
+[README docs](https://github.com/dogokit/dogokit-remix/blob/main/README.md)
+possible, replace and remove all explanation in here except the [Setup](#setup)
+section.
+
+This is a template kit, not a blank repo generator. Customize it based on the
+actual application needs. Make sure to first explore to understand, rename, and
+replace the contents along the way.
 
 ## Goal
 
@@ -114,6 +120,8 @@ Some reasons for making and using this template kit.
 
 Later:
 
+- Sending transactional email with [React Email](https://react.email) and
+  [Resend](https://resend.com)
 - Testing with [Vitest](https://vitest.dev) and
   [Playwright](https://playwright.dev)
 - Commands with `dogokit` CLI or `@dogokit/cli`
