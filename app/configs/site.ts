@@ -56,7 +56,7 @@ export const configSite = {
 }
 
 // The order matters on what being shown first
-export const configSiteIconLinks: ConfigSiteIconLink[] = [
+export const configSiteIconLinks = [
   { name: "GitHub", href: "https://github.com/dogokit/dogokit-remix" },
   { name: "Twitter", href: "https://twitter.com/mhaidarhanif" },
   { name: "X", href: "https://x.com/mhaidarhanif" },
@@ -67,8 +67,3 @@ export const configSiteIconLinks: ConfigSiteIconLink[] = [
   { name: "Threads", href: "https://threads.net/mhaidarhanif_" },
   { name: "Telegram", href: "https://t.me/mhaidarhanif" },
 ]
-
-type ConfigSiteIconLink = {
-  name: string
-  href: string
-}

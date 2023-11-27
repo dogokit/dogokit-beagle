@@ -86,24 +86,22 @@ function StackItems({
 }) {
   return (
     <ul className="grid grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-      {items.map(item => {
-        return (
-          <li key={item.name}>
-            <Anchor
-              href={item.url}
-              className={cn(
-                "focus-ring flex flex-col items-center gap-2 rounded-md px-1 py-2",
-                item.isSoon && "blur-sm transition hover:blur-0 focus:blur-0",
-              )}
-            >
-              {item.icon && <Iconify icon={item.icon} className="text-4xl" />}
-              <span className="text-center text-sm font-semibold">
-                {item.name}
-              </span>
-            </Anchor>
-          </li>
-        )
-      })}
+      {items.map(item => (
+        <li key={item.name}>
+          <Anchor
+            href={item.url}
+            className={cn(
+              "focus-ring flex flex-col items-center gap-2 rounded-md px-1 py-2",
+              item.isSoon && "blur-sm transition hover:blur-0 focus:blur-0",
+            )}
+          >
+            {item.icon && <Iconify icon={item.icon} className="text-4xl" />}
+            <span className="text-center text-sm font-semibold">
+              {item.name}
+            </span>
+          </Anchor>
+        </li>
+      ))}
     </ul>
   )
 }

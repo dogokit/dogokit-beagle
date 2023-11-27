@@ -21,21 +21,17 @@ export function loader({ request }: DataFunctionArgs) {
     start_url: getDomainUrl(request),
     scope: getDomainUrl(request),
     icons: [
-      ...maskableIconSizes.map(size => {
-        return {
-          purpose: "maskable",
-          src: `/pwa/dogokit-maskable-${size}.png`,
-          type: "image/png",
-          sizes: `${size}x${size}`,
-        }
-      }),
-      ...iconSizes.map(size => {
-        return {
-          src: `/pwa/dogokit-icon-${size}.png`,
-          type: "image/png",
-          sizes: `${size}x${size}`,
-        }
-      }),
+      ...maskableIconSizes.map(size => ({
+        purpose: "maskable",
+        src: `/pwa/dogokit-maskable-${size}.png`,
+        type: "image/png",
+        sizes: `${size}x${size}`,
+      })),
+      ...iconSizes.map(size => ({
+        src: `/pwa/dogokit-icon-${size}.png`,
+        type: "image/png",
+        sizes: `${size}x${size}`,
+      })),
     ],
     screenshots: [
       {
