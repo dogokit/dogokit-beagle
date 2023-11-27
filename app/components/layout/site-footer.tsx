@@ -1,13 +1,24 @@
 import { Link } from "@remix-run/react"
+import { IconLinks } from "~/components/shared/icon-links"
 import { ThemeMenu } from "~/components/shared/theme-menu"
 import { configSite } from "~/configs/site"
+import { cn } from "~/utils/cn"
 import { getCurrentYear } from "~/utils/datetime"
 
-export function SiteFooter() {
+export function SiteFooter({ isRounded = true }: { isRounded: boolean }) {
   return (
-    <footer className="mt-20 p-2 sm:p-4">
-      <div className="flex items-center justify-between gap-2 rounded-md bg-secondary px-4 py-8">
-        <p>
+    <footer
+      className={cn(
+        "space-y-10 bg-secondary",
+        isRounded && "m-2 mt-10 rounded-md p-4 sm:m-4 sm:mt-20",
+      )}
+    >
+      <div>
+        <IconLinks />
+      </div>
+
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-muted-foreground">
           <span>&copy; {getCurrentYear()} </span>
           <Link to="/" className="focus-ring">
             {configSite.name}

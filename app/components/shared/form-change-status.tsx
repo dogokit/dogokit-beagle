@@ -3,7 +3,7 @@ import { useFetcher } from "@remix-run/react"
 import { useState } from "react"
 
 import { BadgePostStatus } from "~/components/shared/badge-post-status"
-import { IconifyPostStatus } from "~/components/shared/iconify-post-status"
+import { IconPostStatus } from "~/components/shared/icon-post-status"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -100,7 +100,7 @@ export function FormChangeStatus({
                     return (
                       <SelectItem key={status.id} value={status.symbol}>
                         <p className="inline-flex items-center gap-2">
-                          <IconifyPostStatus status={status} />
+                          <IconPostStatus status={status} />
                           <span className="font-semibold">{status.name}</span>
                         </p>
                       </SelectItem>
@@ -117,7 +117,7 @@ export function FormChangeStatus({
                 return (
                   <li key={status.id}>
                     <p className="text-xs text-muted-foreground">
-                      <IconifyPostStatus status={status} />
+                      <IconPostStatus status={status} />
                       <span className="font-semibold"> {status.name}:</span>
                       <span> {status.description}</span>
                     </p>

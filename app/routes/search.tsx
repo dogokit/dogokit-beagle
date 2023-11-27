@@ -56,12 +56,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       where: whereUser,
       skip: config.skip,
       take: config.limitParam,
+      orderBy: { createdAt: "asc" },
       include: { images: { select: { url: true } } },
     }),
     prisma.post.findMany({
       where: wherePost,
       skip: config.skip,
       take: config.limitParam,
+      orderBy: { updatedAt: "desc" },
       include: { images: { select: { url: true } } },
     }),
   ])

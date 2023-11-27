@@ -1,6 +1,6 @@
 import { type PostStatus } from "@prisma/client"
 
-import { IconifyPostStatus } from "~/components/shared/iconify-post-status"
+import { IconPostStatus } from "~/components/shared/icon-post-status"
 import { Badge, type BadgeProps } from "~/components/ui/badge"
 import { cn } from "~/utils/cn"
 
@@ -15,7 +15,7 @@ export function BadgePostStatus({
       variant="secondary"
       className={cn("inline-flex items-center gap-1", className)}
     >
-      <IconifyPostStatus status={status} />
+      <IconPostStatus status={status} />
       <span>{status.name}</span>
     </Badge>
   )

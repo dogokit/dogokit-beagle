@@ -48,7 +48,7 @@ export function PostItemLink({
     <li>
       <Link
         to={`/posts/${post.slug}`}
-        className="block space-y-1 transition hover:opacity-75"
+        className="focus-ring block space-y-1 rounded-md transition hover:opacity-75"
       >
         <PostItem post={post} />
       </Link>

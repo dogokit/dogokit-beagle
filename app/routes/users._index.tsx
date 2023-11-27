@@ -45,6 +45,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       where,
       skip: config.skip,
       take: config.limitParam,
+      orderBy: { createdAt: "asc" },
       include: { images: { select: { url: true } } },
     }),
   ])

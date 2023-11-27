@@ -3,21 +3,19 @@ import { match } from "ts-pattern"
 
 import { Iconify } from "~/components/ui/iconify"
 
-export const getPostStatusIconName = (providerName: string) =>
-  match(providerName)
+const getIconName = (symbol: string) =>
+  match(symbol)
     .with("DRAFT", () => "ph:notebook-fill")
     .with("PRIVATE", () => "ph:book-fill")
     .with("UNLISTED", () => "ph:book-bookmark-fill")
     .with("PUBLISHED", () => "ph:book-open-text-fill")
     .with("ARCHIVED", () => "ph:books-fill")
-    .otherwise(() => "ph:square-fill")
+    .otherwise(() => "simple-line-icons:question")
 
-export function IconifyPostStatus({
+export function IconPostStatus({
   status,
 }: {
   status: Pick<PostStatus, "symbol">
 }) {
-  return (
-    <Iconify className="inline" icon={getPostStatusIconName(status.symbol)} />
-  )
+  return <Iconify className="inline" icon={getIconName(status.symbol)} />
 }

@@ -5,18 +5,19 @@ import { ButtonLoading } from "~/components/ui/button-loading"
 import { Iconify } from "~/components/ui/iconify"
 import { type AuthStrategy } from "~/services/auth.server"
 
-interface SocialButtonProps {
-  provider: AuthStrategy
-  label: string
-}
-
 const getIconName = (providerName: string) =>
   match(providerName)
-    .with("github", () => "fe:github")
-    .with("google", () => "fe:google")
-    .otherwise(() => "fe:donut")
+    .with("github", () => "simple-icons:github")
+    .with("google", () => "simple-icons:google")
+    .otherwise(() => "simple-line-icons:question")
 
-export function ButtonSocial({ provider, label }: SocialButtonProps) {
+export function ButtonSocial({
+  provider,
+  label,
+}: {
+  provider: AuthStrategy
+  label: string
+}) {
   const fetcher = useFetcher()
   const isSubmitting = fetcher.state === "submitting"
   const isMatch = provider === fetcher.formData?.get("formId")

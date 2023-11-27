@@ -20,7 +20,6 @@ const Anchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
         target="_blank"
         rel="noreferrer"
         className={cn(
-          "transition hover:opacity-75",
           withColor && "text-primary",
           noBreak && "whitespace-pre",
           className,

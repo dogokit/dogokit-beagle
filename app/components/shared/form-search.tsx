@@ -26,6 +26,7 @@ export function FormSearch({
           name="q"
           placeholder={placeholder}
           defaultValue={query}
+          autoFocus
           autoComplete="off"
           className="py-2 pe-3 ps-10"
         />

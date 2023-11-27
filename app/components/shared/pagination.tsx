@@ -154,7 +154,7 @@ export function PaginationNavigation({
     return (
       <Link
         to={`${location.pathname}?${searchParams}`}
-        className="flex w-8 justify-center rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:opacity-75"
+        className="focus-ring flex w-8 justify-center rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:opacity-75"
       >
         {icon}
       </Link>
@@ -187,7 +187,7 @@ export function PaginationNavigation({
                   to={to}
                   className={cn(
                     // Use width to have consistent width although different numbers
-                    "flex w-8 justify-center rounded-md p-1 transition hover:opacity-75",
+                    "focus-ring flex w-8 justify-center rounded-md p-1 transition hover:opacity-75",
                     isActive && "bg-secondary text-primary",
                     !isActive && "text-muted-foreground hover:bg-secondary",
                   )}

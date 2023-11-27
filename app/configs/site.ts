@@ -54,3 +54,21 @@ export const configSite = {
   // Setup all the available paths in app/configs/navigation.ts
   navItems: ["/", "/about", "/search", "/posts", "/users"],
 }
+
+// The order matters on what being shown first
+export const configSiteIconLinks: ConfigSiteIconLink[] = [
+  { name: "GitHub", href: "https://github.com/dogokit/dogokit-remix" },
+  { name: "Twitter", href: "https://twitter.com/mhaidarhanif" },
+  { name: "X", href: "https://x.com/mhaidarhanif" },
+  { name: "LinkedIn", href: "https://linkedin.com/in/mhaidarhanif" },
+  { name: "YouTube", href: "https://youtube.com/mhaidarhanif" },
+  { name: "Facebook", href: "https://facebook.com/mhaidarhanif" },
+  { name: "Instagram", href: "https://instagram.com/mhaidarhanif_" },
+  { name: "Threads", href: "https://threads.net/mhaidarhanif_" },
+  { name: "Telegram", href: "https://t.me/mhaidarhanif" },
+]
+
+type ConfigSiteIconLink = {
+  name: string
+  href: string
+}
