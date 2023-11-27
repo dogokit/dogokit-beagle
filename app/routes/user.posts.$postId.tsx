@@ -23,9 +23,9 @@ import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { FormErrors } from "~/components/ui/form"
 
+import { Timestamp } from "~/components/shared/timestamp"
 import { Iconify } from "~/components/ui/iconify"
 import { Separator } from "~/components/ui/separator"
-import { Timestamp } from "~/components/ui/time"
 import { requireUser } from "~/helpers/auth"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { prisma } from "~/libs/db.server"
@@ -144,16 +144,11 @@ export default function UserPostsPostIdRoute() {
               </div>
 
               <div className="text-xs text-muted-foreground">
-                {!isUpdated && (
-                  <p>
-                    Created <Timestamp>{post.createdAt}</Timestamp>
-                  </p>
-                )}
-                {isUpdated && (
-                  <p>
-                    Updated <Timestamp>{post.updatedAt}</Timestamp>
-                  </p>
-                )}
+                <Timestamp
+                  isUpdated={isUpdated}
+                  createdAt={post.createdAt}
+                  updatedAt={post.updatedAt}
+                />
               </div>
             </div>
           </section>

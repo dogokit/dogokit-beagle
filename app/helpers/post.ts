@@ -14,6 +14,6 @@ export function extractPostSlug(slug: Post["slug"]) {
 export function sanitizePosts(posts: Post[]) {
   return posts.map(post => ({
     ...post,
-    content: truncateText(stripHtml(post.content).result, 140),
+    content: truncateText(stripHtml(post.content).result, 100),
   }))
 }

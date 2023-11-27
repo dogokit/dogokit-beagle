@@ -12,11 +12,11 @@ import {
   GeneralErrorBoundary,
 } from "~/components/shared/error-boundary"
 import { FormChangeStatus } from "~/components/shared/form-change-status"
+import { Timestamp } from "~/components/shared/timestamp"
 import { Alert } from "~/components/ui/alert"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
-import { Timestamp } from "~/components/ui/time"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { prisma } from "~/libs/db.server"
 import { modelPostStatus } from "~/models/post-status.server"
@@ -63,7 +63,6 @@ export default function PostSlugRoute() {
 
   const isOwner = post.userId === userSession?.id
   const isUpdated = post.createdAt !== post.updatedAt
-
   const isArchived = post.status.symbol === "ARCHIVED"
 
   return (
@@ -94,16 +93,11 @@ export default function PostSlugRoute() {
           </Link>
 
           <div className="text-xs text-muted-foreground">
-            {!isUpdated && (
-              <p>
-                Created <Timestamp>{post.createdAt}</Timestamp>
-              </p>
-            )}
-            {isUpdated && (
-              <p>
-                Updated <Timestamp>{post.updatedAt}</Timestamp>
-              </p>
-            )}
+            <Timestamp
+              isUpdated={isUpdated}
+              createdAt={post.createdAt}
+              updatedAt={post.updatedAt}
+            />
           </div>
         </div>
 
