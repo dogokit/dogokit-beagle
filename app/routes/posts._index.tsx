@@ -11,7 +11,7 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
-import { PostItemLink } from "~/components/shared/post-item"
+import { PostItem } from "~/components/shared/post-item"
 import { Iconify } from "~/components/ui/iconify"
 import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
@@ -92,7 +92,9 @@ export default function SearchRoute() {
       <section className="site-section">
         <ul className="space-y-8">
           {posts.map(post => (
-            <PostItemLink key={post.id} post={post as any} />
+            <li key={post.id}>
+              <PostItem post={post as any} />
+            </li>
           ))}
         </ul>
       </section>

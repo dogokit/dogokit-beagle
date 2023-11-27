@@ -7,8 +7,8 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
-import { PostItemLink } from "~/components/shared/post-item"
-import { UserItemLink } from "~/components/shared/user-item"
+import { PostItem } from "~/components/shared/post-item"
+import { UserItem } from "~/components/shared/user-item"
 import { Iconify } from "~/components/ui/iconify"
 import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
@@ -104,7 +104,9 @@ export default function SearchRoute() {
       <section className="site-section">
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {users.map(user => (
-            <UserItemLink key={user.id} user={user as any} />
+            <li key={user.id}>
+              <UserItem user={user as any} />
+            </li>
           ))}
         </ul>
       </section>
@@ -112,7 +114,9 @@ export default function SearchRoute() {
       <section className="site-section">
         <ul className="space-y-8">
           {posts.map(post => (
-            <PostItemLink key={post.id} post={post as any} />
+            <li key={post.id}>
+              <PostItem post={post as any} />
+            </li>
           ))}
         </ul>
       </section>

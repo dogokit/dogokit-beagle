@@ -33,7 +33,7 @@ export function formatDateLastMod(date: string | Date | undefined) {
 }
 
 export function formatPublished(date: string | Date | undefined) {
-  return dayjs(date).locale("en").format("YYYY MMM D")
+  return dayjs(date).locale("en").format("MMMM D, YYYY")
 }
 
 /**

@@ -11,7 +11,7 @@ import {
   PaginationNavigation,
   PaginationSearch,
 } from "~/components/shared/pagination"
-import { UserItemLink } from "~/components/shared/user-item"
+import { UserItem } from "~/components/shared/user-item"
 import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
@@ -80,7 +80,9 @@ export default function UsersRoute() {
       <section className="site-section">
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {users.map(user => (
-            <UserItemLink key={user.id} user={user as any} />
+            <li key={user.id}>
+              <UserItem user={user as any} />
+            </li>
           ))}
         </ul>
       </section>
