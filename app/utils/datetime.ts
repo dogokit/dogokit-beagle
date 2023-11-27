@@ -32,6 +32,10 @@ export function formatDateLastMod(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("YYYY-MM-DD")
 }
 
+export function formatPublished(date: string | Date | undefined) {
+  return dayjs(date).locale("en").format("YYYY MMM D")
+}
+
 /**
  * Relative time
  */

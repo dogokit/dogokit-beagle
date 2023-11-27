@@ -1,12 +1,18 @@
 import { customAlphabet } from "nanoid"
 import pluralize from "pluralize"
 import slugify from "slugify"
-import util from "util"
 
-export function debugCode(code: unknown, isShown = true) {
-  // eslint-disable-next-line node/no-process-env
-  if (process.env.NODE_ENV !== "development" || isShown !== true) return null
-  console.info(util.inspect(code, false, null, true))
+export function truncateText(
+  text: string,
+  charLimit: number = 30,
+  withEllipsis: boolean = true,
+) {
+  if (!text || typeof text !== "string" || text.length <= charLimit) return text
+
+  const trimmedLength = withEllipsis ? charLimit - 3 : charLimit
+  const trimmedText = text.substring(0, trimmedLength)
+
+  return withEllipsis ? `${trimmedText}...` : trimmedText
 }
 
 export function createNanoId() {
@@ -52,13 +58,6 @@ export function getUsernameFromEmail(email: string) {
     // Handle the case where the string doesn't contain '@'
     return email
   }
-}
-
-export function getTruncatedText(text: string, maxLength = 140) {
-  if (!text || typeof text !== "string") return text
-  return text.length > maxLength
-    ? text.substring(0, maxLength - 3) + "..."
-    : text
 }
 
 export function getCapitalizedText(text: string) {

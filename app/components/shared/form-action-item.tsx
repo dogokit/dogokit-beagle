@@ -58,3 +58,25 @@ export function FormActionItem({ item }: { item: ConfigActionItem }) {
     </Card>
   )
 }
+
+export function FormActionItemNew({ item }: { item?: ConfigActionItem }) {
+  const fetcher = useFetcher()
+  const isSubmitting = fetcher.state === "submitting"
+
+  if (!item) return null
+
+  return (
+    <fetcher.Form method="POST" action={item.actionNew}>
+      <ButtonLoading
+        variant="outline"
+        size="xs"
+        loadingText="Adding"
+        isLoading={isSubmitting}
+        disabled={isSubmitting}
+      >
+        <Iconify icon="ph:plus" />
+        <span>Add {item.name}</span>
+      </ButtonLoading>
+    </fetcher.Form>
+  )
+}

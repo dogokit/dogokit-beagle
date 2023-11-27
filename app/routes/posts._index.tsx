@@ -56,6 +56,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       take: config.limitParam,
       include: {
         images: { select: { id: true, url: true } },
+        user: { include: { images: { select: { id: true, url: true } } } },
       },
     }),
   ])

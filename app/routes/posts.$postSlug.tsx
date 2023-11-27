@@ -5,17 +5,21 @@ import {
 } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
 import { ViewHTML } from "~/components/libs/editor-tiptap"
+import { BadgePostStatus } from "~/components/shared/badge-post-status"
 
 import {
   ErrorHelpInformation,
   GeneralErrorBoundary,
 } from "~/components/shared/error-boundary"
+import { FormChangeStatus } from "~/components/shared/form-change-status"
 import { Alert } from "~/components/ui/alert"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
-import { Time } from "~/components/ui/time"
+import { Timestamp } from "~/components/ui/time"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
+import { prisma } from "~/libs/db.server"
+import { modelPostStatus } from "~/models/post-status.server"
 import { modelPost } from "~/models/post.server"
 import { formatDate } from "~/utils/datetime"
 import { invariant, invariantResponse } from "~/utils/invariant"
@@ -42,15 +46,20 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.postSlug, "params.postSlug unavailable")
 
-  const post = await modelPost.getBySlug({ slug: params.postSlug })
-  invariantResponse(post, "Post not found", { status: 404 })
+  const [post, postStatuses] = await prisma.$transaction([
+    modelPost.getBySlug({ slug: params.postSlug }),
+    modelPostStatus.getAll(),
+  ])
 
-  return json({ post })
+  invariantResponse(post, "Post not found", { status: 404 })
+  invariantResponse(postStatuses, "Post statuses unavailable", { status: 404 })
+
+  return json({ post, postStatuses })
 }
 
 export default function PostSlugRoute() {
   const { userSession } = useRootLoaderData()
-  const { post } = useLoaderData<typeof loader>()
+  const { post, postStatuses } = useLoaderData<typeof loader>()
 
   const isOwner = post.userId === userSession?.id
   const isUpdated = post.createdAt !== post.updatedAt
@@ -87,22 +96,43 @@ export default function PostSlugRoute() {
           <div className="text-xs text-muted-foreground">
             {!isUpdated && (
               <p>
-                Created <Time>{post.createdAt}</Time>
+                Created <Timestamp>{post.createdAt}</Timestamp>
               </p>
             )}
             {isUpdated && (
               <p>
-                Updated <Time>{post.updatedAt}</Time>
+                Updated <Timestamp>{post.updatedAt}</Timestamp>
               </p>
             )}
           </div>
         </div>
 
+        {!isOwner && (
+          <div>
+            <BadgePostStatus status={post.status} />
+          </div>
+        )}
+
         {isOwner && (
-          <ButtonLink to={`/user/posts/${post.id}`} variant="outline" size="xs">
-            <Iconify icon="ph:note-pencil" />
-            <span>Edit Post</span>
-          </ButtonLink>
+          <div className="flex gap-2">
+            <FormChangeStatus
+              itemId="postId"
+              action="/user/posts/patch"
+              intentValue="change-post-status"
+              dialogTitle="Change post's status"
+              dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
+              itemStatuses={postStatuses}
+              item={post as any}
+            />
+            <ButtonLink
+              to={`/user/posts/${post.id}`}
+              variant="outline"
+              size="xs"
+            >
+              <Iconify icon="ph:note-pencil" />
+              <span>Edit Post</span>
+            </ButtonLink>
+          </div>
         )}
       </header>
 

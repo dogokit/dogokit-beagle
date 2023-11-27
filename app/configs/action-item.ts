@@ -46,6 +46,10 @@ export const configActionItems: ConfigActionItem[] = [
   },
 ]
 
+export function getActionItem(name: string) {
+  return configActionItems.find(actionItem => actionItem.name === name)
+}
+
 export type ConfigActionItem = {
   actionNew: string
   actionManage: string

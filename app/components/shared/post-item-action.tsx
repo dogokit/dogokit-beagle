@@ -7,6 +7,7 @@ import { Iconify } from "~/components/ui/iconify"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { type modelPost } from "~/models/post.server"
 import { cn } from "~/utils/cn"
+import { truncateText } from "~/utils/string"
 
 export function PostItemAction({
   post,
@@ -23,8 +24,8 @@ export function PostItemAction({
     <li
       key={post.id}
       className={cn(
-        "py-2",
-        "flex flex-col flex-wrap gap-1",
+        "flex flex-wrap py-2",
+        "flex-col items-start gap-1",
         "lg:flex-row lg:items-center lg:justify-between lg:gap-2",
       )}
     >
@@ -52,10 +53,10 @@ export function PostItemAction({
             <span>View</span>
           </ButtonLink>
         </div>
-        <h4>{post.title}</h4>
+        <h4>{truncateText(post.title)}</h4>
       </div>
 
-      <div className="flex flex-row-reverse items-center gap-2 sm:flex-row">
+      <div className="flex flex-row-reverse items-center gap-2 lg:flex-row">
         <code className="text-xs text-muted-foreground">{post.slug}</code>
 
         <FormChangeStatus

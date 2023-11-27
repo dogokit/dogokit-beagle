@@ -25,7 +25,7 @@ import { FormErrors } from "~/components/ui/form"
 
 import { Iconify } from "~/components/ui/iconify"
 import { Separator } from "~/components/ui/separator"
-import { Time } from "~/components/ui/time"
+import { Timestamp } from "~/components/ui/time"
 import { requireUser } from "~/helpers/auth"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { prisma } from "~/libs/db.server"
@@ -146,12 +146,12 @@ export default function UserPostsPostIdRoute() {
               <div className="text-xs text-muted-foreground">
                 {!isUpdated && (
                   <p>
-                    Created <Time>{post.createdAt}</Time>
+                    Created <Timestamp>{post.createdAt}</Timestamp>
                   </p>
                 )}
                 {isUpdated && (
                   <p>
-                    Updated <Time>{post.updatedAt}</Time>
+                    Updated <Timestamp>{post.updatedAt}</Timestamp>
                   </p>
                 )}
               </div>

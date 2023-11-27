@@ -41,7 +41,7 @@ export function Debug({
   if (!isVisible) return null
 
   return (
-    <div className="my-1">
+    <div>
       <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-1">
         <div className="flex gap-1">
           <CollapsibleTrigger

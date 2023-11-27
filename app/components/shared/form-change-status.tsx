@@ -52,6 +52,11 @@ export function FormChangeStatus({
   const isLoading =
     fetcher.state !== "submitting" && fetcher.formMethod === "POST"
 
+  console.info({
+    item,
+    itemStatuses,
+  })
+
   if (!item || !item.status || !itemStatuses) return null
 
   const statusSymbol = fetcher.formData
@@ -64,7 +69,7 @@ export function FormChangeStatus({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger>
-        <BadgePostStatus status={statusOptimistic} />
+        <BadgePostStatus status={statusOptimistic} className="cursor-pointer" />
       </AlertDialogTrigger>
 
       <AlertDialogContent>

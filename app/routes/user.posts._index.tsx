@@ -4,6 +4,7 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
+import { FormActionItemNew } from "~/components/shared/form-action-item"
 import { FormDelete } from "~/components/shared/form-delete"
 
 import {
@@ -15,6 +16,7 @@ import {
 import { PostItemAction } from "~/components/shared/post-item-action"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
+import { getActionItem } from "~/configs/action-item"
 import { requireUser } from "~/helpers/auth"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
@@ -67,18 +69,20 @@ export default function UserPostsRoute() {
 
   return (
     <div className="app-container">
-      <header className="app-header flex justify-between gap-4">
+      <header className="app-header flex flex-wrap justify-between gap-4">
         <h2>Posts</h2>
-        <div className="flex gap-2">
+
+        <div className="flex items-center gap-2">
+          <FormActionItemNew item={getActionItem("Post")} />
           <ButtonLink to="/posts" variant="outline" size="xs">
             <Iconify icon="ph:arrow-square-out-duotone" />
-            <span>View All Posts</span>
+            <span>View Posts</span>
           </ButtonLink>
           <FormDelete
             action="/user/posts/delete"
             intentValue="user-delete-all-posts"
             itemText="all posts"
-            buttonText="Delete All Posts"
+            buttonText="Delete Posts"
             requireUser
             userId={userId}
             disabled={posts.length <= 0}

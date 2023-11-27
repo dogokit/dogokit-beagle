@@ -1,5 +1,13 @@
-import { formatTimestamp, type ParamDate } from "~/utils/datetime"
+import {
+  formatPublished,
+  formatTimestamp,
+  type ParamDate,
+} from "~/utils/datetime"
 
-export function Time({ children }: { children: ParamDate }) {
+export function Timestamp({ children }: { children: ParamDate }) {
   return <time>{formatTimestamp(children)}</time>
+}
+
+export function TimePublished({ children }: { children: ParamDate }) {
+  return <time>{formatPublished(children)}</time>
 }
