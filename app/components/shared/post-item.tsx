@@ -1,7 +1,7 @@
 import { type Post } from "@prisma/client"
 import { Link } from "@remix-run/react"
+import parseHTML from "html-react-parser"
 
-import { parseHTML } from "~/utils/html"
 import { getTruncatedText } from "~/utils/string"
 
 export function PostItem({ post }: { post: Post }) {

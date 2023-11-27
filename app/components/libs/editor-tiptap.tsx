@@ -8,28 +8,9 @@ import {
   useEditor,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
+import parseHTML from "html-react-parser"
 
-import { parseHTML } from "~/utils/html"
-
-export function TiptapEditorContext({
-  content,
-  children,
-}: {
-  content?: string
-  children?: React.ReactNode
-}) {
-  return (
-    <EditorProvider
-      extensions={[StarterKit, Highlight, Typography, Underline]}
-      content={content || contentExample}
-      editorProps={{ attributes: { class: "prose-config" } }}
-    >
-      {children}
-    </EditorProvider>
-  )
-}
-
-export function TiptapEditorHook({
+export function EditorTiptapHook({
   content,
   handleUpdate,
 }: {
@@ -56,7 +37,25 @@ export function TiptapEditorHook({
   )
 }
 
-export function EditorViewJSON() {
+export function EditorTiptapContext({
+  content,
+  children,
+}: {
+  content?: string
+  children?: React.ReactNode
+}) {
+  return (
+    <EditorProvider
+      extensions={[StarterKit, Highlight, Typography, Underline]}
+      content={content || contentExample}
+      editorProps={{ attributes: { class: "prose-config" } }}
+    >
+      {children}
+    </EditorProvider>
+  )
+}
+
+export function EditorTiptapViewJSON() {
   const { editor } = useCurrentEditor()
   if (!editor) return null
   return (
@@ -64,7 +63,7 @@ export function EditorViewJSON() {
   )
 }
 
-export function EditorViewHTML() {
+export function EditorTiptapViewHTML() {
   const { editor } = useCurrentEditor()
   if (!editor) return null
   return (

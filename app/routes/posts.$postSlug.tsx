@@ -4,7 +4,7 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
-import { ViewHTML } from "~/components/libs/tiptap"
+import { ViewHTML } from "~/components/libs/editor-tiptap"
 
 import {
   ErrorHelpInformation,

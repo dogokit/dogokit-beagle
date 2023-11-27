@@ -15,7 +15,7 @@ import {
 } from "@remix-run/react"
 import { useRef, useState } from "react"
 import { z } from "zod"
-import { TiptapEditorHook } from "~/components/libs/tiptap"
+import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
 import { Debug } from "~/components/shared/debug"
 import { FormChangeStatus } from "~/components/shared/form-change-status"
 import { FormDelete } from "~/components/shared/form-delete"
@@ -191,7 +191,7 @@ export default function UserPostsPostIdRoute() {
                 ref={contentInputRef}
                 onChange={e => setContentValue(e.target.value)}
               />
-              <TiptapEditorHook
+              <EditorTiptapHook
                 content={contentValue}
                 handleUpdate={handleUpdate}
               />
