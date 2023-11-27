@@ -1,10 +1,10 @@
+import { createPostSlug, extractPostSlug } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
-
 import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
-
-import { createPostSlug, extractPostSlug } from "~/helpers/post"
 import { createSlug } from "~/utils/string"
+
+// EDITME: JSON data for seeding
 import dataCredentialUsers from "./credentials/users.json"
 import dataPostStatuses from "./data/post-statuses.json"
 import dataPosts from "./data/posts.json"

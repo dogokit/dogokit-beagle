@@ -12,8 +12,8 @@ export const meta: MetaFunction = () =>
 
 export default function AboutRoute() {
   return (
-    <div className="site-container space-y-16">
-      <header className="site-header">
+    <div className="site-container">
+      <header className="site-header pb-10 sm:pb-20">
         <h1 className="inline-flex items-center gap-2 text-primary">
           <Iconify icon="ph:info-duotone" />
           <span>About</span>

@@ -51,6 +51,6 @@ export const configSite = {
 
   mailingListName: "All-in-One Kit",
 
-  // Customize in app/configs/navigation.ts
+  // Setup all the available paths in app/configs/navigation.ts
   navItems: ["/", "/about", "/search", "/posts", "/users"],
 }

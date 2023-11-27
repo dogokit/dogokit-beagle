@@ -28,7 +28,7 @@ export function AppNavigation() {
         {userSession && (
           <div className="flex items-center gap-2">
             <ButtonLink to="/new" size="xs">
-              <Iconify icon="ph:plus-square-duotone" />
+              <Iconify icon="ph:plus" />
               <span>New</span>
             </ButtonLink>
             <IndicatorUser size="xs" />

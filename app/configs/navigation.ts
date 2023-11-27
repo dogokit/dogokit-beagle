@@ -2,6 +2,7 @@ export type NavItem = {
   to: string
   icon: string
   text: string
+  end?: boolean
   shortcut?: string
   isEnabled?: boolean
 }

@@ -78,7 +78,7 @@ export default function SignUpRoute() {
 
   return (
     <div className="site-container">
-      <div className="site-compact">
+      <div className="site-section-md space-y-8">
         <header className="site-header">
           <h2 className="inline-flex items-center gap-2">
             <Iconify icon="ph:user-plus-duotone" />

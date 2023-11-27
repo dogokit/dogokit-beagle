@@ -1,11 +1,12 @@
 import { Link, NavLink } from "@remix-run/react"
 
+import { SiteNavigationMenu } from "~/components/layout/site-navigation-menu"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
-import { configNavigationItems } from "~/configs/navigation"
+import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
@@ -31,31 +32,33 @@ export function SiteNavigationSmall() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="block transition hover:text-primary">
+        <Link to="/" className="focus-ring block transition hover:text-primary">
           <Logo text="Dogokit" />
         </Link>
-        <ThemeButton />
+        <ThemeButton size="sm" />
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-4">
-          {userSession && (
-            <>
-              <ButtonLink to="/new" size="sm">
-                <Iconify icon="ph:plus-square-duotone" />
-                <span>New</span>
-              </ButtonLink>
-              <IndicatorUser size="sm" />
-            </>
-          )}
-
-          {!userSession && (
-            <ButtonLink to="/login" variant="secondary" size="sm">
-              <Iconify icon="ph:sign-in-duotone" />
-              <span>Log In</span>
+      <div className="flex items-center gap-2">
+        {userSession && (
+          <>
+            <SiteNavigationMenu />
+            <ButtonLink to="/new" size="sm">
+              <Iconify icon="ph:plus" />
+              <span className="hidden sm:inline">New</span>
             </ButtonLink>
-          )}
-        </div>
+            <IndicatorUser size="sm" />
+          </>
+        )}
+
+        {!userSession && (
+          <>
+            <ButtonLink to="/login" variant="ghost" size="sm">
+              <Iconify icon="ph:sign-in-duotone" />
+              <span className="hidden sm:inline">Log In</span>
+            </ButtonLink>
+            <SiteNavigationMenu />
+          </>
+        )}
       </div>
     </nav>
   )
@@ -74,7 +77,7 @@ export function SiteNavigationLarge() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="block transition hover:text-primary">
+        <Link to="/" className="focus-ring block transition hover:text-primary">
           <Logo text="Dogokit" />
         </Link>
         <ThemeButton />
@@ -86,20 +89,7 @@ export function SiteNavigationLarge() {
             .filter(item => configSite.navItems.includes(item.to))
             .filter(navItem => navItem.isEnabled)
             .map(navItem => (
-              <li key={navItem.to}>
-                <NavLink
-                  to={navItem.to}
-                  className={({ isActive }) =>
-                    cn(
-                      "inline-flex items-center gap-2 rounded-md px-2 py-1 font-heading font-semibold transition hover:bg-secondary",
-                      isActive && "text-primary",
-                    )
-                  }
-                >
-                  <Iconify icon={navItem.icon} />
-                  <span>{navItem.text}</span>
-                </NavLink>
-              </li>
+              <NavItemLink key={navItem.to} navItem={navItem} />
             ))}
         </ul>
 
@@ -107,12 +97,13 @@ export function SiteNavigationLarge() {
           {userSession && (
             <div className="flex items-center gap-4">
               <ButtonLink to="/new" size="sm">
-                <Iconify icon="ph:plus-square-duotone" />
+                <Iconify icon="ph:plus" />
                 <span>New</span>
               </ButtonLink>
               <IndicatorUser size="sm" />
             </div>
           )}
+
           {!userSession && (
             <div className="flex items-center gap-2">
               <ButtonLink to="/login" variant="secondary" size="sm">
@@ -128,5 +119,25 @@ export function SiteNavigationLarge() {
         </div>
       </div>
     </nav>
+  )
+}
+
+export function NavItemLink({ navItem }: { navItem: NavItem }) {
+  return (
+    <li>
+      <NavLink
+        to={navItem.to}
+        className={({ isActive }) =>
+          cn(
+            "inline-flex items-center gap-2 rounded-md px-2 py-1 font-heading font-semibold transition hover:bg-secondary",
+            "focus-ring",
+            isActive && "text-primary",
+          )
+        }
+      >
+        <Iconify icon={navItem.icon} />
+        <span>{navItem.text}</span>
+      </NavLink>
+    </li>
   )
 }
