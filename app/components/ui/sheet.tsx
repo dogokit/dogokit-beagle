@@ -68,7 +68,7 @@ const SheetContent = React.forwardRef<
 
       <SheetPrimitive.Close
         className={cn(
-          "absolute right-2 top-2 ring-offset-background transition-opacity",
+          "absolute right-4 top-4 ring-offset-background transition-opacity",
           "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
           "disabled:pointer-events-none data-[state=open]:bg-secondary",
         )}

@@ -46,6 +46,46 @@ export function SiteNavigationMenu() {
             </NavLinkMenu>
           </SheetHeader>
 
+          <div className="flex items-center justify-end gap-4">
+            {!userSession && (
+              <>
+                <ButtonLink
+                  to="/login"
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => {
+                    navigate("/login")
+                    setOpen?.(false)
+                  }}
+                >
+                  <Iconify icon="ph:sign-in-duotone" />
+                  <span>Log In</span>
+                </ButtonLink>
+                <ButtonLink
+                  to="/signup"
+                  size="sm"
+                  onClick={() => {
+                    navigate("/signup")
+                    setOpen?.(false)
+                  }}
+                >
+                  <Iconify icon="ph:user-plus-duotone" />
+                  <span>Sign Up</span>
+                </ButtonLink>
+              </>
+            )}
+
+            {userSession && (
+              <>
+                <ButtonLink to="/new" size="sm">
+                  <Iconify icon="ph:plus" />
+                  <span>New</span>
+                </ButtonLink>
+                <IndicatorUser size="sm" />
+              </>
+            )}
+          </div>
+
           <ul className="flex flex-col items-end gap-4">
             {configNavigationItems
               .filter(item => configSite.navItems.includes(item.to))
@@ -58,53 +98,13 @@ export function SiteNavigationMenu() {
                 />
               ))}
           </ul>
-
-          <div className="text-muted-foreground">
-            <IconLinks
-              className="justify-end gap-2"
-              classNameIcon="text-base p-1"
-            />
-          </div>
         </div>
 
-        <div className="flex items-center justify-end gap-4">
-          {!userSession && (
-            <>
-              <ButtonLink
-                to="/login"
-                variant="secondary"
-                size="sm"
-                onClick={() => {
-                  navigate("/login")
-                  setOpen?.(false)
-                }}
-              >
-                <Iconify icon="ph:sign-in-duotone" />
-                <span>Log In</span>
-              </ButtonLink>
-              <ButtonLink
-                to="/signup"
-                size="sm"
-                onClick={() => {
-                  navigate("/signup")
-                  setOpen?.(false)
-                }}
-              >
-                <Iconify icon="ph:user-plus-duotone" />
-                <span>Sign Up</span>
-              </ButtonLink>
-            </>
-          )}
-
-          {userSession && (
-            <>
-              <ButtonLink to="/new" size="sm">
-                <Iconify icon="ph:plus" />
-                <span>New</span>
-              </ButtonLink>
-              <IndicatorUser size="sm" />
-            </>
-          )}
+        <div className="text-muted-foreground">
+          <IconLinks
+            className="justify-end gap-2"
+            classNameIcon="text-base p-1"
+          />
         </div>
       </SheetContent>
     </Sheet>
