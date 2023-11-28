@@ -27,7 +27,7 @@ export function SiteFooterSectionSitemap({
     <section className="flex flex-wrap gap-4">
       <div
         className={cn(
-          "flex-auto space-y-8 bg-secondary p-4",
+          "flex-auto space-y-8 bg-muted p-4",
           isRounded && "rounded-md",
         )}
       >
@@ -52,7 +52,7 @@ export function SiteFooterSectionSitemap({
         </p>
       </div>
 
-      <div className={cn("grow bg-secondary p-4", isRounded && "rounded-md")}>
+      <div className={cn("grow bg-muted p-4", isRounded && "rounded-md")}>
         <FooterSitemap />
       </div>
     </section>
@@ -67,7 +67,7 @@ export function SiteFooterSectionExtra({
   return (
     <section
       className={cn(
-        "bg-secondary p-4",
+        "bg-muted p-4",
         "flex flex-col flex-wrap items-center justify-between gap-2 sm:flex-row",
         isRounded && "rounded-md",
       )}
