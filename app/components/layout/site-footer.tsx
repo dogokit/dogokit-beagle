@@ -72,7 +72,7 @@ export function SiteFooterSectionExtra({
         isRounded && "rounded-md",
       )}
     >
-      <p>
+      <p className="text-center text-sm sm:text-left">
         <AnchorFooter href="https://github.com/dogokit">Dogokit</AnchorFooter>
         <span> is built by </span>
         <AnchorFooter href="https://github.com/mhaidarhanif">
