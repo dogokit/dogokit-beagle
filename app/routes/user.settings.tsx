@@ -5,7 +5,7 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { useActionData, useLoaderData } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 
 import { FormUserUsername } from "~/components/shared/form-user-username"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
@@ -16,7 +16,6 @@ import { schemaGeneralId } from "~/schemas/general"
 import { issueUsernameUnallowed, schemaUserUsername } from "~/schemas/user"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
-import { debugCode } from "~/utils/string.server"
 import { createTimer } from "~/utils/timer"
 
 export const handle = createSitemap()
@@ -33,7 +32,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function UserSettingsRoute() {
   const { user } = useLoaderData<typeof loader>()
-  const actionData = useActionData<typeof action>()
 
   return (
     <div className="app-container">
@@ -47,7 +45,7 @@ export default function UserSettingsRoute() {
       </header>
 
       <section className="app-section max-w-md">
-        <FormUserUsername user={user} submission={actionData?.submission} />
+        <FormUserUsername user={user} />
       </section>
     </div>
   )
@@ -71,19 +69,12 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         }
       }),
     })
-
-    debugCode(submission)
-
-    if (!submission.value || submission.intent !== "submit") {
-      await timer.delay()
-      return json({ status: "error", submission }, { status: 400 })
-    }
-
+    if (!submission.value) return json(submission, { status: 400 })
     await modelUser.updateUsername(submission.value)
     await timer.delay()
-    return json({ status: "success", submission }, { status: 200 })
+    return json(submission, { status: 200 })
   }
 
   await timer.delay()
-  return json({ submission })
+  return json(submission)
 }

@@ -20,16 +20,14 @@ import { type SubmissionResult } from "~/types/submission"
 
 export function FormUserUsername({
   user,
-  submission: lastSubmission,
 }: {
   user: Prisma.PromiseReturnType<typeof modelUser.getForSession>
-  submission?: SubmissionResult | null
 }) {
   const fetcher = useFetcher()
   const isSubmitting = fetcher.state === "submitting"
 
   const [form, { id, username }] = useForm<z.infer<typeof schemaUserUsername>>({
-    lastSubmission,
+    lastSubmission: fetcher.data as SubmissionResult,
     shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaUserUsername),
     onValidate({ formData }) {

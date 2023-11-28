@@ -52,7 +52,7 @@ export function FormChangeStatus({
   const isLoading =
     fetcher.state !== "submitting" && fetcher.formMethod === "POST"
 
-  if (!item || !item.status || !itemStatuses) return null
+  if (!item) return null
 
   const statusSymbol = fetcher.formData
     ? fetcher.formData.get("statusSymbol")
