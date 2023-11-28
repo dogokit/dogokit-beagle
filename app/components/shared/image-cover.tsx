@@ -17,7 +17,7 @@ export function ImageCover({
       src={src || placeholder}
       alt={alt}
       className={cn(
-        "select-none rounded-md bg-secondary object-cover",
+        "w-full select-none rounded-md bg-secondary object-cover",
         className,
       )}
       width={width}

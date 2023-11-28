@@ -112,7 +112,7 @@ export default function SearchRoute() {
       </section>
 
       <section className="site-section">
-        <ul className="space-y-8">
+        <ul className="space-y-12">
           {posts.map(post => (
             <li key={post.id}>
               <PostItem post={post as any} />
