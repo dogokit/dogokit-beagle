@@ -65,7 +65,8 @@
     @apply border-border;
   }
   body {
-    @apply cursor-default bg-background text-foreground selection:bg-primary/30;
+    @apply cursor-default bg-background text-foreground;
+    @apply selection:bg-primary/75 selection:text-white;
   }
   h1,
   h2,
