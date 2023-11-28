@@ -150,7 +150,7 @@ export default function UserPostsPostIdRoute() {
                   disabled={isDisabled}
                 >
                   <Iconify icon="ph:arrow-square-out-duotone" />
-                  <span className="hidden sm:inline">View</span>
+                  <span>View</span>
                 </ButtonLink>
               </div>
 
