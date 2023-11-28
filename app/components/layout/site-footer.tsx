@@ -11,7 +11,7 @@ import { getCurrentYear } from "~/utils/datetime"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-10 space-y-2 p-2 sm:space-y-4 sm:p-4">
+    <footer className="mt-10 space-y-4 p-4">
       <SiteFooterSectionSitemap isRounded />
       <SiteFooterSectionExtra isRounded />
     </footer>
@@ -24,7 +24,7 @@ export function SiteFooterSectionSitemap({
   isRounded?: boolean
 }) {
   return (
-    <section className="flex flex-wrap gap-2 sm:gap-4">
+    <section className="flex flex-wrap gap-4">
       <div
         className={cn(
           "flex-auto space-y-8 bg-secondary p-4",
@@ -36,19 +36,13 @@ export function SiteFooterSectionSitemap({
             to="/"
             className="focus-ring inline-block transition hover:opacity-75"
           >
-            <Logo
-              text="Dogokit"
-              className="text-muted-foreground"
-              classNameIcon="grayscale"
-            />
+            <Logo text="Dogokit" classNameIcon="grayscale" />
           </Link>
           <p className="max-w-sm text-sm">{configSite.description}</p>
         </div>
 
-        <div className="space-y-2">
-          <h6>Follow and join with us</h6>
-          <IconLinks />
-        </div>
+        <IconLinks />
+
         <p className="text-xs">
           <span>&copy; {getCurrentYear()} </span>
           <Link to="/" className="focus-ring">
@@ -59,9 +53,7 @@ export function SiteFooterSectionSitemap({
       </div>
 
       <div className={cn("grow bg-secondary p-4", isRounded && "rounded-md")}>
-        <div>
-          <FooterSitemap />
-        </div>
+        <FooterSitemap />
       </div>
     </section>
   )
@@ -113,22 +105,25 @@ export function FooterSitemap() {
   return (
     <ul className="flex flex-wrap gap-8">
       {configSitemapGroups.map(group => (
-        <li key={group.title} className="min-w-[140px] space-y-2">
+        <li key={group.title} className="min-w-[140px] space-y-4">
           <h5>{group.title}</h5>
 
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-3 text-sm">
             {group.items.map(item => (
               <li key={item.to || item.url}>
                 {item.url && (
                   <Anchor
                     href={item.url}
-                    className="focus-ring hover:underline"
+                    className="focus-ring text-muted-foreground transition hover:text-foreground"
                   >
                     {item.name}
                   </Anchor>
                 )}
                 {item.to && (
-                  <Link to={item.to} className="focus-ring hover:underline">
+                  <Link
+                    to={item.to}
+                    className="focus-ring text-muted-foreground transition hover:text-foreground"
+                  >
                     {item.name}
                   </Link>
                 )}

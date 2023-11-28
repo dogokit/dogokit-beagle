@@ -12,6 +12,7 @@ import {
   GeneralErrorBoundary,
 } from "~/components/shared/error-boundary"
 import { FormChangeStatus } from "~/components/shared/form-change-status"
+import { ImageCover } from "~/components/shared/image-cover"
 import { Timestamp } from "~/components/shared/timestamp"
 import { Alert } from "~/components/ui/alert"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
@@ -67,6 +68,13 @@ export default function PostSlugRoute() {
 
   return (
     <div className="site-container space-y-8">
+      <ImageCover
+        src={post.images[0]?.url}
+        className="mx-auto w-full max-w-4xl"
+        width={900}
+        height={400}
+      />
+
       <header className="site-header">
         {isArchived && (
           <Alert>
