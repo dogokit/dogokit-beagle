@@ -59,8 +59,8 @@ export function getPaginationConfigs({
   const url = new URL(request.url)
 
   const queryParam = url.searchParams.get("q") ?? ""
-  const limitParam = defaultLimit || Number(url.searchParams.get("limit"))
-  const pageParam = defaultPage || Number(url.searchParams.get("page"))
+  const limitParam = Number(url.searchParams.get("limit")) || defaultLimit
+  const pageParam = Number(url.searchParams.get("page")) || defaultPage
   const skip = (pageParam - 1) * limitParam
 
   return { request, queryParam, limitParam, pageParam, skip }
