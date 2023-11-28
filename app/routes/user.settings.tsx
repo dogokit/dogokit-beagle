@@ -13,7 +13,12 @@ import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
 import { requireUser } from "~/helpers/auth"
 import { modelUser } from "~/models/user.server"
 import { schemaGeneralId } from "~/schemas/general"
-import { issueUsernameUnallowed, schemaUserUsername } from "~/schemas/user"
+import {
+  issueUsernameUnallowed,
+  schemaUserFullName,
+  schemaUserNickName,
+  schemaUserUsername,
+} from "~/schemas/user"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 import { createTimer } from "~/utils/timer"
@@ -44,11 +49,31 @@ export default function UserSettingsRoute() {
         </div>
       </header>
 
-      <section className="app-section max-w-md">
+      <section className="app-section max-w-md space-y-8">
         <FormChangeField
           label="Username"
           field="username"
+          intentValue="user-change-username"
+          description="Public @username within {configSite.name} like {configSite.domain}
+          /yourname. Use 20 characters at maximum. Only alphabet, number, dot,
+          underscore allowed"
           schema={schemaUserUsername}
+          user={user}
+        />
+        <FormChangeField
+          label="Full Name"
+          field="fullname"
+          intentValue="user-change-fullname"
+          description="Display name you are comfortable with. It can be real name or a pseudonym."
+          schema={schemaUserFullName}
+          user={user}
+        />
+        <FormChangeField
+          label="Nick Name"
+          field="nickname"
+          intentValue="user-change-nickname"
+          description="When you are being called by someone."
+          schema={schemaUserNickName}
           user={user}
         />
       </section>
@@ -62,7 +87,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const submission = parse(formData, { schema: schemaGeneralId })
   const intent = submission.value?.intent
 
-  if (intent === "user-update-username") {
+  if (intent === "user-change-username") {
     const submission = parse(formData, {
       schema: schemaUserUsername.superRefine((data, ctx) => {
         const unallowedUsername = configUnallowedKeywords.find(
@@ -77,7 +102,23 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     if (!submission.value) return json(submission, { status: 400 })
     await modelUser.updateUsername(submission.value)
     await timer.delay()
-    return json(submission, { status: 200 })
+    return json(submission)
+  }
+
+  if (intent === "user-change-fullname") {
+    const submission = parse(formData, { schema: schemaUserFullName })
+    if (!submission.value) return json(submission, { status: 400 })
+    await modelUser.updateFullName(submission.value)
+    await timer.delay()
+    return json(submission)
+  }
+
+  if (intent === "user-change-nickname") {
+    const submission = parse(formData, { schema: schemaUserNickName })
+    if (!submission.value) return json(submission, { status: 400 })
+    await modelUser.updateNickName(submission.value)
+    await timer.delay()
+    return json(submission)
   }
 
   await timer.delay()

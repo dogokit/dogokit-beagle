@@ -219,7 +219,7 @@ export const modelUser = {
     })
   },
 
-  async updateName({ id, fullname }: z.infer<typeof schemaUserFullName>) {
+  async updateFullName({ id, fullname }: z.infer<typeof schemaUserFullName>) {
     try {
       const user = await prisma.user.update({
         where: { id },
@@ -231,7 +231,7 @@ export const modelUser = {
     }
   },
 
-  async updateNick({ id, nickname }: z.infer<typeof schemaUserNickName>) {
+  async updateNickName({ id, nickname }: z.infer<typeof schemaUserNickName>) {
     try {
       const user = await prisma.user.update({
         where: { id },

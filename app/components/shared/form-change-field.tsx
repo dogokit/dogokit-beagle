@@ -13,20 +13,30 @@ import {
 } from "~/components/ui/form"
 import { Iconify } from "~/components/ui/iconify"
 import { Input } from "~/components/ui/input"
-import { configSite } from "~/configs/site"
 import { type modelUser } from "~/models/user.server"
-import { schemaUserUsername } from "~/schemas/user"
+import {
+  schemaUserFullName,
+  schemaUserNickName,
+  schemaUserUsername,
+} from "~/schemas/user"
 import { type SubmissionResult } from "~/types/submission"
 
 export function FormChangeField({
   label,
   field,
+  intentValue,
+  description,
   schema,
   user,
 }: {
   label: string
-  field: "username"
-  schema: typeof schemaUserUsername
+  field: "username" | "fullname" | "nickname"
+  intentValue: string
+  description: string
+  schema:
+    | typeof schemaUserUsername
+    | typeof schemaUserFullName
+    | typeof schemaUserNickName
   user: Prisma.PromiseReturnType<typeof modelUser.getForSession>
 }) {
   const fetcher = useFetcher()
@@ -48,10 +58,10 @@ export function FormChangeField({
         <input {...conform.input(fields.id, { type: "hidden" })} />
         <FormField>
           <div className="flex justify-between">
-            <FormLabel htmlFor={fields["username"].id}>{label}</FormLabel>
+            <FormLabel htmlFor={fields[field].id}>{label}</FormLabel>
             <ButtonLoading
               name="intent"
-              value="user-update-username"
+              value={intentValue}
               isLoading={isSubmitting}
               variant="outline"
               size="xs"
@@ -62,16 +72,12 @@ export function FormChangeField({
             </ButtonLoading>
           </div>
           <Input
-            {...conform.input(fields["username"])}
-            id={fields["username"].id}
-            placeholder="username"
+            {...conform.input(fields[field])}
+            id={fields[field].id}
+            placeholder={label}
             spellCheck="false"
           />
-          <FormDescription>
-            Public @username within {configSite.name} like {configSite.domain}
-            /yourname. Use 20 characters at maximum. Only alphabet, number, dot,
-            underscore allowed
-          </FormDescription>
+          <FormDescription>{description}</FormDescription>
           <FormErrors>{fields[field]}</FormErrors>
         </FormField>
       </fieldset>
