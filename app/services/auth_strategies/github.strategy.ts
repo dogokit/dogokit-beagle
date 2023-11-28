@@ -6,7 +6,6 @@ import { modelUser } from "~/models/user.server"
 import { type UserSession } from "~/services/auth.server"
 import { AuthStrategies } from "~/services/auth_strategies"
 import { parsedEnv } from "~/utils/env.server"
-import { createNanoIdShort } from "~/utils/string"
 
 const clientID = parsedEnv.GITHUB_CLIENT_ID || ""
 const clientSecret = parsedEnv.GITHUB_CLIENT_SECRET || ""
@@ -26,33 +25,21 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
     const fullname = profile._json.name
     const username = profile._json.login
     const imageUrl = profile.photos[0].value
+    const providerName = "github"
+    const providerId = profile.id
 
-    const user = await modelUser.getByEmail({ email })
-
-    // If user already exist by email
-    if (user) {
-      if (user.images.length < 1) {
-        await modelUser.continueAttachImage({ id: user.id, imageUrl })
-        return { id: user.id }
-      }
-      return { id: user.id }
-    }
-
-    // If new user
-    const existingUsername = await modelUser.getByUsername({ username })
-
-    const newUser = await modelUser.continueWithService({
+    const user = await modelUser.continueWithService({
       email,
       fullname,
       imageUrl,
-      username: existingUsername
-        ? `${username}_${createNanoIdShort()}`
-        : username,
+      username,
+      providerName,
+      providerId,
     })
-    if (!newUser) {
-      throw new AuthorizationError("Failed to create account with GitHub")
+    if (!user) {
+      throw new AuthorizationError("Failed to continue with GitHub")
     }
 
-    return { id: newUser.id }
+    return { id: user.id }
   },
 )

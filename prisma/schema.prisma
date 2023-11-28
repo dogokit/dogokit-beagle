@@ -34,9 +34,10 @@ model User {
   fullname String
   nickname String?
 
-  password Password?
+  password    Password?
+  connections Connection[]
+  roles       Role[]
 
-  roles    Role[]
   images   UserImage[] // multiple user images / avatars / profile pictures
   profiles UserProfile[]
   posts    Post[]
@@ -44,10 +45,10 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // @@index([id])
-  // @@index([email])
-  // @@index([username])
-  // @@index([phone])
+  @@index([id])
+  @@index([email])
+  @@index([username])
+  @@index([phone])
 }
 
 model UserProfile {
@@ -85,7 +86,7 @@ model Role {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // @@index([symbol])
+  @@index([symbol])
 }
 
 model Permission {
@@ -116,6 +117,23 @@ model Password {
   updatedAt DateTime @updatedAt
 
   @@map("UserPassword")
+}
+
+model Connection {
+  id String @id @default(cuid())
+
+  providerName String
+  providerId   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String
+
+  @@unique([providerId, providerName])
+  @@index([userId])
+  @@map("UserConnection")
 }
 
 model UserImage {
@@ -155,7 +173,7 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // @@index([slug])
+  @@index([slug])
   @@index([statusId])
   @@index([userId, updatedAt]) // Extra index for user and updatedAt
 }

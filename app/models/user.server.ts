@@ -1,4 +1,4 @@
-import { Prisma, type User } from "@prisma/client"
+import { Prisma, type Connection, type User } from "@prisma/client"
 import { type z } from "zod"
 
 import { prisma } from "~/libs/db.server"
@@ -10,6 +10,8 @@ import {
 } from "~/schemas/user"
 import { hashPassword } from "~/utils/encryption.server"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
+import { createNanoIdShort } from "~/utils/string"
+import { debugCode } from "~/utils/string.server"
 
 export const modelUser = {
   count() {
@@ -102,6 +104,11 @@ export const modelUser = {
     })
   },
 
+  login({ email }: Pick<User, "email">) {
+    // The logic is in Conform Zod validation
+    return prisma.user.findUnique({ where: { email } })
+  },
+
   async signup({
     email,
     fullname,
@@ -132,29 +139,56 @@ export const modelUser = {
     })
   },
 
-  login({ email }: Pick<User, "email">) {
-    // The logic is in Conform Zod validation
-    return prisma.user.findUnique({ where: { email } })
-  },
-
-  continueWithService({
+  async continueWithService({
     email,
     fullname,
     username,
+    providerName,
+    providerId,
     imageUrl,
-  }: Pick<User, "email" | "fullname" | "username"> & { imageUrl: string }) {
-    return prisma.user.create({
-      data: {
-        email,
-        fullname,
-        username,
-        roles: { connect: { symbol: "NORMAL" } },
-        images: {
-          create: { url: imageUrl || getPlaceholderAvatarUrl(username) },
+  }: Pick<User, "email" | "fullname" | "username"> &
+    Pick<Connection, "providerName" | "providerId"> & { imageUrl: string }) {
+    debugCode({ fullname, username, imageUrl, providerName, providerId }, false)
+
+    const existingUsername = await modelUser.getByUsername({ username })
+
+    try {
+      return prisma.user.upsert({
+        where: { email },
+        create: {
+          email,
+          fullname,
+          roles: { connect: { symbol: "NORMAL" } },
+          username: existingUsername
+            ? `${username}_${createNanoIdShort()}`
+            : username,
+          images: {
+            create: { url: imageUrl || getPlaceholderAvatarUrl(username) },
+          },
+          connections: {
+            connectOrCreate: {
+              where: { providerId_providerName: { providerName, providerId } },
+              create: { providerName, providerId },
+            },
+          },
         },
-      },
-      select: { id: true },
-    })
+        update: {
+          images: {
+            create: { url: imageUrl || getPlaceholderAvatarUrl(username) },
+          },
+          connections: {
+            connectOrCreate: {
+              where: { providerId_providerName: { providerName, providerId } },
+              create: { providerName, providerId },
+            },
+          },
+        },
+        select: { id: true },
+      })
+    } catch (error) {
+      console.error(error)
+      return null
+    }
   },
 
   continueAttachImage({
@@ -163,7 +197,10 @@ export const modelUser = {
   }: Pick<User, "id"> & { imageUrl: string }) {
     return prisma.user.update({
       where: { id },
-      data: { images: { create: { url: imageUrl } } },
+      data: {
+        images: { create: { url: imageUrl } },
+        connections: {},
+      },
     })
   },
 
