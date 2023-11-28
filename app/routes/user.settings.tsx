@@ -7,7 +7,7 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import { FormUserUsername } from "~/components/shared/form-user-username"
+import { FormChangeField } from "~/components/shared/form-change-field"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
 import { requireUser } from "~/helpers/auth"
@@ -45,7 +45,12 @@ export default function UserSettingsRoute() {
       </header>
 
       <section className="app-section max-w-md">
-        <FormUserUsername user={user} />
+        <FormChangeField
+          label="Username"
+          field="username"
+          schema={schemaUserUsername}
+          user={user}
+        />
       </section>
     </div>
   )
