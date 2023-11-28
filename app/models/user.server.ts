@@ -181,19 +181,6 @@ export const modelUser = {
     }
   },
 
-  continueAttachImage({
-    id,
-    imageUrl,
-  }: Pick<User, "id"> & { imageUrl: string }) {
-    return prisma.user.update({
-      where: { id },
-      data: {
-        images: { create: { url: imageUrl } },
-        connections: {},
-      },
-    })
-  },
-
   deleteById({ id }: Pick<User, "id">) {
     return prisma.user.delete({ where: { id } })
   },

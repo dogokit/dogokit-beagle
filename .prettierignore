@@ -2,6 +2,7 @@
 /docs/SOCIAL.md
 /node_modules
 bun.lockb
+package.json
 package-lock.json
 pnpm-lock.yaml
 slides.md

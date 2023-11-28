@@ -20,7 +20,7 @@ import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 
-export interface IndicatorUserProps
+interface IndicatorUserProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof avatarAutoVariants> {
   align?: "center" | "start" | "end" | undefined

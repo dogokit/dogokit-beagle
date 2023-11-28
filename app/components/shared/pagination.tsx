@@ -11,8 +11,8 @@ import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { pluralizeWord } from "~/utils/string"
 
-export const DEFAULT_LIMIT = 4
-export const DEFAULT_PAGE = 1
+const DEFAULT_LIMIT = 4
+const DEFAULT_PAGE = 1
 
 interface PaginationItem {
   pageNumber: number

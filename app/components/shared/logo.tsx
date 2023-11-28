@@ -34,7 +34,7 @@ const logoIconVariants = cva("", {
   },
 })
 
-export interface LogoProps
+interface LogoProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof logoVariants> {
   text?: string
