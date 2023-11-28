@@ -1,15 +1,24 @@
 import { parse } from "@conform-to/zod"
 import {
-  json,
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
+import {
+  typedjson,
+  useTypedActionData,
+  useTypedLoaderData,
+} from "remix-typedjson"
 
+import { FormUserUsername } from "~/components/shared/form-user-username"
+import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { requireUser } from "~/helpers/auth"
+import { modelUser } from "~/models/user.server"
 import { schemaGeneralId } from "~/schemas/general"
+import { schemaUserUsername } from "~/schemas/user"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
+import { createTimer } from "~/utils/timer"
 
 export const handle = createSitemap()
 
@@ -20,27 +29,44 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json(await requireUser(request))
+  return typedjson(await requireUser(request))
 }
 
 export default function UserSettingsRoute() {
+  const { user } = useTypedLoaderData<typeof loader>()
+  const lastSubmission = useTypedActionData<typeof action>()
+
   return (
     <div className="app-container">
-      <section className="app-section">
-        <header className="app-header">
+      <header className="app-header items-center gap-4">
+        <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
+
+        <div>
           <h2>User Settings</h2>
-          <p>Manage user account settings</p>
-        </header>
+          <p>Manage user settings and profile</p>
+        </div>
+      </header>
+
+      <section className="app-section max-w-md">
+        <FormUserUsername user={user} lastSubmission={lastSubmission} />
       </section>
     </div>
   )
 }
 
 export const action = async ({ request }: ActionFunctionArgs) => {
+  const timer = createTimer()
   const formData = await request.formData()
   const submission = parse(formData, { schema: schemaGeneralId })
-  if (!submission.value || submission.intent !== "submit") {
-    return json(submission, { status: 400 })
+  const intent = submission.value?.intent
+
+  if (intent === "user-update-username") {
+    const submission = parse(formData, { schema: schemaUserUsername })
+    if (!submission.value) return typedjson(submission)
+    await modelUser.updateUsername(submission.value)
+    return typedjson(submission)
   }
-  return json(submission)
+
+  await timer.delay()
+  return typedjson(submission)
 }

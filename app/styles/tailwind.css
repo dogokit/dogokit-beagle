@@ -120,7 +120,7 @@
     @apply mx-auto w-full space-y-6 overflow-hidden p-4;
   }
   .app-header {
-    @apply w-full space-y-2;
+    @apply flex w-full flex-wrap;
   }
   .app-section {
     @apply w-full max-w-7xl space-y-2;

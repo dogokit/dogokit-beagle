@@ -60,7 +60,6 @@ export default function SignUpRoute() {
   >({
     id: "signup",
     lastSubmission: actionData?.submission,
-    shouldValidate: "onSubmit",
     shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaUserSignUp),
     onValidate({ formData }) {

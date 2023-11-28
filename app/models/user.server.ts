@@ -3,10 +3,9 @@ import { type z } from "zod"
 
 import { prisma } from "~/libs/db.server"
 import {
-  type schemaUserUpdateEmail,
-  type schemaUserUpdateFullName,
-  type schemaUserUpdateNickName,
-  type schemaUserUpdateUsername,
+  type schemaUserEmail,
+  type schemaUserFullName,
+  type schemaUserNickName,
 } from "~/schemas/user"
 import { hashPassword } from "~/utils/encryption.server"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
@@ -21,7 +20,7 @@ export const modelUser = {
   getAll() {
     return prisma.user.findMany({
       include: {
-        images: { select: { url: true } },
+        images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
       },
     })
   },
@@ -29,7 +28,7 @@ export const modelUser = {
   getWithImages() {
     return prisma.user.findFirst({
       include: {
-        images: { select: { url: true } },
+        images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
       },
     })
   },
@@ -56,19 +55,13 @@ export const modelUser = {
         nickname: true,
         email: true,
         roles: { select: { symbol: true, name: true } },
-        images: { select: { url: true } },
+        images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
       },
     })
   },
 
   getById({ id }: Pick<User, "id">) {
-    return prisma.user.findUnique({
-      where: { id },
-      include: {
-        roles: { select: { symbol: true, name: true } },
-        images: { select: { id: true, url: true } },
-      },
-    })
+    return prisma.user.findUnique({ where: { id } })
   },
 
   getByUsername({ username }: Pick<User, "username">) {
@@ -77,7 +70,7 @@ export const modelUser = {
       include: {
         profiles: true,
         roles: { select: { symbol: true, name: true } },
-        images: { select: { id: true, url: true } },
+        images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
       },
     })
   },
@@ -85,7 +78,10 @@ export const modelUser = {
   getByEmail({ email }: Pick<User, "email">) {
     return prisma.user.findUnique({
       where: { email },
-      select: { id: true, images: { select: { url: true } } },
+      select: {
+        id: true,
+        images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
+      },
     })
   },
 
@@ -98,7 +94,7 @@ export const modelUser = {
         id: true,
         fullname: true,
         username: true,
-        images: { select: { url: true } },
+        images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
       },
       orderBy: [{ updatedAt: "asc" }],
     })
@@ -213,28 +209,17 @@ export const modelUser = {
     return prisma.user.delete({ where: { email } })
   },
 
-  async updateUsername({
-    id,
-    username,
-  }: z.infer<typeof schemaUserUpdateUsername>) {
-    try {
-      const user = await prisma.user.update({
-        where: { id },
-        data: { username },
-      })
-      return { user, error: null }
-    } catch (error) {
-      if (
-        error instanceof Prisma.PrismaClientKnownRequestError &&
-        error.code === "P2002"
-      ) {
-        return { error: { username: `Username ${username} is taken` } }
-      }
-      return { error: { username: "Username failed to update" } }
-    }
+  updateUsername({ id, username }: Pick<User, "id" | "username">) {
+    return prisma.user.update({
+      where: { id },
+      data: {
+        username,
+        images: { create: { url: getPlaceholderAvatarUrl(username) } },
+      },
+    })
   },
 
-  async updateName({ id, fullname }: z.infer<typeof schemaUserUpdateFullName>) {
+  async updateName({ id, fullname }: z.infer<typeof schemaUserFullName>) {
     try {
       const user = await prisma.user.update({
         where: { id },
@@ -246,7 +231,7 @@ export const modelUser = {
     }
   },
 
-  async updateNick({ id, nickname }: z.infer<typeof schemaUserUpdateNickName>) {
+  async updateNick({ id, nickname }: z.infer<typeof schemaUserNickName>) {
     try {
       const user = await prisma.user.update({
         where: { id },
@@ -258,7 +243,7 @@ export const modelUser = {
     }
   },
 
-  async updateEmail({ id, email }: z.infer<typeof schemaUserUpdateEmail>) {
+  async updateEmail({ id, email }: z.infer<typeof schemaUserEmail>) {
     try {
       const user = await prisma.user.update({ where: { id }, data: { email } })
       return { user, error: null }

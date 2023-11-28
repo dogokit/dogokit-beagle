@@ -13,7 +13,7 @@ export async function requireUser(request: Request) {
     failureRedirect: "/login",
   })
 
-  const user = await modelUser.getById({ id: userSession.id })
+  const user = await modelUser.getForSession({ id: userSession.id })
   invariant(user, "User not found")
 
   return {

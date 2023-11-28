@@ -14,6 +14,7 @@ import {
   useNavigation,
 } from "@remix-run/react"
 import { type z } from "zod"
+import { AvatarAuto } from "~/components/ui/avatar-auto"
 
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { Input } from "~/components/ui/input"
@@ -51,15 +52,17 @@ export default function UserAccountRoute() {
 
   return (
     <div className="app-container">
-      <section className="app-section">
-        <header className="app-header">
+      <header className="app-header items-center gap-4">
+        <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
+
+        <div>
           <h2>User Account</h2>
           <p>Configure user account</p>
-        </header>
-      </section>
+        </div>
+      </header>
 
       <section className="app-section">
-        <header className="app-header">
+        <header>
           <h4>Delete Account</h4>
           <p>
             By deleting your account, all of your personal data will be deleted.

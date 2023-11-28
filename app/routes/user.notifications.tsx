@@ -26,12 +26,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function UserNotificationsRoute() {
   return (
     <div className="app-container">
-      <section className="app-section">
-        <header className="app-header">
+      <header className="app-header">
+        <div>
           <h2>User Notifications</h2>
           <p>Manage notifications</p>
-        </header>
-      </section>
+        </div>
+      </header>
+
+      <section className="app-section"></section>
     </div>
   )
 }

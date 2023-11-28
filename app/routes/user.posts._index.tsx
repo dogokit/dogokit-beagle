@@ -70,7 +70,7 @@ export default function UserPostsRoute() {
 
   return (
     <div className="app-container">
-      <header className="app-header flex flex-wrap justify-between gap-4">
+      <header className="app-header justify-between gap-4">
         <h2>Posts</h2>
 
         <div className="flex items-center gap-2">

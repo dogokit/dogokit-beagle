@@ -41,15 +41,8 @@ export default function UserDashboardRoute() {
 
   return (
     <div className="app-container">
-      <header className="app-header flex flex-wrap items-center gap-2 sm:gap-4">
-        <div>
-          <AvatarAuto
-            user={user}
-            imageUrl={user.images[0]?.url}
-            className="outline outline-2 outline-background"
-            size="lg"
-          />
-        </div>
+      <header className="app-header items-center gap-4">
+        <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
 
         <div>
           <h2>

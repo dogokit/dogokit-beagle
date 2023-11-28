@@ -23,12 +23,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function AdminSettingsRoute() {
   return (
     <div className="app-container">
-      <section className="app-section">
-        <header className="app-header">
+      <header className="app-header">
+        <div>
           <h2>Settings</h2>
           <p>Manage application settings</p>
-        </header>
-      </section>
+        </div>
+      </header>
+
+      <section className="app-section"></section>
     </div>
   )
 }

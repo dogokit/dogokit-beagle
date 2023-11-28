@@ -74,7 +74,6 @@ export default function UserPostsPostIdRoute() {
   >({
     id: "update-post",
     lastSubmission: actionData?.submission,
-    shouldValidate: "onSubmit",
     shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaPostUpdateById),
     onValidate({ formData }) {

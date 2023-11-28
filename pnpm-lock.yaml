@@ -221,6 +221,9 @@ dependencies:
   remix-themes:
     specifier: ^1.2.2
     version: 1.2.2(@remix-run/react@2.3.1)(@remix-run/server-runtime@2.3.1)
+  remix-typedjson:
+    specifier: 0.4.1
+    version: 0.4.1(@remix-run/react@2.3.1)(@remix-run/server-runtime@2.3.1)(react@18.2.0)
   remix-utils:
     specifier: ^7.3.0
     version: 7.3.0(@remix-run/node@2.3.1)(@remix-run/react@2.3.1)(react@18.2.0)(zod@3.22.4)
@@ -11605,6 +11608,18 @@ packages:
     dependencies:
       '@remix-run/react': 2.3.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
       '@remix-run/server-runtime': 2.3.1(typescript@5.3.2)
+    dev: false
+
+  /remix-typedjson@0.4.1(@remix-run/react@2.3.1)(@remix-run/server-runtime@2.3.1)(react@18.2.0):
+    resolution: {integrity: sha512-AL6LdNajqce1Exy6aB1bD6GYMk90S6H31e8kDCi6jLgBi4K82Ph604lqGGzalswaPPYckYK+NZzgvhWEY7JCDw==}
+    peerDependencies:
+      '@remix-run/react': ^1.16.0 || ^2.0
+      '@remix-run/server-runtime': ^1.16.0 || ^2.0
+      react: ^17.0.2 || ^18.0.0
+    dependencies:
+      '@remix-run/react': 2.3.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
+      '@remix-run/server-runtime': 2.3.1(typescript@5.3.2)
+      react: 18.2.0
     dev: false
 
   /remix-utils@7.3.0(@remix-run/node@2.3.1)(@remix-run/react@2.3.1)(react@18.2.0)(zod@3.22.4):

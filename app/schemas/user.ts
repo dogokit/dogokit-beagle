@@ -9,7 +9,7 @@ const email = z
 
 const username = z
   .string({ required_error: "Username is required" })
-  .regex(/^[a-zA-Z0-9._]+$/, "Only alphabet, number, dot, underscore allowed")
+  .regex(/^[a-zA-Z0-9_]+$/, "Only alphabet, number, underscore allowed")
   .min(4, "Username require at least 4 characters")
   .max(20, "Username limited to 20 characters")
 
@@ -72,17 +72,17 @@ export const schemaUserLogIn = z.object({
   redirectTo,
 })
 
-export const schemaUserUpdateUsername = z.object({ id, username })
-export const schemaUserUpdateFullName = z.object({ id, fullname })
-export const schemaUserUpdateNickName = z.object({ id, nickname })
-export const schemaUserUpdateEmail = z.object({ id, email })
+export const schemaUserUsername = z.object({ id, username })
+export const schemaUserFullName = z.object({ id, fullname })
+export const schemaUserNickName = z.object({ id, nickname })
+export const schemaUserEmail = z.object({ id, email })
 
 export const schemaUserProfileModeName = z.object({ id, modeName })
 export const schemaUserProfileHeadline = z.object({ id, headline })
 export const schemaUserProfileBio = z.object({ id, bio })
 export const schemaUserProfileLinks = z.object({ id, links })
 
-export const schemaUserUpdatePassword = z
+export const schemaUserPassword = z
   .object({
     id,
     currentPassword,

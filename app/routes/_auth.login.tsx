@@ -58,7 +58,6 @@ export default function SignUpRoute() {
   const [form, { email, password }] = useForm<z.infer<typeof schemaUserLogIn>>({
     id: "login",
     lastSubmission: actionData?.submission,
-    shouldValidate: "onSubmit",
     shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaUserLogIn),
     onValidate({ formData }) {

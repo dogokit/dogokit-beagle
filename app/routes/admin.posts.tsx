@@ -23,11 +23,13 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function AdminPostsRoute() {
   return (
     <div className="app-container">
-      <section className="app-section">
-        <header className="app-header">
+      <header className="app-header">
+        <div>
           <h2>Posts</h2>
-        </header>
-      </section>
+        </div>
+      </header>
+
+      <section className="app-section"></section>
     </div>
   )
 }

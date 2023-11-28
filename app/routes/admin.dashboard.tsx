@@ -28,7 +28,7 @@ export default function AdminDashboardRoute() {
 
   return (
     <div className="app-container">
-      <header className="app-header flex flex-wrap items-center gap-2 sm:gap-4">
+      <header className="app-header items-center gap-2 sm:gap-4">
         <div>
           <AvatarAuto
             user={user}
