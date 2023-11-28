@@ -5,6 +5,7 @@ import { logEnv } from "~/utils/log.server"
 import { createSlug } from "~/utils/string"
 
 // EDITME: JSON data for seeding
+import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
 import dataCredentialUsers from "./credentials/users.json"
 import dataPostStatuses from "./data/post-statuses.json"
 import dataPosts from "./data/posts.json"
@@ -107,7 +108,13 @@ async function seedUsers() {
 
   for (const userRaw of dataCredentialUsers) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...userData } = userRaw
+    const { password, ...userWithoutPassword } = userRaw
+
+    const userData = {
+      ...userWithoutPassword,
+      roles: { connect: { symbol: "NORMAL" } },
+      images: { create: { url: getPlaceholderAvatarUrl(userRaw.username) } },
+    }
 
     const existingUser = await prisma.user.findUnique({
       where: { email: userData.email },

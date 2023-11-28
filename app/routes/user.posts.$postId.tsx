@@ -135,6 +135,15 @@ export default function UserPostsPostIdRoute() {
                 >
                   <span>Save</span>
                 </ButtonLoading>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="xs"
+                  onClick={handleUpdateSlug}
+                >
+                  <Iconify icon="ph:arrow-clockwise" />
+                  <span>Reset</span>
+                </Button>
                 <FormDelete
                   action="/user/posts/delete"
                   intentValue="user-delete-post-by-id"

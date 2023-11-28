@@ -118,8 +118,8 @@ export const modelUser = {
         fullname: fullname.trim(),
         username: username.trim(),
         email: email.trim(),
-        password: { create: { hash: await hashPassword(password) } },
         roles: { connect: { symbol: "NORMAL" } },
+        password: { create: { hash: await hashPassword(password) } },
         images: { create: { url: getPlaceholderAvatarUrl(username) } },
         // profiles: {
         //   create: {
@@ -148,7 +148,10 @@ export const modelUser = {
         email,
         fullname,
         username,
-        images: { create: { url: imageUrl } },
+        roles: { connect: { symbol: "NORMAL" } },
+        images: {
+          create: { url: imageUrl || getPlaceholderAvatarUrl(username) },
+        },
       },
       select: { id: true },
     })
