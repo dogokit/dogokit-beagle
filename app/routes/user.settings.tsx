@@ -1,23 +1,22 @@
 import { parse } from "@conform-to/zod"
 import {
+  json,
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import {
-  typedjson,
-  useTypedActionData,
-  useTypedLoaderData,
-} from "remix-typedjson"
+import { useActionData, useLoaderData } from "@remix-run/react"
 
 import { FormUserUsername } from "~/components/shared/form-user-username"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
+import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
 import { requireUser } from "~/helpers/auth"
 import { modelUser } from "~/models/user.server"
 import { schemaGeneralId } from "~/schemas/general"
-import { schemaUserUsername } from "~/schemas/user"
+import { issueUsernameUnallowed, schemaUserUsername } from "~/schemas/user"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
+import { debugCode } from "~/utils/string.server"
 import { createTimer } from "~/utils/timer"
 
 export const handle = createSitemap()
@@ -29,12 +28,12 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return typedjson(await requireUser(request))
+  return json(await requireUser(request))
 }
 
 export default function UserSettingsRoute() {
-  const { user } = useTypedLoaderData<typeof loader>()
-  const lastSubmission = useTypedActionData<typeof action>()
+  const { user } = useLoaderData<typeof loader>()
+  const actionData = useActionData<typeof action>()
 
   return (
     <div className="app-container">
@@ -48,7 +47,7 @@ export default function UserSettingsRoute() {
       </header>
 
       <section className="app-section max-w-md">
-        <FormUserUsername user={user} lastSubmission={lastSubmission} />
+        <FormUserUsername user={user} submission={actionData?.submission} />
       </section>
     </div>
   )
@@ -61,12 +60,30 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const intent = submission.value?.intent
 
   if (intent === "user-update-username") {
-    const submission = parse(formData, { schema: schemaUserUsername })
-    if (!submission.value) return typedjson(submission)
+    const submission = parse(formData, {
+      schema: schemaUserUsername.superRefine((data, ctx) => {
+        const unallowedUsername = configUnallowedKeywords.find(
+          keyword => keyword === data.username,
+        )
+        if (unallowedUsername) {
+          ctx.addIssue(issueUsernameUnallowed)
+          return
+        }
+      }),
+    })
+
+    debugCode(submission)
+
+    if (!submission.value || submission.intent !== "submit") {
+      await timer.delay()
+      return json({ status: "error", submission }, { status: 400 })
+    }
+
     await modelUser.updateUsername(submission.value)
-    return typedjson(submission)
+    await timer.delay()
+    return json({ status: "success", submission }, { status: 200 })
   }
 
   await timer.delay()
-  return typedjson(submission)
+  return json({ submission })
 }

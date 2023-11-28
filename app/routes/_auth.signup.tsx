@@ -25,10 +25,11 @@ import {
 import { Iconify } from "~/components/ui/iconify"
 import { Input, InputPassword } from "~/components/ui/input"
 import { LinkText } from "~/components/ui/link-text"
+import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { prisma } from "~/libs/db.server"
 import { modelUser } from "~/models/user.server"
-import { schemaUserSignUp } from "~/schemas/user"
+import { issueUsernameUnallowed, schemaUserSignUp } from "~/schemas/user"
 import { authenticator } from "~/services/auth.server"
 import { createMeta } from "~/utils/meta"
 import { createTimer } from "~/utils/timer"
@@ -196,6 +197,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const submission = await parse(formData, {
     async: true,
     schema: schemaUserSignUp.superRefine(async (data, ctx) => {
+      const unallowedUsername = configUnallowedKeywords.find(
+        keyword => keyword === data.username,
+      )
+      if (unallowedUsername) {
+        ctx.addIssue(issueUsernameUnallowed)
+        return
+      }
+
       const existingEmail = await prisma.user.findUnique({
         where: { email: data.email },
         select: { id: true },
@@ -214,11 +223,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         select: { id: true },
       })
       if (existingUsername) {
-        ctx.addIssue({
-          path: ["username"],
-          code: z.ZodIssueCode.custom,
-          message: "Username cannot be used",
-        })
+        ctx.addIssue(issueUsernameUnallowed)
         return
       }
     }),

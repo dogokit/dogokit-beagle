@@ -1,4 +1,4 @@
-[
+export const configUnallowedKeywords = [
   "a",
   "about",
   "abouts",
@@ -668,5 +668,5 @@
   "years",
   "youtube",
   "z",
-  "zed"
+  "zed",
 ]

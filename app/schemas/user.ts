@@ -113,3 +113,9 @@ export const schemaRootUserUpdate = z.object({
   links,
   roleSymbol,
 })
+
+export const issueUsernameUnallowed = {
+  path: ["username"],
+  code: z.ZodIssueCode.custom,
+  message: "Username is not allowed, please change",
+}

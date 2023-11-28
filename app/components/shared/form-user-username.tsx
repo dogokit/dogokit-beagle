@@ -20,10 +20,10 @@ import { type SubmissionResult } from "~/types/submission"
 
 export function FormUserUsername({
   user,
-  lastSubmission,
+  submission: lastSubmission,
 }: {
   user: Prisma.PromiseReturnType<typeof modelUser.getForSession>
-  lastSubmission: SubmissionResult | null
+  submission?: SubmissionResult | null
 }) {
   const fetcher = useFetcher()
   const isSubmitting = fetcher.state === "submitting"
@@ -32,8 +32,9 @@ export function FormUserUsername({
     lastSubmission,
     shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaUserUsername),
-    onValidate: ({ formData }) =>
-      parse(formData, { schema: schemaUserUsername }),
+    onValidate({ formData }) {
+      return parse(formData, { schema: schemaUserUsername })
+    },
     defaultValue: user,
   })
 
