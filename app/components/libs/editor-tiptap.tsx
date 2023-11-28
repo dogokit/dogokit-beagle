@@ -6,6 +6,7 @@ import {
   EditorProvider,
   useCurrentEditor,
   useEditor,
+  type Content,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import parseHTML from "html-react-parser"
@@ -14,7 +15,7 @@ export function EditorTiptapHook({
   content,
   handleUpdate,
 }: {
-  content?: string
+  content?: Content | string
   handleUpdate?: (htmlString: string) => void
 }) {
   const editor = useEditor({

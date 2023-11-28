@@ -84,24 +84,30 @@ export default function UserPostsPostIdRoute() {
   })
 
   const isSubmitting = navigation.state === "submitting"
-  const isUpdated = post.createdAt !== post.updatedAt
-  const isDisabled = post.status.symbol === "DRAFT"
-
-  const [contentValue, setContentValue] = useState(content.defaultValue ?? "")
-  const contentInputRef = useRef<HTMLInputElement>(null)
-  const contentControl = useInputEvent({ ref: contentInputRef })
+  const isPostUpdated = post.createdAt !== post.updatedAt
+  const isViewDisabled = post.status.symbol === "DRAFT"
 
   const [titleValue, setTitleValue] = useState(title.defaultValue ?? "")
-  const slugInputRef = useRef<HTMLInputElement>(null)
-  const slugControl = useInputEvent({ ref: slugInputRef })
+  const slugRef = useRef<HTMLInputElement>(null)
+  const slugControl = useInputEvent({ ref: slugRef })
 
-  function handleUpdateContent(htmlString: string) {
-    contentControl.change(htmlString)
+  const [contentValue, setContentValue] = useState(content.defaultValue ?? "")
+  const contentRef = useRef<HTMLInputElement>(null)
+  const contentControl = useInputEvent({ ref: contentRef })
+
+  function handleReset() {
+    form.ref.current?.reset()
+    setTitleValue(post.title)
+    setContentValue(post.content)
   }
 
   function handleUpdateSlug() {
     const newSlug = createSlug(titleValue)
     slugControl.change(newSlug)
+  }
+
+  function handleUpdateContent(htmlString: string) {
+    contentControl.change(htmlString)
   }
 
   if (!post) return null
@@ -139,7 +145,7 @@ export default function UserPostsPostIdRoute() {
                   type="button"
                   variant="outline"
                   size="xs"
-                  onClick={handleUpdateSlug}
+                  onClick={handleReset}
                 >
                   <Iconify icon="ph:arrow-counter-clockwise" />
                   <span>Reset</span>
@@ -156,7 +162,7 @@ export default function UserPostsPostIdRoute() {
                   variant="outline"
                   size="xs"
                   to={`/posts/${post.slug}`}
-                  disabled={isDisabled}
+                  disabled={isViewDisabled}
                 >
                   <Iconify icon="ph:arrow-square-out-duotone" />
                   <span>View</span>
@@ -165,7 +171,7 @@ export default function UserPostsPostIdRoute() {
 
               <div className="text-xs text-muted-foreground">
                 <Timestamp
-                  isUpdated={isUpdated}
+                  isUpdated={isPostUpdated}
                   createdAt={post.createdAt}
                   updatedAt={post.updatedAt}
                 />
@@ -181,7 +187,7 @@ export default function UserPostsPostIdRoute() {
               <div className="flex justify-between gap-2">
                 <input
                   {...conform.input(slug)}
-                  ref={slugInputRef}
+                  ref={slugRef}
                   placeholder="untitled"
                   spellCheck="false"
                   className="input-natural flex-[1] font-mono text-sm text-muted-foreground"
@@ -217,7 +223,7 @@ export default function UserPostsPostIdRoute() {
               <FormErrors>{content}</FormErrors>
               <input
                 {...conform.input(content, { hidden: true })}
-                ref={contentInputRef}
+                ref={contentRef}
                 onChange={e => setContentValue(e.target.value)}
               />
               <EditorTiptapHook

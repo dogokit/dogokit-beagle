@@ -14,15 +14,15 @@ dependencies:
   '@fontsource-variable/archivo':
     specifier: ^5.0.16
     version: 5.0.16
-  '@fontsource-variable/chivo':
-    specifier: 5.0.9
-    version: 5.0.9
   '@fontsource-variable/chivo-mono':
     specifier: ^5.0.18
     version: 5.0.18
   '@fontsource-variable/grandstander':
     specifier: ^5.0.18
     version: 5.0.18
+  '@fontsource-variable/inter':
+    specifier: 5.0.15
+    version: 5.0.15
   '@nasa-gcn/remix-seo':
     specifier: ^2.0.0
     version: 2.0.0(@remix-run/react@2.3.1)(@remix-run/server-runtime@2.3.1)
@@ -1318,12 +1318,12 @@ packages:
     resolution: {integrity: sha512-EDfUA4EcDocEAh2+iqEGuQjVXk9PkxKzRSAihKn2UpPoNu8o6sbiVjeRN00cOZmAexD9B+J1RGRs/JzqiGE5PQ==}
     dev: false
 
-  /@fontsource-variable/chivo@5.0.9:
-    resolution: {integrity: sha512-xWJx2Qe8Y/7l4bYcnurcVZfame/cD920TK+YY0exTIG2kZp8osA2cAa7jrspV8sTWxRbWa3v3roftXch3ZnH6A==}
-    dev: false
-
   /@fontsource-variable/grandstander@5.0.18:
     resolution: {integrity: sha512-V3AJWnyVnHAe9oxZPXOSfQx0JFtyDxsT0IT/REiXvb76bDBrtrf/kL0ZFohiip2kN81hU3xlT06/58o7mrJNbA==}
+    dev: false
+
+  /@fontsource-variable/inter@5.0.15:
+    resolution: {integrity: sha512-CdQPQQgOVxg6ifmbrqYZeUqtQf7p2wPn6EvJ4M+vdNnsmYZgYwPPPQDNlIOU7LCUlSGaN26v6H0uA030WKn61g==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:

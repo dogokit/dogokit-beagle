@@ -19,7 +19,7 @@ export default {
       fontFamily: {
         display: ["Grandstander Variable", ...defaultTheme.fontFamily.sans],
         heading: ["Archivo Variable", ...defaultTheme.fontFamily.sans],
-        sans: ["Chivo Variable", ...defaultTheme.fontFamily.sans],
+        sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
         mono: ["Chivo Mono Variable", ...defaultTheme.fontFamily.mono],
       },
       /**

@@ -25,7 +25,8 @@ export function createNanoIdShort() {
   return nanoid()
 }
 
-export function createSlug(text: string) {
+export function createSlug(text: string | undefined) {
+  if (!text) return ""
   return slugify(text, { lower: true, strict: true })
 }
 

@@ -63,7 +63,7 @@ export function FormChangeStatus({
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogTrigger>
+      <AlertDialogTrigger className="focus-ring rounded-full">
         <BadgePostStatus status={statusOptimistic} className="cursor-pointer" />
       </AlertDialogTrigger>
 
