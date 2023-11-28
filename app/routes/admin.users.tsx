@@ -26,7 +26,6 @@ export default function AdminUsersRoute() {
       <section className="app-section">
         <header className="app-header">
           <h2>Users</h2>
-          <p>Description</p>
         </header>
       </section>
     </div>

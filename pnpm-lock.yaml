@@ -20,12 +20,9 @@ dependencies:
   '@fontsource-variable/grandstander':
     specifier: ^5.0.18
     version: 5.0.18
-  '@fontsource-variable/inter':
-    specifier: ^5.0.15
-    version: 5.0.15
-  '@fontsource/inter':
-    specifier: ^5.0.15
-    version: 5.0.15
+  '@fontsource-variable/public-sans':
+    specifier: 5.0.16
+    version: 5.0.16
   '@nasa-gcn/remix-seo':
     specifier: ^2.0.0
     version: 2.0.0(@remix-run/react@2.3.1)(@remix-run/server-runtime@2.3.1)
@@ -1325,12 +1322,8 @@ packages:
     resolution: {integrity: sha512-V3AJWnyVnHAe9oxZPXOSfQx0JFtyDxsT0IT/REiXvb76bDBrtrf/kL0ZFohiip2kN81hU3xlT06/58o7mrJNbA==}
     dev: false
 
-  /@fontsource-variable/inter@5.0.15:
-    resolution: {integrity: sha512-CdQPQQgOVxg6ifmbrqYZeUqtQf7p2wPn6EvJ4M+vdNnsmYZgYwPPPQDNlIOU7LCUlSGaN26v6H0uA030WKn61g==}
-    dev: false
-
-  /@fontsource/inter@5.0.15:
-    resolution: {integrity: sha512-/IoWYEXl8lqJEx50JqNPT+bI4VNwxb/bg2oOfvG8PiEsDsmHRFvWBVHlohBNn1+QdBf+KbAjU/gb4vlGOSsVWw==}
+  /@fontsource-variable/public-sans@5.0.16:
+    resolution: {integrity: sha512-7dtF/xQsuDCX8PNC8jCzAtBpteybYIIpXUpZjUYxBjODwu6Bx0Od376/tgx9blPhd1Cy3318oZXg/pO7465+7A==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:

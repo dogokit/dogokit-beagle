@@ -29,7 +29,7 @@ export default function UserBillingRoute() {
       <section className="app-section">
         <header className="app-header">
           <h2>User Billing</h2>
-          <p>Description</p>
+          <p>Manage payment and subscription</p>
         </header>
       </section>
     </div>

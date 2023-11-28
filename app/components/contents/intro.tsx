@@ -8,7 +8,8 @@ export function ContentIntro() {
         <h1
           id="intro"
           className={cn(
-            "text-5xl leading-tight tracking-tighter text-primary sm:text-6xl md:text-7xl lg:text-8xl",
+            "text-5xl sm:text-6xl md:text-7xl",
+            "leading-tight tracking-tighter text-primary",
             "bg-gradient-to-r from-primary to-violet-600 bg-clip-text text-transparent",
           )}
         >

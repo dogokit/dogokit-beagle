@@ -26,7 +26,7 @@ export default function AdminNotificationsRoute() {
       <section className="app-section">
         <header className="app-header">
           <h2>Notifications</h2>
-          <p>Description</p>
+          <p>App-wide notifications</p>
         </header>
       </section>
     </div>

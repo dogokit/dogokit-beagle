@@ -54,7 +54,7 @@ export default function UserAccountRoute() {
       <section className="app-section">
         <header className="app-header">
           <h2>User Account</h2>
-          <p>Description</p>
+          <p>Configure user account</p>
         </header>
       </section>
 

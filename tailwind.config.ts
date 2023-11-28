@@ -20,7 +20,7 @@ export default {
         heading: ["Archivo Variable", ...defaultTheme.fontFamily.sans],
         display: ["Grandstander Variable", ...defaultTheme.fontFamily.sans],
         mono: ["Chivo Mono Variable", ...defaultTheme.fontFamily.mono],
-        // sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
+        sans: ["Public Sans Variable", ...defaultTheme.fontFamily.sans],
       },
       /**
        * Can also use https://uicolors.app to generate additional colors

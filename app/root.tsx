@@ -26,9 +26,7 @@ export const meta: MetaFunction = () => createMeta({})
 export const links: LinksFunction = () => configDocumentLinks
 
 export const headers: HeadersFunction = () => {
-  return {
-    "Accept-CH": "Sec-CH-Prefers-Color-Scheme",
-  }
+  return { "Accept-CH": "Sec-CH-Prefers-Color-Scheme" }
 }
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {

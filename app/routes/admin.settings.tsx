@@ -26,7 +26,7 @@ export default function AdminSettingsRoute() {
       <section className="app-section">
         <header className="app-header">
           <h2>Settings</h2>
-          <p>Description</p>
+          <p>Manage application settings</p>
         </header>
       </section>
     </div>

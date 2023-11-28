@@ -2,8 +2,8 @@
 export default {
   tailwind: true,
   postcss: true,
-  ignoredRouteFiles: ["**/.*"],
 
+  ignoredRouteFiles: ["**/.*"],
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",

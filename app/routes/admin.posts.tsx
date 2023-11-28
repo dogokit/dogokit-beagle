@@ -26,7 +26,6 @@ export default function AdminPostsRoute() {
       <section className="app-section">
         <header className="app-header">
           <h2>Posts</h2>
-          <p>Description</p>
         </header>
       </section>
     </div>
