@@ -141,7 +141,7 @@ export default function UserPostsPostIdRoute() {
                   size="xs"
                   onClick={handleUpdateSlug}
                 >
-                  <Iconify icon="ph:arrow-clockwise" />
+                  <Iconify icon="ph:arrow-counter-clockwise" />
                   <span>Reset</span>
                 </Button>
                 <FormDelete
@@ -192,7 +192,7 @@ export default function UserPostsPostIdRoute() {
                   size="xs"
                   onClick={handleUpdateSlug}
                 >
-                  <Iconify icon="ph:arrow-clockwise" />
+                  <Iconify icon="ph:lightbulb-duotone" />
                   <span>Generate Slug</span>
                 </Button>
               </div>

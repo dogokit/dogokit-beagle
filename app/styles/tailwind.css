@@ -142,12 +142,7 @@
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
   .prose-config {
-    @apply prose prose-slate dark:prose-invert;
-    @apply prose-base sm:prose-lg focus:outline-none;
-    @apply prose-h1:mt-4 prose-h1:font-semibold;
-    @apply prose-h2:mt-2 prose-h2:font-semibold;
-    @apply prose-h3:font-semibold;
-    @apply prose-h4:font-semibold;
+    @apply prose prose-slate dark:prose-invert focus:outline-none;
     @apply prose-a:focus-ring prose-a:hover-opacity;
     @apply prose-a:text-primary prose-a:no-underline;
     @apply prose-pre:bg-muted prose-pre:text-foreground;
