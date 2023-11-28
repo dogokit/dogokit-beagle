@@ -1,12 +1,6 @@
-import { Prisma, type Connection, type User } from "@prisma/client"
-import { type z } from "zod"
+import { type Connection, type User } from "@prisma/client"
 
 import { prisma } from "~/libs/db.server"
-import {
-  type schemaUserEmail,
-  type schemaUserFullName,
-  type schemaUserNickName,
-} from "~/schemas/user"
 import { hashPassword } from "~/utils/encryption.server"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
 import { createNanoIdShort } from "~/utils/string"
@@ -212,49 +206,28 @@ export const modelUser = {
   updateUsername({ id, username }: Pick<User, "id" | "username">) {
     return prisma.user.update({
       where: { id },
-      data: {
-        username,
-        images: { create: { url: getPlaceholderAvatarUrl(username) } },
-      },
+      data: { username },
     })
   },
 
-  async updateFullName({ id, fullname }: z.infer<typeof schemaUserFullName>) {
-    try {
-      const user = await prisma.user.update({
-        where: { id },
-        data: { fullname },
-      })
-      return { user, error: null }
-    } catch (error) {
-      return { error: { fullname: `Full Name is failed to change` } }
-    }
+  async updateFullName({ id, fullname }: Pick<User, "id" | "fullname">) {
+    return prisma.user.update({
+      where: { id },
+      data: { fullname },
+    })
   },
 
-  async updateNickName({ id, nickname }: z.infer<typeof schemaUserNickName>) {
-    try {
-      const user = await prisma.user.update({
-        where: { id },
-        data: { nickname },
-      })
-      return { user, error: null }
-    } catch (error) {
-      return { error: { nickname: `Nick is failed to change` } }
-    }
+  async updateNickName({ id, nickname }: Pick<User, "id" | "nickname">) {
+    return prisma.user.update({
+      where: { id },
+      data: { nickname },
+    })
   },
 
-  async updateEmail({ id, email }: z.infer<typeof schemaUserEmail>) {
-    try {
-      const user = await prisma.user.update({ where: { id }, data: { email } })
-      return { user, error: null }
-    } catch (error) {
-      if (
-        error instanceof Prisma.PrismaClientKnownRequestError &&
-        error.code === "P2002"
-      ) {
-        return { error: { email: `Email ${email} might already used` } }
-      }
-      return { error: { username: "Email failed to update" } }
-    }
+  async updateEmail({ id, email }: Pick<User, "id" | "email">) {
+    return prisma.user.update({
+      where: { id },
+      data: { email },
+    })
   },
 }
