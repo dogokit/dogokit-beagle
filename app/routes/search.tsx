@@ -13,6 +13,7 @@ import { Iconify } from "~/components/ui/iconify"
 import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
 import { createSitemap } from "~/utils/sitemap"
+import { debugCode } from "~/utils/string.server"
 
 export const handle = createSitemap("/search", 0.8)
 
@@ -40,9 +41,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   }
   const wherePost = {
     OR: [{ slug: { contains } }, { title: { contains } }],
-    status: {
-      OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
-    },
+    // status: {
+    //   OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
+    // },
   }
 
   /**
@@ -64,9 +65,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       skip: config.skip,
       take: config.limitParam,
       orderBy: { updatedAt: "desc" },
-      include: { images: { select: { url: true } } },
+      include: {
+        images: { select: { url: true } },
+        user: { include: { images: { select: { id: true, url: true } } } },
+      },
     }),
   ])
+
+  debugCode({ totalUsers, totalPosts, users, posts }, false)
 
   const totalItems = totalUsers + totalPosts
 
