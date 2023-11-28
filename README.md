@@ -166,7 +166,22 @@ installed:
 pnpm install
 ```
 
+This also run the `postinstall` script from `package.json` which by default run
+`prisma generate`.
+
 > Note: Not using Bun yet as there are still some issues.
+
+### Prisma Client Generation
+
+By default installing the modules is also running the `postinstall` script that
+generate the Prisma Client (`@prisma/client`) for it to be used in the app.
+
+If it isn't generated or need to generate manually, run:
+
+```sh
+pnpm db:gen
+# prisma generate
+```
 
 ### Code Quality
 
