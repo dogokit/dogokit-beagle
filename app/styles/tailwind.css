@@ -143,7 +143,7 @@
   }
   .prose-config {
     @apply prose prose-slate dark:prose-invert;
-    @apply prose-sm sm:prose-base focus:outline-none;
+    @apply prose-base sm:prose-lg focus:outline-none;
     @apply prose-h1:mt-4 prose-h1:font-semibold;
     @apply prose-h2:mt-2 prose-h2:font-semibold;
     @apply prose-h3:font-semibold;
