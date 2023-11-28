@@ -4,7 +4,7 @@ import { createThemeSessionResolver } from "remix-themes"
 import { convertDaysToSeconds } from "~/utils/datetime"
 import { isProduction, parsedEnv } from "~/utils/env.server"
 
-const remember = true // LATER: Integrate on auth form flow
+const remember = true // IDEA: Integrate on auth form flow
 
 export const themeSessionStorage = createCookieSessionStorage({
   cookie: {

@@ -24,6 +24,7 @@ import { ButtonLoading } from "~/components/ui/button-loading"
 import { FormErrors } from "~/components/ui/form"
 
 import { Timestamp } from "~/components/shared/timestamp"
+import { Button } from "~/components/ui/button"
 import { Iconify } from "~/components/ui/iconify"
 import { Separator } from "~/components/ui/separator"
 import { requireUser } from "~/helpers/auth"
@@ -34,6 +35,7 @@ import { schemaPostUpdateById } from "~/schemas/post"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
+import { createSlug } from "~/utils/string"
 import { createTimer } from "~/utils/timer"
 
 export const handle = createSitemap()
@@ -81,17 +83,26 @@ export default function UserPostsPostIdRoute() {
     defaultValue: { ...post, userId: post.userId },
   })
 
+  const isSubmitting = navigation.state === "submitting"
+  const isUpdated = post.createdAt !== post.updatedAt
+  const isDisabled = post.status.symbol === "DRAFT"
+
   const [contentValue, setContentValue] = useState(content.defaultValue ?? "")
   const contentInputRef = useRef<HTMLInputElement>(null)
   const contentControl = useInputEvent({ ref: contentInputRef })
 
-  function handleUpdate(htmlString: string) {
+  const [titleValue, setTitleValue] = useState(title.defaultValue ?? "")
+  const slugInputRef = useRef<HTMLInputElement>(null)
+  const slugControl = useInputEvent({ ref: slugInputRef })
+
+  function handleUpdateContent(htmlString: string) {
     contentControl.change(htmlString)
   }
 
-  const isSubmitting = navigation.state === "submitting"
-  const isUpdated = post.createdAt !== post.updatedAt
-  const isDisabled = post.status.symbol === "DRAFT"
+  function handleUpdateSlug() {
+    const newSlug = createSlug(titleValue)
+    slugControl.change(newSlug)
+  }
 
   if (!post) return null
 
@@ -158,21 +169,35 @@ export default function UserPostsPostIdRoute() {
             <input type="hidden" {...conform.input(id)} />
 
             <div>
-              <input
-                {...conform.input(slug)}
-                placeholder="untitled"
-                spellCheck="false"
-                className="input-natural font-mono text-sm text-muted-foreground"
-              />
+              <div className="flex justify-between gap-2">
+                <input
+                  {...conform.input(slug)}
+                  ref={slugInputRef}
+                  placeholder="untitled"
+                  spellCheck="false"
+                  className="input-natural flex-[1] font-mono text-sm text-muted-foreground"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="xs"
+                  onClick={handleUpdateSlug}
+                >
+                  <Iconify icon="ph:arrow-clockwise" />
+                  <span>Generate Slug</span>
+                </Button>
+              </div>
               <FormErrors>{slug}</FormErrors>
             </div>
 
             <div>
               <input
                 {...conform.input(title)}
+                defaultValue={titleValue}
+                onChange={e => setTitleValue(e.target.value)}
                 placeholder="Untitled"
                 spellCheck="false"
-                className="input-natural font-heading text-4xl font-semibold"
+                className="input-natural w-full font-heading text-4xl font-semibold"
               />
               <FormErrors>{title}</FormErrors>
             </div>
@@ -188,22 +213,20 @@ export default function UserPostsPostIdRoute() {
               />
               <EditorTiptapHook
                 content={contentValue}
-                handleUpdate={handleUpdate}
+                handleUpdate={handleUpdateContent}
               />
             </div>
 
-            {/* Manual editor */}
-            {/* <div>
-              <FormErrors>{content}</FormErrors>
+            {/* Manual textarea editor */}
+            <div className="hidden">
               <textarea
-                {...conform.input(content)}
                 placeholder="Add some content..."
                 spellCheck="false"
                 cols={30}
                 rows={20}
                 className="input-natural resize-none"
               />
-            </div> */}
+            </div>
           </section>
         </fieldset>
       </Form>

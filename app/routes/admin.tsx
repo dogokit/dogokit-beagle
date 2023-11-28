@@ -12,7 +12,7 @@ export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticator.isAuthenticated(request, { failureRedirect: "/login" })
-  // LATER: Check for role of admin, not only a user
+  // IDEA: Check for role of admin, not only a user
   return null
 }
 

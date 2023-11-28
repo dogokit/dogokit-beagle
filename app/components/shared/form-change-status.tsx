@@ -43,7 +43,7 @@ export function FormChangeStatus({
   dialogTitle: string
   dialogDescription: string
 
-  // LATER: Make it more general with a model Item that has a Status
+  // IDEA: Make it more general with a model Item that has a Status
   itemStatuses: PostStatus[]
   item: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
 }) {
@@ -51,11 +51,6 @@ export function FormChangeStatus({
   const fetcher = useFetcher()
   const isLoading =
     fetcher.state !== "submitting" && fetcher.formMethod === "POST"
-
-  console.info({
-    item,
-    itemStatuses,
-  })
 
   if (!item || !item.status || !itemStatuses) return null
 

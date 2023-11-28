@@ -29,7 +29,7 @@ export function GeneralErrorBoundary({
   const params = useParams()
   const error = useRouteError()
 
-  // LATER: captureRemixErrorBoundaryError(error)
+  // IDEA: captureRemixErrorBoundaryError(error)
 
   if (typeof document !== "undefined") {
     console.error(error)

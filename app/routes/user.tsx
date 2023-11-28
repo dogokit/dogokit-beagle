@@ -41,7 +41,7 @@ export default function UserLayoutRoute() {
 
   return (
     <div className="mx-auto w-full pb-20">
-      {/* LATER: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
+      {/* IDEA: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
       <div className="mx-auto flex max-w-5xl">
         <nav className={cn("select-none border-r border-r-border p-2 lg:p-4")}>
           <SidebarNavItems

@@ -67,7 +67,7 @@ export default function PostSlugRoute() {
   const isArchived = post.status.symbol === "ARCHIVED"
 
   return (
-    <div className="site-container space-y-8">
+    <div className="site-container space-y-8 pt-0">
       <ImageCover
         src={post.images[0]?.url}
         className="mx-auto w-full max-w-4xl"
