@@ -19,8 +19,8 @@ export function UserItem({
       <div className="space-y-1 py-2">
         <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
         <div>
-          <h4>{user.fullname}</h4>
-          <p className="text-muted-foreground">@{user.username}</p>
+          <h5>{user.fullname}</h5>
+          <p className="text-sm text-muted-foreground">@{user.username}</p>
         </div>
       </div>
     </Link>
