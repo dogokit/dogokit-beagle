@@ -33,7 +33,7 @@ export default function UserBillingRoute() {
         </div>
       </header>
 
-      <section className="app-section"></section>
+      <section className="app-section" />
     </div>
   )
 }

@@ -27,8 +27,10 @@ export default function NewRoute() {
   return (
     <div className="app-container pb-20">
       <header className="app-header mx-auto max-w-prose text-center">
-        <h1 className="text-2xl sm:text-3xl">Add New</h1>
-        <p>Add various new data</p>
+        <div>
+          <h1 className="text-2xl sm:text-3xl">Add New</h1>
+          <p>Add various new data</p>
+        </div>
       </header>
 
       <section className="mx-auto max-w-prose">

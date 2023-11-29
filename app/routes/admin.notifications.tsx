@@ -30,7 +30,7 @@ export default function AdminNotificationsRoute() {
         </div>
       </header>
 
-      <section className="app-section"></section>
+      <section className="app-section" />
     </div>
   )
 }

@@ -15,9 +15,9 @@ import { Iconify } from "~/components/ui/iconify"
 import { Input } from "~/components/ui/input"
 import { type modelUser } from "~/models/user.server"
 import {
-  schemaUserFullName,
-  schemaUserNickName,
-  schemaUserUsername,
+  type schemaUserFullName,
+  type schemaUserNickName,
+  type schemaUserUsername,
 } from "~/schemas/user"
 import { type SubmissionResult } from "~/types/submission"
 
