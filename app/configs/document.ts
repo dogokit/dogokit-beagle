@@ -11,7 +11,7 @@ import { cssBundleHref } from "@remix-run/css-bundle"
 import { fontLinks } from "~/configs/fonts"
 import tailwindStyles from "~/styles/tailwind.css"
 
-export const stylesheetLinks = [
+const stylesheetLinks = [
   { rel: "stylesheet", href: tailwindStyles },
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ]
@@ -22,7 +22,7 @@ export const stylesheetLinks = [
  * - https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
  */
 
-export const faviconLinks = [
+const faviconLinks = [
   /**
    * Use this if want to change the favicon quickly using emoji
    * Or design and use custom favicon, or get some initial image from:

@@ -1,12 +1,3 @@
-export type ConfigSitemapGroup = {
-  title?: string
-  items: {
-    name: string
-    url?: string
-    to?: string
-  }[]
-}
-
 export const configSitemapGroups: ConfigSitemapGroup[] = [
   {
     title: "Pages",
@@ -46,3 +37,12 @@ export const configSitemapGroups: ConfigSitemapGroup[] = [
     ],
   },
 ]
+
+type ConfigSitemapGroup = {
+  title?: string
+  items: {
+    name: string
+    url?: string
+    to?: string
+  }[]
+}

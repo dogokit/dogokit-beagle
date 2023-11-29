@@ -29,7 +29,7 @@ export const avatarAutoVariants = cva("", {
   },
 })
 
-export interface AvatarAutoProps
+interface AvatarAutoProps
   extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof avatarAutoVariants> {
   user: Pick<User, "username" | "fullname">

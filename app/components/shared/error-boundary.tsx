@@ -61,7 +61,7 @@ export function getErrorMessage(error: unknown) {
   return "Unknown Error"
 }
 
-export function GeneralErrorMessage({ error }: { error: ErrorResponse }) {
+function GeneralErrorMessage({ error }: { error: ErrorResponse }) {
   const location = useLocation()
 
   return (

@@ -18,7 +18,7 @@ export function SiteFooter() {
   )
 }
 
-export function SiteFooterSectionSitemap({
+function SiteFooterSectionSitemap({
   isRounded = true,
 }: {
   isRounded?: boolean
@@ -59,11 +59,7 @@ export function SiteFooterSectionSitemap({
   )
 }
 
-export function SiteFooterSectionExtra({
-  isRounded = true,
-}: {
-  isRounded?: boolean
-}) {
+function SiteFooterSectionExtra({ isRounded = true }: { isRounded?: boolean }) {
   return (
     <section
       className={cn(
@@ -90,7 +86,7 @@ export function SiteFooterSectionExtra({
   )
 }
 
-export function AnchorFooter({ href, children }: AnchorProps) {
+function AnchorFooter({ href, children }: AnchorProps) {
   return (
     <Anchor href={href} className="focus-ring font-semibold">
       {children}
@@ -101,7 +97,7 @@ export function AnchorFooter({ href, children }: AnchorProps) {
 /**
  * Can either using flexbox or grid
  */
-export function FooterSitemap() {
+function FooterSitemap() {
   return (
     <ul className="flex flex-wrap gap-8">
       {configSitemapGroups.map(group => (

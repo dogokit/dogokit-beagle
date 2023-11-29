@@ -25,7 +25,7 @@ const getIconName = (name: string) =>
     .with("youtube", () => "simple-icons:youtube")
     .otherwise(() => "simple-line-icons:question")
 
-export function IconLink({ name }: { name: string }) {
+function IconLink({ name }: { name: string }) {
   return <Iconify icon={getIconName(createSlug(name))} />
 }
 

@@ -4,15 +4,11 @@ import { createThemeSessionResolver } from "remix-themes"
 import { convertDaysToSeconds } from "~/utils/datetime"
 import { isProduction, parsedEnv } from "~/utils/env.server"
 
-const remember = true // IDEA: Integrate on auth form flow
-
-export const themeSessionStorage = createCookieSessionStorage({
+const themeSessionStorage = createCookieSessionStorage({
   cookie: {
     name: "__theme_session",
     httpOnly: true,
-    maxAge: remember
-      ? convertDaysToSeconds(7) // EDITME: Change session persistence
-      : undefined,
+    maxAge: convertDaysToSeconds(400),
     path: "/",
     sameSite: "lax",
     secrets: [parsedEnv.SESSION_SECRET],

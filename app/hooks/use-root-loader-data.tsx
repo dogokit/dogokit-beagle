@@ -4,7 +4,7 @@ import { useMemo } from "react"
 import { type UserData, type UserSession } from "~/services/auth.server"
 import { type parsedEnvClient } from "~/utils/env.server"
 
-export type RootLoaderData = {
+type RootLoaderData = {
   ENV: typeof parsedEnvClient
   NODE_ENV: typeof parsedEnvClient.NODE_ENV
   userSession: UserSession | undefined

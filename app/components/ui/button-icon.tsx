@@ -10,7 +10,7 @@ import { cn } from "~/utils/cn"
  * Button with icon content.
  */
 
-export interface ButtonIconProps
+interface ButtonIconProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 

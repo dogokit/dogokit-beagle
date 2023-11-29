@@ -4,6 +4,8 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
+import { z } from "zod"
+import { zx } from "zodix"
 
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -17,11 +19,12 @@ export const handle = createSitemap()
 
 export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
   const user = data?.user
+  const { username } = zx.parseParams(params, { username: z.string() })
 
   if (!user) {
     return createMeta({
       title: "User profile is not found",
-      description: `Cannot find user with the username ${params.username}`,
+      description: `Cannot find user with the username ${username}`,
     })
   }
   return createMeta({

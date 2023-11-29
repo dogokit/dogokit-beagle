@@ -31,7 +31,7 @@ import { requireUser } from "~/helpers/auth"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { prisma } from "~/libs/db.server"
 import { modelUserPost } from "~/models/user-post.server"
-import { schemaPostUpdateById } from "~/schemas/post"
+import { schemaPost } from "~/schemas/post"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -70,14 +70,14 @@ export default function UserPostsPostIdRoute() {
   const { postStatuses } = useAppUserLoaderData()
 
   const [form, { userId, id, slug, title, content }] = useForm<
-    z.infer<typeof schemaPostUpdateById>
+    z.infer<typeof schemaPost>
   >({
     id: "update-post",
     lastSubmission: actionData?.submission,
     shouldRevalidate: "onInput",
-    constraint: getFieldsetConstraint(schemaPostUpdateById),
+    constraint: getFieldsetConstraint(schemaPost),
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaPostUpdateById })
+      return parse(formData, { schema: schemaPost })
     },
     defaultValue: { ...post, userId: post.userId },
   })
@@ -255,7 +255,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   const submission = await parse(formData, {
     async: true,
-    schema: schemaPostUpdateById.superRefine(async (data, ctx) => {
+    schema: schemaPost.superRefine(async (data, ctx) => {
       const { id, slug } = data
       const existingSlug = await prisma.post.findUnique({
         where: { slug, NOT: { id } },

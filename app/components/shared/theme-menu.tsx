@@ -15,7 +15,7 @@ import { useMediaQuery } from "~/hooks/use-media-query"
 
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)"
 
-export interface ThemeMenuProps
+interface ThemeMenuProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   align?: "center" | "start" | "end" | undefined

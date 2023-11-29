@@ -1,16 +1,8 @@
-export const DEFAULT_THRESHOLD = 300
-
-export function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-export async function delay(ms = DEFAULT_THRESHOLD) {
-  await sleep(ms)
-}
-
 /**
  * Usage:
+ *
  * const timer = createTimer()
+ * ...
  * await timer.delay()
  */
 
@@ -24,4 +16,14 @@ export const createTimer = () => {
       if (delayDuration > 0) await delay(delayDuration)
     },
   }
+}
+
+const DEFAULT_THRESHOLD = 300
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function delay(ms = DEFAULT_THRESHOLD) {
+  await sleep(ms)
 }

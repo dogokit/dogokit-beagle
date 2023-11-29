@@ -5,7 +5,7 @@ import { Button, type buttonVariants } from "~/components/ui/button"
 import { Iconify } from "~/components/ui/iconify"
 
 // https://reactrouter.com/en/6.14.2/hooks/use-navigation
-export interface ButtonLoadingProps
+interface ButtonLoadingProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   isLoading: boolean

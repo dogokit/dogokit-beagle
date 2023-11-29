@@ -1,0 +1,20 @@
+{
+  "ignoreBinaries": ["/^check:.*/", "/^fix:.*/"],
+  "ignore": [
+    "app/components/ui",
+    "app/schemas",
+    "postcss.config.js",
+    "prisma",
+    "scripts"
+  ],
+  "ignoreDependencies": [
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser",
+    "autoprefixer",
+    "cmdk",
+    "dotenv",
+    "eslint-plugin-import",
+    "react-day-picker",
+    "zod-form-data"
+  ]
+}

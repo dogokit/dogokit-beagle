@@ -19,7 +19,7 @@ export function NProgress() {
   )
 }
 
-export function Container({
+function Container({
   animationDuration,
   isFinished,
   children,
@@ -41,7 +41,7 @@ export function Container({
   )
 }
 
-export function Bar({
+function Bar({
   animationDuration,
   progress,
 }: {
@@ -59,7 +59,7 @@ export function Bar({
   )
 }
 
-export function Spinner() {
+function Spinner() {
   return (
     <div className="fixed bottom-4 right-4 z-50 block">
       <Iconify

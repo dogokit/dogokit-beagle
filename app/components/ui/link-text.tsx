@@ -1,4 +1,4 @@
-import { Link, NavLink, type LinkProps } from "@remix-run/react"
+import { Link, type LinkProps } from "@remix-run/react"
 
 import { cn } from "~/utils/cn"
 
@@ -25,17 +25,5 @@ export function LinkText({ to, children, disabled, className }: Props) {
     >
       {children}
     </Link>
-  )
-}
-
-export function NavLinkText({ to, children, disabled, className }: Props) {
-  return (
-    <NavLink
-      to={to}
-      className={cn(disabled && "cursor-not-allowed opacity-75", className)}
-      end
-    >
-      {children}
-    </NavLink>
   )
 }

@@ -8,7 +8,7 @@ import { cn } from "~/utils/cn"
 const CALENDAR_YEAR_PAST = 50
 const CALENDAR_YEAR_FUTURE = 50
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+type CalendarProps = React.ComponentProps<typeof DayPicker>
 
 function Calendar({
   className,

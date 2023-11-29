@@ -118,7 +118,7 @@ export function SiteNavigationMenu() {
  * NavItemLinkMenu is related to NavItemLink as it has some styles
  */
 
-export function NavLinkMenu({
+function NavLinkMenu({
   to,
   onOpenChange,
   className,
@@ -142,7 +142,7 @@ export function NavLinkMenu({
   )
 }
 
-export function NavItemLinkMenu({
+function NavItemLinkMenu({
   onOpenChange,
   navItem,
 }: {

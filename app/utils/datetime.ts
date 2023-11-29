@@ -3,7 +3,14 @@ import relativeTime from "dayjs/plugin/relativeTime.js"
 
 dayjs.extend(relativeTime)
 
-export type ParamDate = string | Date | undefined
+type ParamDate = string | Date | undefined
+
+/**
+ * Example formats:
+ *
+ * D MMM YYY
+ * H:mm:ss Z
+ */
 
 export function getCurrentYear() {
   return new Date().getFullYear()
@@ -14,14 +21,6 @@ export function formatTimestamp(date: ParamDate) {
     dayjs(date).locale("en").format("MMM D, YYYY [at] H:mm") +
     ` · ${formatRelativeTime(date)}`
   )
-}
-
-export function formatDateTime(date: string | Date | undefined) {
-  return dayjs(date).locale("en").format("H:mm [on] D MMM YYYY")
-}
-
-export function formatDateTimeTimezone(date: string | Date | undefined) {
-  return dayjs(date).locale("en").format("D MMM YYYY, H:mm:ss Z")
 }
 
 export function formatDate(date: string | Date | undefined) {
@@ -40,7 +39,7 @@ export function formatPublished(date: string | Date | undefined) {
  * Relative time
  */
 
-export function formatRelativeTime(date: string | Date | undefined) {
+function formatRelativeTime(date: string | Date | undefined) {
   return dayjs(date).locale("en").fromNow()
 }
 

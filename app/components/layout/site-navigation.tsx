@@ -20,7 +20,7 @@ export function SiteNavigation() {
   )
 }
 
-export function SiteNavigationSmall() {
+function SiteNavigationSmall() {
   const { userSession } = useRootLoaderData()
 
   return (
@@ -64,7 +64,7 @@ export function SiteNavigationSmall() {
   )
 }
 
-export function SiteNavigationLarge() {
+function SiteNavigationLarge() {
   const { userSession } = useRootLoaderData()
 
   return (

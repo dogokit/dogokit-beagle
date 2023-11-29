@@ -1,5 +1,6 @@
 import { PrismaClient, type Prisma } from "@prisma/client"
 import chalk from "chalk"
+import { isDevelopment } from "~/utils/env.server"
 
 import { remember } from "~/utils/remember"
 
@@ -23,16 +24,16 @@ export const prisma = remember("prisma", () => {
     ],
   })
 
-  // Enable this to handle query event for debugging purpose
-  // client.$on("query", handleQueryEvent)
+  client.$on("query", handleQueryEvent)
 
   client.$connect()
 
   return client
 })
 
-export function handleQueryEvent(event: Prisma.QueryEvent) {
-  if (event.duration < LOG_THRESHOLD) return
+// Customize this to handle query event for any purpose
+function handleQueryEvent(event: Prisma.QueryEvent) {
+  if (!isDevelopment && event.duration < LOG_THRESHOLD) return
 
   const color =
     event.duration < LOG_THRESHOLD * 1.1
@@ -44,6 +45,7 @@ export function handleQueryEvent(event: Prisma.QueryEvent) {
           : event.duration < LOG_THRESHOLD * 1.4
             ? "redBright"
             : "red"
+
   const dur = chalk[color](`${event.duration}ms`)
 
   console.info(`💎 Prisma: ${dur}: ${event.query}`)

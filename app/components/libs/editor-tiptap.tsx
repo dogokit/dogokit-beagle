@@ -56,14 +56,6 @@ export function EditorTiptapContext({
   )
 }
 
-export function EditorTiptapViewJSON() {
-  const { editor } = useCurrentEditor()
-  if (!editor) return null
-  return (
-    <pre className="text-xs">{JSON.stringify(editor.getJSON(), null, 2)}</pre>
-  )
-}
-
 export function EditorTiptapViewHTML() {
   const { editor } = useCurrentEditor()
   if (!editor) return null
@@ -82,7 +74,7 @@ export function ViewHTML({ children }: { children: string }) {
   )
 }
 
-export const contentExample = `
+const contentExample = `
 <h2>
   Hi there,
 </h2>

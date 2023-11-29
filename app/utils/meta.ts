@@ -147,7 +147,7 @@ export function createMeta({
   ]
 }
 
-export interface CreateMeta {
+interface CreateMeta {
   title?: string
   description?: string
   canonicalPath?: string

@@ -5,7 +5,7 @@ import { Theme, useTheme } from "remix-themes"
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
 
-export interface ThemeButtonProps
+interface ThemeButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
