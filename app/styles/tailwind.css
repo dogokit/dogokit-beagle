@@ -151,4 +151,7 @@
   .prose > ul > li > p {
     @apply my-0;
   }
+  .prose > ol > li > p {
+    @apply my-0;
+  }
 }
