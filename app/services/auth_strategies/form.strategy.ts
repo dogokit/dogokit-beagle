@@ -13,11 +13,11 @@ export const formStrategy = new FormStrategy<UserSession>(async ({ form }) => {
    * So this Form Stragegy could be used on signup and login
    * Just by finding the user by email
    */
-  const existingUser = await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: { email },
     select: { id: true },
   })
-  if (!existingUser) throw new AuthorizationError("User email is not found")
+  if (!user) throw new AuthorizationError("User email is not found")
 
-  return { id: existingUser.id }
+  return { id: user.id }
 })

@@ -1,4 +1,8 @@
-import { json, type LoaderFunctionArgs } from "@remix-run/node"
+import {
+  json,
+  type LoaderFunctionArgs,
+  type MetaFunction,
+} from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
 import {
@@ -12,10 +16,17 @@ import { UserItem } from "~/components/shared/user-item"
 import { Iconify } from "~/components/ui/iconify"
 import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
+import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 import { debugCode } from "~/utils/string.server"
 
 export const handle = createSitemap("/search", 0.8)
+
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: "Search",
+    description: "Search some data.",
+  })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const config = getPaginationConfigs({ request, defaultLimit: 10 })

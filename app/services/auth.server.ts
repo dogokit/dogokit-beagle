@@ -8,11 +8,13 @@ import { githubStrategy } from "~/services/auth_strategies/github.strategy"
 import { googleStrategy } from "~/services/auth_strategies/google.strategy"
 import { authSessionStorage } from "~/services/session.server"
 
+// Stored in the cookie
 export interface UserSession {
   id: string
   // Add user properties here or extend with a type from the database
 }
 
+// Not stored in the cookie, only retrieved when necessary
 export interface UserData
   extends NonNullable<
     Prisma.PromiseReturnType<typeof modelUser.getForSession>

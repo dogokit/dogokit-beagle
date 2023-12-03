@@ -21,7 +21,12 @@ import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
-export const meta: MetaFunction = () => createMeta({})
+export const meta: MetaFunction = () =>
+  createMeta({
+    title: "Dogokit",
+    description:
+      "Web app template kit using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more.",
+  })
 
 export const links: LinksFunction = () => configDocumentLinks
 
