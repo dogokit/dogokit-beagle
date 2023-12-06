@@ -21,7 +21,7 @@
     --primary-foreground: 226 100% 97% /* indigo-50 */;
     --secondary: 227 100% 94% /* indigo-100 */;
     --secondary-foreground: 243 48% 35% /* indigo-900 */;
-    --muted: 210 41% 97% /* slate-100 */;
+    --muted: 215 32% 92% /* slate-200 */;
     --muted-foreground: 216 17% 47% /* slate-500 */;
     --accent: 227 100% 94% /* indigo-100 */;
     --accent-foreground: 243 48% 35% /* indigo-900 */;
@@ -44,7 +44,7 @@
     --primary-foreground: 226 100% 97% /* indigo-50 */;
     --secondary: 243 48% 20% /* indigo-950 */;
     --secondary-foreground: 226 100% 97% /* indigo-50 */;
-    --muted: 218 33% 18% /* slate-800 */;
+    --muted: 229 47% 11% /* slate-900 */;
     --muted-foreground: 216 21% 66% /* slate-400 */;
     --accent: 244 55% 42% /* indigo-800 */;
     --accent-foreground: 226 100% 97% /* indigo-50 */;
@@ -142,9 +142,13 @@
     @apply prose prose-slate dark:prose-invert focus:outline-none;
     @apply prose-pre:bg-muted prose-pre:text-foreground;
     @apply prose-code:before:content-none prose-code:after:content-none;
-    @apply prose-a:focus-ring prose-a:no-underline prose-a:transition prose-a:hover:opacity-75;
-    @apply prose-a:text-primary prose-a:dark:text-indigo-400;
     @apply prose-headings:font-semibold;
+    @apply prose-a:prose-a-styles;
+  }
+  .prose-a-styles {
+    @apply focus-ring rounded-xs decoration-muted transition;
+    @apply text-primary hover:text-primary/75;
+    @apply dark:text-primary dark:hover:text-primary/75;
   }
   .prose > ul > li > p {
     @apply my-0;

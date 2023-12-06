@@ -40,7 +40,7 @@ export function SiteNavigationMenu() {
             <NavLinkMenu
               to="/"
               onOpenChange={setOpen}
-              className="hover:text-primary"
+              className="rounded-xs transition hover:text-primary"
             >
               <Logo text="Dogokit" className="p-2" />
             </NavLinkMenu>

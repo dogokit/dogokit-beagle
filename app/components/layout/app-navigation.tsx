@@ -18,9 +18,13 @@ export function AppNavigation() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="block">
+        <Link
+          to="/"
+          className="focus-ring block rounded-xs transition hover:opacity-75"
+        >
           <Logo />
         </Link>
+
         <ThemeButton size="xs" />
       </div>
 

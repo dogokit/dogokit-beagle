@@ -32,9 +32,13 @@ function SiteNavigationSmall() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="focus-ring block transition hover:text-primary">
+        <Link
+          to="/"
+          className="focus-ring block rounded-xs transition hover:text-primary"
+        >
           <Logo text="Dogokit" />
         </Link>
+
         <ThemeButton size="sm" />
       </div>
 
@@ -42,10 +46,12 @@ function SiteNavigationSmall() {
         {userSession && (
           <>
             <SiteNavigationMenu />
+
             <ButtonLink to="/new" size="sm">
               <Iconify icon="ph:plus" />
               <span className="hidden sm:inline">New</span>
             </ButtonLink>
+
             <IndicatorUser size="sm" />
           </>
         )}
@@ -56,6 +62,7 @@ function SiteNavigationSmall() {
               <Iconify icon="ph:sign-in-duotone" />
               <span className="hidden sm:inline">Log In</span>
             </ButtonLink>
+
             <SiteNavigationMenu />
           </>
         )}
@@ -80,6 +87,7 @@ function SiteNavigationLarge() {
         <Link to="/" className="focus-ring block transition hover:text-primary">
           <Logo text="Dogokit" />
         </Link>
+
         <ThemeButton />
       </div>
 
