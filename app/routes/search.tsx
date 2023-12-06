@@ -12,13 +12,11 @@ import {
   PaginationSearch,
 } from "~/components/shared/pagination"
 import { PostItem } from "~/components/shared/post-item"
-import { UserItem } from "~/components/shared/user-item"
 import { Iconify } from "~/components/ui/iconify"
 import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
-import { debugCode } from "~/utils/string.server"
 
 export const handle = createSitemap("/search", 0.8)
 
@@ -47,30 +45,19 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   /**
    * Custom query config, can be different for any cases
    */
-  const whereUser = {
-    OR: [{ fullname: { contains } }, { username: { contains } }],
-  }
   const wherePost = {
     OR: [{ slug: { contains } }, { title: { contains } }],
-    // status: {
-    //   OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
-    // },
+    status: {
+      OR: [{ symbol: "PUBLISHED" }, { symbol: "ARCHIVED" }],
+    },
   }
 
   /**
    * As searching and filtering might be complex,
    * use Prisma directly, it might be refactored later into the models
    */
-  const [totalUsers, totalPosts, users, posts] = await prisma.$transaction([
-    prisma.user.count({ where: whereUser }),
+  const [totalItems, posts] = await prisma.$transaction([
     prisma.post.count({ where: wherePost }),
-    prisma.user.findMany({
-      where: whereUser,
-      skip: config.skip,
-      take: config.limitParam,
-      orderBy: { createdAt: "asc" },
-      include: { images: { select: { url: true } } },
-    }),
     prisma.post.findMany({
       where: wherePost,
       skip: config.skip,
@@ -83,20 +70,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }),
   ])
 
-  debugCode({ totalUsers, totalPosts, users, posts }, false)
-
-  const totalItems = totalUsers + totalPosts
-
   return json({
     ...getPaginationOptions({ request, totalItems }),
-    count: totalItems,
-    users,
     posts: sanitizePosts(posts),
   })
 }
 
 export default function SearchRoute() {
-  const { count, users, posts, ...loaderData } = useLoaderData<typeof loader>()
+  const { posts, ...loaderData } = useLoaderData<typeof loader>()
 
   return (
     <div className="site-container space-y-20">
@@ -111,21 +92,10 @@ export default function SearchRoute() {
         <PaginationSearch
           itemName="result"
           searchPlaceholder="Search users and notes..."
-          count={count}
-          // Don't tell no result because this is search, blank by default
-          isDefaultShow={false}
+          count={posts.length}
           {...loaderData}
+          isDefaultShow={false} // Search is blank by default
         />
-      </section>
-
-      <section className="site-section">
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {users.map(user => (
-            <li key={user.id}>
-              <UserItem user={user as any} />
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section className="site-section">
