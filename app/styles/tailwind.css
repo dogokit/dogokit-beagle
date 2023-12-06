@@ -135,9 +135,6 @@
  * Custom utilities
  */
 @layer utilities {
-  .hover-opacity {
-    @apply transition hover:opacity-75;
-  }
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
@@ -145,7 +142,7 @@
     @apply prose prose-slate dark:prose-invert focus:outline-none;
     @apply prose-pre:bg-muted prose-pre:text-foreground;
     @apply prose-code:before:content-none prose-code:after:content-none;
-    @apply prose-a:focus-ring prose-a:hover-opacity prose-a:no-underline;
+    @apply prose-a:focus-ring prose-a:no-underline prose-a:transition prose-a:hover:opacity-75;
     @apply prose-a:text-primary prose-a:dark:text-indigo-400;
     @apply prose-headings:font-semibold;
   }

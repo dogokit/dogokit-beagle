@@ -84,6 +84,8 @@ function StackItems({
     isSoon?: boolean
   }[]
 }) {
+  // IDEA: Make these as link to a post to explain more
+
   return (
     <ul className="grid grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
       {items.map(item => (
@@ -92,7 +94,8 @@ function StackItems({
             href={item.url}
             className={cn(
               "focus-ring flex flex-col items-center gap-2 rounded-md px-1 py-2",
-              item.isSoon && "blur-sm transition hover:blur-0 focus:blur-0",
+              "transition hover:opacity-75",
+              item.isSoon && "blur-sm hover:blur-0 focus:blur-0",
             )}
           >
             {item.icon && <Iconify icon={item.icon} className="text-4xl" />}
