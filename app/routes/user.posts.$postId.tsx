@@ -211,7 +211,7 @@ export default function UserPostsPostIdRoute() {
                 onChange={e => setTitleValue(e.target.value)}
                 placeholder="Untitled"
                 spellCheck="false"
-                className="input-natural w-full font-heading text-4xl font-semibold"
+                className="input-natural w-full text-4xl font-semibold"
               />
               <FormErrors>{title}</FormErrors>
             </div>

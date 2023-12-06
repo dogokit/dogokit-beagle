@@ -17,10 +17,8 @@ export default {
        * To add the fonts, setup in app/configs/fonts.ts
        */
       fontFamily: {
-        display: ["Grandstander Variable", ...defaultTheme.fontFamily.sans],
-        heading: ["Archivo Variable", ...defaultTheme.fontFamily.sans],
+        display: ["Anybody Variable", ...defaultTheme.fontFamily.sans],
         sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
-        mono: ["Chivo Mono Variable", ...defaultTheme.fontFamily.mono],
       },
       /**
        * Can also use https://uicolors.app to generate additional colors

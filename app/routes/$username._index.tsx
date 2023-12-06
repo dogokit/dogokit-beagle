@@ -27,9 +27,10 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
       description: `Cannot find user with the username ${username}`,
     })
   }
+
   return createMeta({
     title: `${user.fullname} (@${user.username})`,
-    description: String(user.profiles[0]?.bio ?? ""),
+    description: user.profiles[0]?.bio ?? "",
   })
 }
 
@@ -74,10 +75,8 @@ export default function UsernameRoute() {
         </div>
 
         <div>
-          <h2 className="font-sans text-3xl">{user.fullname}</h2>
-          <h3 className="font-sans text-2xl text-muted-foreground">
-            @{user.username}
-          </h3>
+          <h2 className="text-3xl">{user.fullname}</h2>
+          <h3 className="text-2xl text-muted-foreground">@{user.username}</h3>
         </div>
       </section>
 

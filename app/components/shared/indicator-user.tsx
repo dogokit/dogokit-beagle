@@ -35,7 +35,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
   /**
    * Configured as a function to be near with the other navItems
    */
-  const createNavProfile = (username: string) => [
+  const profileNavItem = (username: string) => [
     {
       text: "Profile",
       to: `/${username}`,
@@ -79,7 +79,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
         <DropdownMenuSeparator />
         <DropdownMenuGroupItems
           items={[
-            ...createNavProfile(userData.username),
+            ...profileNavItem(userData.username),
             ...configNavigationItems.filter(item =>
               userNavItems.includes(item.to),
             ),

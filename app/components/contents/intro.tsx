@@ -9,7 +9,7 @@ export function ContentIntro() {
           id="intro"
           className={cn(
             "text-5xl sm:text-6xl md:text-7xl",
-            "leading-tight tracking-tighter text-primary",
+            "font-display tracking-tight text-primary",
             "bg-gradient-to-r from-primary to-violet-600 bg-clip-text text-transparent",
           )}
         >

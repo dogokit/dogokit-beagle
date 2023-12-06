@@ -74,7 +74,7 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-semibold text-foreground;
+    @apply font-semibold text-foreground;
   }
   h1 {
     @apply text-4xl sm:text-5xl;
@@ -143,10 +143,11 @@
   }
   .prose-config {
     @apply prose prose-slate dark:prose-invert focus:outline-none;
-    @apply prose-a:focus-ring prose-a:hover-opacity;
-    @apply prose-a:text-primary prose-a:no-underline;
     @apply prose-pre:bg-muted prose-pre:text-foreground;
     @apply prose-code:before:content-none prose-code:after:content-none;
+    @apply prose-a:focus-ring prose-a:hover-opacity prose-a:no-underline;
+    @apply prose-a:text-primary prose-a:dark:text-indigo-400;
+    @apply prose-headings:font-semibold;
   }
   .prose > ul > li > p {
     @apply my-0;

@@ -11,7 +11,7 @@ import { getCurrentYear } from "~/utils/datetime"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-10 space-y-4 p-4">
+    <footer className="mt-40 space-y-4 p-4">
       <SiteFooterSectionSitemap isRounded />
       <SiteFooterSectionExtra isRounded />
     </footer>
@@ -45,9 +45,7 @@ function SiteFooterSectionSitemap({
 
         <p className="text-xs">
           <span>&copy; {getCurrentYear()} </span>
-          <Link to="/" className="focus-ring">
-            {configSite.name}
-          </Link>
+          <span>{configSite.name}</span>
           <span>. All rights reserved.</span>
         </p>
       </div>

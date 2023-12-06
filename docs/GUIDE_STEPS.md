@@ -214,6 +214,8 @@ using online-required [Google Fonts](https://fonts.google.com).
 
 ```sh
 pnpm install @fontsource-variable/font-name
+# or
+pnpm install @fontsource/font-name
 ```
 
 ## Theme Mode

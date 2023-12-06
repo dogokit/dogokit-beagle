@@ -60,7 +60,7 @@ export default function UsersRoute() {
   const { users, ...loaderData } = useLoaderData<typeof loader>()
 
   return (
-    <div className="site-container space-y-10">
+    <div className="site-container space-y-20">
       <header className="site-header">
         <h1 className="inline-flex items-center gap-2 text-primary">
           <Iconify icon="ph:users-four-duotone" />
