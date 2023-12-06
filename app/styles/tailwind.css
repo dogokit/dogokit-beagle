@@ -126,8 +126,8 @@
     @apply w-full max-w-7xl space-y-2;
   }
   .input-natural {
-    @apply rounded-md border-transparent bg-transparent p-0;
-    @apply placeholder:text-muted-foreground/30 focus:border-transparent focus:ring-0;
+    @apply border-transparent bg-transparent p-0 placeholder:text-muted-foreground/30;
+    @apply focus:border-transparent focus:outline-none focus:ring-0;
   }
 }
 

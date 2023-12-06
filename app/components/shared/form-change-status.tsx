@@ -58,6 +58,9 @@ export function FormChangeStatus({
     ? fetcher.formData.get("statusSymbol")
     : item.status.symbol
 
+  const hasItemStatuses = Array.isArray(itemStatuses)
+  if (!hasItemStatuses) return null
+
   const statusOptimistic =
     itemStatuses.find(status => status.symbol === statusSymbol) || item.status
 

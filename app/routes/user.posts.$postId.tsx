@@ -46,7 +46,7 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
   if (!post) {
     return createMeta({
       title: "Post not found",
-      description: `Cannot find post with slug ${params.username}`,
+      description: `Cannot find post with slug ${params.postSlug}`,
     })
   }
   return createMeta({

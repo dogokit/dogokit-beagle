@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     "import/consistent-type-specifier-style": ["warn", "prefer-inline"],
     "import/no-duplicates": ["warn", { "prefer-inline": true }],
+    "require-await": ["warn"],
     "no-empty-pattern": "off",
     "node/no-process-env": "warn",
     "react/self-closing-comp": ["warn", { component: true, html: true }],
