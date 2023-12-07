@@ -1,4 +1,4 @@
-import parseHTML from "html-react-parser"
+import { parseHTML } from "~/utils/html"
 
 export function ViewHTML({ children }: { children: string }) {
   return (

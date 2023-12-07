@@ -9,7 +9,7 @@ import {
   type Content,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
-import parseHTML from "html-react-parser"
+import { parseHTML } from "~/utils/html"
 
 export function EditorTiptapHook({
   content,
