@@ -66,14 +66,6 @@ export function EditorTiptapViewHTML() {
   )
 }
 
-export function ViewHTML({ children }: { children: string }) {
-  return (
-    <article className="prose-config whitespace-pre-wrap">
-      {parseHTML(children)}
-    </article>
-  )
-}
-
 const contentExample = `
 <h2>
   Hi there,
