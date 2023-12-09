@@ -1,7 +1,7 @@
 export type NavItem = {
-  to: string
-  icon: string
+  path: string
   text: string
+  icon?: string
   end?: boolean
   shortcut?: string
   isEnabled?: boolean
@@ -9,129 +9,129 @@ export type NavItem = {
 
 export const configNavigationItems: NavItem[] = [
   {
-    to: "/",
+    path: "/",
     text: "Home",
     icon: "ph:house-duotone",
     isEnabled: false,
   },
   {
-    to: "/about",
+    path: "/about",
     text: "About",
     icon: "ph:info-duotone",
     isEnabled: true,
   },
   {
-    to: "/search",
+    path: "/search",
     text: "Search",
     icon: "ph:magnifying-glass-duotone",
     isEnabled: true,
   },
   {
-    to: "/posts",
+    path: "/posts",
     text: "Posts",
     icon: "ph:scroll-duotone",
     isEnabled: true,
   },
   {
-    to: "/users",
+    path: "/users",
     text: "Users",
     icon: "ph:users-four-duotone",
     isEnabled: true,
   },
   {
-    to: "/user/dashboard",
+    path: "/user/dashboard",
     icon: "ph:binoculars-duotone",
     text: "Dashboard",
     shortcut: "⌘K+D",
   },
   {
-    to: "/user/posts",
+    path: "/user/posts",
     icon: "ph:scroll-duotone",
     text: "Posts",
     shortcut: "⌘K+P",
   },
   {
-    to: "/user/settings",
+    path: "/user/settings",
     icon: "ph:gear-duotone",
     text: "Settings",
     shortcut: "⌘K+S",
   },
   {
-    to: "/user/account",
+    path: "/user/account",
     icon: "ph:user-duotone",
     text: "Account",
   },
   {
-    to: "/user/billing",
+    path: "/user/billing",
     icon: "ph:credit-card-duotone",
     text: "Billing",
     shortcut: "⌘K+B",
   },
   {
-    to: "/user/notifications",
+    path: "/user/notifications",
     icon: "ph:notification-duotone",
     text: "Notifications",
     shortcut: "⌘K+N",
   },
   {
-    to: "/help",
+    path: "/help",
     icon: "ph:question-duotone",
     text: "Help",
     shortcut: "⌘K+H",
   },
   {
-    to: "/help/shortcuts",
+    path: "/help/shortcuts",
     icon: "ph:keyboard-duotone",
     text: "Command Palette",
     shortcut: "⌘K",
   },
   {
-    to: "/user",
+    path: "/user",
     icon: "ph:user-duotone",
     text: "User",
   },
   {
-    to: "/admin",
+    path: "/admin",
     icon: "ph:crown-duotone",
     text: "Admin",
   },
   {
-    to: "/admin/dashboard",
+    path: "/admin/dashboard",
     icon: "ph:crown-duotone",
     text: "Dashboard",
   },
   {
-    to: "/admin/users",
+    path: "/admin/users",
     icon: "ph:users-four-duotone",
     text: "Users",
   },
   {
-    to: "/admin/posts",
+    path: "/admin/posts",
     icon: "ph:scroll-duotone",
     text: "Posts",
   },
   {
-    to: "/admin/settings",
+    path: "/admin/settings",
     icon: "ph:gear-duotone",
     text: "Settings",
   },
   {
-    to: "/admin/notifications",
+    path: "/admin/notifications",
     icon: "ph:notification-duotone",
     text: "Notifications",
   },
   {
-    to: "/components",
+    path: "/components",
     icon: "ph:bounding-box-duotone",
     text: "Components",
   },
   {
-    to: "/blank",
+    path: "/blank",
     icon: "ph:square",
     text: "Blank",
   },
   {
-    to: "/logout",
+    path: "/logout",
     icon: "ph:sign-out-duotone",
     text: "Log Out",
   },

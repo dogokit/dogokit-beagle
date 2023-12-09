@@ -1,13 +1,8 @@
 import { useParams } from "@remix-run/react"
 import { match } from "ts-pattern"
-import { Button } from "~/components/ui/button"
-import { DatePicker } from "~/components/ui/date-picker"
 
-const renderComponent = (path: string) =>
-  match(path)
-    .with("button", () => <ComponentButton />)
-    .with("date-picker", () => <ComponentDatePicker />)
-    .otherwise(() => <p>No Component</p>)
+import { ExampleButton } from "~/components/examples/button"
+import { ExampleDatePicker } from "~/components/examples/date-picker"
 
 export default function ComponentPathRoute() {
   const params = useParams()
@@ -16,21 +11,8 @@ export default function ComponentPathRoute() {
   return renderComponent(componentPath)
 }
 
-function ComponentButton() {
-  return (
-    <div>
-      <Button>Button</Button>
-    </div>
-  )
-}
-
-function ComponentDatePicker() {
-  return (
-    <div>
-      <DatePicker
-        defaultValue={String(new Date())}
-        name="date-picker-example"
-      />
-    </div>
-  )
-}
+const renderComponent = (path: string) =>
+  match(path)
+    .with("button", () => <ExampleButton />)
+    .with("date-picker", () => <ExampleDatePicker />)
+    .otherwise(() => <p>No Component</p>)

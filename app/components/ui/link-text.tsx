@@ -18,7 +18,7 @@ export function LinkText({ to, children, disabled, className }: Props) {
     <Link
       to={to}
       className={cn(
-        "underline",
+        "prose-a-styles",
         disabled && "cursor-not-allowed opacity-75",
         className,
       )}

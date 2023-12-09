@@ -1,23 +1,20 @@
 import { Link, Outlet } from "@remix-run/react"
+import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
+
 import { Card } from "~/components/ui/card"
 import { configComponents } from "~/configs/components"
 
 export default function ExampleComponentsRoute() {
   return (
-    <div className="site-container">
+    <div className="site-container space-y-8">
+      <header>
+        <h1>
+          <Link to="/components">Components</Link>
+        </h1>
+      </header>
+
       <section className="flex flex-col flex-wrap gap-4 sm:flex-row">
-        <div className="prose-config">
-          <h1>Components</h1>
-          <ul>
-            {configComponents.map(component => (
-              <li key={component.slug}>
-                <Link to={`/components/${component.slug}`}>
-                  {component.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SidebarNavItems items={configComponents} />
 
         <Card className="flex-1 p-4">
           <Outlet />

@@ -46,7 +46,7 @@ export default function UserLayoutRoute() {
         <nav className={cn("select-none border-r border-r-border p-2 lg:p-4")}>
           <SidebarNavItems
             items={configNavigationItems.filter(item =>
-              navItems.includes(item.to),
+              navItems.includes(item.path),
             )}
           />
 
@@ -55,7 +55,7 @@ export default function UserLayoutRoute() {
           {isModeDevelopment && (
             <SidebarNavItems
               items={configNavigationItems.filter(item =>
-                extraNavItems.includes(item.to),
+                extraNavItems.includes(item.path),
               )}
             />
           )}

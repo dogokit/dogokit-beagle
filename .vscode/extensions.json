@@ -15,6 +15,7 @@
     "stylelint.vscode-stylelint",
     "usernamehw.errorlens",
     "yoavbls.pretty-ts-errors",
-    "yzhang.markdown-all-in-one"
+    "yzhang.markdown-all-in-one",
+    "mhutchie.git-graph"
   ]
 }

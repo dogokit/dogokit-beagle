@@ -35,16 +35,15 @@ export default function AdminLayoutRoute() {
       <nav className="select-none border-r border-r-border p-2 lg:p-4">
         <SidebarNavItems
           items={configNavigationItems.filter(item =>
-            navItems.includes(item.to),
+            navItems.includes(item.path),
           )}
         />
 
         {isModeDevelopment && <Separator className="my-2" />}
-
         {isModeDevelopment && (
           <SidebarNavItems
             items={configNavigationItems.filter(item =>
-              extraNavItems.includes(item.to),
+              extraNavItems.includes(item.path),
             )}
           />
         )}

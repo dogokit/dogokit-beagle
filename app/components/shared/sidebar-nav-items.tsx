@@ -8,11 +8,11 @@ export function SidebarNavItems({ items }: { items: NavItem[] }) {
   return (
     <ul className="space-y-2">
       {items.map(item => {
-        const isLogout = item.to === "/logout"
+        const isLogout = item.path === "/logout"
         return (
-          <li key={item.to}>
+          <li key={item.path}>
             <NavLink
-              to={item.to}
+              to={item.path}
               className={({ isActive }) =>
                 cn(
                   "focus-ring flex w-full items-center gap-2 rounded-md px-2 py-1 transition",

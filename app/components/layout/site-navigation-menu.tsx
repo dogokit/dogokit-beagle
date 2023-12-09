@@ -88,11 +88,11 @@ export function SiteNavigationMenu() {
 
           <ul className="flex flex-col items-end gap-4">
             {configNavigationItems
-              .filter(item => configSite.navItems.includes(item.to))
+              .filter(item => configSite.navItems.includes(item.path))
               .filter(navItem => navItem.isEnabled)
               .map(navItem => (
                 <NavItemLinkMenu
-                  key={navItem.to}
+                  key={navItem.path}
                   onOpenChange={setOpen}
                   navItem={navItem}
                 />
@@ -155,7 +155,7 @@ function NavItemLinkMenu({
     <NavItemLink
       navItem={navItem}
       onClick={() => {
-        navigate(navItem.to.toString())
+        navigate(navItem.path.toString())
         onOpenChange?.(false)
       }}
     />

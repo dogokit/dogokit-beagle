@@ -81,7 +81,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
           items={[
             ...profileNavItem(userData.username),
             ...configNavigationItems.filter(item =>
-              userNavItems.includes(item.to),
+              userNavItems.includes(item.path),
             ),
           ]}
         />
@@ -90,7 +90,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
         {isModeDevelopment && (
           <DropdownMenuGroupItems
             items={configNavigationItems.filter(item =>
-              devNavItems.includes(item.to),
+              devNavItems.includes(item.path),
             )}
           />
         )}
@@ -98,7 +98,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
         <DropdownMenuSeparator />
         <DropdownMenuGroupItems
           items={configNavigationItems.filter(item =>
-            authNavItems.includes(item.to),
+            authNavItems.includes(item.path),
           )}
         />
       </DropdownMenuContent>
@@ -113,10 +113,10 @@ function DropdownMenuGroupItems({ items }: { items: NavItem[] }) {
   return (
     <DropdownMenuGroup>
       {items.map(item => {
-        const isLogout = item.to === "/logout"
+        const isLogout = item.path === "/logout"
         return (
-          <DropdownMenuItem key={item.to} isDestructive={isLogout} asChild>
-            <NavLink to={item.to}>
+          <DropdownMenuItem key={item.path} isDestructive={isLogout} asChild>
+            <NavLink to={item.path}>
               <Iconify icon={item.icon} className="me-2" />
               <span>{item.text}</span>
               {item.shortcut && (

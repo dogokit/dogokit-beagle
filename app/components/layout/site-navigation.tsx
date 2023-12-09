@@ -94,10 +94,10 @@ function SiteNavigationLarge() {
       <div className="flex items-center gap-4">
         <ul className="flex items-center gap-4">
           {configNavigationItems
-            .filter(item => configSite.navItems.includes(item.to))
+            .filter(item => configSite.navItems.includes(item.path))
             .filter(navItem => navItem.isEnabled)
             .map(navItem => (
-              <NavItemLink key={navItem.to} navItem={navItem} />
+              <NavItemLink key={navItem.path} navItem={navItem} />
             ))}
         </ul>
 
@@ -137,7 +137,7 @@ export function NavItemLink({
   return (
     <li>
       <NavLink
-        to={navItem.to}
+        to={navItem.path}
         onClick={onClick}
         className={({ isActive }) =>
           cn(
