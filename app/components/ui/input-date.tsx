@@ -4,8 +4,8 @@ import { cn } from "~/utils/cn"
 
 export function InputDate({ className, ...props }: InputProps) {
   return (
-    <div className={cn("relative", className)}>
-      <Input type="date" {...props} />
+    <div className="relative">
+      <Input type="date" className={cn(className)} {...props} />
       <Iconify
         icon="ph:calendar-blank"
         className={cn(

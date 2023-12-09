@@ -12,10 +12,15 @@ import {
 import { cn } from "~/utils/cn"
 import { formatDateDMY } from "~/utils/datetime"
 
-export function DatePicker(fieldConfig: FieldConfig<string>) {
+export function DatePicker({
+  className,
+  ...props
+}: {
+  className: string
+} & FieldConfig<string>) {
   const defaultDate =
-    fieldConfig.defaultValue && fieldConfig.defaultValue !== "Invalid Date"
-      ? new Date(fieldConfig.defaultValue)
+    props.defaultValue && props.defaultValue !== "Invalid Date"
+      ? new Date(props.defaultValue)
       : new Date()
 
   const [date, setDate] = useState<Date>(defaultDate)
@@ -32,8 +37,8 @@ export function DatePicker(fieldConfig: FieldConfig<string>) {
       <Popover>
         <input
           type="hidden"
-          required={fieldConfig.required}
-          name={fieldConfig.name}
+          required={props.required}
+          name={props.name}
           value={String(date)}
           onChange={event => {
             control.change(event.target.value)
@@ -45,9 +50,9 @@ export function DatePicker(fieldConfig: FieldConfig<string>) {
           <Button
             variant="outline"
             className={cn(
-              "h-9 justify-start gap-2 p-2 text-left font-normal",
-              "w-[280px] border-input",
+              "h-9 justify-start gap-2 border-input p-2 text-left font-normal",
               !date && "text-muted-foreground",
+              className,
             )}
           >
             <Iconify icon="ph:calendar-blank" className="h-5 w-5" />

@@ -17,7 +17,7 @@ export function getCurrentYear() {
 }
 
 export function formatDateDMY(date: string | Date | undefined) {
-  return dayjs(date).locale("en").format("D MMM YYYY")
+  return dayjs(date).locale("en").format("D MMMM YYYY")
 }
 
 export function formatDateYMD(date: string | Date | undefined) {
