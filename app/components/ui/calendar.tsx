@@ -5,27 +5,36 @@ import { buttonVariants } from "~/components/ui/button"
 import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 
-const CALENDAR_YEAR_PAST = 50
-const CALENDAR_YEAR_FUTURE = 50
+const CALENDAR_YEAR_PAST = 10
+const CALENDAR_YEAR_FUTURE = 10
 
-type CalendarProps = React.ComponentProps<typeof DayPicker>
+type CalendarProps = React.ComponentProps<typeof DayPicker> & {
+  yearPast?: number
+  yearFuture?: number
+}
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
+  fixedWeeks = true,
+  yearPast = CALENDAR_YEAR_PAST,
+  yearFuture = CALENDAR_YEAR_FUTURE,
+  ISOWeek = true,
   ...props
 }: CalendarProps) {
   const today = new Date()
-  const fromYear = today.getFullYear() - CALENDAR_YEAR_PAST
-  const toYear = today.getFullYear() + CALENDAR_YEAR_FUTURE
+  const fromYear = today.getFullYear() - yearPast
+  const toYear = today.getFullYear() + yearFuture
 
   return (
     <DayPicker
       captionLayout="dropdown-buttons"
+      ISOWeek={ISOWeek}
+      fixedWeeks={fixedWeeks}
+      showOutsideDays={showOutsideDays}
       fromYear={fromYear}
       toYear={toYear}
-      showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
@@ -35,7 +44,7 @@ function Calendar({
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+          "h-7 w-7 bg-transparent p-0",
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
@@ -57,12 +66,15 @@ function Calendar({
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
-        caption_dropdowns: "flex gap-2",
-        dropdown: cn(
-          "cursor-pointer flex w-full rounded-md border border-input bg-background px-3 py-1 text-sm transition-colors",
-          "focus:border-primary focus:outline-none focus:ring focus:ring-ring/20",
-        ),
         vhidden: "hidden",
+        caption_dropdowns: "flex gap-1",
+        dropdown_month: "w-[100px]",
+        dropdown_year: "w-[65px]",
+        dropdown: cn(
+          "p-1 cursor-pointer flex w-full rounded-md bg-background text-sm transition-colors",
+          "border-none focus-ring",
+        ),
+
         ...classNames,
       }}
       components={{

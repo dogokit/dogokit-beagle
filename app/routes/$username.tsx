@@ -8,7 +8,7 @@ import {
 
 import { configRedirects } from "~/configs/redirects"
 import { modelUser } from "~/models/user.server"
-import { formatDateLastMod } from "~/utils/datetime"
+import { formatDateYMD } from "~/utils/datetime"
 import { redirectRouteToUrl } from "~/utils/redirect-route.server"
 
 export const handle: SEOHandle = {
@@ -18,7 +18,7 @@ export const handle: SEOHandle = {
       return {
         route: `/${user.username}`,
         priority: 0.6,
-        lastmod: formatDateLastMod(user.updatedAt),
+        lastmod: formatDateYMD(user.updatedAt),
       }
     })
   },

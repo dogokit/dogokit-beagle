@@ -23,7 +23,8 @@ import {
   FormLabel,
 } from "~/components/ui/form"
 import { Iconify } from "~/components/ui/iconify"
-import { Input, InputPassword } from "~/components/ui/input"
+import { Input } from "~/components/ui/input"
+import { InputPassword } from "~/components/ui/input-password"
 import { LinkText } from "~/components/ui/link-text"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { prisma } from "~/libs/db.server"

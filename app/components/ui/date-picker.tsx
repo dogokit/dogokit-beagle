@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
 } from "~/components/ui/popover"
 import { cn } from "~/utils/cn"
-import { formatDate } from "~/utils/datetime"
+import { formatDateDMY } from "~/utils/datetime"
 
 export function DatePicker(fieldConfig: FieldConfig<string>) {
   const defaultDate =
@@ -45,22 +45,25 @@ export function DatePicker(fieldConfig: FieldConfig<string>) {
           <Button
             variant="outline"
             className={cn(
-              "h-10 w-[280px] justify-start gap-2 p-2 text-left font-normal",
+              "h-10 justify-start gap-2 p-2 text-left font-normal",
+              "w-[280px] border-input",
               !date && "text-muted-foreground",
             )}
           >
             <Iconify icon="ph:calendar-blank" className="mr-2 h-4 w-4" />
-            {date ? formatDate(date) : <span>Pick a date</span>}
+            {date ? formatDateDMY(date) : <span>Pick a date</span>}
           </Button>
         </PopoverTrigger>
 
         <PopoverContent className="w-auto p-0">
           <Calendar
+            initialFocus
             mode="single"
             selected={date}
             onSelect={setDate as any}
-            initialFocus
             defaultMonth={date}
+            yearPast={5}
+            yearFuture={5}
           />
         </PopoverContent>
       </Popover>

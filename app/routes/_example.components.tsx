@@ -1,6 +1,6 @@
 import { Link, Outlet } from "@remix-run/react"
-import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 
+import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 import { Card } from "~/components/ui/card"
 import { configComponents } from "~/configs/components"
 

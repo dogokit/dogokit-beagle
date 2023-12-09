@@ -1,7 +1,7 @@
 import { type SEOHandle } from "@nasa-gcn/remix-seo"
 
 import { modelPost } from "~/models/post.server"
-import { formatDateLastMod } from "~/utils/datetime"
+import { formatDateYMD } from "~/utils/datetime"
 
 export const handle: SEOHandle = {
   getSitemapEntries: async () => {
@@ -10,7 +10,7 @@ export const handle: SEOHandle = {
       return {
         route: `/posts/${post.slug}`,
         priority: 0.5,
-        lastmod: formatDateLastMod(post.updatedAt),
+        lastmod: formatDateYMD(post.updatedAt),
       }
     })
   },

@@ -16,18 +16,11 @@ export function getCurrentYear() {
   return new Date().getFullYear()
 }
 
-export function formatTimestamp(date: ParamDate) {
-  return (
-    dayjs(date).locale("en").format("MMM D, YYYY [at] H:mm") +
-    ` · ${formatRelativeTime(date)}`
-  )
-}
-
-export function formatDate(date: string | Date | undefined) {
+export function formatDateDMY(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("D MMM YYYY")
 }
 
-export function formatDateLastMod(date: string | Date | undefined) {
+export function formatDateYMD(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("YYYY-MM-DD")
 }
 
@@ -41,6 +34,13 @@ export function formatPublished(date: string | Date | undefined) {
 
 function formatRelativeTime(date: string | Date | undefined) {
   return dayjs(date).locale("en").fromNow()
+}
+
+export function formatTimestamp(date: ParamDate) {
+  return (
+    dayjs(date).locale("en").format("MMM D, YYYY [at] H:mm") +
+    ` · ${formatRelativeTime(date)}`
+  )
 }
 
 /**

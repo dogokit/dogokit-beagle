@@ -22,7 +22,7 @@ import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { prisma } from "~/libs/db.server"
 import { modelPostStatus } from "~/models/post-status.server"
 import { modelPost } from "~/models/post.server"
-import { formatDate } from "~/utils/datetime"
+import { formatDateDMY } from "~/utils/datetime"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -78,7 +78,7 @@ export default function PostSlugRoute() {
       <header className="site-header">
         {isArchived && (
           <Alert>
-            This post has been archived by on {formatDate(post.updatedAt)}
+            This post has been archived by on {formatDateDMY(post.updatedAt)}
           </Alert>
         )}
 

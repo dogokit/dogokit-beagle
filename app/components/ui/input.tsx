@@ -1,11 +1,9 @@
 import * as React from "react"
-import { useState } from "react"
 
-import { Button } from "~/components/ui/button"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => {
@@ -27,40 +25,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 )
 Input.displayName = "Input"
 
-function InputPassword({
-  placeholder = "Enter password",
-  className,
-  ...props
-}: InputProps) {
-  const [isShown, setIsShown] = useState<boolean>(false)
-
-  function handleClick() {
-    setIsShown(!isShown)
-  }
-
-  return (
-    <div className={cn("relative", className)}>
-      <Input
-        type={isShown ? "text" : "password"}
-        placeholder={placeholder}
-        {...props}
-      />
-      <Button
-        size="xs"
-        type="button"
-        variant="secondary"
-        onClick={handleClick}
-        className="absolute inset-y-0 right-0 my-1.5 me-1.5 flex w-20 gap-2"
-      >
-        {isShown ? (
-          <Iconify icon="ph:eye-slash-duotone" />
-        ) : (
-          <Iconify icon="ph:eye-duotone" />
-        )}
-        <span className="text-xs">{isShown ? "Hide" : "Show"}</span>
-      </Button>
-    </div>
-  )
-}
-
-export { Input, InputPassword }
+export { Input }
