@@ -45,12 +45,12 @@ export function DatePicker(fieldConfig: FieldConfig<string>) {
           <Button
             variant="outline"
             className={cn(
-              "h-10 justify-start gap-2 p-2 text-left font-normal",
+              "h-9 justify-start gap-2 p-2 text-left font-normal",
               "w-[280px] border-input",
               !date && "text-muted-foreground",
             )}
           >
-            <Iconify icon="ph:calendar-blank" className="mr-2 h-4 w-4" />
+            <Iconify icon="ph:calendar-blank" className="h-5 w-5" />
             {date ? formatDateDMY(date) : <span>Pick a date</span>}
           </Button>
         </PopoverTrigger>

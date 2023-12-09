@@ -1,3 +1,3 @@
-import parseHTML from "html-react-parser";
+import parseHTML from "html-react-parser"
 
 export { parseHTML }

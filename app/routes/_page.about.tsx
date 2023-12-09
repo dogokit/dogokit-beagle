@@ -12,7 +12,7 @@ export const meta: MetaFunction = () =>
 
 export default function AboutRoute() {
   return (
-    <div className="site-container space-y-20">
+    <div className="site-container space-y-12">
       <header className="site-header">
         <h1 className="inline-flex items-center gap-2 text-primary">
           <Iconify icon="ph:info-duotone" />

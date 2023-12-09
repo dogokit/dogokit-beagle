@@ -94,6 +94,10 @@
   h6 {
     @apply text-base;
   }
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    @apply dark:opacity-0;
+  }
 }
 
 /*
@@ -102,7 +106,7 @@
  */
 @layer components {
   .site-container {
-    @apply mx-auto min-h-screen w-full max-w-7xl px-4 pt-10;
+    @apply mx-auto min-h-screen w-full max-w-7xl px-4 pt-12;
   }
   .site-header {
     @apply mx-auto w-full max-w-prose space-y-4;

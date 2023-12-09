@@ -6,7 +6,8 @@ export function ExampleDatePicker() {
   const today = new Date()
 
   return (
-    <div className="max-w-[280px] space-y-4">
+    <div className="max-w-xs space-y-4">
+      <InputDate />
       <InputDate defaultValue={formatDateYMD(today)} />
       <DatePicker defaultValue={String(today)} name="date-picker-example" />
     </div>

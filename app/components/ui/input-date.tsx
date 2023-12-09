@@ -8,7 +8,9 @@ export function InputDate({ className, ...props }: InputProps) {
       <Input type="date" {...props} />
       <Iconify
         icon="ph:calendar-blank"
-        className="pointer-events-none absolute inset-y-0 right-0 my-2 mr-3 flex h-5 w-5 cursor-pointer gap-2"
+        className={cn(
+          "pointer-events-none absolute inset-y-0 right-0 my-2 mr-3 flex h-5 w-5",
+        )}
       />
     </div>
   )

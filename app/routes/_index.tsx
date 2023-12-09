@@ -17,7 +17,7 @@ export const meta: MetaFunction = () =>
 
 export default function IndexRoute() {
   return (
-    <div className="site-container space-y-20">
+    <div className="site-container space-y-12">
       <section className="site-section">
         <ContentIntro />
       </section>
