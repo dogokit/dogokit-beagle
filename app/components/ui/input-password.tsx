@@ -17,10 +17,11 @@ export function InputPassword({
   }
 
   return (
-    <div className={cn("relative", className)}>
+    <div className="relative">
       <Input
         type={isShown ? "text" : "password"}
         placeholder={placeholder}
+        className={cn(className)}
         {...props}
       />
       <Button

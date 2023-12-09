@@ -164,6 +164,7 @@ export default function SignUpRoute() {
                   autoComplete="current-password"
                   autoFocus={password.error ? true : undefined}
                   required
+                  className="w-full"
                 />
                 <FormDescription id={password.descriptionId}>
                   8 characters or more

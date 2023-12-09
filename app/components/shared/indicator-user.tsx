@@ -38,7 +38,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
   const profileNavItem = (username: string) => [
     {
       text: "Profile",
-      to: `/${username}`,
+      path: `/${username}`,
       icon: "ph:user-duotone",
       shortcut: "⌘K+P",
     },
@@ -54,7 +54,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
     "/user/notifications",
   ]
 
-  const devNavItems = ["/admin", "/components", "/blank"]
+  const devNavItems = ["/admin", "/examples", "/blank"]
 
   const authNavItems = ["/logout"]
 

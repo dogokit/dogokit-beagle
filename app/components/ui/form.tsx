@@ -10,7 +10,13 @@ const FormField = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  return <div ref={ref} className={cn("space-y-1", className)} {...props} />
+  return (
+    <div
+      ref={ref}
+      className={cn("flex flex-col gap-1", className)}
+      {...props}
+    />
+  )
 })
 FormField.displayName = "FormField"
 

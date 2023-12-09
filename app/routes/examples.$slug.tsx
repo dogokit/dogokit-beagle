@@ -6,10 +6,9 @@ import { ExampleDatePicker } from "~/components/examples/date-picker"
 import { ExampleInput } from "~/components/examples/input"
 import { ExampleTiptap } from "~/components/examples/tiptap"
 
-export default function ComponentSlugRoute() {
+export default function ExamplesSlugRoute() {
   const { slug } = useParams()
   if (!slug) return null
-
   return renderComponent(slug)
 }
 

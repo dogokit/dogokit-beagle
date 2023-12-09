@@ -5,12 +5,8 @@ import {
 
 export function ExampleTiptap() {
   return (
-    <div className="site-container">
-      <section className="site-section">
-        <EditorTiptapContext>
-          <EditorTiptapViewHTML />
-        </EditorTiptapContext>
-      </section>
-    </div>
+    <EditorTiptapContext>
+      <EditorTiptapViewHTML />
+    </EditorTiptapContext>
   )
 }

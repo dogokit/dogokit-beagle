@@ -31,11 +31,7 @@ export function EditorTiptapHook({
 
   if (!editor) return null
 
-  return (
-    <>
-      <EditorContent editor={editor} />
-    </>
-  )
+  return <EditorContent editor={editor} className="cursor-text" />
 }
 
 export function EditorTiptapContext({
@@ -49,7 +45,9 @@ export function EditorTiptapContext({
     <EditorProvider
       extensions={[StarterKit, Highlight, Typography, Underline]}
       content={content || contentExample}
-      editorProps={{ attributes: { class: "prose-config" } }}
+      editorProps={{
+        attributes: { class: "prose-config cursor-text" },
+      }}
     >
       {children}
     </EditorProvider>
@@ -67,6 +65,9 @@ export function EditorTiptapViewHTML() {
 }
 
 const contentExample = `
+<h1>
+  Tiptap Example
+</h1>
 <h2>
   Hi there,
 </h2>

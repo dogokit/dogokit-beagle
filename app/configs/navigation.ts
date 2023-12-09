@@ -1,7 +1,7 @@
 export type NavItem = {
   path: string
   text: string
-  icon?: string
+  icon: string
   end?: boolean
   shortcut?: string
   isEnabled?: boolean
@@ -121,9 +121,9 @@ export const configNavigationItems: NavItem[] = [
     text: "Notifications",
   },
   {
-    path: "/components",
+    path: "/examples",
     icon: "ph:bounding-box-duotone",
-    text: "Components",
+    text: "Examples",
   },
   {
     path: "/blank",

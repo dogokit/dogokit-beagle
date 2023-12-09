@@ -28,7 +28,7 @@ export function FormSearch({
           defaultValue={query}
           autoFocus
           autoComplete="off"
-          className="py-2 pe-3 ps-10"
+          className="w-full py-2 pe-3 ps-10"
         />
         <span className="pointer-events-none absolute flex ps-3">
           <Iconify

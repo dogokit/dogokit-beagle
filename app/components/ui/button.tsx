@@ -24,6 +24,7 @@ const buttonVariants = cva(
         sm: "h-8 gap-2 rounded-md px-3",
         default: "h-10 gap-2 px-4 py-2",
         lg: "h-12 gap-3 rounded-md px-8 text-lg",
+        xl: "h-14 gap-4 rounded-md px-10 text-xl",
       },
       isIcon: { true: "p-0", false: "" },
       isIconText: { true: "flex items-center gap-2", false: "" },
