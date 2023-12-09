@@ -10,7 +10,7 @@ export function SiteLayout({
     <div className="flex min-h-screen flex-col">
       <SiteNavigation />
 
-      <main className={cn("flex-[1]", className)}>{children}</main>
+      <main className={cn("flex-1", className)}>{children}</main>
 
       <SiteFooter />
     </div>

@@ -189,7 +189,7 @@ export default function UserPostsPostIdRoute() {
                   ref={slugRef}
                   placeholder="untitled"
                   spellCheck="false"
-                  className="input-natural flex-[1] font-mono text-sm text-muted-foreground"
+                  className="input-natural flex-1 font-mono text-sm text-muted-foreground"
                 />
                 <Button
                   type="button"
