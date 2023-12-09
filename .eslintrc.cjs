@@ -17,7 +17,6 @@ module.exports = {
     "no-empty-pattern": "off",
     "node/no-process-env": "warn",
     "react/self-closing-comp": ["warn", { component: true, html: true }],
-    "require-await": "warn",
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],

@@ -3,7 +3,7 @@ import {
   EditorTiptapViewHTML,
 } from "~/components/libs/editor-tiptap"
 
-export default function ExampleTiptapRoute() {
+export function ExampleTiptap() {
   return (
     <div className="site-container">
       <section className="site-section">

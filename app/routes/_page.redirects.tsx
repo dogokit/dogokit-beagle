@@ -1,8 +1,4 @@
-import {
-  json,
-  type LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
+import { json, type MetaFunction } from "@remix-run/node"
 import { Link, useLoaderData } from "@remix-run/react"
 
 import { Anchor } from "~/components/ui/anchor"
@@ -19,7 +15,7 @@ export const meta: MetaFunction = () =>
     description: `List of redirect pages`,
   })
 
-export const loader = ({}: LoaderFunctionArgs) => {
+export const loader = () => {
   const redirects = configRedirects
   return json({ redirects })
 }

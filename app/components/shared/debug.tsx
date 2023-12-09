@@ -15,7 +15,6 @@ import { stringifyCode } from "~/utils/string"
  * Debug
  *
  * Preformat code component to show debugging information.
- * Can be toggled in app/configs/dev.ts: debugComponent
  */
 
 export function Debug({
