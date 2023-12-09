@@ -197,21 +197,21 @@ export const modelUser = {
     })
   },
 
-  async updateFullName({ id, fullname }: Pick<User, "id" | "fullname">) {
+  updateFullName({ id, fullname }: Pick<User, "id" | "fullname">) {
     return prisma.user.update({
       where: { id },
       data: { fullname },
     })
   },
 
-  async updateNickName({ id, nickname }: Pick<User, "id" | "nickname">) {
+  updateNickName({ id, nickname }: Pick<User, "id" | "nickname">) {
     return prisma.user.update({
       where: { id },
       data: { nickname },
     })
   },
 
-  async updateEmail({ id, email }: Pick<User, "id" | "email">) {
+  updateEmail({ id, email }: Pick<User, "id" | "email">) {
     return prisma.user.update({
       where: { id },
       data: { email },
