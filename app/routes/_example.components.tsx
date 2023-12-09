@@ -13,7 +13,7 @@ export default function ExampleComponentsRoute() {
         </h1>
       </header>
 
-      <section className="flex flex-col flex-wrap gap-4 sm:flex-row">
+      <section className="flex gap-4">
         <SidebarNavItems items={configComponents} />
 
         <Card className="flex-1 p-4">
