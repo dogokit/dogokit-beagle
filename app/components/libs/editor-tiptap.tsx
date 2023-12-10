@@ -1,4 +1,5 @@
 import Highlight from "@tiptap/extension-highlight"
+import Link from "@tiptap/extension-link"
 import Typography from "@tiptap/extension-typography"
 import Underline from "@tiptap/extension-underline"
 import {
@@ -10,6 +11,7 @@ import {
   type Content,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
+import { useCallback } from "react"
 
 import { buttonVariants } from "~/components/ui/button"
 import { Iconify } from "~/components/ui/iconify"
@@ -24,7 +26,18 @@ export function EditorTiptapHook({
   handleUpdate?: (htmlString: string) => void
 }) {
   const editor = useEditor({
-    extensions: [StarterKit, Highlight, Typography, Underline],
+    extensions: [
+      StarterKit,
+      Highlight,
+      Typography,
+      Underline,
+      Link.configure({
+        HTMLAttributes: {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        },
+      }),
+    ],
     editorProps: { attributes: { class: "prose-config" } },
     content: content || contentExample,
     onUpdate({ editor }) {
@@ -34,22 +47,36 @@ export function EditorTiptapHook({
     },
   })
 
-  if (!editor) return null
+  const setLink = useCallback(() => {
+    if (!editor) return null
+
+    const previousUrl = editor.getAttributes("link").href
+    const url = window.prompt("URL", previousUrl)
+
+    // cancelled
+    if (url === null) {
+      return
+    }
+
+    // empty
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run()
+
+      return
+    }
+
+    // update link
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run()
+  }, [editor])
 
   const buttonActive = cn(
-    buttonVariants({
-      variant: "default",
-      size: "xs",
-      isIcon: true,
-    }),
+    buttonVariants({ variant: "default", size: "xs", isIcon: true }),
   )
   const buttonInactive = cn(
-    buttonVariants({
-      variant: "ghost",
-      size: "xs",
-      isIcon: true,
-    }),
+    buttonVariants({ variant: "ghost", size: "xs", isIcon: true }),
   )
+
+  if (!editor) return null
 
   return (
     <>
@@ -77,6 +104,19 @@ export function EditorTiptapHook({
           className={editor.isActive("strike") ? buttonActive : buttonInactive}
         >
           <Iconify icon="ph:text-strikethrough" />
+        </button>
+        <button
+          onClick={setLink}
+          className={editor.isActive("link") ? buttonActive : buttonInactive}
+        >
+          <Iconify icon="ph:link" />
+        </button>
+        <button
+          onClick={() => editor.chain().focus().unsetLink().run()}
+          disabled={!editor.isActive("link")}
+          className={!editor.isActive("link") ? "opacity-25" : ""}
+        >
+          <Iconify icon="ph:link-break" />
         </button>
       </BubbleMenu>
     </>
