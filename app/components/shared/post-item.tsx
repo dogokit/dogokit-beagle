@@ -39,7 +39,7 @@ export function PostItem({
             </Link>
           </h3>
 
-          <p className="hidden sm:block">{post.content}</p>
+          <p className="hidden sm:block">{post.excerpt}</p>
         </div>
 
         <p className="text-sm text-muted-foreground">

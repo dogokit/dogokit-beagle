@@ -13,7 +13,6 @@ import {
 } from "~/components/shared/pagination"
 import { PostItem } from "~/components/shared/post-item"
 import { Iconify } from "~/components/ui/iconify"
-import { sanitizePosts } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -72,7 +71,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
   return json({
     ...getPaginationOptions({ request, totalItems }),
-    posts: sanitizePosts(posts),
+    posts,
   })
 }
 

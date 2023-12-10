@@ -15,10 +15,10 @@ import StarterKit from "@tiptap/starter-kit"
 import { useCallback } from "react"
 
 import { buttonVariants } from "~/components/ui/button"
+import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { parseHTML } from "~/utils/html"
 import { fixUrl } from "~/utils/url"
-import { Iconify } from "../ui/iconify"
 
 /**
  * Tiptap

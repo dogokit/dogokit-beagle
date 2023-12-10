@@ -1,6 +1,6 @@
 import { type Post } from "@prisma/client"
 
-import { createPostSlug } from "~/helpers/post"
+import { createPostSlug, getPostExcerpt } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
 import { type PostStatusSymbol } from "~/types/post-status"
 
@@ -49,6 +49,7 @@ export const modelUserPost = {
         slug: createPostSlug(title),
         title,
         content,
+        excerpt: getPostExcerpt(content),
         statusId: status.id,
       },
       include: {
@@ -71,6 +72,7 @@ export const modelUserPost = {
         slug,
         title,
         content,
+        excerpt: getPostExcerpt(content),
       },
     })
   },

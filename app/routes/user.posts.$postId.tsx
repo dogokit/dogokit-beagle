@@ -16,7 +16,6 @@ import {
 import { useRef, useState } from "react"
 import { z } from "zod"
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
-import { Debug } from "~/components/shared/debug"
 import { FormChangeStatus } from "~/components/shared/form-change-status"
 import { FormDelete } from "~/components/shared/form-delete"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -51,7 +50,7 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
   }
   return createMeta({
     title: post.title,
-    description: String(post.content),
+    description: post.content,
   })
 }
 
@@ -113,10 +112,6 @@ export default function UserPostsPostIdRoute() {
 
   return (
     <div className="app-container">
-      <Debug isCollapsibleOpen hidden>
-        {post}
-      </Debug>
-
       <Form replace method="POST" {...form.props}>
         <fieldset className="space-y-8" disabled={isSubmitting}>
           <section className="app-section">

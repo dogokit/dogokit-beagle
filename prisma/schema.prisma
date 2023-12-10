@@ -161,8 +161,9 @@ model Post {
   id String @id @default(cuid())
 
   slug    String @unique
-  title   String
+  title   String @db.Text
   content String @db.Text
+  excerpt String @db.Text
 
   status   PostStatus @relation(fields: [statusId], references: [id])
   statusId String
