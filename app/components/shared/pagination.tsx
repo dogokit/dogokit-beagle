@@ -178,7 +178,7 @@ export function PaginationNavigation({
       {renderArrowLink("prev", <Iconify icon="ph:caret-left" />, pageParam - 1)}
 
       {pageParam > 0 && (
-        <ul className="flex gap-4">
+        <ul className="flex flex-wrap gap-4">
           {paginationItems.map(({ pageNumber, to }, index) => {
             const isActive = pageParam === pageNumber
             return (

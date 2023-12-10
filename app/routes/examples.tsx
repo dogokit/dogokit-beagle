@@ -15,7 +15,7 @@ export default function ExamplesRoute() {
         </h1>
       </header>
 
-      <section className="flex gap-4">
+      <section className="flex flex-nowrap gap-4">
         <SidebarNavItems items={configExamples} />
 
         <Card className="flex-1 p-4">

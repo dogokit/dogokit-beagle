@@ -136,7 +136,11 @@ export function EditorTiptapHook({
           type="button"
           onClick={() => editor.chain().focus().unsetLink().run()}
           disabled={!editor.isActive("link")}
-          className={!editor.isActive("link") ? "opacity-25" : ""}
+          className={
+            !editor.isActive("link")
+              ? cn(buttonInactive, "opacity-25")
+              : buttonInactive
+          }
         >
           <Iconify icon="ri:link-unlink" />
         </button>
@@ -187,7 +191,11 @@ export function EditorTiptapHook({
             type="button"
             onClick={() => editor.chain().focus().unsetLink().run()}
             disabled={!editor.isActive("link")}
-            className={!editor.isActive("link") ? "opacity-25" : ""}
+            className={
+              !editor.isActive("link")
+                ? cn(buttonInactive, "opacity-25")
+                : buttonInactive
+            }
           >
             <Iconify icon="ri:link-unlink" />
           </button>

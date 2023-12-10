@@ -42,7 +42,7 @@ export function Debug({
   return (
     <div>
       <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-1">
-        <div className="flex gap-1">
+        <div className="flex flex-nowrap gap-1">
           <CollapsibleTrigger
             className={cn(buttonVariants({ variant: "outline", size: "xs" }))}
           >

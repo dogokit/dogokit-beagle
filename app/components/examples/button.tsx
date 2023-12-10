@@ -7,7 +7,7 @@ export function ExampleButton() {
 
       <div className="space-y-4">
         <h3>Variant</h3>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <Button>Default</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="destructive">Destructive</Button>
@@ -19,7 +19,7 @@ export function ExampleButton() {
 
       <div className="space-y-4">
         <h3>Size</h3>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <Button size="xs">XS</Button>
           <Button size="sm">SM</Button>
           <Button>DEFAULT</Button>

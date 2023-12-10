@@ -116,7 +116,7 @@ export default function PostSlugRoute() {
         )}
 
         {isOwner && (
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <FormChangeStatus
               itemId="postId"
               action="/user/posts/patch"

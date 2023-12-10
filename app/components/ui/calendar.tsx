@@ -67,7 +67,7 @@ function Calendar({
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
         vhidden: "hidden",
-        caption_dropdowns: "flex gap-1",
+        caption_dropdowns: "flex flex-nowrap gap-1",
         dropdown_month: "w-[100px]",
         dropdown_year: "w-[65px]",
         dropdown: cn(
