@@ -77,8 +77,8 @@ function SiteNavigationLarge() {
   return (
     <nav
       className={cn(
-        "hidden p-4 lg:flex",
-        "sticky top-0 z-10 items-center justify-between gap-2",
+        "sticky top-0 z-40 hidden p-4 lg:flex",
+        "items-center justify-between gap-2",
         "transition duration-200 ease-in-out",
         "bg-background/50 backdrop-blur-lg backdrop-saturate-150",
       )}

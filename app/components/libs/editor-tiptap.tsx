@@ -1,5 +1,6 @@
 import Highlight from "@tiptap/extension-highlight"
 import Link from "@tiptap/extension-link"
+import Placeholder from "@tiptap/extension-placeholder"
 import Typography from "@tiptap/extension-typography"
 import Underline from "@tiptap/extension-underline"
 import {
@@ -23,8 +24,9 @@ import { Iconify } from "../ui/iconify"
  *
  * Starter Kit https://tiptap.dev/api/extensions/starter-kit
  * Blockquote, Bold, Bulletlist, Code, CodeBlock, Document,
- * Dropcursor, Gapcursor, Hardbreak, Heading, History, HorizontalRule,
- * Italic, Listitem, Orderedlist, Paragraph, Strike, Text
+ * Dropcursor, Gapcursor, Hardbreak, Heading, History,
+ * HorizontalRule, Italic, Listitem, Orderedlist, Paragraph,
+ * Strike, Text
  */
 
 export function EditorTiptapHook({
@@ -41,6 +43,11 @@ export function EditorTiptapHook({
       Highlight,
       Typography,
       Underline,
+      Placeholder.configure({
+        placeholder: () => {
+          return "Write something..."
+        },
+      }),
       Link.configure({
         HTMLAttributes: {
           rel: "noopener noreferrer",
@@ -83,7 +90,12 @@ export function EditorTiptapHook({
 
   return (
     <>
-      <div className="mb-4 flex items-center gap-1 rounded-md bg-muted p-1">
+      <div
+        className={cn(
+          "mb-4 flex items-center gap-1 rounded-md bg-muted p-1",
+          "sticky top-[50px] z-10",
+        )}
+      >
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={editor.isActive("bold") ? buttonActive : buttonInactive}
