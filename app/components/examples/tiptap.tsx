@@ -1,12 +1,5 @@
-import {
-  EditorTiptapContext,
-  EditorTiptapViewHTML,
-} from "~/components/libs/editor-tiptap"
+import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
 
 export function ExampleTiptap() {
-  return (
-    <EditorTiptapContext>
-      <EditorTiptapViewHTML />
-    </EditorTiptapContext>
-  )
+  return <EditorTiptapHook />
 }

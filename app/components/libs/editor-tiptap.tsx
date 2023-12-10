@@ -2,6 +2,7 @@ import Highlight from "@tiptap/extension-highlight"
 import Typography from "@tiptap/extension-typography"
 import Underline from "@tiptap/extension-underline"
 import {
+  BubbleMenu,
   EditorContent,
   EditorProvider,
   useCurrentEditor,
@@ -9,6 +10,10 @@ import {
   type Content,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
+
+import { buttonVariants } from "~/components/ui/button"
+import { Iconify } from "~/components/ui/iconify"
+import { cn } from "~/utils/cn"
 import { parseHTML } from "~/utils/html"
 
 export function EditorTiptapHook({
@@ -31,7 +36,51 @@ export function EditorTiptapHook({
 
   if (!editor) return null
 
-  return <EditorContent editor={editor} className="cursor-text" />
+  const buttonActive = cn(
+    buttonVariants({
+      variant: "default",
+      size: "xs",
+      isIcon: true,
+    }),
+  )
+  const buttonInactive = cn(
+    buttonVariants({
+      variant: "ghost",
+      size: "xs",
+      isIcon: true,
+    }),
+  )
+
+  return (
+    <>
+      <EditorContent editor={editor} className="cursor-text" />
+
+      <BubbleMenu
+        editor={editor}
+        tippyOptions={{ duration: 100 }}
+        className="flex items-center gap-1 rounded-md bg-muted p-1"
+      >
+        <button
+          onClick={() => editor.chain().focus().toggleBold().run()}
+          className={editor.isActive("bold") ? buttonActive : buttonInactive}
+        >
+          <Iconify icon="ph:text-b" />
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleItalic().run()}
+          className={editor.isActive("italic") ? buttonActive : buttonInactive}
+        >
+          <Iconify icon="ph:text-italic" />
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleStrike().run()}
+          className={editor.isActive("strike") ? buttonActive : buttonInactive}
+        >
+          <Iconify icon="ph:text-strikethrough" />
+        </button>
+      </BubbleMenu>
+    </>
+  )
 }
 
 export function EditorTiptapContext({
@@ -54,7 +103,7 @@ export function EditorTiptapContext({
   )
 }
 
-export function EditorTiptapViewHTML() {
+export function EditorTiptapContextViewHTML() {
   const { editor } = useCurrentEditor()
   if (!editor) return null
   return (
