@@ -35,7 +35,7 @@ import { schemaPost } from "~/schemas/post"
 import { invariant, invariantResponse } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
-import { createSlug } from "~/utils/string"
+import { createSlug, truncateText } from "~/utils/string"
 import { createTimer } from "~/utils/timer"
 
 export const handle = createSitemap()
@@ -84,7 +84,8 @@ export default function UserPostsPostIdRoute() {
 
   const isSubmitting = navigation.state === "submitting"
   const isPostUpdated = post.createdAt !== post.updatedAt
-  const isViewDisabled = post.status.symbol === "DRAFT"
+  const isPostDraft = post.status.symbol === "DRAFT"
+  const isPostPublished = !isPostDraft
 
   const [titleValue, setTitleValue] = useState(title.defaultValue ?? "")
   const slugRef = useRef<HTMLInputElement>(null)
@@ -118,15 +119,6 @@ export default function UserPostsPostIdRoute() {
           <section className="app-section">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <FormChangeStatus
-                  itemId="postId"
-                  action="/user/posts/patch"
-                  intentValue="change-post-status"
-                  dialogTitle="Change post's status"
-                  dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
-                  itemStatuses={postStatuses}
-                  item={post as any}
-                />
                 <ButtonLoading
                   variant="outline"
                   size="xs"
@@ -148,7 +140,9 @@ export default function UserPostsPostIdRoute() {
                 <FormDelete
                   action="/user/posts/delete"
                   intentValue="user-delete-post-by-id"
-                  itemText={`a post: ${post.title} (${post.slug})`}
+                  itemText={`a post: ${truncateText(post.title)} (${
+                    post.slug
+                  })`}
                   defaultValue={post.id}
                   requireUser
                   userId={post.userId}
@@ -157,18 +151,41 @@ export default function UserPostsPostIdRoute() {
                   variant="outline"
                   size="xs"
                   to={`/posts/${post.slug}`}
-                  disabled={isViewDisabled}
+                  disabled={isPostDraft}
                 >
                   <Iconify icon="ph:arrow-square-out-duotone" />
                   <span>View</span>
                 </ButtonLink>
               </div>
 
-              <div className="text-xs text-muted-foreground">
-                <Timestamp
-                  isUpdated={isPostUpdated}
-                  createdAt={post.createdAt}
-                  updatedAt={post.updatedAt}
+              <div className="flex flex-wrap items-center gap-2">
+                <ButtonLoading
+                  type="button"
+                  variant="outline"
+                  size="xs"
+                  loadingText="Publishing"
+                  isLoading={isSubmitting}
+                  iconComponent={
+                    <Iconify
+                      icon={
+                        isPostPublished
+                          ? "ph:book-open-duotone"
+                          : "ph:book-open-text-duotone"
+                      }
+                    />
+                  }
+                >
+                  <span>{isPostPublished ? "Unpublish" : "Publish"}</span>
+                </ButtonLoading>
+
+                <FormChangeStatus
+                  itemId="postId"
+                  action="/user/posts/patch"
+                  intentValue="change-post-status"
+                  dialogTitle="Change post's status"
+                  dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
+                  itemStatuses={postStatuses}
+                  item={post as any}
                 />
               </div>
             </div>
@@ -178,6 +195,14 @@ export default function UserPostsPostIdRoute() {
             <input type="hidden" {...conform.input(userId)} />
             <input type="hidden" {...conform.input(id)} />
 
+            <div className="text-xs text-muted-foreground">
+              <Timestamp
+                isUpdated={isPostUpdated}
+                createdAt={post.createdAt}
+                updatedAt={post.updatedAt}
+              />
+            </div>
+
             <div>
               <div className="flex justify-between gap-2">
                 <input
@@ -185,7 +210,7 @@ export default function UserPostsPostIdRoute() {
                   ref={slugRef}
                   placeholder="untitled"
                   spellCheck="false"
-                  className="input-natural flex-1 font-mono text-sm text-muted-foreground"
+                  className="input-natural flex-1 font-mono text-sm"
                 />
                 <Button
                   type="button"
