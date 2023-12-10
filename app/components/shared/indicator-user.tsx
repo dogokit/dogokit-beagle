@@ -54,7 +54,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
     "/user/notifications",
   ]
 
-  const devNavItems = ["/admin", "/examples", "/blank"]
+  const devNavItems = ["/admin", "/blank"]
 
   const authNavItems = ["/logout"]
 

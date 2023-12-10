@@ -124,6 +124,7 @@ export const configNavigationItems: NavItem[] = [
     path: "/examples",
     icon: "ph:bounding-box-duotone",
     text: "Examples",
+    isEnabled: true,
   },
   {
     path: "/blank",

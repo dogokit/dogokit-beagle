@@ -52,7 +52,7 @@ export const configSite = {
   mailingListName: "All-in-One Kit",
 
   // Setup all the available paths in app/configs/navigation.ts
-  navItems: ["/", "/about", "/search", "/posts", "/users"],
+  navItems: ["/", "/about", "/search", "/posts", "/users", "/examples"],
 }
 
 // The order matters on what being shown first

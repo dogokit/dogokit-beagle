@@ -2,8 +2,15 @@ import { Input } from "~/components/ui/input"
 
 export function ExampleInput() {
   return (
-    <div>
-      <Input placeholder="Input" />
+    <div className="space-y-8">
+      <h2>Input</h2>
+      <div className="space-y-4">
+        <h3>Variant</h3>
+        <div className="flex gap-4">
+          <Input placeholder="Default" />
+          <input className="input-natural" placeholder="Natural" />
+        </div>
+      </div>
     </div>
   )
 }
