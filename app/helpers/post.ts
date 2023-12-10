@@ -12,8 +12,7 @@ export function extractPostSlug(slug: Post["slug"]) {
 }
 
 /**
- * IDEA: Model Post would have excerpt/summary
- * So only need to sanitize on save, not on read
+ * Post has excerpt field, only get excerpt on save, not on read
  */
 export function getPostExcerpt(content: string) {
   return truncateText(stripHtml(content).result, 100)

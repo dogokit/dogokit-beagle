@@ -1,4 +1,4 @@
-import { createPostSlug, extractPostSlug } from "~/helpers/post"
+import { createPostSlug, extractPostSlug, getPostExcerpt } from "~/helpers/post"
 import { prisma } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
@@ -202,6 +202,7 @@ async function seedPosts() {
       ...postSanitized,
       // Reuse the same post slug if it already exists
       slug: existingPost?.slug || postSlug,
+      excerpt: getPostExcerpt(postSanitized.content),
       userId: user.id,
       statusId: status.id,
     }
