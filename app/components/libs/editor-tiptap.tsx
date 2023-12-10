@@ -17,6 +17,7 @@ import { useCallback } from "react"
 import { buttonVariants } from "~/components/ui/button"
 import { cn } from "~/utils/cn"
 import { parseHTML } from "~/utils/html"
+import { fixUrl } from "~/utils/url"
 import { Iconify } from "../ui/iconify"
 
 /**
@@ -71,19 +72,25 @@ export function EditorTiptapHook({
     buttonVariants({ variant: "ghost", size: "xs", isIcon: true }),
   )
 
-  const setLink = useCallback(() => {
+  const handleSetLink = useCallback(() => {
     if (!editor) return null
+
     const previousUrl = editor.getAttributes("link").href
     const url = window.prompt("URL", previousUrl)
-    // cancelled
+
     if (url === null) return
-    // empty
     if (url === "") {
       editor.chain().focus().extendMarkRange("link").unsetLink().run()
       return
     }
-    // update link
-    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run()
+
+    const fixedUrl = fixUrl(url)
+    editor
+      .chain()
+      .focus()
+      .extendMarkRange("link")
+      .setLink({ href: fixedUrl })
+      .run()
   }, [editor])
 
   if (!editor) return null
@@ -115,7 +122,7 @@ export function EditorTiptapHook({
           <Iconify icon="ri:strikethrough" />
         </button>
         <button
-          onClick={setLink}
+          onClick={handleSetLink}
           className={editor.isActive("link") ? buttonActive : buttonInactive}
         >
           <Iconify icon="ri:link" />
@@ -133,7 +140,10 @@ export function EditorTiptapHook({
         <BubbleMenu
           editor={editor}
           tippyOptions={{ duration: 100 }}
-          className="flex items-center gap-1 rounded-md bg-secondary p-1 shadow"
+          className={cn(
+            "flex items-center gap-1 rounded-md bg-secondary p-1 shadow",
+            "border border-input",
+          )}
         >
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
@@ -158,7 +168,7 @@ export function EditorTiptapHook({
             <Iconify icon="ri:strikethrough" />
           </button>
           <button
-            onClick={setLink}
+            onClick={handleSetLink}
             className={editor.isActive("link") ? buttonActive : buttonInactive}
           >
             <Iconify icon="ri:link" />
