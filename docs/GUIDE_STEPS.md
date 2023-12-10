@@ -224,9 +224,7 @@ TBA
 
 ## Docker
 
-- On Mac, use OrbStack
-- On Linux, install Docker
-- On Windows, use WSL then install Docker
+TBA
 
 ## Docker Compose
 
