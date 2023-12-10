@@ -5,7 +5,11 @@ import { debugCode } from "~/utils/string.server"
 /**
  * Example utility to fix data
  *
+ * local:
  * pnpm tsx prisma/utils/fix-posts.ts
+ *
+ * production:
+ * pnpm dotenv -e .env.production tsx prisma/utils/fix-posts.ts
  */
 
 async function fixPosts() {

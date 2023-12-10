@@ -40,7 +40,7 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
   }
   return createMeta({
     title: post.title,
-    description: String(post.content),
+    description: post.excerpt,
   })
 }
 
