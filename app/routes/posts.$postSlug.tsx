@@ -82,9 +82,7 @@ export default function PostSlugRoute() {
           </Alert>
         )}
 
-        <h1>
-          <Link to={`/posts/${post.slug}`}>{post.title}</Link>
-        </h1>
+        <h1>{post.title}</h1>
 
         <div className="space-y-2">
           <Link

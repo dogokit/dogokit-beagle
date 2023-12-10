@@ -26,6 +26,7 @@ import { Timestamp } from "~/components/shared/timestamp"
 import { Button } from "~/components/ui/button"
 import { Iconify } from "~/components/ui/iconify"
 import { Separator } from "~/components/ui/separator"
+import { TextareaAutosize } from "~/components/ui/textarea-autosize"
 import { requireUser } from "~/helpers/auth"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { prisma } from "~/libs/db.server"
@@ -200,13 +201,14 @@ export default function UserPostsPostIdRoute() {
             </div>
 
             <div>
-              <input
-                {...conform.input(title)}
+              <TextareaAutosize
+                name={title.name}
+                minRows={1}
                 defaultValue={titleValue}
                 onChange={e => setTitleValue(e.target.value)}
                 placeholder="Untitled"
                 spellCheck="false"
-                className="input-natural w-full text-4xl font-semibold"
+                className="input-natural w-full resize-none text-4xl font-semibold"
               />
               <FormErrors>{title}</FormErrors>
             </div>

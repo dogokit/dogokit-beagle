@@ -50,6 +50,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
 
   const userNavItems = [
     "/user/dashboard",
+    "/user/posts",
     "/user/settings",
     "/user/notifications",
   ]
