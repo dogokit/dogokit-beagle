@@ -1,53 +1,27 @@
-import { PrismaClient, type Prisma } from "@prisma/client"
-import chalk from "chalk"
+import { PrismaClient } from "@prisma/client"
 
-import { remember } from "~/utils/remember"
+import { parsedEnv } from "~/utils/env.server"
 
-// IDEA: Use PlanetScale adapter when it's ready
-// const connectionString = parsedEnv.DATABASE_URL
-// const client = new Client({ url: connectionString })
-// const adapter = new PrismaPlanetScale(client)
+let prisma: PrismaClient
 
-// Only to detect a long processed query
-const LOG_THRESHOLD = 20 // time in ms
+declare global {
+  var __db__: PrismaClient | undefined
+}
 
 /**
- * If there're some changes, need to restart the dev server
+ * This is needed because in development we don't want to restart
+ * the server with every change, but we want to make sure we don't
+ * create a new connection to the DB with every change either.
+ * In production, we'll have a single connection to the DB.
  */
-export const prisma = remember("prisma", () => {
-  const client = new PrismaClient({
-    log: [
-      { level: "query", emit: "event" },
-      { level: "error", emit: "stdout" },
-      { level: "warn", emit: "stdout" },
-    ],
-  })
-
-  // Change this to handle query event for any purpose
-  // client.$on("query", handleQueryEvent)
-
-  client.$connect()
-
-  return client
-})
-
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function handleQueryEvent(event: Prisma.QueryEvent) {
-  if (event.duration < LOG_THRESHOLD) return
-
-  const color =
-    event.duration < LOG_THRESHOLD * 1.1
-      ? "green"
-      : event.duration < LOG_THRESHOLD * 1.2
-        ? "blue"
-        : event.duration < LOG_THRESHOLD * 1.3
-          ? "yellow"
-          : event.duration < LOG_THRESHOLD * 1.4
-            ? "redBright"
-            : "red"
-
-  const dur = chalk[color](`${event.duration}ms`)
-
-  console.info(`💎 Prisma: ${dur}: ${event.query}`)
+if (parsedEnv.NODE_ENV === "production") {
+  prisma = new PrismaClient()
+} else {
+  if (!global.__db__) {
+    global.__db__ = new PrismaClient()
+  }
+  prisma = global.__db__
+  prisma.$connect()
 }
+
+export { prisma }
