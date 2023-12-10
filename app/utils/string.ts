@@ -10,7 +10,7 @@ export function truncateText(
   if (!text || typeof text !== "string" || text.length <= charLimit) return text
 
   const trimmedLength = withEllipsis ? charLimit - 3 : charLimit
-  const trimmedText = text.substring(0, trimmedLength)
+  const trimmedText = text.substring(0, trimmedLength).trim()
 
   return withEllipsis ? `${trimmedText}...` : trimmedText
 }

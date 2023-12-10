@@ -26,6 +26,7 @@ export function FormDelete({
   userId,
   disabled,
   extraComponent,
+  className,
 }: {
   action: string // Example: /user/posts/delete
   intentValue: string // Example: delete-post-by-id
@@ -37,6 +38,7 @@ export function FormDelete({
   userId?: string
   disabled?: boolean
   extraComponent?: React.ReactNode
+  className?: string
 }) {
   const [open, setOpen] = useState<boolean>()
   const location = useLocation()
@@ -46,7 +48,7 @@ export function FormDelete({
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogTrigger asChild>
+      <AlertDialogTrigger asChild className={className}>
         <Button variant="outline" size="xs" disabled={disabled}>
           <Iconify icon="ph:trash-duotone" />
           <span>{buttonText}</span>

@@ -26,8 +26,8 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 export default function NewRoute() {
   return (
     <div className="app-container pb-20">
-      <header className="app-header mx-auto max-w-prose text-center">
-        <div>
+      <header className="app-header justify-center">
+        <div className="text-center">
           <h1 className="text-2xl sm:text-3xl">Add New</h1>
           <p>Add various new data</p>
         </div>

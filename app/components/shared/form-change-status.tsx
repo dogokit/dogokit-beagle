@@ -24,28 +24,27 @@ import {
   SelectValue,
 } from "~/components/ui/select"
 import { type modelPost } from "~/models/post.server"
+import { cn } from "~/utils/cn"
 
 export function FormChangeStatus({
   itemId = "itemId",
   action = "/user/items/patch",
   intentValue = "change-item-status",
-
   dialogTitle = "Change Status",
   dialogDescription = "Change the status of this item",
-
   item,
   itemStatuses,
+  className,
 }: {
   itemId: string
   action: string // Example: /user/items/patch
   intentValue: string // Example: change-post-status
-
   dialogTitle: string
   dialogDescription: string
-
   // IDEA: Make it more general with a model Item that has a Status
   itemStatuses: PostStatus[]
   item: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
+  className?: string
 }) {
   const [open, setOpen] = useState<boolean>()
   const fetcher = useFetcher()
@@ -66,7 +65,7 @@ export function FormChangeStatus({
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogTrigger className="focus-ring rounded-full">
+      <AlertDialogTrigger className={cn("focus-ring rounded-full", className)}>
         <BadgePostStatus status={statusOptimistic} className="cursor-pointer" />
       </AlertDialogTrigger>
 

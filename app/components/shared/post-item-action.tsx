@@ -18,47 +18,57 @@ export function PostItemAction({
   if (!post) return null
 
   // Only can View post if PRIVATE, UNLISTED, PUBLISHED, ARCHIVED
-  const isDisabled = post.status.symbol === "DRAFT"
+  const isViewDisabled = post.status.symbol === "DRAFT"
 
   return (
     <li
       key={post.id}
       className={cn(
-        "flex flex-wrap py-2",
-        "flex-col items-start gap-1",
-        "lg:flex-row lg:items-center lg:justify-between lg:gap-2",
+        "flex flex-col flex-wrap items-start justify-between gap-1 py-2",
+        "sm:flex-row",
+        "lg:items-center lg:gap-2",
       )}
     >
       <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1">
-          <ButtonLink variant="outline" size="xs" to={`/user/posts/${post.id}`}>
-            <Iconify icon="ph:note-pencil" />
-            <span>Edit</span>
-          </ButtonLink>
-          <FormDelete
-            action="/user/posts/delete"
-            intentValue="user-delete-post-by-id"
-            itemText={`a post: ${post.title} (${post.slug})`}
-            defaultValue={post.id}
-            requireUser
-            userId={post.userId}
-          />
-          <ButtonLink
-            variant="outline"
-            size="xs"
-            to={`/posts/${post.slug}`}
-            disabled={isDisabled}
-          >
-            <Iconify icon="ph:arrow-square-out-duotone" />
-            <span>View</span>
-          </ButtonLink>
+        <div
+          className={cn(
+            "flex flex-col gap-1",
+            "lg:flex-row-reverse lg:items-center",
+          )}
+        >
+          <h4>{truncateText(post.title)}</h4>
+
+          <div className="space-x-1">
+            <ButtonLink
+              variant="outline"
+              size="xs"
+              to={`/user/posts/${post.id}`}
+            >
+              <Iconify icon="ph:note-pencil" />
+              <span>Edit</span>
+            </ButtonLink>
+            <FormDelete
+              action="/user/posts/delete"
+              intentValue="user-delete-post-by-id"
+              itemText={`a post: ${post.title} (${post.slug})`}
+              defaultValue={post.id}
+              requireUser
+              userId={post.userId}
+            />
+            <ButtonLink
+              variant="outline"
+              size="xs"
+              to={`/posts/${post.slug}`}
+              disabled={isViewDisabled}
+            >
+              <Iconify icon="ph:arrow-square-out-duotone" />
+              <span>View</span>
+            </ButtonLink>
+          </div>
         </div>
-        <h4>{truncateText(post.title)}</h4>
       </div>
 
-      <div className="flex flex-row-reverse items-center gap-2 lg:flex-row">
-        <code className="text-xs text-muted-foreground">{post.slug}</code>
-
+      <div className="flex flex-row items-center gap-2 lg:flex-row-reverse">
         <FormChangeStatus
           itemId="postId"
           action="/user/posts/patch"
@@ -68,6 +78,10 @@ export function PostItemAction({
           itemStatuses={postStatuses}
           item={post}
         />
+
+        <code className="hidden text-xs text-muted-foreground lg:inline-flex">
+          {post.slug}
+        </code>
       </div>
     </li>
   )

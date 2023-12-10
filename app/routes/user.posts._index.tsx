@@ -73,7 +73,7 @@ export default function UserPostsRoute() {
       <header className="app-header justify-between gap-4">
         <h2>Posts</h2>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Post")} />
           <ButtonLink to="/posts" variant="outline" size="xs">
             <Iconify icon="ph:arrow-square-out-duotone" />
