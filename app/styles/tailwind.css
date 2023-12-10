@@ -169,5 +169,6 @@
 
 .tiptap p.is-empty::before {
   @apply pointer-events-none float-left h-0 text-muted-foreground/30;
+
   content: attr(data-placeholder);
 }

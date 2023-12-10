@@ -141,8 +141,8 @@ Later:
 
 The main prerequisites to learn, understand, and use with the stack. See the
 complete and categorized list in the
-[guide to tech stack](./docs/GUIDE_TECH_STACK.md) including things to consider
-to use later and won't use at all.
+[guide to tech stack](./docs/GUIDE_STACK.md) including things to consider to use
+later and won't use at all.
 
 (Architecture diagram can help later on here)
 
@@ -230,16 +230,22 @@ Also read:
 
 ### Environment Variables
 
-Create the `.env` file from the example `.env` file.
+Create the `.env` file from `.env.example`. This is the one for local
+development, not production
 
 ```sh
 cp -i .env.example .env
 ```
 
-> This .env file is only for local development, not production
+Configure the required environment variables if on local, otherwise in the
+project settings on other environments.
 
-Configure the required environment variables in the `.env` file if on local,
-otherwise in the project settings on production.
+If necessary, create the `.env.production` for production access. Adjust
+accordingly if need for `staging`, `test`, etc.
+
+```sh
+cp -i .env.example .env.production
+```
 
 Required:
 
@@ -247,6 +253,8 @@ Required:
 - `DATABASE_URL`: For example,
   `mysql://user:password@localhost:3060/dogokit-remix`
 - `SESSION_SECRET`: For example, `the_secret_text`
+
+For OAuth related, [check this guide](./docs/GUIDE_OAUTH.md)
 
 #### Database Setup
 

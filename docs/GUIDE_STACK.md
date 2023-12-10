@@ -1,4 +1,4 @@
-# Guide: Tech Stack
+# Guide: Stack
 
 Aim to prioritize open source option, free-tier, or freemium.
 

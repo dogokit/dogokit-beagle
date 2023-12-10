@@ -106,13 +106,13 @@ async function seedUsers() {
     return null
   }
 
-  for (const userRaw of dataCredentialUsers) {
+  for (const userCredential of dataCredentialUsers) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...userWithoutPassword } = userRaw
+    const { password, roleSymbol, ...userRaw } = userCredential
 
     const userData = {
-      ...userWithoutPassword,
-      roles: { connect: { symbol: "NORMAL" } },
+      ...userRaw,
+      roles: { connect: { symbol: userCredential.roleSymbol } },
       images: { create: { url: getPlaceholderAvatarUrl(userRaw.username) } },
     }
 
@@ -128,22 +128,20 @@ async function seedUsers() {
       update: {
         ...userData,
         password: userHasPassword
-          ? { update: { hash: await hashPassword(userRaw.password) } }
+          ? { update: { hash: await hashPassword(userCredential.password) } }
           : undefined,
       },
       create: {
         ...userData,
         password: {
-          create: { hash: await hashPassword(userRaw.password) },
+          create: { hash: await hashPassword(userCredential.password) },
         },
       },
     })
 
     if (!user) return null
 
-    console.info(
-      `👤 Upserted user ${user.email} / @${user.username} / ${userRaw.password}`,
-    )
+    console.info(`👤 Upserted user ${user.email} / @${user.username}`)
   }
 }
 
