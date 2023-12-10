@@ -9,6 +9,7 @@ import {
   useCurrentEditor,
   useEditor,
   type Content,
+  type Editor,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import { useCallback } from "react"
@@ -19,13 +20,14 @@ import { cn } from "~/utils/cn"
 import { parseHTML } from "~/utils/html"
 
 export function EditorTiptapHook({
-  content,
+  content = contentExample,
   handleUpdate,
 }: {
   content?: Content | string
   handleUpdate?: (htmlString: string) => void
 }) {
   const editor = useEditor({
+    content,
     extensions: [
       StarterKit,
       Highlight,
@@ -39,7 +41,6 @@ export function EditorTiptapHook({
       }),
     ],
     editorProps: { attributes: { class: "prose-config" } },
-    content: content || contentExample,
     onUpdate({ editor }) {
       if (handleUpdate) {
         handleUpdate(editor.getHTML())
@@ -69,6 +70,8 @@ export function EditorTiptapHook({
     editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run()
   }, [editor])
 
+  if (!editor) return null
+
   const buttonActive = cn(
     buttonVariants({ variant: "default", size: "xs", isIcon: true }),
   )
@@ -76,17 +79,9 @@ export function EditorTiptapHook({
     buttonVariants({ variant: "ghost", size: "xs", isIcon: true }),
   )
 
-  if (!editor) return null
-
-  return (
-    <>
-      <EditorContent editor={editor} className="cursor-text" />
-
-      <BubbleMenu
-        editor={editor}
-        tippyOptions={{ duration: 100 }}
-        className="flex items-center gap-1 rounded-md bg-muted p-1"
-      >
+  function CommandButtons({ editor }: { editor: Editor }) {
+    return (
+      <>
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={editor.isActive("bold") ? buttonActive : buttonInactive}
@@ -118,7 +113,25 @@ export function EditorTiptapHook({
         >
           <Iconify icon="ph:link-break" />
         </button>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <div className="mb-4 flex items-center gap-1 rounded-md bg-muted p-1">
+        <CommandButtons editor={editor} />
+      </div>
+
+      <BubbleMenu
+        editor={editor}
+        tippyOptions={{ duration: 100 }}
+        className="flex items-center gap-1 rounded-md bg-secondary p-1 shadow-sm"
+      >
+        <CommandButtons editor={editor} />
       </BubbleMenu>
+
+      <EditorContent editor={editor} className="cursor-text" />
     </>
   )
 }

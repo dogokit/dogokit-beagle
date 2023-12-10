@@ -144,15 +144,21 @@
   }
   .prose-config {
     @apply prose prose-slate dark:prose-invert focus:outline-none;
-    @apply prose-pre:bg-muted prose-pre:text-foreground;
-    @apply prose-code:before:content-none prose-code:after:content-none;
     @apply prose-headings:font-semibold;
     @apply prose-a:prose-a-styles;
+    @apply prose-pre:prose-pre-styles;
+    @apply prose-code:prose-code-styles;
   }
   .prose-a-styles {
     @apply focus-ring rounded-xs decoration-muted transition;
     @apply text-primary hover:text-primary/75;
     @apply dark:text-primary dark:hover:text-primary/75;
+  }
+  .prose-pre-styles {
+    @apply bg-muted text-foreground;
+  }
+  .prose-code-styles {
+    @apply before:content-none after:content-none;
   }
   .prose > ul > li > p {
     @apply my-0;
