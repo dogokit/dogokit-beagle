@@ -23,7 +23,7 @@ export const githubStrategy = new GitHubStrategy<UserSession>(
     if (!email) throw new AuthorizationError("Email is not found")
 
     const fullname = profile._json.name
-    const username = profile._json.login
+    const username = profile._json.login.replace(/-/g, "_")
     const imageUrl = profile.photos[0].value
     const providerName = "github"
     const providerId = profile.id
