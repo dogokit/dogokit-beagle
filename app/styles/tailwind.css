@@ -150,9 +150,8 @@
     @apply prose-code:prose-code-styles;
   }
   .prose-a-styles {
-    @apply focus-ring rounded-xs decoration-muted transition;
-    @apply text-primary hover:text-primary/75;
-    @apply dark:text-primary dark:hover:text-primary/75;
+    @apply focus-ring cursor-pointer rounded-xs decoration-muted transition;
+    @apply text-primary hover:text-primary/75 dark:text-primary dark:hover:text-primary/75;
   }
   .prose-pre-styles {
     @apply bg-muted text-foreground;

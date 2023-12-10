@@ -128,6 +128,9 @@ dependencies:
   '@tiptap/extension-link':
     specifier: 2.1.13
     version: 2.1.13(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)
+  '@tiptap/extension-placeholder':
+    specifier: 2.1.13
+    version: 2.1.13(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)
   '@tiptap/extension-typography':
     specifier: ^2.1.13
     version: 2.1.13(@tiptap/core@2.1.13)
@@ -3857,6 +3860,16 @@ packages:
       '@tiptap/core': ^2.0.0
     dependencies:
       '@tiptap/core': 2.1.13(@tiptap/pm@2.1.13)
+    dev: false
+
+  /@tiptap/extension-placeholder@2.1.13(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13):
+    resolution: {integrity: sha512-vIY7y7UbqsrAW/y8bDE9eRenbQEU16kNHB5Wri8RU1YiUZpkPgdXP/pLqyjIIq95SwP/vdTIHjHoQ77VLRl1hA==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.13)
+      '@tiptap/pm': 2.1.13
     dev: false
 
   /@tiptap/extension-strike@2.1.13(@tiptap/core@2.1.13):

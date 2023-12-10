@@ -86,6 +86,7 @@
     "@tiptap/core": "^2.1.13",
     "@tiptap/extension-highlight": "^2.1.13",
     "@tiptap/extension-link": "2.1.13",
+    "@tiptap/extension-placeholder": "2.1.13",
     "@tiptap/extension-typography": "^2.1.13",
     "@tiptap/extension-underline": "^2.1.13",
     "@tiptap/pm": "^2.1.13",

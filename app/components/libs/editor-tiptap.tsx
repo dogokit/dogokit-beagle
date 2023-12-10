@@ -9,15 +9,23 @@ import {
   useCurrentEditor,
   useEditor,
   type Content,
-  type Editor,
 } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import { useCallback } from "react"
 
 import { buttonVariants } from "~/components/ui/button"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { parseHTML } from "~/utils/html"
+import { Iconify } from "../ui/iconify"
+
+/**
+ * Tiptap
+ *
+ * Starter Kit https://tiptap.dev/api/extensions/starter-kit
+ * Blockquote, Bold, Bulletlist, Code, CodeBlock, Document,
+ * Dropcursor, Gapcursor, Hardbreak, Heading, History, HorizontalRule,
+ * Italic, Listitem, Orderedlist, Paragraph, Strike, Text
+ */
 
 export function EditorTiptapHook({
   content = contentExample,
@@ -37,6 +45,7 @@ export function EditorTiptapHook({
         HTMLAttributes: {
           rel: "noopener noreferrer",
           target: "_blank",
+          class: "prose-a-styles",
         },
       }),
     ],
@@ -48,30 +57,6 @@ export function EditorTiptapHook({
     },
   })
 
-  const setLink = useCallback(() => {
-    if (!editor) return null
-
-    const previousUrl = editor.getAttributes("link").href
-    const url = window.prompt("URL", previousUrl)
-
-    // cancelled
-    if (url === null) {
-      return
-    }
-
-    // empty
-    if (url === "") {
-      editor.chain().focus().extendMarkRange("link").unsetLink().run()
-
-      return
-    }
-
-    // update link
-    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run()
-  }, [editor])
-
-  if (!editor) return null
-
   const buttonActive = cn(
     buttonVariants({ variant: "default", size: "xs", isIcon: true }),
   )
@@ -79,57 +64,102 @@ export function EditorTiptapHook({
     buttonVariants({ variant: "ghost", size: "xs", isIcon: true }),
   )
 
-  function CommandButtons({ editor }: { editor: Editor }) {
-    return (
-      <>
+  const setLink = useCallback(() => {
+    if (!editor) return null
+    const previousUrl = editor.getAttributes("link").href
+    const url = window.prompt("URL", previousUrl)
+    // cancelled
+    if (url === null) return
+    // empty
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run()
+      return
+    }
+    // update link
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run()
+  }, [editor])
+
+  if (!editor) return null
+
+  return (
+    <>
+      <div className="mb-4 flex items-center gap-1 rounded-md bg-muted p-1">
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={editor.isActive("bold") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ph:text-b" />
+          <Iconify icon="ri:bold" />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={editor.isActive("italic") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ph:text-italic" />
+          <Iconify icon="ri:italic" />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleStrike().run()}
           className={editor.isActive("strike") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ph:text-strikethrough" />
+          <Iconify icon="ri:strikethrough" />
         </button>
         <button
           onClick={setLink}
           className={editor.isActive("link") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ph:link" />
+          <Iconify icon="ri:link" />
         </button>
         <button
           onClick={() => editor.chain().focus().unsetLink().run()}
           disabled={!editor.isActive("link")}
           className={!editor.isActive("link") ? "opacity-25" : ""}
         >
-          <Iconify icon="ph:link-break" />
+          <Iconify icon="ri:link-unlink" />
         </button>
-      </>
-    )
-  }
-
-  return (
-    <>
-      <div className="mb-4 flex items-center gap-1 rounded-md bg-muted p-1">
-        <CommandButtons editor={editor} />
       </div>
 
-      <BubbleMenu
-        editor={editor}
-        tippyOptions={{ duration: 100 }}
-        className="flex items-center gap-1 rounded-md bg-secondary p-1 shadow-sm"
-      >
-        <CommandButtons editor={editor} />
-      </BubbleMenu>
+      {editor && (
+        <BubbleMenu
+          editor={editor}
+          tippyOptions={{ duration: 100 }}
+          className="flex items-center gap-1 rounded-md bg-secondary p-1 shadow-sm"
+        >
+          <button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            className={editor.isActive("bold") ? buttonActive : buttonInactive}
+          >
+            <Iconify icon="ri:bold" />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            className={
+              editor.isActive("italic") ? buttonActive : buttonInactive
+            }
+          >
+            <Iconify icon="ri:italic" />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleStrike().run()}
+            className={
+              editor.isActive("strike") ? buttonActive : buttonInactive
+            }
+          >
+            <Iconify icon="ri:strikethrough" />
+          </button>
+          <button
+            onClick={setLink}
+            className={editor.isActive("link") ? buttonActive : buttonInactive}
+          >
+            <Iconify icon="ri:link" />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().unsetLink().run()}
+            disabled={!editor.isActive("link")}
+            className={!editor.isActive("link") ? "opacity-25" : ""}
+          >
+            <Iconify icon="ri:link-unlink" />
+          </button>
+        </BubbleMenu>
+      )}
 
       <EditorContent editor={editor} className="cursor-text" />
     </>
