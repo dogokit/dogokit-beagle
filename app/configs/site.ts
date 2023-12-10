@@ -4,12 +4,9 @@
  * Site-wide information
  */
 
-// eslint-disable-next-line node/no-process-env
-const isDevelopment = process.env.NODE_ENV === "development"
-
 // For general purpose
 export const configSite = {
-  domain: isDevelopment ? "localhost:3000" : "dogokit.allnimal.com",
+  domain: "dogokit.allnimal.com",
 
   // Recommended: 60 characters
   name: "Dogokit", // Can be different with title

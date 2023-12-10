@@ -9,6 +9,7 @@ import { useLoaderData } from "@remix-run/react"
 
 import { FormChangeField } from "~/components/shared/form-change-field"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
+import { configSite } from "~/configs/site"
 import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
 import { requireUser } from "~/helpers/auth"
 import { modelUser } from "~/models/user.server"
@@ -54,9 +55,9 @@ export default function UserSettingsRoute() {
           label="Username"
           field="username"
           intentValue="user-change-username"
-          description="Public @username within {configSite.name} like {configSite.domain}
-          /yourname. Use 20 characters at maximum. Only alphabet, number, dot,
-          underscore allowed"
+          description={`Public @username within ${configSite.name} 
+          like ${configSite.domain}/yourname. Use 20 characters at maximum. 
+          Only alphabet, number, dot, underscore allowed`}
           schema={schemaUserUsername}
           user={user}
         />
