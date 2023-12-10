@@ -15,6 +15,9 @@ Dogokit Remix is a web app template kit by
 [🐶 Dogokit](https://dogokit.allnimal.com) using Remix, React, Tailwind CSS,
 Radix UI, Prisma ORM, and more.
 
+Read the latest updates and details on
+[dogokit/dogokit-remix](https://github.com/dogokit/dogokit-remix).
+
 The goal is to start and be as productive as possible to ship a web app quickly
 with [Remix](https://remix.run) full stack web framework.
 
@@ -37,6 +40,8 @@ Check out:
 - [References](#references)
 
 ## Quick Start
+
+<!-- REMOVABLE SECTION -->
 
 Starting new?
 [Use this template to generate the repository](https://github.com/dogokit/dogokit-remix/generate).
@@ -64,6 +69,8 @@ replace the contents along the way.
 
 ## Goal
 
+<!-- REMOVABLE SECTION -->
+
 The goal is to use this for building web apps:
 
 - Personal Website
@@ -89,6 +96,8 @@ The goal is to use this for building web apps:
 - Software as a Service (SaaS)
 
 ## Concept
+
+<!-- REMOVABLE SECTION -->
 
 Some reasons for making and using this template kit.
 
@@ -127,6 +136,8 @@ Later:
 - Commands with `dogokit` CLI or `@dogokit/cli`
 
 ## Tech Stack
+
+<!-- REMOVABLE SECTION -->
 
 The main prerequisites to learn, understand, and use with the stack. See the
 complete and categorized list in the
@@ -244,7 +255,7 @@ Docker container, services like [PlanetScale](https://planetscale.com) (MySQL)
 or [Neon](https://neon.tech) (PostgreSQL).
 
 If prefer using Docker and Docker Compose for local development,
-[follow this guide](docs/DATABASE.md).
+[follow this guide](docs/GUIDE_DATABASE.md).
 
 #### MySQL Database with PlanetScale
 
@@ -354,6 +365,8 @@ pnpm dev
 Open <http://localhost:3000> and it's ready!
 
 ### Customize
+
+<!-- REMOVABLE SECTION -->
 
 #### Change the Contents
 
