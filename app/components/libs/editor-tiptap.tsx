@@ -99,35 +99,41 @@ export function EditorTiptapHook({
     <>
       <div
         className={cn(
-          "z-10 mb-4 flex max-w-prose items-center gap-1 rounded-md bg-muted p-1",
-          "sm:sticky sm:top-[80px] sm:border sm:border-input",
+          "z-10 mb-4 flex max-w-prose items-center gap-1 rounded-md p-1",
+          "bg-foreground text-background",
+          "sm:sticky sm:top-[80px]",
         )}
       >
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={editor.isActive("bold") ? buttonActive : buttonInactive}
         >
           <Iconify icon="ri:bold" />
         </button>
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={editor.isActive("italic") ? buttonActive : buttonInactive}
         >
           <Iconify icon="ri:italic" />
         </button>
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleStrike().run()}
           className={editor.isActive("strike") ? buttonActive : buttonInactive}
         >
           <Iconify icon="ri:strikethrough" />
         </button>
         <button
+          type="button"
           onClick={handleSetLink}
           className={editor.isActive("link") ? buttonActive : buttonInactive}
         >
           <Iconify icon="ri:link" />
         </button>
         <button
+          type="button"
           onClick={() => editor.chain().focus().unsetLink().run()}
           disabled={!editor.isActive("link")}
           className={!editor.isActive("link") ? "opacity-25" : ""}
@@ -141,17 +147,19 @@ export function EditorTiptapHook({
           editor={editor}
           tippyOptions={{ duration: 100 }}
           className={cn(
-            "flex items-center gap-1 rounded-md bg-secondary p-1 shadow",
-            "border border-input",
+            "flex items-center gap-1 rounded-md p-1",
+            "bg-slate-800 text-background shadow dark:bg-slate-200",
           )}
         >
           <button
+            type="button"
             onClick={() => editor.chain().focus().toggleBold().run()}
             className={editor.isActive("bold") ? buttonActive : buttonInactive}
           >
             <Iconify icon="ri:bold" />
           </button>
           <button
+            type="button"
             onClick={() => editor.chain().focus().toggleItalic().run()}
             className={
               editor.isActive("italic") ? buttonActive : buttonInactive
@@ -160,6 +168,7 @@ export function EditorTiptapHook({
             <Iconify icon="ri:italic" />
           </button>
           <button
+            type="button"
             onClick={() => editor.chain().focus().toggleStrike().run()}
             className={
               editor.isActive("strike") ? buttonActive : buttonInactive
@@ -168,12 +177,14 @@ export function EditorTiptapHook({
             <Iconify icon="ri:strikethrough" />
           </button>
           <button
+            type="button"
             onClick={handleSetLink}
             className={editor.isActive("link") ? buttonActive : buttonInactive}
           >
             <Iconify icon="ri:link" />
           </button>
           <button
+            type="button"
             onClick={() => editor.chain().focus().unsetLink().run()}
             disabled={!editor.isActive("link")}
             className={!editor.isActive("link") ? "opacity-25" : ""}
