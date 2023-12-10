@@ -92,8 +92,8 @@ export function EditorTiptapHook({
     <>
       <div
         className={cn(
-          "mb-4 flex items-center gap-1 rounded-md bg-muted p-1",
-          "sticky top-[50px] z-10",
+          "z-10 mb-4 flex max-w-prose items-center gap-1 rounded-md bg-muted p-1",
+          "sm:sticky sm:top-[80px] sm:border sm:border-input",
         )}
       >
         <button
@@ -129,11 +129,11 @@ export function EditorTiptapHook({
         </button>
       </div>
 
-      {editor && (
+      <div>
         <BubbleMenu
           editor={editor}
           tippyOptions={{ duration: 100 }}
-          className="flex items-center gap-1 rounded-md bg-secondary p-1 shadow-sm"
+          className="flex items-center gap-1 rounded-md bg-secondary p-1 shadow"
         >
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
@@ -171,9 +171,11 @@ export function EditorTiptapHook({
             <Iconify icon="ri:link-unlink" />
           </button>
         </BubbleMenu>
-      )}
+      </div>
 
-      <EditorContent editor={editor} className="cursor-text" />
+      <div>
+        <EditorContent editor={editor} className="cursor-text" />
+      </div>
     </>
   )
 }
