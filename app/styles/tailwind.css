@@ -89,13 +89,13 @@
     @apply text-xl sm:text-2xl;
   }
   h4 {
-    @apply text-lg sm:text-xl;
+    @apply text-lg leading-snug sm:text-xl;
   }
   h5 {
-    @apply text-base sm:text-lg;
+    @apply text-base leading-snug sm:text-lg;
   }
   h6 {
-    @apply text-base;
+    @apply text-base leading-snug;
   }
   input[type="date"]::-webkit-inner-spin-button,
   input[type="date"]::-webkit-calendar-picker-indicator {
