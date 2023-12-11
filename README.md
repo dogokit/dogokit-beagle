@@ -241,7 +241,8 @@ Configure the required environment variables if on local, otherwise in the
 project settings on other environments.
 
 If necessary, create the `.env.production` for production access. Adjust
-accordingly if need for `staging`, `test`, etc.
+accordingly if need for `staging`, `test`, etc. Be careful to change the
+`APP_URL` on different domains and subdomains.
 
 ```sh
 cp -i .env.example .env.production

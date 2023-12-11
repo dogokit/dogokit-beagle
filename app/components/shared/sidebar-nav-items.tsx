@@ -16,8 +16,10 @@ export function SidebarNavItems({ items }: { items: NavItem[] }) {
               className={({ isActive }) =>
                 cn(
                   "focus-ring flex w-full items-center gap-2 rounded-md px-2 py-1 transition",
-                  !isLogout && "hover:bg-secondary",
-                  !isLogout && isActive && "bg-secondary text-primary",
+                  !isLogout && !isActive && "hover:bg-secondary",
+                  !isLogout &&
+                    isActive &&
+                    "bg-secondary text-secondary-foreground",
                   isLogout &&
                     "hover:bg-destructive hover:text-destructive-foreground",
                 )

@@ -140,6 +140,8 @@ Also to enable `tailwind` and `postcss`.
 
 Use [Real Favicon Generator](https://realfavicongenerator.net).
 
+Remove the `site.webmanifest` file as in Remix it will be handled dynamically.
+
 Use TinyPNG to compress the images.
 
 Configure in Remix `root.tsx`

@@ -139,7 +139,7 @@ export function PaginationNavigation({
 
     if (!isPossible) {
       return (
-        <span className="flex w-8 select-none justify-center rounded-md p-2 opacity-10">
+        <span className="flex w-8 select-none justify-center rounded-md p-2 opacity-20">
           {icon}
         </span>
       )

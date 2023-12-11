@@ -34,7 +34,7 @@ function SiteFooterSectionSitemap({
         <div className="space-y-4">
           <Link
             to="/"
-            className="focus-ring block rounded-xs transition hover:opacity-75"
+            className="focus-ring inline-block rounded-xs transition hover:opacity-75"
           >
             <Logo text="Dogokit" classNameIcon="grayscale" />
           </Link>

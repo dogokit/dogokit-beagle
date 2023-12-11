@@ -68,6 +68,9 @@
     @apply cursor-default bg-background text-foreground;
     @apply selection:bg-primary/75 selection:text-white;
   }
+  img {
+    @apply selection:bg-primary/25;
+  }
   h1,
   h2,
   h3,
@@ -151,7 +154,7 @@
   }
   .prose-a-styles {
     @apply focus-ring cursor-pointer rounded-xs decoration-muted transition;
-    @apply text-primary hover:text-primary/75 dark:text-primary dark:hover:text-primary/75;
+    @apply text-accent-foreground hover:text-accent-foreground/75;
   }
   .prose-pre-styles {
     @apply bg-muted text-foreground;

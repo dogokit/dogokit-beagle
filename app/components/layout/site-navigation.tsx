@@ -141,14 +141,13 @@ export function NavItemLink({
         onClick={onClick}
         className={({ isActive }) =>
           cn(
-            "inline-flex items-center gap-2 rounded-md px-2 py-1 font-semibold transition hover:bg-secondary",
-            "focus-ring",
+            "focus-ring inline-flex select-none items-center gap-2 rounded-md px-2 py-1 font-semibold transition hover:bg-secondary",
             isActive && "text-primary",
           )
         }
       >
         <Iconify icon={navItem.icon} />
-        <span>{navItem.text}</span>
+        <span className="select-none">{navItem.text}</span>
       </NavLink>
     </li>
   )

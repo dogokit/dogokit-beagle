@@ -12,7 +12,9 @@ export const parsedEnv = parseEnv(process.env, {
 
   // For database
   DATABASE_URL: z.string().min(1),
-  DATABASE_BRANCH: z.enum(["", "local", "main", "dev"]).optional(),
+  DATABASE_BRANCH: z
+    .enum(["", "local", "dev", "staging", "test", "main"])
+    .optional(),
 
   // For OAuth
   GITHUB_CLIENT_ID: z.string().optional(),

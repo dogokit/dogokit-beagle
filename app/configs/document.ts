@@ -9,6 +9,7 @@
 import { cssBundleHref } from "@remix-run/css-bundle"
 
 import { fontLinks } from "~/configs/fonts"
+import { configMeta } from "~/configs/meta"
 import tailwindStyles from "~/styles/tailwind.css"
 
 const stylesheetLinks = [
@@ -19,6 +20,7 @@ const stylesheetLinks = [
 /**
  * Docs:
  * - https://favicon.io
+ * - https://realfavicongenerator.net
  * - https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
  */
 
@@ -30,7 +32,7 @@ const faviconLinks = [
    */
   // {
   // 	rel: 'shortcut icon',
-  // 	href: 'https://fav.farm/🐶',
+  // 	href: 'https://fav.farm/⚫',
   // },
   {
     rel: "shortcut icon",
@@ -52,6 +54,11 @@ const faviconLinks = [
     rel: "apple-touch-icon",
     sizes: "180x180",
     href: "/favicons/apple-touch-icon.png",
+  },
+  {
+    rel: "mask-icon",
+    href: "/favicons/safari-pinned-tab.svg",
+    color: String(configMeta.themeColor),
   },
 ]
 
