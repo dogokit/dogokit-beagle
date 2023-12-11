@@ -4,7 +4,6 @@ import { prisma } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
 import { createNanoIdShort } from "~/utils/string"
-import { debugCode } from "~/utils/string.server"
 
 export const modelUser = {
   count() {
@@ -138,9 +137,8 @@ export const modelUser = {
     imageUrl,
   }: Pick<User, "email" | "fullname" | "username"> &
     Pick<Connection, "providerName" | "providerId"> & { imageUrl: string }) {
-    debugCode({ fullname, username, imageUrl, providerName, providerId }, false)
-
     const existingUsername = await modelUser.getByUsername({ username })
+    const existingUser = await modelUser.getByEmail({ email })
 
     try {
       return prisma.user.upsert({
@@ -163,9 +161,9 @@ export const modelUser = {
           },
         },
         update: {
-          images: {
-            create: { url: imageUrl || getPlaceholderAvatarUrl(username) },
-          },
+          images: !existingUser?.images[0]?.url
+            ? { create: { url: imageUrl || getPlaceholderAvatarUrl(username) } }
+            : undefined,
           connections: {
             connectOrCreate: {
               where: { providerId_providerName: { providerName, providerId } },

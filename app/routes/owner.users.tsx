@@ -14,6 +14,7 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({}: LoaderFunctionArgs) => {
+   // IDEA: Refactor this into a model
   const [usersCount, users] = await prisma.$transaction([
     prisma.user.count(),
     prisma.user.findMany({ take: 50 }),
