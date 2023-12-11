@@ -251,8 +251,7 @@ cp -i .env.example .env.production
 Required:
 
 - `APP_URL`: For example, `http://localhost:3000`
-- `DATABASE_URL`: For example,
-  `mysql://user:password@localhost:3060/dogokit-remix`
+- `DATABASE_URL`: For example, `mysql://user:password@localhost:3306/dogokit`
 - `SESSION_SECRET`: For example, `the_secret_text`
 
 For OAuth related, [check this guide](./docs/GUIDE_OAUTH.md)
