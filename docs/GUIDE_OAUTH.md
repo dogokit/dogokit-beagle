@@ -33,18 +33,33 @@ and Google for Developer Docs for
 
 1. Go to the
    [Credentials](https://console.developers.google.com/apis/credentials) page.
+   - Create a Project first if not yet any.
 2. In the
    [APIs & Services: Credentials page](https://console.cloud.google.com/apis/credentials)
    page, **Create credentials** > **OAuth client ID**.
-3. Select the **Web application** application type.
-4. Fill in the form and click **Create**.
+3. To create an OAuth client ID, configure the consent screen.
+   - User Type: External
+   - App name
+   - User support email
+   - App logo
+   - App domain
+   - Authorized domains
+   - Developer contact information
+   - Scopes:
+     - `auth/userinfo.email`
+     - `auth/userinfo.profile`
+     - `openid`
+4. Select the **Web application** application type.
+5. Fill in the form and click **Create**.
    - Name: The name of your OAuth 2.0 client
    - Authorized JavaScript origins:
      - <http://localhost:3000>
      - <https://example.com>
+     - <https://staging.example.com> (optional)
    - Authorized redirect URIs:
      - <http://localhost:3000/auth/google/callback>
-     - <https://example/auth/google/callback>
+     - <https://example.com/auth/google/callback>
+     - <https://staging.example.con/auth/google/callback> (optional)
 
 The redirect URIs are the endpoints to which the OAuth 2.0 server can send
 responses. These endpoints must adhere to Google’s validation rules. You can
