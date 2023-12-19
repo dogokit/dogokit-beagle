@@ -400,6 +400,12 @@ Develop the app as usual, the Remix way.
 Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
 [guide steps](./docs/GUIDE_STEPS.md) to learn more about the setup.
 
+### Subscribe for the status of the services
+
+- [Vercel Status](https://vercel-status.com)
+- [PlanetScale Status](https://planetscalestatus.com)
+- [Resend Status](https://resend-status.com)
+
 ## References
 
 ### Inspirations
