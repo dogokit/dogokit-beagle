@@ -1,10 +1,11 @@
 import { formatTimestamp } from "~/utils/datetime"
 
 export function Timestamp({
+  className,
   isUpdated,
   createdAt,
   updatedAt,
-}: {
+}: React.HTMLAttributes<HTMLParagraphElement> & {
   isUpdated: boolean
   createdAt: string
   updatedAt: string
@@ -12,12 +13,12 @@ export function Timestamp({
   return (
     <>
       {!isUpdated && (
-        <p>
+        <p className={className}>
           Created <time>{formatTimestamp(createdAt)}</time>
         </p>
       )}
       {isUpdated && (
-        <p>
+        <p className={className}>
           Updated <time>{formatTimestamp(updatedAt)}</time>
         </p>
       )}

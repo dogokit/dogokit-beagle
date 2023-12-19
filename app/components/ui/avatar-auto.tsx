@@ -10,7 +10,7 @@ import { getNameInitials } from "~/utils/string"
 export const avatarAutoVariants = cva("", {
   variants: {
     size: {
-      xs: "h-5 w-5",
+      xs: "h-6 w-6",
       sm: "h-8 w-8",
       default: "h-12 w-12",
       lg: "h-20 w-20",
