@@ -5,6 +5,7 @@ import { ExampleButton } from "~/components/examples/button"
 import { ExampleDatePicker } from "~/components/examples/date-picker"
 import { ExampleInput } from "~/components/examples/input"
 import { ExampleTiptap } from "~/components/examples/tiptap"
+import { ExampleUploadcare } from "~/components/examples/uploadcare"
 
 export default function ExamplesSlugRoute() {
   const { slug } = useParams()
@@ -18,4 +19,5 @@ const renderComponent = (slug: string) =>
     .with("input", () => <ExampleInput />)
     .with("date-picker", () => <ExampleDatePicker />)
     .with("tiptap", () => <ExampleTiptap />)
+    .with("uploadcare", () => <ExampleUploadcare />)
     .otherwise(() => <p>No Component</p>)

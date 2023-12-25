@@ -24,7 +24,7 @@ export const parsedEnv = parseEnv(process.env, {
 
   // For services
   RESEND_KEY: z.string().optional(),
-  UPLOADCARE_KEY: z.string().optional(),
+  UPLOADCARE_PUBLIC_KEY: z.string().optional(),
   POSTHOG_KEY: z.string().optional(),
 })
 
@@ -34,7 +34,7 @@ export const parsedEnv = parseEnv(process.env, {
  */
 export const parsedEnvClient = {
   NODE_ENV: parsedEnv.NODE_ENV,
-  UPLOADCARE_KEY: parsedEnv.UPLOADCARE_KEY,
+  UPLOADCARE_PUBLIC_KEY: parsedEnv.UPLOADCARE_PUBLIC_KEY,
   POSTHOG_KEY: parsedEnv.POSTHOG_KEY,
 }
 

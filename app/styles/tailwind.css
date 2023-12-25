@@ -170,8 +170,17 @@
   }
 }
 
+/* TipTap */
 .tiptap p.is-empty::before {
   @apply pointer-events-none float-left h-0 text-muted-foreground/30;
 
   content: attr(data-placeholder);
+}
+
+/* Uploadcare */
+.uploadcare-config {
+  --darkmode: 0;
+  --h-accent: 244;
+  --s-accent: 55%;
+  --l-accent: 41%;
 }

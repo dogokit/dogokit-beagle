@@ -5,4 +5,5 @@ export const configExamples: NavItem[] = [
   { path: "input", text: "Input", icon: "mdi:form-textbox" },
   { path: "date-picker", text: "Date Picker", icon: "mdi:calendar-cursor" },
   { path: "tiptap", text: "Tiptap", icon: "mdi:typewriter" },
+  { path: "uploadcare", text: "Uploadcare", icon: "mdi:moon-full" },
 ]

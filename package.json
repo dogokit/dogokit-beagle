@@ -93,6 +93,7 @@
     "@tiptap/react": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
     "@types/pluralize": "^0.0.33",
+    "@uploadcare/blocks": "0.30.5",
     "bcryptjs": "^2.4.3",
     "chalk": "^5.3.0",
     "class-variance-authority": "^0.7.0",

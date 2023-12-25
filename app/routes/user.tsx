@@ -40,7 +40,7 @@ export default function UserLayoutRoute() {
   const extraNavItems = ["/admin"]
 
   return (
-    <div className="mx-auto w-full pb-20">
+    <div className="mx-auto w-full">
       {/* IDEA: Become a collapsible component: shared/sidebar + sidebar-nav-items */}
       <div className="mx-auto flex max-w-6xl">
         <nav className={cn("select-none border-r border-r-border p-2 lg:p-4")}>
@@ -61,7 +61,7 @@ export default function UserLayoutRoute() {
           )}
         </nav>
 
-        <div className="w-full">
+        <div className="w-full pb-20">
           <Outlet />
         </div>
       </div>
