@@ -130,9 +130,9 @@ async function seedUsers() {
       },
       create: {
         ...userData,
-        password:  userHasPassword
-        ? { create: { hash: await hashPassword(userCredential.password) } }
-        : undefined,
+        password: userHasPassword
+          ? { create: { hash: await hashPassword(userCredential.password) } }
+          : undefined,
       },
     })
 
