@@ -27,7 +27,7 @@ const AnchorText = React.forwardRef<HTMLAnchorElement, AnchorProps>(
         target="_blank"
         rel="noreferrer"
         className={cn(
-          "prose-a-styles",
+          "prose-a-styles font-semibold",
           noBreak && "whitespace-pre",
           disabled && "cursor-not-allowed opacity-75",
           className,

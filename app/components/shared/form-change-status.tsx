@@ -98,7 +98,7 @@ export function FormChangeStatus({
                       <SelectItem key={status.id} value={status.symbol}>
                         <p className="inline-flex items-center gap-2">
                           <IconPostStatus status={status} />
-                          <span className="font-semibold">{status.name}</span>
+                          <span>{status.name}</span>
                         </p>
                       </SelectItem>
                     )

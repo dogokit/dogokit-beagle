@@ -26,7 +26,6 @@ export function FormButtonOAuth({
     <fetcher.Form method="POST" action={`/auth/${provider}`} className="flex">
       <input type="hidden" name="formId" defaultValue={provider} />
       <ButtonLoading
-        size="sm"
         isIconText
         className="flex-[auto]"
         iconComponent={<Iconify icon={getIconName(provider)} />}

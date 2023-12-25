@@ -23,7 +23,7 @@ export function LinkText({
     <Link
       to={to}
       className={cn(
-        "prose-a-styles",
+        "prose-a-styles font-semibold",
         disabled && "cursor-not-allowed opacity-75",
         className,
       )}
