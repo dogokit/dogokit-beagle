@@ -27,7 +27,7 @@ export default function AboutRoute() {
           <Anchor href="https://dogokit.allnimal.com">Dogokit</Anchor> and{" "}
           <Anchor href="https://remix.run">Remix</Anchor>.
         </p>
-        <pre>console.log("Hello Inside 0123");</pre>
+        <pre>console.info("Hello World 0123");</pre>
 
         <h2 className="inline-flex items-center gap-2">Heading Two</h2>
         <p>
