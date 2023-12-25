@@ -7,7 +7,11 @@ export function ExampleDatePicker() {
 
   return (
     <div className="max-w-xs space-y-8">
-      <h2>Date Picker</h2>
+      <header>
+        <h2>Date Picker</h2>
+        <p>A date picker component with range and presets.</p>
+      </header>
+
       <div className="space-y-4">
         <InputDate className="w-full" />
         <InputDate className="w-full" defaultValue={formatDateYMD(today)} />

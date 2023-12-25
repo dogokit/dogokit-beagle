@@ -23,7 +23,10 @@ export function ExampleUploadcare() {
 
   return (
     <div className="space-y-8">
-      <h2>Uploadcare</h2>
+      <header>
+        <h2>Uploadcare</h2>
+        <p>File upload, especially image.</p>
+      </header>
 
       <div className="max-w-2xl">
         <UploaderWithOutput

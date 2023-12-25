@@ -3,7 +3,10 @@ import { Button } from "~/components/ui/button"
 export function ExampleButton() {
   return (
     <div className="space-y-8">
-      <h2>Button</h2>
+      <header>
+        <h2>Button</h2>
+        <p>Displays a button or a component that looks like a button.</p>
+      </header>
 
       <div className="space-y-4">
         <h3>Variant</h3>
