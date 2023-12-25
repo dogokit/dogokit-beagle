@@ -12,7 +12,7 @@ import {
   getPaginationOptions,
   PaginationNavigation,
   PaginationSearch,
-} from "~/components/shared/pagination"
+} from "~/components/shared/pagination-search"
 import { PostItemAction } from "~/components/shared/post-item-action"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"

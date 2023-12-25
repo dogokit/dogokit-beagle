@@ -10,7 +10,7 @@ import {
   getPaginationOptions,
   PaginationNavigation,
   PaginationSearch,
-} from "~/components/shared/pagination"
+} from "~/components/shared/pagination-search"
 import { UserItem } from "~/components/shared/user-item"
 import { Iconify } from "~/components/ui/iconify"
 import { prisma } from "~/libs/db.server"

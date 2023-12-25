@@ -1,5 +1,5 @@
 /**
- * Paginated Search Components
+ * Pagination with Search
  *
  * See example at app/routes/search.tsx
  */
