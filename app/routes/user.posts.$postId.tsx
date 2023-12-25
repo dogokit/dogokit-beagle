@@ -184,6 +184,7 @@ export default function UserPostsPostIdRoute() {
                   intentValue="change-post-status"
                   dialogTitle="Change post's status"
                   dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
+                  buttonText="Change Status"
                   itemStatuses={postStatuses}
                   item={post as any}
                 />

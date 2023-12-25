@@ -32,6 +32,7 @@ export function FormChangeStatus({
   intentValue = "change-item-status",
   dialogTitle = "Change Status",
   dialogDescription = "Change the status of this item",
+  buttonText = "Change",
   item,
   itemStatuses,
   className,
@@ -41,6 +42,7 @@ export function FormChangeStatus({
   intentValue: string // Example: change-post-status
   dialogTitle: string
   dialogDescription: string
+  buttonText?: string
   // IDEA: Make it more general with a model Item that has a Status
   itemStatuses: PostStatus[]
   item: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
@@ -135,7 +137,7 @@ export function FormChangeStatus({
               value={intentValue}
               isLoading={isLoading}
             >
-              Change
+              {buttonText}
             </ButtonLoading>
           </AlertDialogFooter>
         </fetcher.Form>
