@@ -1,4 +1,4 @@
-import { Anchor } from "~/components/ui/anchor"
+import { AnchorText } from "~/components/ui/anchor-text"
 import { cn } from "~/utils/cn"
 
 export function ContentIntro() {
@@ -24,7 +24,7 @@ export function ContentIntro() {
         <p>
           The goal is to start and be as productive as possible to ship a full
           stack web app quickly with{" "}
-          <Anchor href="https://remix.run">Remix</Anchor> web framework.
+          <AnchorText href="https://remix.run">Remix</AnchorText> web framework.
         </p>
 
         <p>
@@ -42,37 +42,30 @@ export function ContentIntro() {
         <ul>
           <li>
             Repo:{" "}
-            <Anchor href="https://github.com/dogokit/dogokit-remix">
+            <AnchorText href="https://github.com/dogokit/dogokit-remix">
               github.com/dogokit/dogokit-remix
-            </Anchor>
+            </AnchorText>
           </li>
           <li>
             Demo:{" "}
-            <Anchor href="https://dogokit.allnimal.com">
+            <AnchorText href="https://dogokit.allnimal.com">
               dogokit.allnimal.com
-            </Anchor>
+            </AnchorText>
           </li>
         </ul>
 
         <p>
           Originally created by{" "}
-          <Anchor href="https://github.com/mhaidarhanif">M Haidar Hanif</Anchor>{" "}
+          <AnchorText href="https://github.com/mhaidarhanif">
+            M Haidar Hanif
+          </AnchorText>{" "}
           from the{" "}
-          <Anchor noBreak href="https://allnimal.com">
-            🐾 Allnimal
-          </Anchor>{" "}
-          group (
-          <Anchor noBreak href="https://bearmentor.com">
-            🐻 Bearmentor
-          </Anchor>
-          ,{" "}
-          <Anchor noBreak href="https://catamyst.com">
-            🐱 Catamyst
-          </Anchor>
-          ,{" "}
-          <Anchor noBreak href="https://dogokit.allnimal.com">
+          <AnchorText href="https://allnimal.com">🐾 Allnimal</AnchorText> group
+          (<AnchorText href="https://bearmentor.com">🐻 Bearmentor</AnchorText>,{" "}
+          <AnchorText href="https://catamyst.com">🐱 Catamyst</AnchorText>,{" "}
+          <AnchorText href="https://dogokit.allnimal.com">
             🐶 Dogokit
-          </Anchor>
+          </AnchorText>
           )
         </p>
       </div>

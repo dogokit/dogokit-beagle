@@ -1,6 +1,7 @@
 import { Link, Outlet } from "@remix-run/react"
 
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
+import { AnchorText } from "~/components/ui/anchor-text"
 import { Card } from "~/components/ui/card"
 import { Iconify } from "~/components/ui/iconify"
 import { configExamples } from "~/configs/examples"
@@ -13,6 +14,10 @@ export default function ExamplesRoute() {
           <Iconify icon="ph:bounding-box-duotone" />
           <Link to="/examples">Examples</Link>
         </h1>
+        <p>
+          Most examples and explanation of the components are available on{" "}
+          <AnchorText href="https://ui.shadcn.com">shadcn UI</AnchorText>
+        </p>
       </header>
 
       <section className="flex flex-nowrap gap-4">

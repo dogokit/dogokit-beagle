@@ -5,15 +5,20 @@ import { cn } from "~/utils/cn"
 /**
  * Remix Link + Text
  *
- * Reexport Link and NavLink component from Remix.
+ * Re-export Link and NavLink component from Remix.
  * Also Link Text and NavLink Text with some default styles.
  */
 
-interface Props extends LinkProps {
+interface LinkTextProps extends LinkProps {
   disabled?: boolean
 }
 
-export function LinkText({ to, children, disabled, className }: Props) {
+export function LinkText({
+  to = "/",
+  disabled = false,
+  children,
+  className,
+}: LinkTextProps) {
   return (
     <Link
       to={to}
