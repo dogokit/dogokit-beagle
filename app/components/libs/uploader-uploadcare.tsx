@@ -17,6 +17,10 @@ import { cn } from "~/utils/cn"
  * https://uploadcare.com/blog/how-to-upload-file-in-react
  * https://github.com/uploadcare/blocks-examples
  * https://github.com/uploadcare/blocks-examples/tree/main/examples/react-uploader
+ *
+ * Note: Uploadcare Blocks currently doesn't work well with TypeScript yet,
+ * so there are a lot of @ts-ignore to resolve
+ * element does not exist on type 'JSX.IntrinsicElements' error
  */
 
 LR.registerBlocks(LR)

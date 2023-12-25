@@ -181,7 +181,10 @@
 .uploadcare-config {
   --h-accent: 244;
   --s-accent: 55%;
-  --l-accent: 41%;
+  --l-accent: calc(50% - 5% * var(--darkmode));
+  --border-radius-element: calc(var(--radius) - 2px);
+  --border-radius-frame: calc(var(--radius) - 2px);
+  --border-radius-thumb: calc(var(--radius) - 2px);
 }
 
 .uploadcare-config.light {

@@ -29,8 +29,8 @@ export function ExampleUploadcare() {
       </header>
 
       <div className="max-w-2xl space-y-8">
-        <div className="space-y-4">
-          <header>
+        <div>
+          <header className="mb-2">
             <h3>Regular</h3>
             <p>With modal, no preview.</p>
           </header>
@@ -42,8 +42,8 @@ export function ExampleUploadcare() {
           />
         </div>
 
-        <div className="space-y-2">
-          <header>
+        <div>
+          <header className="mb-2">
             <h3>Minimal</h3>
             <p>Without modal, no preview.</p>
           </header>
@@ -55,8 +55,8 @@ export function ExampleUploadcare() {
           />
         </div>
 
-        <div className="space-y-2">
-          <header>
+        <div>
+          <header className="mb-2">
             <h3>Inline</h3>
             <p>Without modal, more straightforward, no preview.</p>
           </header>
