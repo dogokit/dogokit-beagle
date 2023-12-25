@@ -130,6 +130,19 @@ export function LRDataOutput({ contextName }: UploaderProps) {
 }
 
 /**
+ * Utility functions
+ */
+
+export function getFileUrl(cdnUrl: string, resize: string = "x200") {
+  const fileUrl = `${cdnUrl}
+-/preview/
+-/format/auto/
+-/resize/${resize}/
+-/quality/smart_retina/`
+  return fileUrl
+}
+
+/**
  * Uploader with Switcher
  *
  * Changeable mode, but without output
@@ -227,7 +240,7 @@ export function UploaderWithOutput({
         {hasFiles &&
           files.map(file => {
             if (!file.cdnUrl) return null
-            const fileUrl = `${file.cdnUrl}-/preview/-/resize/x200/`
+            const fileUrl = getFileUrl(file.cdnUrl)
 
             return (
               <div key={file.uuid} className="flex gap-1">
@@ -336,7 +349,8 @@ export function UploaderWithProvider({
         {/* !hasFiles && ... */}
         {hasFiles &&
           files.map(file => {
-            const fileUrl = `${file.cdnUrl}-/preview/-/resize/x200/`
+            if (!file.cdnUrl) return null
+            const fileUrl = getFileUrl(file.cdnUrl)
 
             return (
               <div key={file.uuid} className="flex gap-1">
