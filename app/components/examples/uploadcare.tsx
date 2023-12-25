@@ -28,29 +28,12 @@ export function ExampleUploadcare() {
         <p>File upload, especially image.</p>
       </header>
 
-      <div className="max-w-2xl">
-        <UploaderWithOutput
-          pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
-          contextName="my-uploader-output"
-          theme={theme}
-          files={filesA}
-          setFiles={setFilesA}
-        />
-      </div>
-
-      <div className="max-w-2xl">
-        <UploaderWithProvider
-          pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
-          contextName="my-uploader-provider"
-          theme={theme}
-          files={filesB}
-          setFiles={setFilesB}
-        />
-      </div>
-
       <div className="max-w-2xl space-y-8">
-        <div className="space-y-2">
-          <h3>Regular</h3>
+        <div className="space-y-4">
+          <header>
+            <h3>Regular</h3>
+            <p>With modal, no preview.</p>
+          </header>
           <UploaderSwitcher
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
             contextName="uploader-regular"
@@ -60,7 +43,10 @@ export function ExampleUploadcare() {
         </div>
 
         <div className="space-y-2">
-          <h3>Minimal</h3>
+          <header>
+            <h3>Minimal</h3>
+            <p>Without modal, no preview.</p>
+          </header>
           <UploaderSwitcher
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
             contextName="uploader-minimal"
@@ -70,7 +56,10 @@ export function ExampleUploadcare() {
         </div>
 
         <div className="space-y-2">
-          <h3>Inline</h3>
+          <header>
+            <h3>Inline</h3>
+            <p>Without modal, more straightforward, no preview.</p>
+          </header>
           <UploaderSwitcher
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
             contextName="uploader-inline"
@@ -78,6 +67,36 @@ export function ExampleUploadcare() {
             theme={theme}
           />
         </div>
+      </div>
+
+      <div className="max-w-2xl space-y-2">
+        <div className="space-y-2">
+          <header>
+            <h3>Preview with Data Output</h3>
+            <p>With modal and preview files immediately</p>
+          </header>
+          <UploaderWithOutput
+            pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
+            contextName="my-uploader-output"
+            theme={theme}
+            files={filesA}
+            setFiles={setFilesA}
+          />
+        </div>
+      </div>
+
+      <div className="max-w-2xl space-y-2">
+        <header>
+          <h3>Preview with Upload Provider</h3>
+          <p>With modal and preview files after done</p>
+        </header>
+        <UploaderWithProvider
+          pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
+          contextName="my-uploader-provider"
+          theme={theme}
+          files={filesB}
+          setFiles={setFilesB}
+        />
       </div>
     </div>
   )
