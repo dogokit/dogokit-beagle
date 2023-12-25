@@ -179,8 +179,15 @@
 
 /* Uploadcare */
 .uploadcare-config {
-  --darkmode: 0;
   --h-accent: 244;
   --s-accent: 55%;
   --l-accent: 41%;
+}
+
+.uploadcare-config.light {
+  --darkmode: 0;
+}
+
+.uploadcare-config.dark {
+  --darkmode: 1;
 }

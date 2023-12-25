@@ -14,7 +14,8 @@ interface ThemeButtonProps
 // not in components because it depens on the theme config
 export function ThemeButton({ ...props }: ThemeButtonProps) {
   const [theme, setTheme] = useTheme()
-  const nameTo = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
+  const hasTheme = Boolean(theme)
+  const nameTo = hasTheme && theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
 
   function handleChangeTheme() {
     setTheme(nameTo)
