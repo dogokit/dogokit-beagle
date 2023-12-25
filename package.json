@@ -109,6 +109,7 @@
     "react": "^18.2.0",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18.2.0",
+    "react-flagpack": "1.2.0",
     "react-resizable-panels": "1.0.5",
     "react-textarea-autosize": "8.5.3",
     "remix-auth": "^3.6.0",
