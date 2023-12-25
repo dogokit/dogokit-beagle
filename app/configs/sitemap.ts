@@ -22,8 +22,9 @@ export const configSitemapGroups: ConfigSitemapGroup[] = [
     title: "Misc",
     items: [
       { name: "Blank", to: "/blank" },
-      { name: "Components", to: "/components" },
-      { name: "Editor Tiptap", to: "/tiptap" },
+      { name: "Examples", to: "/examples" },
+      { name: "Editor: Tiptap", to: "/examples/tiptap" },
+      { name: "Uploader: Uploadcare", to: "/examples/uploadcare" },
     ],
   },
   {

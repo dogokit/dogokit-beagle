@@ -186,6 +186,7 @@ export const configUnallowedKeywords = [
   "every",
   "everything",
   "everythings",
+  "exam",
   "example",
   "examples",
   "explore",
