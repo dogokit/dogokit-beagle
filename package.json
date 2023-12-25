@@ -100,6 +100,7 @@
     "cmdk": "^0.2.0",
     "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
+    "embla-carousel-react": "8.0.0-rc17",
     "html-react-parser": "^5.0.11",
     "isbot": "^4.1.0",
     "nanoid": "^5.0.4",
