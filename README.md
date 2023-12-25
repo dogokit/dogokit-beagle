@@ -13,22 +13,25 @@
 
 Dogokit Remix is a web app template kit by
 [🐶 Dogokit](https://dogokit.allnimal.com) using Remix, React, Tailwind CSS,
-Radix UI, Prisma ORM, and more.
-
-Read the latest updates and details on
+Radix UI, Prisma ORM, and more. Read the latest updates and details on
 [dogokit/dogokit-remix](https://github.com/dogokit/dogokit-remix).
 
 The goal is to start and be as productive as possible to ship a web app quickly
-with [Remix](https://remix.run) full stack web framework.
-
-It is a highly opinionated collection of application structure, interactive UI
-components, software engineering and web development workflow, functionality
-hooks and utilities, also integration with 3rd party services.
+with [Remix](https://remix.run) full stack web framework. It is a highly
+opinionated collection of application structure, interactive UI components,
+software engineering and web development workflow, functionality hooks and
+utilities, also integration with 3rd party services.
 
 Check out:
 
 - Web: <https://dogokit.allnimal.com>
 - Repo: <https://github.com/dogokit/dogokit-remix>
+
+> 📝 This notice below can be used to remind about the latest complete docs
+
+The repo is based on [Dogokit](https://dogokit.allnimal.com) that using Remix,
+React, Tailwind CSS, Radix UI, Prisma ORM, and more. For more details and
+documentation, [check its repo](https://github.com/dogokit/dogokit-remix).
 
 ## Table of Contents
 
@@ -41,7 +44,7 @@ Check out:
 
 ## Quick Start
 
-<!-- REMOVABLE SECTION -->
+<!-- THIS IS A REMOVABLE SECTION -->
 
 Starting new?
 [Use this template to generate the repository](https://github.com/dogokit/dogokit-remix/generate).
@@ -69,7 +72,7 @@ replace the contents along the way.
 
 ## Goal
 
-<!-- REMOVABLE SECTION -->
+<!-- THIS IS A REMOVABLE SECTION -->
 
 The goal is to use this for building web apps:
 
@@ -97,7 +100,7 @@ The goal is to use this for building web apps:
 
 ## Concept
 
-<!-- REMOVABLE SECTION -->
+<!-- THIS IS A REMOVABLE SECTION -->
 
 Some reasons for making and using this template kit.
 
@@ -137,7 +140,7 @@ Later:
 
 ## Tech Stack
 
-<!-- REMOVABLE SECTION -->
+<!-- THIS IS A REMOVABLE SECTION -->
 
 The main prerequisites to learn, understand, and use with the stack. See the
 complete and categorized list in the
@@ -368,16 +371,21 @@ pnpm dev
 
 Open <http://localhost:3000> and it's ready!
 
-### Customize
+## What's Next?
 
-<!-- REMOVABLE SECTION -->
+<!-- THIS IS A REMOVABLE SECTION -->
 
-#### Change the Contents
+Develop the app as usual, the Remix way.
+
+Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
+[guide steps](./docs/GUIDE_STEPS.md) to learn more about the setup.
+
+### Change the Contents
 
 - Arrange and remove components as needed.
 - Find and replace various texts, especially the word Dogokit.
 
-#### Change Theme Colors
+### Change Theme Colors
 
 Use
 [`kiliman/shadcn-custom-theme`](https://github.com/kiliman/shadcn-custom-theme)
@@ -389,20 +397,25 @@ For example:
 pnpx shadcn-custom-theme primary=indigo secondary=blue accent=violet gray=neutral
 ```
 
-## What's Next?
+### Setup some services
 
-Develop the app as usual, the Remix way.
-
-Read the [guide to codebase](./docs/GUIDE_CODEBASE.md) and
-[guide steps](./docs/GUIDE_STEPS.md) to learn more about the setup.
+- Image upload with [Uploadcare](https://uploadcare.com)
+  - `UPLOADCARE_PUBLIC_KEY`, `UPLOADCARE_SECRET_KEY`
+- Transactional email with [Resend](https://resend.com)
+  - `RESEND_API_KEY`
+- Product analytics with [Posthog](https://posthog.com)
+  - `POSTHOG_KEY`
 
 ### Subscribe for the status of the services
 
 - [Vercel Status](https://vercel-status.com)
 - [PlanetScale Status](https://planetscalestatus.com)
+- [Uploadcare Status](https://status.uploadcare.com)
 - [Resend Status](https://resend-status.com)
 
 ## References
+
+<!-- THIS IS A REMOVABLE SECTION -->
 
 ### Inspirations
 
