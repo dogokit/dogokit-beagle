@@ -210,24 +210,6 @@ pnpm fix
 
 > Note: Can ignore non-critical warning from ESLint and TypeScript
 
-### Database Instance
-
-Prisma ORM is used to communicate with the database easily.
-
-If prefer using Docker and Docker Compose for local development,
-[follow this guide on database](docs/GUIDE_DATABASE.md).
-
-The app will be deployed primarily using PlanetScale, the migration files are
-not needed. Therefore, push the schema directly there. The migration process
-will be handled through the
-[deploy requests](https://planetscale.com/docs/concepts/deploy-requests).
-Although using an ORM, there's still also a way to run a raw query.
-
-Also read:
-
-- [Prisma with PlanetScale](https://prisma.io/docs/guides/database/planetscale)
-- [PlanetScale with Prisma](https://planetscale.com/docs/prisma/prisma-quickstart)
-
 ### Environment Variables
 
 Create the `.env` file from `.env.example`. This is the one for local
@@ -254,16 +236,33 @@ Required:
 - `DATABASE_URL`: For example, `mysql://user:password@localhost:3306/dogokit`
 - `SESSION_SECRET`: For example, `the_secret_text`
 
+For the `SESSION_SECRET`, generate a random string using
+`openssl rand -base64 32` on the terminal or put any long random text.
+
+For the `DATABASE_URL`, continue along.
+
 For OAuth related, [check this guide](./docs/GUIDE_OAUTH.md)
 
 #### Database Setup
 
-For the database, either choose to use MySQL or PostgreSQL from local system,
-Docker container, services like [PlanetScale](https://planetscale.com) (MySQL)
-or [Neon](https://neon.tech) (PostgreSQL).
+Prisma ORM is used to communicate with the database easily.
+
+For the database, either choose to use MySQL or PostgreSQL (relational database)
+from local system, Docker container, services like
+[PlanetScale](https://planetscale.com) (MySQL) or [Neon](https://neon.tech)
+(PostgreSQL).
 
 If prefer using Docker and Docker Compose for local development,
-[follow this guide](docs/GUIDE_DATABASE.md).
+[follow this guide on database](./docs/GUIDE_DATABASE.md).
+
+The app is configured primarily to be deployed using PlanetScale. Because of
+that, the migration files are not needed. Therefore, push the schema directly
+there. The migration process will be handled through its
+[deploy requests](https://planetscale.com/docs/concepts/deploy-requests).
+
+This repo template does not recommend MongoDB (document database), although
+Prisma has a stable support for it. The database provider can still be changed,
+and the schema and databaase operations might need to adapt.
 
 #### MySQL Database with PlanetScale
 
@@ -276,13 +275,10 @@ been created, "Get the connection string", select "Prisma", then copy the full
 > delete it when unused, or upgrade the plan. There's also a verification with a
 > payment card, even though it's still free to start.
 
-Generate a random string for the `SESSION_SECRET` using
-`openssl rand -base64 32` on the terminal or put any long random text.
+Also read:
 
-```sh
-DATABASE_URL="mysql://username:password@aws.connect.psdb.cloud/database-name?sslaccept=strict"
-SESSION_SECRET="random_secret_text"
-```
+- [Prisma with PlanetScale](https://prisma.io/docs/guides/database/planetscale)
+- [PlanetScale with Prisma](https://planetscale.com/docs/prisma/prisma-quickstart)
 
 ### Database Operations
 
