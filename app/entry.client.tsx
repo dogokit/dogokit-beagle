@@ -1,6 +1,7 @@
 /**
  * By default, Remix will handle hydrating the app on the client.
- * Feel free to delete this file if like to, but if want it revealed again, run `npx remix reveal` ✨
+ * Feel free to delete this file if like to,
+ * but if want it revealed again, run `pnpx remix reveal`
  * For more information, see https://remix.run/file-conventions/entry.client
  */
 

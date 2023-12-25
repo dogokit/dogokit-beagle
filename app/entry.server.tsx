@@ -1,6 +1,7 @@
 /**
  * By default, Remix will handle generating the HTTP Response.
- * Feel free to delete this file if like to, but if want it revealed again, run `npx remix reveal` ✨
+ * Feel free to delete this file if like to,
+ * but if want it revealed again, run `pnpx remix reveal`
  * For more information, see https://remix.run/file-conventions/entry.server
  */
 
@@ -10,7 +11,7 @@ import {
   type EntryContext,
 } from "@remix-run/node"
 import { RemixServer } from "@remix-run/react"
-import isbot from "isbot"
+import { isbot } from "isbot"
 import { PassThrough } from "node:stream"
 import { renderToPipeableStream } from "react-dom/server"
 
@@ -23,7 +24,7 @@ export default function handleRequest(
   remixContext: EntryContext,
   _loadContext: AppLoadContext,
 ) {
-  return isbot(request.headers.get("user-agent"))
+  return isbot(String(request.headers.get("user-agent")))
     ? handleBotRequest(
         request,
         responseStatusCode,
