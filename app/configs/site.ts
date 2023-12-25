@@ -17,6 +17,9 @@ export const configSite = {
   description:
     "Web app template kit using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more",
 
+  languageCode: "en",
+  countryCode: "US",
+
   links: {
     devTo: "https://dev.to/mhaidarhanif",
     facebook: "https://facebook.com/mhaidarhanif",

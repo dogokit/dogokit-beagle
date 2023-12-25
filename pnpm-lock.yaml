@@ -173,6 +173,9 @@ dependencies:
   embla-carousel-react:
     specifier: 8.0.0-rc17
     version: 8.0.0-rc17(react@18.2.0)
+  flagpack-core:
+    specifier: 2.0.0
+    version: 2.0.0
   html-react-parser:
     specifier: ^5.0.11
     version: 5.0.11(react@18.2.0)
@@ -7047,6 +7050,10 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
     dev: true
+
+  /flagpack-core@2.0.0:
+    resolution: {integrity: sha512-m1nXIT+BFgIpAlBRAJ/AUIIW5Mx32EsSVU34nZlT58v5hVqo52ZwBibV7LVWG6vXU4ij5vwCI5BUOCd0+cb6jA==}
+    dev: false
 
   /flat-cache@3.2.0:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
