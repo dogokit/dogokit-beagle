@@ -53,15 +53,15 @@ export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
 
       <DropdownMenuContent align={align}>
         <DropdownMenuItem onClick={() => handleChangeTheme("light")}>
-          <Icon icon="ph:sun-duotone" className="me-2 h-4 w-4" />
+          <Icon icon="ph:sun-duotone" className="me-2 size-4" />
           <span>Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("dark")}>
-          <Icon icon="ph:moon-duotone" className="me-2 h-4 w-4" />
+          <Icon icon="ph:moon-duotone" className="me-2 size-4" />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("system")}>
-          <Icon icon="ph:laptop-duotone" className="me-2 h-4 w-4" />
+          <Icon icon="ph:laptop-duotone" className="me-2 size-4" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

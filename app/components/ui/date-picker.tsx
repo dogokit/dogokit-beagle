@@ -55,7 +55,7 @@ export function DatePicker({
               className,
             )}
           >
-            <Iconify icon="ph:calendar-blank" className="h-5 w-5" />
+            <Iconify icon="ph:calendar-blank" className="size-5" />
             {date ? formatDateDMY(date) : <span>Pick a date</span>}
           </Button>
         </PopoverTrigger>

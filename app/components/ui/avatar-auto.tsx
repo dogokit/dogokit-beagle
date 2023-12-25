@@ -10,11 +10,11 @@ import { getNameInitials } from "~/utils/string"
 export const avatarAutoVariants = cva("", {
   variants: {
     size: {
-      xs: "h-6 w-6",
-      sm: "h-8 w-8",
-      default: "h-12 w-12",
-      lg: "h-20 w-20",
-      xl: "h-28 w-28",
+      xs: "size-6",
+      sm: "size-8",
+      default: "size-12",
+      lg: "size-20",
+      xl: "size-28",
     },
   },
   compoundVariants: [

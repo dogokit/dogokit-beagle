@@ -9,7 +9,7 @@ export function InputDate({ className, ...props }: InputProps) {
       <Iconify
         icon="ph:calendar-blank"
         className={cn(
-          "pointer-events-none absolute inset-y-0 right-0 my-2 mr-3 flex h-5 w-5",
+          "pointer-events-none absolute inset-y-0 right-0 my-2 mr-3 flex size-5",
         )}
       />
     </div>

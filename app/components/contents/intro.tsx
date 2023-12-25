@@ -4,7 +4,7 @@ import { cn } from "~/utils/cn"
 export function ContentIntro() {
   return (
     <div className="space-y-10">
-      <header className="space-y-10 [text-wrap:balance]">
+      <header className="space-y-10 text-pretty">
         <h1
           id="intro"
           className={cn(
