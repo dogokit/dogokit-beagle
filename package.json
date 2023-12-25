@@ -120,6 +120,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-radix-ui-primitives": "^1.0.0",
     "ts-pattern": "^5.0.6",
+    "vaul": "0.8.0",
     "znv": "^0.4.0",
     "zod": "^3.22.4",
     "zod-form-data": "^2.0.2",
