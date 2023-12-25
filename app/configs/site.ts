@@ -20,6 +20,11 @@ export const configSite = {
   languageCode: "en",
   countryCode: "US",
 
+  logos: {
+    dark: "/images/logos/svg/dogokit-white.svg",
+    light: "/images/logos/svg/dogokit-black.svg",
+  },
+
   links: {
     devTo: "https://dev.to/mhaidarhanif",
     facebook: "https://facebook.com/mhaidarhanif",
