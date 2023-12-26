@@ -23,7 +23,19 @@ import { cn } from "~/utils/cn"
  * element does not exist on type 'JSX.IntrinsicElements' error
  */
 
+/**
+ * IDEA: After uploading the files, store the info into the database records
+ * So can delete them afterwards from anywhere
+ */
+
 LR.registerBlocks(LR)
+
+export const defaultLRConfig = {
+  sourceList: "local, url, gdrive",
+  maxLocalFileSizeBytes: 10_000_000, // 10 MB
+  multiple: false,
+  imgOnly: true,
+}
 
 export interface UploaderProps {
   contextName: string
@@ -31,13 +43,18 @@ export interface UploaderProps {
   children?: React.ReactNode
 }
 
-export interface UploaderConfigProps extends UploaderProps {
-  pubkey: string
-  mode?: "regular" | "minimal" | "inline"
+export interface LRConfigProps {
   sourceList?: string
   maxLocalFileSizeBytes?: number
   multiple?: boolean
   imgOnly?: boolean
+  cropPreset?: string
+}
+
+export interface UploaderConfigProps extends UploaderProps {
+  pubkey: string
+  mode?: "regular" | "minimal" | "inline"
+  config?: LRConfigProps
 }
 
 export interface UploaderWithPreviewProps extends UploaderConfigProps {
@@ -46,8 +63,8 @@ export interface UploaderWithPreviewProps extends UploaderConfigProps {
 }
 
 export interface PreviewFilesProps {
-  size?: string
   multiple?: boolean
+  size?: string
   files: OutputFileEntry[]
   removeFile: (uuid: OutputFileEntry["uuid"]) => void
 }
@@ -55,20 +72,18 @@ export interface PreviewFilesProps {
 export function LRConfig({
   pubkey = "demopublickey",
   contextName = "my-uploader",
-  sourceList = "local, url, gdrive",
-  maxLocalFileSizeBytes = 10_000_000, // 10 MB
-  multiple = false,
-  imgOnly = true,
+  config = defaultLRConfig,
 }: UploaderConfigProps) {
   return (
     // @ts-ignore
     <lr-config
       pubkey={pubkey}
       ctx-name={contextName}
-      sourceList={sourceList}
-      maxLocalFileSizeBytes={maxLocalFileSizeBytes}
-      multiple={multiple}
-      imgOnly={imgOnly}
+      sourceList={config.sourceList}
+      maxLocalFileSizeBytes={config.maxLocalFileSizeBytes}
+      multiple={config.multiple}
+      imgOnly={config.imgOnly}
+      cropPreset={config.cropPreset}
       class="hidden"
       // More options: https://uploadcare.com/docs/file-uploader/options
     />
@@ -150,17 +165,11 @@ export function UploaderSwitcher({
   contextName = "my-uploader",
   theme = "light",
   mode = "regular",
-  multiple = false,
   ...props
 }: UploaderConfigProps) {
   return (
     <>
-      <LRConfig
-        pubkey={pubkey}
-        contextName={contextName}
-        multiple={multiple}
-        {...props}
-      />
+      <LRConfig pubkey={pubkey} contextName={contextName} {...props} />
 
       {mode === "regular" && (
         <LRFileUploaderRegular contextName={contextName} theme={theme} />
@@ -184,7 +193,7 @@ export function UploaderWithOutput({
   pubkey = "demopublickey",
   contextName = "my-uploader",
   theme = "light",
-  multiple = false,
+  config = defaultLRConfig,
   files,
   setFiles,
   ...props
@@ -228,7 +237,7 @@ export function UploaderWithOutput({
         <LRConfig
           pubkey={pubkey}
           contextName={contextName}
-          multiple={multiple}
+          config={config}
           {...props}
         />
         <LRFileUploaderRegular contextName={contextName} theme={theme}>
@@ -244,7 +253,11 @@ export function UploaderWithOutput({
         </LRFileUploaderRegular>
       </div>
 
-      <PreviewFiles multiple={multiple} files={files} removeFile={removeFile} />
+      <PreviewFiles
+        multiple={config.multiple}
+        files={files}
+        removeFile={removeFile}
+      />
     </div>
   )
 }
@@ -258,7 +271,7 @@ export function UploaderWithProvider({
   pubkey = "demopublickey",
   contextName = "my-uploader",
   theme = "light",
-  multiple = false,
+  config = defaultLRConfig,
   files,
   setFiles,
   ...props
@@ -298,11 +311,11 @@ export function UploaderWithProvider({
 
     const handleDoneFlow = () => {
       resetUploaderState()
-      if (multiple) {
+      if (config.multiple) {
         setFiles([...files, ...uploadedFiles])
         setUploadedFiles([])
       }
-      if (!multiple) {
+      if (!config.multiple) {
         setFiles([...uploadedFiles])
         setUploadedFiles([])
       }
@@ -314,7 +327,7 @@ export function UploaderWithProvider({
       // eslint-disable-next-line react-hooks/exhaustive-deps
       ctxProviderRef.current?.removeEventListener("done-flow", handleDoneFlow)
     }
-  }, [files, setFiles, uploadedFiles, setUploadedFiles, multiple])
+  }, [files, setFiles, uploadedFiles, setUploadedFiles, config.multiple])
 
   return (
     <div className="space-y-2">
@@ -322,7 +335,7 @@ export function UploaderWithProvider({
         <LRConfig
           pubkey={pubkey}
           contextName={contextName}
-          multiple={multiple}
+          config={config}
           {...props}
         />
         <LRFileUploaderRegular contextName={contextName} theme={theme} />
@@ -332,7 +345,11 @@ export function UploaderWithProvider({
         {/* Note: ctxProviderRef cannot be passed to custom component props */}
       </div>
 
-      <PreviewFiles multiple={multiple} files={files} removeFile={removeFile} />
+      <PreviewFiles
+        multiple={config.multiple}
+        files={files}
+        removeFile={removeFile}
+      />
     </div>
   )
 }

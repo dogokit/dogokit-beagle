@@ -6,6 +6,7 @@ import {
   UploaderSwitcher,
   UploaderWithOutput,
   UploaderWithProvider,
+  defaultLRConfig,
 } from "~/components/libs/uploader-uploadcare"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 
@@ -73,7 +74,7 @@ export function ExampleUploadcare() {
         <div className="space-y-2">
           <header>
             <h3>Preview with Data Output</h3>
-            <p>With modal and preview files immediately</p>
+            <p>With modal, preview files immediately.</p>
           </header>
           <UploaderWithOutput
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
@@ -81,6 +82,7 @@ export function ExampleUploadcare() {
             theme={theme}
             files={filesA}
             setFiles={setFilesA}
+            config={{ ...defaultLRConfig, multiple: true }}
           />
         </div>
       </div>
@@ -88,7 +90,9 @@ export function ExampleUploadcare() {
       <div className="max-w-2xl space-y-2">
         <header>
           <h3>Preview with Upload Provider</h3>
-          <p>With modal and preview files after done</p>
+          <p>
+            With modal, edit with crop ratio 1:1, then preview file after done.
+          </p>
         </header>
         <UploaderWithProvider
           pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
@@ -96,7 +100,7 @@ export function ExampleUploadcare() {
           theme={theme}
           files={filesB}
           setFiles={setFilesB}
-          multiple
+          config={{ ...defaultLRConfig, cropPreset: "1:1" }}
         />
       </div>
     </div>
