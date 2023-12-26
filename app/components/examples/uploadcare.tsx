@@ -96,6 +96,7 @@ export function ExampleUploadcare() {
           theme={theme}
           files={filesB}
           setFiles={setFilesB}
+          multiple
         />
       </div>
     </div>

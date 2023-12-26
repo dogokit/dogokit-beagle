@@ -45,6 +45,13 @@ export interface UploaderWithPreviewProps extends UploaderConfigProps {
   setFiles: (files: OutputFileEntry[]) => void
 }
 
+export interface PreviewFilesProps {
+  size?: string
+  multiple?: boolean
+  files: OutputFileEntry[]
+  removeFile: (uuid: OutputFileEntry["uuid"]) => void
+}
+
 export function LRConfig({
   pubkey = "demopublickey",
   contextName = "my-uploader",
@@ -134,19 +141,6 @@ export function LRDataOutput({ contextName }: UploaderProps) {
 }
 
 /**
- * Utility functions
- */
-
-export function getFileUrl(cdnUrl: string, resize: string = "x200") {
-  const fileUrl = `${cdnUrl}
--/preview/
--/format/auto/
--/resize/${resize}/
--/quality/smart_retina/`
-  return fileUrl
-}
-
-/**
  * Uploader with Switcher
  *
  * Changeable mode, but without output
@@ -156,11 +150,17 @@ export function UploaderSwitcher({
   contextName = "my-uploader",
   theme = "light",
   mode = "regular",
+  multiple = false,
   ...props
 }: UploaderConfigProps) {
   return (
     <>
-      <LRConfig pubkey={pubkey} contextName={contextName} {...props} />
+      <LRConfig
+        pubkey={pubkey}
+        contextName={contextName}
+        multiple={multiple}
+        {...props}
+      />
 
       {mode === "regular" && (
         <LRFileUploaderRegular contextName={contextName} theme={theme} />
@@ -184,12 +184,12 @@ export function UploaderWithOutput({
   pubkey = "demopublickey",
   contextName = "my-uploader",
   theme = "light",
+  multiple = false,
   files,
   setFiles,
   ...props
 }: UploaderWithPreviewProps) {
   const dataOutputRef = useRef<LR.DataOutput>()
-  const hasFiles = Array.isArray(files) && files.length > 0
 
   const handleUploaderEvent = useCallback(
     (e: CustomEvent<any>) => {
@@ -199,7 +199,7 @@ export function UploaderWithOutput({
     [setFiles],
   )
 
-  const handleRemoveFile = useCallback(
+  const removeFile = useCallback(
     (uuid: OutputFileEntry["uuid"]) =>
       setFiles(files.filter(f => f.uuid !== uuid)),
     [files, setFiles],
@@ -225,7 +225,12 @@ export function UploaderWithOutput({
   return (
     <div className="space-y-2">
       <div>
-        <LRConfig pubkey={pubkey} contextName={contextName} {...props} />
+        <LRConfig
+          pubkey={pubkey}
+          contextName={contextName}
+          multiple={multiple}
+          {...props}
+        />
         <LRFileUploaderRegular contextName={contextName} theme={theme}>
           {/* @ts-ignore */}
           <lr-data-output
@@ -239,40 +244,7 @@ export function UploaderWithOutput({
         </LRFileUploaderRegular>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {/* !hasFiles && ... */}
-        {hasFiles &&
-          files.map(file => {
-            if (!file.cdnUrl) return null
-            const fileUrl = getFileUrl(file.cdnUrl)
-
-            return (
-              <div key={file.uuid} className="flex gap-1">
-                <Anchor href={fileUrl} className="block">
-                  <img
-                    src={fileUrl}
-                    key={file.uuid}
-                    alt={file.originalFilename || ""}
-                    title={file.originalFilename || ""}
-                    width={100}
-                    height={100}
-                    className="rounded"
-                  />
-                </Anchor>
-
-                <ButtonIcon
-                  variant="ghost"
-                  size="xs"
-                  type="button"
-                  onClick={() => handleRemoveFile(file.uuid)}
-                >
-                  <Iconify icon="ph:x" />
-                  <span className="sr-only">Remove File</span>
-                </ButtonIcon>
-              </div>
-            )
-          })}
-      </div>
+      <PreviewFiles multiple={multiple} files={files} removeFile={removeFile} />
     </div>
   )
 }
@@ -286,6 +258,7 @@ export function UploaderWithProvider({
   pubkey = "demopublickey",
   contextName = "my-uploader",
   theme = "light",
+  multiple = false,
   files,
   setFiles,
   ...props
@@ -294,9 +267,8 @@ export function UploaderWithProvider({
   const ctxProviderRef = useRef<
     typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider
   >(null)
-  const hasFiles = Array.isArray(files) && files.length > 0
 
-  const handleRemoveFile = useCallback(
+  const removeFile = useCallback(
     (uuid: OutputFileEntry["uuid"]) =>
       setFiles(files.filter(f => f.uuid !== uuid)),
     [files, setFiles],
@@ -326,8 +298,14 @@ export function UploaderWithProvider({
 
     const handleDoneFlow = () => {
       resetUploaderState()
-      setFiles([...files, ...uploadedFiles])
-      setUploadedFiles([])
+      if (multiple) {
+        setFiles([...files, ...uploadedFiles])
+        setUploadedFiles([])
+      }
+      if (!multiple) {
+        setFiles([...uploadedFiles])
+        setUploadedFiles([])
+      }
     }
 
     ctxProviderRef.current?.addEventListener("done-flow", handleDoneFlow)
@@ -336,12 +314,17 @@ export function UploaderWithProvider({
       // eslint-disable-next-line react-hooks/exhaustive-deps
       ctxProviderRef.current?.removeEventListener("done-flow", handleDoneFlow)
     }
-  }, [files, setFiles, uploadedFiles, setUploadedFiles])
+  }, [files, setFiles, uploadedFiles, setUploadedFiles, multiple])
 
   return (
     <div className="space-y-2">
       <div>
-        <LRConfig pubkey={pubkey} contextName={contextName} {...props} />
+        <LRConfig
+          pubkey={pubkey}
+          contextName={contextName}
+          multiple={multiple}
+          {...props}
+        />
         <LRFileUploaderRegular contextName={contextName} theme={theme} />
 
         {/* @ts-ignore */}
@@ -349,40 +332,70 @@ export function UploaderWithProvider({
         {/* Note: ctxProviderRef cannot be passed to custom component props */}
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {/* !hasFiles && ... */}
-        {hasFiles &&
-          files.map(file => {
-            if (!file.cdnUrl) return null
-            const fileUrl = getFileUrl(file.cdnUrl)
-
-            return (
-              <div key={file.uuid} className="flex gap-1">
-                <Anchor href={fileUrl} className="block">
-                  <img
-                    src={fileUrl}
-                    key={file.uuid}
-                    alt={file.originalFilename || ""}
-                    title={file.originalFilename || ""}
-                    width={100}
-                    height={100}
-                    className="rounded"
-                  />
-                </Anchor>
-
-                <ButtonIcon
-                  variant="ghost"
-                  size="xs"
-                  type="button"
-                  onClick={() => handleRemoveFile(file.uuid)}
-                >
-                  <Iconify icon="ph:x" />
-                  <span className="sr-only">Remove File</span>
-                </ButtonIcon>
-              </div>
-            )
-          })}
-      </div>
+      <PreviewFiles multiple={multiple} files={files} removeFile={removeFile} />
     </div>
+  )
+}
+
+/**
+ * Preview Files with File URL config
+ */
+
+export function getFileUrl(cdnUrl: string, resize: string = "x200") {
+  const fileUrl = `${cdnUrl}
+-/preview/
+-/format/auto/
+-/resize/${resize}/
+-/quality/smart_retina/`
+  return fileUrl
+}
+
+export function PreviewFiles({
+  size = "x200",
+  multiple = false,
+  files,
+  removeFile,
+}: PreviewFilesProps) {
+  const hasFiles = Array.isArray(files) && files.length > 0
+
+  if (!hasFiles) {
+    return (
+      <p className="text-sm text-muted-foreground">
+        {multiple ? "No multiple files yet." : "No one file yet."}
+      </p>
+    )
+  }
+
+  return (
+    <ul className="flex flex-wrap gap-2">
+      {files.map(file => {
+        if (!file.cdnUrl) return null
+        const fileUrl = getFileUrl(file.cdnUrl, size)
+
+        return (
+          <li key={file.uuid} className="flex gap-1">
+            <Anchor href={fileUrl} className="block">
+              <img
+                src={fileUrl}
+                key={file.uuid}
+                alt={file.originalFilename || ""}
+                title={file.originalFilename || ""}
+                className="max-h-32 max-w-xs object-cover"
+              />
+            </Anchor>
+
+            <ButtonIcon
+              variant="ghost"
+              size="xs"
+              type="button"
+              onClick={() => removeFile(file.uuid)}
+            >
+              <Iconify icon="ph:x" />
+              <span className="sr-only">Remove File</span>
+            </ButtonIcon>
+          </li>
+        )
+      })}
+    </ul>
   )
 }
