@@ -7,12 +7,12 @@ export const authSessionStorage = createCookieSessionStorage({
   cookie: {
     name: "__auth_session",
     httpOnly: true,
-    maxAge: convertDaysToSeconds(7), // EDITME: Change session persistence
     path: "/",
     sameSite: "lax",
     secrets: [parsedEnv.SESSION_SECRET],
     secure: isProduction,
+    maxAge: convertDaysToSeconds(30), // EDITME: Change session persistence
   },
 })
 
-export const { getSession, commitSession, destroySession } = authSessionStorage
+export const authSessionResolver = authSessionStorage

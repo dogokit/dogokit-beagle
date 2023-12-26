@@ -17,8 +17,7 @@ export function ExampleUploadcare() {
   const [filesB, setFilesB] = useState<OutputFileEntry[]>([])
 
   const [themeSymbol] = useTheme()
-  const hasTheme = Boolean(themeSymbol)
-  const theme = hasTheme && themeSymbol === Theme.DARK ? "dark" : "light"
+  const theme = themeSymbol === Theme.DARK ? "dark" : "light"
 
   if (!ENV.UPLOADCARE_PUBLIC_KEY) return null
 

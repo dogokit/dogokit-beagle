@@ -8,11 +8,11 @@ const themeSessionStorage = createCookieSessionStorage({
   cookie: {
     name: "__theme_session",
     httpOnly: true,
-    maxAge: convertDaysToSeconds(400),
     path: "/",
     sameSite: "lax",
     secrets: [parsedEnv.SESSION_SECRET],
     secure: isProduction,
+    maxAge: convertDaysToSeconds(400),
   },
 })
 
