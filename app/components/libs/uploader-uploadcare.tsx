@@ -21,11 +21,9 @@ import { cn } from "~/utils/cn"
  * Note: Uploadcare Blocks currently doesn't work well with TypeScript yet,
  * so there are a lot of @ts-ignore to resolve
  * element does not exist on type 'JSX.IntrinsicElements' error
- */
-
-/**
- * IDEA: After uploading the files, store the info into the database records
- * So can delete them afterwards from anywhere
+ *
+ * Install the dependency:
+ * pnpm install @uploadcare/blocks
  */
 
 LR.registerBlocks(LR)
@@ -36,6 +34,12 @@ export const defaultLRConfig = {
   multiple: false,
   imgOnly: true,
 }
+
+/**
+ * IDEA: onUploaded function so after uploading the files,
+ * store the info into the database records,
+ * then can also delete them afterwards from anywhere
+ */
 
 export interface UploaderProps {
   contextName: string

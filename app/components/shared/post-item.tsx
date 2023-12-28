@@ -43,7 +43,7 @@ export function PostItem({
         </div>
 
         <p className="text-sm text-muted-foreground">
-          <time>{formatPublished(post.updatedAt)}</time>
+          <time>{formatPublished(post.createdAt)}</time>
         </p>
 
         <ButtonLink variant="secondary" size="sm" to={`/posts/${post.slug}`}>
