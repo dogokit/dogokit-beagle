@@ -236,15 +236,17 @@ cp -i .env.example .env.production
 Required:
 
 - `APP_URL`: For example, `http://localhost:3000`
-- `DATABASE_URL`: For example, `mysql://user:password@localhost:3306/dogokit`
-- `SESSION_SECRET`: For example, `the_secret_text`
+- `SESSION_SECRET`: For example, `the_secret_text`. Anything goes, but better to
+  generate a random string using `openssl rand -base64 32` on the terminal or
+  put any long random text.
+- `DATABASE_URL`: For example, `mysql://user:password@localhost:3306/dogokit`.
+  Continue to read the Database Setup.
 
-For the `SESSION_SECRET`, generate a random string using
-`openssl rand -base64 32` on the terminal or put any long random text.
+Optional:
 
-For the `DATABASE_URL`, continue along.
-
-For OAuth related, [check this guide](./docs/GUIDE_OAUTH.md)
+- `NODE_ENV`: For example, `development`
+- `*_CLIENT_ID` and `*_CLIENT_SECRET`: For OAuth related,
+  [check Guide: OAuth](./docs/GUIDE_OAUTH.md)
 
 #### Database Setup
 
