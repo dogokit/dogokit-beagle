@@ -1,4 +1,4 @@
-import { type SEOHandle } from "@nasa-gcn/remix-seo"
+import { type SEOHandle } from "@balavishnuvj/remix-seo"
 
 /**
  * If the params are empty, then it will not create a sitemap
@@ -10,3 +10,5 @@ export function createSitemap(route?: string | null, priority?: number) {
     },
   } as SEOHandle
 }
+
+export { type SEOHandle }

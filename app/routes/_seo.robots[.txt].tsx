@@ -1,8 +1,9 @@
-import { generateRobotsTxt } from "@nasa-gcn/remix-seo"
-import { type DataFunctionArgs } from "@remix-run/node"
+import { generateRobotsTxt } from "@balavishnuvj/remix-seo"
+import { type LoaderFunctionArgs } from "@remix-run/node"
+
 import { getDomainUrl } from "~/utils/url.server"
 
-export function loader({ request }: DataFunctionArgs) {
+export function loader({ request }: LoaderFunctionArgs) {
   return generateRobotsTxt([
     { type: "sitemap", value: `${getDomainUrl(request)}/sitemap.xml` },
     { type: "disallow", value: "/user" },

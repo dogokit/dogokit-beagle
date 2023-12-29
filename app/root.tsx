@@ -19,6 +19,14 @@ import { parsedEnvClient } from "~/utils/env.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
+/**
+ * EDITME: Fonts and Tailwind
+ * Setup for Tailwind in tailwind.config.ts
+ */
+import "@fontsource-variable/anybody/wght.css"
+import "@fontsource-variable/inter/wght.css"
+import "./styles/tailwind.css"
+
 export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>

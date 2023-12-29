@@ -14,16 +14,22 @@ import { RemixServer } from "@remix-run/react"
 import { isbot } from "isbot"
 import { PassThrough } from "node:stream"
 import { renderToPipeableStream } from "react-dom/server"
+import { rootSeoRouteHandlers } from "./root-seo.server"
 
 const ABORT_DELAY = 5_000
 
-export default function handleRequest(
+export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext,
   _loadContext: AppLoadContext,
 ) {
+  for (const handler of rootSeoRouteHandlers) {
+    const otherRouteResponse = await handler(request, remixContext)
+    if (otherRouteResponse) return otherRouteResponse
+  }
+
   return isbot(String(request.headers.get("user-agent")))
     ? handleBotRequest(
         request,

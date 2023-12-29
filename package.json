@@ -4,9 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "remix dev --manual",
-    "dev:check": "pnpm check:env && remix dev --manual",
-    "build": "remix build",
+    "dev": "remix vite:dev --port 3000",
+    "dev:check": "pnpm check:env && remix vite:dev --port 3000",
+    "build": "remix vite:build",
     "start": "remix-serve ./build/index.js",
     "check": "pnpm /^check:.*/",
     "check:env": "tsx prisma/utils/check-env.ts",
@@ -45,11 +45,11 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@balavishnuvj/remix-seo": "1.0.2",
     "@conform-to/react": "^0.9.1",
     "@conform-to/zod": "^0.9.1",
     "@fontsource-variable/anybody": "5.0.19",
     "@fontsource-variable/inter": "5.0.15",
-    "@nasa-gcn/remix-seo": "^2.0.0",
     "@prisma/client": "^5.7.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
@@ -77,7 +77,6 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "@remix-run/css-bundle": "^2.4.1",
     "@remix-run/node": "^2.4.1",
     "@remix-run/react": "^2.4.1",
     "@remix-run/serve": "^2.4.1",
@@ -164,7 +163,8 @@
     "taze": "^0.13.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
-    "vite": "5.0.10"
+    "vite": "5.0.10",
+    "vite-tsconfig-paths": "4.2.3"
   },
   "engines": {
     "node": ">=18.0.0"

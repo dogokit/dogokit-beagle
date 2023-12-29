@@ -1,8 +1,8 @@
 import * as LR from "@uploadcare/blocks"
 import { type OutputFileEntry } from "@uploadcare/blocks"
-import styleInline from "@uploadcare/blocks/web/lr-file-uploader-inline.min.css"
-import styleMinimal from "@uploadcare/blocks/web/lr-file-uploader-minimal.min.css"
-import styleRegular from "@uploadcare/blocks/web/lr-file-uploader-regular.min.css"
+import styleInline from "@uploadcare/blocks/web/lr-file-uploader-inline.min.css?url"
+import styleMinimal from "@uploadcare/blocks/web/lr-file-uploader-minimal.min.css?url"
+import styleRegular from "@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 import { Anchor } from "~/components/ui/anchor"

@@ -1,21 +1,8 @@
 /**
- * Config Document Links and JSON-LD
- *
- * Favicons
- * Manifest
- * Style Sheets
+ * EDITME: Config Document Links and JSON-LD
  */
 
-import { cssBundleHref } from "@remix-run/css-bundle"
-
-import { fontLinks } from "~/configs/fonts"
 import { configMeta } from "~/configs/meta"
-import tailwindStyles from "~/styles/tailwind.css"
-
-const stylesheetLinks = [
-  { rel: "stylesheet", href: tailwindStyles },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-]
 
 /**
  * Docs:
@@ -27,7 +14,7 @@ const stylesheetLinks = [
 const faviconLinks = [
   /**
    * Use this if want to change the favicon quickly using emoji
-   * Or design and use custom favicon, or get some initial image from:
+   * Or design and use custom favicon, or get some initial image from
    * https://emojipedia.org
    */
   // {
@@ -63,18 +50,8 @@ const faviconLinks = [
 ]
 
 const manifestLinks = [
-  /**
-   * Edit the manifest in app/routes/_app.site[.]webmanifest.tsx
-   */
-  {
-    rel: "manifest",
-    href: "/site.webmanifest",
-  },
+  // Edit the manifest in app/routes/_app.site[.]webmanifest.tsx
+  { rel: "manifest", href: "/site.webmanifest" },
 ]
 
-export const configDocumentLinks = [
-  ...fontLinks,
-  ...stylesheetLinks,
-  ...faviconLinks,
-  ...manifestLinks,
-]
+export const configDocumentLinks = [...faviconLinks, ...manifestLinks]
