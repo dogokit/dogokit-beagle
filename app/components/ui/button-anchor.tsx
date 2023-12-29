@@ -9,21 +9,21 @@ import { cn } from "~/utils/cn"
  * Button with both icon content and anchor element.
  */
 
-export interface ButtonIconAnchorProps
+export interface ButtonAnchorProps
   extends React.DetailedHTMLProps<
       React.AnchorHTMLAttributes<HTMLAnchorElement>,
       HTMLAnchorElement
     >,
     VariantProps<typeof buttonVariants> {}
 
-export const ButtonIconAnchor = ({
+export const ButtonAnchor = ({
   href = "/",
   variant,
   size,
   className,
   children,
   ...props
-}: ButtonIconAnchorProps) => {
+}: ButtonAnchorProps) => {
   return (
     <a
       href={href}
@@ -36,4 +36,4 @@ export const ButtonIconAnchor = ({
     </a>
   )
 }
-ButtonIconAnchor.displayName = "ButtonIconAnchor"
+ButtonAnchor.displayName = "ButtonAnchor"

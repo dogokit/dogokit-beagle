@@ -1,5 +1,7 @@
 import { AnchorText } from "~/components/ui/anchor-text"
 import { cn } from "~/utils/cn"
+import { ButtonAnchor } from "../ui/button-anchor"
+import { Iconify } from "../ui/iconify"
 
 export function ContentIntro() {
   return (
@@ -18,6 +20,20 @@ export function ContentIntro() {
         <h2>
           Using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more
         </h2>
+        <div className="flex gap-2">
+          <ButtonAnchor size="lg" href="https://remix.run">
+            <Iconify icon="simple-icons:remix" className="size-5" />
+            <span>Learn Remix</span>
+          </ButtonAnchor>
+          <ButtonAnchor
+            size="lg"
+            variant="secondary"
+            href="https://github.com/dogokit/dogokit-remix"
+          >
+            <Iconify icon="simple-icons:github" className="size-5" />
+            <span>Repo on GitHub</span>
+          </ButtonAnchor>
+        </div>
       </header>
 
       <div className="prose-config">
