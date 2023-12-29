@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "remix vite:dev --port 3000",
-    "dev:check": "pnpm check:env && remix vite:dev --port 3000",
     "build": "remix vite:build",
-    "start": "remix-serve ./build/index.js",
+    "start": "remix-serve ./build/server/index.js",
     "check": "pnpm /^check:.*/",
     "check:env": "tsx prisma/utils/check-env.ts",
     "check:tsc": "tsc --noEmit",

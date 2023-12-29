@@ -70,6 +70,9 @@ This is a template kit, not a blank repo generator. Customize it based on the
 actual application needs. Make sure to first explore to understand, rename, and
 replace the contents along the way.
 
+> This branch is using Remix Vite plugin, read more:
+> <https://remix.run/docs/en/main/future/vite>
+
 ## Goal
 
 <!-- THIS IS A REMOVABLE SECTION -->
@@ -355,10 +358,22 @@ Then pick a host to deploy it to, such as:
 - Microsoft Azure
 
 If familiar with deploying node applications, the built-in Remix app server is
-production-ready. Make sure to deploy the output of `remix build`
+production-ready. Make sure to deploy the output of `remix build`.
 
-- `build/`
-- `public/build/`
+Remember to override the Build & Development Settings:
+
+- Build Command: `pnpm build`
+- Output Directory: `build/client`
+- Install Command: `pnpm install`
+- Development Command: `pnpm dev`
+
+Because:
+
+- The server is now compiled into `build/server`` by default.
+- The client is now compiled into `build/client`` by default.
+
+Read more:
+<https://remix.run/docs/en/main/future/vite#migrate-references-to-build-output-paths>
 
 ### Development
 
