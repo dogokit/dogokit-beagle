@@ -29,7 +29,7 @@ function IconLink({ name }: { name: string }) {
   return <Iconify icon={getIconName(createSlug(name))} />
 }
 
-// IDEA: Component size variant
+// IDEA: Icon links size variant
 export function IconLinks({
   className,
   classNameIcon,

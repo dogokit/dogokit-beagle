@@ -26,6 +26,7 @@ export default function AdminPostsRoute() {
       <header className="app-header">
         <div>
           <h2>Posts</h2>
+          <p>All posts from all users</p>
         </div>
       </header>
 

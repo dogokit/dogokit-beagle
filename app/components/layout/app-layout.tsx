@@ -1,4 +1,3 @@
-import { AppFooter } from "~/components/layout/app-footer"
 import { AppNavigation } from "~/components/layout/app-navigation"
 import { cn } from "~/utils/cn"
 
@@ -11,8 +10,6 @@ export function AppLayout({
       <AppNavigation />
 
       <main className={cn("flex-1", className)}>{children}</main>
-
-      <AppFooter />
     </div>
   )
 }

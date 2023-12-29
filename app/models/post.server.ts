@@ -55,7 +55,7 @@ export const modelPost = {
         slug,
         status: {
           OR: [
-            { symbol: "PRIVATE" }, // IDEA: Private for allowed users
+            { symbol: "PRIVATE" }, // IDEA: Private only for allowed users
             { symbol: "UNLISTED" },
             { symbol: "PUBLISHED" },
             { symbol: "ARCHIVED" },

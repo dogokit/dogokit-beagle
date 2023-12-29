@@ -26,7 +26,9 @@ export function SidebarNavItems({ items }: { items: NavItem[] }) {
               }
             >
               {item.icon && <Iconify icon={item.icon} className="shrink-0" />}
-              <span className="hidden sm:inline">{item.text}</span>
+              <span className="hidden whitespace-nowrap sm:inline">
+                {item.text}
+              </span>
             </NavLink>
           </li>
         )

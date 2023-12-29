@@ -9,9 +9,9 @@ import { createSitemap } from "~/utils/sitemap"
 export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
-  createMeta({ title: `Admin Dashboard`, description: `Dashboard for admin` })
+  createMeta({ title: `Owner Dashboard`, description: `Dashboard for owner` })
 
-export default function AdminDashboardRoute() {
+export default function OwnerDashboardRoute() {
   const { userData } = useRootLoaderData()
   if (!userData) return null
 

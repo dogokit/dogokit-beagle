@@ -2,11 +2,9 @@ import { parse } from "@conform-to/zod"
 import {
   json,
   type ActionFunctionArgs,
-  type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
 
-import { requireUser } from "~/helpers/auth"
 import { schemaGeneralId } from "~/schemas/general"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -14,11 +12,7 @@ import { createSitemap } from "~/utils/sitemap"
 export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
-  createMeta({ title: `Settings`, description: `Manage settings` })
-
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json(await requireUser(request))
-}
+  createMeta({ title: `Settings`, description: `Admin settings` })
 
 export default function AdminSettingsRoute() {
   return (

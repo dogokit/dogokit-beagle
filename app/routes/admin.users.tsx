@@ -26,6 +26,7 @@ export default function AdminUsersRoute() {
       <header className="app-header">
         <div>
           <h2>Users</h2>
+          <p>All users</p>
         </div>
       </header>
 

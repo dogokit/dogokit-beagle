@@ -57,11 +57,6 @@ export const configNavigationItems: NavItem[] = [
     shortcut: "⌘K+S",
   },
   {
-    path: "/user/account",
-    icon: "ph:user-duotone",
-    text: "Account",
-  },
-  {
     path: "/user/billing",
     icon: "ph:credit-card-duotone",
     text: "Billing",
@@ -72,6 +67,11 @@ export const configNavigationItems: NavItem[] = [
     icon: "ph:notification-duotone",
     text: "Notifications",
     shortcut: "⌘K+N",
+  },
+  {
+    path: "/user/account",
+    icon: "ph:user-duotone",
+    text: "Account",
   },
   {
     path: "/help",
@@ -92,13 +92,13 @@ export const configNavigationItems: NavItem[] = [
   },
   {
     path: "/admin",
-    icon: "ph:crown-duotone",
+    icon: "ph:crown-simple-duotone",
     text: "Admin",
   },
   {
     path: "/admin/dashboard",
-    icon: "ph:crown-duotone",
-    text: "Dashboard",
+    icon: "ph:crown-simple-duotone",
+    text: "Admin Dashboard",
   },
   {
     path: "/admin/users",
@@ -119,6 +119,21 @@ export const configNavigationItems: NavItem[] = [
     path: "/admin/notifications",
     icon: "ph:notification-duotone",
     text: "Notifications",
+  },
+  {
+    path: "/owner",
+    icon: "ph:crown-duotone",
+    text: "Owner",
+  },
+  {
+    path: "/owner/dashboard",
+    icon: "ph:crown-duotone",
+    text: "Owner Dashboard",
+  },
+  {
+    path: "/owner/users",
+    icon: "ph:users-four-duotone",
+    text: "Users",
   },
   {
     path: "/examples",
