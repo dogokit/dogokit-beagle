@@ -28,6 +28,11 @@ import { fixUrl } from "~/utils/url"
  * Dropcursor, Gapcursor, Hardbreak, Heading, History,
  * HorizontalRule, Italic, Listitem, Orderedlist, Paragraph,
  * Strike, Text
+ *
+ * Features:
+ * - Toolbar
+ * - Manage link
+ * - Add image
  */
 
 export function EditorTiptapHook({
