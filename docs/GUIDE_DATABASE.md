@@ -56,16 +56,24 @@ pnpm db:seed
 > Note: Only need to push the schema in development. No need for migration
 > files.
 
-## Database backup from PlanetScale
+## Database Backup and Restore with PlanetScale
 
-To backup using PlanetScale's `pscale` CLI:
+Login with PlanetScale's `pscale` CLI:
 
 ```sh
-pscale db dump database_name branch --output database_name.dump
+pscale auth login
 ```
 
-For example:
+Dump to a backup:
 
 ```sh
-pscale db dump rewinds main --output rewinds.dump
+# pscale db dump <database> <branch> --output <folder>
+pscale db dump dogokit main --output dogokit-backup-mysql
+```
+
+Restore dump from the backup folder:
+
+```sh
+# pscale db restore-dump <database> <branch> --dir <folder>
+pscale db restore-dump dogokit main --dir dogokit-backup-mysql
 ```

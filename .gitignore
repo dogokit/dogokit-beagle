@@ -5,6 +5,8 @@ __*
 .eslintcache
 .stylelintcache
 .vercel
+.react-email
+.sentryclirc
 *.local
 /.cache
 /build
@@ -12,3 +14,4 @@ __*
 /prisma/docs
 /public/build
 tsconfig.tsbuildinfo
+
