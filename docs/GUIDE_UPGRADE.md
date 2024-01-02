@@ -9,6 +9,68 @@ pnpm upgrade
 # taze -w && taze major -w
 ```
 
+## Upgrade Remix files
+
+`package.json`:
+
+```json
+{
+  "type": "module"
+}
+```
+
+`tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "moduleResolution": "Bundler",
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
+    "paths": {
+      "~/*": ["./app/*"]
+    }
+  },
+  "include": [
+    "remix.env.d.ts",
+    ".eslintrc.cjs",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs"
+  ],
+  "exclude": ["node_modules"]
+}
+```
+
+Starting with `isbot` v4:
+
+```ts
+// entry.server.ts
+import { isbot } from "isbot"
+
+export default function handleRequest(
+  request: Request,
+  // ...
+) {
+  return isbot(String(request.headers.get("user-agent")))
+  // ...
+}
+```
+
 ## Upgrade Tailwind CSS
 
 `tailwind.config.ts`:
