@@ -4,12 +4,9 @@ import {
   Meta,
   Scripts,
   ScrollRestoration,
-  useLocation,
 } from "@remix-run/react"
 import { PreventFlashOnWrongTheme, useTheme, type Theme } from "remix-themes"
 
-import { AppLayout } from "~/components/layout/app-layout"
-import { SiteLayout } from "~/components/layout/site-layout"
 import { NProgress } from "~/components/shared/nprogress"
 import { cn } from "~/utils/cn"
 
@@ -23,13 +20,6 @@ export function Document({
   const [theme] = useTheme()
   const defaultTheme = theme ? theme : "light"
 
-  const location = useLocation()
-  const isInsideApp =
-    location.pathname === "/new" ||
-    location.pathname.startsWith("/user/") ||
-    location.pathname.startsWith("/admin/") ||
-    location.pathname.startsWith("/owner/")
-
   return (
     <html lang="en" data-theme={defaultTheme}>
       <head>
@@ -42,10 +32,7 @@ export function Document({
 
       <body id="__remix" className={cn(defaultTheme)}>
         <NProgress />
-
-        {children && !isInsideApp && <SiteLayout>{children}</SiteLayout>}
-        {children && isInsideApp && <AppLayout>{children}</AppLayout>}
-
+        {children}
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

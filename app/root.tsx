@@ -11,6 +11,7 @@ import { ThemeProvider, type Theme } from "remix-themes"
 
 import { GeneralErrorBoundary } from "~/components/shared/error-boundary"
 import { configDocumentLinks } from "~/configs/document"
+import { configSite } from "~/configs/site"
 import { Document } from "~/document"
 import { modelUser } from "~/models/user.server"
 import { authService } from "~/services/auth.server"
@@ -23,9 +24,8 @@ export const handle = createSitemap()
 
 export const meta: MetaFunction = () =>
   createMeta({
-    title: "Dogokit",
-    description:
-      "Web app template kit using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more.",
+    title: configSite.title,
+    description: configSite.description,
   })
 
 export const links: LinksFunction = () => configDocumentLinks
@@ -60,7 +60,7 @@ export default function RootRoute() {
   const data = useLoaderData<typeof loader>()
 
   return (
-    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
+    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/theme">
       <Document dataTheme={data.theme}>
         <Outlet />
       </Document>
@@ -72,7 +72,7 @@ export function ErrorBoundary() {
   return (
     <ThemeProvider
       specifiedTheme={"light" as Theme}
-      themeAction="/action/set-theme"
+      themeAction="/action/theme"
     >
       <Document>
         <GeneralErrorBoundary />

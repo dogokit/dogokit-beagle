@@ -48,12 +48,12 @@ export async function requireUser(
  */
 export function checkAllowance(
   expectedRoleSymbols: Role["symbol"][],
-  user?: UserData,
+  userData?: UserData,
 ): boolean {
-  if (!user) return false
+  if (!userData) return false
 
   const foundRoles = expectedRoleSymbols.find(symbolToFind =>
-    user.roles.find(role => role.symbol === symbolToFind),
+    userData.roles.find(role => role.symbol === symbolToFind),
   )
 
   return foundRoles ? true : false

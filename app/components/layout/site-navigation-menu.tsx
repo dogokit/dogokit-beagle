@@ -1,6 +1,7 @@
 import { NavLink, useNavigate, type NavLinkProps } from "@remix-run/react"
 import { useState } from "react"
 
+import { NavItemLink } from "~/components/layout/site-navigation"
 import { IconLinks } from "~/components/shared/icon-links"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
@@ -17,7 +18,6 @@ import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
-import { NavItemLink } from "./site-navigation"
 
 export function SiteNavigationMenu() {
   const { userSession } = useRootLoaderData()

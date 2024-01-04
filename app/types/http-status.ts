@@ -1,6 +1,6 @@
 /**
  * HTTP Status Codes
- * User this when only necesary
+ * Use this when necesary
  * https://developer.mozilla.org/docs/Web/HTTP/Status
  */
 

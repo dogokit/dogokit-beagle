@@ -41,7 +41,7 @@ export const configNavigationItems: NavItem[] = [
   {
     path: "/user/dashboard",
     icon: "ph:binoculars-duotone",
-    text: "Dashboard",
+    text: "User Dashboard",
     shortcut: "⌘K+D",
   },
   {

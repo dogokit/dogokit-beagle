@@ -10,7 +10,7 @@ import dataPosts from "./data/posts.json"
 import dataRoles from "./data/roles.json"
 
 /**
- * Enable and disable seed items by commenting them
+ * EDITME: Enable or disable seed items by commenting them
  */
 const enabledSeedItems = [
   "permissions",
