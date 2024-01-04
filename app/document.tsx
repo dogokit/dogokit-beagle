@@ -8,6 +8,7 @@ import {
 import { PreventFlashOnWrongTheme, useTheme, type Theme } from "remix-themes"
 
 import { NProgress } from "~/components/shared/nprogress"
+import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 
 export function Document({
@@ -17,6 +18,7 @@ export function Document({
   dataTheme?: Theme | null
   children?: React.ReactNode
 }) {
+  const { ENV } = useRootLoaderData()
   const [theme] = useTheme()
   const defaultTheme = theme ? theme : "light"
 
@@ -32,7 +34,14 @@ export function Document({
 
       <body id="__remix" className={cn(defaultTheme)}>
         <NProgress />
+
         {children}
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(ENV)}`,
+          }}
+        />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

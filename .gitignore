@@ -3,10 +3,10 @@ __*
 .env
 .env.production
 .eslintcache
-.stylelintcache
-.vercel
 .react-email
 .sentryclirc
+.stylelintcache
+.vercel
 *.local
 /.cache
 /build
@@ -14,4 +14,3 @@ __*
 /prisma/docs
 /public/build
 tsconfig.tsbuildinfo
-

@@ -6,7 +6,8 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { Outlet, useLoaderData } from "@remix-run/react"
+import { Outlet, useLoaderData, useRouteError } from "@remix-run/react"
+import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix"
 import { ThemeProvider, type Theme } from "remix-themes"
 
 import { GeneralErrorBoundary } from "~/components/shared/error-boundary"
@@ -56,7 +57,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   })
 }
 
-export default function RootRoute() {
+function RootRoute() {
   const data = useLoaderData<typeof loader>()
 
   return (
@@ -69,6 +70,9 @@ export default function RootRoute() {
 }
 
 export function ErrorBoundary() {
+  const error = useRouteError()
+  captureRemixErrorBoundaryError(error)
+
   return (
     <ThemeProvider
       specifiedTheme={"light" as Theme}
@@ -80,3 +84,5 @@ export function ErrorBoundary() {
     </ThemeProvider>
   )
 }
+
+export default withSentry(RootRoute)

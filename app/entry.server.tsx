@@ -13,8 +13,20 @@ import {
   type EntryContext,
 } from "@remix-run/node"
 import { RemixServer } from "@remix-run/react"
+import * as Sentry from "@sentry/remix"
 import { isbot } from "isbot"
 import { renderToPipeableStream } from "react-dom/server"
+
+import { parsedEnv } from "~/utils/env.server"
+
+export function handleError(error: unknown, { request }: { request: Request }) {
+  Sentry.captureRemixServerException(error, "remix.server", request)
+}
+
+Sentry.init({
+  dsn: parsedEnv.SENTRY_DSN,
+  tracesSampleRate: 1,
+})
 
 const ABORT_DELAY = 5_000
 

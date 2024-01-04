@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "remix dev --manual",
     "build": "remix build",
+    "build:sentry": "remix build --sourcemap && sentry-upload-sourcemaps --org allnimal --project dogokit-remix",
     "start": "remix-serve ./build/index.js",
     "check": "pnpm /^check:.*/",
     "check:env": "tsx prisma/utils/check-env.ts",
@@ -81,6 +82,7 @@
     "@remix-run/react": "^2.4.1",
     "@remix-run/serve": "^2.4.1",
     "@remix-run/server-runtime": "^2.4.1",
+    "@sentry/remix": "7.92.0",
     "@tanem/react-nprogress": "^5.0.51",
     "@tiptap/core": "^2.1.13",
     "@tiptap/extension-highlight": "^2.1.13",

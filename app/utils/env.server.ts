@@ -26,16 +26,19 @@ export const parsedEnv = parseEnv(process.env, {
   RESEND_KEY: z.string().optional(),
   UPLOADCARE_PUBLIC_KEY: z.string().optional(),
   POSTHOG_KEY: z.string().optional(),
+  SENTRY_DSN: z.string().optional(),
+  SENTRY_AUTH_TOKEN: z.string().optional(),
 })
 
 /**
- * For client-side usage only, that can be retrieved through the root loader
- * using useRootLoaderData() hook
+ * For client-side usage only, that can only be retrieved
+ * through the root loader using useRootLoaderData() hook
  */
 export const parsedEnvClient = {
   NODE_ENV: parsedEnv.NODE_ENV,
   UPLOADCARE_PUBLIC_KEY: parsedEnv.UPLOADCARE_PUBLIC_KEY,
   POSTHOG_KEY: parsedEnv.POSTHOG_KEY,
+  SENTRY_DSN: parsedEnv.SENTRY_DSN,
 }
 
 export const isDevelopment = parsedEnv.NODE_ENV === "development"
