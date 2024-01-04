@@ -279,27 +279,6 @@ References:
 
 - [https://planetscale.com/docs/prisma/automatic-prisma-migrations](https://planetscale.com/docs/prisma/automatic-prisma-migrations)
 
-## Prisma Seed Data
-
-Create the credential of users data:
-
-```sh
-touch prisma/credential/users.json
-```
-
-Then configure it:
-
-```json
-[
-  {
-    "fullname": "Example",
-    "username": "example",
-    "email": "example@example.com",
-    "password": "exampleexample"
-  }
-]
-```
-
 ---
 
 ## Extra

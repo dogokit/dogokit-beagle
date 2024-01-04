@@ -303,21 +303,20 @@ still okay when in development or
 [prototyping the schema](https://prisma.io/docs/concepts/components/prisma-migrate/db-push).
 After a success push, then it will automatically run `prisma generate`.
 
-Optionally, create `users.json` in `prisma/credentials` folder with the format
-below. Can focus on certain users who want to be able to sign in in development,
-so it doesn't have to be everyone.
+Create `users.ts` in `prisma/credentials` folder with the format below. Can
+focus on certain users who want to be able to access in development, so it
+doesn't have to be everyone.
 
-```json
-[
+```ts
+export const dataCredentialUsers = [
   {
-    "fullname": "User Name",
-    "username": "username",
-    "nickname": "User",
-    "email": "user@user.com",
-    "password": "useruser",
-    "roleSymbol": "ADMIN"
-  }
-  // ...
+    fullname: "Example",
+    username: "example",
+    nickname: "Dogo",
+    email: "example@example.com",
+    password: "exampleexample",
+    roleSymbol: "ADMIN",
+  },
 ]
 ```
 

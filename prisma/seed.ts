@@ -4,10 +4,10 @@ import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
 import { createSlug } from "~/utils/string"
 
-import dataCredentialUsers from "./credentials/users.json"
-import dataPostStatuses from "./data/post-statuses.json"
-import dataPosts from "./data/posts.json"
-import dataRoles from "./data/roles.json"
+import { dataCredentialUsers } from "./credentials/users"
+import { dataPostStatuses } from "./data/post-statuses"
+import { dataPosts } from "./data/posts"
+import { dataRoles } from "./data/roles"
 
 /**
  * EDITME: Enable or disable seed items by commenting them
@@ -99,7 +99,7 @@ async function seedUsers() {
   // console.info("👤 Deleted users", await prisma.user.deleteMany())
 
   if (!Array.isArray(dataCredentialUsers)) {
-    console.error(`🔴 Please create prisma/credentials/users.json file`)
+    console.error(`🔴 Please create prisma/credentials/users.ts file`)
     console.error(`🔴 Check README for the guide`)
     return null
   }
