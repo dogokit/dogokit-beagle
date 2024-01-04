@@ -10,7 +10,7 @@ import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { Card } from "~/components/ui/card"
 import { configUserDashboard } from "~/configs/user-dashboard"
 import { requireUser } from "~/helpers/auth"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { modelUserPost } from "~/models/user-post.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -25,7 +25,7 @@ export const meta: MetaFunction = () =>
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { user, userId } = await requireUser(request)
-  const counts = await prisma.$transaction([modelUserPost.count({ userId })])
+  const counts = await db.$transaction([modelUserPost.count({ userId })])
 
   const metrics = configUserDashboard.navItems
     .filter(item => item.isMetric)

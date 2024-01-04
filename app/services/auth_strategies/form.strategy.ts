@@ -2,7 +2,7 @@
 import { AuthorizationError } from "remix-auth"
 import { FormStrategy } from "remix-auth-form"
 
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { type UserSession } from "~/services/auth.server"
 
 export const formStrategy = new FormStrategy<UserSession>(async ({ form }) => {
@@ -13,7 +13,7 @@ export const formStrategy = new FormStrategy<UserSession>(async ({ form }) => {
    * So this Form Stragegy could be used on signup and login
    * Just by finding the user by email
    */
-  const user = await prisma.user.findUnique({
+  const user = await db.user.findUnique({
     where: { email },
     select: { id: true },
   })

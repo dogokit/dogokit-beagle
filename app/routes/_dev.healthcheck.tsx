@@ -1,7 +1,7 @@
 import { type LoaderFunctionArgs } from "@remix-run/node"
 import { type MetaFunction } from "@remix-run/react"
 
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { HTTPStatus } from "~/types/http-status"
 import { parsedEnv } from "~/utils/env.server"
 import { createMeta } from "~/utils/meta"
@@ -25,7 +25,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
     // Connect to the database, make a simple query, HEAD request to self
     await Promise.all([
-      prisma.user.count(),
+      db.user.count(),
       fetch(url.toString(), { method: "HEAD" }).then(response => {
         if (!response.ok) return Promise.reject(response)
       }),

@@ -13,7 +13,7 @@ import {
 } from "~/components/shared/pagination-search"
 import { PostItem } from "~/components/shared/post-item"
 import { Iconify } from "~/components/ui/iconify"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -55,9 +55,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
    * As searching and filtering might be complex,
    * use Prisma directly, it might be refactored later into the models
    */
-  const [totalItems, posts] = await prisma.$transaction([
-    prisma.post.count({ where: wherePost }),
-    prisma.post.findMany({
+  const [totalItems, posts] = await db.$transaction([
+    db.post.count({ where: wherePost }),
+    db.post.findMany({
       where: wherePost,
       skip: config.skip,
       take: config.limitParam,

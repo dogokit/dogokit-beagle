@@ -28,7 +28,7 @@ import { InputPassword } from "~/components/ui/input-password"
 import { LinkText } from "~/components/ui/link-text"
 import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
 import { useAppMode } from "~/hooks/use-app-mode"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { modelUser } from "~/models/user.server"
 import { issueUsernameUnallowed, schemaUserSignUp } from "~/schemas/user"
 import { authenticator } from "~/services/auth.server"
@@ -207,7 +207,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         return
       }
 
-      const existingEmail = await prisma.user.findUnique({
+      const existingEmail = await db.user.findUnique({
         where: { email: data.email },
         select: { id: true },
       })
@@ -220,7 +220,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         return
       }
 
-      const existingUsername = await prisma.user.findUnique({
+      const existingUsername = await db.user.findUnique({
         where: { username: data.username },
         select: { id: true },
       })

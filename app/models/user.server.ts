@@ -1,17 +1,17 @@
 import { type Connection, type User } from "@prisma/client"
 
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"
 import { createNanoIdShort } from "~/utils/string"
 
 export const modelUser = {
   count() {
-    return prisma.user.count()
+    return db.user.count()
   },
 
   getAll() {
-    return prisma.user.findMany({
+    return db.user.findMany({
       include: {
         images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
       },
@@ -19,7 +19,7 @@ export const modelUser = {
   },
 
   getWithImages() {
-    return prisma.user.findFirst({
+    return db.user.findFirst({
       include: {
         images: { select: { url: true }, orderBy: { updatedAt: "desc" } },
       },
@@ -27,7 +27,7 @@ export const modelUser = {
   },
 
   getAllUsernames() {
-    return prisma.user.findMany({
+    return db.user.findMany({
       select: {
         username: true,
         updatedAt: true,
@@ -39,7 +39,7 @@ export const modelUser = {
   },
 
   getForSession({ id }: Pick<User, "id">) {
-    return prisma.user.findUnique({
+    return db.user.findUnique({
       where: { id },
       select: {
         id: true,
@@ -54,11 +54,11 @@ export const modelUser = {
   },
 
   getById({ id }: Pick<User, "id">) {
-    return prisma.user.findUnique({ where: { id } })
+    return db.user.findUnique({ where: { id } })
   },
 
   getByUsername({ username }: Pick<User, "username">) {
-    return prisma.user.findUnique({
+    return db.user.findUnique({
       where: { username },
       include: {
         profiles: true,
@@ -69,7 +69,7 @@ export const modelUser = {
   },
 
   getByEmail({ email }: Pick<User, "email">) {
-    return prisma.user.findUnique({
+    return db.user.findUnique({
       where: { email },
       select: {
         id: true,
@@ -79,7 +79,7 @@ export const modelUser = {
   },
 
   search({ q }: { q: string | undefined }) {
-    return prisma.user.findMany({
+    return db.user.findMany({
       where: {
         OR: [{ fullname: { contains: q } }, { username: { contains: q } }],
       },
@@ -95,7 +95,7 @@ export const modelUser = {
 
   login({ email }: Pick<User, "email">) {
     // The logic is in Conform Zod validation
-    return prisma.user.findUnique({ where: { email } })
+    return db.user.findUnique({ where: { email } })
   },
 
   async signup({
@@ -109,7 +109,7 @@ export const modelUser = {
     inviteCode?: string
   }) {
     // The logic is in Conform Zod validation
-    return prisma.user.create({
+    return db.user.create({
       data: {
         fullname: fullname.trim(),
         username: username.trim(),
@@ -117,13 +117,13 @@ export const modelUser = {
         roles: { connect: { symbol: "NORMAL" } },
         password: { create: { hash: await hashPassword(password) } },
         images: { create: { url: getPlaceholderAvatarUrl(username) } },
-        // profiles: {
-        //   create: {
-        //     modeName: `Default ${name}`,
-        //     headline: `The headline of ${name}`,
-        //     bio: `The bio of ${name} for longer description.`,
-        //   },
-        // },
+        profiles: {
+          create: {
+            modeName: `Default ${fullname}`,
+            headline: `The headline of ${fullname}`,
+            bio: `The bio of ${fullname} for longer description.`,
+          },
+        },
       },
     })
   },
@@ -141,7 +141,7 @@ export const modelUser = {
     const existingUser = await modelUser.getByEmail({ email })
 
     try {
-      return prisma.user.upsert({
+      return db.user.upsert({
         where: { email },
         create: {
           email,
@@ -180,37 +180,37 @@ export const modelUser = {
   },
 
   deleteById({ id }: Pick<User, "id">) {
-    return prisma.user.delete({ where: { id } })
+    return db.user.delete({ where: { id } })
   },
 
   deleteByEmail({ email }: Pick<User, "email">) {
     if (!email) return { error: { email: `Email is required` } }
-    return prisma.user.delete({ where: { email } })
+    return db.user.delete({ where: { email } })
   },
 
   updateUsername({ id, username }: Pick<User, "id" | "username">) {
-    return prisma.user.update({
+    return db.user.update({
       where: { id },
       data: { username },
     })
   },
 
   updateFullName({ id, fullname }: Pick<User, "id" | "fullname">) {
-    return prisma.user.update({
+    return db.user.update({
       where: { id },
       data: { fullname },
     })
   },
 
   updateNickName({ id, nickname }: Pick<User, "id" | "nickname">) {
-    return prisma.user.update({
+    return db.user.update({
       where: { id },
       data: { nickname },
     })
   },
 
   updateEmail({ id, email }: Pick<User, "id" | "email">) {
-    return prisma.user.update({
+    return db.user.update({
       where: { id },
       data: { email },
     })

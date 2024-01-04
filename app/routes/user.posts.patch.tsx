@@ -2,7 +2,7 @@ import { parse } from "@conform-to/zod"
 import { json, type ActionFunctionArgs } from "@remix-run/node"
 import { z } from "zod"
 
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { modelPostStatus } from "~/models/post-status.server"
 import { invariantResponse } from "~/utils/invariant"
 import { createTimer } from "~/utils/timer"
@@ -28,7 +28,7 @@ export async function action({ request }: ActionFunctionArgs) {
   })
   invariantResponse(postStatus, "Post status is unavailable", { status: 404 })
 
-  await prisma.post.update({
+  await db.post.update({
     where: { id },
     data: { statusId: postStatus.id },
   })

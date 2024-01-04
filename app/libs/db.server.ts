@@ -24,4 +24,4 @@ if (parsedEnv.NODE_ENV === "production") {
   prisma.$connect()
 }
 
-export { prisma }
+export { prisma as db }

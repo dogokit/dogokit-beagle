@@ -15,7 +15,6 @@ import { z } from "zod"
 
 import { AuthButtons } from "~/components/shared/auth-buttons"
 import { SectionOr } from "~/components/shared/section-or"
-
 import { ButtonLoading } from "~/components/ui/button-loading"
 import {
   FormDescription,
@@ -28,7 +27,7 @@ import { Input } from "~/components/ui/input"
 import { InputPassword } from "~/components/ui/input-password"
 import { LinkText } from "~/components/ui/link-text"
 import { useAppMode } from "~/hooks/use-app-mode"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { schemaUserLogIn } from "~/schemas/user"
 import { authenticator } from "~/services/auth.server"
 import { checkPassword } from "~/utils/encryption.server"
@@ -164,7 +163,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const submission = await parse(formData, {
     async: true,
     schema: schemaUserLogIn.superRefine(async (data, ctx) => {
-      const existingUser = await prisma.user.findUnique({
+      const existingUser = await db.user.findUnique({
         where: { email: data.email },
         include: { password: true },
       })

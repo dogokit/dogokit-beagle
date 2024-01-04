@@ -1,7 +1,7 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/node"
 import { useLoaderData, type MetaFunction } from "@remix-run/react"
 
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -15,9 +15,9 @@ export const meta: MetaFunction = () =>
 
 export const loader = async ({}: LoaderFunctionArgs) => {
   // IDEA: Refactor this into a model
-  const [usersCount, users] = await prisma.$transaction([
-    prisma.user.count(),
-    prisma.user.findMany({ take: 50 }),
+  const [usersCount, users] = await db.$transaction([
+    db.user.count(),
+    db.user.findMany({ take: 50 }),
   ])
 
   return json({ usersCount, users })

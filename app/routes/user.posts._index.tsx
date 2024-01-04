@@ -18,7 +18,7 @@ import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { getActionItem } from "~/configs/action-item"
 import { requireUser } from "~/helpers/auth"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
@@ -44,9 +44,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         ],
       }
 
-  const [totalItems, posts] = await prisma.$transaction([
-    prisma.post.count({ where }),
-    prisma.post.findMany({
+  const [totalItems, posts] = await db.$transaction([
+    db.post.count({ where }),
+    db.post.findMany({
       where,
       skip: config.skip,
       take: config.limitParam,

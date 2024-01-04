@@ -1,14 +1,14 @@
 import { type Post } from "@prisma/client"
 
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 
 export const modelPost = {
   count() {
-    return prisma.post.count()
+    return db.post.count()
   },
 
   getAll() {
-    return prisma.post.findMany({
+    return db.post.findMany({
       where: {
         status: { symbol: "PUBLISHED" },
       },
@@ -19,7 +19,7 @@ export const modelPost = {
   },
 
   getAllSlugs() {
-    return prisma.post.findMany({
+    return db.post.findMany({
       where: {
         status: { symbol: "PUBLISHED" },
       },
@@ -31,7 +31,7 @@ export const modelPost = {
   },
 
   getById({ id }: Pick<Post, "id">) {
-    return prisma.post.findUnique({
+    return db.post.findUnique({
       where: { id },
       include: {
         status: { select: { symbol: true, name: true } },
@@ -41,7 +41,7 @@ export const modelPost = {
   },
 
   getWithStatus() {
-    return prisma.post.findFirst({
+    return db.post.findFirst({
       include: {
         status: { select: { symbol: true, name: true } },
         images: { select: { id: true, url: true } },
@@ -50,7 +50,7 @@ export const modelPost = {
   },
 
   getBySlug({ slug }: Pick<Post, "slug">) {
-    return prisma.post.findUnique({
+    return db.post.findUnique({
       where: {
         slug,
         status: {
@@ -75,7 +75,7 @@ export const modelPost = {
   },
 
   search({ q }: { q: string | undefined }) {
-    return prisma.post.findMany({
+    return db.post.findMany({
       where: {
         OR: [{ title: { contains: q } }, { slug: { contains: q } }],
         status: {

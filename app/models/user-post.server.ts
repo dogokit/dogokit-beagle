@@ -1,18 +1,18 @@
 import { type Post } from "@prisma/client"
 
 import { createPostSlug, getPostExcerpt } from "~/helpers/post"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { type PostStatusSymbol } from "~/types/post-status"
 
 export const modelUserPost = {
   count({ userId }: Pick<Post, "userId">) {
-    return prisma.post.count({
+    return db.post.count({
       where: { userId },
     })
   },
 
   getAll({ userId }: Pick<Post, "userId">) {
-    return prisma.post.findMany({
+    return db.post.findMany({
       where: { userId },
       include: {
         images: { select: { url: true } },
@@ -21,7 +21,7 @@ export const modelUserPost = {
   },
 
   getById({ id, userId }: Pick<Post, "id" | "userId">) {
-    return prisma.post.findUnique({
+    return db.post.findUnique({
       where: { id, userId },
       include: {
         status: { select: { symbol: true, name: true } },
@@ -38,12 +38,12 @@ export const modelUserPost = {
   }: Pick<Post, "userId" | "title" | "content"> & {
     statusSymbol: PostStatusSymbol
   }) {
-    const status = await prisma.postStatus.findUnique({
+    const status = await db.postStatus.findUnique({
       where: { symbol: statusSymbol },
     })
     if (!status) return null
 
-    return prisma.post.create({
+    return db.post.create({
       data: {
         userId,
         slug: createPostSlug(title),
@@ -65,7 +65,7 @@ export const modelUserPost = {
     title,
     content,
   }: Pick<Post, "userId" | "id" | "slug" | "title" | "content">) {
-    return prisma.post.update({
+    return db.post.update({
       where: { id },
       data: {
         userId,
@@ -78,10 +78,10 @@ export const modelUserPost = {
   },
 
   deleteAll({ userId }: Pick<Post, "userId">) {
-    return prisma.post.deleteMany({ where: { userId } })
+    return db.post.deleteMany({ where: { userId } })
   },
 
   deleteById({ userId, id }: Pick<Post, "userId" | "id">) {
-    return prisma.post.delete({ where: { id, userId } })
+    return db.post.delete({ where: { id, userId } })
   },
 }

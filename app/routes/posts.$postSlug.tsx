@@ -19,7 +19,7 @@ import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { modelPostStatus } from "~/models/post-status.server"
 import { modelPost } from "~/models/post.server"
 import { formatDateDMY } from "~/utils/datetime"
@@ -47,7 +47,7 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.postSlug, "params.postSlug unavailable")
 
-  const [post, postStatuses] = await prisma.$transaction([
+  const [post, postStatuses] = await db.$transaction([
     modelPost.getBySlug({ slug: params.postSlug }),
     modelPostStatus.getAll(),
   ])

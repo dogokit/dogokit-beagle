@@ -29,7 +29,7 @@ import { Separator } from "~/components/ui/separator"
 import { TextareaAutosize } from "~/components/ui/textarea-autosize"
 import { requireUser } from "~/helpers/auth"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { modelUserPost } from "~/models/user-post.server"
 import { schemaPost } from "~/schemas/post"
 import { invariant, invariantResponse } from "~/utils/invariant"
@@ -280,7 +280,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     async: true,
     schema: schemaPost.superRefine(async (data, ctx) => {
       const { id, slug } = data
-      const existingSlug = await prisma.post.findUnique({
+      const existingSlug = await db.post.findUnique({
         where: { slug, NOT: { id } },
         select: { id: true },
       })

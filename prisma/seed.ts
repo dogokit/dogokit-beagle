@@ -1,5 +1,5 @@
 import { createPostSlug, extractPostSlug, getPostExcerpt } from "~/helpers/post"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
 import { createSlug } from "~/utils/string"
@@ -41,8 +41,8 @@ async function main() {
 
 async function seedPermissions() {
   console.info("\n🔑 Seed permissions")
-  console.info("🔑 Count permissions", await prisma.permission.count())
-  console.info("🔑 Deleted permissions", await prisma.permission.deleteMany())
+  console.info("🔑 Count permissions", await db.permission.count())
+  console.info("🔑 Deleted permissions", await db.permission.deleteMany())
 
   console.time("🔑 Created permissions")
 
@@ -53,7 +53,7 @@ async function seedPermissions() {
   for (const entity of entities) {
     for (const action of actions) {
       for (const access of accesses) {
-        await prisma.permission.create({
+        await db.permission.create({
           data: { entity, action, access },
         })
       }
@@ -65,7 +65,7 @@ async function seedPermissions() {
 
 async function seedRoles() {
   console.info("\n👑 Seed roles")
-  console.info("👑 Count roles", await prisma.role.count())
+  console.info("👑 Count roles", await db.role.count())
   // console.info("👑 Deleted roles", await prisma.role.deleteMany())
   console.time("👑 Upserted roles")
 
@@ -74,14 +74,14 @@ async function seedRoles() {
       symbol: roleRaw.symbol,
       name: roleRaw.name,
       permissions: {
-        connect: await prisma.permission.findMany({
+        connect: await db.permission.findMany({
           select: { id: true },
           where: { access: roleRaw.permissionsAccess },
         }),
       },
     }
 
-    const role = await prisma.role.upsert({
+    const role = await db.role.upsert({
       where: { symbol: roleRaw.symbol },
       create: roleData,
       update: roleData,
@@ -95,7 +95,7 @@ async function seedRoles() {
 
 async function seedUsers() {
   console.info("\n👤 Seed users")
-  console.info("👤 Count users", await prisma.user.count())
+  console.info("👤 Count users", await db.user.count())
   // console.info("👤 Deleted users", await prisma.user.deleteMany())
 
   if (!Array.isArray(dataCredentialUsers)) {
@@ -113,14 +113,14 @@ async function seedUsers() {
       roles: { connect: { symbol: userCredential.roleSymbol } },
     }
 
-    const existingUser = await prisma.user.findUnique({
+    const existingUser = await db.user.findUnique({
       where: { email: userData.email },
       include: { password: { select: { hash: true } } },
     })
 
     const userHasPassword = Boolean(existingUser?.password?.hash)
 
-    const user = await prisma.user.upsert({
+    const user = await db.user.upsert({
       where: { email: userData.email },
       update: {
         ...userData,
@@ -144,12 +144,12 @@ async function seedUsers() {
 
 async function seedPostStatuses() {
   console.info("\n🪧 Seed post statuses")
-  console.info("🪧 Count post statuses", await prisma.postStatus.count())
+  console.info("🪧 Count post statuses", await db.postStatus.count())
   // console.info("🪧 Deleted post statuses", await prisma.postStatus.deleteMany())
   console.time("🪧 Upserted post statuses")
 
   for (const statusRaw of dataPostStatuses) {
-    const status = await prisma.postStatus.upsert({
+    const status = await db.postStatus.upsert({
       where: { symbol: statusRaw.symbol },
       create: statusRaw,
       update: statusRaw,
@@ -161,18 +161,18 @@ async function seedPostStatuses() {
 
 async function seedPosts() {
   console.info("\n📜 Seed posts")
-  console.info("📜 Count posts", await prisma.post.count())
-  console.info("📜 Deleted posts", await prisma.post.deleteMany())
+  console.info("📜 Count posts", await db.post.count())
+  console.info("📜 Deleted posts", await db.post.deleteMany())
 
-  const users = await prisma.user.findMany({
+  const users = await db.user.findMany({
     select: { id: true, username: true },
   })
 
-  const posts = await prisma.post.findMany({
+  const posts = await db.post.findMany({
     select: { id: true, slug: true },
   })
 
-  const postStatuses = await prisma.postStatus.findMany({
+  const postStatuses = await db.postStatus.findMany({
     select: { id: true, symbol: true },
   })
 
@@ -202,7 +202,7 @@ async function seedPosts() {
       statusId: status.id,
     }
 
-    const post = await prisma.post.upsert({
+    const post = await db.post.upsert({
       where: { slug: postData.slug },
       update: postData,
       create: postData,
@@ -217,11 +217,11 @@ async function seedPosts() {
 main()
   .then(async () => {
     console.info("\n🏁 Seeding complete")
-    await prisma.$disconnect()
+    await db.$disconnect()
   })
   .catch(e => {
     console.error(e)
     console.error("\n⛔ Seeding failed")
-    prisma.$disconnect()
+    db.$disconnect()
     process.exit(1)
   })

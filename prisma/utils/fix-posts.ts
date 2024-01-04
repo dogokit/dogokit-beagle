@@ -1,5 +1,5 @@
 import { getPostExcerpt } from "~/helpers/post"
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 import { debugCode } from "~/utils/string.server"
 
 /**
@@ -13,17 +13,17 @@ import { debugCode } from "~/utils/string.server"
  */
 
 async function fixPosts() {
-  const posts = await prisma.post.findMany()
+  const posts = await db.post.findMany()
 
   for (const post of posts) {
-    const updatedPost = await prisma.post.update({
+    const updatedPost = await db.post.update({
       where: { id: post.id },
       data: { excerpt: getPostExcerpt(post.content) },
     })
     console.info(`🪧 Updated post with excerpt: ${updatedPost.id}`)
   }
 
-  const updatedPosts = await prisma.post.findMany()
+  const updatedPosts = await db.post.findMany()
   debugCode(updatedPosts)
 }
 

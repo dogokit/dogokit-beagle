@@ -1,24 +1,24 @@
 import { type PostStatus } from "@prisma/client"
 
-import { prisma } from "~/libs/db.server"
+import { db } from "~/libs/db.server"
 
 export const modelPostStatus = {
   count() {
-    return prisma.postStatus.count()
+    return db.postStatus.count()
   },
 
   getAll() {
-    return prisma.postStatus.findMany()
+    return db.postStatus.findMany()
   },
 
   getById({ id }: Pick<PostStatus, "id">) {
-    return prisma.postStatus.findUnique({
+    return db.postStatus.findUnique({
       where: { id },
     })
   },
 
   getBySymbol({ symbol }: Pick<PostStatus, "symbol">) {
-    return prisma.postStatus.findUnique({
+    return db.postStatus.findUnique({
       where: { symbol },
     })
   },
@@ -29,7 +29,7 @@ export const modelPostStatus = {
     name,
     description,
   }: Pick<PostStatus, "sequence" | "symbol" | "name" | "description">) {
-    return prisma.postStatus.create({
+    return db.postStatus.create({
       data: {
         sequence,
         symbol,
@@ -46,7 +46,7 @@ export const modelPostStatus = {
     name,
     description,
   }: Pick<PostStatus, "id" | "sequence" | "symbol" | "name" | "description">) {
-    return prisma.postStatus.update({
+    return db.postStatus.update({
       where: { id },
       data: {
         sequence,
@@ -58,11 +58,11 @@ export const modelPostStatus = {
   },
 
   deleteAll() {
-    return prisma.postStatus.deleteMany()
+    return db.postStatus.deleteMany()
   },
 
   deleteById({ id }: Pick<PostStatus, "id">) {
-    return prisma.postStatus.delete({
+    return db.postStatus.delete({
       where: { id },
     })
   },
