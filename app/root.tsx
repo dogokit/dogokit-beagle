@@ -69,6 +69,8 @@ function RootRoute() {
   )
 }
 
+export default withSentry(RootRoute)
+
 export function ErrorBoundary() {
   const error = useRouteError()
   captureRemixErrorBoundaryError(error)
@@ -84,5 +86,3 @@ export function ErrorBoundary() {
     </ThemeProvider>
   )
 }
-
-export default withSentry(RootRoute)

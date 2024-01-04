@@ -67,7 +67,13 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   })
 }
 
-export default function SearchRoute() {
+/**
+ * EDITME: This can be renamed to be a blog route
+ * _site.posts._index > _site.blog._index
+ * Alongside with other _site.posts route
+ */
+
+export default function PostsRoute() {
   const { posts, ...loaderData } = useLoaderData<typeof loader>()
 
   return (

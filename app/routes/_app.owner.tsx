@@ -60,7 +60,15 @@ export default function OwnerLayoutRoute() {
 export function ErrorBoundary() {
   const error = useRouteError()
   if (isRouteErrorResponse(error)) {
-    return <div />
+    return (
+      <div>
+        <p>Error in Owner</p>
+      </div>
+    )
   }
-  return <div />
+  return (
+    <div>
+      <p>Error in Owner</p>
+    </div>
+  )
 }

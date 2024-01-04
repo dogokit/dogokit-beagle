@@ -157,13 +157,13 @@ export function ErrorBoundary() {
   return (
     <GeneralErrorBoundary
       statusHandlers={{
-        404: ({ params }) => <PostSlugErrorMessage params={params} />,
+        404: ({ params }) => <CustomErrorMessage params={params} />,
       }}
     />
   )
 }
 
-function PostSlugErrorMessage({ params }: { params: Params }) {
+function CustomErrorMessage({ params }: { params: Params }) {
   return (
     <>
       <section className="site-section prose-config">

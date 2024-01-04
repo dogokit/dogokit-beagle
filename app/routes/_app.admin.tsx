@@ -79,7 +79,15 @@ export default function AdminLayoutRoute() {
 export function ErrorBoundary() {
   const error = useRouteError()
   if (isRouteErrorResponse(error)) {
-    return <div />
+    return (
+      <div>
+        <p>Error in Admin</p>
+      </div>
+    )
   }
-  return <div />
+  return (
+    <div>
+      <p>Error in Admin</p>
+    </div>
+  )
 }
