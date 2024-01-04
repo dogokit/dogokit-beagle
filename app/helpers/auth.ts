@@ -1,7 +1,7 @@
 import { type Role } from "@prisma/client"
 
 import { modelUser } from "~/models/user.server"
-import { authenticator, type UserData } from "~/services/auth.server"
+import { authService, type UserData } from "~/services/auth.server"
 import { invariant } from "~/utils/invariant"
 
 /**
@@ -22,7 +22,7 @@ export async function requireUser(
   request: Request,
   expectedRoleSymbols?: Role["symbol"][],
 ) {
-  const userSession = await authenticator.isAuthenticated(request, {
+  const userSession = await authService.isAuthenticated(request, {
     failureRedirect: "/login",
   })
 

@@ -1,6 +1,6 @@
 import { redirect, type ActionFunctionArgs } from "@remix-run/node"
 
-import { authenticator, type AuthStrategy } from "~/services/auth.server"
+import { authService, type AuthStrategy } from "~/services/auth.server"
 import { createTimer } from "~/utils/timer"
 
 /**
@@ -15,7 +15,7 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
   if (!params.provider) return redirect("/login")
   const provider = params.provider as AuthStrategy
   await timer.delay()
-  return await authenticator.authenticate(provider, request, {
+  return await authService.authenticate(provider, request, {
     successRedirect: "/user/dashboard",
   })
 }

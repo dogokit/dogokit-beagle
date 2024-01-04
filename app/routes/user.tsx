@@ -7,7 +7,7 @@ import { checkAllowance } from "~/helpers/auth"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelPostStatus } from "~/models/post-status.server"
 
-import { authenticator } from "~/services/auth.server"
+import { authService } from "~/services/auth.server"
 import { cn } from "~/utils/cn"
 import { invariantResponse } from "~/utils/invariant"
 import { createSitemap } from "~/utils/sitemap"
@@ -15,7 +15,7 @@ import { createSitemap } from "~/utils/sitemap"
 export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  await authenticator.isAuthenticated(request, { failureRedirect: "/login" })
+  await authService.isAuthenticated(request, { failureRedirect: "/login" })
 
   const postStatuses = await modelPostStatus.getAll()
   invariantResponse(postStatuses, "Post statuses are unavailable", {

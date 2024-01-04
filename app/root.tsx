@@ -13,7 +13,7 @@ import { GeneralErrorBoundary } from "~/components/shared/error-boundary"
 import { configDocumentLinks } from "~/configs/document"
 import { Document } from "~/document"
 import { modelUser } from "~/models/user.server"
-import { authenticator } from "~/services/auth.server"
+import { authService } from "~/services/auth.server"
 import { themeSessionResolver } from "~/services/theme-session.server"
 import { parsedEnvClient } from "~/utils/env.server"
 import { createMeta } from "~/utils/meta"
@@ -37,7 +37,7 @@ export const headers: HeadersFunction = () => {
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { getTheme } = await themeSessionResolver(request)
 
-  const userSession = await authenticator.isAuthenticated(request)
+  const userSession = await authService.isAuthenticated(request)
   if (!userSession) {
     return json({
       ENV: parsedEnvClient,

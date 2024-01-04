@@ -29,7 +29,7 @@ import { LinkText } from "~/components/ui/link-text"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { db } from "~/libs/db.server"
 import { schemaUserLogIn } from "~/schemas/user"
-import { authenticator } from "~/services/auth.server"
+import { authService } from "~/services/auth.server"
 import { checkPassword } from "~/utils/encryption.server"
 import { createMeta } from "~/utils/meta"
 import { createTimer } from "~/utils/timer"
@@ -41,7 +41,7 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = ({ request }: ActionFunctionArgs) => {
-  return authenticator.isAuthenticated(request, {
+  return authService.isAuthenticated(request, {
     successRedirect: "/user/dashboard",
   })
 }
@@ -206,7 +206,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ status: "error", submission }, { status: 400 })
   }
 
-  return authenticator.authenticate("form", request, {
+  return authService.authenticate("form", request, {
     successRedirect: "/user/dashboard",
   })
 }

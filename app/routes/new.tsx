@@ -5,13 +5,13 @@ import {
 
 import { FormActionItem } from "~/components/shared/form-action-item"
 import { configActionItems } from "~/configs/action-item"
-import { authenticator } from "~/services/auth.server"
+import { authService } from "~/services/auth.server"
 import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
-  return authenticator.isAuthenticated(request, { failureRedirect: "/login" })
+  return authService.isAuthenticated(request, { failureRedirect: "/login" })
 }
 
 /**

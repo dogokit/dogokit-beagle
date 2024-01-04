@@ -14,5 +14,3 @@ export const authSessionStorage = createCookieSessionStorage({
     maxAge: convertDaysToSeconds(30), // EDITME: Change session persistence
   },
 })
-
-export const authSessionResolver = authSessionStorage

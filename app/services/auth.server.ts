@@ -24,9 +24,9 @@ export type AuthStrategy = (typeof AuthStrategies)[keyof typeof AuthStrategies]
 
 // Create an instance of the authenticator, pass a generic with what
 // strategies will return and will store in the session
-export const authenticator = new Authenticator<UserSession>(authSessionStorage)
+export const authService = new Authenticator<UserSession>(authSessionStorage)
 
 // Register the strategies
-authenticator.use(formStrategy, AuthStrategies.FORM)
-authenticator.use(githubStrategy, AuthStrategies.GITHUB)
-authenticator.use(googleStrategy, AuthStrategies.GOOGLE)
+authService.use(formStrategy, AuthStrategies.FORM)
+authService.use(githubStrategy, AuthStrategies.GITHUB)
+authService.use(googleStrategy, AuthStrategies.GOOGLE)
