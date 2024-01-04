@@ -1,8 +1,9 @@
 // Refer to https://github.com/sergiodxa/remix-auth-github for more information
+
 import { AuthorizationError } from "remix-auth"
 import { GitHubStrategy } from "remix-auth-github"
-import { modelUser } from "~/models/user.server"
 
+import { modelUser } from "~/models/user.server"
 import { AuthStrategies } from "~/services/auth-strategies"
 import { type UserSession } from "~/services/auth.server"
 import { parsedEnv } from "~/utils/env.server"

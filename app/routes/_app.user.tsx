@@ -1,12 +1,12 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/node"
 import { Outlet } from "@remix-run/react"
+
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 import { Separator } from "~/components/ui/separator"
 import { configNavigationItems } from "~/configs/navigation"
 import { checkAllowance } from "~/helpers/auth"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { modelPostStatus } from "~/models/post-status.server"
-
 import { authService } from "~/services/auth.server"
 import { cn } from "~/utils/cn"
 import { invariantResponse } from "~/utils/invariant"

@@ -5,9 +5,11 @@ import {
   useRouteError,
   type ErrorResponse,
 } from "@remix-run/react"
+
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
+
 // import { captureRemixErrorBoundaryError } from '@sentry/remix'
 
 type StatusHandler = (info: {

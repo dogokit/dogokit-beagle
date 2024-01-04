@@ -1,8 +1,9 @@
 // Refer to https://github.com/pbteja1998/remix-auth-google for more information
+
 import { AuthorizationError } from "remix-auth"
 import { GoogleStrategy } from "remix-auth-google"
-import { modelUser } from "~/models/user.server"
 
+import { modelUser } from "~/models/user.server"
 import { AuthStrategies } from "~/services/auth-strategies"
 import { type UserSession } from "~/services/auth.server"
 import { parsedEnv } from "~/utils/env.server"

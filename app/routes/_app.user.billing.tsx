@@ -5,8 +5,8 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { requireUser } from "~/helpers/auth"
 
+import { requireUser } from "~/helpers/auth"
 import { schemaGeneralId } from "~/schemas/general"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"

@@ -1,4 +1,5 @@
 import { type MetaFunction } from "@remix-run/node"
+
 import { ContentInspirations } from "~/components/contents/inspirations"
 import { ContentIntro } from "~/components/contents/intro"
 import { ContentStack } from "~/components/contents/stack"

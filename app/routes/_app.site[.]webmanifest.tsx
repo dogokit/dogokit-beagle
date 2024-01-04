@@ -1,6 +1,6 @@
 import { type DataFunctionArgs } from "@remix-run/node"
-import { configMeta } from "~/configs/meta"
 
+import { configMeta } from "~/configs/meta"
 import { getDomainUrl } from "~/utils/url.server"
 
 // EDITME: Based on actual size of image assets in /app/public/pwa

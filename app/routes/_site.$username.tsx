@@ -1,11 +1,11 @@
 import { type SEOHandle } from "@nasa-gcn/remix-seo"
 import { type LoaderFunctionArgs } from "@remix-run/node"
 import { Outlet, type Params } from "@remix-run/react"
+
 import {
   ErrorHelpInformation,
   GeneralErrorBoundary,
 } from "~/components/shared/error-boundary"
-
 import { configRedirects } from "~/configs/redirects"
 import { modelUser } from "~/models/user.server"
 import { formatDateYMD } from "~/utils/datetime"

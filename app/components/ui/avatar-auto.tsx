@@ -1,7 +1,7 @@
 import { type User } from "@prisma/client"
+import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
-import { cva, type VariantProps } from "class-variance-authority"
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { cn } from "~/utils/cn"
 import { getPlaceholderAvatarUrl } from "~/utils/placeholder"

@@ -1,4 +1,5 @@
 import { type MetaFunction } from "@remix-run/react"
+
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 

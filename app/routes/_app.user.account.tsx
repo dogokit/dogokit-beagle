@@ -14,8 +14,8 @@ import {
   useNavigation,
 } from "@remix-run/react"
 import { type z } from "zod"
-import { AvatarAuto } from "~/components/ui/avatar-auto"
 
+import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { Input } from "~/components/ui/input"
 import { requireUser } from "~/helpers/auth"

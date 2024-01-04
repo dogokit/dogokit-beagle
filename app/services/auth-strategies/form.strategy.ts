@@ -1,4 +1,5 @@
 // Refer to https://github.com/sergiodxa/remix-auth-form for more information
+
 import { AuthorizationError } from "remix-auth"
 import { FormStrategy } from "remix-auth-form"
 

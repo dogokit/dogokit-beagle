@@ -4,9 +4,8 @@ import {
   type MetaFunction,
 } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
-import { BadgePostStatus } from "~/components/shared/badge-post-status"
-import { ViewHTML } from "~/components/shared/view-html"
 
+import { BadgePostStatus } from "~/components/shared/badge-post-status"
 import {
   ErrorHelpInformation,
   GeneralErrorBoundary,
@@ -14,6 +13,7 @@ import {
 import { FormChangeStatus } from "~/components/shared/form-change-status"
 import { ImageCover } from "~/components/shared/image-cover"
 import { Timestamp } from "~/components/shared/timestamp"
+import { ViewHTML } from "~/components/shared/view-html"
 import { Alert } from "~/components/ui/alert"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"

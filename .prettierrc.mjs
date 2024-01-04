@@ -1,4 +1,4 @@
-/** @type {import('prettier').Config & import('prettier-plugin-tailwindcss').options} */
+/** @type {import('prettier').Config & import("@ianvs/prettier-plugin-sort-imports").PrettierConfig & import('prettier-plugin-tailwindcss').options} */
 export default {
   // changeable
   semi: false,
@@ -20,7 +20,24 @@ export default {
   quoteProps: "as-needed",
   requirePragma: false,
   singleAttributePerLine: false,
-  plugins: ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
+  // plugins
+  importOrderTypeScriptVersion: "5.0.0",
+  importOrder: [
+    "", // Enforce a blank line after top of file comments
+    "<BUILTIN_MODULES>",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^[~]",
+    "",
+    "^[.]",
+    "",
+    ".css$",
+  ],
+  plugins: [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
+  ],
   overrides: [
     {
       files: ["**/*.md", "**/*.json"],

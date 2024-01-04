@@ -60,6 +60,7 @@ Starting with `isbot` v4:
 
 ```ts
 // entry.server.ts
+
 import { isbot } from "isbot"
 
 export default function handleRequest(
@@ -76,8 +77,9 @@ export default function handleRequest(
 `tailwind.config.ts`:
 
 ```ts
-import { type Config } from "tailwindcss"
 import defaultTheme from "tailwindcss/defaultTheme"
+
+import { type Config } from "tailwindcss"
 
 export default {
   darkMode: ["class"],

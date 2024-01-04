@@ -1,7 +1,7 @@
 import { NavLink } from "@remix-run/react"
+
 import { Iconify } from "~/components/ui/iconify"
 import { type NavItem } from "~/configs/navigation"
-
 import { cn } from "~/utils/cn"
 
 export function SidebarNavItems({ items }: { items: NavItem[] }) {

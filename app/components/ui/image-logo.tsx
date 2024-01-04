@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { Theme, useTheme } from "remix-themes"
-import { configSite } from "~/configs/site"
 
+import { configSite } from "~/configs/site"
 import { cn } from "~/utils/cn"
 
 const imageLogoVariants = cva("opacity-100", {

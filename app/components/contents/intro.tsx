@@ -1,7 +1,7 @@
 import { AnchorText } from "~/components/ui/anchor-text"
+import { ButtonAnchor } from "~/components/ui/button-anchor"
+import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
-import { ButtonAnchor } from "../ui/button-anchor"
-import { Iconify } from "../ui/iconify"
 
 export function ContentIntro() {
   return (

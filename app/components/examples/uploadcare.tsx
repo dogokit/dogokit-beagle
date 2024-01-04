@@ -3,10 +3,10 @@ import { useState } from "react"
 import { Theme, useTheme } from "remix-themes"
 
 import {
+  defaultLRConfig,
   UploaderSwitcher,
   UploaderWithOutput,
   UploaderWithProvider,
-  defaultLRConfig,
 } from "~/components/libs/uploader-uploadcare"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 

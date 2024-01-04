@@ -1,14 +1,15 @@
 import * as LR from "@uploadcare/blocks"
 import { type OutputFileEntry } from "@uploadcare/blocks"
-import styleInline from "@uploadcare/blocks/web/lr-file-uploader-inline.min.css"
-import styleMinimal from "@uploadcare/blocks/web/lr-file-uploader-minimal.min.css"
-import styleRegular from "@uploadcare/blocks/web/lr-file-uploader-regular.min.css"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonIcon } from "~/components/ui/button-icon"
 import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
+
+import styleInline from "@uploadcare/blocks/web/lr-file-uploader-inline.min.css"
+import styleMinimal from "@uploadcare/blocks/web/lr-file-uploader-minimal.min.css"
+import styleRegular from "@uploadcare/blocks/web/lr-file-uploader-regular.min.css"
 
 /**
  * File Uploader with Uploadcare

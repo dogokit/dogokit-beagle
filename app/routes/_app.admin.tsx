@@ -3,7 +3,7 @@ import {
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
 } from "@remix-run/node"
-import { Outlet, isRouteErrorResponse, useRouteError } from "@remix-run/react"
+import { isRouteErrorResponse, Outlet, useRouteError } from "@remix-run/react"
 
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 import { Separator } from "~/components/ui/separator"
