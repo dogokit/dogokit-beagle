@@ -7,9 +7,11 @@ import { Label } from "~/components/ui/label"
 export function FormSearch({
   action = "/search",
   placeholder = "Search...",
+  autoFocus = false,
 }: {
   action?: string
   placeholder?: string
+  autoFocus?: boolean
 }) {
   const [searchParams] = useSearchParams()
   const query = searchParams.get("q") ?? ""
@@ -26,7 +28,7 @@ export function FormSearch({
           name="q"
           placeholder={placeholder}
           defaultValue={query}
-          autoFocus
+          autoFocus={autoFocus}
           autoComplete="off"
           className="w-full py-2 pe-3 ps-10"
         />
