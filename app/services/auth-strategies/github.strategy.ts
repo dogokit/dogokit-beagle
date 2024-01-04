@@ -1,32 +1,31 @@
-// Refer to https://github.com/pbteja1998/remix-auth-google for more information
+// Refer to https://github.com/sergiodxa/remix-auth-github for more information
 import { AuthorizationError } from "remix-auth"
-import { GoogleStrategy } from "remix-auth-google"
+import { GitHubStrategy } from "remix-auth-github"
 import { modelUser } from "~/models/user.server"
 
+import { AuthStrategies } from "~/services/auth-strategies"
 import { type UserSession } from "~/services/auth.server"
-import { AuthStrategies } from "~/services/auth_strategies"
 import { parsedEnv } from "~/utils/env.server"
-import { getUsernameFromEmail } from "~/utils/string"
 
-const clientID = parsedEnv.GOOGLE_CLIENT_ID || ""
-const clientSecret = parsedEnv.GOOGLE_CLIENT_SECRET || ""
-const callbackURL = `${parsedEnv.APP_URL}/auth/${AuthStrategies.GOOGLE}/callback`
+const clientID = parsedEnv.GITHUB_CLIENT_ID || ""
+const clientSecret = parsedEnv.GITHUB_CLIENT_SECRET || ""
+const callbackURL = `${parsedEnv.APP_URL}/auth/${AuthStrategies.GITHUB}/callback`
 
 // Enable this to force these to be required
 // if (!clientID || !clientSecret) {
-//   throw new Error("Missing GOOGLE_CLIENT_ID or GOOGLE_CLIENT_SECRET")
+//   throw new Error("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET")
 // }
 
-export const googleStrategy = new GoogleStrategy<UserSession>(
+export const githubStrategy = new GitHubStrategy<UserSession>(
   { clientID, clientSecret, callbackURL },
   async ({ profile }) => {
     const email = profile.emails[0]?.value.trim().toLowerCase()
     if (!email) throw new AuthorizationError("Email is not found")
 
     const fullname = profile._json.name
+    const username = profile._json.login.replace(/-/g, "_")
     const imageUrl = profile.photos[0].value
-    const username = getUsernameFromEmail(profile._json.email)
-    const providerName = "google"
+    const providerName = "github"
     const providerId = profile.id
 
     const user = await modelUser.continueWithService({
@@ -38,7 +37,7 @@ export const googleStrategy = new GoogleStrategy<UserSession>(
       providerId,
     })
     if (!user) {
-      throw new AuthorizationError("Failed to continue with Google")
+      throw new AuthorizationError("Failed to continue with GitHub")
     }
 
     return { id: user.id }

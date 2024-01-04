@@ -4,8 +4,23 @@
  * Auth-related configuration
  */
 
+import { AuthStrategies } from "~/services/auth-strategies"
 import { type AuthStrategy } from "~/services/auth.server"
-import { AuthStrategies } from "~/services/auth_strategies"
+
+export const configAuth: ConfigAuth = {
+  services: [
+    {
+      label: "Google",
+      provider: AuthStrategies.GOOGLE,
+      isEnabled: true,
+    },
+    {
+      label: "GitHub",
+      provider: AuthStrategies.GITHUB,
+      isEnabled: true,
+    },
+  ],
+}
 
 type ConfigAuth = {
   services: {
@@ -13,11 +28,4 @@ type ConfigAuth = {
     provider: AuthStrategy
     isEnabled?: boolean
   }[]
-}
-
-export const configAuth: ConfigAuth = {
-  services: [
-    { label: "GitHub", provider: AuthStrategies.GITHUB, isEnabled: true },
-    { label: "Google", provider: AuthStrategies.GOOGLE, isEnabled: true },
-  ],
 }

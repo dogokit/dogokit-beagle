@@ -1,5 +1,5 @@
 export const AuthStrategies = {
   FORM: "form",
-  GITHUB: "github",
   GOOGLE: "google",
+  GITHUB: "github",
 } as const
