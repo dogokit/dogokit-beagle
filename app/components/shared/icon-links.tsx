@@ -52,6 +52,7 @@ export function IconLinks({
             )}
           >
             <IconLink name={iconLink.name} />
+            <span className="sr-only">{iconLink.name}</span>
           </Anchor>
         </li>
       ))}

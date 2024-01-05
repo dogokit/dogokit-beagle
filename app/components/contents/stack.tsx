@@ -66,7 +66,13 @@ function SwitchCore({
 
   return (
     <div className="flex items-center space-x-2">
-      <Switch id="switch-core" checked={checked} onCheckedChange={switchCore} />
+      <Switch
+        id="switch-core"
+        name="switch-core-stack"
+        aria-label="Switch core stack"
+        checked={checked}
+        onCheckedChange={switchCore}
+      />
       <Label htmlFor="switch-core">
         {checked ? "Only the core" : "More than the core"}
       </Label>
