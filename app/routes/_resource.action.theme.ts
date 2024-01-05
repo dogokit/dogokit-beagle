@@ -1,7 +1,7 @@
 import { json, redirect, type ActionFunctionArgs } from "@remix-run/node"
 
 import { isTheme } from "~/components/shared/theme"
-import { getThemeSession } from "~/services/theme-session.server"
+import { getThemeSession } from "~/services/theme.server"
 
 export const loader = () => redirect("/", { status: 404 })
 
