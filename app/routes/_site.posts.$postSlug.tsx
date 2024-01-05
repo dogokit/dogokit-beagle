@@ -117,7 +117,7 @@ export default function PostSlugRoute() {
           <div className="flex flex-wrap gap-2">
             <FormChangeStatus
               itemId="postId"
-              action="/user/posts/patch"
+              action="/user/posts/update"
               intentValue="change-post-status"
               dialogTitle="Change post's status"
               dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}

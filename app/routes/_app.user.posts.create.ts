@@ -1,8 +1,4 @@
-import {
-  redirect,
-  type ActionFunctionArgs,
-  type LoaderFunctionArgs,
-} from "@remix-run/node"
+import { redirect, type ActionFunctionArgs } from "@remix-run/node"
 
 import { requireUser } from "~/helpers/auth"
 import { modelUserPost } from "~/models/user-post.server"
@@ -11,10 +7,6 @@ import { createSitemap } from "~/utils/sitemap"
 import { createTimer } from "~/utils/timer"
 
 export const handle = createSitemap()
-
-export const loader = ({}: LoaderFunctionArgs) => {
-  return redirect(`/user/posts`)
-}
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const timer = createTimer()

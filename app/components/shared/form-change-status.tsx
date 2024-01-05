@@ -28,7 +28,7 @@ import { cn } from "~/utils/cn"
 
 export function FormChangeStatus({
   itemId = "itemId",
-  action = "/user/items/patch",
+  action = "/user/items/update",
   intentValue = "change-item-status",
   dialogTitle = "Change Status",
   dialogDescription = "Change the status of this item",
@@ -38,7 +38,7 @@ export function FormChangeStatus({
   className,
 }: {
   itemId: string
-  action: string // Example: /user/items/patch
+  action: string // Example: /user/items/update
   intentValue: string // Example: change-post-status
   dialogTitle: string
   dialogDescription: string

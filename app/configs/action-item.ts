@@ -16,42 +16,42 @@ export function getActionItem(name: string) {
 
 export const configActionItems: ConfigActionItem[] = [
   {
-    actionNew: "/user/posts/new",
+    actionNew: "/user/posts/create",
     actionManage: "/user/posts",
     name: "Post",
     icon: "ph:scroll-duotone",
     isEnabled: true,
   },
   {
-    actionNew: "/user/events/new",
+    actionNew: "/user/events/create",
     actionManage: "/user/events",
     name: "Event",
     icon: "ph:calendar-blank-duotone",
     isEnabled: false,
   },
   {
-    actionNew: "/user/tags/new",
+    actionNew: "/user/tags/create",
     actionManage: "/user/tags",
     name: "Tag",
     icon: "ph:tag-duotone",
     isEnabled: false,
   },
   {
-    actionNew: "/user/categories/new",
+    actionNew: "/user/categories/create",
     actionManage: "/user/categories",
     name: "Category",
     icon: "ph:squares-four-duotone",
     isEnabled: false,
   },
   {
-    actionNew: "/user/images/new",
+    actionNew: "/user/images/create",
     actionManage: "/user/images",
     name: "Image",
     icon: "ph:image-duotone",
     isEnabled: false,
   },
   {
-    actionNew: "/admin/users/new",
+    actionNew: "/admin/users/create",
     actionManage: "/user/users",
     name: "User",
     icon: "ph:user-duotone",

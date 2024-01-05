@@ -15,6 +15,8 @@ const title = z.string({ required_error: "Title is required" })
 
 const content = z.string({ required_error: "Content is required" })
 
+const statusSymbol = z.string({ required_error: "Status symbol is required" })
+
 const readingTime = zfd.numeric(z.number().min(0).max(1000)).optional()
 
 export const schemaPost = z.object({
@@ -24,6 +26,11 @@ export const schemaPost = z.object({
   title,
   content,
   readingTime,
+})
+
+export const schemaPostStatusUpdate = z.object({
+  postId: id,
+  statusSymbol,
 })
 
 export const schemaPostDeleteAll = z.object({ userId })

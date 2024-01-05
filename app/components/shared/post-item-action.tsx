@@ -71,7 +71,7 @@ export function PostItemAction({
       <div className="flex flex-row items-center gap-2 lg:flex-row-reverse">
         <FormChangeStatus
           itemId="postId"
-          action="/user/posts/patch"
+          action="/user/posts/update"
           intentValue="change-post-status"
           dialogTitle="Change post's status"
           dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
