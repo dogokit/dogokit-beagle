@@ -7,12 +7,7 @@ import {
 } from "@remix-run/react"
 
 import { NProgress } from "~/components/shared/nprogress"
-import {
-  ThemeBody,
-  ThemeHead,
-  useTheme,
-  type Theme,
-} from "~/components/shared/theme"
+import { ThemeHead, useTheme, type Theme } from "~/components/shared/theme"
 import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 
@@ -37,16 +32,13 @@ export function Document({
       </head>
 
       <body id="__remix">
-        <NProgress />
-
         {children}
-
         <script
           dangerouslySetInnerHTML={{
             __html: `window.ENV = ${JSON.stringify(ENV)}`,
           }}
         />
-        <ThemeBody ssrTheme={Boolean(dataTheme)} />
+        <NProgress />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
