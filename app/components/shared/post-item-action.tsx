@@ -1,18 +1,17 @@
-import { type Prisma } from "@prisma/client"
-
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
 import { type modelPost } from "~/models/post.server"
+import { type JsonifyPrisma } from "~/types/jsonify"
 import { cn } from "~/utils/cn"
 import { truncateText } from "~/utils/string"
 
 export function PostItemAction({
   post,
 }: {
-  post: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
+  post: JsonifyPrisma<typeof modelPost.getWithStatus>
 }) {
   const { postStatuses } = useAppUserLoaderData()
   if (!post) return null

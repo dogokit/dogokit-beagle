@@ -123,7 +123,7 @@ export default function PostSlugRoute() {
               dialogDescription={`Update the status of post: ${post.title} (${post.slug})`}
               buttonText="Update Status"
               itemStatuses={postStatuses}
-              item={post as any}
+              item={post}
             />
             <ButtonLink
               to={`/user/posts/${post.id}`}

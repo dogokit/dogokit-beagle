@@ -13,7 +13,7 @@ export const modelPost = {
         status: { symbol: "PUBLISHED" },
       },
       include: {
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
       },
     })
   },
@@ -35,7 +35,7 @@ export const modelPost = {
       where: { id },
       include: {
         status: { select: { symbol: true, name: true } },
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
       },
     })
   },
@@ -64,10 +64,10 @@ export const modelPost = {
       },
       include: {
         status: { select: { symbol: true, name: true } },
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
         user: {
           include: {
-            images: { select: { url: true } },
+            images: { select: { id: true, url: true } },
           },
         },
       },
@@ -83,7 +83,7 @@ export const modelPost = {
         },
       },
       include: {
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
       },
       orderBy: [{ updatedAt: "asc" }],
     })

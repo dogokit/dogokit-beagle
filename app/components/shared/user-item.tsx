@@ -1,13 +1,13 @@
-import { type Prisma } from "@prisma/client"
 import { Link } from "@remix-run/react"
 
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { type modelUser } from "~/models/user.server"
+import { type JsonifyPrisma } from "~/types/jsonify"
 
 export function UserItem({
   user,
 }: {
-  user: Prisma.PromiseReturnType<typeof modelUser.getWithImages>
+  user: JsonifyPrisma<typeof modelUser.getWithImages>
 }) {
   if (!user) return null
 

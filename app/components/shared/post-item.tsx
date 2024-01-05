@@ -1,16 +1,16 @@
-import { type Prisma } from "@prisma/client"
 import { Link } from "@remix-run/react"
 
 import { ImageCover } from "~/components/shared/image-cover"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { type modelPost } from "~/models/post.server"
+import { type JsonifyPrisma } from "~/types/jsonify"
 import { formatPublished } from "~/utils/datetime"
 
 export function PostItem({
   post,
 }: {
-  post: Prisma.PromiseReturnType<typeof modelPost.getBySlug>
+  post: JsonifyPrisma<typeof modelPost.getBySlug>
 }) {
   if (!post) return null
 

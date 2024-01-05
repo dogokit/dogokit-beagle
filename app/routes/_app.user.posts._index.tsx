@@ -54,7 +54,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       orderBy: { updatedAt: "desc" },
       include: {
         status: { select: { symbol: true, name: true } },
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
       },
     }),
   ])
@@ -103,7 +103,7 @@ export default function UserPostsRoute() {
         {posts.length > 0 && (
           <ul className="divide-y">
             {posts.map(post => (
-              <PostItemAction key={post.id} post={post as any} />
+              <PostItemAction key={post.id} post={post} />
             ))}
           </ul>
         )}

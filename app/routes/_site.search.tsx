@@ -63,7 +63,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       take: config.limitParam,
       orderBy: { updatedAt: "desc" },
       include: {
-        images: { select: { url: true } },
+        status: { select: { symbol: true, name: true } },
+        images: { select: { id: true, url: true } },
         user: { include: { images: { select: { id: true, url: true } } } },
       },
     }),
@@ -101,7 +102,7 @@ export default function SearchRoute() {
         <ul className="space-y-12">
           {posts.map(post => (
             <li key={post.id}>
-              <PostItem post={post as any} />
+              <PostItem post={post} />
             </li>
           ))}
         </ul>

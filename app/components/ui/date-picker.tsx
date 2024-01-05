@@ -1,5 +1,6 @@
 import { useInputEvent, type FieldConfig } from "@conform-to/react"
 import { useRef, useState } from "react"
+import { type SelectSingleEventHandler } from "react-day-picker"
 
 import { Button } from "~/components/ui/button"
 import { Calendar } from "~/components/ui/calendar"
@@ -65,7 +66,7 @@ export function DatePicker({
             initialFocus
             mode="single"
             selected={date}
-            onSelect={setDate as any}
+            onSelect={setDate as SelectSingleEventHandler}
             defaultMonth={date}
             yearPast={5}
             yearFuture={5}

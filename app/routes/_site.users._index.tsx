@@ -46,7 +46,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       skip: config.skip,
       take: config.limitParam,
       orderBy: { createdAt: "asc" },
-      include: { images: { select: { url: true } } },
+      include: { images: { select: { id: true, url: true } } },
     }),
   ])
 
@@ -81,7 +81,7 @@ export default function UsersRoute() {
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {users.map(user => (
             <li key={user.id}>
-              <UserItem user={user as any} />
+              <UserItem user={user} />
             </li>
           ))}
         </ul>

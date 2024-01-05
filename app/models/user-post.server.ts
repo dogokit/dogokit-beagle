@@ -15,7 +15,7 @@ export const modelUserPost = {
     return db.post.findMany({
       where: { userId },
       include: {
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
       },
     })
   },
@@ -25,7 +25,7 @@ export const modelUserPost = {
       where: { id, userId },
       include: {
         status: { select: { symbol: true, name: true } },
-        images: { select: { url: true } },
+        images: { select: { id: true, url: true } },
       },
     })
   },

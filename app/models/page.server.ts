@@ -49,7 +49,7 @@ export const modelPage = {
         status: { select: { symbol: true, name: true } },
         user: {
           include: {
-            images: { select: { url: true } },
+            images: { select: { id: true, url: true } },
           },
         },
       },

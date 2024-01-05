@@ -1,4 +1,4 @@
-import { type PostStatus, type Prisma } from "@prisma/client"
+import { type PostStatus } from "@prisma/client"
 import { useFetcher } from "@remix-run/react"
 import { useState } from "react"
 
@@ -24,6 +24,7 @@ import {
   SelectValue,
 } from "~/components/ui/select"
 import { type modelPost } from "~/models/post.server"
+import { type JsonifyPrisma } from "~/types/jsonify"
 import { cn } from "~/utils/cn"
 
 export function FormUpdateStatus({
@@ -45,7 +46,7 @@ export function FormUpdateStatus({
   buttonText?: string
   // IDEA: Make it more general with a model Item that has a Status
   itemStatuses: PostStatus[]
-  item: Prisma.PromiseReturnType<typeof modelPost.getWithStatus>
+  item: JsonifyPrisma<typeof modelPost.getWithStatus>
   className?: string
 }) {
   const [open, setOpen] = useState<boolean>()
