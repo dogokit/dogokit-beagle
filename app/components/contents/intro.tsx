@@ -1,7 +1,6 @@
 import { AnchorText } from "~/components/ui/anchor-text"
 import { ButtonAnchor } from "~/components/ui/button-anchor"
 import { Iconify } from "~/components/ui/iconify"
-import { cn } from "~/utils/cn"
 
 export function ContentIntro() {
   return (
@@ -9,11 +8,7 @@ export function ContentIntro() {
       <header className="space-y-10 text-pretty">
         <h1
           id="intro"
-          className={cn(
-            "text-5xl sm:text-6xl md:text-7xl",
-            "font-display tracking-tight text-primary",
-            "bg-gradient-to-r from-primary to-violet-600 bg-clip-text text-transparent",
-          )}
+          className="bg-gradient-to-r from-primary to-violet-600 bg-clip-text font-display text-5xl tracking-tight text-transparent"
         >
           Dogokit is a web app template kit
         </h1>

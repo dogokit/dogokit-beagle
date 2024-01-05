@@ -27,7 +27,7 @@ function SiteFooterSectionSitemap({
     <section className="flex flex-wrap gap-4">
       <div
         className={cn(
-          "flex-auto space-y-8 bg-muted p-4",
+          "flex-auto space-y-8 bg-muted/30 p-4",
           isRounded && "rounded-md",
         )}
       >
@@ -50,7 +50,7 @@ function SiteFooterSectionSitemap({
         </p>
       </div>
 
-      <div className={cn("grow bg-muted p-4", isRounded && "rounded-md")}>
+      <div className={cn("grow bg-muted/30 p-4", isRounded && "rounded-md")}>
         <FooterSitemap />
       </div>
     </section>
@@ -61,7 +61,7 @@ function SiteFooterSectionExtra({ isRounded = true }: { isRounded?: boolean }) {
   return (
     <section
       className={cn(
-        "bg-muted p-4",
+        "bg-muted/30 p-4",
         "flex flex-col flex-wrap items-center justify-between gap-2 sm:flex-row",
         isRounded && "rounded-md",
       )}
@@ -100,7 +100,7 @@ function FooterSitemap() {
     <ul className="flex flex-wrap gap-8">
       {configSitemapGroups.map(group => (
         <li key={group.title} className="min-w-[140px] space-y-4">
-          <h5>{group.title}</h5>
+          <h3 className="text-lg">{group.title}</h3>
 
           <ul className="space-y-3 text-sm">
             {group.items.map(item => (

@@ -1,5 +1,6 @@
-import { useTheme } from "remix-themes"
 import { Toaster as Sonner, toast } from "sonner"
+
+import { useTheme } from "~/components/shared/theme"
 
 /**
  * Toast with Sonner
@@ -11,7 +12,7 @@ type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
   const [theme] = useTheme()
-  const defaultTheme = theme ? theme : "light"
+  const defaultTheme = theme ?? ""
 
   return (
     <Sonner
