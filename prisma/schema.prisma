@@ -1,3 +1,5 @@
+// Prisma Schema
+//
 // https://pris.ly/d/prisma-schema
 // https://github.com/remix-run/indie-stack/blob/main/prisma/schema.prisma
 // https://github.com/epicweb-dev/epic-stack/blob/main/prisma/schema.prisma
@@ -40,6 +42,7 @@ model User {
 
   images   UserImage[] // multiple user images / avatars / profile pictures
   profiles UserProfile[]
+  pages    Page[]
   posts    Post[]
 
   createdAt DateTime @default(now())
@@ -154,21 +157,59 @@ model UserImage {
 }
 
 // -----------------------------------------------------------------------------
+// Page
+// -----------------------------------------------------------------------------
+
+model Page {
+  id String @id @default(cuid())
+
+  slug        String @unique
+  title       String @db.Text
+  description String @db.Text
+  content     String @db.Text
+
+  status   PageStatus @relation(fields: [statusId], references: [id])
+  statusId String
+
+  user   User?   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slug])
+  @@index([statusId])
+  @@index([userId])
+}
+
+model PageStatus {
+  id String @id @default(cuid())
+
+  sequence    Int?    @unique // 1, 2, 3, ...
+  symbol      String  @unique // DRAFT, PUBLISHED, ...
+  name        String  @unique // Draft, Published, ...
+  description String? @db.Text // Status definition
+
+  pages Page[]
+}
+
+// -----------------------------------------------------------------------------
 // Post
 // -----------------------------------------------------------------------------
 
 model Post {
   id String @id @default(cuid())
 
-  slug    String @unique
-  title   String @db.Text
-  content String @db.Text
-  excerpt String @db.Text
+  slug        String  @unique
+  title       String  @db.Text
+  description String? @db.Text
+  content     String  @db.Text
+  excerpt     String  @db.Text
+
+  images PostImage[]
 
   status   PostStatus @relation(fields: [statusId], references: [id])
   statusId String
-
-  images PostImage[]
 
   user   User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   userId String
@@ -178,7 +219,7 @@ model Post {
 
   @@index([slug])
   @@index([statusId])
-  @@index([userId, updatedAt]) // Extra index for user and updatedAt
+  @@index([userId])
 }
 
 model PostStatus {

@@ -5,6 +5,8 @@ import { logEnv } from "~/utils/log.server"
 import { createSlug } from "~/utils/string"
 
 import { dataCredentialUsers } from "./credentials/users"
+import { dataPageStatuses } from "./data/page-statuses"
+import { dataPages } from "./data/pages"
 import { dataPostStatuses } from "./data/post-statuses"
 import { dataPosts } from "./data/posts"
 import { dataRoles } from "./data/roles"
@@ -16,6 +18,8 @@ const enabledSeedItems = [
   "permissions",
   "roles",
   "users",
+  "pageStatuses",
+  "pages",
   "postStatuses",
   "posts",
 ]
@@ -27,6 +31,8 @@ async function main() {
     permissions: seedPermissions,
     roles: seedRoles,
     users: seedUsers,
+    pageStatuses: seedPageStatuses,
+    pages: seedPages,
     postStatuses: seedPostStatuses,
     posts: seedPosts,
   }
@@ -66,7 +72,7 @@ async function seedPermissions() {
 async function seedRoles() {
   console.info("\n👑 Seed roles")
   console.info("👑 Count roles", await db.role.count())
-  // console.info("👑 Deleted roles", await prisma.role.deleteMany())
+  // console.info("👑 Deleted roles", await db.role.deleteMany())
   console.time("👑 Upserted roles")
 
   for (const roleRaw of dataRoles) {
@@ -96,7 +102,7 @@ async function seedRoles() {
 async function seedUsers() {
   console.info("\n👤 Seed users")
   console.info("👤 Count users", await db.user.count())
-  // console.info("👤 Deleted users", await prisma.user.deleteMany())
+  // console.info("👤 Deleted users", await db.user.deleteMany())
 
   if (!Array.isArray(dataCredentialUsers)) {
     console.error(`🔴 Please create prisma/credentials/users.ts file`)
@@ -142,10 +148,61 @@ async function seedUsers() {
   }
 }
 
+async function seedPageStatuses() {
+  console.info("\n📃 Seed page statuses")
+  console.info("📃 Count page statuses", await db.pageStatus.count())
+  // console.info("📃 Deleted page statuses", await db.pageStatus.deleteMany())
+  console.time("📃 Upserted page statuses")
+
+  for (const statusRaw of dataPageStatuses) {
+    const status = await db.pageStatus.upsert({
+      where: { symbol: statusRaw.symbol },
+      create: statusRaw,
+      update: statusRaw,
+    })
+    console.info(`📃 Upserted page status ${status.symbol} / ${status.name}`)
+  }
+  console.timeEnd("📃 Upserted page statuses")
+}
+
+async function seedPages() {
+  console.info("\n📜 Seed pages")
+  console.info("📜 Count pages", await db.page.count())
+  console.info("📜 Deleted pages", await db.page.deleteMany())
+
+  const pageStatuses = await db.pageStatus.findMany({
+    select: { id: true, symbol: true },
+  })
+
+  for (const pageRaw of dataPages) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { statusSymbol, ...pageSanitized } = pageRaw
+
+    const status = pageStatuses.find(
+      status => status.symbol === pageRaw.statusSymbol,
+    )
+    if (!status) return null
+
+    const pageData = {
+      ...pageSanitized,
+      statusId: status.id,
+    }
+
+    const page = await db.page.upsert({
+      where: { slug: pageData.slug },
+      update: pageData,
+      create: pageData,
+    })
+    if (!page) return null
+
+    console.info(`📜 Upserted page ${page.title} / ${page.slug}`)
+  }
+}
+
 async function seedPostStatuses() {
   console.info("\n🪧 Seed post statuses")
   console.info("🪧 Count post statuses", await db.postStatus.count())
-  // console.info("🪧 Deleted post statuses", await prisma.postStatus.deleteMany())
+  // console.info("🪧 Deleted post statuses", await db.postStatus.deleteMany())
   console.time("🪧 Upserted post statuses")
 
   for (const statusRaw of dataPostStatuses) {

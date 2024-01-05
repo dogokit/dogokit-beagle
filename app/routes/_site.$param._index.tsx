@@ -3,40 +3,38 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import { useLoaderData, type Params } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 import { z } from "zod"
 import { zx } from "zodix"
 
-import {
-  ErrorHelpInformation,
-  GeneralErrorBoundary,
-} from "~/components/shared/error-boundary"
+import { ErrorHelpInformation } from "~/components/shared/error-boundary"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
-import { modelPost } from "~/models/post.server"
+import { modelPage } from "~/models/page.server"
 import { modelUser } from "~/models/user.server"
-import { invariant, invariantResponse } from "~/utils/invariant"
+import { invariant } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
 /**
- * $username splat route can check for:
- * 1. User from database
- * 2. Organization from database
- * 3. If nothing found, tell this user doesn’t exist
+ * $param splat route can check for:
+ * 1. Page from database
+ * 2. User from database
+ * 3. Organization from database
+ * 4. If nothing found, tell it doesn’t exist
  */
 export async function loader({ params }: LoaderFunctionArgs) {
   const { param } = zx.parseParams(params, { param: z.string() })
   invariant(param, "param unavailable")
 
-  const page = await modelPost.getBySlug({ slug: param })
+  const page = await modelPage.getBySlug({ slug: param })
   const user = await modelUser.getByUsername({ username: param })
 
   if (page) return json({ page, user: null })
-  if (user) return json({ page: null, user })
+  if (user) return json({ user, page: null })
 
   return json({ page: null, user: null }, { status: 404 })
 }
@@ -48,7 +46,7 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
   if (page) {
     return createMeta({
       title: page.title,
-      description: page.title,
+      description: page.description,
     })
   }
 
@@ -71,8 +69,10 @@ export default function ParamRoute() {
 
   if (page && !user) {
     return (
-      <div className="site-container space-y-8">
-        <h1>{page.title}</h1>
+      <div className="site-container">
+        <header className="site-section">
+          <h1>{page.title}</h1>
+        </header>
       </div>
     )
   }
