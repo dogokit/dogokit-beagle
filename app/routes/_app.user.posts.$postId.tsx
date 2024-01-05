@@ -69,7 +69,7 @@ export default function UserPostsPostIdRoute() {
   const navigation = useNavigation()
   const { postStatuses } = useAppUserLoaderData()
 
-  const [form, { userId, id, slug, title, content }] = useForm<
+  const [form, { id, slug, title, content }] = useForm<
     z.infer<typeof schemaPost>
   >({
     id: "update-post",
@@ -140,12 +140,10 @@ export default function UserPostsPostIdRoute() {
                 <FormDelete
                   action="/user/posts/delete"
                   intentValue="user-delete-post-by-id"
+                  defaultValue={post.id}
                   itemText={`a post: ${truncateText(post.title)} (${
                     post.slug
                   })`}
-                  defaultValue={post.id}
-                  requireUser
-                  userId={post.userId}
                 />
                 <ButtonLink
                   variant="outline"
@@ -193,7 +191,6 @@ export default function UserPostsPostIdRoute() {
           </section>
 
           <section className="mx-auto w-full max-w-prose space-y-4">
-            <input type="hidden" {...conform.input(userId)} />
             <input type="hidden" {...conform.input(id)} />
 
             <div className="text-xs text-muted-foreground">
@@ -272,6 +269,8 @@ export default function UserPostsPostIdRoute() {
 }
 
 export const action = async ({ request }: ActionFunctionArgs) => {
+  const { userId } = await requireUser(request)
+
   const timer = createTimer()
   const clonedRequest = request.clone()
   const formData = await clonedRequest.formData()
@@ -300,7 +299,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ status: "error", submission }, { status: 400 })
   }
 
-  const post = await modelUserPost.update(submission.value)
+  const post = await modelUserPost.update({ userId, ...submission.value })
 
   await timer.delay()
   return redirect(`/user/posts/${post.id}`)

@@ -22,8 +22,6 @@ export function FormDelete({
   name = "id",
   defaultValue,
   buttonText = "Delete",
-  requireUser,
-  userId,
   disabled,
   extraComponent,
   className,
@@ -34,8 +32,6 @@ export function FormDelete({
   name?: string // Optional because can be with/without input name=id
   defaultValue?: string // Optional because can be with/without id value
   buttonText?: string
-  requireUser?: boolean
-  userId?: string
   disabled?: boolean
   extraComponent?: React.ReactNode
   className?: string
@@ -75,10 +71,6 @@ export function FormDelete({
           >
             {name && defaultValue && (
               <input type="hidden" name={name} defaultValue={defaultValue} />
-            )}
-
-            {requireUser && userId && (
-              <input type="hidden" name="userId" defaultValue={userId} />
             )}
 
             {extraComponent}

@@ -31,8 +31,9 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const config = getPaginationConfigs({ request })
   const { userId } = await requireUser(request)
+
+  const config = getPaginationConfigs({ request })
 
   const where = !config.queryParam
     ? { userId }
@@ -66,7 +67,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 }
 
 export default function UserPostsRoute() {
-  const { userId, posts, ...loaderData } = useLoaderData<typeof loader>()
+  const { posts, ...loaderData } = useLoaderData<typeof loader>()
 
   return (
     <div className="app-container">
@@ -84,8 +85,6 @@ export default function UserPostsRoute() {
             intentValue="user-delete-all-posts"
             itemText="all posts"
             buttonText="Delete Posts"
-            requireUser
-            userId={userId}
             disabled={posts.length <= 0}
           />
         </div>

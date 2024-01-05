@@ -52,8 +52,6 @@ export function PostItemAction({
               intentValue="user-delete-post-by-id"
               itemText={`a post: ${post.title} (${post.slug})`}
               defaultValue={post.id}
-              requireUser
-              userId={post.userId}
             />
             <ButtonLink
               variant="outline"

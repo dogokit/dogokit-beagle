@@ -1,8 +1,6 @@
 import { z } from "zod"
 import { zfd } from "zod-form-data"
 
-import { userId } from "~/schemas/general"
-
 const id = z.string({ required_error: "Post ID is required" })
 
 // IDEA: Prepare trim slug function
@@ -20,7 +18,6 @@ const statusSymbol = z.string({ required_error: "Status symbol is required" })
 const readingTime = zfd.numeric(z.number().min(0).max(1000)).optional()
 
 export const schemaPost = z.object({
-  userId,
   id,
   slug,
   title,
@@ -33,6 +30,6 @@ export const schemaPostStatusUpdate = z.object({
   statusSymbol,
 })
 
-export const schemaPostDeleteAll = z.object({ userId })
+export const schemaPostDeleteAll = z.object({})
 
-export const schemaPostDeleteById = z.object({ userId, id })
+export const schemaPostDeleteById = z.object({ id })
