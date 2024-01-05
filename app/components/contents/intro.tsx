@@ -8,25 +8,27 @@ export function ContentIntro() {
       <header className="space-y-10 text-pretty">
         <h1
           id="intro"
-          className="bg-gradient-to-r from-primary to-violet-600 bg-clip-text font-display text-5xl tracking-tight text-transparent"
+          className="bg-gradient-to-r from-primary to-violet-600 bg-clip-text font-display tracking-tight text-transparent"
         >
           Dogokit is a web app template kit
         </h1>
         <h2>
           Using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more
         </h2>
+
         <div className="flex gap-2">
-          <ButtonAnchor size="lg" href="https://remix.run">
-            <Iconify icon="simple-icons:remix" className="size-5" />
-            <span>Learn Remix</span>
-          </ButtonAnchor>
           <ButtonAnchor
             size="lg"
-            variant="secondary"
+            variant="default"
             href="https://github.com/dogokit/dogokit-remix"
           >
             <Iconify icon="simple-icons:github" className="size-5" />
             <span>Repo on GitHub</span>
+          </ButtonAnchor>
+
+          <ButtonAnchor size="lg" variant="secondary" href="https://remix.run">
+            <Iconify icon="simple-icons:remix" className="size-5" />
+            <span>Learn Remix</span>
           </ButtonAnchor>
         </div>
       </header>
