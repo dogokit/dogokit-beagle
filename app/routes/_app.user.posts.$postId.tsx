@@ -17,8 +17,8 @@ import { useRef, useState } from "react"
 import { z } from "zod"
 
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
-import { FormChangeStatus } from "~/components/shared/form-change-status"
 import { FormDelete } from "~/components/shared/form-delete"
+import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { Timestamp } from "~/components/shared/timestamp"
 import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -178,13 +178,13 @@ export default function UserPostsPostIdRoute() {
                   <span>{isPostPublished ? "Unpublish" : "Publish"}</span>
                 </ButtonLoading>
 
-                <FormChangeStatus
+                <FormUpdateStatus
                   itemId="postId"
                   action="/user/posts/update"
-                  intentValue="change-post-status"
-                  dialogTitle="Change post's status"
-                  dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
-                  buttonText="Change Status"
+                  intentValue="update-post-status"
+                  dialogTitle="Update post's status"
+                  dialogDescription={`Update the status of post: ${post.title} (${post.slug})`}
+                  buttonText="Update Status"
                   itemStatuses={postStatuses}
                   item={post as any}
                 />

@@ -1,7 +1,7 @@
 import { type Prisma } from "@prisma/client"
 
-import { FormChangeStatus } from "~/components/shared/form-change-status"
 import { FormDelete } from "~/components/shared/form-delete"
+import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { ButtonLink } from "~/components/ui/button-link"
 import { Iconify } from "~/components/ui/iconify"
 import { useAppUserLoaderData } from "~/hooks/use-app-loader-data"
@@ -69,13 +69,13 @@ export function PostItemAction({
       </div>
 
       <div className="flex flex-row items-center gap-2 lg:flex-row-reverse">
-        <FormChangeStatus
+        <FormUpdateStatus
           itemId="postId"
           action="/user/posts/update"
-          intentValue="change-post-status"
-          dialogTitle="Change post's status"
-          dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
-          buttonText="Change Status"
+          intentValue="update-post-status"
+          dialogTitle="Update post's status"
+          dialogDescription={`Update the status of post: ${post.title} (${post.slug})`}
+          buttonText="Update Status"
           itemStatuses={postStatuses}
           item={post}
         />

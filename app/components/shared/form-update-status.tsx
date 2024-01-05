@@ -26,20 +26,20 @@ import {
 import { type modelPost } from "~/models/post.server"
 import { cn } from "~/utils/cn"
 
-export function FormChangeStatus({
+export function FormUpdateStatus({
   itemId = "itemId",
   action = "/user/items/update",
-  intentValue = "change-item-status",
-  dialogTitle = "Change Status",
-  dialogDescription = "Change the status of this item",
-  buttonText = "Change",
+  intentValue = "update-item-status",
+  dialogTitle = "Update Status",
+  dialogDescription = "Update the status of this item",
+  buttonText = "Update",
   item,
   itemStatuses,
   className,
 }: {
   itemId: string
-  action: string // Example: /user/items/update
-  intentValue: string // Example: change-post-status
+  action: string // Example: /user/posts/update
+  intentValue: string // Example: update-post-status
   dialogTitle: string
   dialogDescription: string
   buttonText?: string

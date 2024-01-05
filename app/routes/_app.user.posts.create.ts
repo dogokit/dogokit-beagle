@@ -18,7 +18,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     content: "Insert some content here",
     statusSymbol: "DRAFT",
   })
-  invariantResponse(post, "Post cannot be created", { status: 400 })
+  invariantResponse(post, "Post failed be create", { status: 400 })
 
   await timer.delay()
   return redirect(`/user/posts/${post.id}`)

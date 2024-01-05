@@ -21,7 +21,7 @@ import {
 } from "~/schemas/user"
 import { type SubmissionResult } from "~/types/submission"
 
-export function FormChangeField({
+export function FormUpdateField({
   label,
   field,
   intentValue,

@@ -10,7 +10,7 @@ import {
   ErrorHelpInformation,
   GeneralErrorBoundary,
 } from "~/components/shared/error-boundary"
-import { FormChangeStatus } from "~/components/shared/form-change-status"
+import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { ImageCover } from "~/components/shared/image-cover"
 import { Timestamp } from "~/components/shared/timestamp"
 import { ViewHTML } from "~/components/shared/view-html"
@@ -115,13 +115,13 @@ export default function PostSlugRoute() {
 
         {isOwner && (
           <div className="flex flex-wrap gap-2">
-            <FormChangeStatus
+            <FormUpdateStatus
               itemId="postId"
               action="/user/posts/update"
-              intentValue="change-post-status"
-              dialogTitle="Change post's status"
-              dialogDescription={`Change the status of post: ${post.title} (${post.slug})`}
-              buttonText="Change Status"
+              intentValue="update-post-status"
+              dialogTitle="Update post's status"
+              dialogDescription={`Update the status of post: ${post.title} (${post.slug})`}
+              buttonText="Update Status"
               itemStatuses={postStatuses}
               item={post as any}
             />

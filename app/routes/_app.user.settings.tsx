@@ -7,7 +7,7 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import { FormChangeField } from "~/components/shared/form-change-field"
+import { FormUpdateField } from "~/components/shared/form-update-field"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { configSite } from "~/configs/site"
 import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
@@ -51,28 +51,28 @@ export default function UserSettingsRoute() {
       </header>
 
       <section className="app-section max-w-md space-y-8">
-        <FormChangeField
+        <FormUpdateField
           label="Username"
           field="username"
-          intentValue="user-change-username"
+          intentValue="user-update-username"
           description={`Public @username within ${configSite.name} 
           like ${configSite.domain}/yourname. Use 20 characters at maximum. 
           Only alphabet, number, dot, underscore allowed`}
           schema={schemaUserUsername}
           user={user}
         />
-        <FormChangeField
+        <FormUpdateField
           label="Full Name"
           field="fullname"
-          intentValue="user-change-fullname"
+          intentValue="user-update-fullname"
           description="Display name you are comfortable with. It can be real name or a pseudonym."
           schema={schemaUserFullName}
           user={user}
         />
-        <FormChangeField
+        <FormUpdateField
           label="Nick Name"
           field="nickname"
-          intentValue="user-change-nickname"
+          intentValue="user-update-nickname"
           description="When you are being called by someone."
           schema={schemaUserNickName}
           user={user}
@@ -88,7 +88,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const submission = parse(formData, { schema: schemaGeneralId })
   const intent = submission.value?.intent
 
-  if (intent === "user-change-username") {
+  if (intent === "user-update-username") {
     const submission = parse(formData, {
       schema: schemaUserUsername.superRefine((data, ctx) => {
         const unallowedUsername = configUnallowedKeywords.find(
@@ -106,7 +106,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json(submission)
   }
 
-  if (intent === "user-change-fullname") {
+  if (intent === "user-update-fullname") {
     const submission = parse(formData, { schema: schemaUserFullName })
     if (!submission.value) return json(submission, { status: 400 })
     await modelUser.updateFullName(submission.value)
@@ -114,7 +114,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json(submission)
   }
 
-  if (intent === "user-change-nickname") {
+  if (intent === "user-update-nickname") {
     const submission = parse(formData, { schema: schemaUserNickName })
     if (!submission.value) return json(submission, { status: 400 })
     await modelUser.updateNickName(submission.value)
