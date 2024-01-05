@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select"
+import { type modelPage } from "~/models/page.server"
 import { type modelPost } from "~/models/post.server"
 import { type JsonifyPrisma } from "~/types/jsonify"
 import { cn } from "~/utils/cn"
@@ -46,7 +47,9 @@ export function FormUpdateStatus({
   buttonText?: string
   // IDEA: Make it more general with a model Item that has a Status
   itemStatuses: PostStatus[]
-  item: JsonifyPrisma<typeof modelPost.getWithStatus>
+  item:
+    | JsonifyPrisma<typeof modelPage.getWithStatus>
+    | JsonifyPrisma<typeof modelPost.getWithStatus>
   className?: string
 }) {
   const [open, setOpen] = useState<boolean>()
