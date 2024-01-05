@@ -20,10 +20,9 @@ export function Document({
 }) {
   const { ENV } = useRootLoaderData()
   const [theme] = useTheme()
-  const defaultTheme = theme ? theme : "light"
 
   return (
-    <html lang="en" data-theme={defaultTheme}>
+    <html lang="en" data-theme={theme ?? ""}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,7 +31,7 @@ export function Document({
         <Links />
       </head>
 
-      <body id="__remix" className={cn(defaultTheme)}>
+      <body id="__remix" className={cn(theme ?? "")}>
         <NProgress />
 
         {children}
