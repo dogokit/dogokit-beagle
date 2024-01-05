@@ -101,6 +101,11 @@ export const configNavigationItems: NavItem[] = [
     text: "Admin Dashboard",
   },
   {
+    path: "/admin/pages",
+    icon: "ph:rectangle-duotone",
+    text: "Pages",
+  },
+  {
     path: "/admin/users",
     icon: "ph:users-four-duotone",
     text: "Users",

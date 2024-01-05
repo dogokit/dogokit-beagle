@@ -16,8 +16,10 @@ export const handle = createSitemap()
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authService.isAuthenticated(request, { failureRedirect: "/login" })
+
   const postStatuses = await modelPostStatus.getAll()
   invariantResponse(postStatuses, "Post statuses unavailable", { status: 404 })
+
   return json({ postStatuses })
 }
 

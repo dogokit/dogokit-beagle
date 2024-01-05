@@ -8,7 +8,9 @@ export const modelPostStatus = {
   },
 
   getAll() {
-    return db.postStatus.findMany()
+    return db.postStatus.findMany({
+      orderBy: { sequence: "asc" },
+    })
   },
 
   getById({ id }: Pick<PostStatus, "id">) {
