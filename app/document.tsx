@@ -8,6 +8,7 @@ import {
 import { PreventFlashOnWrongTheme, useTheme, type Theme } from "remix-themes"
 
 import { NProgress } from "~/components/shared/nprogress"
+import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 
@@ -22,16 +23,16 @@ export function Document({
   const [theme] = useTheme()
 
   return (
-    <html lang="en" data-theme={theme ?? ""}>
+    <html lang={configSite.languageCode} className={cn(theme ?? "")}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(dataTheme)} />
         <Links />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(dataTheme)} />
       </head>
 
-      <body id="__remix" className={cn(theme ?? "")}>
+      <body id="__remix">
         <NProgress />
 
         {children}

@@ -16,8 +16,8 @@ export function ExampleUploadcare() {
   const [filesA, setFilesA] = useState<OutputFileEntry[]>([])
   const [filesB, setFilesB] = useState<OutputFileEntry[]>([])
 
-  const [themeSymbol] = useTheme()
-  const theme = themeSymbol === Theme.DARK ? "dark" : "light"
+  const [theme] = useTheme()
+  const selectedTheme = theme === Theme.DARK ? "dark" : "light"
 
   if (!ENV.UPLOADCARE_PUBLIC_KEY) return null
 
@@ -38,7 +38,7 @@ export function ExampleUploadcare() {
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
             contextName="uploader-regular"
             mode="regular"
-            theme={theme}
+            theme={selectedTheme}
           />
         </div>
 
@@ -51,7 +51,7 @@ export function ExampleUploadcare() {
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
             contextName="uploader-minimal"
             mode="minimal"
-            theme={theme}
+            theme={selectedTheme}
           />
         </div>
 
@@ -64,7 +64,7 @@ export function ExampleUploadcare() {
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
             contextName="uploader-inline"
             mode="inline"
-            theme={theme}
+            theme={selectedTheme}
           />
         </div>
       </div>
@@ -78,7 +78,7 @@ export function ExampleUploadcare() {
           <UploaderWithOutput
             pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
             contextName="my-uploader-output"
-            theme={theme}
+            theme={selectedTheme}
             files={filesA}
             setFiles={setFilesA}
             config={{ ...defaultLRConfig, multiple: true }}
@@ -96,7 +96,7 @@ export function ExampleUploadcare() {
         <UploaderWithProvider
           pubkey={ENV.UPLOADCARE_PUBLIC_KEY}
           contextName="my-uploader-provider"
-          theme={theme}
+          theme={selectedTheme}
           files={filesB}
           setFiles={setFilesB}
           config={{ ...defaultLRConfig, cropPreset: "1:1" }}

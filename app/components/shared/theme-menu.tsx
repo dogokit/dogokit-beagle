@@ -13,8 +13,6 @@ import {
 } from "~/components/ui/dropdown-menu"
 import { useMediaQuery } from "~/hooks/use-media-query"
 
-const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)"
-
 interface ThemeMenuProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -24,7 +22,7 @@ interface ThemeMenuProps
 // not in components because it depens on the theme config
 export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
   const [, setTheme] = useTheme()
-  const isPreferDark = useMediaQuery(COLOR_SCHEME_QUERY)
+  const isPreferDark = useMediaQuery("(prefers-color-scheme: dark)")
 
   function handleChangeTheme(themeName: "dark" | "light" | "system") {
     const selectedTheme = match(themeName)

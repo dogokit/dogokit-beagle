@@ -1,7 +1,6 @@
 import {
   json,
   redirect,
-  type HeadersFunction,
   type LinksFunction,
   type LoaderFunctionArgs,
   type MetaFunction,
@@ -31,18 +30,17 @@ export const meta: MetaFunction = () =>
 
 export const links: LinksFunction = () => configDocumentLinks
 
-export const headers: HeadersFunction = () => {
-  return { "Accept-CH": "Sec-CH-Prefers-Color-Scheme" }
-}
-
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { getTheme } = await themeSessionResolver(request)
+  const theme = getTheme()
 
   const userSession = await authService.isAuthenticated(request)
   if (!userSession) {
     return json({
       ENV: parsedEnvClient,
-      theme: getTheme(),
+      theme,
+      userSession: null,
+      userData: null,
     })
   }
 
@@ -51,7 +49,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
   return json({
     ENV: parsedEnvClient,
-    theme: getTheme(),
+    theme,
     userSession,
     userData,
   })
@@ -76,10 +74,7 @@ export function ErrorBoundary() {
   captureRemixErrorBoundaryError(error)
 
   return (
-    <ThemeProvider
-      specifiedTheme={"light" as Theme}
-      themeAction="/action/theme"
-    >
+    <ThemeProvider specifiedTheme={"" as Theme} themeAction="/action/theme">
       <Document>
         <GeneralErrorBoundary />
       </Document>
