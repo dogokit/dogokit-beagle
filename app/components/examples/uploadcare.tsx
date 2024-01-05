@@ -1,6 +1,5 @@
 import { type OutputFileEntry } from "@uploadcare/blocks"
 import { useState } from "react"
-import { Theme, useTheme } from "remix-themes"
 
 import {
   defaultLRConfig,
@@ -8,6 +7,7 @@ import {
   UploaderWithOutput,
   UploaderWithProvider,
 } from "~/components/libs/uploader-uploadcare"
+import { Theme, useTheme } from "~/components/shared/theme"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 
 export function ExampleUploadcare() {

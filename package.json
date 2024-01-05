@@ -120,7 +120,6 @@
     "remix-auth-form": "^1.4.0",
     "remix-auth-github": "^1.6.0",
     "remix-auth-google": "^2.0.0",
-    "remix-themes": "^1.2.2",
     "remix-utils": "7.5.0",
     "slugify": "^1.6.6",
     "sonner": "1.2.4",

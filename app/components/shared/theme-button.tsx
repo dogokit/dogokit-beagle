@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react"
 import { type VariantProps } from "class-variance-authority"
-import { Theme, useTheme } from "remix-themes"
 
+import { Theme, useTheme } from "~/components/shared/theme"
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
 
@@ -11,7 +11,6 @@ interface ThemeButtonProps
   asChild?: boolean
 }
 
-// not in components because it depens on the theme config
 export function ThemeButton({ ...props }: ThemeButtonProps) {
   const [theme, setTheme] = useTheme()
   const nameTo = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK

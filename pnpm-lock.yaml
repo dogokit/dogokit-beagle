@@ -230,9 +230,6 @@ dependencies:
   remix-auth-google:
     specifier: ^2.0.0
     version: 2.0.0(@remix-run/server-runtime@2.4.1)(remix-auth@3.6.0)
-  remix-themes:
-    specifier: ^1.2.2
-    version: 1.2.2(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)
   remix-utils:
     specifier: 7.5.0
     version: 7.5.0(@remix-run/node@2.4.1)(@remix-run/react@2.4.1)(react@18.2.0)(zod@3.22.4)
@@ -11035,16 +11032,6 @@ packages:
       '@remix-run/react': 2.4.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
       '@remix-run/server-runtime': 2.4.1(typescript@5.3.3)
       uuid: 8.3.2
-    dev: false
-
-  /remix-themes@1.2.2(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1):
-    resolution: {integrity: sha512-G+1e2I62PI8JUR9xkkhByHljw73CIO42dEQMXo2UI+d+ZZwO+v/xwLAW++FkHA3rVXWuo4vu+DiAy2nCZMk70g==}
-    peerDependencies:
-      '@remix-run/react': '>= 1'
-      '@remix-run/server-runtime': '>= 1'
-    dependencies:
-      '@remix-run/react': 2.4.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
-      '@remix-run/server-runtime': 2.4.1(typescript@5.3.3)
     dev: false
 
   /remix-utils@7.5.0(@remix-run/node@2.4.1)(@remix-run/react@2.4.1)(react@18.2.0)(zod@3.22.4):

@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react"
 import { type VariantProps } from "class-variance-authority"
-import { Theme, useTheme } from "remix-themes"
 import { match } from "ts-pattern"
 
+import { Theme, useTheme } from "~/components/shared/theme"
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
 import {

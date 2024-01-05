@@ -7,15 +7,15 @@ import {
 } from "@remix-run/node"
 import { Outlet, useLoaderData, useRouteError } from "@remix-run/react"
 import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix"
-import { ThemeProvider, type Theme } from "remix-themes"
 
 import { GeneralErrorBoundary } from "~/components/shared/error-boundary"
+import { ThemeProvider, type Theme } from "~/components/shared/theme"
 import { configDocumentLinks } from "~/configs/document"
 import { configSite } from "~/configs/site"
 import { Document } from "~/document"
 import { modelUser } from "~/models/user.server"
 import { authService } from "~/services/auth.server"
-import { themeSessionResolver } from "~/services/theme-session.server"
+import { getThemeSession } from "~/services/theme-session.server"
 import { parsedEnvClient } from "~/utils/env.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
@@ -31,8 +31,8 @@ export const meta: MetaFunction = () =>
 export const links: LinksFunction = () => configDocumentLinks
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const { getTheme } = await themeSessionResolver(request)
-  const theme = getTheme()
+  const themeSession = await getThemeSession(request)
+  const theme = themeSession.getTheme()
 
   const userSession = await authService.isAuthenticated(request)
   if (!userSession) {
@@ -59,7 +59,7 @@ function RootRoute() {
   const data = useLoaderData<typeof loader>()
 
   return (
-    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/theme">
+    <ThemeProvider specifiedTheme={data.theme}>
       <Document dataTheme={data.theme}>
         <Outlet />
       </Document>
@@ -74,7 +74,7 @@ export function ErrorBoundary() {
   captureRemixErrorBoundaryError(error)
 
   return (
-    <ThemeProvider specifiedTheme={"" as Theme} themeAction="/action/theme">
+    <ThemeProvider specifiedTheme={"" as Theme}>
       <Document>
         <GeneralErrorBoundary />
       </Document>
