@@ -47,6 +47,7 @@
   "dependencies": {
     "@conform-to/react": "^0.9.1",
     "@conform-to/zod": "^0.9.1",
+    "@epic-web/remember": "1.0.2",
     "@fontsource-variable/anybody": "5.0.19",
     "@fontsource-variable/inter": "5.0.15",
     "@nasa-gcn/remix-seo": "^2.0.0",

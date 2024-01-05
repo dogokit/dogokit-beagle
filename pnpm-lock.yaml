@@ -11,6 +11,9 @@ dependencies:
   '@conform-to/zod':
     specifier: ^0.9.1
     version: 0.9.1(@conform-to/dom@0.9.1)(zod@3.22.4)
+  '@epic-web/remember':
+    specifier: 1.0.2
+    version: 1.0.2
   '@fontsource-variable/anybody':
     specifier: 5.0.19
     version: 5.0.19
@@ -839,6 +842,10 @@ packages:
   /@emotion/hash@0.9.1:
     resolution: {integrity: sha512-gJB6HLm5rYwSLI6PQa+X1t5CFGrv1J1TWG+sOyMCeKz2ojaj6Fnl/rZEspogG+cvqbt4AE/2eIyD2QfLKTBNlQ==}
     dev: true
+
+  /@epic-web/remember@1.0.2:
+    resolution: {integrity: sha512-K7DcGoRPqVkjVhPEMQzqw7W/c3hq/3LuiI74he6SkXwR6A49aUmXpxmdb6o+NldY4FFtG42U7nL8PrqNGRxXuQ==}
+    dev: false
 
   /@ericcornelissen/bash-parser@0.5.2:
     resolution: {integrity: sha512-4pIMTa1nEFfMXitv7oaNEWOdM+zpOZavesa5GaiWTgda6Zk32CFGxjUp/iIaN0PwgUW1yTq/fztSjbpE8SLGZQ==}

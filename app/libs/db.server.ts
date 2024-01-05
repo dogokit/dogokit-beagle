@@ -1,3 +1,4 @@
+import { remember } from "@epic-web/remember"
 import { PrismaClient } from "@prisma/client"
 
 import { parsedEnv } from "~/utils/env.server"
@@ -18,7 +19,7 @@ if (parsedEnv.NODE_ENV === "production") {
   prisma = new PrismaClient()
 } else {
   if (!global.__db__) {
-    global.__db__ = new PrismaClient()
+    global.__db__ = remember("prisma", () => new PrismaClient())
   }
   prisma = global.__db__
   prisma.$connect()
