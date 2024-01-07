@@ -33,7 +33,7 @@ function SiteNavigationSmall() {
         <Link
           to="/"
           prefetch="intent"
-          className="focus-ring block rounded-xs transition hover:text-primary"
+          className="focus-ring block rounded-xs transition hover:opacity-75"
         >
           <Logo text="Dogokit" />
         </Link>

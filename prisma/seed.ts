@@ -108,8 +108,8 @@ async function seedUsers() {
   // console.info("👤 Deleted users", await db.user.deleteMany())
 
   if (!Array.isArray(dataCredentialUsers)) {
-    console.error(`🔴 Please create prisma/credentials/users.ts file`)
-    console.error(`🔴 Check README for the guide`)
+    console.error(`🔴 [ERROR] Please create prisma/credentials/users.ts file`)
+    console.error(`🔴 [ERROR] Check README for the guide`)
     return null
   }
 
@@ -147,8 +147,6 @@ async function seedUsers() {
       },
       include: { password: { select: { hash: true } } },
     })
-
-    console.log({ user })
 
     if (!user) return null
 
@@ -282,7 +280,7 @@ main()
   })
   .catch(async (error: Prisma.PrismaClientKnownRequestError) => {
     console.error(error)
-    console.error("\n⛔ Seeding failed")
+    console.error("\n🔴 [ERROR] Seeding failed")
     await db.$disconnect()
     process.exit(1)
   })

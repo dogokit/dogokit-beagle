@@ -9,7 +9,7 @@ async function checkEnv() {
     await db.$queryRaw`SELECT 1`
     console.info(`🟢 ${parsedEnv.NODE_ENV} database is running`)
   } catch (error) {
-    console.error(`🔴 ${parsedEnv.NODE_ENV} database is not running`)
+    console.error(`🔴 [ERROR] ${parsedEnv.NODE_ENV} database is not running`)
   }
 }
 

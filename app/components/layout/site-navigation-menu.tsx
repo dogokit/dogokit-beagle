@@ -30,7 +30,7 @@ export function SiteNavigationMenu() {
       </SheetTrigger>
 
       <SheetContent className="flex flex-col justify-between">
-        <div className="mb-10 space-y-10">
+        <div className="mb-10 space-y-6">
           <SheetHeader className="flex items-center gap-2">
             <NavLinkMenu
               to="/"
@@ -91,7 +91,7 @@ export function SiteNavigationMenu() {
           </ul>
         </div>
 
-        <div className="text-muted-foreground">
+        <div className="max-w-md text-muted-foreground">
           <IconLinks className="justify-end gap-2" classNameIcon="text-base p-1" />
         </div>
       </SheetContent>

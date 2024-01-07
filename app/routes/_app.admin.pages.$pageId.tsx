@@ -119,7 +119,13 @@ export default function UserPagesPageIdRoute() {
                   defaultValue={page.id}
                   itemText={`a page: ${truncateText(page.title)} (${page.slug})`}
                 />
-                <ButtonLink variant="outline" size="xs" to={`/${page.slug}`} disabled={isPageDraft}>
+                <ButtonLink
+                  to={`/${page.slug}`}
+                  prefetch="intent"
+                  variant="outline"
+                  size="xs"
+                  disabled={isPageDraft}
+                >
                   <IconMatch icon="arrow-square-out" />
                   <span>View</span>
                 </ButtonLink>

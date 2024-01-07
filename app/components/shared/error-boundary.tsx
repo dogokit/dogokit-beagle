@@ -5,12 +5,11 @@ import {
   useRouteError,
   type ErrorResponse,
 } from "@remix-run/react"
+import { captureRemixErrorBoundaryError } from "@sentry/remix"
 
 import { IconMatch } from "~/components/libs/icon"
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonLink } from "~/components/ui/button-link"
-
-// import { captureRemixErrorBoundaryError } from '@sentry/remix'
 
 type StatusHandler = (info: {
   error: ErrorResponse
@@ -29,7 +28,7 @@ export function GeneralErrorBoundary({
   const params = useParams()
   const error = useRouteError()
 
-  // IDEA: captureRemixErrorBoundaryError(error)
+  captureRemixErrorBoundaryError(error)
 
   if (typeof document !== "undefined") {
     console.error(error)

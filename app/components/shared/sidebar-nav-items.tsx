@@ -13,6 +13,7 @@ export function SidebarNavItems({ items }: { items: NavItem[] }) {
           <li key={item.path}>
             <NavLink
               to={item.path}
+              prefetch="intent"
               className={({ isActive }) =>
                 cn(
                   "focus-ring flex w-full items-center gap-2 rounded-md px-2 py-1 transition",

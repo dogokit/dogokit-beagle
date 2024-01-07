@@ -12,7 +12,7 @@ export function PageItemAction({ page }: { page: JsonifyPrisma<typeof modelPage.
   const { pageStatuses } = useAppAdminLoaderData()
   if (!page) return null
 
-  // Only can View page if PRIVATE, UNLISTED, PUBLISHED, ARCHIVED
+  // Only can View page if NOT DRAFT = PRIVATE, UNLISTED, PUBLISHED, ARCHIVED
   const isViewDisabled = page.status.symbol === "DRAFT"
 
   return (
@@ -39,7 +39,13 @@ export function PageItemAction({ page }: { page: JsonifyPrisma<typeof modelPage.
               itemText={`a page: ${page.title} (${page.slug})`}
               defaultValue={page.id}
             />
-            <ButtonLink variant="outline" size="xs" to={`/${page.slug}`} disabled={isViewDisabled}>
+            <ButtonLink
+              to={`/${page.slug}`}
+              prefetch="intent"
+              variant="outline"
+              size="xs"
+              disabled={isViewDisabled}
+            >
               <IconMatch icon="arrow-square-out" />
               <span>View</span>
             </ButtonLink>

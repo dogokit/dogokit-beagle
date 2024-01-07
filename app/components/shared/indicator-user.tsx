@@ -61,7 +61,9 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
         <DropdownMenuLabel>
           <p className="text-base font-semibold">{userData.fullname}</p>
           <p className="text-sm font-semibold text-muted-foreground">
-            <Link to={`/${userData.username}`}>@{userData.username}</Link>
+            <Link to={`/${userData.username}`} prefetch="intent">
+              @{userData.username}
+            </Link>
           </p>
         </DropdownMenuLabel>
 
@@ -99,10 +101,8 @@ function DropdownMenuGroupItems({ items }: { items: NavItem[] }) {
         const isLogout = item.path === "/logout"
         return (
           <DropdownMenuItem key={item.path} isDestructive={isLogout} asChild>
-            <NavLink to={item.path}>
-              <span className="me-2">
-                <IconMatch icon={item.icon} />
-              </span>
+            <NavLink to={item.path} prefetch="intent">
+              <IconMatch icon={item.icon} className="me-2" />
               <span>{item.text}</span>
               {item.shortcut && <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>}
             </NavLink>

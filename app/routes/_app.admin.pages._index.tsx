@@ -67,10 +67,6 @@ export default function UserPagesRoute() {
 
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Page")} />
-          <ButtonLink to="/pages" variant="outline" size="xs">
-            <IconMatch icon="arrow-square-out" />
-            <span>View Pages</span>
-          </ButtonLink>
           <FormDelete
             action="/admin/pages/delete"
             intentValue="admin-delete-all-pages"

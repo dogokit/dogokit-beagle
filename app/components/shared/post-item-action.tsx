@@ -40,9 +40,10 @@ export function PostItemAction({ post }: { post: JsonifyPrisma<typeof modelPost.
               defaultValue={post.id}
             />
             <ButtonLink
+              to={`/posts/${post.slug}`}
+              prefetch="intent"
               variant="outline"
               size="xs"
-              to={`/posts/${post.slug}`}
               disabled={isViewDisabled}
             >
               <IconMatch icon="arrow-square-out" />

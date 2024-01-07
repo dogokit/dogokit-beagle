@@ -72,7 +72,13 @@ export default function UserPostsRoute() {
 
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Post")} />
-          <ButtonLink to="/posts" variant="outline" size="xs">
+          <ButtonLink
+            // IDEA: /$username/posts
+            to="/posts"
+            prefetch="intent"
+            variant="outline"
+            size="xs"
+          >
             <IconMatch icon="arrow-square-out" />
             <span>View Posts</span>
           </ButtonLink>

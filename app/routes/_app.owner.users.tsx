@@ -14,7 +14,7 @@ export const meta: MetaFunction = () =>
   })
 
 export const loader = async ({}: LoaderFunctionArgs) => {
-  // IDEA: Refactor this into a model
+  // IDEA: Refactor into a model
   const [usersCount, users] = await db.$transaction([
     db.user.count(),
     db.user.findMany({ take: 50 }),

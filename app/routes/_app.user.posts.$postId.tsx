@@ -135,9 +135,10 @@ export default function UserPostsPostIdRoute() {
                   itemText={`a post: ${truncateText(post.title)} (${post.slug})`}
                 />
                 <ButtonLink
+                  to={`/posts/${post.slug}`}
+                  prefetch="intent"
                   variant="outline"
                   size="xs"
-                  to={`/posts/${post.slug}`}
                   disabled={isPostDraft}
                 >
                   <IconMatch icon="arrow-square-out" />
