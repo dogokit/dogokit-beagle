@@ -28,6 +28,4 @@ export const schemaPageStatusUpdate = z.object({
   statusSymbol,
 })
 
-export const schemaPageDeleteAll = z.object({})
-
 export const schemaPageDeleteById = z.object({ id })

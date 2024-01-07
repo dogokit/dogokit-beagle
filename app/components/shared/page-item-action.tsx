@@ -48,7 +48,7 @@ export function PageItemAction({
             </ButtonLink>
             <FormDelete
               action="/admin/pages/delete"
-              intentValue="user-delete-page-by-id"
+              intentValue="admin-delete-page-by-id"
               itemText={`a page: ${page.title} (${page.slug})`}
               defaultValue={page.id}
             />

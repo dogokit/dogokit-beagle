@@ -74,8 +74,9 @@ export default function ParamRoute() {
   if (page && !user) {
     return (
       <div className="site-container space-y-10">
-        <header className="site-section">
+        <header className="site-section space-y-4">
           <h1>{page.title}</h1>
+          <p className="text-xl font-semibold">{page.description}</p>
         </header>
 
         <section className="site-section pb-20">

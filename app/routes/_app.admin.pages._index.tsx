@@ -74,7 +74,7 @@ export default function UserPagesRoute() {
           </ButtonLink>
           <FormDelete
             action="/admin/pages/delete"
-            intentValue="user-delete-all-pages"
+            intentValue="admin-delete-all-pages"
             itemText="all pages"
             buttonText="Delete Pages"
             disabled={pages.length <= 0}

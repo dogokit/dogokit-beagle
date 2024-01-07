@@ -26,7 +26,6 @@ import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { FormErrors } from "~/components/ui/form"
-import { Separator } from "~/components/ui/separator"
 import { TextareaAutosize } from "~/components/ui/textarea-autosize"
 import { requireUser } from "~/helpers/auth"
 import { useAppAdminLoaderData } from "~/hooks/use-app-loader-data"
@@ -69,17 +68,15 @@ export default function UserPagesPageIdRoute() {
   const navigation = useNavigation()
   const { pageStatuses } = useAppAdminLoaderData()
 
-  const [form, { id, slug, title, content }] = useForm<
+  const [form, { id, slug, title, description, content }] = useForm<
     z.infer<typeof schemaPage>
   >({
     id: "update-page",
     lastSubmission: actionData?.submission,
     shouldRevalidate: "onInput",
     constraint: getFieldsetConstraint(schemaPage),
-    onValidate({ formData }) {
-      return parse(formData, { schema: schemaPage })
-    },
-    defaultValue: { ...page, userId: page.userId },
+    onValidate: ({ formData }) => parse(formData, { schema: schemaPage }),
+    defaultValue: page,
   })
 
   const isSubmitting = navigation.state === "submitting"
@@ -93,12 +90,6 @@ export default function UserPagesPageIdRoute() {
   const [contentValue, setContentValue] = useState(content.defaultValue ?? "")
   const contentRef = useRef<HTMLInputElement>(null)
   const contentControl = useInputEvent({ ref: contentRef })
-
-  function handleReset() {
-    form.ref.current?.reset()
-    setTitleValue(page.title)
-    setContentValue(page.content)
-  }
 
   function handleUpdateSlug() {
     const newSlug = createSlug(titleValue)
@@ -119,6 +110,7 @@ export default function UserPagesPageIdRoute() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
                 <ButtonLoading
+                  type="submit"
                   variant="outline"
                   size="xs"
                   loadingText="Saving"
@@ -127,18 +119,9 @@ export default function UserPagesPageIdRoute() {
                 >
                   <span>Save</span>
                 </ButtonLoading>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="xs"
-                  onClick={handleReset}
-                >
-                  <Iconify icon="ph:arrow-counter-clockwise" />
-                  <span>Reset</span>
-                </Button>
                 <FormDelete
                   action="/admin/pages/delete"
-                  intentValue="user-delete-page-by-id"
+                  intentValue="admin-delete-page-by-id"
                   defaultValue={page.id}
                   itemText={`a page: ${truncateText(page.title)} (${
                     page.slug
@@ -224,7 +207,17 @@ export default function UserPagesPageIdRoute() {
               <FormErrors>{title}</FormErrors>
             </div>
 
-            <Separator className="my-4" />
+            <div>
+              <TextareaAutosize
+                name={description.name}
+                defaultValue={description.defaultValue}
+                minRows={1}
+                placeholder="Type some description"
+                spellCheck="false"
+                className="input-natural w-full resize-none text-xl font-semibold"
+              />
+              <FormErrors>{title}</FormErrors>
+            </div>
 
             <div>
               <FormErrors>{content}</FormErrors>
@@ -236,17 +229,6 @@ export default function UserPagesPageIdRoute() {
               <EditorTiptapHook
                 content={contentValue}
                 handleUpdate={handleUpdateContent}
-              />
-            </div>
-
-            {/* Manual textarea editor */}
-            <div className="hidden">
-              <textarea
-                placeholder="Add some content..."
-                spellCheck="false"
-                cols={30}
-                rows={20}
-                className="input-natural resize-none"
               />
             </div>
           </section>
