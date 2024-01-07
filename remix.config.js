@@ -15,5 +15,5 @@ export default {
     },
   },
 
-  serverDependenciesToBundle: ["@remixicon/react"],
+  serverDependenciesToBundle: ["@phosphor-icons/react", "@remixicon/react"],
 }

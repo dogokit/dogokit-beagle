@@ -15,11 +15,8 @@ import {
   Moon,
   Plus,
   Sun,
-  type Icon,
 } from "@phosphor-icons/react"
 import { RiGithubFill, RiRemixRunFill } from "@remixicon/react"
-
-export type IconPhosphor = Icon
 
 export const IconSet = {
   House,
