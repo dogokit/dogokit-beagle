@@ -14,7 +14,7 @@ import {
 import StarterKit from "@tiptap/starter-kit"
 import { useCallback } from "react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { buttonVariants } from "~/components/ui/button"
 import { cn } from "~/utils/cn"
 import { parseHTML } from "~/utils/html"
@@ -31,7 +31,7 @@ import { fixUrl } from "~/utils/url"
  *
  * Features:
  * - Toolbar
- * - Manage link
+ * - Manage link/URL
  * - Add image
  */
 
@@ -105,28 +105,28 @@ export function EditorTiptapHook({
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={editor.isActive("bold") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ri:bold" />
+          <IconMatch icon="editor-bold" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={editor.isActive("italic") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ri:italic" />
+          <IconMatch icon="editor-italic" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleStrike().run()}
           className={editor.isActive("strike") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ri:strikethrough" />
+          <IconMatch icon="editor-strikethrough" />
         </button>
         <button
           type="button"
           onClick={handleSetLink}
           className={editor.isActive("link") ? buttonActive : buttonInactive}
         >
-          <Iconify icon="ri:link" />
+          <IconMatch icon="editor-link" />
         </button>
         <button
           type="button"
@@ -134,7 +134,7 @@ export function EditorTiptapHook({
           disabled={!editor.isActive("link")}
           className={!editor.isActive("link") ? cn(buttonInactive, "opacity-25") : buttonInactive}
         >
-          <Iconify icon="ri:link-unlink" />
+          <IconMatch icon="editor-link-unlink" />
         </button>
       </div>
 
@@ -152,28 +152,28 @@ export function EditorTiptapHook({
             onClick={() => editor.chain().focus().toggleBold().run()}
             className={editor.isActive("bold") ? buttonActive : buttonInactive}
           >
-            <Iconify icon="ri:bold" />
+            <IconMatch icon="editor-bold" />
           </button>
           <button
             type="button"
             onClick={() => editor.chain().focus().toggleItalic().run()}
             className={editor.isActive("italic") ? buttonActive : buttonInactive}
           >
-            <Iconify icon="ri:italic" />
+            <IconMatch icon="editor-italic" />
           </button>
           <button
             type="button"
             onClick={() => editor.chain().focus().toggleStrike().run()}
             className={editor.isActive("strike") ? buttonActive : buttonInactive}
           >
-            <Iconify icon="ri:strikethrough" />
+            <IconMatch icon="editor-strikethrough" />
           </button>
           <button
             type="button"
             onClick={handleSetLink}
             className={editor.isActive("link") ? buttonActive : buttonInactive}
           >
-            <Iconify icon="ri:link" />
+            <IconMatch icon="editor-link" />
           </button>
           <button
             type="button"
@@ -181,7 +181,7 @@ export function EditorTiptapHook({
             disabled={!editor.isActive("link")}
             className={!editor.isActive("link") ? cn(buttonInactive, "opacity-25") : buttonInactive}
           >
-            <Iconify icon="ri:link-unlink" />
+            <IconMatch icon="editor-link-unlink" />
           </button>
         </BubbleMenu>
       </div>

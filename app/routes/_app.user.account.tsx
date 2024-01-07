@@ -39,7 +39,7 @@ export default function UserAccountRoute() {
         </div>
       </header>
 
-      <section className="app-section">
+      <section className="app-section max-w-md">
         <header>
           <h4>Delete Account</h4>
           <p className="text-sm">

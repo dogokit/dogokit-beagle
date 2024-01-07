@@ -47,7 +47,7 @@ export default function UserSettingsRoute() {
         </div>
       </header>
 
-      <section className="app-section max-w-md space-y-8">
+      <section className="app-section max-w-md">
         <FormUpdateField
           label="Username"
           field="username"
