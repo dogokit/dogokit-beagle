@@ -14,4 +14,6 @@ export default {
       punycode: true,
     },
   },
+
+  serverDependenciesToBundle: ["@remixicon/react"],
 }
