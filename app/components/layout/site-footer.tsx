@@ -12,25 +12,16 @@ import { getCurrentYear } from "~/utils/datetime"
 export function SiteFooter() {
   return (
     <footer className="mt-40 space-y-4 p-4">
-      <SiteFooterSectionSitemap isRounded />
-      <SiteFooterSectionExtra isRounded />
+      <SiteFooterSitemap />
+      <SiteFooterExtra />
     </footer>
   )
 }
 
-function SiteFooterSectionSitemap({
-  isRounded = true,
-}: {
-  isRounded?: boolean
-}) {
+function SiteFooterSitemap() {
   return (
     <section className="flex flex-wrap gap-4">
-      <div
-        className={cn(
-          "flex-auto space-y-8 bg-muted/30 p-4",
-          isRounded && "rounded-md",
-        )}
-      >
+      <div className={cn("flex-auto space-y-8 rounded-md bg-muted/30 p-4")}>
         <div className="space-y-4">
           <Link
             to="/"
@@ -50,20 +41,18 @@ function SiteFooterSectionSitemap({
         </p>
       </div>
 
-      <div className={cn("grow bg-muted/30 p-4", isRounded && "rounded-md")}>
+      <div className={cn("grow rounded-md bg-muted/30 p-4")}>
         <FooterSitemap />
       </div>
     </section>
   )
 }
 
-function SiteFooterSectionExtra({ isRounded = true }: { isRounded?: boolean }) {
+function SiteFooterExtra() {
   return (
     <section
       className={cn(
-        "bg-muted/30 p-4",
-        "flex flex-col flex-wrap items-center justify-between gap-2 sm:flex-row",
-        isRounded && "rounded-md",
+        "flex flex-col flex-wrap items-center justify-between gap-2 rounded-md bg-muted/30 p-4 sm:flex-row",
       )}
     >
       <p className="text-center text-sm sm:text-left">

@@ -50,6 +50,7 @@
     "@epic-web/remember": "1.0.2",
     "@fontsource-variable/anybody": "5.0.19",
     "@fontsource-variable/inter": "5.0.15",
+    "@icons-pack/react-simple-icons": "9.2.0",
     "@nasa-gcn/remix-seo": "^2.0.0",
     "@phosphor-icons/react": "2.0.15",
     "@prisma/client": "^5.7.1",

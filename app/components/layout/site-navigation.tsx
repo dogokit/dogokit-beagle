@@ -141,7 +141,7 @@ export function NavItemLink({
           )
         }
       >
-        {navItem.iconEl ? navItem.iconEl : ""}
+        {navItem.iconEl && navItem.iconEl}
         <span className="select-none">{navItem.text}</span>
       </NavLink>
     </li>
