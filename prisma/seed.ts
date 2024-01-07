@@ -5,6 +5,7 @@ import { db } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
 import { logEnv } from "~/utils/log.server"
 import { createSlug } from "~/utils/string"
+import { debugCode } from "~/utils/string.server"
 
 import { dataCredentialUsers } from "./credentials/users"
 import { dataPageStatuses } from "./data/page-statuses"
@@ -17,13 +18,13 @@ import { dataRoles } from "./data/roles"
  * EDITME: Enable or disable seed items by commenting them
  */
 const enabledSeedItems = [
-  "permissions",
-  "roles",
+  // "permissions",
+  // "roles",
   "users",
-  "pageStatuses",
-  "pages",
-  "postStatuses",
-  "posts",
+  // "pageStatuses",
+  // "pages",
+  // "postStatuses",
+  // "posts",
 ]
 
 async function main() {
@@ -113,8 +114,8 @@ async function seedUsers() {
   }
 
   for (const userCredential of dataCredentialUsers) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, roleSymbol, ...userRaw } = userCredential
+    debugCode({ password, roleSymbol }, false)
 
     const userData = {
       ...userRaw,
@@ -127,22 +128,27 @@ async function seedUsers() {
     })
 
     const userHasPassword = Boolean(existingUser?.password?.hash)
+    const hash = await hashPassword(userCredential.password)
 
     const user = await db.user.upsert({
-      where: { email: userData.email },
+      where: { username: userData.username },
       update: {
         ...userData,
-        password: userHasPassword
-          ? { update: { hash: await hashPassword(userCredential.password) } }
-          : undefined,
+        // FIXME profile: profile ? { update: profile } : undefined,
+        password:
+          userCredential.password && userHasPassword
+            ? { update: { hash } } // Update existing password
+            : { create: { hash } }, // Create new password for the updated user
       },
       create: {
         ...userData,
-        password: userHasPassword
-          ? { create: { hash: await hashPassword(userCredential.password) } }
-          : undefined,
+        // FIXME profile: profile ? { create: profile } : undefined,
+        password: userCredential.password ? { create: { hash } } : undefined,
       },
+      include: { password: { select: { hash: true } } },
     })
+
+    console.log({ user })
 
     if (!user) return null
 
