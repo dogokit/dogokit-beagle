@@ -1,7 +1,7 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
 import * as React from "react"
 
-import { Iconify } from "~/components/ui/iconify"
+import { Iconify } from "~/components/libs/iconify"
 import { cn } from "~/utils/cn"
 
 const RadioGroup = React.forwardRef<

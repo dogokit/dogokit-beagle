@@ -1,5 +1,6 @@
 import { useFetcher } from "@remix-run/react"
 
+import { Iconify } from "~/components/libs/iconify"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,7 +13,6 @@ import {
   AlertDialogTrigger,
 } from "~/components/ui/alert-dialog"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import { Iconify } from "~/components/ui/iconify"
 import { type modelPage } from "~/models/page.server"
 import { type modelPost } from "~/models/post.server"
 import { type JsonifyPrisma } from "~/types/jsonify"

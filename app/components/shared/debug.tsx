@@ -1,12 +1,12 @@
 import { useState } from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Button, buttonVariants } from "~/components/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "~/components/ui/collapsible"
-import { Iconify } from "~/components/ui/iconify"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 import { stringifyCode } from "~/utils/string"

@@ -23,6 +23,9 @@ dependencies:
   '@nasa-gcn/remix-seo':
     specifier: ^2.0.0
     version: 2.0.0(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)
+  '@phosphor-icons/react':
+    specifier: 2.0.15
+    version: 2.0.15(react-dom@18.2.0)(react@18.2.0)
   '@prisma/client':
     specifier: ^5.7.1
     version: 5.7.1(prisma@5.7.1)
@@ -215,6 +218,9 @@ dependencies:
   react-flagpack:
     specifier: 1.2.0
     version: 1.2.0(react@18.2.0)
+  react-icons:
+    specifier: 4.12.0
+    version: 4.12.0(react@18.2.0)
   react-resizable-panels:
     specifier: 1.0.5
     version: 1.0.5(react-dom@18.2.0)(react@18.2.0)
@@ -1929,6 +1935,17 @@ packages:
     resolution: {integrity: sha512-O2yRJce1GOc6PAy3QxFM4NzFiWzvScDC1/5ihYBL6BUEVdq0XMWN01sppE+H6bBXbaFYipjwFLEWLg5PaSOThA==}
     engines: {node: '>=8.0.0'}
     dev: true
+
+  /@phosphor-icons/react@2.0.15(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PQKNcRrfERlC8gJGNz0su0i9xVmeubXSNxucPcbCLDd9u0cwJVTEyYK87muul/svf0UXFdL2Vl6bbeOhT1Mwow==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>= 16.8'
+      react-dom: '>= 16.8'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -10719,6 +10736,14 @@ packages:
     resolution: {integrity: sha512-qGhnBGg9lCHQ7AKu5wZ0pTvPACz0opLa0+hJ6zj9805jI016YjE8ggAj269GaIG/wyelmX/Qph/SWQecm0RFrQ==}
     peerDependencies:
       react: ^16.8.* || ^17.*
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-icons@4.12.0(react@18.2.0):
+    resolution: {integrity: sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==}
+    peerDependencies:
+      react: '*'
     dependencies:
       react: 18.2.0
     dev: false

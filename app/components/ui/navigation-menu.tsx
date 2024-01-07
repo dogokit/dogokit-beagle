@@ -2,7 +2,7 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
 import * as React from "react"
 
-import { Iconify } from "~/components/ui/iconify"
+import { Iconify } from "~/components/libs/iconify"
 import { cn } from "~/utils/cn"
 
 const NavigationMenu = React.forwardRef<

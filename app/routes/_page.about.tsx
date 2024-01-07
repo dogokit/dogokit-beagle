@@ -1,7 +1,7 @@
 import { type MetaFunction } from "@remix-run/node"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Anchor } from "~/components/ui/anchor"
-import { Iconify } from "~/components/ui/iconify"
 import { createMeta } from "~/utils/meta"
 
 export const meta: MetaFunction = () =>

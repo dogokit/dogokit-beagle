@@ -1,7 +1,7 @@
-import { Icon } from "@iconify/react"
 import { type VariantProps } from "class-variance-authority"
 import { match } from "ts-pattern"
 
+import { IconSet } from "~/components/libs/icon-set"
 import { Theme, useTheme } from "~/components/shared/theme"
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
@@ -37,12 +37,12 @@ export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <ButtonIcon variant="ghost" size={size}>
-          <Icon
-            icon="ph:sun-duotone"
+          <IconSet.Sun
+            weight="duotone"
             className="rotate-0 scale-100 transition-transform dark:-rotate-180 dark:scale-0"
           />
-          <Icon
-            icon="ph:moon-duotone"
+          <IconSet.Moon
+            weight="duotone"
             className="absolute rotate-180 scale-0 transition-transform dark:rotate-0 dark:scale-100"
           />
           <span className="sr-only">Toggle color mode theme</span>
@@ -51,15 +51,15 @@ export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
 
       <DropdownMenuContent align={align}>
         <DropdownMenuItem onClick={() => handleChangeTheme("light")}>
-          <Icon icon="ph:sun-duotone" className="me-2 size-4" />
+          <IconSet.Sun weight="duotone" className="me-2 size-4" />
           <span>Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("dark")}>
-          <Icon icon="ph:moon-duotone" className="me-2 size-4" />
+          <IconSet.Moon weight="duotone" className="me-2 size-4" />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("system")}>
-          <Icon icon="ph:laptop-duotone" className="me-2 size-4" />
+          <IconSet.Laptop weight="duotone" className="me-2 size-4" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

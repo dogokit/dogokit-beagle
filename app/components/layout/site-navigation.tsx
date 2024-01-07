@@ -1,11 +1,12 @@
 import { Link, NavLink, type NavLinkProps } from "@remix-run/react"
 
 import { SiteNavigationMenu } from "~/components/layout/site-navigation-menu"
+import { IconSet } from "~/components/libs/icon-set"
+import { Iconify } from "~/components/libs/iconify"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
 import { ButtonLink } from "~/components/ui/button-link"
-import { Iconify } from "~/components/ui/iconify"
 import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
@@ -48,7 +49,7 @@ function SiteNavigationSmall() {
             <SiteNavigationMenu />
 
             <ButtonLink to="/new" size="sm">
-              <Iconify icon="ph:plus" />
+              <IconSet.Plus />
               <span className="hidden sm:inline">New</span>
             </ButtonLink>
 
@@ -118,7 +119,7 @@ function SiteNavigationLarge() {
           {userSession && (
             <>
               <ButtonLink to="/new" size="sm">
-                <Iconify icon="ph:plus" />
+                <IconSet.Plus />
                 <span>New</span>
               </ButtonLink>
               <IndicatorUser size="sm" />

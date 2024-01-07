@@ -17,6 +17,7 @@ import { useRef, useState } from "react"
 import { z } from "zod"
 
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
+import { Iconify } from "~/components/libs/iconify"
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdatePublish } from "~/components/shared/form-update-publish"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
@@ -25,7 +26,6 @@ import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { FormErrors } from "~/components/ui/form"
-import { Iconify } from "~/components/ui/iconify"
 import { Separator } from "~/components/ui/separator"
 import { TextareaAutosize } from "~/components/ui/textarea-autosize"
 import { requireUser } from "~/helpers/auth"
@@ -158,7 +158,7 @@ export default function UserPostsPostIdRoute() {
 
               <div className="flex flex-wrap items-center gap-2">
                 <FormUpdatePublish
-                itemName={post.title}
+                  itemName={post.title}
                   itemId="postId"
                   action="/user/posts/update"
                   intentValue="update-post-status"

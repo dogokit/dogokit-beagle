@@ -6,9 +6,9 @@ import {
   type ErrorResponse,
 } from "@remix-run/react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonLink } from "~/components/ui/button-link"
-import { Iconify } from "~/components/ui/iconify"
 
 // import { captureRemixErrorBoundaryError } from '@sentry/remix'
 

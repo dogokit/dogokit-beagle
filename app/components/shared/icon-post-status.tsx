@@ -1,7 +1,7 @@
 import { type PostStatus } from "@prisma/client"
 import { match } from "ts-pattern"
 
-import { Iconify } from "~/components/ui/iconify"
+import { Iconify } from "~/components/libs/iconify"
 
 const getIconName = (symbol: string) =>
   match(symbol)

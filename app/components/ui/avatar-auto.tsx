@@ -48,7 +48,10 @@ export function AvatarAuto({
   ...props
 }: AvatarAutoProps) {
   return (
-    <Avatar {...props} className={cn(avatarAutoVariants({ size }))}>
+    <Avatar
+      {...props}
+      className={cn(avatarAutoVariants({ size }), "bg-secondary")}
+    >
       <AvatarImage
         src={imageUrl || getPlaceholderAvatarUrl(user.username)}
         alt={user.fullname}

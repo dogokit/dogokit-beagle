@@ -5,6 +5,7 @@ import {
 } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { BadgePostStatus } from "~/components/shared/badge-post-status"
 import {
   ErrorHelpInformation,
@@ -17,7 +18,6 @@ import { ViewHTML } from "~/components/shared/view-html"
 import { Alert } from "~/components/ui/alert"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
-import { Iconify } from "~/components/ui/iconify"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { db } from "~/libs/db.server"
 import { modelPostStatus } from "~/models/post-status.server"

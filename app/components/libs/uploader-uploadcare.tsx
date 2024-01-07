@@ -2,9 +2,9 @@ import * as LR from "@uploadcare/blocks"
 import { type OutputFileEntry } from "@uploadcare/blocks"
 import { useCallback, useEffect, useRef, useState } from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonIcon } from "~/components/ui/button-icon"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 
 import styleInline from "@uploadcare/blocks/web/lr-file-uploader-inline.min.css"

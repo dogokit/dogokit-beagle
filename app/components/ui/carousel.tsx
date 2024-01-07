@@ -5,8 +5,8 @@ import useEmblaCarousel, {
 } from "embla-carousel-react"
 import * as React from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Button } from "~/components/ui/button"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 
 type CarouselProps = {

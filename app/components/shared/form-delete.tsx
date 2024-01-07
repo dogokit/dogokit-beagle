@@ -1,6 +1,7 @@
 import { useFetcher, useLocation } from "@remix-run/react"
 import { useState } from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -13,7 +14,6 @@ import {
 } from "~/components/ui/alert-dialog"
 import { Button } from "~/components/ui/button"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import { Iconify } from "~/components/ui/iconify"
 
 export function FormDelete({
   action,

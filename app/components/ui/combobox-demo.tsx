@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Button } from "~/components/ui/button"
 import {
   Command,
@@ -8,7 +9,6 @@ import {
   CommandInput,
   CommandItem,
 } from "~/components/ui/command"
-import { Iconify } from "~/components/ui/iconify"
 import {
   Popover,
   PopoverContent,

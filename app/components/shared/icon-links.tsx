@@ -1,7 +1,7 @@
 import { match } from "ts-pattern"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Anchor } from "~/components/ui/anchor"
-import { Iconify } from "~/components/ui/iconify"
 import { configSiteIconLinks } from "~/configs/site"
 import { cn } from "~/utils/cn"
 import { createSlug } from "~/utils/string"

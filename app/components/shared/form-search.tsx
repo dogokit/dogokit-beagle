@@ -1,6 +1,6 @@
 import { Form, useSearchParams } from "@remix-run/react"
 
-import { Iconify } from "~/components/ui/iconify"
+import { Iconify } from "~/components/libs/iconify"
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
 

@@ -5,6 +5,7 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
+import { Iconify } from "~/components/libs/iconify"
 import {
   getPaginationConfigs,
   getPaginationOptions,
@@ -12,7 +13,6 @@ import {
   PaginationSearch,
 } from "~/components/shared/pagination-search"
 import { PostItem } from "~/components/shared/post-item"
-import { Iconify } from "~/components/ui/iconify"
 import { db } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"

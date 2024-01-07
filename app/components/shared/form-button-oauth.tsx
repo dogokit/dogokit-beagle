@@ -1,8 +1,8 @@
 import { useFetcher } from "@remix-run/react"
 import { match } from "ts-pattern"
 
+import { Iconify } from "~/components/libs/iconify"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import { Iconify } from "~/components/ui/iconify"
 import { type AuthStrategy } from "~/services/auth.server"
 
 const getIconName = (providerName: string) =>

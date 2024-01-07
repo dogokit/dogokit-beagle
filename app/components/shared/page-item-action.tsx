@@ -1,7 +1,7 @@
+import { Iconify } from "~/components/libs/iconify"
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { ButtonLink } from "~/components/ui/button-link"
-import { Iconify } from "~/components/ui/iconify"
 import { useAppAdminLoaderData } from "~/hooks/use-app-loader-data"
 import { type modelPage } from "~/models/page.server"
 import { type JsonifyPrisma } from "~/types/jsonify"

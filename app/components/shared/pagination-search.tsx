@@ -6,8 +6,8 @@
 
 import { Link, useLocation } from "@remix-run/react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { FormSearch } from "~/components/shared/form-search"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { pluralizeWord } from "~/utils/string"
 

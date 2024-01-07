@@ -1,6 +1,6 @@
 import * as ResizablePrimitive from "react-resizable-panels"
 
-import { Iconify } from "~/components/ui/iconify"
+import { Iconify } from "~/components/libs/iconify"
 import { cn } from "~/utils/cn"
 
 const ResizablePanelGroup = ({

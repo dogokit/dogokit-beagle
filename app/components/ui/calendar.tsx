@@ -1,8 +1,8 @@
 import * as React from "react"
 import { DayPicker } from "react-day-picker"
 
+import { Iconify } from "~/components/libs/iconify"
 import { buttonVariants } from "~/components/ui/button"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 
 const CALENDAR_YEAR_PAST = 10

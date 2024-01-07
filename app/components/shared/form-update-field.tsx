@@ -4,6 +4,7 @@ import { type Prisma } from "@prisma/client"
 import { useFetcher } from "@remix-run/react"
 import { type z } from "zod"
 
+import { Iconify } from "~/components/libs/iconify"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import {
   FormDescription,
@@ -11,7 +12,6 @@ import {
   FormField,
   FormLabel,
 } from "~/components/ui/form"
-import { Iconify } from "~/components/ui/iconify"
 import { Input } from "~/components/ui/input"
 import { type modelUser } from "~/models/user.server"
 import {

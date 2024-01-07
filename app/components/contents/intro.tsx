@@ -1,6 +1,6 @@
+import { IconSet } from "~/components/libs/icon-set"
 import { AnchorText } from "~/components/ui/anchor-text"
 import { ButtonAnchor } from "~/components/ui/button-anchor"
-import { Iconify } from "~/components/ui/iconify"
 
 export function ContentIntro() {
   return (
@@ -22,11 +22,11 @@ export function ContentIntro() {
             variant="default"
             href="https://github.com/dogokit/dogokit-remix"
           >
-            <Iconify icon="simple-icons:github" className="size-5" />
+            <IconSet.GitHub className="size-5" />
             <span>Repo on GitHub</span>
           </ButtonAnchor>
           <ButtonAnchor size="lg" variant="secondary" href="https://remix.run">
-            <Iconify icon="simple-icons:remix" className="size-5" />
+            <IconSet.Remix className="size-5" />
             <span>Learn Remix</span>
           </ButtonAnchor>
         </div>

@@ -1,9 +1,9 @@
 import { Link, Outlet } from "@remix-run/react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 import { AnchorText } from "~/components/ui/anchor-text"
 import { Card } from "~/components/ui/card"
-import { Iconify } from "~/components/ui/iconify"
 import { configExamples } from "~/configs/examples"
 
 export default function ExamplesRoute() {

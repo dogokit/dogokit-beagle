@@ -5,6 +5,7 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { FormActionItemNew } from "~/components/shared/form-action-item"
 import { FormDelete } from "~/components/shared/form-delete"
 import { PageItemAction } from "~/components/shared/page-item-action"
@@ -15,7 +16,6 @@ import {
   PaginationSearch,
 } from "~/components/shared/pagination-search"
 import { ButtonLink } from "~/components/ui/button-link"
-import { Iconify } from "~/components/ui/iconify"
 import { getActionItem } from "~/configs/action-item"
 import { db } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"

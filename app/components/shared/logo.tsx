@@ -1,6 +1,6 @@
-import { Icon } from "@iconify/react"
 import { cva, type VariantProps } from "class-variance-authority"
 
+import { Iconify } from "~/components/libs/iconify"
 import { cn } from "~/utils/cn"
 
 const logoVariants = cva("flex items-center gap-1 text-2xl font-semibold", {
@@ -50,7 +50,7 @@ export function Logo({
 }: LogoProps) {
   return (
     <span className={cn(logoVariants({ variant, size, className }))}>
-      <Icon
+      <Iconify
         icon="fluent-emoji-flat:dog-face"
         className={cn(logoIconVariants({ size, className: classNameIcon }))}
       />

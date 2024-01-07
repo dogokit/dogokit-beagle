@@ -1,7 +1,7 @@
 import { useState } from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { Button } from "~/components/ui/button"
-import { Iconify } from "~/components/ui/iconify"
 import { Input, type InputProps } from "~/components/ui/input"
 import { cn } from "~/utils/cn"
 

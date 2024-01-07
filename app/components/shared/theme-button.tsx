@@ -1,6 +1,6 @@
-import { Icon } from "@iconify/react"
 import { type VariantProps } from "class-variance-authority"
 
+import { IconSet } from "~/components/libs/icon-set"
 import { Theme, useTheme } from "~/components/shared/theme"
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
@@ -26,12 +26,12 @@ export function ThemeButton({ ...props }: ThemeButtonProps) {
       aria-label="Toggle theme"
       {...props}
     >
-      <Icon
-        icon="ph:sun-duotone"
+      <IconSet.Sun
+        weight="duotone"
         className="rotate-0 scale-100 transition-transform dark:-rotate-180 dark:scale-0"
       />
-      <Icon
-        icon="ph:moon-duotone"
+      <IconSet.Moon
+        weight="duotone"
         className="absolute rotate-180 scale-0 transition-transform dark:rotate-0 dark:scale-100"
       />
       <span className="sr-only">Toggle theme mode</span>

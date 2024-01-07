@@ -1,4 +1,4 @@
-import { Iconify } from "~/components/ui/iconify"
+import { Iconify } from "~/components/libs/iconify"
 import { Input, type InputProps } from "~/components/ui/input"
 import { cn } from "~/utils/cn"
 

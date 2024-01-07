@@ -1,7 +1,7 @@
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
 import * as React from "react"
 
-import { Iconify } from "~/components/ui/iconify"
+import { Iconify } from "~/components/libs/iconify"
 import { cn } from "~/utils/cn"
 
 const MenubarMenu = MenubarPrimitive.Menu

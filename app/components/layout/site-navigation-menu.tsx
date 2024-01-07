@@ -2,12 +2,13 @@ import { NavLink, useNavigate, type NavLinkProps } from "@remix-run/react"
 import { useState } from "react"
 
 import { NavItemLink } from "~/components/layout/site-navigation"
+import { IconSet } from "~/components/libs/icon-set"
+import { Iconify } from "~/components/libs/iconify"
 import { IconLinks } from "~/components/shared/icon-links"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
-import { Iconify } from "~/components/ui/iconify"
 import {
   Sheet,
   SheetContent,
@@ -29,8 +30,8 @@ export function SiteNavigationMenu() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="outline" size="sm">
-          <Iconify icon="ph:list" />
-          <span className="hidden sm:inline">Menu</span>
+          <IconSet.List />
+          <span>Menu</span>
         </Button>
       </SheetTrigger>
 
@@ -78,7 +79,7 @@ export function SiteNavigationMenu() {
             {userSession && (
               <>
                 <ButtonLink to="/new" size="sm">
-                  <Iconify icon="ph:plus" />
+                  <IconSet.Plus />
                   <span>New</span>
                 </ButtonLink>
                 <IndicatorUser size="sm" />

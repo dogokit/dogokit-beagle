@@ -1,51 +1,52 @@
 import { useFetcher } from "@remix-run/react"
 
+import { IconSet } from "~/components/libs/icon-set"
+import { Iconify } from "~/components/libs/iconify"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { Card } from "~/components/ui/card"
-import { Iconify } from "~/components/ui/iconify"
 import { type ConfigActionItem } from "~/configs/action-item"
 import { cn } from "~/utils/cn"
 
 export function FormActionItem({ item }: { item: ConfigActionItem }) {
   const fetcher = useFetcher()
   const isSubmitting = fetcher.state === "submitting"
-  const disabled = item.isEnabled !== true
+  const isDisabled = item.isEnabled !== true
 
   return (
     <Card className="p-2">
       <fetcher.Form method="POST" action={item.actionNew} className="w-full">
         <fieldset
-          disabled={disabled}
+          disabled={isDisabled}
           className="flex flex-col items-center gap-2"
         >
           <div
             className={cn(
               "text-6xl text-primary",
-              disabled && "text-muted-foreground",
+              isDisabled && "text-muted-foreground",
             )}
           >
             <Iconify icon={item.icon} />
           </div>
 
-          <h4 className={cn(disabled && "text-muted-foreground")}>
+          <h4 className={cn(isDisabled && "text-muted-foreground")}>
             {item.name}
           </h4>
 
           <div className="grid w-full grid-rows-2 gap-2">
             <ButtonLoading
-              disabled={disabled}
+              disabled={isDisabled}
               size="sm"
               loadingText="Adding"
               isLoading={isSubmitting}
             >
-              <Iconify icon="ph:plus" />
+              <IconSet.Plus />
               <span>Add</span>
             </ButtonLoading>
 
             <ButtonLink
               to={item.actionManage}
-              disabled={disabled}
+              disabled={isDisabled}
               size="sm"
               variant="secondary"
             >
@@ -74,7 +75,7 @@ export function FormActionItemNew({ item }: { item?: ConfigActionItem }) {
         isLoading={isSubmitting}
         disabled={isSubmitting}
       >
-        <Iconify icon="ph:plus" />
+        <IconSet.Plus />
         <span>Add {item.name}</span>
       </ButtonLoading>
     </fetcher.Form>

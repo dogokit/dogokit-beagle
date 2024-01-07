@@ -1,8 +1,8 @@
 import { Link } from "@remix-run/react"
 import * as React from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { buttonVariants, type ButtonProps } from "~/components/ui/button"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (

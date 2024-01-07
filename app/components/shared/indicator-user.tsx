@@ -1,6 +1,7 @@
 import { Link, NavLink } from "@remix-run/react"
 import { type VariantProps } from "class-variance-authority"
 
+import { Iconify } from "~/components/libs/iconify"
 import {
   AvatarAuto,
   type avatarAutoVariants,
@@ -15,7 +16,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
-import { Iconify } from "~/components/ui/iconify"
 import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { useAppMode } from "~/hooks/use-app-mode"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"

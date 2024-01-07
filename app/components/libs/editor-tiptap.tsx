@@ -14,8 +14,8 @@ import {
 import StarterKit from "@tiptap/starter-kit"
 import { useCallback } from "react"
 
+import { Iconify } from "~/components/libs/iconify"
 import { buttonVariants } from "~/components/ui/button"
-import { Iconify } from "~/components/ui/iconify"
 import { cn } from "~/utils/cn"
 import { parseHTML } from "~/utils/html"
 import { fixUrl } from "~/utils/url"
