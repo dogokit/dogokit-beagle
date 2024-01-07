@@ -49,7 +49,7 @@ export function FormUpdateField({
       <fieldset disabled={isSubmitting} className="space-y-2">
         <input {...conform.input(fields.id, { type: "hidden" })} />
         <FormField>
-          <div className="flex justify-between">
+          <div className="flex items-center justify-between">
             <FormLabel htmlFor={fields[field].id}>{label}</FormLabel>
             <ButtonLoading
               name="intent"

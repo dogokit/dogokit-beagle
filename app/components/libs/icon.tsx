@@ -168,6 +168,7 @@ export const IconMatch = ({ icon, ...props }: { icon: string; className?: string
     .with("question", () => <Question {...props} />)
     .with("remix", () => <SiRemix {...props} />)
     .with("scroll", () => <Scroll {...props} />)
+    .with("sign-in", () => <SignIn {...props} />)
     .with("sign-out", () => <SignOut {...props} />)
     .with("spinner-gap", () => <SpinnerGap {...props} />)
     .with("squares-four", () => <SquaresFour {...props} />)

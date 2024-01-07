@@ -8,7 +8,6 @@ import {
 import { useLoaderData } from "@remix-run/react"
 
 import { FormUpdateField } from "~/components/shared/form-update-field"
-import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { configSite } from "~/configs/site"
 import { configUnallowedKeywords } from "~/configs/unallowed-keywords"
 import { requireUser } from "~/helpers/auth"
@@ -42,8 +41,6 @@ export default function UserSettingsRoute() {
   return (
     <div className="app-container">
       <header className="app-header items-center gap-4">
-        <AvatarAuto user={user} imageUrl={user.images[0]?.url} />
-
         <div>
           <h2>User Settings</h2>
           <p>Manage user settings and profile</p>

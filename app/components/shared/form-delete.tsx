@@ -16,6 +16,7 @@ import { Button } from "~/components/ui/button"
 import { ButtonLoading } from "~/components/ui/button-loading"
 
 export function FormDelete({
+  dialogTrigger,
   action,
   intentValue,
   itemText,
@@ -26,6 +27,7 @@ export function FormDelete({
   extraComponent,
   className,
 }: {
+  dialogTrigger?: React.ReactNode
   action: string // Example: /user/posts/delete
   intentValue: string // Example: delete-post-by-id
   itemText: string // Example: post name
@@ -44,10 +46,14 @@ export function FormDelete({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild className={className}>
-        <Button variant="outline" size="xs" disabled={disabled}>
-          <IconMatch icon="trash" />
-          <span>{buttonText}</span>
-        </Button>
+        {dialogTrigger ? (
+          dialogTrigger
+        ) : (
+          <Button variant="outline" size="xs" disabled={disabled}>
+            <IconMatch icon="trash" />
+            <span>{buttonText}</span>
+          </Button>
+        )}
       </AlertDialogTrigger>
 
       <AlertDialogContent>
@@ -61,10 +67,9 @@ export function FormDelete({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <fetcher.Form
             action={action || location.pathname}
+            method="DELETE"
             onSubmit={event => {
-              fetcher.submit(event.currentTarget.form as FormData, {
-                method: "DELETE",
-              })
+              fetcher.submit(event.currentTarget.form, { method: "DELETE" })
               setOpen(false)
             }}
           >

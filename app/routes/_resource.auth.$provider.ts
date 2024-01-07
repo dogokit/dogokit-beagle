@@ -12,10 +12,13 @@ export const loader = () => redirect("/login")
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   const timer = createTimer()
+
   if (!params.provider) return redirect("/login")
+
   const provider = params.provider as AuthStrategy
+
   await timer.delay()
-  return await authService.authenticate(provider, request, {
+  return authService.authenticate(provider, request, {
     successRedirect: "/user/dashboard",
   })
 }

@@ -22,23 +22,33 @@ export const authStorage = createCookieSessionStorage({
   },
 })
 
-// Stored in the cookie
+/**
+ * UserSession is stored in the cookie
+ */
 export interface UserSession {
   id: string
   // Add user properties here or extend with a type from the database
 }
 
-// Not stored in the cookie, only retrieved when necessary
+/**
+ * UserData is not stored in the cookie, only retrieved when necessary
+ */
 export interface UserData
   extends NonNullable<Prisma.PromiseReturnType<typeof modelUser.getForSession>> {}
 
 export type AuthStrategy = (typeof AuthStrategies)[keyof typeof AuthStrategies]
 
-// Create an instance of the authenticator, pass a generic with what
-// strategies will return and will store in the session
+/**
+ * authService
+ *
+ * Create an instance of the authenticator, pass a generic with what
+ * strategies will return and will store in the session
+ *
+ * When using this, might need to have a cloned request
+ * const clonedRequest = request.clone()
+ */
 export const authService = new Authenticator<UserSession>(authStorage)
 
-// Register the strategies
 authService.use(formStrategy, AuthStrategies.FORM)
 authService.use(githubStrategy, AuthStrategies.GITHUB)
 authService.use(googleStrategy, AuthStrategies.GOOGLE)

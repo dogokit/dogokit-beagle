@@ -83,7 +83,7 @@ export function FormUpdateStatus({
           method="PATCH"
           action={action}
           onSubmit={event => {
-            fetcher.submit(event.currentTarget.form as FormData, {
+            fetcher.submit(event.currentTarget.form, {
               method: "POST",
             })
             setOpen(false)

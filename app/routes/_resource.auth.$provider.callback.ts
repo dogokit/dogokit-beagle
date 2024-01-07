@@ -9,7 +9,9 @@ import { authService, type AuthStrategy } from "~/services/auth.server"
 
 export const loader = ({ request, params }: LoaderFunctionArgs) => {
   if (!params.provider) return redirect("/login")
+
   const provider = params.provider as AuthStrategy
+
   return authService.authenticate(provider, request, {
     successRedirect: "/user/dashboard",
     failureRedirect: "/login",

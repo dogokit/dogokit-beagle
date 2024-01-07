@@ -65,7 +65,10 @@ export default function UserPostsRoute() {
   return (
     <div className="app-container">
       <header className="app-header justify-between gap-4">
-        <h2>Posts</h2>
+        <div>
+          <h2>Posts</h2>
+          <p>Manage posts</p>
+        </div>
 
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Post")} />

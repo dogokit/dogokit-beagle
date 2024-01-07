@@ -220,8 +220,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const { userId } = await requireUser(request)
 
   const timer = createTimer()
-  const clonedRequest = request.clone()
-  const formData = await clonedRequest.formData()
+  const formData = await request.formData()
 
   const submission = await parse(formData, {
     async: true,

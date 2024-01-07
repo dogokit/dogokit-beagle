@@ -15,9 +15,9 @@ export function FormButtonOAuth({ provider, label }: { provider: AuthStrategy; l
       <ButtonLoading
         isIconText
         className="flex-[auto]"
-        icon={<IconMatch icon={provider} />}
-        loadingText={`Continuing with ${label}...`}
         isLoading={isMatch && isSubmitting}
+        loadingText={`Continuing with ${label}...`}
+        icon={<IconMatch icon={provider} className="size-4" />}
       >
         Continue with {label}
       </ButtonLoading>
