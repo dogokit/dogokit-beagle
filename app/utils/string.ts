@@ -34,7 +34,7 @@ export function pluralizeWord(word: string, count: number) {
   return pluralize(word, count, true)
 }
 
-export function stringifyCode(code: any) {
+export function stringifyCode(code?: string | object) {
   return JSON.stringify(code, null, 2)
 }
 

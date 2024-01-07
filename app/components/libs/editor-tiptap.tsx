@@ -80,7 +80,7 @@ export function EditorTiptapHook({
   const handleSetLink = useCallback(() => {
     if (!editor) return null
 
-    const previousUrl = editor.getAttributes("link").href
+    const previousUrl = editor.getAttributes("link").href as string
     const url = window.prompt("URL", previousUrl)
 
     if (url === null) return

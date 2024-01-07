@@ -24,7 +24,7 @@ async function fixPosts() {
   }
 
   const updatedPosts = await db.post.findMany()
-  debugCode(updatedPosts)
+  debugCode(updatedPosts, false)
 }
 
 fixPosts()

@@ -86,7 +86,9 @@ export function FormUpdateStatus({
           method="PATCH"
           action={action}
           onSubmit={event => {
-            fetcher.submit(event.currentTarget.form, { method: "POST" })
+            fetcher.submit(event.currentTarget.form as FormData, {
+              method: "POST",
+            })
             setOpen(false)
           }}
           className="space-y-2"

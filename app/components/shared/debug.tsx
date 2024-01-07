@@ -30,7 +30,7 @@ export function Debug({
   isCollapsibleOpen?: boolean
   isAlwaysShow?: boolean
   className?: string
-  children: string | any | unknown | null | undefined | React.ReactNode
+  children?: string | object
 }) {
   const { ENV } = useRootLoaderData()
   const [isVisible, setIsVisible] = useState(!hidden)

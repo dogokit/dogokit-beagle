@@ -64,7 +64,7 @@ export function FormDelete({
           <fetcher.Form
             action={action || location.pathname}
             onSubmit={event => {
-              fetcher.submit(event.currentTarget.form, {
+              fetcher.submit(event.currentTarget.form as FormData, {
                 method: "DELETE",
               })
               setOpen(false)

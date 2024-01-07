@@ -1,3 +1,5 @@
+import { type Prisma } from "@prisma/client"
+
 import { createPostSlug, extractPostSlug, getPostExcerpt } from "~/helpers/post"
 import { db } from "~/libs/db.server"
 import { hashPassword } from "~/utils/encryption.server"
@@ -276,9 +278,9 @@ main()
     console.info("\n🏁 Seeding complete")
     await db.$disconnect()
   })
-  .catch(e => {
-    console.error(e)
+  .catch(async (error: Prisma.PrismaClientKnownRequestError) => {
+    console.error(error)
     console.error("\n⛔ Seeding failed")
-    db.$disconnect()
+    await db.$disconnect()
     process.exit(1)
   })

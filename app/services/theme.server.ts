@@ -32,7 +32,7 @@ async function getThemeSession(request: Request) {
   const session = await themeStorage.getSession(request.headers.get("Cookie"))
   return {
     getTheme: () => {
-      const themeValue = session.get("theme")
+      const themeValue: Theme = session.get("theme")
       return isTheme(themeValue) ? themeValue : null
     },
     setTheme: (theme: Theme) => session.set("theme", theme),

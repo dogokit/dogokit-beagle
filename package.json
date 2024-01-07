@@ -16,6 +16,7 @@
     "check:stylelint": "stylelint --cache ./app/styles/*.css",
     "check:prisma": "prisma validate",
     "check:data": "tsx prisma/utils/check-data.ts",
+    "check:ts-coverage": "typescript-coverage-report",
     "fix": "pnpm /^fix:.*/",
     "fix:prettier": "prettier --cache --write '**/*.{js,mjs,cjs,ts,tsx,json,md,mdx}'",
     "fix:eslint": "eslint --cache --fix .",
@@ -171,7 +172,8 @@
     "tailwindcss": "^3.4.0",
     "taze": "^0.13.1",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "typescript-coverage-report": "0.8.0"
   },
   "engines": {
     "node": ">=18.0.0"
