@@ -1,8 +1,8 @@
 import { type ConfigRedirect } from "~/utils/redirect-route.server"
 
 export const configRedirects: ConfigRedirect[] = [
-  { path: "/u", to: "/user" },
   { path: "/account", to: "/user/account" },
+  { path: "/auth", to: "/login" },
   { path: "/dev", url: "https://github.com/dogokit/dogokit-remix" },
   { path: "/gh", to: "/github" },
   { path: "/github", url: "https://github.com/dogokit/dogokit-remix" },
@@ -12,6 +12,7 @@ export const configRedirects: ConfigRedirect[] = [
   { path: "/signin", to: "/login" },
   { path: "/signout", to: "/logout" },
   { path: "/twitter", url: "https://twitter.com/mhaidarhanif" },
+  { path: "/u", to: "/user" },
   { path: "/x", to: "/twitter" },
   { path: "/youtube", url: "https://youtube.com/mhaidarhanif" },
   { path: "/yt", to: "/youtube" },
