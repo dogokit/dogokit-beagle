@@ -1,7 +1,7 @@
 export type NavItem = {
   path: string
   text: string
-  icon: string | React.ReactNode
+  icon: string
   end?: boolean
   shortcut?: string
   isEnabled?: boolean
@@ -41,7 +41,7 @@ export const configNavigationItems: NavItem[] = [
   {
     path: "/user/dashboard",
     icon: "ph:binoculars-duotone",
-    text: "User Dashboard",
+    text: "Dashboard",
     shortcut: "⌘K+D",
   },
   {

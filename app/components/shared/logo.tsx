@@ -1,18 +1,17 @@
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { Iconify } from "~/components/libs/iconify"
 import { cn } from "~/utils/cn"
 
-const logoVariants = cva("flex items-center gap-1 text-2xl font-semibold", {
+const logoVariants = cva("flex items-center gap-1 font-semibold", {
   variants: {
     variant: {
       default: "",
       link: "",
     },
     size: {
-      default: "",
-      lg: "gap-2 text-4xl",
-      xl: "gap-2 text-4xl sm:gap-4 sm:text-6xl",
+      default: "text-xl sm:text-2xl",
+      lg: "gap-2 text-2xl sm:text-3xl",
+      xl: "gap-2 text-3xl sm:text-4xl",
     },
   },
   defaultVariants: {
@@ -24,9 +23,9 @@ const logoVariants = cva("flex items-center gap-1 text-2xl font-semibold", {
 const logoIconVariants = cva("", {
   variants: {
     size: {
-      default: "-mt-1",
-      lg: "-mt-2",
-      xl: "-mt-2 sm:-mt-3",
+      default: "size-6 sm:size-8",
+      lg: "size-8 sm:size-10",
+      xl: "size-10 sm:size-12",
     },
   },
   defaultVariants: {
@@ -48,11 +47,17 @@ export function Logo({
   classNameIcon,
   text,
 }: LogoProps) {
+  const imageUrl = "/images/logos/dogokit-dog.svg"
+  const altText = "Dog"
+
   return (
     <span className={cn(logoVariants({ variant, size, className }))}>
-      <Iconify
-        icon="fluent-emoji-flat:dog-face"
+      <img
+        src={imageUrl}
+        alt={altText}
         className={cn(logoIconVariants({ size, className: classNameIcon }))}
+        width={35}
+        height={35}
       />
       <span className="inline-flex flex-nowrap font-display">{text}</span>
     </span>
