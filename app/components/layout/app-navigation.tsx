@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react"
 
-import { IconSet } from "~/components/libs/icon-set"
+import { IconSet } from "~/components/libs/icon"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"

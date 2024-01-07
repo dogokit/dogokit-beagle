@@ -1,6 +1,6 @@
 import { type VariantProps } from "class-variance-authority"
 
-import { IconSet } from "~/components/libs/icon-set"
+import { IconSet } from "~/components/libs/icon"
 import { Theme, useTheme } from "~/components/shared/theme"
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"

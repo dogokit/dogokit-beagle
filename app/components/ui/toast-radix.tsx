@@ -2,7 +2,7 @@ import * as ToastPrimitives from "@radix-ui/react-toast"
 import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { useToast } from "~/components/ui/toast-radix-hook"
 import { cn } from "~/utils/cn"
 

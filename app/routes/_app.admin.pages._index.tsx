@@ -5,7 +5,7 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import { IconSet } from "~/components/libs/icon-set"
+import { IconSet } from "~/components/libs/icon"
 import { FormActionItemNew } from "~/components/shared/form-action-item"
 import { FormDelete } from "~/components/shared/form-delete"
 import { PageItemAction } from "~/components/shared/page-item-action"

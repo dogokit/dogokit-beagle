@@ -2,7 +2,7 @@ import { type DialogProps } from "@radix-ui/react-dialog"
 import { Command as CommandPrimitive } from "cmdk"
 import * as React from "react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { Dialog, DialogContent } from "~/components/ui/dialog"
 import { cn } from "~/utils/cn"
 

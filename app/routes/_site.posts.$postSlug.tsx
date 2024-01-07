@@ -5,7 +5,7 @@ import {
 } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { BadgePostStatus } from "~/components/shared/badge-post-status"
 import {
   ErrorHelpInformation,

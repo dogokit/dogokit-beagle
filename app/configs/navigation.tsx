@@ -1,4 +1,4 @@
-import { IconSet } from "~/components/libs/icon-set"
+import { IconSet } from "~/components/libs/icon"
 
 export type NavItem = {
   isEnabled?: boolean

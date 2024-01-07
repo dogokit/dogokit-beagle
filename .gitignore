@@ -10,8 +10,8 @@ __*
 *.local
 /.cache
 /build
+/coverage-ts
 /node_modules
 /prisma/docs
 /public/build
-/coverage-ts
 tsconfig.tsbuildinfo

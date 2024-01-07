@@ -1,6 +1,6 @@
 import { useState, type Dispatch, type SetStateAction } from "react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { Anchor } from "~/components/ui/anchor"
 import { Label } from "~/components/ui/label"
 import { Switch } from "~/components/ui/switch"

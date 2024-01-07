@@ -147,10 +147,13 @@
   }
   .prose-config {
     @apply prose prose-slate dark:prose-invert focus:outline-none;
-    @apply prose-headings:font-semibold;
+    @apply prose-headings:prose-heading-styles;
     @apply prose-a:prose-a-styles;
     @apply prose-pre:prose-pre-styles;
     @apply prose-code:prose-code-styles;
+  }
+  .prose-heading-styles {
+    @apply font-semibold;
   }
   .prose-a-styles {
     @apply focus-ring cursor-pointer rounded-xs no-underline transition;

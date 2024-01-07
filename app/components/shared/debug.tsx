@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { IconMatch } from "~/components/libs/icon"
 import { Button, buttonVariants } from "~/components/ui/button"
 import {
   Collapsible,
@@ -54,7 +54,7 @@ export function Debug({
             size="xs"
             onClick={() => setIsVisible(false)}
           >
-            <Iconify icon="ph:x" />
+            <IconMatch icon="x" />
           </Button>
         </div>
 

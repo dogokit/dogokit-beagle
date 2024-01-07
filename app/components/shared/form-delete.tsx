@@ -1,7 +1,7 @@
 import { useFetcher, useLocation } from "@remix-run/react"
 import { useState } from "react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import {
   AlertDialog,
   AlertDialogCancel,

@@ -1,6 +1,6 @@
 import { useFetcher } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import {
   AlertDialog,
   AlertDialogAction,

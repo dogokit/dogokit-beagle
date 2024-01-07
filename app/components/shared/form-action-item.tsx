@@ -1,7 +1,6 @@
 import { useFetcher } from "@remix-run/react"
 
-import { IconSet } from "~/components/libs/icon-set"
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify, IconSet } from "~/components/libs/icon"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { Card } from "~/components/ui/card"

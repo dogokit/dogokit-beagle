@@ -1,6 +1,5 @@
 import { Link, Outlet } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/iconify"
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
 import { AnchorText } from "~/components/ui/anchor-text"
 import { Card } from "~/components/ui/card"
@@ -11,7 +10,6 @@ export default function ExamplesRoute() {
     <div className="site-container space-y-12 pt-4">
       <header>
         <h1 className="inline-flex items-center gap-2 text-primary">
-          <Iconify icon="ph:bounding-box-duotone" />
           <Link to="/examples">Examples</Link>
         </h1>
         <p>

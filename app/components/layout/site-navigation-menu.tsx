@@ -2,7 +2,7 @@ import { NavLink, useNavigate, type NavLinkProps } from "@remix-run/react"
 import { useState } from "react"
 
 import { NavItemLink } from "~/components/layout/site-navigation"
-import { IconSet } from "~/components/libs/icon-set"
+import { IconSet } from "~/components/libs/icon"
 import { IconLinks } from "~/components/shared/icon-links"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"

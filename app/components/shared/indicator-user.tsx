@@ -1,7 +1,7 @@
 import { Link, NavLink } from "@remix-run/react"
 import { type VariantProps } from "class-variance-authority"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import {
   AvatarAuto,
   type avatarAutoVariants,

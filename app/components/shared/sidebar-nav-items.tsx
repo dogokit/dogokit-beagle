@@ -1,6 +1,6 @@
 import { NavLink } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { type NavItem } from "~/configs/navigation"
 import { cn } from "~/utils/cn"
 

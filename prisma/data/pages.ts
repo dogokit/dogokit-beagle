@@ -1,9 +1,11 @@
+const pageAboutContent = `<h1>The story of Dogokit</h1><p>This is the paragraph after heading one. Discussing about <a target="_blank" rel="noreferrer" class="prose-a-styles" href="https://dogokit.allnimal.com/">Dogokit</strong></a> and <a target="_blank" rel="noreferrer" class="prose-a-styles" href="https://remix.run/">Remix</strong></a>.</p><pre><code>console.info("Hello World 0123");</code></pre><h2>Heading Two</h2><p>Just another paragraph after <strong>heading two</strong>. Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa commodi amet aliquid eos placeat maiores quas dolor iusto accusamus laudantium sit molestiae facilis labore ipsam odit sapiente ex, dolore quis?</p><h3>Heading Three</h3><p>The last paragraph after <em>heading three</em>. Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa commodi amet aliquid eos placeat maiores quas dolor iusto accusamus laudantium sit molestiae facilis labore ipsam odit sapiente ex, dolore quis?</p>`
+
 export const dataPages = [
   {
     slug: "page",
     title: "Page Title",
     description: "Page description.",
-    content: "The content of the page.",
+    content: pageAboutContent,
     statusSymbol: "DRAFT",
   },
   {

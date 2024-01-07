@@ -1,4 +1,4 @@
-import { IconMatch } from "~/components/libs/icon-set"
+import { IconMatch } from "~/components/libs/icon"
 import { Anchor } from "~/components/ui/anchor"
 import { configSiteIconLinks } from "~/configs/site"
 import { cn } from "~/utils/cn"

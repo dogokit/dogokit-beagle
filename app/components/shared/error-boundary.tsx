@@ -6,7 +6,7 @@ import {
   type ErrorResponse,
 } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonLink } from "~/components/ui/button-link"
 

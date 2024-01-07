@@ -1,7 +1,7 @@
 import { useNavigation } from "@remix-run/react"
 import { useNProgress } from "@tanem/react-nprogress"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 
 export function NProgress() {
   const navigation = useNavigation()

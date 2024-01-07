@@ -1,7 +1,7 @@
 import { useFetcher } from "@remix-run/react"
 import { match } from "ts-pattern"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { type AuthStrategy } from "~/services/auth.server"
 

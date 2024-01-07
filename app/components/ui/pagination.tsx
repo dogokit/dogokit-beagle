@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react"
 import * as React from "react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { buttonVariants, type ButtonProps } from "~/components/ui/button"
 import { cn } from "~/utils/cn"
 

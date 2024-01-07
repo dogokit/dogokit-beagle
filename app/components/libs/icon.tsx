@@ -1,13 +1,11 @@
 /**
- * IconSet
- *
- * Alternative of Iconify if want to preload icons, without fetching to their API
- * Beware to put them into remix.config serverDependenciesToBundle
+ * Icon
  *
  * - Phosphor Icons: https://phosphoricons.com
  * - Remix Icon: https://remixicon.com
  */
 
+import { Icon } from "@iconify/react"
 import {
   SiDevdotto,
   SiFacebook,
@@ -19,7 +17,7 @@ import {
   SiTelegram,
   SiThreads,
   SiTwitter,
-  SiX,
+  SiX as SiXTwitter,
   SiYoutube,
 } from "@icons-pack/react-simple-icons"
 import {
@@ -48,15 +46,27 @@ import {
   User,
   UserPlus,
   UsersFour,
+  X as XIcon,
 } from "@phosphor-icons/react"
 import { match } from "ts-pattern"
 
 import { createSlug } from "~/utils/string"
 
 /**
+ * Iconify
+ *
+ * Fastest way to get various icons
+ */
+
+export { Icon as Iconify }
+
+/**
  * IconSet
  *
- * Simple icon import
+ * Simple icon import alternative of Iconify if want to preload icons
+ * without fetching to their API
+ *
+ * Beware to put them into remix.config serverDependenciesToBundle
  */
 
 export const IconSet = {
@@ -95,7 +105,7 @@ export const IconSet = {
   Telegram: SiTelegram,
   Threads: SiThreads,
   Twitter: SiTwitter,
-  XTwitter: SiX,
+  XTwitter: SiXTwitter,
   YouTube: SiYoutube,
 }
 
@@ -106,8 +116,15 @@ export const IconSet = {
  * Because can return a customizable output
  */
 
-export const IconMatch = ({ icon }: { icon: string; className?: string }) =>
+export const IconMatch = ({
+  icon,
+  className,
+}: {
+  icon: string
+  className?: string
+}) =>
   match(createSlug(icon))
+    .with("x", () => <XIcon className={className} />)
     .with("question", () => <Question />)
     .with("devto", () => <SiDevdotto />)
     .with("hashnode", () => <SiHashnode />)
@@ -118,6 +135,6 @@ export const IconMatch = ({ icon }: { icon: string; className?: string }) =>
     .with("telegram", () => <SiTelegram />)
     .with("threads", () => <SiThreads />)
     .with("twitter", () => <SiTwitter />)
-    .with("x", () => <SiX />)
+    .with("x", () => <SiXTwitter />)
     .with("youtube", () => <SiYoutube />)
     .otherwise(() => <Question />)

@@ -5,7 +5,6 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/iconify"
 import {
   getPaginationConfigs,
   getPaginationOptions,
@@ -81,10 +80,7 @@ export default function PostsRoute() {
   return (
     <div className="site-container space-y-12">
       <header className="site-header">
-        <h1 className="inline-flex items-center gap-2 text-primary">
-          <Iconify icon="ph:scroll-duotone" />
-          <span>Posts</span>
-        </h1>
+        <h1 className="inline-flex items-center gap-2 text-primary">Posts</h1>
       </header>
 
       <section className="site-section">

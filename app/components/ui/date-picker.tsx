@@ -2,7 +2,7 @@ import { useInputEvent, type FieldConfig } from "@conform-to/react"
 import { useRef, useState } from "react"
 import { type SelectSingleEventHandler } from "react-day-picker"
 
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { Button } from "~/components/ui/button"
 import { Calendar } from "~/components/ui/calendar"
 import {

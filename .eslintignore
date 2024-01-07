@@ -1,6 +1,7 @@
 /build
+/coverage-ts
+/node_modules
 /public
 /scripts
-node_modules
 postcss.config.js
 remix.config.js

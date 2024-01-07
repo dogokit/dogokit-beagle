@@ -1,4 +1,4 @@
-import { IconSet } from "~/components/libs/icon-set"
+import { IconSet } from "~/components/libs/icon"
 import { AnchorText } from "~/components/ui/anchor-text"
 import { ButtonAnchor } from "~/components/ui/button-anchor"
 

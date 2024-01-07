@@ -17,7 +17,7 @@ import { useRef, useState } from "react"
 import { z } from "zod"
 
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
-import { Iconify } from "~/components/libs/iconify"
+import { Iconify } from "~/components/libs/icon"
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdatePublish } from "~/components/shared/form-update-publish"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"

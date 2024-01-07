@@ -2,7 +2,7 @@ import * as LR from "@uploadcare/blocks"
 import { type OutputFileEntry } from "@uploadcare/blocks"
 import { useCallback, useEffect, useRef, useState } from "react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { IconMatch } from "~/components/libs/icon"
 import { Anchor } from "~/components/ui/anchor"
 import { ButtonIcon } from "~/components/ui/button-icon"
 import { cn } from "~/utils/cn"
@@ -412,7 +412,7 @@ export function PreviewFiles({
               type="button"
               onClick={() => removeFile(file.uuid)}
             >
-              <Iconify icon="ph:x" />
+              <IconMatch icon="x" />
               <span className="sr-only">Remove File</span>
             </ButtonIcon>
           </li>
