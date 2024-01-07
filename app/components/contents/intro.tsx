@@ -16,7 +16,7 @@ export function ContentIntro() {
           Using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more
         </h2>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-4">
           <ButtonAnchor
             size="lg"
             variant="default"
@@ -25,7 +25,6 @@ export function ContentIntro() {
             <Iconify icon="simple-icons:github" className="size-5" />
             <span>Repo on GitHub</span>
           </ButtonAnchor>
-
           <ButtonAnchor size="lg" variant="secondary" href="https://remix.run">
             <Iconify icon="simple-icons:remix" className="size-5" />
             <span>Learn Remix</span>

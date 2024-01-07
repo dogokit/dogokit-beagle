@@ -105,7 +105,7 @@ export function EditorTiptapHook({
       <div
         className={cn(
           "z-10 mb-4 flex max-w-prose items-center gap-1 rounded-md p-1",
-          "bg-foreground text-background",
+          "bg-foreground text-background transition-all",
           "sm:sticky sm:top-[80px]",
         )}
       >
