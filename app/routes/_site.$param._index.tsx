@@ -8,6 +8,7 @@ import { z } from "zod"
 import { zx } from "zodix"
 
 import { ErrorHelpInformation } from "~/components/shared/error-boundary"
+import { ViewHTML } from "~/components/shared/view-html"
 import { AvatarAuto } from "~/components/ui/avatar-auto"
 import { ButtonLink } from "~/components/ui/button-link"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
@@ -17,8 +18,6 @@ import { invariant } from "~/utils/invariant"
 import { createMeta } from "~/utils/meta"
 import { createSitemap } from "~/utils/sitemap"
 
-export const handle = createSitemap()
-
 /**
  * $param splat route can check for:
  * 1. Page from database
@@ -26,6 +25,35 @@ export const handle = createSitemap()
  * 3. Organization from database
  * 4. If nothing found, tell it doesn’t exist
  */
+
+export const handle = createSitemap()
+
+export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
+  const page = data?.page
+  const user = data?.user
+
+  if (page) {
+    return createMeta({
+      title: page.title,
+      description: page.description,
+      canonicalPath: page.slug,
+    })
+  }
+
+  if (user) {
+    return createMeta({
+      title: `${user.fullname} (@${user.username})`,
+      description: user.profiles[0]?.bio ?? "",
+      canonicalPath: user.username,
+    })
+  }
+
+  return createMeta({
+    title: "Page or user profile is not found",
+    description: `Cannot find page or user "${params.param}"`,
+  })
+}
+
 export async function loader({ params }: LoaderFunctionArgs) {
   const { param } = zx.parseParams(params, { param: z.string() })
   invariant(param, "param unavailable")
@@ -39,40 +67,20 @@ export async function loader({ params }: LoaderFunctionArgs) {
   return json({ page: null, user: null }, { status: 404 })
 }
 
-export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
-  const page = data?.page
-  const user = data?.user
-
-  if (page) {
-    return createMeta({
-      title: page.title,
-      description: page.description,
-    })
-  }
-
-  if (user) {
-    return createMeta({
-      title: `${user.fullname} (@${user.username})`,
-      description: user.profiles[0]?.bio ?? "",
-    })
-  }
-
-  return createMeta({
-    title: "Page or user profile is not found",
-    description: `Cannot find page or user "${params.param}"`,
-  })
-}
-
 export default function ParamRoute() {
   const { userSession } = useRootLoaderData()
   const { page, user } = useLoaderData<typeof loader>()
 
   if (page && !user) {
     return (
-      <div className="site-container">
+      <div className="site-container space-y-10">
         <header className="site-section">
           <h1>{page.title}</h1>
         </header>
+
+        <section className="site-section pb-20">
+          <ViewHTML>{page.content}</ViewHTML>
+        </section>
       </div>
     )
   }

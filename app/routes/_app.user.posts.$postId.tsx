@@ -48,11 +48,13 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
     return createMeta({
       title: "Post not found",
       description: `Cannot find post with slug ${params.postSlug}`,
+      canonicalPath: "/posts",
     })
   }
   return createMeta({
     title: post.title,
     description: post.excerpt,
+    canonicalPath: `/posts/${post.slug}`,
   })
 }
 

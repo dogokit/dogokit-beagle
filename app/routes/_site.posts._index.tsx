@@ -16,10 +16,11 @@ import { PostItem } from "~/components/shared/post-item"
 import { db } from "~/libs/db.server"
 import { createMeta } from "~/utils/meta"
 
-export const meta: MetaFunction = () =>
+export const meta: MetaFunction<typeof loader> = () =>
   createMeta({
     title: `Posts`,
     description: `Various posts`,
+    canonicalPath: "/posts",
   })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {

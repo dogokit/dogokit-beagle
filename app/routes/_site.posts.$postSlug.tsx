@@ -36,11 +36,13 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
     return createMeta({
       title: "Post not found",
       description: `Cannot find post with slug ${params.postSlug}`,
+      canonicalPath: "/posts",
     })
   }
   return createMeta({
     title: post.title,
     description: post.excerpt,
+    canonicalPath: `/posts/${post.slug}`,
   })
 }
 
@@ -75,7 +77,7 @@ export default function PostSlugRoute() {
         height={400}
       />
 
-      <header className="site-header">
+      <header className="site-header pb-4">
         {isArchived && (
           <Alert>
             This post has been archived by on {formatDateDMY(post.updatedAt)}
@@ -137,7 +139,7 @@ export default function PostSlugRoute() {
         )}
       </header>
 
-      <section className="site-section pb-20 pt-4">
+      <section className="site-section pb-20">
         <ViewHTML>{post.content}</ViewHTML>
       </section>
 
