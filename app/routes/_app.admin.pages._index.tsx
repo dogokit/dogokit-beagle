@@ -5,7 +5,7 @@ import {
 } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/iconify"
+import { IconSet } from "~/components/libs/icon-set"
 import { FormActionItemNew } from "~/components/shared/form-action-item"
 import { FormDelete } from "~/components/shared/form-delete"
 import { PageItemAction } from "~/components/shared/page-item-action"
@@ -69,7 +69,7 @@ export default function UserPagesRoute() {
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Page")} />
           <ButtonLink to="/pages" variant="outline" size="xs">
-            <Iconify icon="ph:arrow-square-out-duotone" />
+            <IconSet.ArrowSquareOut />
             <span>View Pages</span>
           </ButtonLink>
           <FormDelete

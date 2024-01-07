@@ -23,6 +23,7 @@ import {
   SiYoutube,
 } from "@icons-pack/react-simple-icons"
 import {
+  ArrowSquareOut,
   Binoculars,
   BoundingBox,
   Crown,
@@ -48,8 +49,18 @@ import {
   UserPlus,
   UsersFour,
 } from "@phosphor-icons/react"
+import { match } from "ts-pattern"
+
+import { createSlug } from "~/utils/string"
+
+/**
+ * IconSet
+ *
+ * Simple icon import
+ */
 
 export const IconSet = {
+  ArrowSquareOut,
   Binoculars,
   BoundingBox,
   Crown,
@@ -87,3 +98,26 @@ export const IconSet = {
   XTwitter: SiX,
   YouTube: SiYoutube,
 }
+
+/**
+ * IconMatch
+ *
+ * More flexible in case using icon system other than Iconify
+ * Because can return a customizable output
+ */
+
+export const IconMatch = ({ icon }: { icon: string; className?: string }) =>
+  match(createSlug(icon))
+    .with("question", () => <Question />)
+    .with("devto", () => <SiDevdotto />)
+    .with("hashnode", () => <SiHashnode />)
+    .with("facebook", () => <SiFacebook />)
+    .with("github", () => <SiGithub />)
+    .with("instagram", () => <SiInstagram />)
+    .with("linkedin", () => <SiLinkedin />)
+    .with("telegram", () => <SiTelegram />)
+    .with("threads", () => <SiThreads />)
+    .with("twitter", () => <SiTwitter />)
+    .with("x", () => <SiX />)
+    .with("youtube", () => <SiYoutube />)
+    .otherwise(() => <Question />)

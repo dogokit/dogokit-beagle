@@ -1,6 +1,6 @@
 import { type MetaFunction } from "@remix-run/node"
 
-import { Iconify } from "~/components/libs/iconify"
+import { IconSet } from "~/components/libs/icon-set"
 import { Anchor } from "~/components/ui/anchor"
 import { createMeta } from "~/utils/meta"
 
@@ -15,7 +15,7 @@ export default function AboutRoute() {
     <div className="site-container space-y-12">
       <header className="site-header">
         <h1 className="inline-flex items-center gap-2 text-primary">
-          <Iconify icon="ph:info-duotone" />
+          <IconSet.Info weight="duotone" />
           <span>About</span>
         </h1>
       </header>
