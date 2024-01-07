@@ -1,3 +1,4 @@
+import { loadIcons } from "@iconify/react"
 import {
   Links,
   LiveReload,
@@ -5,9 +6,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react"
+import { useEffect } from "react"
 
 import { NProgress } from "~/components/shared/nprogress"
 import { ThemeHead, useTheme, type Theme } from "~/components/shared/theme"
+import { configIcons } from "~/configs/icons"
 import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 
@@ -20,6 +23,11 @@ export function Document({
 }) {
   const { ENV } = useRootLoaderData()
   const [theme] = useTheme()
+
+  useEffect(() => {
+    const unsubscribe = loadIcons(configIcons)
+    return unsubscribe
+  })
 
   return (
     <html lang={configSite.languageCode} className={theme ?? ""}>
