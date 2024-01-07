@@ -2,7 +2,6 @@ import { Link, NavLink, type NavLinkProps } from "@remix-run/react"
 
 import { SiteNavigationMenu } from "~/components/layout/site-navigation-menu"
 import { IconSet } from "~/components/libs/icon-set"
-import { Iconify } from "~/components/libs/iconify"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
@@ -27,9 +26,7 @@ function SiteNavigationSmall() {
   return (
     <nav
       className={cn(
-        "flex p-2 lg:hidden",
-        "sticky top-0 z-20 items-center justify-between gap-2",
-        "bg-background/50 backdrop-blur-lg backdrop-saturate-150",
+        "sticky top-0 z-20 flex items-center justify-between gap-2 bg-background p-2 transition-colors lg:hidden",
       )}
     >
       <div className="flex items-center justify-between gap-2">
@@ -60,7 +57,7 @@ function SiteNavigationSmall() {
         {!userSession && (
           <>
             <ButtonLink to="/login" variant="ghost" size="sm">
-              <Iconify icon="ph:sign-in-duotone" />
+              <IconSet.SignIn weight="duotone" />,
               <span className="hidden sm:inline">Log In</span>
             </ButtonLink>
 
@@ -78,10 +75,7 @@ function SiteNavigationLarge() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-40 hidden p-4 lg:flex",
-        "items-center justify-between gap-2",
-        "transition duration-200 ease-in-out",
-        "bg-background/50 backdrop-blur-lg backdrop-saturate-150",
+        "sticky top-0 z-40 hidden items-center justify-between gap-2 bg-background p-4 transition-colors lg:flex",
       )}
     >
       <div className="flex items-center justify-between gap-2">
@@ -106,11 +100,11 @@ function SiteNavigationLarge() {
           {!userSession && (
             <>
               <ButtonLink to="/login" variant="secondary" size="sm">
-                <Iconify icon="ph:sign-in-duotone" />
+                <IconSet.SignIn weight="duotone" />
                 <span>Log In</span>
               </ButtonLink>
               <ButtonLink to="/signup" size="sm">
-                <Iconify icon="ph:user-plus-duotone" />
+                <IconSet.UserPlus weight="duotone" />
                 <span>Sign Up</span>
               </ButtonLink>
             </>
@@ -147,7 +141,7 @@ export function NavItemLink({
           )
         }
       >
-        <Iconify icon={navItem.icon} />
+        {navItem.iconEl ? navItem.iconEl : ""}
         <span className="select-none">{navItem.text}</span>
       </NavLink>
     </li>

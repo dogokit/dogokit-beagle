@@ -13,7 +13,7 @@ import {
 } from "@remix-run/react"
 import { z } from "zod"
 
-import { Iconify } from "~/components/libs/iconify"
+import { IconSet } from "~/components/libs/icon-set"
 import { AuthButtons } from "~/components/shared/auth-buttons"
 import { SectionOr } from "~/components/shared/section-or"
 import { ButtonLoading } from "~/components/ui/button-loading"
@@ -74,7 +74,7 @@ export default function SignUpRoute() {
       <div className="site-section-md space-y-8">
         <header className="site-header">
           <h2 className="inline-flex items-center gap-2">
-            <Iconify icon="ph:sign-in-duotone" />
+            <IconSet.SignIn weight="duotone" />
             <span>Log in to continue</span>
           </h2>
           <p>

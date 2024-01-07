@@ -3,7 +3,6 @@ import { useState } from "react"
 
 import { NavItemLink } from "~/components/layout/site-navigation"
 import { IconSet } from "~/components/libs/icon-set"
-import { Iconify } from "~/components/libs/iconify"
 import { IconLinks } from "~/components/shared/icon-links"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
@@ -59,7 +58,7 @@ export function SiteNavigationMenu() {
                     setOpen?.(false)
                   }}
                 >
-                  <Iconify icon="ph:sign-in-duotone" />
+                  <IconSet.SignIn weight="duotone" />
                   <span>Log In</span>
                 </ButtonLink>
                 <ButtonLink
@@ -70,7 +69,7 @@ export function SiteNavigationMenu() {
                     setOpen?.(false)
                   }}
                 >
-                  <Iconify icon="ph:user-plus-duotone" />
+                  <IconSet.UserPlus weight="duotone" />
                   <span>Sign Up</span>
                 </ButtonLink>
               </>
