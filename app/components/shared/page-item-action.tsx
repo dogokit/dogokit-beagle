@@ -29,7 +29,12 @@ export function PageItemAction({ page }: { page: JsonifyPrisma<typeof modelPage.
           <h4>{truncateText(page.title)}</h4>
 
           <div className="space-x-1">
-            <ButtonLink variant="outline" size="xs" to={`/admin/pages/${page.id}`}>
+            <ButtonLink
+              to={`/admin/pages/${page.id}`}
+              prefetch="intent"
+              variant="outline"
+              size="xs"
+            >
               <IconMatch icon="note-pencil" />
               <span>Edit</span>
             </ButtonLink>

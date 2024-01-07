@@ -97,7 +97,7 @@ export default function ParamRoute() {
               size="xl"
             />
             {isOwner && (
-              <ButtonLink to="/user/settings" variant="outline" size="sm">
+              <ButtonLink to="/user/settings" prefetch="intent" variant="outline" size="sm">
                 Edit profile
               </ButtonLink>
             )}

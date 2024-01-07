@@ -116,7 +116,7 @@ export default function PostSlugRoute() {
               itemStatuses={postStatuses}
               item={post}
             />
-            <ButtonLink to={`/user/posts/${post.id}`} variant="outline" size="xs">
+            <ButtonLink to={`/user/posts/${post.id}`} prefetch="intent" variant="outline" size="xs">
               <IconMatch icon="note-pencil" />
               <span>Edit Post</span>
             </ButtonLink>

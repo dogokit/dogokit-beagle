@@ -29,7 +29,7 @@ export function PostItemAction({ post }: { post: JsonifyPrisma<typeof modelPost.
           <h4>{truncateText(post.title)}</h4>
 
           <div className="space-x-1">
-            <ButtonLink variant="outline" size="xs" to={`/user/posts/${post.id}`}>
+            <ButtonLink to={`/user/posts/${post.id}`} prefetch="intent" variant="outline" size="xs">
               <IconMatch icon="note-pencil" />
               <span>Edit</span>
             </ButtonLink>

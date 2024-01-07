@@ -1,4 +1,4 @@
-import { type DataFunctionArgs } from "@remix-run/node"
+import { type LoaderFunctionArgs } from "@remix-run/node"
 
 import { configMeta } from "~/configs/meta"
 import { getDomainUrl } from "~/utils/url.server"
@@ -7,7 +7,7 @@ import { getDomainUrl } from "~/utils/url.server"
 const maskableIconSizes = [512, 192, 128]
 const iconSizes = [512, 192, 180, 128, 120]
 
-export function loader({ request }: DataFunctionArgs) {
+export function loader({ request }: LoaderFunctionArgs) {
   return {
     id: "/",
     name: configMeta.defaultName,
