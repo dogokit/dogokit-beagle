@@ -1,7 +1,7 @@
 export type NavItem = {
   path: string
   text: string
-  icon: string
+  icon: string | React.ReactNode
   end?: boolean
   shortcut?: string
   isEnabled?: boolean

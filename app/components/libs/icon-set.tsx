@@ -8,8 +8,21 @@
  * - Simple Icons: https://simpleicons.org
  */
 
-import { Laptop, List, Moon, Plus, Sun } from "@phosphor-icons/react"
+import {
+  House,
+  Info,
+  Laptop,
+  List,
+  Moon,
+  Plus,
+  Sun,
+  type Icon,
+} from "@phosphor-icons/react"
+import { type IconType } from "react-icons"
 import { SiGithub, SiRemix } from "react-icons/si"
+
+export type IconReactIcons = IconType
+export type IconPhosphor = Icon
 
 export const IconSet = {
   Laptop,
@@ -17,6 +30,8 @@ export const IconSet = {
   Sun,
   List,
   Plus,
+  House,
+  Info,
   Remix: SiRemix,
   GitHub: SiGithub,
 }

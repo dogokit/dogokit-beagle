@@ -29,4 +29,6 @@ export const configIcons = [
   "ph:users-four-duotone",
   "simple-icons:github",
   "simple-icons:remix",
+  "ph:sign-in-duotone",
+  "ph:user-plus-duotone",
 ]
