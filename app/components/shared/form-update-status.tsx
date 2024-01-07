@@ -1,4 +1,4 @@
-import { type PostStatus } from "@prisma/client"
+import { PageStatus, type PostStatus } from "@prisma/client"
 import { useFetcher } from "@remix-run/react"
 import { useState } from "react"
 
@@ -34,7 +34,7 @@ export function FormUpdateStatus({
   intentValue = "update-item-status",
   dialogTitle = "Update Status",
   dialogDescription = "Update the status of this item",
-  buttonText = "Update",
+  dialogAction = "Update",
   item,
   itemStatuses,
   className,
@@ -44,10 +44,8 @@ export function FormUpdateStatus({
   intentValue: string
   dialogTitle: string
   dialogDescription: string
-
-  buttonText?: string // FIXME: Rename to dialogAction
-  // IDEA: Make it more general with a model Item that has a Status
-  itemStatuses: PostStatus[]
+  dialogAction?: string
+  itemStatuses: PageStatus[] | PostStatus[]
   item:
     | JsonifyPrisma<typeof modelPage.getWithStatus>
     | JsonifyPrisma<typeof modelPost.getWithStatus>
@@ -136,12 +134,12 @@ export function FormUpdateStatus({
             <ButtonLoading
               type="submit"
               size="sm"
-              loadingText="Changing..."
+              loadingText="Updating..."
               name="intent"
               value={intentValue}
               isLoading={isLoading}
             >
-              {buttonText}
+              {dialogAction}
             </ButtonLoading>
           </AlertDialogFooter>
         </fetcher.Form>

@@ -54,7 +54,7 @@ export function PageItemAction({ page }: { page: JsonifyPrisma<typeof modelPage.
           intentValue="update-page-status"
           dialogTitle="Update page's status"
           dialogDescription={`Update the status of page: ${page.title} (${page.slug})`}
-          buttonText="Update Status"
+          dialogAction="Update Status"
           itemStatuses={pageStatuses}
           item={page}
         />

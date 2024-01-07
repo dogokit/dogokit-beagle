@@ -160,7 +160,7 @@ export default function UserPostsPostIdRoute() {
                   intentValue="update-post-status"
                   dialogTitle="Update post's status"
                   dialogDescription={`Update the status of post: ${post.title} (${post.slug})`}
-                  buttonText="Update Status"
+                  dialogAction="Update Status"
                   itemStatuses={postStatuses}
                   item={post}
                 />
