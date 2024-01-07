@@ -90,12 +90,6 @@ export default function UserPostsPostIdRoute() {
   const contentRef = useRef<HTMLInputElement>(null)
   const contentControl = useInputEvent({ ref: contentRef })
 
-  function handleReset() {
-    form.ref.current?.reset()
-    setTitleValue(post.title)
-    setContentValue(post.content)
-  }
-
   function handleUpdateSlug() {
     const newSlug = createSlug(titleValue)
     slugControl.change(newSlug)
@@ -124,10 +118,6 @@ export default function UserPostsPostIdRoute() {
                 >
                   <span>Save</span>
                 </ButtonLoading>
-                <Button type="button" variant="outline" size="xs" onClick={handleReset}>
-                  <IconMatch icon="arrow-counter-clockwise" />
-                  <span>Reset</span>
-                </Button>
                 <FormDelete
                   action="/user/posts/delete"
                   intentValue="user-delete-post-by-id"
