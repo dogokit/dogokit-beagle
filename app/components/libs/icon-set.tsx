@@ -19,7 +19,7 @@ import {
   type Icon,
 } from "@phosphor-icons/react"
 import { type IconType } from "react-icons"
-import { SiGithub, SiRemix } from "react-icons/si"
+import { SiGithub, SiRemix } from "react-icons/si/index.js"
 
 export type IconReactIcons = IconType
 export type IconPhosphor = Icon
