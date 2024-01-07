@@ -40,12 +40,12 @@ export function FormUpdateStatus({
   className,
 }: {
   itemId: string
-  action: string // Example: /user/posts/update
-  intentValue: string // Example: update-post-status
+  action: string
+  intentValue: string
   dialogTitle: string
   dialogDescription: string
-  // FIXME: Rename to dialogAction
-  buttonText?: string
+
+  buttonText?: string // FIXME: Rename to dialogAction
   // IDEA: Make it more general with a model Item that has a Status
   itemStatuses: PostStatus[]
   item:

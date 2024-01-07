@@ -102,6 +102,7 @@ export default function UserPagesPageIdRoute() {
           <section className="app-section">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
+                {/* IDEA: https://reactrouter.com/en/main/hooks/use-blocker */}
                 <ButtonLoading
                   type="submit"
                   variant="outline"
@@ -129,7 +130,7 @@ export default function UserPagesPageIdRoute() {
                   itemName={page.title}
                   itemId="pageId"
                   action="/admin/pages/update"
-                  intentValue="update-page-publish"
+                  intentValue="update-page-status"
                   item={page}
                 />
 

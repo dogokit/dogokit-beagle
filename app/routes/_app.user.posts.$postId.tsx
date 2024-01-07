@@ -114,6 +114,7 @@ export default function UserPostsPostIdRoute() {
           <section className="app-section">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
+                {/* IDEA: https://reactrouter.com/en/main/hooks/use-blocker */}
                 <ButtonLoading
                   variant="outline"
                   size="xs"

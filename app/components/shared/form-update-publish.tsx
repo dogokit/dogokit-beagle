@@ -21,13 +21,13 @@ export function FormUpdatePublish({
   itemName = "Item",
   itemId = "itemId",
   action = "/user/items/update",
-  intentValue = "update-item-publish",
+  intentValue = "update-item-status",
   item,
 }: {
   itemName: string
   itemId: string
-  action: string // Example: /user/posts/update
-  intentValue: string // Example: update-post-status
+  action: string
+  intentValue: string
   item:
     | JsonifyPrisma<typeof modelPage.getWithStatus>
     | JsonifyPrisma<typeof modelPost.getWithStatus>
