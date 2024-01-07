@@ -13,28 +13,30 @@ import { hydrateRoot } from "react-dom/client"
 declare global {
   interface Window {
     ENV: {
+      NODE_ENV: string
       SENTRY_DSN: string
     }
   }
 }
 
-Sentry.init({
-  dsn: window.ENV.SENTRY_DSN,
-  tracesSampleRate: 1,
-  replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1,
+window.ENV.NODE_ENV === "production" &&
+  Sentry.init({
+    dsn: window.ENV.SENTRY_DSN,
+    tracesSampleRate: 1,
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1,
 
-  integrations: [
-    new Sentry.BrowserTracing({
-      routingInstrumentation: Sentry.remixRouterInstrumentation(
-        useEffect,
-        useLocation,
-        useMatches,
-      ),
-    }),
-    new Sentry.Replay(),
-  ],
-})
+    integrations: [
+      new Sentry.BrowserTracing({
+        routingInstrumentation: Sentry.remixRouterInstrumentation(
+          useEffect,
+          useLocation,
+          useMatches,
+        ),
+      }),
+      new Sentry.Replay(),
+    ],
+  })
 
 startTransition(() => {
   hydrateRoot(

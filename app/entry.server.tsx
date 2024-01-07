@@ -23,10 +23,11 @@ export function handleError(error: unknown, { request }: { request: Request }) {
   Sentry.captureRemixServerException(error, "remix.server", request)
 }
 
-Sentry.init({
-  dsn: parsedEnv.SENTRY_DSN,
-  tracesSampleRate: 1,
-})
+parsedEnv.NODE_ENV === "production" &&
+  Sentry.init({
+    dsn: parsedEnv.SENTRY_DSN,
+    tracesSampleRate: 1,
+  })
 
 const ABORT_DELAY = 5_000
 
