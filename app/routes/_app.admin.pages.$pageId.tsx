@@ -18,6 +18,7 @@ import { z } from "zod"
 
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
 import { FormDelete } from "~/components/shared/form-delete"
+import { FormUpdatePublish } from "~/components/shared/form-update-publish"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { Timestamp } from "~/components/shared/timestamp"
 import { Button } from "~/components/ui/button"
@@ -84,7 +85,6 @@ export default function UserPagesPageIdRoute() {
   const isSubmitting = navigation.state === "submitting"
   const isPageUpdated = page.createdAt !== page.updatedAt
   const isPageDraft = page.status.symbol === "DRAFT"
-  const isPagePublished = !isPageDraft
 
   const [titleValue, setTitleValue] = useState(title.defaultValue ?? "")
   const slugRef = useRef<HTMLInputElement>(null)
@@ -156,24 +156,13 @@ export default function UserPagesPageIdRoute() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <ButtonLoading
-                  type="button"
-                  variant="outline"
-                  size="xs"
-                  loadingText="Publishing"
-                  isLoading={isSubmitting}
-                  iconComponent={
-                    <Iconify
-                      icon={
-                        isPagePublished
-                          ? "ph:book-open-duotone"
-                          : "ph:book-open-text-duotone"
-                      }
-                    />
-                  }
-                >
-                  <span>{isPagePublished ? "Unpublish" : "Publish"}</span>
-                </ButtonLoading>
+                <FormUpdatePublish
+                  itemName={page.title}
+                  itemId="pageId"
+                  action="/admin/posts/update"
+                  intentValue="update-page-publish"
+                  item={page}
+                />
 
                 <FormUpdateStatus
                   itemId="pageId"

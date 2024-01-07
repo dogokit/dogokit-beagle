@@ -63,9 +63,10 @@ export function FormDelete({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <fetcher.Form
             action={action || location.pathname}
-            method="DELETE"
             onSubmit={event => {
-              fetcher.submit(event.currentTarget.form, { method: "DELETE" })
+              fetcher.submit(event.currentTarget.form, {
+                method: "DELETE",
+              })
               setOpen(false)
             }}
           >

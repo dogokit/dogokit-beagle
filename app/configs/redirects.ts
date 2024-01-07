@@ -1,6 +1,7 @@
 import { type ConfigRedirect } from "~/utils/redirect-route.server"
 
 export const configRedirects: ConfigRedirect[] = [
+  { path: "/u", to: "/user" },
   { path: "/account", to: "/user/account" },
   { path: "/dev", url: "https://github.com/dogokit/dogokit-remix" },
   { path: "/gh", to: "/github" },

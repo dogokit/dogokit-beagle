@@ -44,6 +44,7 @@ export function FormUpdateStatus({
   intentValue: string // Example: update-post-status
   dialogTitle: string
   dialogDescription: string
+  // FIXME: Rename to dialogAction
   buttonText?: string
   // IDEA: Make it more general with a model Item that has a Status
   itemStatuses: PostStatus[]
@@ -85,7 +86,7 @@ export function FormUpdateStatus({
           method="PATCH"
           action={action}
           onSubmit={event => {
-            fetcher.submit(event.currentTarget.form, { method: "PATCH" })
+            fetcher.submit(event.currentTarget.form, { method: "POST" })
             setOpen(false)
           }}
           className="space-y-2"

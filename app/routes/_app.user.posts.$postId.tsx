@@ -18,6 +18,7 @@ import { z } from "zod"
 
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
 import { FormDelete } from "~/components/shared/form-delete"
+import { FormUpdatePublish } from "~/components/shared/form-update-publish"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { Timestamp } from "~/components/shared/timestamp"
 import { Button } from "~/components/ui/button"
@@ -85,7 +86,6 @@ export default function UserPostsPostIdRoute() {
   const isSubmitting = navigation.state === "submitting"
   const isPostUpdated = post.createdAt !== post.updatedAt
   const isPostDraft = post.status.symbol === "DRAFT"
-  const isPostPublished = !isPostDraft
 
   const [titleValue, setTitleValue] = useState(title.defaultValue ?? "")
   const slugRef = useRef<HTMLInputElement>(null)
@@ -157,24 +157,13 @@ export default function UserPostsPostIdRoute() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <ButtonLoading
-                  type="button"
-                  variant="outline"
-                  size="xs"
-                  loadingText="Publishing"
-                  isLoading={isSubmitting}
-                  iconComponent={
-                    <Iconify
-                      icon={
-                        isPostPublished
-                          ? "ph:book-open-duotone"
-                          : "ph:book-open-text-duotone"
-                      }
-                    />
-                  }
-                >
-                  <span>{isPostPublished ? "Unpublish" : "Publish"}</span>
-                </ButtonLoading>
+                <FormUpdatePublish
+                itemName={post.title}
+                  itemId="postId"
+                  action="/user/posts/update"
+                  intentValue="update-post-status"
+                  item={post}
+                />
 
                 <FormUpdateStatus
                   itemId="postId"
