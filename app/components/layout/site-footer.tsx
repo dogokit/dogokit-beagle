@@ -23,7 +23,11 @@ function SiteFooterSitemap() {
     <section className="flex flex-wrap gap-4">
       <div className={cn("flex-auto space-y-8 rounded-md bg-muted/30 p-4")}>
         <div className="space-y-4">
-          <Link to="/" className="focus-ring inline-block rounded-xs transition hover:opacity-75">
+          <Link
+            to="/"
+            prefetch="intent"
+            className="focus-ring inline-block rounded-xs transition hover:opacity-75"
+          >
             <Logo text="Dogokit" classNameIcon="grayscale" />
           </Link>
           <p className="max-w-sm text-sm">{configSite.description}</p>
@@ -97,6 +101,7 @@ function FooterSitemap() {
                 {item.to && (
                   <Link
                     to={item.to}
+                    prefetch="intent"
                     className="focus-ring text-muted-foreground transition hover:text-foreground"
                   >
                     {item.name}

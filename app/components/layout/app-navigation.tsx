@@ -41,7 +41,7 @@ export function AppNavigation() {
             <ButtonLink to="/logout" size="xs" variant="destructive">
               Log out
             </ButtonLink>
-            <ButtonLink to="/" size="xs" prefetch="intent">
+            <ButtonLink to="/" prefetch="intent" size="xs" >
               Home
             </ButtonLink>
           </div>

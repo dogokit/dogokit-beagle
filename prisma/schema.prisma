@@ -171,7 +171,7 @@ model Page {
   status   PageStatus @relation(fields: [statusId], references: [id])
   statusId String
 
-  user   User?   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  user   User?   @relation(fields: [userId], references: [id], onUpdate: Cascade)
   userId String?
 
   createdAt DateTime @default(now())

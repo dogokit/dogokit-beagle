@@ -9,8 +9,10 @@ import { PassThrough } from "node:stream"
 
 import {
   createReadableStreamFromReadable,
+  type ActionFunctionArgs,
   type AppLoadContext,
   type EntryContext,
+  type LoaderFunctionArgs,
 } from "@remix-run/node"
 import { RemixServer } from "@remix-run/react"
 import * as Sentry from "@sentry/remix"
@@ -18,6 +20,8 @@ import { isbot } from "isbot"
 import { renderToPipeableStream } from "react-dom/server"
 
 import { isProduction, parsedEnv } from "~/utils/env.server"
+
+const ABORT_DELAY = 5_000
 
 export function handleError(error: unknown, { request }: { request: Request }) {
   if (isProduction) {
@@ -31,7 +35,33 @@ isProduction &&
     tracesSampleRate: 1,
   })
 
-const ABORT_DELAY = 5_000
+/**
+ * Fix double data request when prefetching in Remix
+ *
+ * https://remix.run/docs/en/main/file-conventions/entry.server#handledatarequest
+ * https://sergiodxa.com/articles/fix-double-data-request-when-prefetching-in-remix
+ */
+export function handleDataRequest(
+  response: Response,
+  { request }: LoaderFunctionArgs | ActionFunctionArgs,
+) {
+  const isGet = request.method.toLowerCase() === "get"
+  const purpose =
+    request.headers.get("Purpose") ||
+    request.headers.get("X-Purpose") ||
+    request.headers.get("Sec-Purpose") ||
+    request.headers.get("Sec-Fetch-Purpose") ||
+    request.headers.get("Moz-Purpose")
+  const isPrefetch = purpose === "prefetch"
+
+  // If it's a GET request + a prefetch request + doesn't have a Cache-Control header
+  if (isGet && isPrefetch && !response.headers.has("Cache-Control")) {
+    // Cache for 5 seconds only on the browser
+    response.headers.set("Cache-Control", "private, max-age=5")
+  }
+
+  return response
+}
 
 export default function handleRequest(
   request: Request,

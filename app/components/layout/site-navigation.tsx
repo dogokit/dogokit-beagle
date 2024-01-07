@@ -30,7 +30,11 @@ function SiteNavigationSmall() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="focus-ring block rounded-xs transition hover:text-primary">
+        <Link
+          to="/"
+          prefetch="intent"
+          className="focus-ring block rounded-xs transition hover:text-primary"
+        >
           <Logo text="Dogokit" />
         </Link>
 
@@ -42,7 +46,7 @@ function SiteNavigationSmall() {
           <>
             <SiteNavigationMenu />
 
-            <ButtonLink to="/new" size="sm" className="hidden sm:inline-flex">
+            <ButtonLink to="/new" prefetch="intent" size="sm" className="hidden sm:inline-flex">
               <IconMatch icon="plus" />
               <span className="hidden sm:inline">New</span>
             </ButtonLink>
@@ -53,7 +57,7 @@ function SiteNavigationSmall() {
 
         {!userSession && (
           <>
-            <ButtonLink to="/login" variant="ghost" size="sm">
+            <ButtonLink to="/login" prefetch="intent" variant="ghost" size="sm">
               <IconMatch icon="sign-in" />
               <span className="hidden sm:inline">Log In</span>
             </ButtonLink>
@@ -76,7 +80,7 @@ function SiteNavigationLarge() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link to="/" className="focus-ring block transition hover:text-primary">
+        <Link to="/" prefetch="intent" className="focus-ring block transition hover:text-primary">
           <Logo text="Dogokit" />
         </Link>
 
@@ -96,11 +100,11 @@ function SiteNavigationLarge() {
         <div className="flex items-center gap-4">
           {!userSession && (
             <>
-              <ButtonLink to="/login" variant="secondary" size="sm">
+              <ButtonLink to="/login" prefetch="intent" variant="secondary" size="sm">
                 <IconMatch icon="sign-in" />
                 <span>Log In</span>
               </ButtonLink>
-              <ButtonLink to="/signup" size="sm">
+              <ButtonLink to="/signup" prefetch="intent" size="sm">
                 <IconMatch icon="user-plus" />
                 <span>Sign Up</span>
               </ButtonLink>
@@ -109,7 +113,7 @@ function SiteNavigationLarge() {
 
           {userSession && (
             <>
-              <ButtonLink to="/new" size="sm">
+              <ButtonLink to="/new" prefetch="intent" size="sm">
                 <IconMatch icon="plus" />
                 <span>New</span>
               </ButtonLink>
@@ -130,6 +134,7 @@ export function NavItemLink({
     <li>
       <NavLink
         to={navItem.path}
+        prefetch="intent"
         onClick={onClick}
         className={({ isActive }) =>
           cn(

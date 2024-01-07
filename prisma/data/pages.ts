@@ -5,14 +5,14 @@ export const dataPages = [
     slug: "page",
     title: "Page Title",
     description: "Page description.",
-    content: pageAboutContent,
+    content: "Example page content.",
     statusSymbol: "DRAFT",
   },
   {
     slug: "about",
     title: "About",
     description: "About the project.",
-    content: "The content of About.",
+    content: pageAboutContent,
     statusSymbol: "PUBLISHED",
   },
   {
