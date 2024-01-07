@@ -10,16 +10,9 @@ import * as Sentry from "@sentry/remix"
 import { startTransition, StrictMode, useEffect } from "react"
 import { hydrateRoot } from "react-dom/client"
 
-declare global {
-  interface Window {
-    ENV: {
-      NODE_ENV: string
-      SENTRY_DSN: string
-    }
-  }
-}
+import { isProduction } from "~/utils/env.client"
 
-window.ENV.NODE_ENV === "production" &&
+isProduction &&
   Sentry.init({
     dsn: window.ENV.SENTRY_DSN,
     tracesSampleRate: 1,

@@ -17,13 +17,15 @@ import * as Sentry from "@sentry/remix"
 import { isbot } from "isbot"
 import { renderToPipeableStream } from "react-dom/server"
 
-import { parsedEnv } from "~/utils/env.server"
+import { isProduction, parsedEnv } from "~/utils/env.server"
 
 export function handleError(error: unknown, { request }: { request: Request }) {
-  Sentry.captureRemixServerException(error, "remix.server", request)
+  if (isProduction) {
+    Sentry.captureRemixServerException(error, "remix.server", request)
+  }
 }
 
-parsedEnv.NODE_ENV === "production" &&
+isProduction &&
   Sentry.init({
     dsn: parsedEnv.SENTRY_DSN,
     tracesSampleRate: 1,
