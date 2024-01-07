@@ -105,28 +105,28 @@ export function EditorTiptapHook({
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={editor.isActive("bold") ? buttonActive : buttonInactive}
         >
-          <IconMatch icon="editor-bold" />
+          <IconMatch className="size-4" icon="editor-bold" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={editor.isActive("italic") ? buttonActive : buttonInactive}
         >
-          <IconMatch icon="editor-italic" />
+          <IconMatch className="size-4" icon="editor-italic" />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleStrike().run()}
           className={editor.isActive("strike") ? buttonActive : buttonInactive}
         >
-          <IconMatch icon="editor-strikethrough" />
+          <IconMatch className="size-4" icon="editor-strikethrough" />
         </button>
         <button
           type="button"
           onClick={handleSetLink}
           className={editor.isActive("link") ? buttonActive : buttonInactive}
         >
-          <IconMatch icon="editor-link" />
+          <IconMatch className="size-4" icon="editor-link" />
         </button>
         <button
           type="button"
@@ -134,7 +134,7 @@ export function EditorTiptapHook({
           disabled={!editor.isActive("link")}
           className={!editor.isActive("link") ? cn(buttonInactive, "opacity-25") : buttonInactive}
         >
-          <IconMatch icon="editor-link-unlink" />
+          <IconMatch className="size-4" icon="editor-link-unlink" />
         </button>
       </div>
 
@@ -152,28 +152,28 @@ export function EditorTiptapHook({
             onClick={() => editor.chain().focus().toggleBold().run()}
             className={editor.isActive("bold") ? buttonActive : buttonInactive}
           >
-            <IconMatch icon="editor-bold" />
+            <IconMatch className="size-4" icon="editor-bold" />
           </button>
           <button
             type="button"
             onClick={() => editor.chain().focus().toggleItalic().run()}
             className={editor.isActive("italic") ? buttonActive : buttonInactive}
           >
-            <IconMatch icon="editor-italic" />
+            <IconMatch className="size-4" icon="editor-italic" />
           </button>
           <button
             type="button"
             onClick={() => editor.chain().focus().toggleStrike().run()}
             className={editor.isActive("strike") ? buttonActive : buttonInactive}
           >
-            <IconMatch icon="editor-strikethrough" />
+            <IconMatch className="size-4" icon="editor-strikethrough" />
           </button>
           <button
             type="button"
             onClick={handleSetLink}
             className={editor.isActive("link") ? buttonActive : buttonInactive}
           >
-            <IconMatch icon="editor-link" />
+            <IconMatch className="size-4" icon="editor-link" />
           </button>
           <button
             type="button"
@@ -181,7 +181,7 @@ export function EditorTiptapHook({
             disabled={!editor.isActive("link")}
             className={!editor.isActive("link") ? cn(buttonInactive, "opacity-25") : buttonInactive}
           >
-            <IconMatch icon="editor-link-unlink" />
+            <IconMatch className="size-4" icon="editor-link-unlink" />
           </button>
         </BubbleMenu>
       </div>
