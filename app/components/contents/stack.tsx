@@ -6,6 +6,14 @@ import { Label } from "~/components/ui/label"
 import { Switch } from "~/components/ui/switch"
 import { cn } from "~/utils/cn"
 
+type StackItem = {
+  name: string
+  icon: string
+  url: string
+  isCore?: boolean
+  isSoon?: boolean
+}
+
 export function ContentStack() {
   const [items, setItems] = useState<StackItem[]>(techStackItems.filter(item => item.isCore))
 
@@ -37,14 +45,6 @@ export function ContentStack() {
       </div>
     </>
   )
-}
-
-type StackItem = {
-  name: string
-  icon: string
-  url: string
-  isCore?: boolean
-  isSoon?: boolean
 }
 
 function SwitchCore({
@@ -109,7 +109,7 @@ function StackItems({
   )
 }
 
-const techStackItems = [
+export const techStackItems = [
   {
     name: "Remix",
     icon: "simple-icons:remix",

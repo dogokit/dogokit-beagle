@@ -117,10 +117,10 @@ Some reasons for making and using this template kit.
 - Setup commonly used development and production parts
   - With [pnpm](https://pnpm.io) by default
 - UI components and styles
-  - With [Tailwind CSS](https://tailwindcss.com) and [Radix UI](https://radix-ui.com)
-  - Bundled with [shadcn UI](https://ui.shadcn.com)
-  - Icons with [Iconify](https://iconify.design)
   - Light and dark mode theme
+  - Styling with [Tailwind CSS](https://tailwindcss.com) and [Radix UI](https://radix-ui.com)
+  - Bundled with [shadcn UI](https://ui.shadcn.com)
+  - Icon retrieval either with [Iconify](https://iconify.design) or manual import
 - Database with [Prisma ORM](https://prisma.io) and [MySQL](https://mysql.com) on
   [PlanetScale](https://planetscale.com)
   - Run local development database instance as a container with [Docker](https://docker) and
@@ -493,4 +493,4 @@ group (🐻 Bearmentor, 🐱 Catamyst, 🐶 Dogokit)
 
 ---
 
-2023 ©️ 🐶 Dogokit
+2024 ©️ 🐶 Dogokit
