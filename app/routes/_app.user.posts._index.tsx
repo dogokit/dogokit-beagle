@@ -1,11 +1,7 @@
-import {
-  json,
-  type LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
+import { json, type LoaderFunctionArgs, type MetaFunction } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { FormActionItemNew } from "~/components/shared/form-action-item"
 import { FormDelete } from "~/components/shared/form-delete"
 import {
@@ -39,10 +35,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     ? { userId }
     : {
         AND: [{ userId }],
-        OR: [
-          { title: { contains: config.queryParam } },
-          { slug: { contains: config.queryParam } },
-        ],
+        OR: [{ title: { contains: config.queryParam } }, { slug: { contains: config.queryParam } }],
       }
 
   const [totalItems, posts] = await db.$transaction([
@@ -77,7 +70,7 @@ export default function UserPostsRoute() {
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Post")} />
           <ButtonLink to="/posts" variant="outline" size="xs">
-            <Iconify icon="ph:arrow-square-out-duotone" />
+            <IconMatch icon="arrow-square-out" />
             <span>View Posts</span>
           </ButtonLink>
           <FormDelete

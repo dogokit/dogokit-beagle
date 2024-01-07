@@ -4,14 +4,9 @@ import { type Prisma } from "@prisma/client"
 import { useFetcher } from "@remix-run/react"
 import { type z } from "zod"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import {
-  FormDescription,
-  FormErrors,
-  FormField,
-  FormLabel,
-} from "~/components/ui/form"
+import { FormDescription, FormErrors, FormField, FormLabel } from "~/components/ui/form"
 import { Input } from "~/components/ui/input"
 import { type modelUser } from "~/models/user.server"
 import {
@@ -33,10 +28,7 @@ export function FormUpdateField({
   field: "username" | "fullname" | "nickname"
   intentValue: string
   description: string
-  schema:
-    | typeof schemaUserUsername
-    | typeof schemaUserFullName
-    | typeof schemaUserNickName
+  schema: typeof schemaUserUsername | typeof schemaUserFullName | typeof schemaUserNickName
   user: Prisma.PromiseReturnType<typeof modelUser.getForSession>
 }) {
   const fetcher = useFetcher()
@@ -66,7 +58,7 @@ export function FormUpdateField({
               variant="outline"
               size="xs"
               loadingText="Saving"
-              iconComponent={<Iconify icon="ph:floppy-disk-duotone" />}
+              icon={<IconMatch icon="floppy-disk" />}
             >
               Save
             </ButtonLoading>

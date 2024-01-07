@@ -18,10 +18,7 @@ import { invariant } from "~/utils/invariant"
  * Usage:
  * await requireUser(request, ["ADMIN", "MANAGER"])
  */
-export async function requireUser(
-  request: Request,
-  expectedRoleSymbols?: Role["symbol"][],
-) {
+export async function requireUser(request: Request, expectedRoleSymbols?: Role["symbol"][]) {
   const userSession = await authService.isAuthenticated(request, {
     failureRedirect: "/login",
   })
@@ -29,9 +26,7 @@ export async function requireUser(
   const user = await modelUser.getForSession({ id: userSession.id })
   invariant(user, "User not found")
 
-  const userIsAllowed = expectedRoleSymbols
-    ? checkAllowance(expectedRoleSymbols, user)
-    : true
+  const userIsAllowed = expectedRoleSymbols ? checkAllowance(expectedRoleSymbols, user) : true
 
   return {
     user,

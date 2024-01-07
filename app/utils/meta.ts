@@ -118,9 +118,7 @@ export function createMeta({
     },
     {
       name: "twitter:url",
-      content: canonicalPath
-        ? `${configMeta.url}${canonicalPath}`
-        : url || configMeta.url,
+      content: canonicalPath ? `${configMeta.url}${canonicalPath}` : url || configMeta.url,
     },
     {
       name: "twitter:image",

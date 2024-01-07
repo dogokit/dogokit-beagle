@@ -7,12 +7,7 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import {
-  Form,
-  useActionData,
-  useLoaderData,
-  useNavigation,
-} from "@remix-run/react"
+import { Form, useActionData, useLoaderData, useNavigation } from "@remix-run/react"
 import { type z } from "zod"
 
 import { AvatarAuto } from "~/components/ui/avatar-auto"
@@ -64,9 +59,7 @@ export default function UserAccountRoute() {
       <section className="app-section">
         <header>
           <h4>Delete Account</h4>
-          <p>
-            By deleting your account, all of your personal data will be deleted.
-          </p>
+          <p>By deleting your account, all of your personal data will be deleted.</p>
         </header>
 
         <Form method="POST" {...form.props}>

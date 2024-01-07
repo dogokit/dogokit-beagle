@@ -33,20 +33,12 @@ const logoIconVariants = cva("", {
   },
 })
 
-interface LogoProps
-  extends React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof logoVariants> {
+interface LogoProps extends React.HTMLAttributes<HTMLElement>, VariantProps<typeof logoVariants> {
   text?: string
   classNameIcon?: string
 }
 
-export function Logo({
-  variant,
-  size,
-  className,
-  classNameIcon,
-  text,
-}: LogoProps) {
+export function Logo({ variant, size, className, classNameIcon, text }: LogoProps) {
   const imageUrl = "/images/logos/dogokit-dog.svg"
   const altText = "Dog"
 

@@ -1,7 +1,7 @@
 import { Link, NavLink, type NavLinkProps } from "@remix-run/react"
 
 import { SiteNavigationMenu } from "~/components/layout/site-navigation-menu"
-import { IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
@@ -30,10 +30,7 @@ function SiteNavigationSmall() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link
-          to="/"
-          className="focus-ring block rounded-xs transition hover:text-primary"
-        >
+        <Link to="/" className="focus-ring block rounded-xs transition hover:text-primary">
           <Logo text="Dogokit" />
         </Link>
 
@@ -46,7 +43,7 @@ function SiteNavigationSmall() {
             <SiteNavigationMenu />
 
             <ButtonLink to="/new" size="sm" className="hidden sm:inline-flex">
-              <IconSet.Plus />
+              <IconMatch icon="plus" />
               <span className="hidden sm:inline">New</span>
             </ButtonLink>
 
@@ -57,7 +54,7 @@ function SiteNavigationSmall() {
         {!userSession && (
           <>
             <ButtonLink to="/login" variant="ghost" size="sm">
-              <IconSet.SignIn weight="duotone" />,
+              <IconMatch icon="sign-in" />
               <span className="hidden sm:inline">Log In</span>
             </ButtonLink>
 
@@ -100,11 +97,11 @@ function SiteNavigationLarge() {
           {!userSession && (
             <>
               <ButtonLink to="/login" variant="secondary" size="sm">
-                <IconSet.SignIn weight="duotone" />
+                <IconMatch icon="sign-in" />
                 <span>Log In</span>
               </ButtonLink>
               <ButtonLink to="/signup" size="sm">
-                <IconSet.UserPlus weight="duotone" />
+                <IconMatch icon="user-plus" />
                 <span>Sign Up</span>
               </ButtonLink>
             </>
@@ -113,7 +110,7 @@ function SiteNavigationLarge() {
           {userSession && (
             <>
               <ButtonLink to="/new" size="sm">
-                <IconSet.Plus />
+                <IconMatch icon="plus" />
                 <span>New</span>
               </ButtonLink>
               <IndicatorUser size="sm" />
@@ -141,7 +138,7 @@ export function NavItemLink({
           )
         }
       >
-        {navItem.iconEl && navItem.iconEl}
+        <IconMatch icon={navItem.icon} />
         <span className="select-none">{navItem.text}</span>
       </NavLink>
     </li>

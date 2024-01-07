@@ -4,17 +4,13 @@ import { z } from "zod"
 // eslint-disable-next-line node/no-process-env
 export const parsedEnv = parseEnv(process.env, {
   // For app
-  NODE_ENV: z
-    .enum(["", "development", "test", "preview", "staging", "production"])
-    .optional(),
+  NODE_ENV: z.enum(["", "development", "test", "preview", "staging", "production"]).optional(),
   APP_URL: z.string().url().optional().default("http://localhost:3000"),
   SESSION_SECRET: z.string().min(1),
 
   // For database
   DATABASE_URL: z.string().min(1),
-  DATABASE_BRANCH: z
-    .enum(["", "local", "dev", "staging", "test", "main"])
-    .optional(),
+  DATABASE_BRANCH: z.enum(["", "local", "dev", "staging", "test", "main"]).optional(),
 
   // For OAuth
   GITHUB_CLIENT_ID: z.string().optional(),

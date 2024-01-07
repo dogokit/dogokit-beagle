@@ -2,8 +2,7 @@ import * as React from "react"
 
 import { cn } from "~/utils/cn"
 
-export interface AnchorProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface AnchorProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
 }
 

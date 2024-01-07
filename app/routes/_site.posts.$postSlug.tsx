@@ -1,16 +1,9 @@
-import {
-  json,
-  type LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
+import { json, type LoaderFunctionArgs, type MetaFunction } from "@remix-run/node"
 import { Link, useLoaderData, type Params } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { BadgePostStatus } from "~/components/shared/badge-post-status"
-import {
-  ErrorHelpInformation,
-  GeneralErrorBoundary,
-} from "~/components/shared/error-boundary"
+import { ErrorHelpInformation, GeneralErrorBoundary } from "~/components/shared/error-boundary"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { ImageCover } from "~/components/shared/image-cover"
 import { Timestamp } from "~/components/shared/timestamp"
@@ -79,9 +72,7 @@ export default function PostSlugRoute() {
 
       <header className="site-header pb-4">
         {isArchived && (
-          <Alert>
-            This post has been archived by on {formatDateDMY(post.updatedAt)}
-          </Alert>
+          <Alert>This post has been archived by on {formatDateDMY(post.updatedAt)}</Alert>
         )}
 
         <h1>{post.title}</h1>
@@ -94,9 +85,7 @@ export default function PostSlugRoute() {
             <AvatarAuto user={post.user} imageUrl={post.user.images[0]?.url} />
             <div className="space-y-0">
               <h6>{post.user.fullname}</h6>
-              <p className="text-sm text-muted-foreground">
-                @{post.user.username}
-              </p>
+              <p className="text-sm text-muted-foreground">@{post.user.username}</p>
             </div>
           </Link>
 
@@ -127,12 +116,8 @@ export default function PostSlugRoute() {
               itemStatuses={postStatuses}
               item={post}
             />
-            <ButtonLink
-              to={`/user/posts/${post.id}`}
-              variant="outline"
-              size="xs"
-            >
-              <Iconify icon="ph:note-pencil" />
+            <ButtonLink to={`/user/posts/${post.id}`} variant="outline" size="xs">
+              <IconMatch icon="note-pencil" />
               <span>Edit Post</span>
             </ButtonLink>
           </div>
@@ -146,7 +131,7 @@ export default function PostSlugRoute() {
       <section className="site-section">
         <div>
           <ButtonLink to="/posts" size="sm" variant="secondary">
-            <Iconify icon="ph:caret-left" />
+            <IconMatch icon="caret-left" />
             <span>All posts</span>
           </ButtonLink>
         </div>
@@ -171,16 +156,13 @@ function CustomErrorMessage({ params }: { params: Params }) {
       <section className="site-section prose-config">
         <h1>Sorry, this post could not be found</h1>
         <p>Cannot find post with the slug "{params.postSlug}"</p>
-        <p>
-          The requested post either doesn’t exist or you don’t have access to
-          it.
-        </p>
+        <p>The requested post either doesn’t exist or you don’t have access to it.</p>
       </section>
 
       <ErrorHelpInformation
         extraButtonLinks={
           <ButtonLink size="sm" variant="secondary" to="/posts">
-            <Iconify icon="ph:scroll-duotone" />
+            <IconMatch icon="scroll" />
             <span>Go to All Posts</span>
           </ButtonLink>
         }

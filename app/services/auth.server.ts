@@ -30,9 +30,7 @@ export interface UserSession {
 
 // Not stored in the cookie, only retrieved when necessary
 export interface UserData
-  extends NonNullable<
-    Prisma.PromiseReturnType<typeof modelUser.getForSession>
-  > {}
+  extends NonNullable<Prisma.PromiseReturnType<typeof modelUser.getForSession>> {}
 
 export type AuthStrategy = (typeof AuthStrategies)[keyof typeof AuthStrategies]
 

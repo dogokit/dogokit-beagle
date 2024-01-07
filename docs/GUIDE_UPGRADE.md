@@ -44,14 +44,7 @@ pnpm upgrade
       "~/*": ["./app/*"]
     }
   },
-  "include": [
-    "remix.env.d.ts",
-    ".eslintrc.cjs",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.cjs",
-    "**/*.mjs"
-  ],
+  "include": ["remix.env.d.ts", ".eslintrc.cjs", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
   "exclude": ["node_modules"]
 }
 ```

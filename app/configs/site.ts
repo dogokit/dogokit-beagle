@@ -64,7 +64,7 @@ export const configSite = {
 export const configSiteIconLinks = [
   { name: "GitHub", href: "https://github.com/dogokit/dogokit-remix" },
   { name: "Twitter", href: "https://twitter.com/mhaidarhanif" },
-  { name: "X", href: "https://x.com/mhaidarhanif" },
+  { name: "X-Twitter", href: "https://x.com/mhaidarhanif" },
   { name: "LinkedIn", href: "https://linkedin.com/in/mhaidarhanif" },
   { name: "YouTube", href: "https://youtube.com/mhaidarhanif" },
   { name: "Facebook", href: "https://facebook.com/mhaidarhanif" },

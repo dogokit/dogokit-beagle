@@ -41,18 +41,14 @@ export default function UserLayoutRoute() {
     <div className="flex">
       <nav className={cn("select-none border-r border-r-border p-2 lg:p-4")}>
         <SidebarNavItems
-          items={configNavigationItems.filter(item =>
-            navItems.includes(item.path),
-          )}
+          items={configNavigationItems.filter(item => navItems.includes(item.path))}
         />
 
         {checkAllowance(["ADMIN", "MANAGER"], userData) && (
           <>
             <Separator className="my-2" />
             <SidebarNavItems
-              items={configNavigationItems.filter(item =>
-                ["/admin"].includes(item.path),
-              )}
+              items={configNavigationItems.filter(item => ["/admin"].includes(item.path))}
             />
           </>
         )}
@@ -61,9 +57,7 @@ export default function UserLayoutRoute() {
           <>
             <Separator className="my-2" />
             <SidebarNavItems
-              items={configNavigationItems.filter(item =>
-                ["/owner"].includes(item.path),
-              )}
+              items={configNavigationItems.filter(item => ["/owner"].includes(item.path))}
             />
           </>
         )}

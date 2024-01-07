@@ -77,11 +77,7 @@ export const modelAdminPage = {
     return db.page.delete({ where: { id } })
   },
 
-  updateStatus({
-    userId,
-    id,
-    statusId,
-  }: Pick<Page, "userId" | "id" | "statusId">) {
+  updateStatus({ userId, id, statusId }: Pick<Page, "userId" | "id" | "statusId">) {
     return db.page.update({
       where: { id },
       data: {

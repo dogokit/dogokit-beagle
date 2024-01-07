@@ -1,6 +1,6 @@
 import * as ResizablePrimitive from "react-resizable-panels"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { cn } from "~/utils/cn"
 
 const ResizablePanelGroup = ({
@@ -8,10 +8,7 @@ const ResizablePanelGroup = ({
   ...props
 }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
   <ResizablePrimitive.PanelGroup
-    className={cn(
-      "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
-      className,
-    )}
+    className={cn("flex h-full w-full data-[panel-group-direction=vertical]:flex-col", className)}
     {...props}
   />
 )
@@ -34,7 +31,7 @@ const ResizableHandle = ({
   >
     {withHandle && (
       <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <Iconify icon="ph:dots-six-vertical" className="size-3" />
+        <IconMatch icon="dots-six-vertical" className="size-3" />
       </div>
     )}
   </ResizablePrimitive.PanelResizeHandle>

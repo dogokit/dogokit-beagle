@@ -1,7 +1,4 @@
-import {
-  type ActionFunctionArgs,
-  type LoaderFunctionArgs,
-} from "@remix-run/node"
+import { type ActionFunctionArgs, type LoaderFunctionArgs } from "@remix-run/node"
 
 import { FormActionItem } from "~/components/shared/form-action-item"
 import { configActionItems } from "~/configs/action-item"

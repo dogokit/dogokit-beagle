@@ -2,14 +2,10 @@ import { useInputEvent, type FieldConfig } from "@conform-to/react"
 import { useRef, useState } from "react"
 import { type SelectSingleEventHandler } from "react-day-picker"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { Button } from "~/components/ui/button"
 import { Calendar } from "~/components/ui/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "~/components/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
 import { cn } from "~/utils/cn"
 import { formatDateDMY } from "~/utils/datetime"
 
@@ -56,7 +52,7 @@ export function DatePicker({
               className,
             )}
           >
-            <Iconify icon="ph:calendar-blank" className="size-5" />
+            <IconMatch icon="calendar-blank" className="size-5" />
             {date ? formatDateDMY(date) : <span>Pick a date</span>}
           </Button>
         </PopoverTrigger>

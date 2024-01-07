@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react"
 
-import { IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { ThemeButton } from "~/components/shared/theme-button"
@@ -18,10 +18,7 @@ export function AppNavigation() {
       )}
     >
       <div className="flex items-center justify-between gap-2">
-        <Link
-          to="/"
-          className="focus-ring block rounded-xs transition hover:opacity-75"
-        >
+        <Link to="/" className="focus-ring block rounded-xs transition hover:opacity-75">
           <Logo />
         </Link>
 
@@ -32,7 +29,7 @@ export function AppNavigation() {
         {userSession && (
           <div className="flex items-center gap-2">
             <ButtonLink to="/new" size="xs">
-              <IconSet.Plus />
+              <IconMatch icon="plus" />
               <span>New</span>
             </ButtonLink>
             <IndicatorUser size="xs" />

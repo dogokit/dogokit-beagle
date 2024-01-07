@@ -2,11 +2,7 @@ import { customAlphabet } from "nanoid"
 import pluralize from "pluralize"
 import slugify from "slugify"
 
-export function truncateText(
-  text: string,
-  charLimit: number = 30,
-  withEllipsis: boolean = true,
-) {
+export function truncateText(text: string, charLimit: number = 30, withEllipsis: boolean = true) {
   if (!text || typeof text !== "string" || text.length <= charLimit) return text
 
   const trimmedLength = withEllipsis ? charLimit - 3 : charLimit

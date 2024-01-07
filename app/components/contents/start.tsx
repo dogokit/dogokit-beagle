@@ -19,8 +19,8 @@ export function ContentStart() {
         </p>
         <pre>pnpx create-remix@latest --template dogokit/dogokit-remix</pre>
         <p>
-          Then make sure to explore the repo to rename and replace the contents
-          along the way. As this is a template, not a blank repo generator.
+          Then make sure to explore the repo to rename and replace the contents along the way. As
+          this is a template, not a blank repo generator.
         </p>
       </div>
     </>

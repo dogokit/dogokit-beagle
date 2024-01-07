@@ -2,10 +2,7 @@ import { z } from "zod"
 
 import { id, redirectTo } from "~/schemas/general"
 
-const email = z
-  .string({ required_error: "Email is required" })
-  .min(1)
-  .email("This is not an email")
+const email = z.string({ required_error: "Email is required" }).min(1).email("This is not an email")
 
 const username = z
   .string({ required_error: "Username is required" })
@@ -30,9 +27,7 @@ const password = z
   .min(8, "Password at least 8 characters")
   .max(100, "Password max of 100 characters")
 const confirmPassword = z.string()
-const currentPassword = z
-  .string({ required_error: "Current password is required" })
-  .min(1)
+const currentPassword = z.string({ required_error: "Current password is required" }).min(1)
 
 const remember = z.boolean().optional()
 

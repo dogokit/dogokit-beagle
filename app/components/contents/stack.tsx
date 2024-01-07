@@ -7,17 +7,15 @@ import { Switch } from "~/components/ui/switch"
 import { cn } from "~/utils/cn"
 
 export function ContentStack() {
-  const [items, setItems] = useState<StackItem[]>(
-    techStackItems.filter(item => item.isCore),
-  )
+  const [items, setItems] = useState<StackItem[]>(techStackItems.filter(item => item.isCore))
 
   return (
     <>
       <div className="prose-config">
         <h3>Tech Stack</h3>
         <p>
-          The primary technology stack and tools in this kit which we own the
-          code and raw assets. The blurred items are soon or not yet configured.
+          The primary technology stack and tools in this kit which we own the code and raw assets.
+          The blurred items are soon or not yet configured.
         </p>
       </div>
 
@@ -29,8 +27,8 @@ export function ContentStack() {
       <div className="prose-config">
         <h3>Service Stack</h3>
         <p>
-          The optional 3rd party services to enhance the development and app
-          functionality. Feel free to change them as needed.
+          The optional 3rd party services to enhance the development and app functionality. Feel
+          free to change them as needed.
         </p>
       </div>
 
@@ -73,9 +71,7 @@ function SwitchCore({
         checked={checked}
         onCheckedChange={switchCore}
       />
-      <Label htmlFor="switch-core">
-        {checked ? "Only the core" : "More than the core"}
-      </Label>
+      <Label htmlFor="switch-core">{checked ? "Only the core" : "More than the core"}</Label>
     </div>
   )
 }
@@ -105,9 +101,7 @@ function StackItems({
             )}
           >
             {item.icon && <Iconify icon={item.icon} className="text-4xl" />}
-            <span className="text-center text-sm font-semibold">
-              {item.name}
-            </span>
+            <span className="text-center text-sm font-semibold">{item.name}</span>
           </Anchor>
         </li>
       ))}

@@ -2,7 +2,7 @@ import * as SheetPrimitive from "@radix-ui/react-dialog"
 import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { ButtonIcon } from "~/components/ui/button-icon"
 import { cn } from "~/utils/cn"
 
@@ -59,11 +59,7 @@ const SheetContent = React.forwardRef<
   <SheetPortal>
     <SheetOverlay />
 
-    <SheetPrimitive.Content
-      ref={ref}
-      className={cn(sheetVariants({ side }), className)}
-      {...props}
-    >
+    <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
       {children}
 
       <SheetPrimitive.Close
@@ -75,7 +71,7 @@ const SheetContent = React.forwardRef<
         asChild
       >
         <ButtonIcon variant="ghost" size="sm">
-          <Iconify icon="ph:x" />
+          <IconMatch icon="x" />
           <span className="sr-only">Close</span>
         </ButtonIcon>
       </SheetPrimitive.Close>
@@ -84,23 +80,14 @@ const SheetContent = React.forwardRef<
 ))
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
-const SheetHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn(className)} {...props} />
 )
 SheetHeader.displayName = "SheetHeader"
 
-const SheetFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+const SheetFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className,
-    )}
+    className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
     {...props}
   />
 )

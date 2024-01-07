@@ -13,12 +13,7 @@ interface LinkTextProps extends LinkProps {
   disabled?: boolean
 }
 
-export function LinkText({
-  to = "/",
-  disabled = false,
-  children,
-  className,
-}: LinkTextProps) {
+export function LinkText({ to = "/", disabled = false, children, className }: LinkTextProps) {
   return (
     <Link
       to={to}

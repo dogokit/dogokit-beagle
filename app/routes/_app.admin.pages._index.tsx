@@ -1,11 +1,7 @@
-import {
-  json,
-  type LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
+import { json, type LoaderFunctionArgs, type MetaFunction } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import { IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { FormActionItemNew } from "~/components/shared/form-action-item"
 import { FormDelete } from "~/components/shared/form-delete"
 import { PageItemAction } from "~/components/shared/page-item-action"
@@ -69,7 +65,7 @@ export default function UserPagesRoute() {
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Page")} />
           <ButtonLink to="/pages" variant="outline" size="xs">
-            <IconSet.ArrowSquareOut />
+            <IconMatch icon="arrow-square-out" />
             <span>View Pages</span>
           </ButtonLink>
           <FormDelete

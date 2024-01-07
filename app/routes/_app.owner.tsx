@@ -1,8 +1,4 @@
-import {
-  redirect,
-  type ActionFunctionArgs,
-  type LoaderFunctionArgs,
-} from "@remix-run/node"
+import { redirect, type ActionFunctionArgs, type LoaderFunctionArgs } from "@remix-run/node"
 import { isRouteErrorResponse, Outlet, useRouteError } from "@remix-run/react"
 
 import { SidebarNavItems } from "~/components/shared/sidebar-nav-items"
@@ -37,16 +33,12 @@ export default function OwnerLayoutRoute() {
     <div className="flex">
       <nav className="select-none border-r border-r-border p-2 lg:p-4">
         <SidebarNavItems
-          items={configNavigationItems.filter(item =>
-            navItems.includes(item.path),
-          )}
+          items={configNavigationItems.filter(item => navItems.includes(item.path))}
         />
 
         <Separator className="my-2" />
         <SidebarNavItems
-          items={configNavigationItems.filter(item =>
-            ["/admin", "/user"].includes(item.path),
-          )}
+          items={configNavigationItems.filter(item => ["/admin", "/user"].includes(item.path))}
         />
       </nav>
 

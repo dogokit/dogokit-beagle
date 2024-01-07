@@ -23,10 +23,7 @@ function SiteFooterSitemap() {
     <section className="flex flex-wrap gap-4">
       <div className={cn("flex-auto space-y-8 rounded-md bg-muted/30 p-4")}>
         <div className="space-y-4">
-          <Link
-            to="/"
-            className="focus-ring inline-block rounded-xs transition hover:opacity-75"
-          >
+          <Link to="/" className="focus-ring inline-block rounded-xs transition hover:opacity-75">
             <Logo text="Dogokit" classNameIcon="grayscale" />
           </Link>
           <p className="max-w-sm text-sm">{configSite.description}</p>
@@ -58,14 +55,9 @@ function SiteFooterExtra() {
       <p className="text-center text-sm sm:text-left">
         <AnchorFooter href="https://github.com/dogokit">Dogokit</AnchorFooter>
         <span> is built by </span>
-        <AnchorFooter href="https://github.com/mhaidarhanif">
-          M Haidar Hanif
-        </AnchorFooter>
+        <AnchorFooter href="https://github.com/mhaidarhanif">M Haidar Hanif</AnchorFooter>
         <span> from the </span>
-        <AnchorFooter href="https://github.com/allnimal">
-          Allnimal
-        </AnchorFooter>{" "}
-        group.
+        <AnchorFooter href="https://github.com/allnimal">Allnimal</AnchorFooter> group.
       </p>
 
       <ThemeMenu variant="ghost" />

@@ -2,11 +2,7 @@ import { useState } from "react"
 
 import { IconMatch } from "~/components/libs/icon"
 import { Button, buttonVariants } from "~/components/ui/button"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "~/components/ui/collapsible"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/components/ui/collapsible"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
 import { cn } from "~/utils/cn"
 import { stringifyCode } from "~/utils/string"
@@ -43,17 +39,11 @@ export function Debug({
     <div>
       <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-1">
         <div className="flex flex-nowrap gap-1">
-          <CollapsibleTrigger
-            className={cn(buttonVariants({ variant: "outline", size: "xs" }))}
-          >
+          <CollapsibleTrigger className={cn(buttonVariants({ variant: "outline", size: "xs" }))}>
             <span>DEBUG</span>
             {name && <span>: {name}</span>}
           </CollapsibleTrigger>
-          <Button
-            variant="outline"
-            size="xs"
-            onClick={() => setIsVisible(false)}
-          >
+          <Button variant="outline" size="xs" onClick={() => setIsVisible(false)}>
             <IconMatch icon="x" />
           </Button>
         </div>

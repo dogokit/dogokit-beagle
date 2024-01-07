@@ -7,17 +7,12 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import {
-  Form,
-  useActionData,
-  useLoaderData,
-  useNavigation,
-} from "@remix-run/react"
+import { Form, useActionData, useLoaderData, useNavigation } from "@remix-run/react"
 import { useRef, useState } from "react"
 import { z } from "zod"
 
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdatePublish } from "~/components/shared/form-update-publish"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
@@ -68,9 +63,7 @@ export default function UserPagesPageIdRoute() {
   const navigation = useNavigation()
   const { pageStatuses } = useAppAdminLoaderData()
 
-  const [form, { id, slug, title, description, content }] = useForm<
-    z.infer<typeof schemaPage>
-  >({
+  const [form, { id, slug, title, description, content }] = useForm<z.infer<typeof schemaPage>>({
     id: "update-page",
     lastSubmission: actionData?.submission,
     shouldRevalidate: "onInput",
@@ -115,7 +108,7 @@ export default function UserPagesPageIdRoute() {
                   size="xs"
                   loadingText="Saving"
                   isLoading={isSubmitting}
-                  iconComponent={<Iconify icon="ph:floppy-disk-duotone" />}
+                  icon={<IconMatch icon="floppy-disk" />}
                 >
                   <span>Save</span>
                 </ButtonLoading>
@@ -123,17 +116,10 @@ export default function UserPagesPageIdRoute() {
                   action="/admin/pages/delete"
                   intentValue="admin-delete-page-by-id"
                   defaultValue={page.id}
-                  itemText={`a page: ${truncateText(page.title)} (${
-                    page.slug
-                  })`}
+                  itemText={`a page: ${truncateText(page.title)} (${page.slug})`}
                 />
-                <ButtonLink
-                  variant="outline"
-                  size="xs"
-                  to={`/${page.slug}`}
-                  disabled={isPageDraft}
-                >
-                  <Iconify icon="ph:arrow-square-out-duotone" />
+                <ButtonLink variant="outline" size="xs" to={`/${page.slug}`} disabled={isPageDraft}>
+                  <IconMatch icon="arrow-square-out" />
                   <span>View</span>
                 </ButtonLink>
               </div>
@@ -181,13 +167,8 @@ export default function UserPagesPageIdRoute() {
                   spellCheck="false"
                   className="input-natural flex-1 font-mono text-sm"
                 />
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="xs"
-                  onClick={handleUpdateSlug}
-                >
-                  <Iconify icon="ph:lightbulb-duotone" />
+                <Button type="button" variant="outline" size="xs" onClick={handleUpdateSlug}>
+                  <IconMatch icon="lightbulb" />
                   <span>Generate Slug</span>
                 </Button>
               </div>
@@ -226,10 +207,7 @@ export default function UserPagesPageIdRoute() {
                 ref={contentRef}
                 onChange={e => setContentValue(e.target.value)}
               />
-              <EditorTiptapHook
-                content={contentValue}
-                handleUpdate={handleUpdateContent}
-              />
+              <EditorTiptapHook content={contentValue} handleUpdate={handleUpdateContent} />
             </div>
           </section>
         </fieldset>

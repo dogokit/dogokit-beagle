@@ -8,8 +8,8 @@ import { configExamples } from "~/configs/examples"
 export default function ExamplesRoute() {
   return (
     <div className="site-container space-y-12 pt-4">
-      <header>
-        <h1 className="inline-flex items-center gap-2 text-primary">
+      <header className="space-y-4">
+        <h1>
           <Link to="/examples">Examples</Link>
         </h1>
         <p>

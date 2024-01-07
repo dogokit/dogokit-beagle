@@ -1,4 +1,4 @@
-import { IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { AnchorText } from "~/components/ui/anchor-text"
 import { ButtonAnchor } from "~/components/ui/button-anchor"
 
@@ -12,21 +12,15 @@ export function ContentIntro() {
         >
           Dogokit is a web app template kit
         </h1>
-        <h2>
-          Using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more
-        </h2>
+        <h2>Using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more</h2>
 
         <div className="flex flex-wrap gap-4">
-          <ButtonAnchor
-            size="lg"
-            variant="default"
-            href="https://github.com/dogokit/dogokit-remix"
-          >
-            <IconSet.GitHub className="size-5" />
+          <ButtonAnchor size="lg" variant="default" href="https://github.com/dogokit/dogokit-remix">
+            <IconMatch icon="github" className="size-5" />
             <span>Repo on GitHub</span>
           </ButtonAnchor>
           <ButtonAnchor size="lg" variant="secondary" href="https://remix.run">
-            <IconSet.Remix className="size-5" />
+            <IconMatch icon="remix" className="size-5" />
             <span>Learn Remix</span>
           </ButtonAnchor>
         </div>
@@ -34,21 +28,19 @@ export function ContentIntro() {
 
       <div className="prose-config">
         <p>
-          The goal is to start and be as productive as possible to ship a full
-          stack web app quickly with{" "}
-          <AnchorText href="https://remix.run">Remix</AnchorText> web framework.
+          The goal is to start and be as productive as possible to ship a full stack web app quickly
+          with <AnchorText href="https://remix.run">Remix</AnchorText> web framework.
         </p>
 
         <p>
-          It is a highly opinionated collection of application structure,
-          interactive UI components, software engineering and web development
-          workflow, functionality hooks and utilities, also integration with 3rd
-          party services.
+          It is a highly opinionated collection of application structure, interactive UI components,
+          software engineering and web development workflow, functionality hooks and utilities, also
+          integration with 3rd party services.
         </p>
 
         <p>
-          This Dogokit variant is using Remix. There's a possibility to have
-          more variants in the future.
+          This Dogokit variant is using Remix. There's a possibility to have more variants in the
+          future.
         </p>
 
         <ul>
@@ -59,26 +51,17 @@ export function ContentIntro() {
             </AnchorText>
           </li>
           <li>
-            Demo:{" "}
-            <AnchorText href="https://dogokit.allnimal.com">
-              dogokit.allnimal.com
-            </AnchorText>
+            Demo: <AnchorText href="https://dogokit.allnimal.com">dogokit.allnimal.com</AnchorText>
           </li>
         </ul>
 
         <p>
           Originally created by{" "}
-          <AnchorText href="https://github.com/mhaidarhanif">
-            M Haidar Hanif
-          </AnchorText>{" "}
-          from the{" "}
-          <AnchorText href="https://allnimal.com">🐾 Allnimal</AnchorText> group
-          (<AnchorText href="https://bearmentor.com">🐻 Bearmentor</AnchorText>,{" "}
+          <AnchorText href="https://github.com/mhaidarhanif">M Haidar Hanif</AnchorText> from the{" "}
+          <AnchorText href="https://allnimal.com">🐾 Allnimal</AnchorText> group (
+          <AnchorText href="https://bearmentor.com">🐻 Bearmentor</AnchorText>,{" "}
           <AnchorText href="https://catamyst.com">🐱 Catamyst</AnchorText>,{" "}
-          <AnchorText href="https://dogokit.allnimal.com">
-            🐶 Dogokit
-          </AnchorText>
-          )
+          <AnchorText href="https://dogokit.allnimal.com">🐶 Dogokit</AnchorText>)
         </p>
       </div>
     </div>

@@ -41,25 +41,12 @@ interface AvatarAutoProps
  * - placeholder function
  * - user.images[0]?.url
  */
-export function AvatarAuto({
-  user,
-  imageUrl,
-  size,
-  ...props
-}: AvatarAutoProps) {
+export function AvatarAuto({ user, imageUrl, size, ...props }: AvatarAutoProps) {
   return (
-    <Avatar
-      {...props}
-      className={cn(avatarAutoVariants({ size }), "bg-secondary")}
-    >
-      <AvatarImage
-        src={imageUrl || getPlaceholderAvatarUrl(user.username)}
-        alt={user.fullname}
-      />
+    <Avatar {...props} className={cn(avatarAutoVariants({ size }), "bg-secondary")}>
+      <AvatarImage src={imageUrl || getPlaceholderAvatarUrl(user.username)} alt={user.fullname} />
 
-      {!imageUrl && (
-        <AvatarFallback>{getNameInitials(user.fullname)}</AvatarFallback>
-      )}
+      {!imageUrl && <AvatarFallback>{getNameInitials(user.fullname)}</AvatarFallback>}
     </Avatar>
   )
 }

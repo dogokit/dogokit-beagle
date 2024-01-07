@@ -11,10 +11,7 @@ export function BadgePostStatus({
   status: Pick<PostStatus, "symbol" | "name">
 }) {
   return (
-    <Badge
-      variant="secondary"
-      className={cn("inline-flex items-center gap-1", className)}
-    >
+    <Badge variant="secondary" className={cn("inline-flex items-center gap-1", className)}>
       <IconPostStatus status={status} />
       <span>{status.name}</span>
     </Badge>

@@ -47,8 +47,7 @@ Table of Contents:
 
 - [HTML](https://developer.mozilla.org/HTML): Markup language 🧰
 - [CSS](https://developer.mozilla.org/CSS): Styling language 🧰
-- [JavaScript](https://developer.mozilla.org/JavaScript): Programming language
-  🧰
+- [JavaScript](https://developer.mozilla.org/JavaScript): Programming language 🧰
 - [Node.js](https://nodejs.org): JavaScript runtime 🧰💠
   - [pnpm](https://pnpm.io): Package manager 🧩💠
 - [TypeScript](https://typescriptlang.org): Typed language 🧰💠
@@ -66,29 +65,24 @@ Table of Contents:
 - [Radix UI](https://radix-ui.com): Unstyled UI components 🧰🧩💠
 - [Iconify](https://iconify.design): Icon set component 🧰
   - [Icones](https://icones.js.org): Icon search 🧰💠
-- [shadcn UI](https://ui.shadcn.com): Styled interactive components and theming
-  🧰🧩💠
+- [shadcn UI](https://ui.shadcn.com): Styled interactive components and theming 🧰🧩💠
 - [Tremor](https://tremor.so): Styled dashboard components 🧩💠
 - [React Email](https://react.email): Email rendering components 🧰🧩💠
-- [TanStack Table](https://tanstack.com/table): Unstyled table grid component
-  🚧🧩💠
+- [TanStack Table](https://tanstack.com/table): Unstyled table grid component 🚧🧩💠
 
 ## Form Handling and Data Validation
 
 - [Conform](https://conform.guide): Form handling 🧰💠
 - [Zod](https://zod.dev): Data validation 🧰💠
-  - [znv](https://github.com/lostfictions/znv): Type-safe env parsing and
-    validation 🧰💠
-  - [Zodix](https://github.com/rileytomasek/zodix): Zod utilities for Remix
-    loaders and actions 🧩💠
+  - [znv](https://github.com/lostfictions/znv): Type-safe env parsing and validation 🧰💠
+  - [Zodix](https://github.com/rileytomasek/zodix): Zod utilities for Remix loaders and actions 🧩💠
   - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩💠
 
 ## Database and ORM
 
 - [Prisma ORM](https://prisma.io): Database ORM (Object Relational Mapping) 🧰💠
 - [MySQL](https://mysql.com): Database management system (DBMS) 🧩
-- [PlanetScale](https://planetscale.com): MySQL-compatible serverless database
-  platform 🧩🎉
+- [PlanetScale](https://planetscale.com): MySQL-compatible serverless database platform 🧩🎉
 
 ## Auth Provider
 
@@ -99,8 +93,7 @@ Table of Contents:
 - [Prettier](https://prettier.io): Code formatter 🧰💠
 - [ESLint](https://eslint.org): Code linter 🧰💠
 - [Stylelint](https://stylelint.io): Styling linter 🧰💠
-- [Markdownlint](https://github.com/DavidAnson/markdownlint): Markdown linter
-  🧰💠
+- [Markdownlint](https://github.com/DavidAnson/markdownlint): Markdown linter 🧰💠
 
 ---
 
@@ -219,8 +212,8 @@ Alternatives:
 
 ## Credentials
 
-If work as a team, it's recommended to use either of these as secrets management
-platform to share the environment variables. So can optionally use `.env` file.
+If work as a team, it's recommended to use either of these as secrets management platform to share
+the environment variables. So can optionally use `.env` file.
 
 - [Doppler](https://doppler.com)
 - [Dotenv](https://dotenv.org)
@@ -230,28 +223,27 @@ If need to share quickly, [EnvShare](https://envshare.dev) is good enough.
 ## Code Review
 
 - [Graphite](https://graphite.dev): Stacking tool to ship code faster
-- [Vercel Pro](https://vercel.com/docs/concepts/payments-and-billing/pro): to
-  make code review with preview deployments easier.
+- [Vercel Pro](https://vercel.com/docs/concepts/payments-and-billing/pro): to make code review with
+  preview deployments easier.
 
 ---
 
 ## Don't Use These Stack
 
-- CSS-in-JS solutions such as styled-components, @emotion, Stitches, Chakra UI,
-  MUI, etc because already using Tailwind CSS.
-- Data fetching and caching library such as TanStack/React Query, SWR, Axios,
-  etc because already using Remix loader/action, unless very necessary.
-- Redux, Zustand, Jotai, XState, etc because the app is still mostly having a
-  server-side state.
-- Firebase, Supabase, Auth0, etc because the app is already handling the auth
-  with Remix Auth, unless very necessary
+- CSS-in-JS solutions such as styled-components, @emotion, Stitches, Chakra UI, MUI, etc because
+  already using Tailwind CSS.
+- Data fetching and caching library such as TanStack/React Query, SWR, Axios, etc because already
+  using Remix loader/action, unless very necessary.
+- Redux, Zustand, Jotai, XState, etc because the app is still mostly having a server-side state.
+- Firebase, Supabase, Auth0, etc because the app is already handling the auth with Remix Auth,
+  unless very necessary
 
 ---
 
 ## Extra Stack
 
-Although these are not included, if need a separate backend/server/service, here
-are the recommendations:
+Although these are not included, if need a separate backend/server/service, here are the
+recommendations:
 
 ### REST API
 

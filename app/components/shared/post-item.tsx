@@ -7,11 +7,7 @@ import { type modelPost } from "~/models/post.server"
 import { type JsonifyPrisma } from "~/types/jsonify"
 import { formatPublished } from "~/utils/datetime"
 
-export function PostItem({
-  post,
-}: {
-  post: JsonifyPrisma<typeof modelPost.getBySlug>
-}) {
+export function PostItem({ post }: { post: JsonifyPrisma<typeof modelPost.getBySlug> }) {
   if (!post) return null
 
   return (
@@ -21,20 +17,13 @@ export function PostItem({
           to={`/${post.user.username}`}
           className="focus-ring flex items-center gap-2 transition hover:opacity-75"
         >
-          <AvatarAuto
-            user={post.user}
-            imageUrl={post.user.images[0]?.url}
-            size="xs"
-          />
+          <AvatarAuto user={post.user} imageUrl={post.user.images[0]?.url} size="xs" />
           <span className="text-sm font-semibold">{post.user.fullname}</span>
         </Link>
 
         <div>
           <h3>
-            <Link
-              to={`/posts/${post.slug}`}
-              className="focus-ring transition hover:text-primary"
-            >
+            <Link to={`/posts/${post.slug}`} className="focus-ring transition hover:text-primary">
               {post.title}
             </Link>
           </h3>

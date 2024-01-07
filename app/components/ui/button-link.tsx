@@ -4,9 +4,7 @@ import { type VariantProps } from "class-variance-authority"
 import { Button, buttonVariants } from "~/components/ui/button"
 import { cn } from "~/utils/cn"
 
-interface ButtonLinkProps
-  extends LinkProps,
-    VariantProps<typeof buttonVariants> {
+interface ButtonLinkProps extends LinkProps, VariantProps<typeof buttonVariants> {
   disabled?: boolean
 }
 
@@ -32,9 +30,7 @@ const ButtonLink = ({
 }
 ButtonLink.displayName = "ButtonLink"
 
-interface ButtonNavLinkProps
-  extends LinkProps,
-    VariantProps<typeof buttonVariants> {}
+interface ButtonNavLinkProps extends LinkProps, VariantProps<typeof buttonVariants> {}
 
 const ButtonNavLink = ({
   variant = "default",
@@ -44,19 +40,14 @@ const ButtonNavLink = ({
   ...props
 }: ButtonNavLinkProps) => {
   return (
-    <Link
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    >
+    <Link className={cn(buttonVariants({ variant, size, className }))} {...props}>
       {children}
     </Link>
   )
 }
 ButtonNavLink.displayName = "ButtonNavLink"
 
-interface ButtonLinkIconProps
-  extends LinkProps,
-    VariantProps<typeof buttonVariants> {}
+interface ButtonLinkIconProps extends LinkProps, VariantProps<typeof buttonVariants> {}
 
 function ButtonChildLink({ ...props }: ButtonLinkIconProps) {
   return (

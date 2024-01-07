@@ -91,9 +91,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   if (intent === "user-update-username") {
     const submission = parse(formData, {
       schema: schemaUserUsername.superRefine((data, ctx) => {
-        const unallowedUsername = configUnallowedKeywords.find(
-          keyword => keyword === data.username,
-        )
+        const unallowedUsername = configUnallowedKeywords.find(keyword => keyword === data.username)
         if (unallowedUsername) {
           ctx.addIssue(issueUsernameUnallowed)
           return

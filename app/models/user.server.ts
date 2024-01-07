@@ -147,9 +147,7 @@ export const modelUser = {
           email,
           fullname,
           roles: { connect: { symbol: "NORMAL" } },
-          username: existingUsername
-            ? `${username}_${createNanoIdShort()}`
-            : username,
+          username: existingUsername ? `${username}_${createNanoIdShort()}` : username,
           images: {
             create: { url: imageUrl || getPlaceholderAvatarUrl(username) },
           },

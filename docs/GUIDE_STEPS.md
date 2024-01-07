@@ -172,8 +172,8 @@ pnpm install @radix-ui/react-slot
 
 > Skip this if not prefer to use it.
 
-Automatically setup Tailwind CSS, PostCSS, Radix UI, Class Variance Authority,
-clsx, Tailwind Merge, and more.
+Automatically setup Tailwind CSS, PostCSS, Radix UI, Class Variance Authority, clsx, Tailwind Merge,
+and more.
 
 ```sh
 pnpx shadcn-ui@latest init
@@ -203,16 +203,14 @@ pnpx shadcn-ui@latest add component-name
 
 ## Icons
 
-shadcn UI install Lucide React icons by default, which can be removed and
-replaced.
+shadcn UI install Lucide React icons by default, which can be removed and replaced.
 
-Use Iconify (`@iconify/react`) to get any popular icons via
-[Icônes](https://icones.js.org).
+Use Iconify (`@iconify/react`) to get any popular icons via [Icônes](https://icones.js.org).
 
 ## Fonts
 
-Use [Fontsource](https://fontsource.org) to install the font locally without
-using online-required [Google Fonts](https://fonts.google.com).
+Use [Fontsource](https://fontsource.org) to install the font locally without using online-required
+[Google Fonts](https://fonts.google.com).
 
 ```sh
 pnpm install @fontsource-variable/font-name

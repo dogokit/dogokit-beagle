@@ -1,28 +1,14 @@
 import { conform, useForm } from "@conform-to/react"
 import { getFieldsetConstraint, parse } from "@conform-to/zod"
-import {
-  json,
-  type ActionFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
-import {
-  Form,
-  useActionData,
-  useNavigation,
-  useSearchParams,
-} from "@remix-run/react"
+import { json, type ActionFunctionArgs, type MetaFunction } from "@remix-run/node"
+import { Form, useActionData, useNavigation, useSearchParams } from "@remix-run/react"
 import { z } from "zod"
 
-import { IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { AuthButtons } from "~/components/shared/auth-buttons"
 import { SectionOr } from "~/components/shared/section-or"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import {
-  FormDescription,
-  FormErrors,
-  FormField,
-  FormLabel,
-} from "~/components/ui/form"
+import { FormDescription, FormErrors, FormField, FormLabel } from "~/components/ui/form"
 import { Input } from "~/components/ui/input"
 import { InputPassword } from "~/components/ui/input-password"
 import { LinkText } from "~/components/ui/link-text"
@@ -74,7 +60,7 @@ export default function SignUpRoute() {
       <div className="site-section-md space-y-8">
         <header className="site-header">
           <h2 className="inline-flex items-center gap-2">
-            <IconSet.SignIn weight="duotone" />
+            <IconMatch icon="sign-in" />
             <span>Log in to continue</span>
           </h2>
           <p>
@@ -100,9 +86,7 @@ export default function SignUpRoute() {
             {...form.props}
           >
             <fieldset className="flex flex-col gap-2" disabled={isSubmitting}>
-              {redirectTo ? (
-                <input type="hidden" name="redirectTo" value={redirectTo} />
-              ) : null}
+              {redirectTo ? <input type="hidden" name="redirectTo" value={redirectTo} /> : null}
 
               <FormField>
                 <FormLabel htmlFor={email.id}>Email</FormLabel>
@@ -134,17 +118,11 @@ export default function SignUpRoute() {
                   required
                   className="w-full"
                 />
-                <FormDescription id={password.descriptionId}>
-                  At least 8 characters
-                </FormDescription>
+                <FormDescription id={password.descriptionId}>At least 8 characters</FormDescription>
                 <FormErrors>{password}</FormErrors>
               </FormField>
 
-              <ButtonLoading
-                type="submit"
-                loadingText="Logging In..."
-                isLoading={isSubmitting}
-              >
+              <ButtonLoading type="submit" loadingText="Logging In..." isLoading={isSubmitting}>
                 Log In
               </ButtonLoading>
             </fieldset>
@@ -179,16 +157,12 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         ctx.addIssue({
           path: ["password"],
           code: z.ZodIssueCode.custom,
-          message:
-            "User cannot log in with a password. Try using 3rd party services below",
+          message: "User cannot log in with a password. Try using 3rd party services below",
         })
         return
       }
 
-      const isPasswordCorrect = await checkPassword(
-        data.password,
-        existingUser.password.hash,
-      )
+      const isPasswordCorrect = await checkPassword(data.password, existingUser.password.hash)
       if (!isPasswordCorrect) {
         ctx.addIssue({
           path: ["password"],

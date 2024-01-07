@@ -1,11 +1,5 @@
 import { loadIcons } from "@iconify/react"
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react"
+import { Links, LiveReload, Meta, Scripts, ScrollRestoration } from "@remix-run/react"
 import { useEffect } from "react"
 
 import { NProgress } from "~/components/shared/nprogress"

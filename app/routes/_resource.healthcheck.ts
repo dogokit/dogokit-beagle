@@ -12,15 +12,12 @@ export const handle = createSitemap()
 export const meta: MetaFunction = () => createMeta({ title: `Health Check` })
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const host =
-    request.headers.get("X-Forwarded-Host") ?? request.headers.get("host")
+  const host = request.headers.get("X-Forwarded-Host") ?? request.headers.get("host")
 
   try {
     const url = new URL(
       "/",
-      parsedEnv.NODE_ENV === "development"
-        ? `http://${host}`
-        : `https://${host}`,
+      parsedEnv.NODE_ENV === "development" ? `http://${host}` : `https://${host}`,
     )
 
     // Connect to the database, make a simple query, HEAD request to self

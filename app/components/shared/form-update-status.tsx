@@ -55,14 +55,11 @@ export function FormUpdateStatus({
 }) {
   const [open, setOpen] = useState<boolean>()
   const fetcher = useFetcher()
-  const isLoading =
-    fetcher.state !== "submitting" && fetcher.formMethod === "POST"
+  const isLoading = fetcher.state !== "submitting" && fetcher.formMethod === "POST"
 
   if (!item) return null
 
-  const statusSymbol = fetcher.formData
-    ? fetcher.formData.get("statusSymbol")
-    : item.status.symbol
+  const statusSymbol = fetcher.formData ? fetcher.formData.get("statusSymbol") : item.status.symbol
 
   const hasItemStatuses = Array.isArray(itemStatuses)
   if (!hasItemStatuses) return null

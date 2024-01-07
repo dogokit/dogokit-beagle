@@ -6,15 +6,10 @@ export type ConfigRedirect = {
   to?: string
 }
 
-export function redirectRouteToUrl(
-  request: Request,
-  configRedirects: ConfigRedirect[],
-) {
+export function redirectRouteToUrl(request: Request, configRedirects: ConfigRedirect[]) {
   const url = new URL(request.url)
 
-  const foundItem = configRedirects.find(
-    item => item.path.trim() === url.pathname,
-  )
+  const foundItem = configRedirects.find(item => item.path.trim() === url.pathname)
 
   if (!foundItem) return null
   if (foundItem.url && !foundItem.to) return redirect(foundItem.url)

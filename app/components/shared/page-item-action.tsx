@@ -1,4 +1,4 @@
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -8,11 +8,7 @@ import { type JsonifyPrisma } from "~/types/jsonify"
 import { cn } from "~/utils/cn"
 import { truncateText } from "~/utils/string"
 
-export function PageItemAction({
-  page,
-}: {
-  page: JsonifyPrisma<typeof modelPage.getWithStatus>
-}) {
+export function PageItemAction({ page }: { page: JsonifyPrisma<typeof modelPage.getWithStatus> }) {
   const { pageStatuses } = useAppAdminLoaderData()
   if (!page) return null
 
@@ -29,21 +25,12 @@ export function PageItemAction({
       )}
     >
       <div className="flex items-center gap-2">
-        <div
-          className={cn(
-            "flex flex-col gap-1",
-            "lg:flex-row-reverse lg:items-center",
-          )}
-        >
+        <div className={cn("flex flex-col gap-1", "lg:flex-row-reverse lg:items-center")}>
           <h4>{truncateText(page.title)}</h4>
 
           <div className="space-x-1">
-            <ButtonLink
-              variant="outline"
-              size="xs"
-              to={`/admin/pages/${page.id}`}
-            >
-              <Iconify icon="ph:note-pencil" />
+            <ButtonLink variant="outline" size="xs" to={`/admin/pages/${page.id}`}>
+              <IconMatch icon="note-pencil" />
               <span>Edit</span>
             </ButtonLink>
             <FormDelete
@@ -52,13 +39,8 @@ export function PageItemAction({
               itemText={`a page: ${page.title} (${page.slug})`}
               defaultValue={page.id}
             />
-            <ButtonLink
-              variant="outline"
-              size="xs"
-              to={`/${page.slug}`}
-              disabled={isViewDisabled}
-            >
-              <Iconify icon="ph:arrow-square-out-duotone" />
+            <ButtonLink variant="outline" size="xs" to={`/${page.slug}`} disabled={isViewDisabled}>
+              <IconMatch icon="arrow-square-out" />
               <span>View</span>
             </ButtonLink>
           </div>
@@ -77,9 +59,7 @@ export function PageItemAction({
           item={page}
         />
 
-        <code className="hidden text-xs text-muted-foreground lg:inline-flex">
-          {page.slug}
-        </code>
+        <code className="hidden text-xs text-muted-foreground lg:inline-flex">{page.slug}</code>
       </div>
     </li>
   )

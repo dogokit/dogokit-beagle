@@ -1,4 +1,4 @@
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
 import { ButtonLink } from "~/components/ui/button-link"
@@ -8,11 +8,7 @@ import { type JsonifyPrisma } from "~/types/jsonify"
 import { cn } from "~/utils/cn"
 import { truncateText } from "~/utils/string"
 
-export function PostItemAction({
-  post,
-}: {
-  post: JsonifyPrisma<typeof modelPost.getWithStatus>
-}) {
+export function PostItemAction({ post }: { post: JsonifyPrisma<typeof modelPost.getWithStatus> }) {
   const { postStatuses } = useAppUserLoaderData()
   if (!post) return null
 
@@ -29,21 +25,12 @@ export function PostItemAction({
       )}
     >
       <div className="flex items-center gap-2">
-        <div
-          className={cn(
-            "flex flex-col gap-1",
-            "lg:flex-row-reverse lg:items-center",
-          )}
-        >
+        <div className={cn("flex flex-col gap-1", "lg:flex-row-reverse lg:items-center")}>
           <h4>{truncateText(post.title)}</h4>
 
           <div className="space-x-1">
-            <ButtonLink
-              variant="outline"
-              size="xs"
-              to={`/user/posts/${post.id}`}
-            >
-              <Iconify icon="ph:note-pencil" />
+            <ButtonLink variant="outline" size="xs" to={`/user/posts/${post.id}`}>
+              <IconMatch icon="note-pencil" />
               <span>Edit</span>
             </ButtonLink>
             <FormDelete
@@ -58,7 +45,7 @@ export function PostItemAction({
               to={`/posts/${post.slug}`}
               disabled={isViewDisabled}
             >
-              <Iconify icon="ph:arrow-square-out-duotone" />
+              <IconMatch icon="arrow-square-out" />
               <span>View</span>
             </ButtonLink>
           </div>
@@ -77,9 +64,7 @@ export function PostItemAction({
           item={post}
         />
 
-        <code className="hidden text-xs text-muted-foreground lg:inline-flex">
-          {post.slug}
-        </code>
+        <code className="hidden text-xs text-muted-foreground lg:inline-flex">{post.slug}</code>
       </div>
     </li>
   )

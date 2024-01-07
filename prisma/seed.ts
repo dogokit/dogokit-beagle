@@ -180,9 +180,7 @@ async function seedPages() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { statusSymbol, ...pageSanitized } = pageRaw
 
-    const status = pageStatuses.find(
-      status => status.symbol === pageRaw.statusSymbol,
-    )
+    const status = pageStatuses.find(status => status.symbol === pageRaw.statusSymbol)
     if (!status) return null
 
     const pageData = {
@@ -247,9 +245,7 @@ async function seedPosts() {
     const existingPost = posts.find(post => {
       return slug === extractPostSlug(post.slug)
     })
-    const status = postStatuses.find(
-      status => status.symbol === postRaw.statusSymbol,
-    )
+    const status = postStatuses.find(status => status.symbol === postRaw.statusSymbol)
     if (!status) return null
 
     const postData = {

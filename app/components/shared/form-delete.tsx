@@ -1,7 +1,7 @@
 import { useFetcher, useLocation } from "@remix-run/react"
 import { useState } from "react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -39,14 +39,13 @@ export function FormDelete({
   const [open, setOpen] = useState<boolean>()
   const location = useLocation()
   const fetcher = useFetcher()
-  const isSubmitting =
-    fetcher.state === "submitting" && fetcher.formMethod === "DELETE"
+  const isSubmitting = fetcher.state === "submitting" && fetcher.formMethod === "DELETE"
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild className={className}>
         <Button variant="outline" size="xs" disabled={disabled}>
-          <Iconify icon="ph:trash-duotone" />
+          <IconMatch icon="trash" />
           <span>{buttonText}</span>
         </Button>
       </AlertDialogTrigger>
@@ -55,8 +54,7 @@ export function FormDelete({
         <AlertDialogHeader>
           <AlertDialogTitle>Delete {itemText}?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will permanently delete {itemText}. This action cannot be
-            undone.
+            This will permanently delete {itemText}. This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

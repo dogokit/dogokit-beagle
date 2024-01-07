@@ -27,10 +27,7 @@ export default function RedirectsRoute() {
     <div className="site-container">
       <section className="site-section prose-config">
         <h4>Redirects</h4>
-        <p>
-          {pluralizeWord("path", redirects.length)} redirect paths to URLs and
-          other pages.
-        </p>
+        <p>{pluralizeWord("path", redirects.length)} redirect paths to URLs and other pages.</p>
         <ul>
           {redirects.map(redirectItem => (
             <li key={redirectItem.path}>

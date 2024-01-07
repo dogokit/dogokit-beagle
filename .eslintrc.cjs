@@ -20,10 +20,7 @@ module.exports = {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    "@typescript-eslint/no-misused-promises": [
-      2,
-      { checksVoidReturn: { attributes: false } },
-    ],
+    "@typescript-eslint/no-misused-promises": [2, { checksVoidReturn: { attributes: false } }],
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {

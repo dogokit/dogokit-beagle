@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { Button } from "~/components/ui/button"
 import {
   Command,
@@ -9,11 +9,7 @@ import {
   CommandInput,
   CommandItem,
 } from "~/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "~/components/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
 import { cn } from "~/utils/cn"
 
 const frameworks = [
@@ -55,10 +51,7 @@ export function ComboboxDemo() {
           {value
             ? frameworks.find(framework => framework.value === value)?.label
             : "Select framework..."}
-          <Iconify
-            icon="ph:caret-up-down"
-            className="ml-2 size-4 shrink-0 opacity-50"
-          />
+          <IconMatch icon="caret-up-down" className="ml-2 size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -75,8 +68,8 @@ export function ComboboxDemo() {
                   setOpen(false)
                 }}
               >
-                <Iconify
-                  icon="ph:check"
+                <IconMatch
+                  icon="check"
                   className={cn(
                     "mr-2 size-4",
                     value === framework.value ? "opacity-100" : "opacity-0",

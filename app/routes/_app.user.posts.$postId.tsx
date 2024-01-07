@@ -7,17 +7,12 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/node"
-import {
-  Form,
-  useActionData,
-  useLoaderData,
-  useNavigation,
-} from "@remix-run/react"
+import { Form, useActionData, useLoaderData, useNavigation } from "@remix-run/react"
 import { useRef, useState } from "react"
 import { z } from "zod"
 
 import { EditorTiptapHook } from "~/components/libs/editor-tiptap"
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { FormDelete } from "~/components/shared/form-delete"
 import { FormUpdatePublish } from "~/components/shared/form-update-publish"
 import { FormUpdateStatus } from "~/components/shared/form-update-status"
@@ -72,9 +67,7 @@ export default function UserPostsPostIdRoute() {
   const navigation = useNavigation()
   const { postStatuses } = useAppUserLoaderData()
 
-  const [form, { id, slug, title, content }] = useForm<
-    z.infer<typeof schemaPost>
-  >({
+  const [form, { id, slug, title, content }] = useForm<z.infer<typeof schemaPost>>({
     id: "update-post",
     lastSubmission: actionData?.submission,
     shouldRevalidate: "onInput",
@@ -126,26 +119,19 @@ export default function UserPostsPostIdRoute() {
                   size="xs"
                   loadingText="Saving"
                   isLoading={isSubmitting}
-                  iconComponent={<Iconify icon="ph:floppy-disk-duotone" />}
+                  icon={<IconMatch icon="floppy-disk" />}
                 >
                   <span>Save</span>
                 </ButtonLoading>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="xs"
-                  onClick={handleReset}
-                >
-                  <Iconify icon="ph:arrow-counter-clockwise" />
+                <Button type="button" variant="outline" size="xs" onClick={handleReset}>
+                  <IconMatch icon="arrow-counter-clockwise" />
                   <span>Reset</span>
                 </Button>
                 <FormDelete
                   action="/user/posts/delete"
                   intentValue="user-delete-post-by-id"
                   defaultValue={post.id}
-                  itemText={`a post: ${truncateText(post.title)} (${
-                    post.slug
-                  })`}
+                  itemText={`a post: ${truncateText(post.title)} (${post.slug})`}
                 />
                 <ButtonLink
                   variant="outline"
@@ -153,7 +139,7 @@ export default function UserPostsPostIdRoute() {
                   to={`/posts/${post.slug}`}
                   disabled={isPostDraft}
                 >
-                  <Iconify icon="ph:arrow-square-out-duotone" />
+                  <IconMatch icon="arrow-square-out" />
                   <span>View</span>
                 </ButtonLink>
               </div>
@@ -201,13 +187,8 @@ export default function UserPostsPostIdRoute() {
                   spellCheck="false"
                   className="input-natural flex-1 font-mono text-sm"
                 />
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="xs"
-                  onClick={handleUpdateSlug}
-                >
-                  <Iconify icon="ph:lightbulb-duotone" />
+                <Button type="button" variant="outline" size="xs" onClick={handleUpdateSlug}>
+                  <IconMatch icon="lightbulb" />
                   <span>Generate Slug</span>
                 </Button>
               </div>
@@ -236,10 +217,7 @@ export default function UserPostsPostIdRoute() {
                 ref={contentRef}
                 onChange={e => setContentValue(e.target.value)}
               />
-              <EditorTiptapHook
-                content={contentValue}
-                handleUpdate={handleUpdateContent}
-              />
+              <EditorTiptapHook content={contentValue} handleUpdate={handleUpdateContent} />
             </div>
 
             {/* Manual textarea editor */}

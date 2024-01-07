@@ -1,12 +1,6 @@
 {
   "ignoreBinaries": ["/^check:.*/", "/^fix:.*/"],
-  "ignore": [
-    "app/components/ui",
-    "app/schemas",
-    "postcss.config.js",
-    "prisma",
-    "scripts"
-  ],
+  "ignore": ["app/components/ui", "app/schemas", "postcss.config.js", "prisma", "scripts"],
   "ignoreDependencies": [
     "@typescript-eslint/eslint-plugin",
     "@typescript-eslint/parser",

@@ -1,28 +1,14 @@
 import { conform, useForm } from "@conform-to/react"
 import { getFieldsetConstraint, parse } from "@conform-to/zod"
-import {
-  json,
-  type ActionFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
-import {
-  Form,
-  useActionData,
-  useNavigation,
-  useSearchParams,
-} from "@remix-run/react"
+import { json, type ActionFunctionArgs, type MetaFunction } from "@remix-run/node"
+import { Form, useActionData, useNavigation, useSearchParams } from "@remix-run/react"
 import { z } from "zod"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { AuthButtons } from "~/components/shared/auth-buttons"
 import { SectionOr } from "~/components/shared/section-or"
 import { ButtonLoading } from "~/components/ui/button-loading"
-import {
-  FormDescription,
-  FormErrors,
-  FormField,
-  FormLabel,
-} from "~/components/ui/form"
+import { FormDescription, FormErrors, FormField, FormLabel } from "~/components/ui/form"
 import { Input } from "~/components/ui/input"
 import { InputPassword } from "~/components/ui/input-password"
 import { LinkText } from "~/components/ui/link-text"
@@ -57,32 +43,32 @@ export default function SignUpRoute() {
   const [searchParams] = useSearchParams()
   const redirectTo = searchParams.get("redirectTo")
 
-  const [form, { email, fullname, username, password }] = useForm<
-    z.infer<typeof schemaUserSignUp>
-  >({
-    id: "signup",
-    lastSubmission: actionData?.submission,
-    shouldRevalidate: "onInput",
-    constraint: getFieldsetConstraint(schemaUserSignUp),
-    onValidate({ formData }) {
-      return parse(formData, { schema: schemaUserSignUp })
+  const [form, { email, fullname, username, password }] = useForm<z.infer<typeof schemaUserSignUp>>(
+    {
+      id: "signup",
+      lastSubmission: actionData?.submission,
+      shouldRevalidate: "onInput",
+      constraint: getFieldsetConstraint(schemaUserSignUp),
+      onValidate({ formData }) {
+        return parse(formData, { schema: schemaUserSignUp })
+      },
+      defaultValue: isModeDevelopment
+        ? {
+            email: "example@example.com",
+            fullname: "Example Name",
+            username: "example",
+            password: "exampleexample",
+          }
+        : {},
     },
-    defaultValue: isModeDevelopment
-      ? {
-          email: "example@example.com",
-          fullname: "Example Name",
-          username: "example",
-          password: "exampleexample",
-        }
-      : {},
-  })
+  )
 
   return (
     <div className="site-container">
       <div className="site-section-md space-y-8">
         <header className="site-header">
           <h2 className="inline-flex items-center gap-2">
-            <Iconify icon="ph:user-plus-duotone" />
+            <IconMatch icon="user-plus" />
             <span>Create a new account</span>
           </h2>
           <p>
@@ -166,21 +152,13 @@ export default function SignUpRoute() {
                   required
                   className="w-full"
                 />
-                <FormDescription id={password.descriptionId}>
-                  8 characters or more
-                </FormDescription>
+                <FormDescription id={password.descriptionId}>8 characters or more</FormDescription>
                 <FormErrors>{password}</FormErrors>
               </FormField>
 
-              {redirectTo ? (
-                <input type="hidden" name="redirectTo" value={redirectTo} />
-              ) : null}
+              {redirectTo ? <input type="hidden" name="redirectTo" value={redirectTo} /> : null}
 
-              <ButtonLoading
-                type="submit"
-                loadingText="Signing Up..."
-                isLoading={isSubmitting}
-              >
+              <ButtonLoading type="submit" loadingText="Signing Up..." isLoading={isSubmitting}>
                 Sign Up
               </ButtonLoading>
             </fieldset>
@@ -199,9 +177,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const submission = await parse(formData, {
     async: true,
     schema: schemaUserSignUp.superRefine(async (data, ctx) => {
-      const unallowedUsername = configUnallowedKeywords.find(
-        keyword => keyword === data.username,
-      )
+      const unallowedUsername = configUnallowedKeywords.find(keyword => keyword === data.username)
       if (unallowedUsername) {
         ctx.addIssue(issueUsernameUnallowed)
         return

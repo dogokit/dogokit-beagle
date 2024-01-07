@@ -1,7 +1,7 @@
 import { type VariantProps } from "class-variance-authority"
 import { match } from "ts-pattern"
 
-import { IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { Theme, useTheme } from "~/components/shared/theme"
 import { type buttonVariants } from "~/components/ui/button"
 import { ButtonIcon } from "~/components/ui/button-icon"
@@ -37,12 +37,12 @@ export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <ButtonIcon variant="ghost" size={size}>
-          <IconSet.Sun
-            weight="duotone"
+          <IconMatch
+            icon="sun"
             className="rotate-0 scale-100 transition-transform dark:-rotate-180 dark:scale-0"
           />
-          <IconSet.Moon
-            weight="duotone"
+          <IconMatch
+            icon="moon"
             className="absolute rotate-180 scale-0 transition-transform dark:rotate-0 dark:scale-100"
           />
           <span className="sr-only">Toggle color mode theme</span>
@@ -51,15 +51,15 @@ export function ThemeMenu({ align = "end", size }: ThemeMenuProps) {
 
       <DropdownMenuContent align={align}>
         <DropdownMenuItem onClick={() => handleChangeTheme("light")}>
-          <IconSet.Sun weight="duotone" className="me-2 size-4" />
+          <IconMatch icon="sun" className="me-2 size-4" />
           <span>Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("dark")}>
-          <IconSet.Moon weight="duotone" className="me-2 size-4" />
+          <IconMatch icon="moon" className="me-2 size-4" />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("system")}>
-          <IconSet.Laptop weight="duotone" className="me-2 size-4" />
+          <IconMatch icon="laptop" className="me-2 size-4" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

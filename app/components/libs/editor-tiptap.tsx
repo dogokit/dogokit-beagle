@@ -70,12 +70,8 @@ export function EditorTiptapHook({
     },
   })
 
-  const buttonActive = cn(
-    buttonVariants({ variant: "default", size: "xs", isIcon: true }),
-  )
-  const buttonInactive = cn(
-    buttonVariants({ variant: "ghost", size: "xs", isIcon: true }),
-  )
+  const buttonActive = cn(buttonVariants({ variant: "default", size: "xs", isIcon: true }))
+  const buttonInactive = cn(buttonVariants({ variant: "ghost", size: "xs", isIcon: true }))
 
   const handleSetLink = useCallback(() => {
     if (!editor) return null
@@ -90,12 +86,7 @@ export function EditorTiptapHook({
     }
 
     const fixedUrl = fixUrl(url)
-    editor
-      .chain()
-      .focus()
-      .extendMarkRange("link")
-      .setLink({ href: fixedUrl })
-      .run()
+    editor.chain().focus().extendMarkRange("link").setLink({ href: fixedUrl }).run()
   }, [editor])
 
   if (!editor) return null
@@ -141,11 +132,7 @@ export function EditorTiptapHook({
           type="button"
           onClick={() => editor.chain().focus().unsetLink().run()}
           disabled={!editor.isActive("link")}
-          className={
-            !editor.isActive("link")
-              ? cn(buttonInactive, "opacity-25")
-              : buttonInactive
-          }
+          className={!editor.isActive("link") ? cn(buttonInactive, "opacity-25") : buttonInactive}
         >
           <Iconify icon="ri:link-unlink" />
         </button>
@@ -170,18 +157,14 @@ export function EditorTiptapHook({
           <button
             type="button"
             onClick={() => editor.chain().focus().toggleItalic().run()}
-            className={
-              editor.isActive("italic") ? buttonActive : buttonInactive
-            }
+            className={editor.isActive("italic") ? buttonActive : buttonInactive}
           >
             <Iconify icon="ri:italic" />
           </button>
           <button
             type="button"
             onClick={() => editor.chain().focus().toggleStrike().run()}
-            className={
-              editor.isActive("strike") ? buttonActive : buttonInactive
-            }
+            className={editor.isActive("strike") ? buttonActive : buttonInactive}
           >
             <Iconify icon="ri:strikethrough" />
           </button>
@@ -196,11 +179,7 @@ export function EditorTiptapHook({
             type="button"
             onClick={() => editor.chain().focus().unsetLink().run()}
             disabled={!editor.isActive("link")}
-            className={
-              !editor.isActive("link")
-                ? cn(buttonInactive, "opacity-25")
-                : buttonInactive
-            }
+            className={!editor.isActive("link") ? cn(buttonInactive, "opacity-25") : buttonInactive}
           >
             <Iconify icon="ri:link-unlink" />
           </button>
@@ -238,9 +217,7 @@ export function EditorTiptapContextViewHTML() {
   const { editor } = useCurrentEditor()
   if (!editor) return null
   return (
-    <article className="prose-config whitespace-pre-wrap">
-      {parseHTML(editor.getHTML())}
-    </article>
+    <article className="prose-config whitespace-pre-wrap">{parseHTML(editor.getHTML())}</article>
   )
 }
 

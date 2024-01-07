@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react"
 import * as React from "react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { buttonVariants, type ButtonProps } from "~/components/ui/button"
 import { cn } from "~/utils/cn"
 
@@ -14,24 +14,16 @@ const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   />
 )
 
-const PaginationContent = React.forwardRef<
-  HTMLUListElement,
-  React.ComponentProps<"ul">
->(({ className, ...props }, ref) => (
-  <ul
-    ref={ref}
-    className={cn("flex flex-row items-center gap-1", className)}
-    {...props}
-  />
-))
+const PaginationContent = React.forwardRef<HTMLUListElement, React.ComponentProps<"ul">>(
+  ({ className, ...props }, ref) => (
+    <ul ref={ref} className={cn("flex flex-row items-center gap-1", className)} {...props} />
+  ),
+)
 PaginationContent.displayName = "PaginationContent"
 
-const PaginationItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentProps<"li">
->(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("", className)} {...props} />
-))
+const PaginationItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li">>(
+  ({ className, ...props }, ref) => <li ref={ref} className={cn("", className)} {...props} />,
+)
 PaginationItem.displayName = "PaginationItem"
 
 type PaginationLinkProps = {
@@ -39,12 +31,7 @@ type PaginationLinkProps = {
 } & Pick<ButtonProps, "size"> &
   React.ComponentProps<typeof Link>
 
-const PaginationLink = ({
-  className,
-  isActive,
-  children,
-  ...props
-}: PaginationLinkProps) => (
+const PaginationLink = ({ className, isActive, children, ...props }: PaginationLinkProps) => (
   <PaginationItem>
     <Link
       aria-current={isActive ? "page" : undefined}
@@ -73,16 +60,13 @@ const PaginationPrevious = ({
     className={cn("gap-1 pl-2.5", className)}
     {...props}
   >
-    <Iconify icon="ph:caret-left" className="size-4" />
+    <IconMatch icon="caret-left" className="size-4" />
     <span>Previous</span>
   </PaginationLink>
 )
 PaginationPrevious.displayName = "PaginationPrevious"
 
-const PaginationNext = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
+const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to next page"
     size="default"
@@ -90,20 +74,17 @@ const PaginationNext = ({
     {...props}
   >
     <span>Next</span>
-    <Iconify icon="ph:caret-right" className="size-4" />
+    <IconMatch icon="caret-right" className="size-4" />
   </PaginationLink>
 )
 
-const PaginationEllipsis = ({
-  className,
-  ...props
-}: React.ComponentProps<"span">) => (
+const PaginationEllipsis = ({ className, ...props }: React.ComponentProps<"span">) => (
   <span
     aria-hidden
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
   >
-    <Iconify icon="ph:dots-three" className="size-4" />
+    <IconMatch icon="dots-three" className="size-4" />
     <span className="sr-only">More pages</span>
   </span>
 )

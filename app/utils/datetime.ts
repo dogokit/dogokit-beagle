@@ -37,10 +37,7 @@ function formatRelativeTime(date: string | Date | undefined) {
 }
 
 export function formatTimestamp(date: ParamDate) {
-  return (
-    dayjs(date).locale("en").format("MMM D, YYYY [at] H:mm") +
-    ` · ${formatRelativeTime(date)}`
-  )
+  return dayjs(date).locale("en").format("MMM D, YYYY [at] H:mm") + ` · ${formatRelativeTime(date)}`
 }
 
 /**

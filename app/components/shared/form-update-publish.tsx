@@ -1,6 +1,6 @@
 import { useFetcher } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -33,8 +33,7 @@ export function FormUpdatePublish({
     | JsonifyPrisma<typeof modelPost.getWithStatus>
 }) {
   const fetcher = useFetcher()
-  const isLoading =
-    fetcher.state !== "submitting" && fetcher.formMethod === "POST"
+  const isLoading = fetcher.state !== "submitting" && fetcher.formMethod === "POST"
 
   if (!item) return null
 
@@ -60,15 +59,7 @@ export function FormUpdatePublish({
           name="intent"
           value={intentValue}
           isLoading={isLoading}
-          iconComponent={
-            <Iconify
-              icon={
-                isPublished
-                  ? "ph:book-open-duotone"
-                  : "ph:book-open-text-duotone"
-              }
-            />
-          }
+          icon={<IconMatch icon={isPublished ? "book-open" : "book-open-text"} />}
         >
           <span>{dialogTrigger}</span>
         </ButtonLoading>
@@ -76,11 +67,7 @@ export function FormUpdatePublish({
       <AlertDialogContent>
         <fetcher.Form action={action} method="POST" className="space-y-2">
           <input type="hidden" name={itemId} defaultValue={item.id} />
-          <input
-            type="hidden"
-            name="statusSymbol"
-            defaultValue={statusSymbol}
-          />
+          <input type="hidden" name="statusSymbol" defaultValue={statusSymbol} />
           <AlertDialogHeader>
             <AlertDialogTitle>{dialogTitle}</AlertDialogTitle>
             <AlertDialogDescription>{dialogDescription}</AlertDialogDescription>

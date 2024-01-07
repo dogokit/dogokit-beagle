@@ -85,11 +85,7 @@ export const modelUserPost = {
     return db.post.delete({ where: { id, userId } })
   },
 
-  updateStatus({
-    userId,
-    id,
-    statusId,
-  }: Pick<Post, "userId" | "id" | "statusId">) {
+  updateStatus({ userId, id, statusId }: Pick<Post, "userId" | "id" | "statusId">) {
     return db.post.update({
       where: { userId, id },
       data: { statusId },

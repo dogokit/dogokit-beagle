@@ -1,8 +1,4 @@
-import {
-  json,
-  type LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
+import { json, type LoaderFunctionArgs, type MetaFunction } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 import { z } from "zod"
 import { zx } from "zodix"
@@ -127,10 +123,7 @@ export default function ParamRoute() {
     <div className="site-container">
       <section className="site-section prose-config">
         <h1>Sorry, this page or user could not be found</h1>
-        <p>
-          The requested page or user either doesn’t exist or you don’t have
-          access to it.
-        </p>
+        <p>The requested page or user either doesn’t exist or you don’t have access to it.</p>
       </section>
       <ErrorHelpInformation />
     </div>

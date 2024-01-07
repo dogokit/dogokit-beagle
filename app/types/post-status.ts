@@ -1,6 +1,1 @@
-export type PostStatusSymbol =
-  | "DRAFT"
-  | "PRIVATE"
-  | "UNLISTED"
-  | "PUBLISHED"
-  | "ARCHIVED"
+export type PostStatusSymbol = "DRAFT" | "PRIVATE" | "UNLISTED" | "PUBLISHED" | "ARCHIVED"

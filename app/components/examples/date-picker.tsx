@@ -15,11 +15,7 @@ export function ExampleDatePicker() {
       <div className="space-y-4">
         <InputDate className="w-full" />
         <InputDate className="w-full" defaultValue={formatDateYMD(today)} />
-        <DatePicker
-          className="w-full"
-          name="date-picker-example"
-          defaultValue={String(today)}
-        />
+        <DatePicker className="w-full" name="date-picker-example" defaultValue={String(today)} />
       </div>
     </div>
   )

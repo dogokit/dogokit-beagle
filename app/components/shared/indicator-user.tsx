@@ -1,11 +1,8 @@
 import { Link, NavLink } from "@remix-run/react"
 import { type VariantProps } from "class-variance-authority"
 
-import { Iconify } from "~/components/libs/icon"
-import {
-  AvatarAuto,
-  type avatarAutoVariants,
-} from "~/components/ui/avatar-auto"
+import { IconMatch } from "~/components/libs/icon"
+import { AvatarAuto, type avatarAutoVariants } from "~/components/ui/avatar-auto"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,7 +36,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
     {
       text: "Profile",
       path: `/${username}`,
-      icon: "ph:user-duotone",
+      icon: "user",
       shortcut: "⌘K+P",
     },
   ]
@@ -48,12 +45,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
    * Configure the available paths in app/configs/navigation.ts
    */
 
-  const userNavItems = [
-    "/user/dashboard",
-    "/user/posts",
-    "/user/settings",
-    "/user/notifications",
-  ]
+  const userNavItems = ["/user/dashboard", "/user/posts", "/user/settings", "/user/notifications"]
 
   const devNavItems = ["/admin", "/blank"]
 
@@ -62,11 +54,7 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus-ring rounded-full">
-        <AvatarAuto
-          user={userData}
-          imageUrl={userData.images[0]?.url}
-          size={size}
-        />
+        <AvatarAuto user={userData} imageUrl={userData.images[0]?.url} size={size} />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align={align} className="w-56 overflow-scroll">
@@ -81,26 +69,20 @@ export function IndicatorUser({ align = "end", size }: IndicatorUserProps) {
         <DropdownMenuGroupItems
           items={[
             ...profileNavItem(userData.username),
-            ...configNavigationItems.filter(item =>
-              userNavItems.includes(item.path),
-            ),
+            ...configNavigationItems.filter(item => userNavItems.includes(item.path)),
           ]}
         />
 
         {isModeDevelopment && <DropdownMenuSeparator />}
         {isModeDevelopment && (
           <DropdownMenuGroupItems
-            items={configNavigationItems.filter(item =>
-              devNavItems.includes(item.path),
-            )}
+            items={configNavigationItems.filter(item => devNavItems.includes(item.path))}
           />
         )}
 
         <DropdownMenuSeparator />
         <DropdownMenuGroupItems
-          items={configNavigationItems.filter(item =>
-            authNavItems.includes(item.path),
-          )}
+          items={configNavigationItems.filter(item => authNavItems.includes(item.path))}
         />
       </DropdownMenuContent>
     </DropdownMenu>
@@ -118,11 +100,11 @@ function DropdownMenuGroupItems({ items }: { items: NavItem[] }) {
         return (
           <DropdownMenuItem key={item.path} isDestructive={isLogout} asChild>
             <NavLink to={item.path}>
-              <Iconify icon={item.icon} className="me-2" />
+              <span className="me-2">
+                <IconMatch icon={item.icon} />
+              </span>
               <span>{item.text}</span>
-              {item.shortcut && (
-                <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>
-              )}
+              {item.shortcut && <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>}
             </NavLink>
           </DropdownMenuItem>
         )

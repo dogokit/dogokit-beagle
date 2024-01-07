@@ -5,10 +5,7 @@ export function ExampleInput() {
     <div className="space-y-8">
       <header>
         <h2>Input</h2>
-        <p>
-          Displays a form input field or a component that looks like an input
-          field.
-        </p>
+        <p>Displays a form input field or a component that looks like an input field.</p>
       </header>
 
       <div className="space-y-4">

@@ -1,6 +1,6 @@
 import { useFetcher } from "@remix-run/react"
 
-import { Iconify, IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { ButtonLink } from "~/components/ui/button-link"
 import { ButtonLoading } from "~/components/ui/button-loading"
 import { Card } from "~/components/ui/card"
@@ -15,22 +15,12 @@ export function FormActionItem({ item }: { item: ConfigActionItem }) {
   return (
     <Card className="p-2">
       <fetcher.Form method="POST" action={item.actionNew} className="w-full">
-        <fieldset
-          disabled={isDisabled}
-          className="flex flex-col items-center gap-2"
-        >
-          <div
-            className={cn(
-              "text-6xl text-primary",
-              isDisabled && "text-muted-foreground",
-            )}
-          >
-            <Iconify icon={item.icon} />
+        <fieldset disabled={isDisabled} className="flex flex-col items-center gap-2">
+          <div className={cn("text-6xl text-primary", isDisabled && "text-muted-foreground")}>
+            <IconMatch icon={item.icon} />
           </div>
 
-          <h4 className={cn(isDisabled && "text-muted-foreground")}>
-            {item.name}
-          </h4>
+          <h4 className={cn(isDisabled && "text-muted-foreground")}>{item.name}</h4>
 
           <div className="grid w-full grid-rows-2 gap-2">
             <ButtonLoading
@@ -39,17 +29,12 @@ export function FormActionItem({ item }: { item: ConfigActionItem }) {
               loadingText="Adding"
               isLoading={isSubmitting}
             >
-              <IconSet.Plus />
+              <IconMatch icon="plus" />
               <span>Add</span>
             </ButtonLoading>
 
-            <ButtonLink
-              to={item.actionManage}
-              disabled={isDisabled}
-              size="sm"
-              variant="secondary"
-            >
-              <Iconify icon="ph:folder-simple-duotone" />
+            <ButtonLink to={item.actionManage} disabled={isDisabled} size="sm" variant="secondary">
+              <IconMatch icon="folder-simple" />
               <span>Manage</span>
             </ButtonLink>
           </div>
@@ -74,7 +59,7 @@ export function FormActionItemNew({ item }: { item?: ConfigActionItem }) {
         isLoading={isSubmitting}
         disabled={isSubmitting}
       >
-        <IconSet.Plus />
+        <IconMatch icon="plus" />
         <span>Add {item.name}</span>
       </ButtonLoading>
     </fetcher.Form>

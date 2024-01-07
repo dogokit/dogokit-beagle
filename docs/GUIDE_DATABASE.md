@@ -1,16 +1,13 @@
 # Guide: Database
 
-Follow this if want to run the database in a local container with Docker and
-Docker Compose.
+Follow this if want to run the database in a local container with Docker and Docker Compose.
 
 ## Docker
 
 Install and setup Docker on your system.
 
-- On Mac, use [OrbStack](https://orbstack.dev) (recommended) or
-  [Podman](https://podman.io)
-- On Linux, install
-  [Docker](https://docs.docker.com/desktop/install/linux-install)
+- On Mac, use [OrbStack](https://orbstack.dev) (recommended) or [Podman](https://podman.io)
+- On Linux, install [Docker](https://docs.docker.com/desktop/install/linux-install)
 - On Windows, use WSL then install [Podman](https://podman.io), alternative to
   [Docker Desktop](https://docs.docker.com/desktop/install/windows-install)
 
@@ -53,8 +50,7 @@ Seed initial data
 pnpm db:seed
 ```
 
-> Note: Only need to push the schema in development. No need for migration
-> files.
+> Note: Only need to push the schema in development. No need for migration files.
 
 ## Database Backup and Restore with PlanetScale
 

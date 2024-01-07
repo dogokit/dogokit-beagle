@@ -10,10 +10,7 @@ import { cn } from "~/utils/cn"
  */
 
 export interface ButtonAnchorProps
-  extends React.DetailedHTMLProps<
-      React.AnchorHTMLAttributes<HTMLAnchorElement>,
-      HTMLAnchorElement
-    >,
+  extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
     VariantProps<typeof buttonVariants> {}
 
 export const ButtonAnchor = ({

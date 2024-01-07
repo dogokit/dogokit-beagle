@@ -1,9 +1,5 @@
 import { parse } from "@conform-to/zod"
-import {
-  json,
-  type ActionFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
+import { json, type ActionFunctionArgs, type MetaFunction } from "@remix-run/node"
 
 import { schemaGeneralId } from "~/schemas/general"
 import { createMeta } from "~/utils/meta"

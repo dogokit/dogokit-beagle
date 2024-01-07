@@ -1,8 +1,4 @@
-import {
-  json,
-  type LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node"
+import { json, type LoaderFunctionArgs, type MetaFunction } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
 import {
@@ -61,7 +57,7 @@ export default function UsersRoute() {
   return (
     <div className="site-container space-y-12">
       <header className="site-header">
-        <h1 className="inline-flex items-center gap-2 text-primary">Users</h1>
+        <h1>Users</h1>
       </header>
 
       <section className="site-section">

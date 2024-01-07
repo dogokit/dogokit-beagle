@@ -13,8 +13,7 @@ import { createSitemap } from "~/utils/sitemap"
 
 export const handle = createSitemap()
 
-export const meta: MetaFunction = () =>
-  createMeta({ title: `Users`, description: `Manage users` })
+export const meta: MetaFunction = () => createMeta({ title: `Users`, description: `Manage users` })
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return json(await requireUser(request))

@@ -89,9 +89,7 @@ export function ExampleUploadcare() {
       <div className="max-w-2xl space-y-2">
         <header>
           <h3>Preview with Upload Provider</h3>
-          <p>
-            With modal, edit with crop ratio 1:1, then preview file after done.
-          </p>
+          <p>With modal, edit with crop ratio 1:1, then preview file after done.</p>
         </header>
         <UploaderWithProvider
           pubkey={ENV.UPLOADCARE_PUBLIC_KEY}

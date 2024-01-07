@@ -1,7 +1,7 @@
 import { useNavigation } from "@remix-run/react"
 import { useNProgress } from "@tanem/react-nprogress"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 
 export function NProgress() {
   const navigation = useNavigation()
@@ -41,13 +41,7 @@ function Container({
   )
 }
 
-function Bar({
-  animationDuration,
-  progress,
-}: {
-  animationDuration: number
-  progress: number
-}) {
+function Bar({ animationDuration, progress }: { animationDuration: number; progress: number }) {
   return (
     <div
       className="fixed left-0 top-0 z-50 h-1 w-full animate-pulse bg-primary"
@@ -62,10 +56,7 @@ function Bar({
 function Spinner() {
   return (
     <div className="fixed bottom-4 right-4 z-50 block">
-      <Iconify
-        icon="ph:spinner-gap-bold"
-        className="animate-spin text-4xl text-primary duration-1000"
-      />
+      <IconMatch icon="spinner-gap" className="animate-spin text-4xl text-primary duration-1000" />
     </div>
   )
 }

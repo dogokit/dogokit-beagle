@@ -1,7 +1,7 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
 import * as React from "react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { cn } from "~/utils/cn"
 
 const Checkbox = React.forwardRef<
@@ -16,10 +16,8 @@ const Checkbox = React.forwardRef<
     )}
     {...props}
   >
-    <CheckboxPrimitive.Indicator
-      className={cn("flex items-center justify-center text-current")}
-    >
-      <Iconify icon="ph:check" className="size-4" />
+    <CheckboxPrimitive.Indicator className={cn("flex items-center justify-center text-current")}>
+      <IconMatch icon="check" className="size-4" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))

@@ -6,7 +6,7 @@
 
 import { Link, useLocation } from "@remix-run/react"
 
-import { Iconify } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { FormSearch } from "~/components/shared/form-search"
 import { cn } from "~/utils/cn"
 import { pluralizeWord } from "~/utils/string"
@@ -119,11 +119,7 @@ export function PaginationNavigation({
 }: PaginationNavigationProps) {
   const location = useLocation()
 
-  function renderArrowLink(
-    direction: string,
-    icon: React.ReactNode,
-    targetPage: number,
-  ) {
+  function renderArrowLink(direction: string, icon: React.ReactNode, targetPage: number) {
     const isPrev = direction === "prev"
     const isNext = direction === "next"
     const isFirst = direction === "first"
@@ -161,10 +157,7 @@ export function PaginationNavigation({
     )
   }
 
-  function renderArrowMostLink(
-    direction: "first" | "last",
-    icon: React.ReactNode,
-  ) {
+  function renderArrowMostLink(direction: "first" | "last", icon: React.ReactNode) {
     const targetPage = direction === "first" ? 1 : totalPages
     return renderArrowLink(direction, icon, targetPage)
   }
@@ -174,8 +167,8 @@ export function PaginationNavigation({
 
   return (
     <nav className="flex items-center justify-center gap-4">
-      {renderArrowMostLink("first", <Iconify icon="ph:caret-double-left" />)}
-      {renderArrowLink("prev", <Iconify icon="ph:caret-left" />, pageParam - 1)}
+      {renderArrowMostLink("first", <IconMatch icon="caret-double-left" />)}
+      {renderArrowLink("prev", <IconMatch icon="caret-left" />, pageParam - 1)}
 
       {pageParam > 0 && (
         <ul className="flex flex-wrap gap-4">
@@ -200,12 +193,8 @@ export function PaginationNavigation({
         </ul>
       )}
 
-      {renderArrowLink(
-        "next",
-        <Iconify icon="ph:caret-right" />,
-        pageParam + 1,
-      )}
-      {renderArrowMostLink("last", <Iconify icon="ph:caret-double-right" />)}
+      {renderArrowLink("next", <IconMatch icon="caret-right" />, pageParam + 1)}
+      {renderArrowMostLink("last", <IconMatch icon="caret-double-right" />)}
     </nav>
   )
 }

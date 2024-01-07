@@ -2,18 +2,13 @@ import { NavLink, useNavigate, type NavLinkProps } from "@remix-run/react"
 import { useState } from "react"
 
 import { NavItemLink } from "~/components/layout/site-navigation"
-import { IconSet } from "~/components/libs/icon"
+import { IconMatch } from "~/components/libs/icon"
 import { IconLinks } from "~/components/shared/icon-links"
 import { IndicatorUser } from "~/components/shared/indicator-user"
 import { Logo } from "~/components/shared/logo"
 import { Button } from "~/components/ui/button"
 import { ButtonLink } from "~/components/ui/button-link"
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "~/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "~/components/ui/sheet"
 import { configNavigationItems, type NavItem } from "~/configs/navigation"
 import { configSite } from "~/configs/site"
 import { useRootLoaderData } from "~/hooks/use-root-loader-data"
@@ -29,7 +24,7 @@ export function SiteNavigationMenu() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="outline" size="sm">
-          <IconSet.List />
+          <IconMatch icon="list" />
           <span>Menu</span>
         </Button>
       </SheetTrigger>
@@ -58,7 +53,7 @@ export function SiteNavigationMenu() {
                     setOpen?.(false)
                   }}
                 >
-                  <IconSet.SignIn weight="duotone" />
+                  <IconMatch icon="sign-in" />
                   <span>Log In</span>
                 </ButtonLink>
                 <ButtonLink
@@ -69,7 +64,7 @@ export function SiteNavigationMenu() {
                     setOpen?.(false)
                   }}
                 >
-                  <IconSet.UserPlus weight="duotone" />
+                  <IconMatch icon="user-plus" />
                   <span>Sign Up</span>
                 </ButtonLink>
               </>
@@ -78,7 +73,7 @@ export function SiteNavigationMenu() {
             {userSession && (
               <>
                 <ButtonLink to="/new" size="sm">
-                  <IconSet.Plus />
+                  <IconMatch icon="plus" />
                   <span>New</span>
                 </ButtonLink>
                 <IndicatorUser size="sm" />
@@ -91,20 +86,13 @@ export function SiteNavigationMenu() {
               .filter(item => configSite.navItems.includes(item.path))
               .filter(navItem => navItem.isEnabled)
               .map(navItem => (
-                <NavItemLinkMenu
-                  key={navItem.path}
-                  onOpenChange={setOpen}
-                  navItem={navItem}
-                />
+                <NavItemLinkMenu key={navItem.path} onOpenChange={setOpen} navItem={navItem} />
               ))}
           </ul>
         </div>
 
         <div className="text-muted-foreground">
-          <IconLinks
-            className="justify-end gap-2"
-            classNameIcon="text-base p-1"
-          />
+          <IconLinks className="justify-end gap-2" classNameIcon="text-base p-1" />
         </div>
       </SheetContent>
     </Sheet>

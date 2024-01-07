@@ -95,11 +95,7 @@ export function LRConfig({
   )
 }
 
-export function LRFileUploaderRegular({
-  contextName,
-  theme,
-  children,
-}: UploaderProps) {
+export function LRFileUploaderRegular({ contextName, theme, children }: UploaderProps) {
   return (
     // @ts-ignore
     <lr-file-uploader-regular
@@ -150,13 +146,7 @@ export function LRUploadCtxProvider({
 export function LRDataOutput({ contextName }: UploaderProps) {
   return (
     // @ts-ignore
-    <lr-data-output
-      ctx-name={contextName}
-      use-console
-      use-input
-      use-group
-      use-event
-    />
+    <lr-data-output ctx-name={contextName} use-console use-input use-group use-event />
   )
 }
 
@@ -176,15 +166,9 @@ export function UploaderSwitcher({
     <>
       <LRConfig pubkey={pubkey} contextName={contextName} {...props} />
 
-      {mode === "regular" && (
-        <LRFileUploaderRegular contextName={contextName} theme={theme} />
-      )}
-      {mode === "minimal" && (
-        <LRFileUploaderMinimal contextName={contextName} theme={theme} />
-      )}
-      {mode === "inline" && (
-        <LRFileUploaderInline contextName={contextName} theme={theme} />
-      )}
+      {mode === "regular" && <LRFileUploaderRegular contextName={contextName} theme={theme} />}
+      {mode === "minimal" && <LRFileUploaderMinimal contextName={contextName} theme={theme} />}
+      {mode === "inline" && <LRFileUploaderInline contextName={contextName} theme={theme} />}
     </>
   )
 }
@@ -214,8 +198,7 @@ export function UploaderWithOutput({
   )
 
   const removeFile = useCallback(
-    (uuid: OutputFileEntry["uuid"]) =>
-      setFiles(files.filter(f => f.uuid !== uuid)),
+    (uuid: OutputFileEntry["uuid"]) => setFiles(files.filter(f => f.uuid !== uuid)),
     [files, setFiles],
   )
 
@@ -239,12 +222,7 @@ export function UploaderWithOutput({
   return (
     <div className="space-y-2">
       <div>
-        <LRConfig
-          pubkey={pubkey}
-          contextName={contextName}
-          config={config}
-          {...props}
-        />
+        <LRConfig pubkey={pubkey} contextName={contextName} config={config} {...props} />
         <LRFileUploaderRegular contextName={contextName} theme={theme}>
           {/* @ts-ignore */}
           <lr-data-output
@@ -258,11 +236,7 @@ export function UploaderWithOutput({
         </LRFileUploaderRegular>
       </div>
 
-      <PreviewFiles
-        multiple={config.multiple}
-        files={files}
-        removeFile={removeFile}
-      />
+      <PreviewFiles multiple={config.multiple} files={files} removeFile={removeFile} />
     </div>
   )
 }
@@ -282,13 +256,10 @@ export function UploaderWithProvider({
   ...props
 }: UploaderWithPreviewProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry[]>([])
-  const ctxProviderRef = useRef<
-    typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider
-  >(null)
+  const ctxProviderRef = useRef<typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider>(null)
 
   const removeFile = useCallback(
-    (uuid: OutputFileEntry["uuid"]) =>
-      setFiles(files.filter(f => f.uuid !== uuid)),
+    (uuid: OutputFileEntry["uuid"]) => setFiles(files.filter(f => f.uuid !== uuid)),
     [files, setFiles],
   )
 
@@ -303,16 +274,12 @@ export function UploaderWithProvider({
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      ctxProviderRef.current?.removeEventListener(
-        "data-output",
-        handleUploadEvent,
-      )
+      ctxProviderRef.current?.removeEventListener("data-output", handleUploadEvent)
     }
   }, [setUploadedFiles])
 
   useEffect(() => {
-    const resetUploaderState = () =>
-      ctxProviderRef.current?.uploadCollection.clearAll()
+    const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll()
 
     const handleDoneFlow = () => {
       resetUploaderState()
@@ -337,12 +304,7 @@ export function UploaderWithProvider({
   return (
     <div className="space-y-2">
       <div>
-        <LRConfig
-          pubkey={pubkey}
-          contextName={contextName}
-          config={config}
-          {...props}
-        />
+        <LRConfig pubkey={pubkey} contextName={contextName} config={config} {...props} />
         <LRFileUploaderRegular contextName={contextName} theme={theme} />
 
         {/* @ts-ignore */}
@@ -350,11 +312,7 @@ export function UploaderWithProvider({
         {/* Note: ctxProviderRef cannot be passed to custom component props */}
       </div>
 
-      <PreviewFiles
-        multiple={config.multiple}
-        files={files}
-        removeFile={removeFile}
-      />
+      <PreviewFiles multiple={config.multiple} files={files} removeFile={removeFile} />
     </div>
   )
 }

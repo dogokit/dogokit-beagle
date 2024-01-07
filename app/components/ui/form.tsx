@@ -6,18 +6,11 @@ import { Alert } from "~/components/ui/alert"
 import { Label, labelVariants } from "~/components/ui/label"
 import { cn } from "~/utils/cn"
 
-const FormField = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn("flex flex-col gap-1", className)}
-      {...props}
-    />
-  )
-})
+const FormField = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    return <div ref={ref} className={cn("flex flex-col gap-1", className)} {...props} />
+  },
+)
 FormField.displayName = "FormField"
 
 const FormLabel = React.forwardRef<
@@ -29,10 +22,7 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(
-        labelVariants({ variant: disabled ? "disabled" : "default" }),
-        className,
-      )}
+      className={cn(labelVariants({ variant: disabled ? "disabled" : "default" }), className)}
       {...props}
     />
   )
@@ -43,13 +33,7 @@ const FormDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => {
-  return (
-    <p
-      ref={ref}
-      className={cn("text-xs text-muted-foreground", className)}
-      {...props}
-    />
-  )
+  return <p ref={ref} className={cn("text-xs text-muted-foreground", className)} {...props} />
 })
 FormDescription.displayName = "FormDescription"
 
@@ -58,11 +42,7 @@ const FormMessage = React.forwardRef<
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, children, ...props }, ref) => {
   return (
-    <p
-      ref={ref}
-      className={cn("text-[0.8rem] font-medium text-destructive", className)}
-      {...props}
-    >
+    <p ref={ref} className={cn("text-[0.8rem] font-medium text-destructive", className)} {...props}>
       {children}
     </p>
   )
@@ -74,11 +54,7 @@ const FormFieldSet = React.forwardRef<
   React.FieldsetHTMLAttributes<HTMLFieldSetElement>
 >(({ className, children, ...props }, ref) => {
   return (
-    <fieldset
-      ref={ref}
-      className={cn("space-y-4 disabled:opacity-80", className)}
-      {...props}
-    >
+    <fieldset ref={ref} className={cn("space-y-4 disabled:opacity-80", className)} {...props}>
       {children}
     </fieldset>
   )
@@ -94,12 +70,7 @@ const FormAlert = React.forwardRef<
   return (
     <>
       {fieldConfig.error && (
-        <Alert
-          variant="destructive"
-          id={fieldConfig.errorId}
-          ref={ref}
-          {...props}
-        >
+        <Alert variant="destructive" id={fieldConfig.errorId} ref={ref} {...props}>
           {fieldConfig.error}
         </Alert>
       )}
@@ -122,12 +93,4 @@ function FormErrors({ children }: { children: FieldConfig<string> }) {
   )
 }
 
-export {
-  FormAlert,
-  FormDescription,
-  FormErrors,
-  FormField,
-  FormFieldSet,
-  FormLabel,
-  FormMessage,
-}
+export { FormAlert, FormDescription, FormErrors, FormField, FormFieldSet, FormLabel, FormMessage }
