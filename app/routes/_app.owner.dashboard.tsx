@@ -19,19 +19,11 @@ export default function OwnerDashboardRoute() {
     <div className="app-container">
       <header className="app-header items-center gap-2 sm:gap-4">
         <div>
-          <AvatarAuto
-            user={userData}
-            imageUrl={userData.images[0]?.url}
-            className="outline outline-2 outline-background"
-            size="lg"
-          />
+          <AvatarAuto user={userData} imageUrl={userData.images[0]?.url} />
         </div>
 
         <div>
-          <h2>
-            <span className="hidden lg:inline">Welcome, </span>
-            {userData.fullname}
-          </h2>
+          <h2>Owner Dashboard</h2>
           <p className="text-muted-foreground">
             <span>{userData.email}</span>
           </p>

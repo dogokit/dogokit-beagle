@@ -60,7 +60,10 @@ export default function UserPagesRoute() {
   return (
     <div className="app-container">
       <header className="app-header justify-between gap-4">
-        <h2>Pages</h2>
+        <div>
+          <h2>Pages</h2>
+          <p>All pages</p>
+        </div>
 
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           <FormActionItemNew item={getActionItem("Page")} />

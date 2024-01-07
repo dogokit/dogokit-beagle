@@ -3,7 +3,7 @@ import { useState } from "react"
 import { IconMatch } from "~/components/libs/icon"
 import { Button, buttonVariants } from "~/components/ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/components/ui/collapsible"
-import { useRootLoaderData } from "~/hooks/use-root-loader-data"
+import { useAppMode } from "~/hooks/use-app-mode"
 import { cn } from "~/utils/cn"
 import { stringifyCode } from "~/utils/string"
 
@@ -28,11 +28,11 @@ export function Debug({
   className?: string
   children?: string | object
 }) {
-  const { ENV } = useRootLoaderData()
+  const { isModeDevelopment } = useAppMode()
   const [isVisible, setIsVisible] = useState(!hidden)
   const [isOpen, setIsOpen] = useState(isCollapsibleOpen)
 
-  if (!isAlwaysShow && ENV?.NODE_ENV === "production") return null
+  if (!isAlwaysShow && !isModeDevelopment) return null
   if (!isVisible) return null
 
   return (
