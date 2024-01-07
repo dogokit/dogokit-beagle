@@ -37,6 +37,7 @@ documentation, [check its repo](https://github.com/dogokit/dogokit-remix).
 
 - [Quick Start](#quick-start)
 - [Goal](#goal)
+- [Prerequisites](#prerequisites)
 - [Concept](#concept)
 - [Tech Stack](#tech-stack)
 - [Setup](#setup)
@@ -97,6 +98,19 @@ The goal is to use this for building web apps:
 - Content Management System (CMS)
 - Learning Management System (LMS)
 - Software as a Service (SaaS)
+
+## Prerequisites
+
+Before using this template, you should already understand and have experience
+with:
+
+- CLI/Terminal
+- HTML
+- CSS
+- JavaScript
+- Node.js
+- TypeScript
+- React
 
 ## Concept
 
