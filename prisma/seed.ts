@@ -134,7 +134,7 @@ async function seedUsers() {
       where: { username: userData.username },
       update: {
         ...userData,
-        // FIXME profile: profile ? { update: profile } : undefined,
+        // FIXME: profile: profile ? { update: profile } : undefined,
         password:
           userCredential.password && userHasPassword
             ? { update: { hash } } // Update existing password
@@ -142,7 +142,7 @@ async function seedUsers() {
       },
       create: {
         ...userData,
-        // FIXME profile: profile ? { create: profile } : undefined,
+        // FIXME: profile: profile ? { create: profile } : undefined,
         password: userCredential.password ? { create: { hash } } : undefined,
       },
       include: { password: { select: { hash: true } } },

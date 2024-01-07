@@ -346,6 +346,11 @@ export function PreviewFiles({
     )
   }
 
+  const handleRemoveDeleteFile = (file: LR.OutputFileEntry) => {
+    removeFile(file.uuid)
+    // FIXME: Delete the file in the Uploadcare storage
+  }
+
   return (
     <ul className="flex flex-wrap gap-2">
       {files.map(file => {
@@ -368,7 +373,7 @@ export function PreviewFiles({
               variant="ghost"
               size="xs"
               type="button"
-              onClick={() => removeFile(file.uuid)}
+              onClick={() => handleRemoveDeleteFile(file)}
             >
               <IconMatch icon="x" />
               <span className="sr-only">Remove File</span>
