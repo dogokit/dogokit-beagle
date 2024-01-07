@@ -65,7 +65,7 @@
     @apply border-border;
   }
   body {
-    @apply cursor-default bg-background text-foreground transition-all;
+    @apply cursor-default bg-background text-foreground transition-colors;
     @apply selection:bg-primary/75 selection:text-white;
   }
   img {
@@ -153,8 +153,8 @@
     @apply prose-code:prose-code-styles;
   }
   .prose-a-styles {
-    @apply focus-ring cursor-pointer rounded-xs decoration-muted transition;
-    @apply text-accent-foreground hover:text-accent-foreground/75;
+    @apply focus-ring cursor-pointer rounded-xs no-underline transition;
+    @apply text-primary hover:text-primary/75;
   }
   .prose-pre-styles {
     @apply bg-muted text-foreground;
