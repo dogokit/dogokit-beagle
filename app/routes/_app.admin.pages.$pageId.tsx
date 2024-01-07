@@ -128,7 +128,7 @@ export default function UserPagesPageIdRoute() {
                 <FormUpdatePublish
                   itemName={page.title}
                   itemId="pageId"
-                  action="/admin/posts/update"
+                  action="/admin/pages/update"
                   intentValue="update-page-publish"
                   item={page}
                 />

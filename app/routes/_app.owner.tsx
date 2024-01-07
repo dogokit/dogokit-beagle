@@ -53,13 +53,13 @@ export function ErrorBoundary() {
   const error = useRouteError()
   if (isRouteErrorResponse(error)) {
     return (
-      <div>
+      <div className="app-container">
         <p>Error in Owner</p>
       </div>
     )
   }
   return (
-    <div>
+    <div className="app-container">
       <p>Error in Owner</p>
     </div>
   )

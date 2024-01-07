@@ -8,7 +8,7 @@ export const modelPageStatus = {
   },
 
   getAll() {
-    return db.postStatus.findMany({
+    return db.pageStatus.findMany({
       orderBy: { sequence: "asc" },
     })
   },

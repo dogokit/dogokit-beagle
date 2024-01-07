@@ -14,8 +14,8 @@ export function useAppUserLoaderData() {
 
 export function useAppAdminLoaderData() {
   const appAdminData = useMatchesData("routes/_app.admin") as {
-    pageStatuses: PageStatus[]
     postStatuses: PostStatus[]
+    pageStatuses: PageStatus[]
   }
 
   return {

@@ -21,11 +21,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { userIsAllowed } = await requireUser(request, ["ADMIN", "MANAGER"])
   if (!userIsAllowed) return redirect("/")
 
-  const pageStatuses = await modelPageStatus.getAll()
-  invariantResponse(pageStatuses, "Page statuses unavailable", { status: 404 })
-
   const postStatuses = await modelPostStatus.getAll()
   invariantResponse(postStatuses, "Post statuses unavailable", { status: 404 })
+
+  const pageStatuses = await modelPageStatus.getAll()
+  invariantResponse(pageStatuses, "Page statuses unavailable", { status: 404 })
 
   return json({ pageStatuses, postStatuses })
 }
@@ -81,13 +81,13 @@ export function ErrorBoundary() {
   const error = useRouteError()
   if (isRouteErrorResponse(error)) {
     return (
-      <div>
+      <div className="app-container">
         <p>Error in Admin</p>
       </div>
     )
   }
   return (
-    <div>
+    <div className="app-container">
       <p>Error in Admin</p>
     </div>
   )
