@@ -100,7 +100,7 @@ function StackItems({
             href={item.url}
             className={cn(
               "focus-ring flex flex-col items-center gap-2 rounded-md px-1 py-2",
-              "transition hover:opacity-75",
+              "min-h-20 min-w-20 transition hover:opacity-75",
               item.isSoon && "blur-sm hover:blur-0 focus:blur-0",
             )}
           >
