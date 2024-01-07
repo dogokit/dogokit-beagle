@@ -14,6 +14,4 @@ export default {
       punycode: true,
     },
   },
-
-  serverDependenciesToBundle: [/^react-icons/],
 }

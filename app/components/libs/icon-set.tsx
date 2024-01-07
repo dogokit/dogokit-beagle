@@ -3,11 +3,11 @@
  *
  * Alternative of Iconify if want to preload icons, without fetching to their API
  *
- * - react-icons: https://react-icons.github.io/react-icons
  * - Phosphor Icons: https://phosphoricons.com
  * - Simple Icons: https://simpleicons.org
  */
 
+import { SiGithub, SiRemix } from "@icons-pack/react-simple-icons"
 import {
   House,
   Info,
@@ -18,10 +18,7 @@ import {
   Sun,
   type Icon,
 } from "@phosphor-icons/react"
-import { type IconType } from "react-icons"
-import { SiGithub, SiRemix } from "react-icons/si/index.js"
 
-export type IconReactIcons = IconType
 export type IconPhosphor = Icon
 
 export const IconSet = {

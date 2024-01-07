@@ -20,6 +20,9 @@ dependencies:
   '@fontsource-variable/inter':
     specifier: 5.0.15
     version: 5.0.15
+  '@icons-pack/react-simple-icons':
+    specifier: 9.2.0
+    version: 9.2.0(react@18.2.0)
   '@nasa-gcn/remix-seo':
     specifier: ^2.0.0
     version: 2.0.0(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)
@@ -218,9 +221,6 @@ dependencies:
   react-flagpack:
     specifier: 1.2.0
     version: 1.2.0(react@18.2.0)
-  react-icons:
-    specifier: 4.12.0
-    version: 4.12.0(react@18.2.0)
   react-resizable-panels:
     specifier: 1.0.5
     version: 1.0.5(react-dom@18.2.0)(react@18.2.0)
@@ -1609,6 +1609,14 @@ packages:
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
+
+  /@icons-pack/react-simple-icons@9.2.0(react@18.2.0):
+    resolution: {integrity: sha512-09JZZx/jM4ugzwcUw4OSS1l6/83x2sJzG6jwzHpNmPufY1rq7apLdcK+4Cy9nebAuZEwaeVZQ69c8uib736LeA==}
+    peerDependencies:
+      react: ^16.13 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -10736,14 +10744,6 @@ packages:
     resolution: {integrity: sha512-qGhnBGg9lCHQ7AKu5wZ0pTvPACz0opLa0+hJ6zj9805jI016YjE8ggAj269GaIG/wyelmX/Qph/SWQecm0RFrQ==}
     peerDependencies:
       react: ^16.8.* || ^17.*
-    dependencies:
-      react: 18.2.0
-    dev: false
-
-  /react-icons@4.12.0(react@18.2.0):
-    resolution: {integrity: sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==}
-    peerDependencies:
-      react: '*'
     dependencies:
       react: 18.2.0
     dev: false
