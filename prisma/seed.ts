@@ -18,13 +18,13 @@ import { dataRoles } from "./data/roles"
  * EDITME: Enable or disable seed items by commenting them
  */
 const enabledSeedItems = [
-  // "permissions",
-  // "roles",
+  "permissions",
+  "roles",
   "users",
-  // "pageStatuses",
-  // "pages",
-  // "postStatuses",
-  // "posts",
+  "pageStatuses",
+  "pages",
+  "postStatuses",
+  "posts",
 ]
 
 async function main() {
