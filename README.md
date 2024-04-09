@@ -6,10 +6,9 @@
 ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Radix UI](https://img.shields.io/badge/Radix_UI-111111?style=flat-square&logo=framer&logoColor=white)
 ![Prisma ORM](https://img.shields.io/badge/Prisma_ORM-2D3748?style=flat-square&logo=prisma&logoColor=white)
-![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-> 🚧 Work in Progress
+> 🚧 Migrating to PostgreSQL (Neon) from MySQL (PlanetScale)
 
 Dogokit Remix is a web app template kit by [🐶 Dogokit](https://dogokit.allnimal.com) using Remix,
 React, Tailwind CSS, Radix UI, Prisma ORM, and more. Read the latest updates and details on
@@ -121,8 +120,9 @@ Some reasons for making and using this template kit.
   - Styling with [Tailwind CSS](https://tailwindcss.com) and [Radix UI](https://radix-ui.com)
   - Bundled with [shadcn UI](https://ui.shadcn.com)
   - Icon retrieval either with [Iconify](https://iconify.design) or manual import
-- Database with [Prisma ORM](https://prisma.io) and [MySQL](https://mysql.com) on
-  [PlanetScale](https://planetscale.com)
+- Database with [Prisma ORM](https://prisma.io)
+  - Default for [PostgreSQL](https://postgresql.org) on [Neon](https://neon.tech)
+  - Option for [MySQL](https://mysql.com) on [PlanetScale](https://planetscale.com)
   - Run local development database instance as a container with [Docker](https://docker) and
     [Docker Compose](https://docs.docker.com/compose)
 - Auth (authentication and authorization) built-in
