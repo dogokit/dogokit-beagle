@@ -19,7 +19,7 @@ Setup `.env` to contain these and change them as needed:
 MYSQL_ROOT_PASSWORD=the_root_password
 MYSQL_USER=the_user
 MYSQL_PASSWORD=the_password
-MYSQL_DATABASE=bandungdev
+MYSQL_DATABASE=dogokit
 MYSQL_HOST_PORT=3306
 MYSQL_CONTAINER_PORT=3306
 ```
