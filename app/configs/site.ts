@@ -6,7 +6,7 @@
 
 // For general purpose
 export const configSite = {
-  domain: "dogokit.allnimal.com",
+  domain: "dogokit-beagle.vercel.app",
 
   // Recommended: 60 characters
   name: "Dogokit", // Can be different with title
@@ -33,7 +33,7 @@ export const configSite = {
     instagram: "https://instagram.com/mhaidarhanif_",
     showwcase: "https://showwcase.com/mhaidarhanif",
     twitter: "https://twitter.com/mhaidarhanif",
-    website: "https://dogokit.allnimal.com",
+    website: "https://dogokit-beagle.vercel.app",
     youtube: "https://youtube.com/mhaidarhanif",
   },
 
@@ -62,7 +62,7 @@ export const configSite = {
 
 // The order matters on what being shown first
 export const configSiteIconLinks = [
-  { name: "GitHub", href: "https://github.com/dogokit/dogokit-remix" },
+  { name: "GitHub", href: "https://github.com/dogokit/dogokit-beagle" },
   { name: "Twitter", href: "https://twitter.com/mhaidarhanif" },
   { name: "X-Twitter", href: "https://x.com/mhaidarhanif" },
   { name: "LinkedIn", href: "https://linkedin.com/in/mhaidarhanif" },

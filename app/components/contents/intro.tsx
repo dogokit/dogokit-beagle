@@ -15,7 +15,7 @@ export function ContentIntro() {
         <h2>Using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more</h2>
 
         <div className="flex flex-wrap gap-4">
-          <ButtonAnchor size="lg" variant="default" href="https://github.com/dogokit/dogokit-remix">
+          <ButtonAnchor size="lg" variant="default" href="https://github.com/dogokit/dogokit-beagle">
             <IconMatch icon="github" className="size-5" />
             <span>Repo on GitHub</span>
           </ButtonAnchor>
@@ -46,12 +46,12 @@ export function ContentIntro() {
         <ul>
           <li>
             Repo:{" "}
-            <AnchorText href="https://github.com/dogokit/dogokit-remix">
-              github.com/dogokit/dogokit-remix
+            <AnchorText href="https://github.com/dogokit/dogokit-beagle">
+              github.com/dogokit/dogokit-beagle
             </AnchorText>
           </li>
           <li>
-            Demo: <AnchorText href="https://dogokit.allnimal.com">dogokit.allnimal.com</AnchorText>
+            Demo: <AnchorText href="https://dogokit-beagle.vercel.app">dogokit-beagle.vercel.app</AnchorText>
           </li>
         </ul>
 
@@ -61,7 +61,7 @@ export function ContentIntro() {
           <AnchorText href="https://allnimal.com">🐾 Allnimal</AnchorText> group (
           <AnchorText href="https://bearmentor.com">🐻 Bearmentor</AnchorText>,{" "}
           <AnchorText href="https://catamyst.com">🐱 Catamyst</AnchorText>,{" "}
-          <AnchorText href="https://dogokit.allnimal.com">🐶 Dogokit</AnchorText>)
+          <AnchorText href="https://dogokit-beagle.vercel.app">🐶 Dogokit</AnchorText>)
         </p>
       </div>
     </div>

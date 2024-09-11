@@ -33,7 +33,7 @@ export const configSitemapGroups: ConfigSitemapGroup[] = [
       { name: "🐾 Allnimal", url: "https://allnimal.com" },
       { name: "🐻 Bearmentor", url: "https://bearmentor.com" },
       { name: "🐱 Catamyst", url: "https://catamyst.com" },
-      { name: "🐶 Dogokit", url: "https://dogokit.allnimal.com" },
+      { name: "🐶 Dogokit", url: "https://dogokit-beagle.vercel.app" },
       { name: "🧊 M Haidar Hanif", url: "https://mhaidarhanif.com" },
     ],
   },

@@ -30,7 +30,7 @@ Choose one for each category.
 Initialize or clone the repo. Preferably with SSH URL.
 
 ```sh
-git clone git@github.com:dogokit/dogokit-remix.git
+git clone git@github.com:dogokit/dogokit-beagle.git
 ```
 
 Ignore some files.

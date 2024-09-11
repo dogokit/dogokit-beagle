@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Ask a question
-    url: https://github.com/dogokit/dogokit-remix/discussions/category_choices
+    url: https://github.com/dogokit/dogokit-beagle/discussions/category_choices
     about: Ask questions and discuss with the community
   - name: Visit the site
-    url: https://dogokit.allnimal.com
+    url: https://dogokit-beagle.vercel.app
     about: Check out the examples

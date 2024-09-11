@@ -1,4 +1,4 @@
-# [🐶 Dogokit Remix](https://dogokit.allnimal.com)
+# [🐶 Dogokit Beagle](https://dogokit-beagle.vercel.app)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
@@ -10,25 +10,15 @@
 
 > 🚧 Migrating to PostgreSQL (Neon) from MySQL (PlanetScale)
 
-Dogokit Remix is a web app template kit by [🐶 Dogokit](https://dogokit.allnimal.com) using Remix,
-React, Tailwind CSS, Radix UI, Prisma ORM, and more. Read the latest updates and details on
-[dogokit/dogokit-remix](https://github.com/dogokit/dogokit-remix).
+🐶Dogokit Beagle is a web app template kit using Remix, React, Tailwind CSS, Radix UI, Prisma ORM, and more. Read the latest updates and details on
+[dogokit/dogokit-beagle](https://github.com/dogokit/dogokit-beagle).
 
-The goal is to start and be as productive as possible to ship a web app quickly with
-[Remix](https://remix.run) full stack web framework. It is a highly opinionated collection of
-application structure, interactive UI components, software engineering and web development workflow,
-functionality hooks and utilities, also integration with 3rd party services.
+The goal is to start and be as productive as possible to ship a web app quickly with [Remix](https://remix.run) full stack web framework. It is a highly opinionated collection of application structure, interactive UI components, software engineering and web development workflow, functionality hooks and utilities, also integration with 3rd party services.
 
 Check out:
 
-- Web: <https://dogokit.allnimal.com>
-- Repo: <https://github.com/dogokit/dogokit-remix>
-
-> 📝 This notice below can be used to remind about the latest complete docs
-
-The repo is based on [Dogokit](https://dogokit.allnimal.com) that using Remix, React, Tailwind CSS,
-Radix UI, Prisma ORM, and more. For more details and documentation,
-[check its repo](https://github.com/dogokit/dogokit-remix).
+- Web: <https://dogokit-beagle.vercel.app>
+- Repo: <https://github.com/dogokit/dogokit-beagle>
 
 ## Table of Contents
 
@@ -45,22 +35,22 @@ Radix UI, Prisma ORM, and more. For more details and documentation,
 <!-- THIS IS A REMOVABLE SECTION -->
 
 Starting new?
-[Use this template to generate the repository](https://github.com/dogokit/dogokit-remix/generate).
+[Use this template to generate the repository](https://github.com/dogokit/dogokit-beagle/generate).
 
 Clone?
 
 ```sh
-git clone git@github.com:dogokit/dogokit-remix.git
+git clone git@github.com:dogokit/dogokit-beagle.git
 ```
 
 Use `pnpx` or `pnpm dlx`?
 
 ```sh
-pnpx create-remix@latest --template dogokit/dogokit-remix
+pnpx create-remix@latest --template dogokit/dogokit-beagle
 ```
 
 Once decided to use this, in order to get the latest
-[README docs](https://github.com/dogokit/dogokit-remix/blob/main/README.md) possible, replace and
+[README docs](https://github.com/dogokit/dogokit-beagle/blob/main/README.md) possible, replace and
 remove all explanation in here except the [Setup](#setup) section.
 
 This is a template kit, not a blank repo generator. Customize it based on the actual application
@@ -409,13 +399,12 @@ pnpx shadcn-custom-theme primary=indigo secondary=blue accent=violet gray=neutra
 
 <!-- THIS IS A REMOVABLE SECTION -->
 
-
 ### Used By
 
 - [🐾 Allnimal](https://allnimal.com)
   - [🐻 Bearmentor](https://bearmentor.com)
   - [🐱 Catamyst](https://catamyst.com)
-  - [🐶 Dogokit](https://dogokit.allnimal.com)
+  - [🐶 Dogokit](https://dogokit-beagle.vercel.app)
 
 ## Authors
 

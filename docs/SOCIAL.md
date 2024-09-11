@@ -14,7 +14,7 @@ Open source and free
 
 This template is what I personally use to build several of my real paid projects and products
 
-Get it here: <http://dogokit.allnimal.com>
+Get it here: <http://dogokit-beagle.vercel.app>
 
 ---
 
@@ -48,4 +48,4 @@ Some more and future plans:
 
 Feel free to send some feedback and fixes
 
-<https://github.com/dogokit/dogokit-remix>
+<https://github.com/dogokit/dogokit-beagle>

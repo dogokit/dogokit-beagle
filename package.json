@@ -1,12 +1,12 @@
 {
-  "name": "dogokit-remix",
+  "name": "dogokit-beagle",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "analyze": "pnpm clean && dpdm **/*.*",
     "build": "remix build",
-    "build:sentry": "remix build --sourcemap && sentry-upload-sourcemaps --quiet --org allnimal --project dogokit-remix",
+    "build:sentry": "remix build --sourcemap && sentry-upload-sourcemaps --quiet --org allnimal --project dogokit-beagle",
     "check": "pnpm /^check:.*/",
     "check:data": "tsx prisma/utils/check-data.ts",
     "check:env": "tsx prisma/utils/check-env.ts",

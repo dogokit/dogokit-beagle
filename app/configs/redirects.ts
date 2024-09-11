@@ -3,9 +3,9 @@ import { type ConfigRedirect } from "~/utils/redirect-route.server"
 export const configRedirects: ConfigRedirect[] = [
   { path: "/account", to: "/user/account" },
   { path: "/auth", to: "/login" },
-  { path: "/dev", url: "https://github.com/dogokit/dogokit-remix" },
+  { path: "/dev", url: "https://github.com/dogokit/dogokit-beagle" },
   { path: "/gh", to: "/github" },
-  { path: "/github", url: "https://github.com/dogokit/dogokit-remix" },
+  { path: "/github", url: "https://github.com/dogokit/dogokit-beagle" },
   { path: "/links", to: "/redirects" },
   { path: "/register", to: "/signup" },
   { path: "/settings", to: "/user/settings" },
